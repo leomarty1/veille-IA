@@ -1,3 +1,16 @@
 {
-  "briefs": []
+  "briefs": [
+    {
+      "date": "2026-05-11",
+      "filename": "2026-05-11.html",
+      "items_count": 11,
+      "by_tag": { "lynxter": 5, "useful": 5, "info": 1 },
+      "mode": "rétrospective initiale (14 avril → 11 mai)",
+      "highlights": [
+        "Claude Opus 4.7 — saut net SWE-bench (87.6%)",
+        "Rate limits Pro/Max doublés via SpaceX Colossus 1",
+        "Mistral Medium 3.5 — 77.6% SWE-bench open weights MIT"
+      ]
+    }
+  ]
 }

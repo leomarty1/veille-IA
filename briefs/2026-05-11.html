@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic consolide, Mistral arme sa stratégie souverain — Veille IA Lynxter</title>
+<meta name="description" content="Brief rétrospectif IA du 14 avril au 11 mai 2026 : Claude Opus 4.7, rate limits doublés Anthropic, Mistral Medium 3.5 en open weights.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="./" class="active">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="./">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">2026-05-11</span>
+      </div>
+
+      <header style="margin-bottom:64px;">
+        <p class="section-label">Brief rétrospectif · 14 avril → 11 mai 2026</p>
+        <h1 style="font-family:var(--font-display);font-stretch:125%;font-weight:300;font-size:clamp(36px,5.5vw,64px);text-transform:uppercase;letter-spacing:-0.005em;line-height:1.02;margin:0 0 28px;color:var(--text);">Anthropic consolide,<br>Mistral arme sa <em style="font-style:normal;color:var(--lx-accent);">stratégie souverain</em></h1>
+        <p style="font-size:18px;font-weight:300;color:var(--text-soft);max-width:720px;margin:0 0 48px;line-height:1.7;">Mois de transition côté frontière : Opus 4.7 fait un saut net sur SWE-bench, Routines change le pattern d'automatisation, et Mistral pousse Medium 3.5 en open-weights comme alternative crédible à l'écosystème américain.</p>
+
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">11<span class="unit">items</span></div>
+            <div class="stat-label">Total semaine</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5<span class="unit">🎯</span></div>
+            <div class="stat-label">Impact Lynxter</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5<span class="unit">🛠</span></div>
+            <div class="stat-label">À connaître</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5<span class="unit">acteurs</span></div>
+            <div class="stat-label">Sources scannées</div>
+          </div>
+        </div>
+      </header>
+
+      <p class="section-label">TL;DR</p>
+      <section class="tldr reveal" style="margin-bottom:72px;">
+        <ul>
+          <li>Anthropic double les rate limits Pro/Max via l'accord SpaceX Colossus 1 — fin du pain point principal de l'usage intensif Claude Code.</li>
+          <li>Routines (research preview) bundle prompt + repo + connectors et tourne sur schedule — exactement le pattern de tes plugins Lynxter Support et veille-ia.</li>
+          <li>Mistral Medium 3.5 atteint 77.6 % sur SWE-bench Verified en open weights MIT — réponse crédible si un client réclame de l'IA souveraine européenne.</li>
+        </ul>
+      </section>
+
+      <section class="lynxter-hero reveal">
+        <h2>🎯 Implications Lynxter</h2>
+        <div class="body">
+          <p><strong>Profite immédiatement des nouveaux rate limits Anthropic.</strong> Si tu te retenais de lancer des veilles, des skills lourds ou des sessions Claude Code en parallèle à cause des plafonds, c'est résolu. Le doublement Pro/Max et la suppression des peak-hour reductions changent la donne pour ton usage Cowork au quotidien. Combine avec le Claude Code desktop redesigné : la sidebar multi-sessions est faite pour ton workflow (support en parallèle d'un script en dev en parallèle d'un brief).</p>
+          <p><strong>Regarde Routines de près.</strong> C'est exactement le pattern de ton plugin Lynxter Support et de ce skill veille-ia : un prompt + un contexte + des connectors, déclenchés sur schedule ou événement. Tu vas gagner du temps à passer par Routines plutôt que de bricoler du scheduling à la main pour automatiser des trucs type <em>lundi matin → récap tickets support</em> ou <em>nouvelle issue priorité → pré-diagnostic auto</em>.</p>
+          <p><strong>Garde un œil sérieux sur Mistral Medium 3.5.</strong> Pas pour le déployer demain, mais pour le savoir : si un client industriel demande un setup IA souverain européen, tu as maintenant une réponse crédible (77.6 % SWE-bench, open weights MIT modifiée). Et Voxtral pour générer des tutos vocaux client en français est une vraie option à benchmark — si la qualité tient, ça fait des FAQ audio en français propres sans passer par ElevenLabs.</p>
+        </div>
+      </section>
+
+      <p class="section-label">Synthèse</p>
+      <section class="synthese reveal">
+        Mois très chargé côté <strong>Anthropic</strong>, qui consolide son avance produit avec Claude Opus 4.7 (saut net sur SWE-bench), un Claude Code desktop redesigné pour les workflows multi-agents, et une expansion compute massive via SpaceX qui se traduit en rate limits doublés. <strong>OpenAI</strong> réplique côté ChatGPT grand public avec GPT-5.5 Instant (focus anti-hallucination, mémoire transparente). <strong>Mistral</strong> confirme sa stratégie agent + souverain avec Medium 3.5 open-weights à 77.6 % SWE-bench et le Voxtral TTS français. Google pousse les agents de recherche autonomes. Meta a sorti Llama 4 — peu d'impact pratique pour ton stack mais intéressant pour la culture open-weights.
+      </section>
+
+      <!-- ─── ANTHROPIC ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/anthropic/1b1818/f3f1ee" alt="" />Anthropic<span class="count">5 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title">Claude Opus 4.7 — disponibilité générale</h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-04-16</span>
+          </div>
+          <p class="item-context">Saut net sur le coding agent : <strong>87.6 % sur SWE-bench Verified</strong> (vs 80.8 %), <strong>64.3 % sur SWE-bench Pro</strong> (vs 53.4 %) — devant tous les concurrents publics. Nouveau niveau d'effort "xhigh" entre high et max, support images haute-résolution (2576px / 3.75 MP), fenêtre 1M tokens au tarif standard sans premium long-context. Pricing inchangé ($5/$25 par M tokens). Dispo sur API Claude, Bedrock, Vertex, Microsoft Foundry.</p>
+          <p class="item-source"><a href="https://www.anthropic.com/news/claude-opus-4-7" target="_blank" rel="noopener">anthropic.com/news/claude-opus-4-7</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title">Redesign Claude Code desktop + Routines</h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-04-14</span>
+          </div>
+          <p class="item-context">L'app Claude Code (Mac, Windows) rebâtie autour du paradigme <em>"many things in flight"</em>. Sidebar multi-sessions, workspace drag-and-drop, terminal et éditeur intégrés. En parallèle : <strong>Routines</strong> (research preview) — bundler prompt + repo + connectors en une config qui tourne sur schedule, API ou GitHub event. C'est un cron + GitHub Actions natif, piloté par agent. Rollout Pro / Max / Team / Enterprise.</p>
+          <p class="item-source"><a href="https://claude.com/blog/claude-code-desktop-redesign" target="_blank" rel="noopener">claude.com/blog/claude-code-desktop-redesign</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title">Expansion compute SpaceX Colossus 1 — rate limits doublés Pro/Max</h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-05-01</span>
+          </div>
+          <p class="item-context">Anthropic signe avec SpaceX pour utiliser tout le compute de Colossus 1 : <strong>300+ MW (220k+ NVIDIA GPUs)</strong> disponibles dans le mois. Conséquence : <strong>doublement des rate limits</strong> Pro, Max, Team, Enterprise sur Claude Code et l'API, et suppression des peak-hour reductions pour Pro et Max. Le pain point principal de l'usage intensif est résolu.</p>
+          <p class="item-source"><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com/news</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title">Claude Security en public beta Enterprise</h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-05-01</span>
+          </div>
+          <p class="item-context">Outil de scan de vulnérabilités code avec fixes auto-générés par Opus 4.7. Alternative aux SAST classiques, intégrée au workflow Claude. Réservé Enterprise pour l'instant. Pas immédiatement actionnable pour Lynxter mais signale la direction d'Anthropic vers les verticales spécifiques.</p>
+          <p class="item-source"><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com/news</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title">Managed Agents — Dreaming, multiagent orchestration, memory</h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-05-01</span>
+          </div>
+          <p class="item-context">Suite de fonctionnalités autour des agents long-running. <strong>Dreaming</strong> (research preview, agents qui bossent en background entre sessions), <strong>multiagent orchestration</strong>, <strong>memory</strong> (public beta, état persistant). Infrastructure pour des agents qui ne dépendent plus d'une session active. À suivre quand tu commenceras à industrialiser des automatisations Cowork sur plusieurs heures.</p>
+          <p class="item-source"><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com/news</a></p>
+        </article>
+      </section>
+
+      <!-- ─── OPENAI ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/openai/1b1818/f3f1ee" alt="" />OpenAI<span class="count">1 item</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title">GPT-5.5 Instant — nouveau modèle par défaut ChatGPT</h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-05-05</span>
+          </div>
+          <p class="item-context">Remplace GPT-5.3 Instant comme modèle par défaut. <strong>−52.5 % d'hallucinations</strong> sur prompts à enjeu (médical, juridique, financier), <strong>81.2 sur AIME 2025</strong> (vs 65.4), −30 % de mots et lignes. Personnalisation : recherche dans historique conversations, fichiers et Gmail. <strong>Memory sources</strong> désormais visibles dans ChatGPT (transparence sur d'où vient une info, possibilité de supprimer/corriger). GPT-5.3 Instant reste dispo 3 mois pour payants avant retrait.</p>
+          <p class="item-source"><a href="https://openai.com/index/gpt-5-5-instant/" target="_blank" rel="noopener">openai.com/index/gpt-5-5-instant</a></p>
+        </article>
+      </section>
+
+      <!-- ─── GOOGLE DEEPMIND ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/googlegemini/1b1818/f3f1ee" alt="" />Google DeepMind<span class="count">2 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title">Deep Research Max — agents de recherche autonomes</h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-05-01</span>
+          </div>
+          <p class="item-context">Évolution de Deep Research côté Gemini, positionné comme <em>step change</em> pour les agents de recherche autonomes. Cycles de recherche / synthèse / vérification sans intervention humaine sur sujets complexes. Concurrence directe avec OpenAI Deep Research et Perplexity. À benchmarker si tu utilises ce type d'outil pour veille marché ou doc technique poussée.</p>
+          <p class="item-source"><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/next-generation-gemini-deep-research/" target="_blank" rel="noopener">blog.google/.../gemini-deep-research</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Gemini 3 Deep Think — focus science</h3>
+            <span class="tag tag-info">· Info</span>
+          </div>
+          <p class="item-context">Variante de Gemini 3 spécialisée problèmes scientifiques (math, physique, biologie). Mode de raisonnement étendu, pensée parallèle. Plus de signal académique que produit pour ton usage.</p>
+        </article>
+      </section>
+
+      <!-- ─── META ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/meta/1b1818/f3f1ee" alt="" />Meta<span class="count">1 item</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title">Llama 4 Scout, Maverick, Behemoth — première LlamaCon</h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-04-20</span>
+          </div>
+          <p class="item-context">Famille Llama 4 sortie lors de la première LlamaCon. <strong>Scout</strong> (17B actifs, 16 experts MoE, fenêtre 10M tokens, fit sur un seul H100) et <strong>Maverick</strong> (17B actifs, 128 experts, bat GPT-4o et Gemini 2.0 Flash) en open weights HuggingFace. <strong>Behemoth</strong> en preview — teacher model qui surperforme GPT-4.5, Claude Sonnet 3.7, Gemini 2.0 Pro sur STEM. Intérêt Lynxter : limité tant que tu n'auto-héberges pas, mais c'est le baseline que Ollama et vLLM supporteront en premier.</p>
+          <p class="item-source"><a href="https://ai.meta.com/blog/llama-4-multimodal-intelligence/" target="_blank" rel="noopener">ai.meta.com/blog/llama-4-multimodal-intelligence</a></p>
+        </article>
+      </section>
+
+      <!-- ─── MISTRAL ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/mistralai/1b1818/f3f1ee" alt="" />Mistral<span class="count">2 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title">Mistral Medium 3.5 + Vibe Remote Agents</h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-05-02</span>
+          </div>
+          <p class="item-context">Modèle dense 128B qui merge instruction-following, raisonnement et coding. <strong>77.6 % sur SWE-bench Verified</strong> — zone très haute des modèles non-frontière. <strong>Open weights sous MIT modifiée</strong> → candidat sérieux pour déploiements souverains/on-prem. En parallèle : <strong>Vibe Remote Agents</strong> permet de spawner des sessions de coding async depuis CLI ou Le Chat. Pour Lynxter : alternative française open-weights crédible si limitation dépendance Anthropic, ou réponse si client demande modèle EU.</p>
+          <p class="item-source"><a href="https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5" target="_blank" rel="noopener">mistral.ai/news/vibe-remote-agents-mistral-medium-3-5</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title">Voxtral TTS — premier modèle text-to-speech Mistral</h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-05-05</span>
+          </div>
+          <p class="item-context">Mistral entre sur le TTS. Open weights HuggingFace (CC BY-NC 4.0 — attention pas commercial sur la version open) et API à $0.016 / 1000 caractères dans Mistral Studio, 20 voix preset (US, UK, français). Architecture hybride autoregressive + flow-matching pour mieux gérer l'expressivité multilingue. <strong>Intérêt potentiel Lynxter</strong> : tutos vocaux français pour clients (déballage, mise en route) sans passer par ElevenLabs.</p>
+          <p class="item-source"><a href="https://mistral.ai/news" target="_blank" rel="noopener">mistral.ai/news</a></p>
+        </article>
+      </section>
+
+      <section class="sources-footer">
+        <strong>Sources consultées</strong>
+        <a href="https://www.anthropic.com/news">anthropic.com/news</a> · <a href="https://docs.claude.com/en/release-notes">docs.claude.com/release-notes</a> · <a href="https://openai.com/news/">openai.com/news</a> · <a href="https://blog.google/technology/ai/">blog.google/technology/ai</a> · <a href="https://deepmind.google/discover/blog/">deepmind.google/discover/blog</a> · <a href="https://ai.meta.com/blog/">ai.meta.com/blog</a> · <a href="https://mistral.ai/news/">mistral.ai/news</a>
+      </section>
+
+      <nav class="brief-nav">
+        <span class="prev" style="opacity:0.35;cursor:default;">
+          <span class="label">← Brief précédent</span>
+          <span class="title" style="color:var(--text-muted);font-weight:300;">Pas encore d'antérieur</span>
+        </span>
+        <a class="next" href="./">
+          <span class="label">Voir l'archive →</span>
+          <span class="title">Tous les briefs</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Brief généré le 2026-05-11</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="./">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Méthodologie — Veille IA Lynxter</title>
+<meta name="description" content="Comment le brief hebdomadaire de veille IA est produit : routine Claude Code distante, sources curées, filtrage, scoring sous l'angle Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="./" class="active">Méthodo</a>
+      <a href="../futur/">Futur</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Méthodologie</span>
+      </div>
+
+      <p class="section-label">Comment ça marche</p>
+      <h1 class="section-title">Une routine,<br>pas un humain</h1>
+      <p class="section-intro">Le brief est produit chaque lundi matin par une routine Claude Code distante. Aucun humain ne lit ou réécrit avant publication — c'est volontaire, pour garder la production rapide, régulière, et sans biais d'embellissement.</p>
+
+    </div>
+  </section>
+
+  <section class="section-sm section-alt">
+    <div class="container-narrow">
+      <div class="stat-strip">
+        <div class="stat">
+          <div class="stat-num">08<span class="unit">h00</span></div>
+          <div class="stat-label">Tous les lundis Europe/Paris</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">07<span class="unit">jours</span></div>
+          <div class="stat-label">Fenêtre stricte par run</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">15<span class="unit">max</span></div>
+          <div class="stat-label">Fetches web par run</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">0<span class="unit">humain</span></div>
+          <div class="stat-label">Dans la boucle</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow">
+
+      <p class="section-label">Le workflow en 7 étapes</p>
+      <h2 class="section-title">Du cron au push</h2>
+
+      <div class="method-steps">
+
+        <div class="method-step reveal">
+          <span class="num">01</span>
+          <div>
+            <h3>Déclenchement</h3>
+            <p>La routine Claude Code distante est planifiée via le cron <code>0 6 * * 1</code> (UTC) — soit 08:00 Europe/Paris l'été, 07:00 l'hiver. L'infrastructure Anthropic spawn un agent dans une sandbox isolée, totalement indépendante de mon PC.</p>
+          </div>
+        </div>
+
+        <div class="method-step reveal">
+          <span class="num">02</span>
+          <div>
+            <h3>Clone du repo</h3>
+            <p>L'agent clone <a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">leomarty1/veille-IA</a> dans son workspace. Il lit le brief précédent (<code>briefs/&lt;date&gt;.html</code>) et le registre <code>briefs/data.json</code> pour comprendre l'historique.</p>
+          </div>
+        </div>
+
+        <div class="method-step reveal">
+          <span class="num">03</span>
+          <div>
+            <h3>Récolte des sources</h3>
+            <p>Pour chacun des 5 acteurs, l'agent fait des <code>WebSearch</code> ciblés avec filtre temporel (last 7 days), puis <code>WebFetch</code> sur les 1 à 3 meilleurs hits. Sources primaires seulement — pas de second-hand, pas de tweets, pas d'agrégateurs.</p>
+            <p>Voir la <a href="../acteurs/">liste détaillée des sources par acteur</a>.</p>
+          </div>
+        </div>
+
+        <div class="method-step reveal">
+          <span class="num">04</span>
+          <div>
+            <h3>Filtrage</h3>
+            <p>L'agent <strong style="color:var(--text);font-weight:500;">jette</strong> : partenariats sans impact technique, levées de fonds &lt; 5 B$, tribunes/opinions sans news concrète, repackagings de features existantes, posts marketing pur.</p>
+            <p>Il <strong style="color:var(--text);font-weight:500;">garde</strong> : releases de modèles, nouvelles features/SDK, changements pricing notables, 1 ou 2 papers majeurs max, acquisitions stratégiques.</p>
+          </div>
+        </div>
+
+        <div class="method-step reveal">
+          <span class="num">05</span>
+          <div>
+            <h3>Scoring</h3>
+            <p>Chaque item retenu reçoit un tag :</p>
+            <p style="display:flex;flex-direction:column;gap:8px;margin-top:14px;">
+              <span><span class="tag tag-lynxter">🎯 Lynxter</span> &nbsp; impact direct workflow Lynxter — Claude Code, Cowork, MCP, plugins, agents, génération de docs, voix/TTS. Réservé aux gros impacts.</span>
+              <span><span class="tag tag-useful">🛠 Utile</span> &nbsp; à connaître pour anticiper questions client ou changements produit majeurs.</span>
+              <span><span class="tag tag-info">· Info</span> &nbsp; culture IA, pas d'impact pratique immédiat.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="method-step reveal">
+          <span class="num">06</span>
+          <div>
+            <h3>Rédaction</h3>
+            <p>L'agent compose : <strong style="color:var(--text);font-weight:500;">TL;DR</strong> (3 bullets), <strong style="color:var(--text);font-weight:500;">Implications Lynxter</strong> (2-3 paragraphes actionnables, sous le prisme support 3D + automation + skills custom), <strong style="color:var(--text);font-weight:500;">Synthèse</strong> (3-5 phrases), puis les <strong style="color:var(--text);font-weight:500;">items par acteur</strong> dans l'ordre fixe Anthropic → OpenAI → Google → Meta → Mistral → Autres.</p>
+            <p>Règle dure : <strong style="color:var(--text);font-weight:500;">zéro hallucination</strong>. Tout item doit avoir une URL source réellement fetched. Si la semaine est calme sur un acteur, c'est écrit explicitement — pas de remplissage.</p>
+          </div>
+        </div>
+
+        <div class="method-step reveal">
+          <span class="num">07</span>
+          <div>
+            <h3>Publication</h3>
+            <p>L'agent génère <code>index.html</code> (dernier brief en home) + <code>briefs/&lt;date&gt;.html</code> (archive permanente), met à jour <code>briefs/data.json</code> et la page d'archive, puis <code>git commit + push origin main</code>. GitHub Pages redéploie automatiquement en 1-2 min.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container-narrow">
+      <p class="section-label">Cadre éditorial</p>
+      <h2 class="section-title">L'angle Lynxter</h2>
+      <p class="section-intro">Le brief n'est pas un agrégateur neutre. Il est scoré et commenté du point de vue de <strong style="color:var(--text);font-weight:500;">Léo Marty</strong>, responsable support technique chez Lynxter. Le contexte qui informe les décisions de tagging et le contenu des "Implications Lynxter" :</p>
+
+      <div class="actor-profile-body" style="max-width:none;">
+        <h3>Stack quotidien</h3>
+        <ul>
+          <li>Claude Code (CLI) — sessions multi-projets, support en parallèle</li>
+          <li>Claude Cowork — gestion des workflows non-dev (skills, plugins)</li>
+          <li>MCPs : Slack, Outlook, Gmail, GitHub, Microsoft Learn</li>
+          <li>Skills custom : <code>lynxter-support</code>, <code>onboarding-client</code>, <code>veille-ia</code></li>
+        </ul>
+
+        <h3>Activités cœur</h3>
+        <ul>
+          <li>Support technique imprimantes 3D industrielles (S300X, S600D)</li>
+          <li>Diagnostic matériaux (PU, silicone, PA, PETG, etc.)</li>
+          <li>Formation client + onboarding</li>
+          <li>Construction de skills/plugins pour automatiser le support</li>
+        </ul>
+
+        <h3>Veille active sur</h3>
+        <ul>
+          <li>Solutions IA souveraines / EU / on-prem (clients industriels)</li>
+          <li>Voix française pour tutos clients (TTS)</li>
+          <li>Agents long-running pour automation tickets support</li>
+          <li>Outils d'orchestration multi-MCP</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow">
+      <p class="section-label">Stack technique</p>
+      <h2 class="section-title">Sous le capot</h2>
+
+      <div class="actor-profile-body" style="max-width:none;">
+        <h3>Infrastructure</h3>
+        <ul>
+          <li><strong style="color:var(--text);font-weight:500;">Routine</strong> : Claude Code remote trigger (cloud Anthropic)</li>
+          <li><strong style="color:var(--text);font-weight:500;">Modèle</strong> : Claude Sonnet 4.6</li>
+          <li><strong style="color:var(--text);font-weight:500;">Hébergement</strong> : GitHub Pages (gratuit, statique)</li>
+          <li><strong style="color:var(--text);font-weight:500;">Code source</strong> : <a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">github.com/leomarty1/veille-IA</a></li>
+        </ul>
+
+        <h3>Front-end</h3>
+        <ul>
+          <li>HTML/CSS/JS vanilla — aucune dépendance build</li>
+          <li>Typo Archivo (proxy GTAmerica Expanded) + Roboto + Outfit — Google Fonts</li>
+          <li>Logos acteurs : Simple Icons (CC0)</li>
+          <li>Charte graphique Lynxter v3.1</li>
+        </ul>
+
+        <h3>Conventions de fichiers</h3>
+        <ul>
+          <li><code>index.html</code> — toujours le dernier brief</li>
+          <li><code>briefs/YYYY-MM-DD.html</code> — un fichier par brief</li>
+          <li><code>briefs/data.json</code> — registre des briefs (date, items_count, highlights)</li>
+          <li><code>briefs/index.html</code> — archive avec recherche</li>
+          <li><code>acteurs/index.html</code> — profils des acteurs surveillés</li>
+          <li><code>methodo/index.html</code> — cette page</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Lynxter · Charte 3.1</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="./">Méthodologie</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

@@ -3,47 +3,225 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Veille IA — Léo</title>
-<meta name="description" content="Récap hebdomadaire des nouveautés Anthropic, OpenAI, Google DeepMind, Meta, Mistral.">
-<link rel="preconnect" href="https://rsms.me/">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<title>Veille IA — Lynxter</title>
+<meta name="description" content="Brief hebdomadaire des nouveautés IA, filtré et scoré sous l'angle Lynxter. Anthropic, OpenAI, Google DeepMind, Meta, Mistral.">
 <link rel="stylesheet" href="assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
 </head>
 <body>
-<main class="container">
 
-  <header class="brief-header">
-    <div class="title-block">
-      <p class="eyebrow">Veille IA · brief hebdo</p>
-      <h1>En attente du premier brief</h1>
-      <p class="period">Le dashboard sera mis à jour automatiquement chaque lundi à 8h&nbsp;Europe/Paris.</p>
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="./"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="./" class="active">Accueil</a>
+      <a href="briefs/">Briefs</a>
+      <a href="acteurs/">Acteurs</a>
+      <a href="methodo/">Méthodo</a>
+      <a href="futur/">Futur</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
     </div>
-    <div class="meta">
-      <div>Setup&nbsp;:&nbsp;2026-05-12</div>
-      <div>Prochain run&nbsp;:&nbsp;lundi 8h</div>
-    </div>
-  </header>
+  </div>
+</header>
 
-  <section class="landing">
-    <div class="landing-emoji">⏳</div>
-    <h2>Premier brief lundi prochain</h2>
-    <p>La routine Claude Code remote scanne les sources primaires de chaque acteur, filtre le bruit marketing, score la pertinence pour Lynxter, et régénère cette page chaque lundi.</p>
-    <p>Tu trouveras ici&nbsp;: synthèse globale, implications opérationnelles Lynxter, récap profond par acteur, et archive des briefs passés.</p>
-    <div class="actor-pills">
-      <span>Anthropic</span>
-      <span>OpenAI</span>
-      <span>Google DeepMind</span>
-      <span>Meta</span>
-      <span>Mistral</span>
-      <span>+ Autres si majeur</span>
+<main>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">Veille IA · Brief hebdomadaire</p>
+      <h1>Le paysage IA, <em>filtré</em><br>chaque <span class="y">lundi matin</span></h1>
+      <p class="hero-sub">Un récap des sept derniers jours sur les cinq acteurs frontière, scoré sous l'angle Lynxter. Pas de bruit, pas de marketing — juste le signal opérationnel.</p>
+      <div class="hero-next"><span class="arrow">→</span><strong>Prochaine édition&nbsp;: lundi 18 mai 2026 · 08:00 Europe/Paris</strong></div>
     </div>
-    <div class="next-run">→ prochain run&nbsp;: lundi prochain · 08:00 Europe/Paris</div>
   </section>
 
-  <footer class="site-footer">
-    <p>Généré par routine Claude Code · <a href="https://github.com/leomarty1/veille-IA">source</a></p>
-  </footer>
+  <!-- ═══ STATS GLOBALES ═══ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="stat-strip">
+        <div class="stat">
+          <div class="stat-num">1<span class="unit">brief</span></div>
+          <div class="stat-label">Publié à ce jour</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">11<span class="unit">items</span></div>
+          <div class="stat-label">Couverts en archive</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5<span class="unit">acteurs</span></div>
+          <div class="stat-label">Surveillés en continu</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">07<span class="unit">jours</span></div>
+          <div class="stat-label">Fenêtre par brief</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURED BRIEF (dernier en date) ═══ -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label reveal">Dernier brief</p>
+      <a class="featured reveal" href="briefs/2026-05-11.html">
+        <p class="featured-tag">🎯 5 items pertinents Lynxter</p>
+        <h3>Anthropic consolide, Mistral arme sa stratégie souverain</h3>
+        <p class="featured-period">14 avril → 11 mai 2026 · 11 items · 5 acteurs</p>
+        <ul class="featured-highlights">
+          <li>Anthropic double les rate limits Pro/Max via l'accord SpaceX Colossus 1</li>
+          <li>Routines bundle prompt + repo + connectors, pattern direct des plugins Lynxter</li>
+          <li>Mistral Medium 3.5 atteint 77.6 % SWE-bench en open weights MIT</li>
+        </ul>
+        <span class="featured-cta">Lire le brief complet →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ ACTEURS SURVEILLÉS ═══ -->
+  <section class="section section-alt">
+    <div class="container">
+      <p class="section-label reveal">Acteurs surveillés</p>
+      <h2 class="section-title reveal">Cinq frontières + l'occasionnel</h2>
+      <p class="section-intro reveal">Les 5 acteurs au cœur du brief sont scannés chaque semaine sur leurs sources primaires officielles. Les acteurs secondaires (xAI, DeepSeek, Cursor, Perplexity) sont couverts uniquement en cas d'annonce majeure.</p>
+
+      <div class="actors-grid">
+        <a class="actor-card reveal" href="acteurs/#anthropic">
+          <img class="logo" src="https://cdn.simpleicons.org/anthropic/1b1818/ffffff" alt="Anthropic" />
+          <h3>Anthropic</h3>
+          <p>Claude, Claude Code, Cowork, MCP. Le moteur principal de ton stack quotidien.</p>
+          <div class="count"><strong>5 items</strong> en archive</div>
+        </a>
+        <a class="actor-card reveal" href="acteurs/#openai">
+          <img class="logo" src="https://cdn.simpleicons.org/openai/1b1818/ffffff" alt="OpenAI" />
+          <h3>OpenAI</h3>
+          <p>GPT, ChatGPT, Agents SDK, Sora. La référence grand public face à laquelle se positionner.</p>
+          <div class="count"><strong>1 item</strong> en archive</div>
+        </a>
+        <a class="actor-card reveal" href="acteurs/#google-deepmind">
+          <img class="logo" src="https://cdn.simpleicons.org/googlegemini/1b1818/ffffff" alt="Google DeepMind" />
+          <h3>Google DeepMind</h3>
+          <p>Gemini, Veo, Notebook LM, Project Astra. Le challenger qui pousse fort sur l'agentique.</p>
+          <div class="count"><strong>2 items</strong> en archive</div>
+        </a>
+        <a class="actor-card reveal" href="acteurs/#meta">
+          <img class="logo" src="https://cdn.simpleicons.org/meta/1b1818/ffffff" alt="Meta" />
+          <h3>Meta</h3>
+          <p>Llama, recherche FAIR. La référence open-weights pour le self-hosting.</p>
+          <div class="count"><strong>1 item</strong> en archive</div>
+        </a>
+        <a class="actor-card reveal" href="acteurs/#mistral">
+          <img class="logo" src="https://cdn.simpleicons.org/mistralai/1b1818/ffffff" alt="Mistral AI" />
+          <h3>Mistral AI</h3>
+          <p>Modèles open-weights français, Le Chat, Voxtral. Le candidat souverain européen.</p>
+          <div class="count"><strong>2 items</strong> en archive</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ARCHIVE RÉCENTE ═══ -->
+  <section class="section">
+    <div class="container">
+      <p class="section-label reveal">Archive récente</p>
+      <h2 class="section-title reveal">Tous les briefs publiés</h2>
+
+      <ul class="archive-list reveal">
+        <li class="archive-entry">
+          <a href="briefs/2026-05-11.html">
+            <span class="archive-date">2026-05-11</span>
+            <div class="archive-main">
+              <h3>Anthropic consolide, Mistral arme sa stratégie souverain</h3>
+              <ul class="archive-highlights">
+                <li>Claude Opus 4.7 — saut net SWE-bench</li>
+                <li>Rate limits Pro/Max doublés via SpaceX</li>
+                <li>Mistral Medium 3.5 open weights MIT</li>
+              </ul>
+            </div>
+            <div class="archive-stats">
+              <span class="big">11</span>
+              <span>items · 5 🎯</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <p style="margin-top:32px;font-family:var(--font-mono);font-size:12px;color:var(--text-muted);letter-spacing:0.04em;">
+        <a href="briefs/" style="border-bottom:1px solid currentColor;">→ VOIR TOUS LES BRIEFS</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ MÉTHODO (teaser) ═══ -->
+  <section class="section section-alt">
+    <div class="container">
+      <p class="section-label reveal">Méthodologie</p>
+      <h2 class="section-title reveal">Une routine, pas un humain</h2>
+      <p class="section-intro reveal">Le brief est généré par une routine Claude Code distante qui tourne dans le cloud Anthropic, chaque lundi matin à 08:00 Europe/Paris. Elle scanne les sources primaires officielles de chaque acteur, filtre le bruit, score la pertinence pour Lynxter, et publie ici. Pas d'humain dans la boucle — donc pas de tendance à embellir, à hype, ou à pousser un agenda.</p>
+
+      <p style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted);letter-spacing:0.04em;">
+        <a href="methodo/" style="border-bottom:1px solid currentColor;">→ COMMENT ÇA MARCHE</a>
+      </p>
+    </div>
+  </section>
 
 </main>
+
+<!-- ═══ BASELINE BAND ═══ -->
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Lynxter · Charte 3.1</p>
+  </div>
+</aside>
+
+<!-- ═══ SITE FOOTER ═══ -->
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="./">Accueil</a></li>
+        <li><a href="briefs/">Tous les briefs</a></li>
+        <li><a href="acteurs/">Acteurs</a></li>
+        <li><a href="methodo/">Méthodologie</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js" defer></script>
 </body>
 </html>
