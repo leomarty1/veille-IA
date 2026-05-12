@@ -1,0 +1,415 @@
+/* Veille IA — feuille de styles partagée
+   Dark theme, palette Lynxter (orange brique + vert sapin) sur fond zinc */
+
+:root {
+  color-scheme: dark;
+  --bg:           #0e0e10;
+  --bg-card:      #18181b;
+  --bg-elevated:  #1e1e22;
+  --border:       #2a2a2e;
+  --border-muted: #3a3a40;
+  --text:         #f0f0f0;
+  --text-sec:     #a0a0a8;
+  --text-muted:   #6a6a72;
+  --accent:       #e07a4f;          /* orange brique Lynxter */
+  --accent-soft:  rgba(224, 122, 79, 0.12);
+  --lynxter:      #4ca97d;          /* vert sapin Lynxter */
+  --lynxter-soft: rgba(76, 169, 125, 0.10);
+  --lynxter-bord: rgba(76, 169, 125, 0.30);
+  --useful:       #8aa1c4;
+  --useful-soft:  rgba(138, 161, 196, 0.10);
+  --info:         #7a7a82;
+  --info-soft:    rgba(122, 122, 130, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 120ms ease;
+}
+a:hover { border-bottom-color: var(--accent); }
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 56px 32px 96px;
+}
+
+/* ─── Header ─────────────────────────────────────────────── */
+header.brief-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 48px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+.brief-header .title-block { flex: 1; }
+.brief-header .eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+.brief-header h1 {
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 0 0 8px;
+}
+.brief-header .period {
+  font-size: 14px;
+  color: var(--text-sec);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.brief-header .meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ─── Section labels ─────────────────────────────────────── */
+.section-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--border-muted);
+}
+
+/* ─── TL;DR ──────────────────────────────────────────────── */
+.tldr {
+  margin-bottom: 40px;
+}
+.tldr ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tldr li {
+  padding: 12px 0 12px 24px;
+  border-top: 1px solid var(--border);
+  position: relative;
+  font-size: 16px;
+}
+.tldr li:last-child { border-bottom: 1px solid var(--border); }
+.tldr li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ─── Implications Lynxter (hero) ────────────────────────── */
+.lynxter-hero {
+  background: var(--lynxter-soft);
+  border: 1px solid var(--lynxter-bord);
+  border-radius: 10px;
+  padding: 28px 32px;
+  margin-bottom: 40px;
+  position: relative;
+}
+.lynxter-hero::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 24px; bottom: 24px;
+  width: 3px;
+  background: var(--lynxter);
+  border-radius: 0 2px 2px 0;
+}
+.lynxter-hero h2 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--lynxter);
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+.lynxter-hero .body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+}
+.lynxter-hero .body p { margin: 0 0 14px; }
+.lynxter-hero .body p:last-child { margin-bottom: 0; }
+.lynxter-hero .body strong { color: var(--lynxter); font-weight: 600; }
+
+/* ─── Synthèse ───────────────────────────────────────────── */
+.synthese {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px 26px;
+  margin-bottom: 56px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-sec);
+}
+.synthese strong { color: var(--text); font-weight: 600; }
+
+/* ─── Actors ─────────────────────────────────────────────── */
+.actor-section {
+  margin-bottom: 48px;
+}
+.actor-section h2 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 0 0 20px;
+  padding-left: 14px;
+  border-left: 3px solid var(--accent);
+  line-height: 1.2;
+}
+.actor-section h2 .count {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-left: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.actor-empty {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 14px;
+  padding-left: 14px;
+}
+
+/* ─── Item card ──────────────────────────────────────────── */
+.item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 14px;
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+.item:hover {
+  border-color: var(--border-muted);
+}
+.item-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.item-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  line-height: 1.35;
+}
+.item-date {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  white-space: nowrap;
+}
+.item-context {
+  color: var(--text-sec);
+  font-size: 14.5px;
+  line-height: 1.65;
+  margin: 0 0 12px;
+}
+.item-context strong { color: var(--text); font-weight: 600; }
+.item-source {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.item-source a {
+  color: var(--text-muted);
+  border-bottom: 1px dotted var(--border-muted);
+}
+.item-source a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ─── Tag pills ──────────────────────────────────────────── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.tag-lynxter { background: var(--lynxter-soft); color: var(--lynxter); border: 1px solid var(--lynxter-bord); }
+.tag-useful  { background: var(--useful-soft);  color: var(--useful);  border: 1px solid rgba(138, 161, 196, 0.25); }
+.tag-info    { background: var(--info-soft);    color: var(--info);    border: 1px solid rgba(122, 122, 130, 0.20); }
+
+/* Compact items (info tag) */
+.item-compact {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  padding: 12px 0;
+  margin-bottom: 0;
+}
+.item-compact:last-child { border-bottom: 1px solid var(--border); }
+.item-compact .item-context { font-size: 13.5px; margin-bottom: 6px; color: var(--text-muted); }
+.item-compact .item-title { font-size: 14.5px; font-weight: 500; }
+
+/* ─── Archive nav ────────────────────────────────────────── */
+.archive {
+  margin-top: 80px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.archive h3 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+.archive ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.archive a {
+  font-variant-numeric: tabular-nums;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 13px;
+  color: var(--text-sec);
+  border-bottom: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.archive a:hover { color: var(--accent); }
+.archive .archive-meta { color: var(--text-muted); font-size: 11px; }
+
+/* ─── Sources footer ─────────────────────────────────────── */
+.sources-footer {
+  margin-top: 56px;
+  padding: 22px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.sources-footer strong { color: var(--text-sec); }
+
+/* ─── Site footer ────────────────────────────────────────── */
+.site-footer {
+  margin-top: 64px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+.site-footer a { color: var(--text-muted); }
+.site-footer a:hover { color: var(--accent); }
+
+/* ─── Landing (état initial sans brief) ──────────────────── */
+.landing {
+  text-align: center;
+  padding: 80px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.landing-emoji {
+  font-size: 56px;
+  line-height: 1;
+  margin-bottom: 20px;
+  filter: grayscale(0.3);
+}
+.landing h2 {
+  font-size: 24px;
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+.landing p {
+  color: var(--text-sec);
+  max-width: 480px;
+  margin: 0 auto 8px;
+}
+.landing .next-run {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  color: var(--accent);
+  font-size: 14px;
+  margin-top: 24px;
+}
+.actor-pills {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.actor-pills span {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: var(--text-sec);
+}
+
+/* ─── Mobile ─────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .container { padding: 32px 20px 64px; }
+  .brief-header { flex-direction: column; align-items: flex-start; }
+  .brief-header h1 { font-size: 28px; }
+  .brief-header .meta { text-align: left; }
+  .lynxter-hero { padding: 22px 22px 22px 26px; }
+  .lynxter-hero::before { top: 22px; bottom: 22px; }
+  .actor-section h2 { font-size: 19px; }
+  .item { padding: 16px 18px; }
+}
+
+/* ─── Print ──────────────────────────────────────────────── */
+@media print {
+  :root { color-scheme: light; }
+  html, body { background: white; color: black; }
+  .container { padding: 20px; max-width: 100%; }
+  .item, .synthese, .lynxter-hero, .sources-footer { break-inside: avoid; }
+}
