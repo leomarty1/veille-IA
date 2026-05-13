@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redesign Claude Code desktop + Routines — Veille IA Lynxter</title>
+<meta name="description" content="Analyse du redesign Claude Code Mac/Windows et de la sortie de Routines : prompt + repo + connectors sur schedule ou GitHub event.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+<div class="read-progress"></div>
+
+<header class="top-bar"><div class="top-bar-inner">
+  <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+  <nav class="nav-primary">
+    <a href="../">Accueil</a><a href="../briefs/">Briefs</a><a href="../acteurs/">Acteurs</a><a href="../modeles/">Modèles</a><a href="../methodo/">Méthodo</a><a href="../futur/">Futur</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></a>
+  </div>
+</div></header>
+
+<main>
+<section class="section-sm"><div class="container-narrow">
+
+  <div class="breadcrumb">
+    <a href="../">Accueil</a><span class="breadcrumb-sep">/</span>
+    <a href="../briefs/">Briefs</a><span class="breadcrumb-sep">/</span>
+    <a href="../briefs/2026-05-11.html">2026-05-11</a><span class="breadcrumb-sep">/</span>
+    <span class="current">Claude Code desktop + Routines</span>
+  </div>
+
+  <div class="item-detail-hero">
+    <div class="item-detail-meta-top">
+      <span class="actor-name">Anthropic</span><span class="dot-sep">·</span>
+      <span>14 avril 2026</span><span class="dot-sep">·</span>
+      <span class="tag tag-lynxter">🎯 Lynxter</span>
+    </div>
+    <h1>Redesign Claude Code desktop + Routines</h1>
+    <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-05-11.html">Anthropic consolide, Mistral arme — 2026-05-11</a></p>
+  </div>
+
+  <div class="detail-block">
+    <p class="detail-block-label">Contexte étendu</p>
+    <p>Anthropic publie le 14 avril deux annonces couplées qui redéfinissent l'expérience Claude Code pour les utilisateurs intensifs. La première : <strong>redesign complet de l'app desktop</strong> Mac et Windows autour du paradigme <em>"many things in flight, you in the orchestrator seat"</em>. Concrètement, ça veut dire une <strong>sidebar multi-sessions</strong> qui permet de garder plusieurs conversations vivantes en parallèle, un <strong>workspace drag-and-drop</strong> pour réorganiser visuellement les sessions, et un <strong>terminal + éditeur intégrés</strong> directement dans l'app sans avoir à jongler avec VS Code en parallèle.</p>
+    <p>La seconde annonce est <strong>Routines</strong> (research preview) — un système qui bundle un prompt, un repo cible et des connectors MCP en une configuration exécutable. Une routine peut être déclenchée sur <strong>schedule cron</strong>, via <strong>appel API</strong>, ou sur <strong>événement GitHub</strong> (push, issue créée, PR ouverte). C'est effectivement un <em>cron + GitHub Actions natif piloté par agent</em>, qui s'intègre dans la session Claude Code mais tourne en cloud Anthropic indépendamment de la machine locale.</p>
+    <p>Rollout immédiat sur Pro, Max, Team et Enterprise. Pas de tier gratuit pour Routines à ce stade.</p>
+  </div>
+
+  <section class="detail-lynxter">
+    <h2>🎯 Pourquoi c'est important pour Lynxter</h2>
+    <p>Routines est <strong>exactement le pattern qui sous-tend les plugins Lynxter</strong> : <code>lynxter-support</code> et <code>veille-ia</code> sont déjà conceptuellement des "prompts + contextes + connectors déclenchables sur événement". Jusqu'à présent, l'orchestration se faisait manuellement (Léo lance le skill quand il en a besoin) ou via du scheduling bricolé. Avec Routines, ça devient natif et industrialisable.</p>
+    <p>Cas d'usage concrets immédiats : <strong>lundi matin → récap des tickets support de la semaine</strong> dans Slack ; <strong>nouvelle issue GitHub priorité haute → pré-diagnostic automatique</strong> posté en commentaire ; <strong>chaque jour 18h → check status pipeline onboarding clients</strong>. Tout ce que Léo fait aujourd'hui à la main qui suit un rythme régulier devrait être migré vers Routines dans les semaines qui viennent.</p>
+    <p>Côté UI : la sidebar multi-sessions du desktop redesigné fit parfaitement le pattern Léo (support ticket en parallèle d'un script en parallèle d'un brief). C'est l'un des principaux pain points résolus de l'usage quotidien.</p>
+  </section>
+
+  <div class="source-block">
+    <strong>Source primaire</strong>
+    <a class="source-url" href="https://claude.com/blog/claude-code-desktop-redesign" target="_blank" rel="noopener">claude.com/blog/claude-code-desktop-redesign</a>
+    <span class="source-meta">Anthropic · blog post · 14 avril 2026</span>
+  </div>
+
+  <div class="related-items">
+    <h3>Items connexes</h3>
+    <ul class="related-list">
+      <li><a href="2026-05-11-managed-agents-dreaming-memory.html">
+        <span class="related-actor">Anthropic</span>
+        <span class="related-title">Managed Agents — Dreaming, multiagent orchestration, memory</span>
+        <span class="tag tag-useful">🛠</span>
+      </a></li>
+      <li><a href="2026-05-11-spacex-colossus-rate-limits.html">
+        <span class="related-actor">Anthropic</span>
+        <span class="related-title">Expansion compute SpaceX — rate limits doublés</span>
+        <span class="tag tag-lynxter">🎯</span>
+      </a></li>
+    </ul>
+  </div>
+
+  <nav class="brief-nav">
+    <a class="prev" href="2026-05-11-claude-opus-4-7.html">
+      <span class="label">← Précédent</span>
+      <span class="title">Claude Opus 4.7</span>
+    </a>
+    <a class="next" href="2026-05-11-spacex-colossus-rate-limits.html">
+      <span class="label">Suivant →</span>
+      <span class="title">Expansion compute SpaceX</span>
+    </a>
+  </nav>
+
+</div></section>
+</main>
+
+<aside class="baseline-band"><div class="container">
+  <p class="smarter">Make it <em>smarter</em>.</p>
+  <p class="signature">Item · brief 2026-05-11</p>
+</div></aside>
+
+<footer class="site-footer">
+<div class="container">
+  <div><h4>Veille IA</h4><ul>
+    <li><a href="../">Accueil</a></li><li><a href="../briefs/">Tous les briefs</a></li><li><a href="../acteurs/">Acteurs</a></li><li><a href="../modeles/">Modèles</a></li><li><a href="../methodo/">Méthodologie</a></li><li><a href="../futur/">Prospective</a></li>
+  </ul></div>
+  <div><h4>Sources primaires</h4><ul>
+    <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li><li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li><li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li><li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li><li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+  </ul></div>
+  <div><h4>Code</h4><ul>
+    <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li><li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li><li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+  </ul></div>
+</div>
+<div class="container"><div class="legal"><span>Léo Marty · Lynxter · 2026</span><span>Généré par routine Claude Code</span></div></div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

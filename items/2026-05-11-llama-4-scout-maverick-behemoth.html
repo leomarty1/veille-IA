@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Llama 4 Scout, Maverick, Behemoth — Veille IA Lynxter</title>
+<meta name="description" content="Famille Llama 4 sortie en LlamaCon : Scout (17B/16 experts, 10M tokens), Maverick (17B/128 experts), Behemoth (>2T preview).">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+<div class="read-progress"></div>
+<header class="top-bar"><div class="top-bar-inner">
+  <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+  <nav class="nav-primary"><a href="../">Accueil</a><a href="../briefs/">Briefs</a><a href="../acteurs/">Acteurs</a><a href="../modeles/">Modèles</a><a href="../methodo/">Méthodo</a><a href="../futur/">Futur</a></nav>
+  <div class="nav-actions">
+    <button class="icon-btn" data-theme-toggle aria-label="Basculer thème"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button>
+    <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></a>
+  </div>
+</div></header>
+
+<main>
+<section class="section-sm"><div class="container-narrow">
+
+  <div class="breadcrumb">
+    <a href="../">Accueil</a><span class="breadcrumb-sep">/</span>
+    <a href="../briefs/">Briefs</a><span class="breadcrumb-sep">/</span>
+    <a href="../briefs/2026-05-11.html">2026-05-11</a><span class="breadcrumb-sep">/</span>
+    <span class="current">Llama 4 famille</span>
+  </div>
+
+  <div class="item-detail-hero">
+    <div class="item-detail-meta-top">
+      <span class="actor-name">Meta</span><span class="dot-sep">·</span>
+      <span>20 avril 2026</span><span class="dot-sep">·</span>
+      <span class="tag tag-useful">🛠 Utile</span>
+    </div>
+    <h1>Llama 4 Scout, Maverick, Behemoth — première LlamaCon</h1>
+    <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-05-11.html">Anthropic consolide, Mistral arme — 2026-05-11</a></p>
+  </div>
+
+  <div class="detail-block">
+    <p class="detail-block-label">Chiffres clés</p>
+    <div class="stat-strip">
+      <div class="stat">
+        <div class="stat-num">17<span class="unit">B actifs</span></div>
+        <div class="stat-label">Scout & Maverick</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">10<span class="unit">M tokens</span></div>
+        <div class="stat-label">Scout (sur 1 H100)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">128<span class="unit">experts</span></div>
+        <div class="stat-label">Maverick MoE</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">&gt;2<span class="unit">T params</span></div>
+        <div class="stat-label">Behemoth (preview)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-block">
+    <p class="detail-block-label">Contexte étendu</p>
+    <p>Meta tient sa <strong>première LlamaCon</strong> et dévoile la famille Llama 4 — trois modèles aux usages différenciés. <strong>Scout</strong> : 17B paramètres actifs, 16 experts MoE, fenêtre de contexte exceptionnelle de <strong>10M tokens</strong>, et — point fort majeur — fit sur un seul H100. <strong>Maverick</strong> : 17B actifs, 128 experts MoE, multimodal performant, bat GPT-4o et Gemini 2.0 Flash sur les benchmarks publics. Les deux disponibles immédiatement en open weights sur HuggingFace.</p>
+    <p><strong>Behemoth</strong> reste en preview interne. Caractéristiques publiées : <strong>&gt;2T paramètres</strong>, positionné comme <em>teacher model</em> destiné à entraîner les futures gens via distillation. Meta annonce qu'il surperforme GPT-4.5, Claude Sonnet 3.7 et Gemini 2.0 Pro sur les benchmarks STEM. Date de release publique inconnue.</p>
+    <p>La stratégie de Yann LeCun est explicite : <em>"L'open weights gagne à long terme, on construit le standard que l'industrie auto-hébergera."</em> Et il a hinté qu'une version finalisée de Behemoth est attendue cet été.</p>
+  </div>
+
+  <section class="detail-lynxter">
+    <h2>🎯 Pourquoi c'est important pour Lynxter</h2>
+    <p><strong>Intérêt limité tant que Lynxter n'auto-héberge pas.</strong> Mais c'est le baseline que les frameworks gratuits (Ollama, vLLM, llama.cpp) vont supporter en premier — donc si un jour Lynxter veut un setup IA on-prem chez un client industriel, c'est <strong>là</strong> que ça démarre.</p>
+    <p>Cas d'usage à imaginer : un client défense ou aéro qui veut un assistant IA <strong>complètement déconnecté</strong> pour des raisons de confidentialité. Llama 4 Scout sur un H100 (ou 2 × A100 selon les configs) avec 10M tokens de contexte = on peut faire tenir toute la doc machine + l'historique d'intervention + les TDS matériaux dans une seule session, sans appel cloud.</p>
+    <p>Action concrète : pas d'action immédiate. Garder en mémoire que <strong>10M tokens en local sur 1 GPU est une option crédible</strong> si la question on-prem émerge.</p>
+  </section>
+
+  <div class="source-block">
+    <strong>Source primaire</strong>
+    <a class="source-url" href="https://ai.meta.com/blog/llama-4-multimodal-intelligence/" target="_blank" rel="noopener">ai.meta.com/blog/llama-4-multimodal-intelligence</a>
+    <span class="source-meta">Meta AI · annonce LlamaCon · 20 avril 2026</span>
+  </div>
+
+  <div class="related-items">
+    <h3>Items connexes</h3>
+    <ul class="related-list">
+      <li><a href="2026-05-11-mistral-medium-3-5.html">
+        <span class="related-actor">Mistral</span>
+        <span class="related-title">Medium 3.5 — l'alternative open-weights française</span>
+        <span class="tag tag-lynxter">🎯</span>
+      </a></li>
+    </ul>
+  </div>
+
+  <nav class="brief-nav">
+    <a class="prev" href="2026-05-11-gemini-3-deep-think.html">
+      <span class="label">← Précédent</span>
+      <span class="title">Gemini 3 Deep Think</span>
+    </a>
+    <a class="next" href="2026-05-11-mistral-medium-3-5.html">
+      <span class="label">Suivant →</span>
+      <span class="title">Mistral Medium 3.5</span>
+    </a>
+  </nav>
+
+</div></section>
+</main>
+
+<aside class="baseline-band"><div class="container">
+  <p class="smarter">Make it <em>smarter</em>.</p>
+  <p class="signature">Item · brief 2026-05-11</p>
+</div></aside>
+
+<footer class="site-footer">
+<div class="container">
+  <div><h4>Veille IA</h4><ul><li><a href="../">Accueil</a></li><li><a href="../briefs/">Tous les briefs</a></li><li><a href="../acteurs/">Acteurs</a></li><li><a href="../modeles/">Modèles</a></li><li><a href="../methodo/">Méthodologie</a></li><li><a href="../futur/">Prospective</a></li></ul></div>
+  <div><h4>Sources primaires</h4><ul><li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li><li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li><li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li><li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li><li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li></ul></div>
+  <div><h4>Code</h4><ul><li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li><li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li><li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li></ul></div>
+</div>
+<div class="container"><div class="legal"><span>Léo Marty · Lynxter · 2026</span><span>Généré par routine Claude Code</span></div></div>
+</footer>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

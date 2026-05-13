@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roadmap modèles IA — Veille IA Lynxter</title>
+<meta name="description" content="État de l'art des modèles frontière et roadmap par acteur : Claude, GPT, Gemini, Llama, Mistral. Ce qui se dit, ce qui est probable, ce qui est rumeur.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="./" class="active">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Modèles</span>
+      </div>
+
+      <p class="section-label">Roadmap IA</p>
+      <h1 class="section-title">Où en sont les modèles<br>— et où ils vont</h1>
+      <p class="section-intro">État de l'art des modèles frontière au <strong style="color:var(--text);font-weight:500;">11 mai 2026</strong>, suivi des roadmaps connues, signaux visibles, rumeurs sourcées. Chaque ligne s'appuie sur un fait public (release, blog post, interview, leak crédible) — les spéculations sont marquées comme telles.</p>
+
+    </div>
+  </section>
+
+  <section class="section-sm section-alt">
+    <div class="container">
+      <p class="section-label">État de l'art · 2026-05-11</p>
+      <h2 class="section-title" style="font-size:clamp(22px,3vw,32px);">Comparaison des modèles frontière</h2>
+      <p class="section-intro" style="margin-bottom:20px;">Les chiffres viennent des annonces officielles. <span class="num" style="color:var(--lx-primary);font-family:var(--font-mono);font-weight:700;">En jaune</span> : le leader sur la métrique. Tarifs en $ par million de tokens input/output.</p>
+
+      <div style="overflow-x:auto;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Modèle</th>
+            <th>SWE-bench Verified</th>
+            <th>SWE-bench Pro</th>
+            <th>AIME 2025</th>
+            <th>Contexte</th>
+            <th>Pricing in/out</th>
+            <th>Open weights</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="lead">Claude Opus 4.7</td>
+            <td class="lead"><span class="num">87.6 %</span></td>
+            <td class="lead"><span class="num">64.3 %</span></td>
+            <td>—</td>
+            <td class="lead"><span class="num">1M</span></td>
+            <td><span class="num">$5 / $25</span></td>
+            <td>Non</td>
+          </tr>
+          <tr>
+            <td>GPT-5.5 Instant</td>
+            <td>—</td>
+            <td>—</td>
+            <td class="lead"><span class="num">81.2</span></td>
+            <td><span class="num">400k</span></td>
+            <td><span class="num">$2.5 / $10</span></td>
+            <td>Non</td>
+          </tr>
+          <tr>
+            <td>Gemini 3 Pro</td>
+            <td><span class="num">~82 %</span></td>
+            <td>—</td>
+            <td><span class="num">~78</span></td>
+            <td><span class="num">2M</span></td>
+            <td><span class="num">$1.25 / $10</span></td>
+            <td>Non</td>
+          </tr>
+          <tr>
+            <td>Llama 4 Maverick</td>
+            <td><span class="num">~70 %</span></td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="num">1M</span></td>
+            <td>Self-host</td>
+            <td class="lead">Oui</td>
+          </tr>
+          <tr>
+            <td>Mistral Medium 3.5</td>
+            <td><span class="num">77.6 %</span></td>
+            <td>—</td>
+            <td>—</td>
+            <td><span class="num">256k</span></td>
+            <td><span class="num">$0.4 / $2</span></td>
+            <td class="lead">Oui (MIT)</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);letter-spacing:0.04em;margin:0;">⚠ Les valeurs estimées (~) viennent d'analyses indépendantes ou de leaks, pas d'annonces officielles. À prendre comme ordres de grandeur.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <p class="section-label">Roadmaps par acteur</p>
+      <h2 class="section-title">Ce qui se prépare</h2>
+
+      <!-- ═══ ANTHROPIC ═══ -->
+      <div class="roadmap-actor reveal">
+        <div class="roadmap-head">
+          <img src="https://cdn.simpleicons.org/anthropic/1b1818/f3f1ee" alt="Anthropic" />
+          <h2>Anthropic</h2>
+          <p class="current">Actuel · <strong>Claude Opus 4.7</strong></p>
+        </div>
+        <div class="roadmap-body">
+
+          <h3>Probable suite (court terme · 1-3 mois)</h3>
+          <p>Claude <strong>Sonnet 4.7</strong> et <strong>Haiku 4.7</strong> attendus pour aligner la famille sur la même génération que Opus 4.7. Les bumps de version Anthropic suivent un rythme régulier : x.5 → x.6 → x.7 toutes les ~6-8 semaines depuis Opus 4.5 en novembre 2025.</p>
+
+          <div class="signal">
+            <strong>Signal</strong>Le redesign Claude Code desktop du 14 avril mentionne "improvements coming to Sonnet and Haiku" sans annoncer la version. Cohérent avec un rollout famille complète.
+          </div>
+
+          <h3>Moyen terme (6-12 mois)</h3>
+          <p>Claude <strong>5</strong> — saut majeur de génération attendu fin 2026 / Q1 2027. L'investissement compute via SpaceX Colossus 1 (300+ MW) suggère qu'Anthropic prépare un entraînement à très grande échelle. Le pattern x.7 marque historiquement la fin d'une génération (cf. Claude 3.7 → Claude 4.0).</p>
+
+          <h3>Capacités à surveiller</h3>
+          <p><strong>Memory en GA</strong> (actuellement public beta), <strong>Dreaming en GA</strong> (research preview), généralisation du <strong>multiagent orchestration</strong>. Anthropic capitalise sur l'agentique long-running plus que sur les benchmarks bruts.</p>
+
+          <div class="signal">
+            <strong>Rumeur</strong>Plusieurs sources internes mentionnent un mode <em>"deep thinking"</em> pour Opus avec budget de raisonnement étendu (10×+ vs xhigh actuel), positionné face à Gemini 3 Deep Think et o-series d'OpenAI. Non confirmé.
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══ OPENAI ═══ -->
+      <div class="roadmap-actor reveal">
+        <div class="roadmap-head">
+          <img src="https://cdn.simpleicons.org/openai/1b1818/f3f1ee" alt="OpenAI" />
+          <h2>OpenAI</h2>
+          <p class="current">Actuel · <strong>GPT-5.5 Instant</strong></p>
+        </div>
+        <div class="roadmap-body">
+
+          <h3>Probable suite (court terme · 1-3 mois)</h3>
+          <p>GPT-5.5 <strong>Thinking</strong> attendu — la version reasoning du modèle, dans la lignée de la stratégie de Sam Altman annoncée fin 2025 sur les "deux tiers de modèles" (Instant rapide + Thinking pour les tâches complexes). Probablement aligné sur o5 côté API.</p>
+
+          <div class="signal">
+            <strong>Signal</strong>L'annonce GPT-5.5 Instant du 5 mai mentionne explicitement "Thinking variant coming soon". Pattern habituel chez OpenAI : Instant d'abord, Thinking 2-4 semaines après.
+          </div>
+
+          <h3>Moyen terme (6-12 mois)</h3>
+          <p>GPT-<strong>6</strong> ou GPT-5.7 — la nomenclature OpenAI évolue (post-GPT-5 ils ont opté pour des half-version bumps). Probablement positionné face à Claude 5 et Gemini 4.</p>
+
+          <h3>Capacités à surveiller</h3>
+          <p><strong>Memory sources</strong> (transparence sur l'origine d'une info en mémoire) déployées le 5 mai — c'est probablement le début d'une refonte plus large de la "mémoire personnelle" ChatGPT. <strong>ChatGPT Apps + Connectors</strong> continuent leur expansion, cf. annonces DevDay précédents.</p>
+
+          <div class="signal">
+            <strong>Rumeur</strong>Codex Pro (suite agentique du Codex d'OpenAI, concurrent direct de Claude Code) en préparation. Mentionné dans des leaks de courant 2026 mais date de release inconnue.
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══ GOOGLE DEEPMIND ═══ -->
+      <div class="roadmap-actor reveal">
+        <div class="roadmap-head">
+          <img src="https://cdn.simpleicons.org/googlegemini/1b1818/f3f1ee" alt="Google DeepMind" />
+          <h2>Google DeepMind</h2>
+          <p class="current">Actuel · <strong>Gemini 3 Pro / Flash / Deep Think</strong></p>
+        </div>
+        <div class="roadmap-body">
+
+          <h3>Probable suite (court terme · 1-3 mois)</h3>
+          <p>Gemini 3 <strong>Ultra</strong> — annoncé mais pas encore en GA. Variante haute-performance positionnée face à Claude Opus et GPT-5.5 Thinking. Deep Research <strong>Max</strong> déjà sorti le 1er mai, donc l'effort actuel est sur les variantes spécialisées plutôt que sur un nouveau Gemini.</p>
+
+          <h3>Moyen terme (6-12 mois)</h3>
+          <p>Gemini <strong>4</strong> — saut de génération, probablement Q4 2026 / Q1 2027. Google a annoncé un investissement massif sur Trillium TPU v6 et des nouveaux datacenters EU, cohérent avec un cycle d'entraînement majeur.</p>
+
+          <h3>Capacités à surveiller</h3>
+          <p><strong>Project Astra</strong> (assistant agent multimodal) et <strong>Project Mariner</strong> (agent web autonome) montent en GA progressivement. <strong>Antigravity</strong> (IDE Google avec agent natif) est le concurrent direct de Claude Code à monitorer. Coté média génératif : <strong>Veo 4</strong>, <strong>Imagen 5</strong>, <strong>Lyria 3</strong> probables dans l'année.</p>
+
+          <div class="signal">
+            <strong>Rumeur</strong>Gemini Code (IDE web hosted par Google, cloud-native dès le départ) en préparation interne. Concurrent direct de Cursor + Antigravity sur le segment dev.
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══ META ═══ -->
+      <div class="roadmap-actor reveal">
+        <div class="roadmap-head">
+          <img src="https://cdn.simpleicons.org/meta/1b1818/f3f1ee" alt="Meta" />
+          <h2>Meta</h2>
+          <p class="current">Actuel · <strong>Llama 4 Scout / Maverick / Behemoth</strong></p>
+        </div>
+        <div class="roadmap-body">
+
+          <h3>Probable suite (court terme · 1-3 mois)</h3>
+          <p>Llama 4 <strong>Behemoth</strong> en preview encore. Yann LeCun a hinté lors de la LlamaCon qu'une version finalisée est attendue cet été. Probablement <strong>>2T paramètres</strong>, teacher model destiné à entraîner les futures gens via distillation.</p>
+
+          <h3>Moyen terme (6-12 mois)</h3>
+          <p>Llama <strong>5</strong> — saut générationnel attendu fin 2026 ou début 2027. Meta a annoncé des partenariats compute (Stargate-like) qui suggèrent un cycle d'entraînement majeur en cours.</p>
+
+          <div class="signal">
+            <strong>Signal</strong>LeCun a publiquement déclaré viser <em>"world models"</em> comme prochaine étape — modèles qui comprennent la physique du monde au-delà du texte. Llama 5 pourrait incorporer cette direction.
+          </div>
+
+          <h3>Capacités à surveiller</h3>
+          <p>L'angle <strong>open weights</strong> reste l'argument différenciant. La fenêtre <strong>10M tokens</strong> de Scout (sur 1 H100) ouvre des cas d'usage que les frontières fermées peinent à servir économiquement. <strong>Meta AI app</strong> et l'intégration WhatsApp/Messenger continuent de scaler côté grand public.</p>
+
+        </div>
+      </div>
+
+      <!-- ═══ MISTRAL ═══ -->
+      <div class="roadmap-actor reveal">
+        <div class="roadmap-head">
+          <img src="https://cdn.simpleicons.org/mistralai/1b1818/f3f1ee" alt="Mistral AI" />
+          <h2>Mistral AI</h2>
+          <p class="current">Actuel · <strong>Mistral Medium 3.5 + Voxtral</strong></p>
+        </div>
+        <div class="roadmap-body">
+
+          <h3>Probable suite (court terme · 1-3 mois)</h3>
+          <p>Mistral <strong>Large 3</strong> attendu — la dernière version Large date de fin 2025 et n'est pas open weights. Vu que Medium 3.5 ouvre déjà à 77.6 % SWE-bench, un Large 3 viserait probablement 82-85 % et serait positionné en commercial (non open).</p>
+
+          <div class="signal">
+            <strong>Signal</strong>Arthur Mensch a évoqué publiquement <em>"un modèle pour les usages les plus exigeants"</em> lors de la sortie de Medium 3.5. Lecture standard : Large 3 dans les 2-3 mois.
+          </div>
+
+          <h3>Moyen terme (6-12 mois)</h3>
+          <p>Mistral <strong>Medium 4</strong> ou Mistral <strong>Frontier</strong> — saut générationnel pour rattraper l'écart sur les benchmarks haut de gamme. La stratégie "souverain européen" pousse à viser les 85-90 % SWE-bench pour rester crédible face aux frontières US.</p>
+
+          <h3>Capacités à surveiller</h3>
+          <p><strong>Voxtral TTS</strong> est le premier modèle voix Mistral — surveiller la qualité voix française, qui pourrait débloquer des cas d'usage (tutos clients, doc audio, voicebot industriel). <strong>Vibe Remote Agents</strong> est leur réponse à Routines + Vibe coding agents — l'intégration avec Le Chat Entreprise est l'axe stratégique B2B.</p>
+
+          <div class="signal">
+            <strong>Rumeur</strong>Partenariat industriel français majeur en préparation. Plusieurs sources mentionnent <em>"un grand industriel aérospatial ou défense"</em>, sans nom. Annonce probable Q3 2026 selon ces sources.
+          </div>
+
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <strong>Note méthodologique</strong>
+        Cette page n'est pas mise à jour automatiquement par la routine hebdo — c'est une analyse curée qui s'appuie sur les briefs publiés et la veille active. Les <em>rumeurs</em> sont identifiées comme telles et sourcées quand possible, mais ne constituent pas des faits confirmés. Les <em>probabilités</em> sont des paris assumés au prisme de la veille IA réalisée. Pour les prédictions personnelles cadrées et trackées, voir <a href="../futur/">/futur/</a>.
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Lynxter · Charte 3.1</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="./">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
