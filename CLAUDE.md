@@ -9,6 +9,36 @@ Brief hebdomadaire automatique des nouveautés IA, scoré sous l'angle Lynxter (
 
 ---
 
+## Ton éditorial & profondeur
+
+### Public cible
+
+Léo Marty (Lynxter) et la communauté de passionnés IA qui suit le brief : **développeurs, ingénieurs, support technique avancé, dirigeants industriels curieux**. Pas le grand public — pas besoin de vulgariser les bases. Mais pas non plus un papier de recherche — l'objectif reste l'actionable, pas l'érudition.
+
+### Vocabulaire
+
+**À utiliser sans définir** (le lecteur connaît) : SWE-bench, AIME, MMLU, GPQA, MoE (Mixture of Experts), MCP (Model Context Protocol), RLHF, RAG, fenêtre de contexte, tokens, throughput, latence, fine-tuning, distillation, agentic loop, open weights, prompt caching, attention multi-head, embeddings, vector store, function calling, tool use, chain of thought, scaling laws.
+
+**À expliquer brièvement (5-15 mots)** quand le terme est niche ou très récent : un nouveau benchmark obscur, une technique de recherche publiée le mois même, un acronyme propriétaire d'un acteur (ex. "Dreaming d'Anthropic — agents qui poursuivent leur tâche entre les sessions actives").
+
+**À éviter** : tournures didactiques façon Wikipedia ("L'intelligence artificielle, ou IA, est…"), parenthèses explicatives pour tout sigle commun, phrases d'amorce du type "Pour comprendre cette annonce, il faut d'abord savoir que…".
+
+### Style d'écriture
+
+- **Phrases denses, factuelles, comparatives.** Préférer "Opus 4.7 monte à 87.6 % sur SWE-bench Verified, +6.8 pts vs 4.6, devant Gemini 3 Pro (~82 %)" à "Le nouveau modèle d'Anthropic affiche des performances en hausse sur le benchmark de code".
+- **Chiffres concrets systématiques.** Scores benchmarks, pricing par M tokens, dates précises, tailles de modèle (paramètres actifs + total pour les MoE), contexte (en tokens), latence si disponible.
+- **Comparaisons inter-acteurs** dès que possible. Tout item gagne à être positionné face à la concurrence frontière du moment.
+- **Pas de superlatifs marketing.** Pas de "révolutionnaire", "incroyable", "game-changer". Préférer le constat sec : "saute la barre des 80 % sur SWE-bench Pro pour la première fois en open weights".
+- **Implications Lynxter actionnables.** Pas du blabla — des choses à faire ou à savoir précisément (audit prompts, benchmark client, préparation argumentaire RFP, etc.).
+
+### Profondeur attendue par item
+
+- **🎯 lynxter** : 3-6 phrases de contexte dans le brief + page détail de **3 paragraphes minimum** (contexte étendu + Pourquoi Lynxter + chiffres). Doit citer 2+ chiffres concrets et 1 comparaison inter-acteurs.
+- **🛠 useful** : 3-5 phrases de contexte dans le brief + page détail de **2-3 paragraphes**. Au moins 1 chiffre concret.
+- **· info** : 1-2 phrases compactes. Pas de page détail. Reste factuel.
+
+---
+
 ## Workflow complet
 
 ### 1. Déterminer la fenêtre
@@ -20,7 +50,16 @@ Lire `briefs/data.json` via `mcp__github__get_file_contents` (owner: leomarty1, 
 
 ### 2. Recherche approfondie — tous les acteurs
 
-Faire **au minimum 30 WebSearch** réparties sur tous les acteurs. Ne pas s'arrêter au premier résultat — croiser les sources, vérifier les dates, éliminer les doublons.
+**Règle d'or :** chaque item du brief doit s'appuyer sur **au moins 1 source primaire fetched** (annonce officielle, release notes, blog éditeur) + idéalement 1 source secondaire qui confirme/contextualise. Pas de seconde main seule, pas de rumeur Twitter sans confirmation.
+
+Faire **au minimum 30 WebSearch** réparties sur tous les acteurs. Ne pas s'arrêter au premier résultat — croiser les sources, vérifier les dates, éliminer les doublons et repackagings.
+
+**Méthode de croisement :**
+1. WebSearch large pour identifier les annonces de la semaine
+2. WebFetch sur les sources primaires retournées (blogs officiels, release notes)
+3. Si l'info est dans une source secondaire (TechCrunch, The Verge, Ars Technica, etc.), backsearcher la source primaire correspondante
+4. Pour les benchmarks cités : vérifier les chiffres avec 2 sources indépendantes si possible
+5. Pour les rumeurs (Behemoth size, Claude 5 release date, etc.) : marquer explicitement "rumeur, source X" plutôt que d'en faire un item ferme
 
 #### Acteurs principaux (5 — couvrir chaque semaine)
 
@@ -168,9 +207,9 @@ Ajouter en tête de `<ul class="archive-list">` :
 - Counts acteurs dans `actors-grid` : incrémenter selon `by_actor` du nouveau brief
 - `archive-list` : ajouter le nouveau brief en tête (garder les 2 plus récents visibles)
 
-### 6. Push via MCP GitHub
+### 6. Push — stratégie MCP GitHub avec fallback
 
-Pousser **tous les fichiers nouveaux et modifiés en un seul appel** `mcp__github__push_files` :
+**Voie principale (préférée) :** push via `mcp__github__push_files` en un seul appel atomique :
 
 ```
 mcp__github__push_files(
@@ -189,9 +228,12 @@ mcp__github__push_files(
 )
 ```
 
-**Si mcp__github__push_files retourne 403** : le connecteur GitHub n'a pas les droits d'écriture. Avertir l'utilisateur et documenter les fichiers générés sans pusher. Ne pas utiliser de PAT ou de clés API.
+**Fallback (si MCP GitHub indisponible ou retourne 403) :** push via git CLI avec PAT injecté dans l'URL du remote. Le prompt routine fournit le PAT et la commande exacte. Utiliser ce fallback uniquement si le MCP GitHub n'est pas accessible — pas en complément.
 
-⚠️ Pas de `git add`, pas de `git commit`, pas de `git push`. Uniquement `mcp__github__push_files`.
+**Sous aucun prétexte :**
+- Ne pas écrire le PAT dans un fichier du repo
+- Ne pas committer/pusher en plusieurs appels successifs (atomicité requise)
+- Ne pas pousser de fichiers hors du périmètre listé en étape 5
 
 ---
 
