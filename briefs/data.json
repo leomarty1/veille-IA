@@ -1,6 +1,20 @@
 {
   "briefs": [
     {
+      "date": "2026-05-18",
+      "filename": "2026-05-18.html",
+      "items_count": 6,
+      "by_tag": { "lynxter": 1, "useful": 3, "info": 2 },
+      "by_actor": { "Anthropic": 3, "OpenAI": 2, "Google": 1, "Meta": 0, "Mistral": 0 },
+      "mode": "hebdomadaire",
+      "title": "Claude Code multi-agent, OpenAI monte en voix",
+      "highlights": [
+        "Claude Code 2.1 — Agent View + /goal, dashboard multi-sessions CLI",
+        "Realtime API OpenAI en GA — MCP distant + appels SIP",
+        "Anthropic verticaux Legal + Small Business — dizaines de connecteurs MCP"
+      ]
+    },
+    {
       "date": "2026-05-11",
       "filename": "2026-05-11.html",
       "items_count": 11,
