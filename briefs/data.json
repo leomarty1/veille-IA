@@ -1,6 +1,20 @@
 {
   "briefs": [
     {
+      "date": "2026-05-25",
+      "filename": "2026-05-25.html",
+      "items_count": 13,
+      "by_tag": { "lynxter": 1, "useful": 7, "info": 5 },
+      "by_actor": { "Anthropic": 3, "OpenAI": 3, "Google": 3, "Meta": 1, "Mistral": 0, "Perplexity": 1, "xAI": 1, "DeepSeek": 1 },
+      "mode": "hebdomadaire",
+      "title": "Google joue Antigravity, Anthropic verrouille la conformité",
+      "highlights": [
+        "Google I/O 2026 — Gemini 3.5 Flash GA + Antigravity 2.0 (desktop + CLI + SDK + Managed Agents)",
+        "Anthropic Compliance API + 28 partenaires sécurité (Palo Alto, Proofpoint, SailPoint, Tenable)",
+        "Meta licencie 8 000 (≈10 %), réoriente 7 000 vers Applied AI / Agent Transformation"
+      ]
+    },
+    {
       "date": "2026-05-18",
       "filename": "2026-05-18.html",
       "items_count": 9,
