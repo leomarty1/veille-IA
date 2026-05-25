@@ -20,6 +20,7 @@
       <a href="./" class="active">Modèles</a>
       <a href="../methodo/">Méthodo</a>
       <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
     </nav>
     <div class="nav-actions">
       <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
@@ -122,6 +123,94 @@
   <!-- ════════════════════════════════════════════════════ -->
   <!-- CLASSEMENT-END                                       -->
   <!-- ════════════════════════════════════════════════════ -->
+
+  <!-- ═══ GRAPHE TEASER ═══ -->
+  <section class="section-sm">
+    <div class="container">
+
+      <p class="section-label" style="display:flex;align-items:center;gap:8px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Graphe interactif
+      </p>
+      <h2 class="section-title" style="font-size:clamp(22px,3vw,32px);">2 ans de course aux benchmarks</h2>
+      <p class="section-intro" style="margin-bottom:24px;">SWE-bench Verified de mai 2024 à aujourd'hui — 27 modèles, 6 acteurs, +55 points de progression. Zoomable, filtrable par acteur, avec annotations des événements marquants.</p>
+
+      <!-- Teaser visuel -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin-bottom:20px;overflow:hidden;position:relative;">
+
+        <!-- Sparkline SVG décorative -->
+        <svg viewBox="0 0 700 80" width="100%" height="80" style="display:block;margin-bottom:20px;opacity:0.7;" aria-hidden="true" preserveAspectRatio="none">
+          <!-- Anthropic -->
+          <polyline fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            points="0,72 40,56 100,60 160,32 200,52 310,12 420,10 490,10 540,11 620,11 700,9"/>
+          <!-- OpenAI -->
+          <polyline fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            points="0,72 40,62 100,62 160,68 200,48 310,44 370,44 420,20 490,8 540,8 620,8"/>
+          <!-- Google -->
+          <polyline fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            points="100,78 200,72 310,50 420,30 490,20 540,18 620,12"/>
+          <!-- Meta -->
+          <polyline fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 3"
+            points="430,40 490,35 540,38 620,38"/>
+          <!-- Mistral -->
+          <polyline fill="none" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 3"
+            points="310,68 420,60 490,56 540,22 620,22"/>
+          <!-- DeepSeek -->
+          <polyline fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 3"
+            points="200,58 310,52 420,56 490,26 540,26"/>
+          <!-- Axes -->
+          <line x1="0" y1="78" x2="700" y2="78" stroke="var(--border)" stroke-width="1"/>
+          <!-- Labels début/fin sur axe Y -->
+          <text x="4" y="76" font-size="9" fill="var(--text-muted)" font-family="monospace">33%</text>
+          <text x="4" y="12" font-size="9" fill="var(--text-muted)" font-family="monospace">88%</text>
+          <!-- Date labels -->
+          <text x="0" y="78" dy="10" font-size="9" fill="var(--text-muted)" font-family="monospace">mai 2024</text>
+          <text x="600" y="78" dy="10" font-size="9" fill="var(--text-muted)" font-family="monospace">mai 2026</text>
+        </svg>
+
+        <!-- Légende acteurs + stats en ligne -->
+        <div style="display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin-bottom:20px;">
+          <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);letter-spacing:0.04em;text-transform:uppercase;font-weight:600;margin-right:4px;">Acteurs :</span>
+          <span style="font-family:var(--font-mono);font-size:11px;padding:2px 8px;border-radius:3px;background:color-mix(in srgb,#f97316 15%,transparent);color:#f97316;border:1px solid color-mix(in srgb,#f97316 40%,transparent);">Anthropic</span>
+          <span style="font-family:var(--font-mono);font-size:11px;padding:2px 8px;border-radius:3px;background:color-mix(in srgb,#22c55e 15%,transparent);color:#22c55e;border:1px solid color-mix(in srgb,#22c55e 40%,transparent);">OpenAI</span>
+          <span style="font-family:var(--font-mono);font-size:11px;padding:2px 8px;border-radius:3px;background:color-mix(in srgb,#60a5fa 15%,transparent);color:#60a5fa;border:1px solid color-mix(in srgb,#60a5fa 40%,transparent);">Google</span>
+          <span style="font-family:var(--font-mono);font-size:11px;padding:2px 8px;border-radius:3px;background:color-mix(in srgb,#a78bfa 15%,transparent);color:#a78bfa;border:1px solid color-mix(in srgb,#a78bfa 40%,transparent);">Meta</span>
+          <span style="font-family:var(--font-mono);font-size:11px;padding:2px 8px;border-radius:3px;background:color-mix(in srgb,#f43f5e 15%,transparent);color:#f43f5e;border:1px solid color-mix(in srgb,#f43f5e 40%,transparent);">Mistral</span>
+          <span style="font-family:var(--font-mono);font-size:11px;padding:2px 8px;border-radius:3px;background:color-mix(in srgb,#06b6d4 15%,transparent);color:#06b6d4;border:1px solid color-mix(in srgb,#06b6d4 40%,transparent);">DeepSeek</span>
+        </div>
+
+        <!-- Stats rapides -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-bottom:24px;">
+          <div style="text-align:center;">
+            <div style="font-family:var(--font-mono);font-size:28px;font-weight:700;color:var(--text);line-height:1;">27</div>
+            <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;">modèles trackés</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:var(--font-mono);font-size:28px;font-weight:700;color:var(--text);line-height:1;">+55</div>
+            <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;">pts en 2 ans</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:var(--font-mono);font-size:28px;font-weight:700;color:var(--text);line-height:1;">7</div>
+            <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;">événements annotés</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:var(--font-mono);font-size:28px;font-weight:700;color:var(--lx-primary);line-height:1;">D3</div>
+            <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;">zoom · filtres · tooltips</div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <a href="../graphe/" style="display:inline-flex;align-items:center;gap:10px;background:var(--lx-primary);color:#1b1818;font-family:var(--font-mono);font-size:13px;font-weight:700;letter-spacing:0.04em;padding:12px 24px;border-radius:6px;text-decoration:none;transition:opacity 0.15s ease;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Explorer le graphe interactif
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <span style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);margin-left:16px;">Filtre par acteur · Zoom/pan · Détail par clic · Mode sombre</span>
+
+      </div>
+
+    </div>
+  </section>
 
   <!-- ═══ TABLEAU COMPARATIF ═══ -->
   <section id="comparaison" class="section-sm">

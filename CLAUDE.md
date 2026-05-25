@@ -140,7 +140,7 @@ Avant de générer, lire via `mcp__github__get_file_contents` (owner: leomarty1,
 
 Se baser sur `briefs/2026-05-18.html` comme template gold standard (lire via MCP si besoin). Structure :
 - `read-progress` div
-- `top-bar` avec nav 6 items (Accueil, Briefs, Acteurs, Modèles, Méthodo, Futur)
+- `top-bar` avec nav 7 items (Accueil, Briefs, Acteurs, Modèles, Méthodo, Futur, Graphe) — le lien Graphe pointe vers `../graphe/` depuis les sous-dossiers (même niveau que les autres)
 - Header avec `stat-strip` (total items, 🎯 count, 🛠 count, acteurs scannés)
 - Section `tldr` (3 bullets)
 - Section `lynxter-hero` (🎯 implications Lynxter, 3 paragraphes)
@@ -241,6 +241,37 @@ Lire `modeles/index.html` via `mcp__github__get_file_contents`. Remplacer le blo
 
 Inclure `modeles/index.html` dans le push_files final.
 
+#### G. `modeles/models-data.json` — nouveau modèle détecté
+
+Lire `modeles/models-data.json` via `mcp__github__get_file_contents`. Si un nouveau modèle avec score SWE-bench Verified confirmé ou estimable est sorti dans la fenêtre temporelle, ajouter un objet au tableau `models[]` :
+
+```json
+{
+  "id": "slug-unique",
+  "name": "Nom complet du modèle",
+  "actor": "Anthropic|OpenAI|Google|Meta|Mistral|DeepSeek",
+  "date": "YYYY-MM-DD",
+  "swe_bench_verified": 0.0,
+  "approximate": true,
+  "context_k": 0,
+  "pricing_in": null,
+  "pricing_out": null,
+  "open_weights": false,
+  "notes": "…"
+}
+```
+
+- `approximate: true` si le score est estimé/non-officiel ; `false` si publié officiellement
+- `pricing_in` / `pricing_out` : prix en $ par million de tokens input/output (null si inconnu)
+- `context_k` : taille de fenêtre de contexte en milliers de tokens (ex. 1000 pour 1M tokens)
+- `open_weights: true` uniquement pour les modèles dont les poids sont publiés
+
+Mettre à jour `meta.last_updated` à la date du brief.
+
+**Si aucun nouveau modèle avec score SWE-bench dans la fenêtre :** ne pas modifier ce fichier.
+
+Inclure `modeles/models-data.json` dans le push_files final.
+
 ### 6. Push — stratégie MCP GitHub avec fallback
 
 **Voie principale (préférée) :** push via `mcp__github__push_files` en un seul appel atomique :
@@ -258,6 +289,7 @@ mcp__github__push_files(
     { path: "briefs/data.json",                  content: "..." },
     { path: "briefs/index.html",                 content: "..." },
     { path: "modeles/index.html",                content: "..." },
+    { path: "modeles/models-data.json",          content: "..." },
     { path: "index.html",                        content: "..." }
   ]
 )
@@ -296,9 +328,13 @@ git remote set-url origin https://github.com/leomarty1/veille-IA.git
 ├── items/
 │   └── YYYY-MM-DD-SLUG.html ← pages détail items 🎯 et 🛠
 ├── acteurs/index.html
-├── modeles/index.html
+├── modeles/
+│   ├── index.html
+│   └── models-data.json    ← données SWE-bench pour le graphe D3
 ├── methodo/index.html
-└── futur/index.html
+├── futur/index.html
+└── graphe/
+    └── index.html          ← graphe D3 interactif (charge models-data.json)
 ```
 
 ---

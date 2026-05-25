@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Graphe — La course SWE-bench · Veille IA Lynxter</title>
+<meta name="description" content="Évolution interactive des modèles IA sur SWE-bench Verified depuis 2024. Anthropic, OpenAI, Google, Meta, Mistral — zoom, filtres, détail par modèle.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+<style>
+.chart-outer{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:24px 12px 0;margin-bottom:0;overflow:hidden;}
+.chart-outer-brush{background:var(--surface);border:1px solid var(--border);border-top:none;border-radius:0 0 8px 8px;padding:0 12px 14px;margin-bottom:8px;}
+.toggle-strip{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:20px;padding:0 4px;}
+.toggle-lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-right:4px;}
+.actor-btn{display:flex;align-items:center;gap:6px;padding:5px 12px;border:1px solid var(--border);border-radius:4px;background:var(--bg);color:var(--text);font-family:var(--font-mono);font-size:11px;font-weight:600;cursor:pointer;transition:opacity .15s,border-color .15s,background .15s;letter-spacing:.03em;--c:#888;}
+.actor-btn .adot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0;}
+.actor-btn.active{border-color:var(--c);background:color-mix(in srgb,var(--c) 12%,var(--bg));}
+.actor-btn.off{opacity:.35;}
+.actor-btn:hover{border-color:var(--text-muted);}
+.chart-reset-btn{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--border);border-radius:4px;background:transparent;color:var(--text-muted);cursor:pointer;transition:color .15s,border-color .15s;}
+.chart-reset-btn:hover{color:var(--text);border-color:var(--text-muted);}
+.axis-x path,.axis-x line,.axis-y path,.axis-y line{stroke:var(--border);}
+.axis-x text,.axis-y text{fill:var(--text-muted);font-family:var(--font-mono);font-size:11px;}
+.grid-line{stroke:var(--border);stroke-dasharray:3 3;opacity:.5;}
+.axis-lbl{fill:var(--text-muted);font-family:var(--font-mono);font-size:11px;}
+.ann-line{stroke:var(--text-muted);stroke-dasharray:4 3;stroke-width:1;opacity:.4;}
+.ann-label{fill:var(--text-muted);font-family:var(--font-mono);font-size:9px;letter-spacing:.04em;}
+.brush .selection{fill:var(--lx-primary);fill-opacity:.15;stroke:var(--lx-primary);stroke-width:1;}
+.brush .handle{fill:var(--lx-primary);opacity:.6;}
+.brush .overlay{cursor:crosshair;}
+.chart-tooltip{position:fixed;pointer-events:none;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:11px 15px;z-index:1000;opacity:0;transition:opacity .1s;max-width:230px;box-shadow:0 4px 24px rgba(0,0,0,.14);}
+.tt-actor{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2px;}
+.tt-name{font-size:14px;font-weight:700;color:var(--text);font-family:var(--font-heading);margin-bottom:4px;}
+.tt-score{font-family:var(--font-mono);font-size:24px;font-weight:700;color:var(--lx-primary);line-height:1;margin-bottom:4px;}
+.tt-sub{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);line-height:1.5;}
+.tt-approx{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);font-style:italic;margin-top:3px;}
+.tt-hint{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:.03em;margin-top:6px;padding-top:6px;border-top:1px solid var(--border);}
+.detail-panel{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease,margin-bottom .35s ease;margin-bottom:0;}
+.detail-panel.open{max-height:320px;padding:24px;margin-bottom:24px;}
+.dp-inner{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;}
+.dp-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;}
+.dp-tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;font-weight:700;color:#1b1818;}
+.dp-score{font-family:var(--font-mono);font-size:30px;font-weight:700;color:var(--lx-primary);line-height:1;}
+.dp-name{font-size:20px;font-weight:700;color:var(--text);font-family:var(--font-heading);}
+.dp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:12px;}
+.dp-cell label{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2px;}
+.dp-cell span{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--text);}
+.dp-notes{margin-top:10px;font-size:13px;color:var(--text-muted);font-style:italic;line-height:1.5;}
+.dp-close{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;padding:6px 12px;border:1px solid var(--border);border-radius:4px;background:transparent;color:var(--text-muted);cursor:pointer;flex-shrink:0;}
+.dp-close:hover{border-color:var(--text-muted);color:var(--text);}
+.model-dot{cursor:pointer;}
+.model-dot.selected{stroke-width:3 !important;}
+@media(max-width:600px){.dp-grid{grid-template-columns:repeat(2,1fr)}.dp-name{font-size:16px}.dp-score{font-size:22px}.toggle-strip{gap:5px}}
+</style>
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="./" class="active">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Graphe</span>
+      </div>
+      <p class="section-label">Visualisation interactive</p>
+      <h1 class="section-title">La course SWE-bench<br><em>2024 → 2026</em></h1>
+      <p class="section-intro">Évolution du score SWE-bench Verified (résolution autonome d'issues GitHub) par acteur depuis GPT-4o (33 %, mai 2024) jusqu'à Claude Mythos Preview (93.9 %, mai 2026). Toggle les acteurs, zoom sur une période, clique sur un modèle pour ses specs complets.</p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+
+      <!-- Detail Panel (apparaît au clic) -->
+      <div class="detail-panel" id="detail-panel">
+        <div class="dp-inner">
+          <div>
+            <div class="dp-head">
+              <div class="dp-tag" id="dp-tag">Actor</div>
+              <div class="dp-score" id="dp-score">0 %</div>
+            </div>
+            <div class="dp-name" id="dp-name">Modèle</div>
+            <div class="dp-grid">
+              <div class="dp-cell"><label>Date</label><span id="dp-date">—</span></div>
+              <div class="dp-cell"><label>Contexte</label><span id="dp-ctx">—</span></div>
+              <div class="dp-cell"><label>Pricing in / out</label><span id="dp-price">—</span></div>
+              <div class="dp-cell"><label>Open weights</label><span id="dp-open">—</span></div>
+            </div>
+            <div class="dp-notes" id="dp-notes"></div>
+          </div>
+          <button class="dp-close" id="dp-close">✕ Fermer</button>
+        </div>
+      </div>
+
+      <!-- Toggle acteurs -->
+      <div class="toggle-strip" id="actor-toggles">
+        <span class="toggle-lbl">Acteurs</span>
+      </div>
+
+      <!-- Graphe principal -->
+      <div class="chart-outer">
+        <svg id="main-chart" style="width:100%;display:block;"></svg>
+      </div>
+      <div class="chart-outer-brush">
+        <svg id="brush-chart" style="width:100%;display:block;"></svg>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;flex-wrap:wrap;gap:8px;">
+        <p style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);letter-spacing:.04em;margin:0;">
+          ○ = open weights &nbsp;·&nbsp; ~ = score estimé &nbsp;·&nbsp; Glisser dans la timeline pour zoomer
+        </p>
+        <button class="chart-reset-btn" id="reset-zoom">↺ Réinitialiser zoom</button>
+      </div>
+
+      <div class="disclaimer" style="margin-top:32px;">
+        <strong>Sources &amp; méthode</strong>
+        Données issues des annonces officielles et de <a href="https://benchlm.ai/benchmarks/sweVerified" target="_blank" rel="noopener">benchlm.ai</a>. Scores ~ = estimations d'analyses indépendantes. SWE-bench Verified mesure la capacité d'un agent à résoudre des issues GitHub sans aide humaine (500 tâches, Scale AI). Les cercles ouverts indiquent un modèle open-weights. <strong>Mise à jour :</strong> la routine Claude Code ajoute un point à <code>modeles/models-data.json</code> chaque lundi lorsqu'un nouveau modèle avec score SWE-bench est détecté. <a href="../modeles/">→ Tableau comparatif</a> &nbsp;·&nbsp; <a href="../briefs/">→ Briefs hebdo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Lynxter · Charte 3.1</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="./">Graphe</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<div class="chart-tooltip" id="chart-tooltip"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="../assets/app.js" defer></script>
+<script>
+(async function () {
+  /* ━━ PALETTE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  const C = {
+    Anthropic:'#f97316', OpenAI:'#22c55e', Google:'#60a5fa',
+    Meta:'#a78bfa', Mistral:'#f43f5e', DeepSeek:'#06b6d4'
+  };
+  const MG  = { top:36, right:20, bottom:42, left:56 };
+  const BMG = { top:8,  right:20, bottom:26, left:56 };
+  const BRUSH_H = 52, CHART_H = 430;
+
+  /* ━━ LOAD ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  let raw;
+  try { raw = await d3.json('../modeles/models-data.json'); }
+  catch(e) {
+    document.querySelector('.chart-outer').innerHTML =
+      '<p style="padding:32px;color:var(--text-muted);font-family:var(--font-mono);font-size:12px;">'
+      + 'Données non chargées. Utiliser un serveur HTTP (ex: npx http-server -p 8765).</p>';
+    return;
+  }
+
+  /* ━━ PARSE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  const models = raw.models
+    .map(d => ({ ...d, dateObj: new Date(d.date), score: +d.swe_bench_verified }))
+    .sort((a,b) => a.dateObj - b.dateObj);
+
+  const annotations = raw.annotations.map(d => ({ ...d, dateObj: new Date(d.date) }));
+  const actors = Object.keys(C).filter(a => models.some(m => m.actor === a));
+  const state  = Object.fromEntries(actors.map(a => [a, true]));
+
+  /* ━━ HELPERS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  const cv  = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const fmtD = d => d.toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+  const fmtCtx = k => !k ? '—' : k >= 1000 ? (k/1000)+'M tokens' : k+'k tokens';
+  const fmtP   = m => m.open_weights && !m.pricing_in ? 'Self-host (open)'
+                   : !m.pricing_in ? '—'
+                   : '$'+m.pricing_in+' / $'+m.pricing_out;
+  const getW = () => document.getElementById('main-chart').parentElement.clientWidth - 2;
+
+  /* ━━ SCALES ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  const extent = d3.extent(models, d => d.dateObj);
+  const xFull  = d3.scaleTime().domain(extent);
+  let   xScale = xFull.copy();
+  const yScale = d3.scaleLinear().domain([0, 100]).nice();
+
+  /* ━━ BUILD TOGGLES ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  function buildToggles() {
+    const strip = document.getElementById('actor-toggles');
+    strip.querySelectorAll('.actor-btn').forEach(b => b.remove());
+    actors.forEach(actor => {
+      const b = document.createElement('button');
+      b.className = 'actor-btn active';
+      b.style.setProperty('--c', C[actor]);
+      b.dataset.actor = actor;
+      b.innerHTML = `<span class="adot" style="background:${C[actor]}"></span>${actor}`;
+      b.addEventListener('click', () => {
+        state[actor] = !state[actor];
+        b.classList.toggle('active', state[actor]);
+        b.classList.toggle('off', !state[actor]);
+        syncVisibility();
+      });
+      strip.appendChild(b);
+    });
+  }
+
+  function syncVisibility() {
+    d3.selectAll('.actor-line').style('opacity', function() {
+      const a = d3.select(this).attr('data-actor');
+      return state[a] ? 1 : 0;
+    });
+    d3.selectAll('.model-dot').style('opacity', function(d) {
+      if (!state[d.actor]) return 0;
+      return d.approximate ? 0.6 : 1;
+    }).style('pointer-events', function(d) {
+      return state[d.actor] ? 'all' : 'none';
+    });
+    d3.selectAll('.open-ring').style('opacity', function(d) {
+      return state[d.actor] ? 0.45 : 0;
+    });
+  }
+
+  /* ━━ MAIN CHART ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  function buildChart() {
+    const mainSvg = d3.select('#main-chart');
+    mainSvg.selectAll('*').remove();
+
+    const totalW = getW();
+    const iW = totalW - MG.left - MG.right;
+    const iH = CHART_H - MG.top - MG.bottom;
+
+    mainSvg.attr('viewBox', `0 0 ${totalW} ${CHART_H}`).attr('height', CHART_H);
+    xFull.range([0, iW]);
+    xScale.range([0, iW]);
+    yScale.range([iH, 0]);
+
+    /* defs: clip path */
+    mainSvg.append('defs').append('clipPath').attr('id','clip')
+      .append('rect').attr('width', iW+4).attr('height', iH+8).attr('x',-2).attr('y',-4);
+
+    const g = mainSvg.append('g').attr('transform',`translate(${MG.left},${MG.top})`);
+    const area = g.append('g').attr('clip-path','url(#clip)');
+
+    /* Y grid */
+    g.append('g').attr('class','grid-g').selectAll('.grid-line')
+      .data(yScale.ticks(8)).enter().append('line').attr('class','grid-line')
+      .attr('x1',0).attr('x2',iW)
+      .attr('y1',d=>yScale(d)).attr('y2',d=>yScale(d));
+
+    /* Axes */
+    const xAxisG = g.append('g').attr('class','axis-x').attr('transform',`translate(0,${iH})`);
+    const yAxisG = g.append('g').attr('class','axis-y');
+
+    function updateAxes() {
+      xAxisG.call(d3.axisBottom(xScale)
+        .ticks(Math.max(4,Math.floor(iW/110)))
+        .tickFormat(d3.timeFormat('%b %y'))
+        .tickSize(0));
+      xAxisG.select('path').attr('stroke',cv('--border'));
+      xAxisG.selectAll('text').attr('dy','1.3em').style('fill',cv('--text-muted'));
+
+      yAxisG.call(d3.axisLeft(yScale).ticks(8).tickFormat(d=>`${d} %`).tickSize(0));
+      yAxisG.select('path').attr('stroke','none');
+      yAxisG.selectAll('text').attr('dx','-0.5em').style('fill',cv('--text-muted'));
+    }
+
+    /* Y label */
+    g.append('text').attr('class','axis-lbl')
+      .attr('transform','rotate(-90)').attr('y',-46).attr('x',-iH/2)
+      .attr('text-anchor','middle').text('SWE-bench Verified (%)');
+
+    /* Line generator */
+    const lineGen = d3.line()
+      .x(d=>xScale(d.dateObj)).y(d=>yScale(d.score))
+      .curve(d3.curveMonotoneX);
+
+    /* Draw lines */
+    function drawLines() {
+      area.selectAll('.actor-line').remove();
+      actors.forEach((actor, idx) => {
+        const pts = models.filter(m => m.actor === actor);
+        const path = area.append('path')
+          .datum(pts).attr('class','actor-line')
+          .attr('data-actor', actor)
+          .attr('fill','none').attr('stroke',C[actor])
+          .attr('stroke-width',2.5).attr('stroke-linejoin','round')
+          .attr('stroke-linecap','round')
+          .attr('d', lineGen)
+          .style('opacity', state[actor] ? 1 : 0);
+
+        /* draw-in animation */
+        const len = path.node().getTotalLength();
+        path.attr('stroke-dasharray',`${len} ${len}`)
+          .attr('stroke-dashoffset', len)
+          .transition().duration(800).delay(idx*100)
+          .ease(d3.easeCubicInOut)
+          .attr('stroke-dashoffset', 0);
+      });
+    }
+
+    /* Draw dots */
+    function drawDots() {
+      area.selectAll('.open-ring,.model-dot').remove();
+      const vis = models.filter(d => state[d.actor]);
+
+      /* open-weights ring */
+      area.selectAll('.open-ring').data(vis.filter(d=>d.open_weights))
+        .enter().append('circle').attr('class','open-ring')
+        .attr('cx',d=>xScale(d.dateObj)).attr('cy',d=>yScale(d.score)).attr('r',9)
+        .attr('fill','none').attr('stroke',d=>C[d.actor]).attr('stroke-width',1.5)
+        .attr('opacity',0.45).attr('pointer-events','none');
+
+      /* dots */
+      area.selectAll('.model-dot').data(models)
+        .enter().append('circle').attr('class','model-dot')
+        .attr('cx',d=>xScale(d.dateObj)).attr('cy',d=>yScale(d.score))
+        .attr('r',d=>d.approximate?4:5.5)
+        .attr('fill',d=>C[d.actor]).attr('stroke',cv('--surface')).attr('stroke-width',2)
+        .style('opacity',d=>!state[d.actor]?0:d.approximate?0.6:1)
+        .style('pointer-events',d=>state[d.actor]?'all':'none')
+        .on('mouseover', onOver).on('mousemove', onMove).on('mouseout', onOut)
+        .on('click', onClick);
+    }
+
+    /* Annotations */
+    function drawAnnotations() {
+      area.selectAll('.ann-line,.ann-label').remove();
+      const [d0, d1] = xScale.domain();
+      annotations.forEach((ann, idx) => {
+        const x = xScale(ann.dateObj);
+        if (x < -40 || x > iW+40) return;
+        area.append('line').attr('class','ann-line')
+          .attr('x1',x).attr('x2',x).attr('y1',0).attr('y2',iH);
+        area.append('text').attr('class','ann-label')
+          .attr('x',x+3).attr('y', idx%2===0 ? 13 : 24).text(ann.label);
+      });
+    }
+
+    /* Tooltip */
+    const tip = d3.select('#chart-tooltip');
+    function onOver(ev, d) {
+      d3.select(this).raise().transition().duration(60).attr('r',8).attr('stroke-width',3);
+      tip.html(`<div class="tt-actor">${d.actor}</div>
+        <div class="tt-name">${d.name}</div>
+        <div class="tt-score">${d.approximate?'~':''}${d.score}<span style="font-size:13px;font-weight:400"> %</span></div>
+        <div class="tt-sub">${fmtD(d.dateObj)}<br>${fmtP(d)} · ${fmtCtx(d.context_k)}</div>
+        ${d.approximate?'<div class="tt-approx">⚠ Score estimé</div>':''}
+        <div class="tt-hint">Cliquer pour les specs →</div>`)
+      .style('opacity',1)
+      .style('left', Math.min(ev.clientX+16, window.innerWidth-240)+'px')
+      .style('top', (ev.clientY-44)+'px');
+    }
+    function onMove(ev) {
+      tip.style('left', Math.min(ev.clientX+16, window.innerWidth-240)+'px')
+         .style('top', (ev.clientY-44)+'px');
+    }
+    function onOut(ev, d) {
+      const sel = d3.select(this);
+      sel.transition().duration(60)
+        .attr('r', sel.classed('selected') ? 7 : (d.approximate?4:5.5))
+        .attr('stroke-width', sel.classed('selected') ? 3 : 2);
+      tip.style('opacity',0);
+    }
+    function onClick(ev, d) {
+      area.selectAll('.model-dot').classed('selected',false)
+        .transition().duration(60)
+        .attr('r',m=>m.approximate?4:5.5).attr('stroke-width',2);
+      d3.select(this).classed('selected',true)
+        .transition().duration(60).attr('r',7).attr('stroke-width',3);
+      openPanel(d);
+    }
+
+    /* Brush */
+    function buildBrush() {
+      const bSvg = d3.select('#brush-chart');
+      bSvg.selectAll('*').remove();
+      const bTotal = getW();
+      const biW = bTotal - BMG.left - BMG.right;
+
+      bSvg.attr('viewBox',`0 0 ${bTotal} ${BRUSH_H+BMG.top+BMG.bottom}`)
+          .attr('height', BRUSH_H+BMG.top+BMG.bottom);
+
+      const bg = bSvg.append('g').attr('transform',`translate(${BMG.left},${BMG.top})`);
+      const xB = d3.scaleTime().domain(extent).range([0, biW]);
+      const yB = d3.scaleLinear().domain([0,100]).range([BRUSH_H,0]);
+      const ml  = d3.line().x(d=>xB(d.dateObj)).y(d=>yB(d.score)).curve(d3.curveMonotoneX);
+
+      actors.forEach(a => {
+        bg.append('path').datum(models.filter(m=>m.actor===a))
+          .attr('fill','none').attr('stroke',C[a]).attr('stroke-width',1.5)
+          .attr('opacity',0.3).attr('d',ml);
+      });
+
+      bg.append('g').attr('transform',`translate(0,${BRUSH_H})`)
+        .call(d3.axisBottom(xB).ticks(6).tickFormat(d3.timeFormat('%b %y')).tickSize(0))
+        .call(gg => {
+          gg.select('path').attr('stroke',cv('--border'));
+          gg.selectAll('text').attr('dy','1.3em')
+            .style('fill',cv('--text-muted')).style('font-family','var(--font-mono)').style('font-size','10px');
+        });
+
+      const brush = d3.brushX().extent([[0,0],[biW,BRUSH_H]])
+        .on('brush end', ({selection}) => {
+          if (!selection) { xScale = xFull.copy().range([0,iW]); }
+          else {
+            const [a,b] = selection.map(xB.invert);
+            xScale = d3.scaleTime().domain([a,b]).range([0,iW]);
+          }
+          updateAxes(); drawLines(); drawDots(); drawAnnotations();
+        });
+
+      bg.append('g').attr('class','brush').call(brush);
+
+      document.getElementById('reset-zoom').onclick = () => {
+        bg.select('.brush').call(brush.move, null);
+        xScale = xFull.copy().range([0,iW]);
+        updateAxes(); drawLines(); drawDots(); drawAnnotations();
+      };
+    }
+
+    /* Init */
+    updateAxes(); drawLines(); drawDots(); drawAnnotations(); buildBrush();
+  }
+
+  /* ━━ DETAIL PANEL ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  function openPanel(d) {
+    document.getElementById('dp-tag').textContent  = d.actor;
+    document.getElementById('dp-tag').style.background = C[d.actor]||'#888';
+    document.getElementById('dp-score').textContent = (d.approximate?'~':'')+d.score+' %';
+    document.getElementById('dp-name').textContent  = d.name;
+    document.getElementById('dp-date').textContent  = fmtD(d.dateObj);
+    document.getElementById('dp-ctx').textContent   = fmtCtx(d.context_k);
+    document.getElementById('dp-price').textContent = fmtP(d);
+    document.getElementById('dp-open').textContent  = d.open_weights ? '✅ Oui' : 'Non';
+    document.getElementById('dp-notes').textContent = d.notes||'';
+    const panel = document.getElementById('detail-panel');
+    panel.classList.add('open');
+    panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  document.getElementById('dp-close').onclick = () => {
+    document.getElementById('detail-panel').classList.remove('open');
+    d3.selectAll('.model-dot').classed('selected',false)
+      .transition().duration(60).attr('r',d=>d.approximate?4:5.5).attr('stroke-width',2);
+  };
+
+  /* ━━ THEME OBSERVER ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  new MutationObserver(() => setTimeout(buildChart, 60))
+    .observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+
+  /* ━━ RESPONSIVE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  let rt;
+  window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildChart, 220); });
+
+  /* ━━ INIT ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  buildToggles();
+  buildChart();
+
+})();
+</script>
+
+</body>
+</html>
