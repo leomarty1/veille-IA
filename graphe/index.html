@@ -8,49 +8,75 @@
 <link rel="stylesheet" href="../assets/style.css">
 <script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
 <style>
-.chart-outer{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:24px 12px 0;margin-bottom:0;overflow:hidden;}
-.chart-outer-brush{background:var(--surface);border:1px solid var(--border);border-top:none;border-radius:0 0 8px 8px;padding:0 12px 14px;margin-bottom:8px;}
-.toggle-strip{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:20px;padding:0 4px;}
-.toggle-lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-right:4px;}
+/* ── Chart shell ── */
+.chart-outer{background:var(--surface);border:1px solid var(--border);border-radius:8px 8px 0 0;padding:24px 12px 0;overflow:hidden;}
+.chart-outer-brush{background:var(--surface);border:1px solid var(--border);border-top:none;border-radius:0 0 8px 8px;padding:0 12px 14px;margin-bottom:0;}
+
+/* ── Actor toggles ── */
+.toggle-strip{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;padding:0 4px;}
+.toggle-lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-right:4px;flex-shrink:0;}
 .actor-btn{display:flex;align-items:center;gap:6px;padding:5px 12px;border:1px solid var(--border);border-radius:4px;background:var(--bg);color:var(--text);font-family:var(--font-mono);font-size:11px;font-weight:600;cursor:pointer;transition:opacity .15s,border-color .15s,background .15s;letter-spacing:.03em;--c:#888;}
 .actor-btn .adot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0;}
 .actor-btn.active{border-color:var(--c);background:color-mix(in srgb,var(--c) 12%,var(--bg));}
 .actor-btn.off{opacity:.35;}
 .actor-btn:hover{border-color:var(--text-muted);}
-.chart-reset-btn{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--border);border-radius:4px;background:transparent;color:var(--text-muted);cursor:pointer;transition:color .15s,border-color .15s;}
+
+/* ── Time range filter strip ── */
+.time-strip{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px;padding:0 4px;}
+.time-btn{font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;padding:4px 13px;border:1px solid var(--border);border-radius:4px;background:transparent;color:var(--text-muted);cursor:pointer;transition:all .15s;}
+.time-btn:hover{color:var(--text);border-color:var(--text-muted);}
+.time-btn.active{background:var(--lx-primary);color:#1b1818;border-color:var(--lx-primary);font-weight:700;}
+.chart-reset-btn{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--border);border-radius:4px;background:transparent;color:var(--text-muted);cursor:pointer;transition:color .15s,border-color .15s;margin-left:auto;}
 .chart-reset-btn:hover{color:var(--text);border-color:var(--text-muted);}
+
+/* ── Axes & grid ── */
 .axis-x path,.axis-x line,.axis-y path,.axis-y line{stroke:var(--border);}
 .axis-x text,.axis-y text{fill:var(--text-muted);font-family:var(--font-mono);font-size:11px;}
-.grid-line{stroke:var(--border);stroke-dasharray:3 3;opacity:.5;}
+.grid-line{stroke:var(--border);stroke-dasharray:3 3;opacity:.45;}
 .axis-lbl{fill:var(--text-muted);font-family:var(--font-mono);font-size:11px;}
-.ann-line{stroke:var(--text-muted);stroke-dasharray:4 3;stroke-width:1;opacity:.4;}
-.ann-label{fill:var(--text-muted);font-family:var(--font-mono);font-size:9px;letter-spacing:.04em;}
-.brush .selection{fill:var(--lx-primary);fill-opacity:.15;stroke:var(--lx-primary);stroke-width:1;}
-.brush .handle{fill:var(--lx-primary);opacity:.6;}
+
+/* ── Annotations ── */
+.ann-line{stroke:var(--text-muted);stroke-dasharray:4 3;stroke-width:1;opacity:.3;}
+.ann-line.highlighted{opacity:.7;}
+
+/* ── Brush ── */
+.brush .selection{fill:var(--lx-primary);fill-opacity:.12;stroke:var(--lx-primary);stroke-width:1;}
+.brush .handle{fill:var(--lx-primary);opacity:.55;}
 .brush .overlay{cursor:crosshair;}
-.chart-tooltip{position:fixed;pointer-events:none;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:11px 15px;z-index:1000;opacity:0;transition:opacity .1s;max-width:230px;box-shadow:0 4px 24px rgba(0,0,0,.14);}
-.tt-actor{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2px;}
+
+/* ── Tooltip ── */
+.chart-tooltip{position:fixed;pointer-events:none;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:11px 15px;z-index:1000;opacity:0;transition:opacity .1s;max-width:240px;box-shadow:0 4px 28px rgba(0,0,0,.16);}
+.tt-actor{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px;font-weight:600;}
 .tt-name{font-size:14px;font-weight:700;color:var(--text);font-family:var(--font-heading);margin-bottom:4px;}
-.tt-score{font-family:var(--font-mono);font-size:24px;font-weight:700;color:var(--lx-primary);line-height:1;margin-bottom:4px;}
+.tt-score{font-family:var(--font-mono);font-size:24px;font-weight:700;line-height:1;margin-bottom:4px;}
 .tt-sub{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);line-height:1.5;}
 .tt-approx{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);font-style:italic;margin-top:3px;}
 .tt-hint{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:.03em;margin-top:6px;padding-top:6px;border-top:1px solid var(--border);}
-.detail-panel{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease,margin-bottom .35s ease;margin-bottom:0;}
-.detail-panel.open{max-height:320px;padding:24px;margin-bottom:24px;}
+
+/* ── Detail panel (below chart) ── */
+.detail-panel{background:var(--surface);border:1px solid var(--border);border-top:none;border-radius:0 0 8px 8px;padding:0;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;margin-bottom:16px;}
+.detail-panel.open{max-height:340px;padding:22px 24px;}
 .dp-inner{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;}
-.dp-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;}
+.dp-head{display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap;}
 .dp-tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:3px;font-weight:700;color:#1b1818;}
-.dp-score{font-family:var(--font-mono);font-size:30px;font-weight:700;color:var(--lx-primary);line-height:1;}
+.dp-score{font-family:var(--font-mono);font-size:30px;font-weight:700;line-height:1;}
 .dp-name{font-size:20px;font-weight:700;color:var(--text);font-family:var(--font-heading);}
 .dp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:12px;}
 .dp-cell label{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:2px;}
 .dp-cell span{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--text);}
 .dp-notes{margin-top:10px;font-size:13px;color:var(--text-muted);font-style:italic;line-height:1.5;}
-.dp-close{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;padding:6px 12px;border:1px solid var(--border);border-radius:4px;background:transparent;color:var(--text-muted);cursor:pointer;flex-shrink:0;}
+.dp-close{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;padding:6px 12px;border:1px solid var(--border);border-radius:4px;background:transparent;color:var(--text-muted);cursor:pointer;flex-shrink:0;white-space:nowrap;}
 .dp-close:hover{border-color:var(--text-muted);color:var(--text);}
+
+/* ── Dots ── */
 .model-dot{cursor:pointer;}
-.model-dot.selected{stroke-width:3 !important;}
-@media(max-width:600px){.dp-grid{grid-template-columns:repeat(2,1fr)}.dp-name{font-size:16px}.dp-score{font-size:22px}.toggle-strip{gap:5px}}
+.model-dot.selected{filter:drop-shadow(0 0 4px currentColor);}
+
+@media(max-width:600px){
+  .dp-grid{grid-template-columns:repeat(2,1fr)}
+  .dp-name{font-size:16px} .dp-score{font-size:22px}
+  .toggle-strip,.time-strip{gap:5px}
+}
 </style>
 </head>
 <body>
@@ -89,14 +115,34 @@
       </div>
       <p class="section-label">Visualisation interactive</p>
       <h1 class="section-title">La course SWE-bench<br><em>2024 → 2026</em></h1>
-      <p class="section-intro">Évolution du score SWE-bench Verified (résolution autonome d'issues GitHub) par acteur depuis GPT-4o (33 %, mai 2024) jusqu'à Claude Mythos Preview (93.9 %, mai 2026). Toggle les acteurs, zoom sur une période, clique sur un modèle pour ses specs complets.</p>
+      <p class="section-intro">Évolution du score SWE-bench Verified par acteur depuis GPT-4o (33 %, mai 2024). Toggle les acteurs, filtre la période, glisse la timeline pour zoomer, clique un point pour ses specs.</p>
     </div>
   </section>
 
   <section class="section-sm">
     <div class="container">
 
-      <!-- Detail Panel (apparaît au clic) -->
+      <!-- ═══ Actor toggles ═══ -->
+      <div class="toggle-strip" id="actor-toggles">
+        <span class="toggle-lbl">Acteurs</span>
+      </div>
+
+      <!-- ═══ Time range filters ═══ -->
+      <div class="time-strip" id="time-strip">
+        <span class="toggle-lbl">Période</span>
+      </div>
+
+      <!-- ═══ Main chart ═══ -->
+      <div class="chart-outer">
+        <svg id="main-chart" style="width:100%;display:block;"></svg>
+      </div>
+
+      <!-- ═══ Brush mini-timeline ═══ -->
+      <div class="chart-outer-brush">
+        <svg id="brush-chart" style="width:100%;display:block;"></svg>
+      </div>
+
+      <!-- ═══ Detail panel — BELOW chart, no scroll jump ═══ -->
       <div class="detail-panel" id="detail-panel">
         <div class="dp-inner">
           <div>
@@ -117,30 +163,19 @@
         </div>
       </div>
 
-      <!-- Toggle acteurs -->
-      <div class="toggle-strip" id="actor-toggles">
-        <span class="toggle-lbl">Acteurs</span>
-      </div>
-
-      <!-- Graphe principal -->
-      <div class="chart-outer">
-        <svg id="main-chart" style="width:100%;display:block;"></svg>
-      </div>
-      <div class="chart-outer-brush">
-        <svg id="brush-chart" style="width:100%;display:block;"></svg>
-      </div>
-
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;flex-wrap:wrap;gap:8px;">
+      <!-- ═══ Footer hints ═══ -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;flex-wrap:wrap;gap:8px;">
         <p style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);letter-spacing:.04em;margin:0;">
-          ○ = open weights &nbsp;·&nbsp; ~ = score estimé &nbsp;·&nbsp; Glisser dans la timeline pour zoomer
+          ○ = open weights &nbsp;·&nbsp; ~ = score estimé &nbsp;·&nbsp; ◆ = événement marquant (survoler)
         </p>
-        <button class="chart-reset-btn" id="reset-zoom">↺ Réinitialiser zoom</button>
+        <button class="chart-reset-btn" id="reset-zoom">↺ Réinitialiser</button>
       </div>
 
       <div class="disclaimer" style="margin-top:32px;">
         <strong>Sources &amp; méthode</strong>
-        Données issues des annonces officielles et de <a href="https://benchlm.ai/benchmarks/sweVerified" target="_blank" rel="noopener">benchlm.ai</a>. Scores ~ = estimations d'analyses indépendantes. SWE-bench Verified mesure la capacité d'un agent à résoudre des issues GitHub sans aide humaine (500 tâches, Scale AI). Les cercles ouverts indiquent un modèle open-weights. <strong>Mise à jour :</strong> la routine Claude Code ajoute un point à <code>modeles/models-data.json</code> chaque lundi lorsqu'un nouveau modèle avec score SWE-bench est détecté. <a href="../modeles/">→ Tableau comparatif</a> &nbsp;·&nbsp; <a href="../briefs/">→ Briefs hebdo</a>
+        Données issues des annonces officielles et de <a href="https://benchlm.ai/benchmarks/sweVerified" target="_blank" rel="noopener">benchlm.ai</a>. Scores ~ = estimations d'analyses indépendantes. SWE-bench Verified mesure la capacité d'un agent à résoudre des issues GitHub sans aide humaine (500 tâches, Scale AI). Les cercles ouverts indiquent un modèle open-weights. <strong>Mise à jour :</strong> la routine Claude Code ajoute un point chaque lundi lorsqu'un modèle avec score SWE-bench est détecté. <a href="../modeles/">→ Tableau comparatif</a> &nbsp;·&nbsp; <a href="../briefs/">→ Briefs hebdo</a>
       </div>
+
     </div>
   </section>
 </main>
@@ -199,105 +234,119 @@
 <script src="../assets/app.js" defer></script>
 <script>
 (async function () {
-  /* ━━ PALETTE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     CONFIG
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   const C = {
     Anthropic:'#f97316', OpenAI:'#22c55e', Google:'#60a5fa',
     Meta:'#a78bfa', Mistral:'#f43f5e', DeepSeek:'#06b6d4'
   };
-  const MG  = { top:36, right:20, bottom:42, left:56 };
-  const BMG = { top:8,  right:20, bottom:26, left:56 };
-  const BRUSH_H = 52, CHART_H = 430;
+  const MG  = { top:42, right:24, bottom:44, left:64 };
+  const BMG = { top:8,  right:24, bottom:26, left:64 };
+  const BRUSH_H = 50, CHART_H = 430;
 
-  /* ━━ LOAD ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  const TIME_LABELS = [
+    ['all','Tout'],['1y','1 an'],['6m','6 mois'],
+    ['3m','3 mois'],['1m','1 mois'],['1w','1 sem.']
+  ];
+
+  const ANN_ICONS = {
+    milestone:'⚑', benchmark:'◈', disruption:'⚡', leap:'↑', event:'◆'
+  };
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     LOAD
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   let raw;
   try { raw = await d3.json('../modeles/models-data.json'); }
   catch(e) {
     document.querySelector('.chart-outer').innerHTML =
-      '<p style="padding:32px;color:var(--text-muted);font-family:var(--font-mono);font-size:12px;">'
-      + 'Données non chargées. Utiliser un serveur HTTP (ex: npx http-server -p 8765).</p>';
+      '<p style="padding:40px 32px;color:var(--text-muted);font-family:var(--font-mono);font-size:12px;">'
+      +'⚠ Données non chargées — ce graphe nécessite un serveur HTTP.<br>'
+      +'Lancer : <code>npx http-server -p 8765</code> puis ouvrir localhost:8765/graphe/</p>';
     return;
   }
 
-  /* ━━ PARSE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     PARSE
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   const models = raw.models
-    .map(d => ({ ...d, dateObj: new Date(d.date), score: +d.swe_bench_verified }))
+    .map(d => ({...d, dateObj: new Date(d.date), score: +d.swe_bench_verified}))
     .sort((a,b) => a.dateObj - b.dateObj);
 
-  const annotations = raw.annotations.map(d => ({ ...d, dateObj: new Date(d.date) }));
+  const annotations = (raw.annotations || []).map(d => ({...d, dateObj: new Date(d.date)}));
   const actors = Object.keys(C).filter(a => models.some(m => m.actor === a));
-  const state  = Object.fromEntries(actors.map(a => [a, true]));
+  const actorState = Object.fromEntries(actors.map(a => [a, true]));
 
-  /* ━━ HELPERS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  const cv  = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-  const fmtD = d => d.toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
-  const fmtCtx = k => !k ? '—' : k >= 1000 ? (k/1000)+'M tokens' : k+'k tokens';
-  const fmtP   = m => m.open_weights && !m.pricing_in ? 'Self-host (open)'
-                   : !m.pricing_in ? '—'
-                   : '$'+m.pricing_in+' / $'+m.pricing_out;
-  const getW = () => document.getElementById('main-chart').parentElement.clientWidth - 2;
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     MODULE-LEVEL STATE
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  const fullExtent = d3.extent(models, d => d.dateObj);
+  let xScale, yScale;
+  let iW, iH;
+  let gArea, gXAxisG, gYAxisG;
+  let brushFn, xBrushScale;
+  let activeRange = 'all';
+  let isFirstInit = true;
 
-  /* ━━ SCALES ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  const extent = d3.extent(models, d => d.dateObj);
-  const xFull  = d3.scaleTime().domain(extent);
-  let   xScale = xFull.copy();
-  const yScale = d3.scaleLinear().domain([0, 100]).nice();
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     HELPERS
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  const cv     = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const fmtD   = d => d.toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+  const fmtCtx = k => !k ? '—' : k>=1000 ? (k/1000)+'M tokens' : k+'k tokens';
+  const fmtP   = m => m.open_weights&&!m.pricing_in ? 'Self-host (open)' : !m.pricing_in ? '—'
+                    : '$'+m.pricing_in+' / $'+m.pricing_out;
+  const getW   = () => document.getElementById('main-chart').parentElement.clientWidth - 2;
 
-  /* ━━ BUILD TOGGLES ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  function buildToggles() {
-    const strip = document.getElementById('actor-toggles');
-    strip.querySelectorAll('.actor-btn').forEach(b => b.remove());
-    actors.forEach(actor => {
-      const b = document.createElement('button');
-      b.className = 'actor-btn active';
-      b.style.setProperty('--c', C[actor]);
-      b.dataset.actor = actor;
-      b.innerHTML = `<span class="adot" style="background:${C[actor]}"></span>${actor}`;
-      b.addEventListener('click', () => {
-        state[actor] = !state[actor];
-        b.classList.toggle('active', state[actor]);
-        b.classList.toggle('off', !state[actor]);
-        syncVisibility();
-      });
-      strip.appendChild(b);
-    });
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     TIME RANGE
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  function getRangeDomain(key) {
+    if (!key || key === 'all') return fullExtent.slice();
+    const end   = new Date(fullExtent[1]);
+    const start = new Date(end);
+    if      (key === '1y') start.setFullYear(start.getFullYear() - 1);
+    else if (key === '6m') start.setMonth(start.getMonth() - 6);
+    else if (key === '3m') start.setMonth(start.getMonth() - 3);
+    else if (key === '1m') start.setMonth(start.getMonth() - 1);
+    else if (key === '1w') start.setDate(start.getDate() - 7);
+    return [d3.max([start, fullExtent[0]]), end];
   }
 
-  function syncVisibility() {
-    d3.selectAll('.actor-line').style('opacity', function() {
-      const a = d3.select(this).attr('data-actor');
-      return state[a] ? 1 : 0;
-    });
-    d3.selectAll('.model-dot').style('opacity', function(d) {
-      if (!state[d.actor]) return 0;
-      return d.approximate ? 0.6 : 1;
-    }).style('pointer-events', function(d) {
-      return state[d.actor] ? 'all' : 'none';
-    });
-    d3.selectAll('.open-ring').style('opacity', function(d) {
-      return state[d.actor] ? 0.45 : 0;
-    });
-  }
+  /* Line generator — closes over xScale/yScale (module vars) */
+  const lineGen = d3.line()
+    .x(d => xScale(d.dateObj))
+    .y(d => yScale(d.score))
+    .curve(d3.curveMonotoneX);
 
-  /* ━━ MAIN CHART ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  function buildChart() {
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     INIT CHART  (called once + on resize + on theme change)
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  function initChart() {
+    const animate = isFirstInit;
+    isFirstInit = false;
+
     const mainSvg = d3.select('#main-chart');
     mainSvg.selectAll('*').remove();
 
     const totalW = getW();
-    const iW = totalW - MG.left - MG.right;
-    const iH = CHART_H - MG.top - MG.bottom;
+    iW = totalW - MG.left - MG.right;
+    iH = CHART_H - MG.top - MG.bottom;
 
     mainSvg.attr('viewBox', `0 0 ${totalW} ${CHART_H}`).attr('height', CHART_H);
-    xFull.range([0, iW]);
-    xScale.range([0, iW]);
-    yScale.range([iH, 0]);
 
-    /* defs: clip path */
+    /* Re-create scales */
+    xScale = d3.scaleTime().domain(getRangeDomain(activeRange)).range([0, iW]);
+    yScale = d3.scaleLinear().domain([25, 100]).range([iH, 0]);
+
+    /* Clip path */
     mainSvg.append('defs').append('clipPath').attr('id','clip')
-      .append('rect').attr('width', iW+4).attr('height', iH+8).attr('x',-2).attr('y',-4);
+      .append('rect').attr('width',iW+6).attr('height',iH+8).attr('x',-3).attr('y',-4);
 
     const g = mainSvg.append('g').attr('transform',`translate(${MG.left},${MG.top})`);
-    const area = g.append('g').attr('clip-path','url(#clip)');
+    gArea = g.append('g').attr('clip-path','url(#clip)');
 
     /* Y grid */
     g.append('g').attr('class','grid-g').selectAll('.grid-line')
@@ -305,214 +354,435 @@
       .attr('x1',0).attr('x2',iW)
       .attr('y1',d=>yScale(d)).attr('y2',d=>yScale(d));
 
-    /* Axes */
-    const xAxisG = g.append('g').attr('class','axis-x').attr('transform',`translate(0,${iH})`);
-    const yAxisG = g.append('g').attr('class','axis-y');
-
-    function updateAxes() {
-      xAxisG.call(d3.axisBottom(xScale)
-        .ticks(Math.max(4,Math.floor(iW/110)))
-        .tickFormat(d3.timeFormat('%b %y'))
-        .tickSize(0));
-      xAxisG.select('path').attr('stroke',cv('--border'));
-      xAxisG.selectAll('text').attr('dy','1.3em').style('fill',cv('--text-muted'));
-
-      yAxisG.call(d3.axisLeft(yScale).ticks(8).tickFormat(d=>`${d} %`).tickSize(0));
-      yAxisG.select('path').attr('stroke','none');
-      yAxisG.selectAll('text').attr('dx','-0.5em').style('fill',cv('--text-muted'));
-    }
+    /* Axis groups */
+    gXAxisG = g.append('g').attr('class','axis-x').attr('transform',`translate(0,${iH})`);
+    gYAxisG = g.append('g').attr('class','axis-y');
 
     /* Y label */
     g.append('text').attr('class','axis-lbl')
-      .attr('transform','rotate(-90)').attr('y',-46).attr('x',-iH/2)
+      .attr('transform','rotate(-90)').attr('y',-52).attr('x',-iH/2)
       .attr('text-anchor','middle').text('SWE-bench Verified (%)');
 
-    /* Line generator */
-    const lineGen = d3.line()
-      .x(d=>xScale(d.dateObj)).y(d=>yScale(d.score))
-      .curve(d3.curveMonotoneX);
-
-    /* Draw lines */
-    function drawLines() {
-      area.selectAll('.actor-line').remove();
-      actors.forEach((actor, idx) => {
-        const pts = models.filter(m => m.actor === actor);
-        const path = area.append('path')
-          .datum(pts).attr('class','actor-line')
-          .attr('data-actor', actor)
-          .attr('fill','none').attr('stroke',C[actor])
-          .attr('stroke-width',2.5).attr('stroke-linejoin','round')
-          .attr('stroke-linecap','round')
-          .attr('d', lineGen)
-          .style('opacity', state[actor] ? 1 : 0);
-
-        /* draw-in animation */
-        const len = path.node().getTotalLength();
-        path.attr('stroke-dasharray',`${len} ${len}`)
-          .attr('stroke-dashoffset', len)
-          .transition().duration(800).delay(idx*100)
-          .ease(d3.easeCubicInOut)
-          .attr('stroke-dashoffset', 0);
-      });
-    }
-
-    /* Draw dots */
-    function drawDots() {
-      area.selectAll('.open-ring,.model-dot').remove();
-      const vis = models.filter(d => state[d.actor]);
-
-      /* open-weights ring */
-      area.selectAll('.open-ring').data(vis.filter(d=>d.open_weights))
-        .enter().append('circle').attr('class','open-ring')
-        .attr('cx',d=>xScale(d.dateObj)).attr('cy',d=>yScale(d.score)).attr('r',9)
-        .attr('fill','none').attr('stroke',d=>C[d.actor]).attr('stroke-width',1.5)
-        .attr('opacity',0.45).attr('pointer-events','none');
-
-      /* dots */
-      area.selectAll('.model-dot').data(models)
-        .enter().append('circle').attr('class','model-dot')
-        .attr('cx',d=>xScale(d.dateObj)).attr('cy',d=>yScale(d.score))
-        .attr('r',d=>d.approximate?4:5.5)
-        .attr('fill',d=>C[d.actor]).attr('stroke',cv('--surface')).attr('stroke-width',2)
-        .style('opacity',d=>!state[d.actor]?0:d.approximate?0.6:1)
-        .style('pointer-events',d=>state[d.actor]?'all':'none')
-        .on('mouseover', onOver).on('mousemove', onMove).on('mouseout', onOut)
-        .on('click', onClick);
-    }
-
-    /* Annotations */
-    function drawAnnotations() {
-      area.selectAll('.ann-line,.ann-label').remove();
-      const [d0, d1] = xScale.domain();
-      annotations.forEach((ann, idx) => {
-        const x = xScale(ann.dateObj);
-        if (x < -40 || x > iW+40) return;
-        area.append('line').attr('class','ann-line')
-          .attr('x1',x).attr('x2',x).attr('y1',0).attr('y2',iH);
-        area.append('text').attr('class','ann-label')
-          .attr('x',x+3).attr('y', idx%2===0 ? 13 : 24).text(ann.label);
-      });
-    }
-
-    /* Tooltip */
-    const tip = d3.select('#chart-tooltip');
-    function onOver(ev, d) {
-      d3.select(this).raise().transition().duration(60).attr('r',8).attr('stroke-width',3);
-      tip.html(`<div class="tt-actor">${d.actor}</div>
-        <div class="tt-name">${d.name}</div>
-        <div class="tt-score">${d.approximate?'~':''}${d.score}<span style="font-size:13px;font-weight:400"> %</span></div>
-        <div class="tt-sub">${fmtD(d.dateObj)}<br>${fmtP(d)} · ${fmtCtx(d.context_k)}</div>
-        ${d.approximate?'<div class="tt-approx">⚠ Score estimé</div>':''}
-        <div class="tt-hint">Cliquer pour les specs →</div>`)
-      .style('opacity',1)
-      .style('left', Math.min(ev.clientX+16, window.innerWidth-240)+'px')
-      .style('top', (ev.clientY-44)+'px');
-    }
-    function onMove(ev) {
-      tip.style('left', Math.min(ev.clientX+16, window.innerWidth-240)+'px')
-         .style('top', (ev.clientY-44)+'px');
-    }
-    function onOut(ev, d) {
-      const sel = d3.select(this);
-      sel.transition().duration(60)
-        .attr('r', sel.classed('selected') ? 7 : (d.approximate?4:5.5))
-        .attr('stroke-width', sel.classed('selected') ? 3 : 2);
-      tip.style('opacity',0);
-    }
-    function onClick(ev, d) {
-      area.selectAll('.model-dot').classed('selected',false)
-        .transition().duration(60)
-        .attr('r',m=>m.approximate?4:5.5).attr('stroke-width',2);
-      d3.select(this).classed('selected',true)
-        .transition().duration(60).attr('r',7).attr('stroke-width',3);
-      openPanel(d);
-    }
-
-    /* Brush */
-    function buildBrush() {
-      const bSvg = d3.select('#brush-chart');
-      bSvg.selectAll('*').remove();
-      const bTotal = getW();
-      const biW = bTotal - BMG.left - BMG.right;
-
-      bSvg.attr('viewBox',`0 0 ${bTotal} ${BRUSH_H+BMG.top+BMG.bottom}`)
-          .attr('height', BRUSH_H+BMG.top+BMG.bottom);
-
-      const bg = bSvg.append('g').attr('transform',`translate(${BMG.left},${BMG.top})`);
-      const xB = d3.scaleTime().domain(extent).range([0, biW]);
-      const yB = d3.scaleLinear().domain([0,100]).range([BRUSH_H,0]);
-      const ml  = d3.line().x(d=>xB(d.dateObj)).y(d=>yB(d.score)).curve(d3.curveMonotoneX);
-
-      actors.forEach(a => {
-        bg.append('path').datum(models.filter(m=>m.actor===a))
-          .attr('fill','none').attr('stroke',C[a]).attr('stroke-width',1.5)
-          .attr('opacity',0.3).attr('d',ml);
-      });
-
-      bg.append('g').attr('transform',`translate(0,${BRUSH_H})`)
-        .call(d3.axisBottom(xB).ticks(6).tickFormat(d3.timeFormat('%b %y')).tickSize(0))
-        .call(gg => {
-          gg.select('path').attr('stroke',cv('--border'));
-          gg.selectAll('text').attr('dy','1.3em')
-            .style('fill',cv('--text-muted')).style('font-family','var(--font-mono)').style('font-size','10px');
-        });
-
-      const brush = d3.brushX().extent([[0,0],[biW,BRUSH_H]])
-        .on('brush end', ({selection}) => {
-          if (!selection) { xScale = xFull.copy().range([0,iW]); }
-          else {
-            const [a,b] = selection.map(xB.invert);
-            xScale = d3.scaleTime().domain([a,b]).range([0,iW]);
-          }
-          updateAxes(); drawLines(); drawDots(); drawAnnotations();
-        });
-
-      bg.append('g').attr('class','brush').call(brush);
-
-      document.getElementById('reset-zoom').onclick = () => {
-        bg.select('.brush').call(brush.move, null);
-        xScale = xFull.copy().range([0,iW]);
-        updateAxes(); drawLines(); drawDots(); drawAnnotations();
-      };
-    }
-
-    /* Init */
-    updateAxes(); drawLines(); drawDots(); drawAnnotations(); buildBrush();
+    /* Draw initial content */
+    drawLines(animate);
+    drawDots();
+    drawAnnotations();
+    updateAxes();
+    buildBrush();
   }
 
-  /* ━━ DETAIL PANEL ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     UPDATE AXES
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  function updateAxes() {
+    gXAxisG.call(
+      d3.axisBottom(xScale)
+        .ticks(Math.max(4, Math.floor(iW/110)))
+        .tickFormat(d3.timeFormat('%b %y'))
+        .tickSize(0)
+    ).call(g => {
+      g.select('path').attr('stroke',cv('--border'));
+      g.selectAll('text').attr('dy','1.3em').style('fill',cv('--text-muted'));
+    });
+
+    gYAxisG.call(
+      d3.axisLeft(yScale).ticks(8).tickFormat(d=>`${d} %`).tickSize(0)
+    ).call(g => {
+      g.select('path').attr('stroke','none');
+      g.selectAll('text').attr('dx','-0.5em').style('fill',cv('--text-muted'));
+    });
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     DRAW LINES  (initial, with optional animation)
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  function drawLines(animate) {
+    gArea.selectAll('.actor-line').remove();
+    actors.forEach((actor, idx) => {
+      const pts = models.filter(m => m.actor === actor);
+      const path = gArea.append('path')
+        .datum(pts)
+        .attr('class','actor-line')
+        .attr('data-actor', actor)
+        .attr('fill','none')
+        .attr('stroke', C[actor])
+        .attr('stroke-width', 2.5)
+        .attr('stroke-linejoin','round')
+        .attr('stroke-linecap','round')
+        .style('opacity', actorState[actor] ? 1 : 0)
+        .attr('d', lineGen);
+
+      if (animate) {
+        const len = path.node().getTotalLength();
+        path.attr('stroke-dasharray', `${len} ${len}`)
+            .attr('stroke-dashoffset', len)
+            .transition().duration(900).delay(idx * 120)
+            .ease(d3.easeCubicInOut)
+            .attr('stroke-dashoffset', 0)
+            .on('end', function() {
+              /* Clean up dasharray so refreshPositions works cleanly */
+              d3.select(this).attr('stroke-dasharray', null).attr('stroke-dashoffset', null);
+            });
+      }
+    });
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     DRAW DOTS
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  function drawDots() {
+    gArea.selectAll('.open-ring,.model-dot').remove();
+
+    /* Open-weights ring (behind dots, no pointer events) */
+    gArea.selectAll('.open-ring').data(models.filter(d=>d.open_weights))
+      .enter().append('circle').attr('class','open-ring')
+      .attr('cx', d=>xScale(d.dateObj)).attr('cy', d=>yScale(d.score))
+      .attr('r', 9)
+      .attr('fill','none').attr('stroke', d=>C[d.actor]).attr('stroke-width',1.5)
+      .attr('opacity', d=>actorState[d.actor]?0.45:0)
+      .attr('pointer-events','none');
+
+    /* Model dots */
+    gArea.selectAll('.model-dot').data(models)
+      .enter().append('circle').attr('class','model-dot')
+      .attr('cx', d=>xScale(d.dateObj)).attr('cy', d=>yScale(d.score))
+      .attr('r', d=>d.approximate?4:5.5)
+      .attr('fill', d=>C[d.actor])
+      .attr('stroke', cv('--surface')).attr('stroke-width',2)
+      .style('opacity', d=>!actorState[d.actor]?0:d.approximate?0.6:1)
+      .style('pointer-events', d=>actorState[d.actor]?'all':'none')
+      .on('mouseover', onOver)
+      .on('mousemove', onMove)
+      .on('mouseout',  onOut)
+      .on('click',     onClick);
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     DRAW ANNOTATIONS  (no inline text — diamond marker + hover tooltip)
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  function drawAnnotations() {
+    gArea.selectAll('.ann-g').remove();
+    const [d0, d1] = xScale.domain();
+    const vis = annotations.filter(a => a.dateObj >= d0 && a.dateObj <= d1);
+
+    vis.forEach(ann => {
+      const x = xScale(ann.dateObj);
+      const ag = gArea.append('g').attr('class','ann-g');
+
+      /* Vertical dashed line */
+      ag.append('line').attr('class','ann-line')
+        .attr('x1',x).attr('x2',x).attr('y1',0).attr('y2',iH);
+
+      /* Diamond marker at top of line */
+      const s = 4;
+      ag.append('path')
+        .attr('d', `M${x},${-s} L${x+s},0 L${x},${s} L${x-s},0 Z`)
+        .attr('fill','var(--text-muted)').attr('opacity',0.45)
+        .attr('pointer-events','none');
+
+      /* Wide transparent hit zone */
+      ag.append('rect')
+        .attr('x', x-12).attr('y',-6).attr('width',24).attr('height',iH+6)
+        .attr('fill','transparent')
+        .style('cursor','help')
+        .on('mouseover', function(ev) {
+          d3.select(this.parentNode).select('.ann-line').classed('highlighted',true).attr('opacity',0.7);
+          const icon = ANN_ICONS[ann.type] || '◆';
+          tip.html(`
+            <div class="tt-actor" style="color:var(--text-muted)">${icon} ${ann.type||'événement'}</div>
+            <div class="tt-name">${ann.label}</div>
+            ${ann.sublabel?`<div class="tt-sub" style="margin-top:5px">${ann.sublabel}</div>`:''}
+            <div class="tt-sub" style="margin-top:4px">${fmtD(ann.dateObj)}</div>
+          `).style('opacity',1);
+          positionTip(ev);
+        })
+        .on('mousemove', positionTip)
+        .on('mouseout', function() {
+          d3.select(this.parentNode).select('.ann-line').classed('highlighted',false).attr('opacity',null);
+          tip.style('opacity',0);
+        });
+    });
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     REFRESH POSITIONS  (fast update — no element recreation)
+     smooth=true for filter buttons, false for brush drag
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  function refreshPositions(smooth) {
+    if (!gArea) return;
+    const dur = smooth ? 250 : 0;
+
+    /* Lines — just recalculate path d attribute */
+    gArea.selectAll('.actor-line').each(function(d) {
+      const sel = d3.select(this);
+      if (dur) sel.transition().duration(dur).attr('d', lineGen(d));
+      else sel.attr('d', lineGen(d));
+    });
+
+    /* Dots */
+    const dotT = gArea.selectAll('.model-dot');
+    const ringT = gArea.selectAll('.open-ring');
+    if (dur) {
+      dotT.transition().duration(dur).attr('cx',d=>xScale(d.dateObj)).attr('cy',d=>yScale(d.score));
+      ringT.transition().duration(dur).attr('cx',d=>xScale(d.dateObj)).attr('cy',d=>yScale(d.score));
+    } else {
+      dotT.attr('cx',d=>xScale(d.dateObj)).attr('cy',d=>yScale(d.score));
+      ringT.attr('cx',d=>xScale(d.dateObj)).attr('cy',d=>yScale(d.score));
+    }
+
+    /* Annotations (re-draw, positions change) */
+    drawAnnotations();
+    updateAxes();
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     SYNC VISIBILITY (actor toggle)
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  function syncVisibility() {
+    if (!gArea) return;
+    gArea.selectAll('.actor-line').style('opacity', function() {
+      return actorState[d3.select(this).attr('data-actor')] ? 1 : 0;
+    });
+    gArea.selectAll('.model-dot')
+      .style('opacity', d => !actorState[d.actor]?0:d.approximate?0.6:1)
+      .style('pointer-events', d => actorState[d.actor]?'all':'none');
+    gArea.selectAll('.open-ring')
+      .style('opacity', d => actorState[d.actor]?0.45:0);
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     BUILD TOGGLES
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  function buildToggles() {
+    const strip = document.getElementById('actor-toggles');
+    strip.querySelectorAll('.actor-btn').forEach(b=>b.remove());
+    actors.forEach(actor => {
+      const b = document.createElement('button');
+      b.className = 'actor-btn active';
+      b.style.setProperty('--c', C[actor]);
+      b.dataset.actor = actor;
+      b.innerHTML = `<span class="adot" style="background:${C[actor]}"></span>${actor}`;
+      b.addEventListener('click', () => {
+        actorState[actor] = !actorState[actor];
+        b.classList.toggle('active', actorState[actor]);
+        b.classList.toggle('off', !actorState[actor]);
+        syncVisibility();
+      });
+      strip.appendChild(b);
+    });
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     BUILD TIME FILTERS
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  function buildTimeFilters() {
+    const strip = document.getElementById('time-strip');
+    TIME_LABELS.forEach(([key, label]) => {
+      const b = document.createElement('button');
+      b.className = 'time-btn' + (key==='all'?' active':'');
+      b.dataset.range = key;
+      b.textContent = label;
+      b.addEventListener('click', () => {
+        setTimeRange(key);
+      });
+      strip.appendChild(b);
+    });
+  }
+
+  function setTimeRange(key, triggerBrush) {
+    /* Update active button */
+    document.querySelectorAll('.time-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.range === key);
+    });
+    activeRange = key;
+    const domain = getRangeDomain(key);
+    xScale = d3.scaleTime().domain(domain).range([0, iW]);
+
+    /* Sync brush to show current range (programmatic — won't re-trigger domain change) */
+    if (brushFn && xBrushScale) {
+      const brushEl = d3.select('#brush-chart').select('.brush');
+      if (key === 'all') {
+        brushEl.call(brushFn.move, null);
+      } else {
+        const pixelSel = domain.map(d => xBrushScale(d));
+        brushEl.call(brushFn.move, pixelSel);
+      }
+    }
+
+    refreshPositions(true);
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     BUILD BRUSH  (mini timeline below main chart)
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  function buildBrush() {
+    const bSvg = d3.select('#brush-chart');
+    bSvg.selectAll('*').remove();
+
+    const bTotal = getW();
+    const biW = bTotal - BMG.left - BMG.right;
+    bSvg.attr('viewBox',`0 0 ${bTotal} ${BRUSH_H+BMG.top+BMG.bottom}`)
+        .attr('height', BRUSH_H+BMG.top+BMG.bottom);
+
+    const bg = bSvg.append('g').attr('transform',`translate(${BMG.left},${BMG.top})`);
+
+    /* Full-extent scale for brush */
+    xBrushScale = d3.scaleTime().domain(fullExtent).range([0, biW]);
+    const yB = d3.scaleLinear().domain([25,100]).range([BRUSH_H,0]);
+    const ml = d3.line().x(d=>xBrushScale(d.dateObj)).y(d=>yB(d.score)).curve(d3.curveMonotoneX);
+
+    /* Mini lines */
+    actors.forEach(a => {
+      bg.append('path').datum(models.filter(m=>m.actor===a))
+        .attr('fill','none').attr('stroke',C[a]).attr('stroke-width',1.5)
+        .attr('opacity',0.3).attr('d',ml);
+    });
+
+    /* Brush x-axis */
+    bg.append('g').attr('transform',`translate(0,${BRUSH_H})`)
+      .call(d3.axisBottom(xBrushScale).ticks(6).tickFormat(d3.timeFormat('%b %y')).tickSize(0))
+      .call(g => {
+        g.select('path').attr('stroke',cv('--border'));
+        g.selectAll('text').attr('dy','1.3em')
+          .style('fill',cv('--text-muted'))
+          .style('font-family','var(--font-mono)')
+          .style('font-size','10px');
+      });
+
+    /* Brush behavior */
+    brushFn = d3.brushX()
+      .extent([[0,0],[biW,BRUSH_H]])
+      .on('brush end', ({selection, sourceEvent}) => {
+        /* Ignore programmatic calls (from setTimeRange) */
+        if (!sourceEvent) return;
+
+        if (!selection) {
+          /* User cleared brush → restore to active range */
+          xScale = d3.scaleTime().domain(getRangeDomain(activeRange)).range([0, iW]);
+        } else {
+          const [a, b] = selection.map(xBrushScale.invert);
+          xScale = d3.scaleTime().domain([a, b]).range([0, iW]);
+          /* Deselect time filter buttons when user manually brushes */
+          document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active'));
+        }
+        /* No smooth transition during brush drag (too expensive) */
+        refreshPositions(false);
+      });
+
+    bg.append('g').attr('class','brush').call(brushFn);
+
+    /* If a range is active, restore brush selection on rebuild */
+    if (activeRange !== 'all') {
+      const domain = getRangeDomain(activeRange);
+      const pixelSel = domain.map(d => xBrushScale(d));
+      bg.select('.brush').call(brushFn.move, pixelSel);
+    }
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     TOOLTIP
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  const tip = d3.select('#chart-tooltip');
+
+  function positionTip(ev) {
+    const tw = 250, th = 140;
+    const vw = window.innerWidth, vh = window.innerHeight;
+    let left = ev.clientX + 16;
+    let top  = ev.clientY - 50;
+    if (left + tw > vw - 8) left = ev.clientX - tw - 8;
+    if (top  + th > vh - 8) top  = ev.clientY - th - 8;
+    if (top < 8) top = 8;
+    tip.style('left', left+'px').style('top', top+'px');
+  }
+
+  function onOver(ev, d) {
+    d3.select(this).raise().transition().duration(60).attr('r',8).attr('stroke-width',3);
+    tip.html(`
+      <div class="tt-actor" style="color:${C[d.actor]}">${d.actor}</div>
+      <div class="tt-name">${d.name}</div>
+      <div class="tt-score" style="color:${C[d.actor]}">${d.approximate?'~':''}${d.score}<span style="font-size:13px;font-weight:400"> %</span></div>
+      <div class="tt-sub">${fmtD(d.dateObj)}<br>${fmtP(d)} · ${fmtCtx(d.context_k)}</div>
+      ${d.approximate?'<div class="tt-approx">⚠ Score estimé</div>':''}
+      <div class="tt-hint">Cliquer pour les specs →</div>
+    `).style('opacity',1);
+    positionTip(ev);
+  }
+
+  function onMove(ev) { positionTip(ev); }
+
+  function onOut(ev, d) {
+    const sel = d3.select(this);
+    sel.transition().duration(60)
+      .attr('r', sel.classed('selected') ? 7 : (d.approximate?4:5.5))
+      .attr('stroke-width', sel.classed('selected') ? 3 : 2);
+    tip.style('opacity', 0);
+  }
+
+  function onClick(ev, d) {
+    ev.stopPropagation();
+    tip.style('opacity', 0);
+    gArea.selectAll('.model-dot').classed('selected',false)
+      .transition().duration(60).attr('r', m=>m.approximate?4:5.5).attr('stroke-width',2);
+    d3.select(this).classed('selected',true)
+      .transition().duration(60).attr('r',7).attr('stroke-width',3);
+    openPanel(d);
+  }
+
+  /* Click outside dots → close panel & deselect */
+  document.getElementById('main-chart').addEventListener('click', () => {
+    if (!gArea) return;
+    gArea.selectAll('.model-dot').classed('selected',false)
+      .transition().duration(60).attr('r', d=>d.approximate?4:5.5).attr('stroke-width',2);
+    document.getElementById('detail-panel').classList.remove('open');
+  });
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     DETAIL PANEL
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   function openPanel(d) {
+    const color = C[d.actor] || '#888';
     document.getElementById('dp-tag').textContent  = d.actor;
-    document.getElementById('dp-tag').style.background = C[d.actor]||'#888';
+    document.getElementById('dp-tag').style.background = color;
     document.getElementById('dp-score').textContent = (d.approximate?'~':'')+d.score+' %';
+    document.getElementById('dp-score').style.color = color;
     document.getElementById('dp-name').textContent  = d.name;
     document.getElementById('dp-date').textContent  = fmtD(d.dateObj);
     document.getElementById('dp-ctx').textContent   = fmtCtx(d.context_k);
     document.getElementById('dp-price').textContent = fmtP(d);
     document.getElementById('dp-open').textContent  = d.open_weights ? '✅ Oui' : 'Non';
-    document.getElementById('dp-notes').textContent = d.notes||'';
-    const panel = document.getElementById('detail-panel');
-    panel.classList.add('open');
-    panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+    document.getElementById('dp-notes').textContent = d.notes || '';
+    document.getElementById('detail-panel').classList.add('open');
   }
 
-  document.getElementById('dp-close').onclick = () => {
+  document.getElementById('dp-close').addEventListener('click', e => {
+    e.stopPropagation();
     document.getElementById('detail-panel').classList.remove('open');
-    d3.selectAll('.model-dot').classed('selected',false)
+    if (gArea) gArea.selectAll('.model-dot').classed('selected',false)
       .transition().duration(60).attr('r',d=>d.approximate?4:5.5).attr('stroke-width',2);
-  };
+  });
 
-  /* ━━ THEME OBSERVER ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  new MutationObserver(() => setTimeout(buildChart, 60))
-    .observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     RESET ZOOM
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  document.getElementById('reset-zoom').addEventListener('click', () => {
+    setTimeRange('all');
+  });
 
-  /* ━━ RESPONSIVE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     THEME + RESPONSIVE
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  new MutationObserver(() => setTimeout(initChart, 60))
+    .observe(document.documentElement, {attributes:true, attributeFilter:['class']});
+
   let rt;
-  window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(buildChart, 220); });
+  window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(initChart, 220); });
 
-  /* ━━ INIT ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     INIT
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   buildToggles();
-  buildChart();
+  buildTimeFilters();
+  initChart();
 
 })();
 </script>
