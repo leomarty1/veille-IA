@@ -297,7 +297,7 @@ Le PAT GitHub a une durée de vie limitée (max 1 an pour fine-grained PATs). Qu
 2. **Mettre à jour le prompt routine** sur https://claude.ai/code/routines, retrouver la routine "veille-IA hebdomadaire", remplacer la chaîne `github_pat_…` par la nouvelle.
 3. **Révoquer l'ancien PAT** dans la liste GitHub PAT pour éviter qu'il traîne.
 
-**Mieux : élever les permissions MCP GitHub.** Si l'intégration GitHub MCP du compte Claude Code obtient le scope `contents: write`, la routine peut pousser directement via MCP sans aucun PAT. Cela supprime entièrement la dépendance à un secret rotatable. À vérifier dans les settings de l'intégration GitHub côté Claude Code.
+**État au 2026-05-25 :** la GitHub App Claude (owned by anthropics) est installée sur ce repo avec `Contents: Read and write`. La routine doit utiliser MCP en voie principale (`mcp__github__push_files` puis fallback A `create_or_update_file`). Le PAT dans le prompt routine est devenu redondant — il peut être supprimé du prompt et révoqué côté GitHub (https://github.com/settings/personal-access-tokens). Le pre-flight de l'étape 0 confirmera que MCP write fonctionne et basculera dessus automatiquement.
 
 ## Rapport final (à afficher en fin de routine)
 
