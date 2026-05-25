@@ -41,6 +41,23 @@ Léo Marty (Lynxter) et la communauté de passionnés IA qui suit le brief : **d
 
 ## Workflow complet
 
+### 0. Pre-flight — vérifier les credentials AVANT de lancer la recherche
+
+**Règle d'or :** ne JAMAIS faire 30 WebSearch + 20 WebFetch + 12 fichiers générés pour découvrir à la fin que le push échoue. Tester les credentials d'abord, échouer vite.
+
+1. Tester l'écriture via MCP GitHub :
+   ```
+   mcp__github__create_or_update_file(owner: "leomarty1", repo: "veille-IA", branch: "main",
+     path: ".keepalive", content: "ok", message: "preflight: check write perms")
+   ```
+   Si succès : MCP est la voie principale, marquer `WRITE_PATH = "mcp"`.
+2. Sinon, tester le PAT fourni dans le prompt :
+   ```
+   curl -sS -o /dev/null -w "%{http_code}" -H "Authorization: token <PAT>" https://api.github.com/repos/leomarty1/veille-IA
+   ```
+   Si HTTP 200 : marquer `WRITE_PATH = "pat"`.
+3. Si les deux échouent : **arrêter immédiatement**, ne pas faire la recherche. Reporter à l'utilisateur que le PAT a expiré ET que MCP est en read-only, en demandant l'une des deux corrections (rotation PAT ou élévation des droits MCP).
+
 ### 1. Déterminer la fenêtre
 
 Lire `briefs/data.json` via `mcp__github__get_file_contents` (owner: leomarty1, repo: veille-IA, path: briefs/data.json) pour trouver la date du dernier brief.
@@ -228,12 +245,20 @@ mcp__github__push_files(
 )
 ```
 
-**Fallback (si MCP GitHub indisponible ou retourne 403) :** push via git CLI avec PAT injecté dans l'URL du remote. Le prompt routine fournit le PAT et la commande exacte. Utiliser ce fallback uniquement si le MCP GitHub n'est pas accessible — pas en complément.
+**Fallback A — MCP file by file (si push_files renvoie 403 mais le pre-flight create_or_update_file a marché) :** appeler `mcp__github__create_or_update_file` séquentiellement pour chaque fichier. Pour les 3 fichiers existants (index.html, briefs/index.html, briefs/data.json), récupérer leur SHA via `git rev-parse main:<path>` et le passer en argument `sha`. Pour les fichiers nouveaux (brief + pages détail), pas de SHA requis. Accepter que ça produit N commits au lieu d'un seul — c'est acceptable si l'atomicité n'est pas possible.
+
+**Fallback B — git CLI avec PAT (si MCP est complètement bloqué et que `WRITE_PATH = "pat"`) :** push via git CLI avec PAT injecté dans l'URL du remote :
+```
+git remote set-url origin https://x-access-token:<PAT>@github.com/leomarty1/veille-IA.git
+git add -A && git commit -m "..." && git push origin main
+git remote set-url origin https://github.com/leomarty1/veille-IA.git
+```
+**Important** : restaurer l'URL du remote SANS le PAT après le push (le PAT ne doit jamais traîner dans `.git/config` au repos).
 
 **Sous aucun prétexte :**
-- Ne pas écrire le PAT dans un fichier du repo
-- Ne pas committer/pusher en plusieurs appels successifs (atomicité requise)
+- Ne pas écrire le PAT dans un fichier du repo (CLAUDE.md, README, scripts, etc.)
 - Ne pas pousser de fichiers hors du périmètre listé en étape 5
+- Ne pas continuer à générer du contenu si le pre-flight a échoué (étape 0)
 
 ---
 
@@ -259,6 +284,20 @@ mcp__github__push_files(
 ```
 
 ---
+
+## Maintenance — rotation PAT et permissions MCP
+
+Le PAT GitHub a une durée de vie limitée (max 1 an pour fine-grained PATs). Quand l'étape 0 (pre-flight) signale qu'il est expiré (HTTP 401), il faut le faire tourner :
+
+1. **Régénérer un PAT fine-grained** sur https://github.com/settings/personal-access-tokens/new
+   - Resource owner : `leomarty1`
+   - Repository access : sélectionner `leomarty1/veille-IA` uniquement
+   - Repository permissions : `Contents: Read and write` (suffit, ne pas donner plus)
+   - Expiration : 1 an (ou pas d'expiration si tu acceptes le risque sécurité)
+2. **Mettre à jour le prompt routine** sur https://claude.ai/code/routines, retrouver la routine "veille-IA hebdomadaire", remplacer la chaîne `github_pat_…` par la nouvelle.
+3. **Révoquer l'ancien PAT** dans la liste GitHub PAT pour éviter qu'il traîne.
+
+**Mieux : élever les permissions MCP GitHub.** Si l'intégration GitHub MCP du compte Claude Code obtient le scope `contents: write`, la routine peut pousser directement via MCP sans aucun PAT. Cela supprime entièrement la dépendance à un secret rotatable. À vérifier dans les settings de l'intégration GitHub côté Claude Code.
 
 ## Rapport final (à afficher en fin de routine)
 
