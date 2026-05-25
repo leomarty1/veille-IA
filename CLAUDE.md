@@ -224,6 +224,23 @@ Ajouter en tête de `<ul class="archive-list">` :
 - Counts acteurs dans `actors-grid` : incrémenter selon `by_actor` du nouveau brief
 - `archive-list` : ajouter le nouveau brief en tête (garder les 2 plus récents visibles)
 
+#### F. `modeles/index.html` — classement hebdomadaire
+
+Lire `modeles/index.html` via `mcp__github__get_file_contents`. Remplacer le bloc compris entre `<!-- CLASSEMENT-START -->` et `<!-- CLASSEMENT-END -->` par le classement mis à jour.
+
+**Données à mettre à jour :**
+- Attribut `data-classement-date` → date du brief (YYYY-MM-DD)
+- Titre `<h2>` → "Top 5 modèles — semaine du JJ mois"
+- Rangs et scores SWE-bench Verified (source Scale AI ou blog officiel)
+- Badge mouvement : ↑ si le modèle monte, ↓ s'il descend, = s'il est stable, 🆕 si entrant cette semaine
+- Ligne de contexte 1 ligne si événement notable dans la fenêtre (release, benchmark officiel)
+
+**Règle :** ne modifier les positions que si un modèle de la fenêtre a un nouveau score confirmé ou un nouveau modèle est sorti. Si aucun changement notable, garder le classement identique et mettre à jour uniquement `data-classement-date` et le titre `<h2>`.
+
+**Tableau comparatif (optionnel) :** si un nouveau modèle est annoncé dans la fenêtre avec benchmarks confirmés, ajouter une ligne au `<table class="compare-table">` avec ses specs (SWE-bench Verified, SWE-bench Pro, contexte, pricing, open weights). Mettre en évidence les nouvelles entrées avec `style="outline:1px solid var(--lx-primary);outline-offset:-1px;"` sur le `<tr>` et le badge `🆕 JJ mois` en span sur le nom. Ne pas modifier les lignes existantes sauf correction de score officielle.
+
+Inclure `modeles/index.html` dans le push_files final.
+
 ### 6. Push — stratégie MCP GitHub avec fallback
 
 **Voie principale (préférée) :** push via `mcp__github__push_files` en un seul appel atomique :
@@ -240,6 +257,7 @@ mcp__github__push_files(
     ...
     { path: "briefs/data.json",                  content: "..." },
     { path: "briefs/index.html",                 content: "..." },
+    { path: "modeles/index.html",                content: "..." },
     { path: "index.html",                        content: "..." }
   ]
 )

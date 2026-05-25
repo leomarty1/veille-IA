@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Roadmap modèles IA — Veille IA Lynxter</title>
-<meta name="description" content="État de l'art des modèles frontière et roadmap par acteur : Claude, GPT, Gemini, Llama, Mistral. Ce qui se dit, ce qui est probable, ce qui est rumeur.">
+<title>Classement &amp; Roadmap modèles IA — Veille IA Lynxter</title>
+<meta name="description" content="Classement hebdomadaire et roadmap des modèles frontière. Claude, GPT, Gemini, Llama, Mistral — scores SWE-bench, pricing, tendances.">
 <link rel="stylesheet" href="../assets/style.css">
 <script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
 </head>
@@ -35,6 +35,7 @@
 
 <main>
 
+  <!-- ═══ HERO ═══ -->
   <section class="section">
     <div class="container">
 
@@ -45,17 +46,89 @@
       </div>
 
       <p class="section-label">Roadmap IA</p>
-      <h1 class="section-title">Où en sont les modèles<br>— et où ils vont</h1>
-      <p class="section-intro">État de l'art des modèles frontière au <strong style="color:var(--text);font-weight:500;">11 mai 2026</strong>, suivi des roadmaps connues, signaux visibles, rumeurs sourcées. Chaque ligne s'appuie sur un fait public (release, blog post, interview, leak crédible) — les spéculations sont marquées comme telles.</p>
+      <h1 class="section-title">Modèles frontière —<br>classement &amp; roadmap</h1>
+      <p class="section-intro">Classement SWE-bench mis à jour chaque lundi par la routine. Roadmaps, signaux et rumeurs sourcées par acteur. Dernière mise à jour : <strong style="color:var(--text);font-weight:500;">25 mai 2026</strong>.<br>
+      <a href="#classement" style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.04em;border-bottom:1px solid var(--text-muted);color:var(--text-muted);text-decoration:none;">→ Classement de la semaine</a>
+      &nbsp;&nbsp;
+      <a href="#comparaison" style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.04em;border-bottom:1px solid var(--text-muted);color:var(--text-muted);text-decoration:none;">→ Tableau comparatif complet</a>
+      </p>
 
     </div>
   </section>
 
-  <section class="section-sm section-alt">
+  <!-- ════════════════════════════════════════════════════ -->
+  <!-- CLASSEMENT-START                                     -->
+  <!-- ════════════════════════════════════════════════════ -->
+  <section id="classement" class="section-sm section-alt">
     <div class="container">
-      <p class="section-label">État de l'art · 2026-05-11</p>
+
+      <p class="section-label">Classement · <span class="num" style="font-size:inherit;color:var(--lx-primary);" data-classement-date>2026-05-25</span></p>
+      <h2 class="section-title" style="font-size:clamp(22px,3vw,32px);">Top 5 modèles — semaine du 19 mai</h2>
+      <p class="section-intro" style="margin-bottom:24px;">Classement SWE-bench Verified (résolution autonome d'issues GitHub réels, dataset Scale AI). ↑↓ = mouvement depuis le brief précédent · 🆕 = entrant cette semaine.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-bottom:24px;">
+
+        <!-- #1 GPT-5.5 -->
+        <div style="background:var(--surface);border:2px solid var(--lx-primary);border-radius:8px;padding:20px;position:relative;">
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--lx-primary);letter-spacing:0.08em;text-transform:uppercase;font-weight:700;margin-bottom:6px;">🥇 #1 &mdash; SWE-bench Verified</div>
+          <div style="font-size:18px;font-weight:700;color:var(--text);font-family:var(--font-heading);margin-bottom:4px;">GPT-5.5</div>
+          <div style="font-family:var(--font-mono);font-size:34px;font-weight:700;color:var(--lx-primary);line-height:1;margin-bottom:8px;">88.7<span style="font-size:15px;font-weight:400;"> %</span></div>
+          <div style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px;">OpenAI · 23 avr 2026 · 1M ctx</div>
+          <div style="font-family:var(--font-mono);font-size:10px;padding:3px 8px;background:var(--lx-primary);color:#1b1818;border-radius:3px;display:inline-block;font-weight:700;">↑ Dépasse Opus 4.7 depuis le 23 avril</div>
+        </div>
+
+        <!-- #2 Claude Opus 4.7 -->
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;position:relative;">
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;font-weight:700;margin-bottom:6px;">🥈 #2 &mdash; SWE-bench Verified</div>
+          <div style="font-size:18px;font-weight:700;color:var(--text);font-family:var(--font-heading);margin-bottom:4px;">Claude Opus 4.7</div>
+          <div style="font-family:var(--font-mono);font-size:34px;font-weight:700;color:var(--text);line-height:1;margin-bottom:8px;">87.6<span style="font-size:15px;font-weight:400;"> %</span></div>
+          <div style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px;">Anthropic · 16 avr 2026 · 1M ctx</div>
+          <div style="font-family:var(--font-mono);font-size:10px;padding:3px 8px;background:var(--bg);border:1px solid var(--border);color:var(--text-muted);border-radius:3px;display:inline-block;">= stable · 🏆 leader SWE Pro 64.3 %</div>
+        </div>
+
+        <!-- #3 Gemini 3 Pro -->
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;position:relative;">
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;font-weight:700;margin-bottom:6px;">🥉 #3 &mdash; SWE-bench Verified</div>
+          <div style="font-size:18px;font-weight:700;color:var(--text);font-family:var(--font-heading);margin-bottom:4px;">Gemini 3 Pro</div>
+          <div style="font-family:var(--font-mono);font-size:34px;font-weight:700;color:var(--text);line-height:1;margin-bottom:8px;">~82<span style="font-size:15px;font-weight:400;"> %</span></div>
+          <div style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px;">Google · 2026 · 2M ctx</div>
+          <div style="font-family:var(--font-mono);font-size:10px;padding:3px 8px;background:var(--bg);border:1px solid var(--border);color:var(--text-muted);border-radius:3px;display:inline-block;">= stable · 2M ctx unique · $1.25/$10</div>
+        </div>
+
+        <!-- #4 Gemini 3.5 Flash -->
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;position:relative;">
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;font-weight:700;margin-bottom:6px;">#4 &mdash; SWE-bench Verified</div>
+          <div style="font-size:18px;font-weight:700;color:var(--text);font-family:var(--font-heading);margin-bottom:4px;">Gemini 3.5 Flash</div>
+          <div style="font-family:var(--font-mono);font-size:34px;font-weight:700;color:var(--text);line-height:1;margin-bottom:8px;">81.0<span style="font-size:15px;font-weight:400;"> %</span></div>
+          <div style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px;">Google IO · 19 mai 2026 · 1M ctx</div>
+          <div style="font-family:var(--font-mono);font-size:10px;padding:3px 8px;background:var(--bg);border:1px solid var(--lx-primary);color:var(--lx-primary);border-radius:3px;display:inline-block;font-weight:700;">🆕 Flash-tier à $1.50/$9 — bat Gemini 2.5 Pro</div>
+        </div>
+
+        <!-- #5 Claude Sonnet 4.6 -->
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;position:relative;">
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;font-weight:700;margin-bottom:6px;">#5 &mdash; SWE-bench Verified</div>
+          <div style="font-size:18px;font-weight:700;color:var(--text);font-family:var(--font-heading);margin-bottom:4px;">Claude Sonnet 4.6</div>
+          <div style="font-family:var(--font-mono);font-size:34px;font-weight:700;color:var(--text);line-height:1;margin-bottom:8px;">79.6<span style="font-size:15px;font-weight:400;"> %</span></div>
+          <div style="font-size:12px;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:8px;">Anthropic · fév 2026 · 200k ctx</div>
+          <div style="font-family:var(--font-mono);font-size:10px;padding:3px 8px;background:var(--bg);border:1px solid var(--border);color:var(--text-muted);border-radius:3px;display:inline-block;">= stable · $3/$15 · meilleur rapport perf/coût</div>
+        </div>
+
+      </div>
+
+      <p style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);letter-spacing:0.04em;">⚠ SWE-bench Verified (Scale AI) · scores officiels ou analyses indépendantes. Les ~ indiquent une estimation. Mis à jour chaque lundi par la routine. <a href="#comparaison" style="border-bottom:1px solid currentColor;color:inherit;">→ Tableau complet avec tous les modèles</a></p>
+
+    </div>
+  </section>
+  <!-- ════════════════════════════════════════════════════ -->
+  <!-- CLASSEMENT-END                                       -->
+  <!-- ════════════════════════════════════════════════════ -->
+
+  <!-- ═══ TABLEAU COMPARATIF ═══ -->
+  <section id="comparaison" class="section-sm">
+    <div class="container">
+      <p class="section-label">État de l'art · <strong style="font-weight:500;font-size:inherit;color:var(--lx-primary);">2026-05-25</strong></p>
       <h2 class="section-title" style="font-size:clamp(22px,3vw,32px);">Comparaison des modèles frontière</h2>
-      <p class="section-intro" style="margin-bottom:20px;">Les chiffres viennent des annonces officielles. <span class="num" style="color:var(--lx-primary);font-family:var(--font-mono);font-weight:700;">En jaune</span> : le leader sur la métrique. Tarifs en $ par million de tokens input/output.</p>
+      <p class="section-intro" style="margin-bottom:20px;">Les chiffres viennent des annonces officielles et de Scale AI. <span class="num" style="color:var(--lx-primary);font-family:var(--font-mono);font-weight:700;">En jaune</span> : le leader sur la métrique. Tarifs en $ par million de tokens input/output.</p>
 
       <div style="overflow-x:auto;">
       <table class="compare-table">
@@ -64,7 +137,6 @@
             <th>Modèle</th>
             <th>SWE-bench Verified</th>
             <th>SWE-bench Pro</th>
-            <th>AIME 2025</th>
             <th>Contexte</th>
             <th>Pricing in/out</th>
             <th>Open weights</th>
@@ -72,59 +144,87 @@
         </thead>
         <tbody>
           <tr>
-            <td class="lead">Claude Opus 4.7</td>
-            <td class="lead"><span class="num">87.6 %</span></td>
+            <td>GPT-5.5 <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);">OpenAI</span></td>
+            <td class="lead"><span class="num">88.7 %</span></td>
+            <td><span class="num">58.6 %</span></td>
+            <td><span class="num">1M</span></td>
+            <td><span class="num">$5 / $30</span></td>
+            <td>Non</td>
+          </tr>
+          <tr>
+            <td class="lead">Claude Opus 4.7 <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);">Anthropic</span></td>
+            <td><span class="num">87.6 %</span></td>
             <td class="lead"><span class="num">64.3 %</span></td>
-            <td>—</td>
-            <td class="lead"><span class="num">1M</span></td>
+            <td><span class="num">1M</span></td>
             <td><span class="num">$5 / $25</span></td>
             <td>Non</td>
           </tr>
           <tr>
-            <td>GPT-5.5 Instant</td>
-            <td>—</td>
-            <td>—</td>
-            <td class="lead"><span class="num">81.2</span></td>
-            <td><span class="num">400k</span></td>
-            <td><span class="num">$2.5 / $10</span></td>
-            <td>Non</td>
-          </tr>
-          <tr>
-            <td>Gemini 3 Pro</td>
+            <td>Gemini 3 Pro <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);">Google</span></td>
             <td><span class="num">~82 %</span></td>
             <td>—</td>
-            <td><span class="num">~78</span></td>
-            <td><span class="num">2M</span></td>
+            <td class="lead"><span class="num">2M</span></td>
             <td><span class="num">$1.25 / $10</span></td>
             <td>Non</td>
           </tr>
+          <tr style="outline:1px solid var(--lx-primary);outline-offset:-1px;">
+            <td>Gemini 3.5 Flash <span style="font-family:var(--font-mono);font-size:10px;color:var(--lx-primary);">🆕 19 mai</span></td>
+            <td><span class="num">81.0 %</span></td>
+            <td><span class="num">55.1 %</span></td>
+            <td><span class="num">1M</span></td>
+            <td><span class="num">$1.50 / $9</span></td>
+            <td>Non</td>
+          </tr>
           <tr>
-            <td>Llama 4 Maverick</td>
-            <td><span class="num">~70 %</span></td>
+            <td>Claude Sonnet 4.6 <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);">Anthropic</span></td>
+            <td><span class="num">79.6 %</span></td>
             <td>—</td>
+            <td><span class="num">200k</span></td>
+            <td><span class="num">$3 / $15</span></td>
+            <td>Non</td>
+          </tr>
+          <tr>
+            <td>Mistral Medium 3.5 <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);">Mistral</span></td>
+            <td><span class="num">77.6 %</span></td>
+            <td>—</td>
+            <td><span class="num">256k</span></td>
+            <td class="lead"><span class="num">$0.40 / $2</span></td>
+            <td class="lead">Oui (MIT)</td>
+          </tr>
+          <tr>
+            <td>Claude Haiku 4.5 <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);">Anthropic</span></td>
+            <td><span class="num">73.3 %</span></td>
+            <td>—</td>
+            <td><span class="num">200k</span></td>
+            <td><span class="num">$1 / $5</span></td>
+            <td>Non</td>
+          </tr>
+          <tr>
+            <td>Llama 4 Maverick <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);">Meta</span></td>
+            <td><span class="num">~70 %</span></td>
             <td>—</td>
             <td><span class="num">1M</span></td>
             <td>Self-host</td>
             <td class="lead">Oui</td>
           </tr>
           <tr>
-            <td>Mistral Medium 3.5</td>
-            <td><span class="num">77.6 %</span></td>
+            <td>Mistral Large 3 <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);">Mistral · MoE 675B</span></td>
             <td>—</td>
             <td>—</td>
-            <td><span class="num">256k</span></td>
-            <td><span class="num">$0.4 / $2</span></td>
+            <td><span class="num">128k</span></td>
+            <td><span class="num">$2 / $6</span></td>
             <td class="lead">Oui (MIT)</td>
           </tr>
         </tbody>
       </table>
       </div>
 
-      <p style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);letter-spacing:0.04em;margin:0;">⚠ Les valeurs estimées (~) viennent d'analyses indépendantes ou de leaks, pas d'annonces officielles. À prendre comme ordres de grandeur.</p>
+      <p style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);letter-spacing:0.04em;margin:0;">⚠ Les valeurs estimées (~) viennent d'analyses indépendantes ou de leaks, pas d'annonces officielles. À prendre comme ordres de grandeur. Mistral Large 3 (675B total, 41B actifs, MoE) non évalué SWE-bench — spécialisé raisonnement général (MMLU-Pro 73.1 %).</p>
     </div>
   </section>
 
-  <section class="section">
+  <!-- ═══ ROADMAPS ═══ -->
+  <section class="section section-alt">
     <div class="container">
 
       <p class="section-label">Roadmaps par acteur</p>
@@ -135,25 +235,25 @@
         <div class="roadmap-head">
           <img src="https://cdn.simpleicons.org/anthropic/1b1818/f3f1ee" alt="Anthropic" />
           <h2>Anthropic</h2>
-          <p class="current">Actuel · <strong>Claude Opus 4.7</strong></p>
+          <p class="current">Actuel · <strong>Claude Opus 4.7 · Sonnet 4.6 · Haiku 4.5</strong></p>
         </div>
         <div class="roadmap-body">
 
           <h3>Probable suite (court terme · 1-3 mois)</h3>
-          <p>Claude <strong>Sonnet 4.7</strong> et <strong>Haiku 4.7</strong> attendus pour aligner la famille sur la même génération que Opus 4.7. Les bumps de version Anthropic suivent un rythme régulier : x.5 → x.6 → x.7 toutes les ~6-8 semaines depuis Opus 4.5 en novembre 2025.</p>
+          <p>Claude <strong>Opus 4.8</strong> ou passage à la génération 5 — l'accélération des bumps trimestriels (4.5 → 4.6 → 4.7 en ~6 semaines) suggère un rythme soutenu. La perte du leadership SWE-bench Verified face à GPT-5.5 (88.7 % vs 87.6 %) crée une pression de sortie. Claude garde le lead sur SWE-bench Pro (64.3 % vs 58.6 % pour GPT-5.5) — un angle à creuser dans les benchmarks clients.</p>
 
           <div class="signal">
-            <strong>Signal</strong>Le redesign Claude Code desktop du 14 avril mentionne "improvements coming to Sonnet and Haiku" sans annoncer la version. Cohérent avec un rollout famille complète.
+            <strong>Signal</strong>Claude Mythos Preview, mentionné dans plusieurs leaks internes, affiche 94.6 % sur GPQA Diamond et 64.7 % sur Humanity's Last Exam. Pas de date de release publique — probablement la prochaine génération majeure.
           </div>
 
           <h3>Moyen terme (6-12 mois)</h3>
-          <p>Claude <strong>5</strong> — saut majeur de génération attendu fin 2026 / Q1 2027. L'investissement compute via SpaceX Colossus 1 (300+ MW) suggère qu'Anthropic prépare un entraînement à très grande échelle. Le pattern x.7 marque historiquement la fin d'une génération (cf. Claude 3.7 → Claude 4.0).</p>
+          <p>Claude <strong>5</strong> — saut majeur de génération attendu fin 2026 / Q1 2027. L'investissement compute via SpaceX Colossus 1 (300+ MW) suggère un entraînement à très grande échelle en cours. Le pattern x.7 marque historiquement la fin d'une génération (cf. Claude 3.7 → Claude 4.0).</p>
 
           <h3>Capacités à surveiller</h3>
-          <p><strong>Memory en GA</strong> (actuellement public beta), <strong>Dreaming en GA</strong> (research preview), généralisation du <strong>multiagent orchestration</strong>. Anthropic capitalise sur l'agentique long-running plus que sur les benchmarks bruts.</p>
+          <p><strong>Memory en GA</strong> (actuellement public beta), <strong>Dreaming en GA</strong> (research preview), généralisation du <strong>multiagent orchestration</strong>. Anthropic capitalise sur l'agentique long-running plus que sur les benchmarks bruts — avantage structurel pour les workflows Lynxter.</p>
 
           <div class="signal">
-            <strong>Rumeur</strong>Plusieurs sources internes mentionnent un mode <em>"deep thinking"</em> pour Opus avec budget de raisonnement étendu (10×+ vs xhigh actuel), positionné face à Gemini 3 Deep Think et o-series d'OpenAI. Non confirmé.
+            <strong>Rumeur</strong>Mode <em>"deep thinking"</em> étendu pour Opus avec budget de raisonnement 10×+ vs xhigh actuel, positionné face à Gemini 3.5 Pro et GPT-5.5 Pro ($30/$180). Non confirmé.
           </div>
 
         </div>
@@ -164,26 +264,22 @@
         <div class="roadmap-head">
           <img src="https://cdn.simpleicons.org/openai/1b1818/f3f1ee" alt="OpenAI" />
           <h2>OpenAI</h2>
-          <p class="current">Actuel · <strong>GPT-5.5 Instant</strong></p>
+          <p class="current">Actuel · <strong>GPT-5.5</strong> (23 avr 2026) + <strong>GPT-5.5 Pro</strong> ($30/$180)</p>
         </div>
         <div class="roadmap-body">
 
           <h3>Probable suite (court terme · 1-3 mois)</h3>
-          <p>GPT-5.5 <strong>Thinking</strong> attendu — la version reasoning du modèle, dans la lignée de la stratégie de Sam Altman annoncée fin 2025 sur les "deux tiers de modèles" (Instant rapide + Thinking pour les tâches complexes). Probablement aligné sur o5 côté API.</p>
+          <p>GPT-5.5 <strong>Thinking</strong> — la variante reasoning du modèle, dans la lignée de la stratégie OpenAI "Instant + Thinking". GPT-5.5 Instant ($2.5/$10, 400k ctx) cible la vitesse ; un Thinking viserait les tâches STEM/raisonnement long où o3 domine encore. GPT-5.5 standard a la barre SWE-bench à 88.7 % mais o3 reste seul à 96.7 % sur AIME.</p>
 
           <div class="signal">
-            <strong>Signal</strong>L'annonce GPT-5.5 Instant du 5 mai mentionne explicitement "Thinking variant coming soon". Pattern habituel chez OpenAI : Instant d'abord, Thinking 2-4 semaines après.
+            <strong>Signal</strong>L'annonce GPT-5.5 mentionnait explicitement "Thinking variant coming soon". Codex CLI (agent coding open-source) continue sa montée en puissance en concurrent direct de Claude Code — surveiller les benchmarks SWE-bench Pro.
           </div>
 
           <h3>Moyen terme (6-12 mois)</h3>
-          <p>GPT-<strong>6</strong> ou GPT-5.7 — la nomenclature OpenAI évolue (post-GPT-5 ils ont opté pour des half-version bumps). Probablement positionné face à Claude 5 et Gemini 4.</p>
+          <p>GPT-<strong>6</strong> — nomenclature incertaine (OpenAI alterne bumps mineurs et sauts de génération depuis GPT-4o). Probablement positionné face à Claude 5 et Gemini 4.</p>
 
           <h3>Capacités à surveiller</h3>
-          <p><strong>Memory sources</strong> (transparence sur l'origine d'une info en mémoire) déployées le 5 mai — c'est probablement le début d'une refonte plus large de la "mémoire personnelle" ChatGPT. <strong>ChatGPT Apps + Connectors</strong> continuent leur expansion, cf. annonces DevDay précédents.</p>
-
-          <div class="signal">
-            <strong>Rumeur</strong>Codex Pro (suite agentique du Codex d'OpenAI, concurrent direct de Claude Code) en préparation. Mentionné dans des leaks de courant 2026 mais date de release inconnue.
-          </div>
+          <p><strong>Memory Sources</strong> (transparence sur l'origine des souvenirs personnels), <strong>ChatGPT Apps + Connectors</strong>, <strong>Realtime API en GA</strong> (gpt-realtime + MCP distant + appels SIP) — angle fort pour les agents vocaux industriels.</p>
 
         </div>
       </div>
@@ -193,22 +289,22 @@
         <div class="roadmap-head">
           <img src="https://cdn.simpleicons.org/googlegemini/1b1818/f3f1ee" alt="Google DeepMind" />
           <h2>Google DeepMind</h2>
-          <p class="current">Actuel · <strong>Gemini 3 Pro / Flash / Deep Think</strong></p>
+          <p class="current">Actuel · <strong>Gemini 3.5 Flash</strong> (19 mai 2026 · Google I/O) + Gemini 3 Pro</p>
         </div>
         <div class="roadmap-body">
 
           <h3>Probable suite (court terme · 1-3 mois)</h3>
-          <p>Gemini 3 <strong>Ultra</strong> — annoncé mais pas encore en GA. Variante haute-performance positionnée face à Claude Opus et GPT-5.5 Thinking. Deep Research <strong>Max</strong> déjà sorti le 1er mai, donc l'effort actuel est sur les variantes spécialisées plutôt que sur un nouveau Gemini.</p>
-
-          <h3>Moyen terme (6-12 mois)</h3>
-          <p>Gemini <strong>4</strong> — saut de génération, probablement Q4 2026 / Q1 2027. Google a annoncé un investissement massif sur Trillium TPU v6 et des nouveaux datacenters EU, cohérent avec un cycle d'entraînement majeur.</p>
-
-          <h3>Capacités à surveiller</h3>
-          <p><strong>Project Astra</strong> (assistant agent multimodal) et <strong>Project Mariner</strong> (agent web autonome) montent en GA progressivement. <strong>Antigravity</strong> (IDE Google avec agent natif) est le concurrent direct de Claude Code à monitorer. Coté média génératif : <strong>Veo 4</strong>, <strong>Imagen 5</strong>, <strong>Lyria 3</strong> probables dans l'année.</p>
+          <p>Gemini 3.5 <strong>Pro</strong> — annoncé à Google I/O mais pas encore disponible, attendu en juin 2026. Le Flash a déjà atteint 81.0 % SWE-bench Verified à $1.50/$9 (4× plus rapide que les frontières concurrentes). Le Pro viserait 85-87 %, menaçant directement Claude Opus 4.7. <strong>Gemini Omni Flash</strong> (texte + image + audio + vidéo in/out) en rollout développeurs dans les semaines à venir.</p>
 
           <div class="signal">
-            <strong>Rumeur</strong>Gemini Code (IDE web hosted par Google, cloud-native dès le départ) en préparation interne. Concurrent direct de Cursor + Antigravity sur le segment dev.
+            <strong>Signal</strong>Google I/O 2026 : Gemini 3.5 Flash bat Gemini 2.5 Pro et outperforme Gemini 3.1 Pro sur Terminal-Bench 2.1 (76.2 %), MCP Atlas (83.6 %), CharXiv Reasoning (84.2 %). Flash-tier qui dépasse l'ancien Pro-tier — tendance structurelle chez Google.
           </div>
+
+          <h3>Moyen terme (6-12 mois)</h3>
+          <p>Gemini <strong>4</strong> — saut de génération, probablement Q4 2026 / Q1 2027. Google a annoncé des investissements massifs sur Trillium TPU v6 et nouveaux datacenters EU.</p>
+
+          <h3>Capacités à surveiller</h3>
+          <p><strong>Project Astra</strong> (agent multimodal) et <strong>Project Mariner</strong> (agent web autonome) en GA progressive. <strong>Antigravity</strong> (IDE Google avec agent natif, concurrent Claude Code) et <strong>Gemini Spark</strong> (agent autonome de tâches) annoncés à I/O — suivre les benchmarks de coding et les intégrations MCP.</p>
 
         </div>
       </div>
@@ -218,22 +314,22 @@
         <div class="roadmap-head">
           <img src="https://cdn.simpleicons.org/meta/1b1818/f3f1ee" alt="Meta" />
           <h2>Meta</h2>
-          <p class="current">Actuel · <strong>Llama 4 Scout / Maverick / Behemoth</strong></p>
+          <p class="current">Actuel · <strong>Llama 4 Scout / Maverick</strong> + Behemoth (preview)</p>
         </div>
         <div class="roadmap-body">
 
           <h3>Probable suite (court terme · 1-3 mois)</h3>
-          <p>Llama 4 <strong>Behemoth</strong> en preview encore. Yann LeCun a hinté lors de la LlamaCon qu'une version finalisée est attendue cet été. Probablement <strong>>2T paramètres</strong>, teacher model destiné à entraîner les futures gens via distillation.</p>
-
-          <h3>Moyen terme (6-12 mois)</h3>
-          <p>Llama <strong>5</strong> — saut générationnel attendu fin 2026 ou début 2027. Meta a annoncé des partenariats compute (Stargate-like) qui suggèrent un cycle d'entraînement majeur en cours.</p>
+          <p>Llama 4 <strong>Behemoth</strong> en preview encore. Yann LeCun a confirmé une version finalisée prévue pour l'été 2026. Probablement <strong>>2T paramètres total</strong>, MoE, utilisé principalement comme teacher model pour la distillation des versions Maverick/Scout futures. Fenêtre Scout 10M tokens sur 1 H100 reste unique dans l'open-weights.</p>
 
           <div class="signal">
-            <strong>Signal</strong>LeCun a publiquement déclaré viser <em>"world models"</em> comme prochaine étape — modèles qui comprennent la physique du monde au-delà du texte. Llama 5 pourrait incorporer cette direction.
+            <strong>Signal</strong>LeCun a publiquement déclaré viser les <em>"world models"</em> comme prochaine étape — modèles intégrant la physique du monde au-delà du texte. Llama 5 pourrait en incorporer les premières briques.
           </div>
 
+          <h3>Moyen terme (6-12 mois)</h3>
+          <p>Llama <strong>5</strong> — saut générationnel attendu fin 2026. L'argument différenciant open-weights se renforce à mesure que Gemini 3.5 Flash propose des tarifs API proches du self-hosting.</p>
+
           <h3>Capacités à surveiller</h3>
-          <p>L'angle <strong>open weights</strong> reste l'argument différenciant. La fenêtre <strong>10M tokens</strong> de Scout (sur 1 H100) ouvre des cas d'usage que les frontières fermées peinent à servir économiquement. <strong>Meta AI app</strong> et l'intégration WhatsApp/Messenger continuent de scaler côté grand public.</p>
+          <p>La <strong>fenêtre 10M tokens</strong> de Scout (unique en open-weights) ouvre des cas d'usage de very long context inaccessibles économiquement aux frontières fermées. <strong>Meta AI app</strong> et l'intégration WhatsApp/Messenger scalent le grand public vers les mêmes modèles disponibles en self-host — convergence B2C/B2B intéressante.</p>
 
         </div>
       </div>
@@ -243,25 +339,25 @@
         <div class="roadmap-head">
           <img src="https://cdn.simpleicons.org/mistralai/1b1818/f3f1ee" alt="Mistral AI" />
           <h2>Mistral AI</h2>
-          <p class="current">Actuel · <strong>Mistral Medium 3.5 + Voxtral</strong></p>
+          <p class="current">Actuel · <strong>Mistral Medium 3.5</strong> (MIT) + <strong>Large 3</strong> (675B MoE, MIT, déc 2025)</p>
         </div>
         <div class="roadmap-body">
 
           <h3>Probable suite (court terme · 1-3 mois)</h3>
-          <p>Mistral <strong>Large 3</strong> attendu — la dernière version Large date de fin 2025 et n'est pas open weights. Vu que Medium 3.5 ouvre déjà à 77.6 % SWE-bench, un Large 3 viserait probablement 82-85 % et serait positionné en commercial (non open).</p>
+          <p>Mistral <strong>Medium 4</strong> ou alignement de la famille sur la génération 4 — le Large 3 (41B actifs / 675B total, MoE, MMLU-Pro 73.1 %) consolide l'open-weights haut de gamme. La pression de Gemini 3.5 Flash à $1.50/$9 sur le segment "bon rapport qualité-prix" pourrait accélérer une version Medium 4 plus compétitive sur le coding.</p>
 
           <div class="signal">
-            <strong>Signal</strong>Arthur Mensch a évoqué publiquement <em>"un modèle pour les usages les plus exigeants"</em> lors de la sortie de Medium 3.5. Lecture standard : Large 3 dans les 2-3 mois.
+            <strong>Signal</strong>Arthur Mensch avait évoqué <em>"un modèle pour les usages les plus exigeants"</em> lors du lancement de Medium 3.5. Lecture standard : une nouvelle génération Large en 2026 pour viser 85 %+ SWE-bench.
           </div>
 
           <h3>Moyen terme (6-12 mois)</h3>
-          <p>Mistral <strong>Medium 4</strong> ou Mistral <strong>Frontier</strong> — saut générationnel pour rattraper l'écart sur les benchmarks haut de gamme. La stratégie "souverain européen" pousse à viser les 85-90 % SWE-bench pour rester crédible face aux frontières US.</p>
+          <p>Mistral <strong>Frontier</strong> (nom de code) — saut générationnel pour consolider la position "souverain européen". La stratégie B2B via <strong>Le Chat Entreprise</strong> nécessite un modèle crédible face aux GPT-5.5 et Opus 4.7 sur les benchmarks clients.</p>
 
           <h3>Capacités à surveiller</h3>
-          <p><strong>Voxtral TTS</strong> est le premier modèle voix Mistral — surveiller la qualité voix française, qui pourrait débloquer des cas d'usage (tutos clients, doc audio, voicebot industriel). <strong>Vibe Remote Agents</strong> est leur réponse à Routines + Vibe coding agents — l'intégration avec Le Chat Entreprise est l'axe stratégique B2B.</p>
+          <p><strong>Voxtral TTS</strong> — premier modèle voix Mistral, surveiller la qualité voix française pour les cas d'usage tutos clients, voicebot industriel. <strong>Vibe Remote Agents</strong> (concurrent de Claude Code Routines sur Le Chat Entreprise). <strong>Partenariat industriel français</strong> évoqué par plusieurs sources pour Q3 2026 — potentiellement dans l'aérospatial ou la défense.</p>
 
           <div class="signal">
-            <strong>Rumeur</strong>Partenariat industriel français majeur en préparation. Plusieurs sources mentionnent <em>"un grand industriel aérospatial ou défense"</em>, sans nom. Annonce probable Q3 2026 selon ces sources.
+            <strong>Rumeur</strong>Partenariat industriel français majeur en préparation. Plusieurs sources mentionnent un grand acteur aérospatial ou défense, sans nom. Annonce probable Q3 2026 selon ces sources.
           </div>
 
         </div>
@@ -269,7 +365,7 @@
 
       <div class="disclaimer">
         <strong>Note méthodologique</strong>
-        Cette page n'est pas mise à jour automatiquement par la routine hebdo — c'est une analyse curée qui s'appuie sur les briefs publiés et la veille active. Les <em>rumeurs</em> sont identifiées comme telles et sourcées quand possible, mais ne constituent pas des faits confirmés. Les <em>probabilités</em> sont des paris assumés au prisme de la veille IA réalisée. Pour les prédictions personnelles cadrées et trackées, voir <a href="../futur/">/futur/</a>.
+        Le <strong>classement "Top 5 semaine"</strong> est mis à jour chaque lundi par la routine Claude Code à partir des scores benchmark des items couverts. Le <strong>tableau comparatif</strong> et les <strong>roadmaps</strong> sont mis à jour à chaque annonce notable (nouveau modèle ou nouveau benchmark publié dans la fenêtre hebdomadaire). Les <em>rumeurs</em> sont identifiées comme telles et sourcées quand possible. Les <em>probabilités</em> sont des paris assumés au prisme de la veille IA réalisée. Pour les prédictions personnelles cadrées et trackées, voir <a href="../futur/">/futur/</a>.
       </div>
 
     </div>
