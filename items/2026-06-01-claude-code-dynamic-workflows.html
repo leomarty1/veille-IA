@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dynamic Workflows Claude Code — 1 000 sous-agents par run — Veille IA Lynxter</title>
+<meta name="description" content="Analyse des Dynamic Workflows de Claude Code (28 mai 2026, research preview) : orchestration de 1 000 sous-agents par run, 16 concurrents, scripts JavaScript, mot-clé workflow, mode ultracode. Implications Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-06-01.html">2026-06-01</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Dynamic Workflows</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Anthropic</span>
+          <span class="dot-sep">·</span>
+          <span>28 mai 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-lynxter">🎯 Lynxter</span>
+        </div>
+        <h1>Dynamic Workflows en research preview — Claude Code orchestre jusqu'à 1 000 sous-agents</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-06-01.html">Anthropic frappe trois fois — 2026-06-01</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">1 000<span class="unit">agents</span></div>
+            <div class="stat-label">Max par run</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">16<span class="unit">parallèles</span></div>
+            <div class="stat-label">Concurrence max</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">v2.1.154<span class="unit">+</span></div>
+            <div class="stat-label">Claude Code requis</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">750k<span class="unit">lignes</span></div>
+            <div class="stat-label">Port Bun Zig→Rust (démo)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Anthropic introduit les <strong>Dynamic Workflows</strong> dans Claude Code le 28 mai 2026, en research preview, sur tous les plans payants (Pro, Max, Team, Enterprise) ainsi que sur l'API Anthropic, AWS Bedrock, Google Cloud Vertex AI et Microsoft Foundry. Requis : <strong>Claude Code v2.1.154+</strong>. C'est la troisième brique d'orchestration multi-agent d'Anthropic après les <strong>subagents</strong> (workers spawned par Claude au tour le tour) et les <strong>skills</strong> (instructions que Claude suit). Un workflow est différent dans la nature : c'est un <strong>script JavaScript</strong> que Claude écrit pour ta tâche, et qu'un runtime exécute en arrière-plan dans un environnement isolé du chat. Les résultats intermédiaires vivent dans des variables de script, pas dans le contexte de Claude — c'est ce qui permet de faire tourner des dizaines à des centaines d'agents sans saturer la fenêtre de contexte.</p>
+          <p>Le runtime applique des limites strictes : <strong>jusqu'à 16 agents concurrents</strong> (moins sur les machines avec peu de cœurs CPU) pour borner la conso de ressources locale, et <strong>1 000 agents au total par run</strong> pour éviter les boucles runaway. Trois façons de déclencher : (1) inclure le <strong>mot-clé <code>workflow</code></strong> dans un prompt (<code>Run a workflow to audit every API endpoint under src/routes/ for missing auth checks</code>) — Claude Code highlight le mot et écrit un script à la place de gérer la tâche turn-by-turn ; (2) activer le mode <strong><code>/effort ultracode</code></strong> qui combine reasoning xhigh + orchestration auto — chaque tâche substantielle de la session devient un workflow planifié ; (3) lancer un <strong>workflow bundled</strong> comme <code>/deep-research</code> qui fan-out web searches, fetch et cross-check sources, et synthétise un rapport cité avec les claims non vérifiés filtrés.</p>
+          <p>Le workflow tourne en background, la session Claude reste responsive. La commande <code>/workflows</code> ouvre une vue qui affiche chaque phase avec son agent count, son token total et son elapsed time ; on peut drill-in sur chaque agent pour voir son prompt, ses tool calls et son résultat. Le run est <strong>pausable et resumable dans la même session</strong> — les agents déjà complétés rendent leurs résultats cachés, le reste tourne en live. <strong>Sauvegarde</strong> : après un run qui a fait ce qu'on voulait, presser <code>s</code> dans <code>/workflows</code> sauvegarde le script comme commande (<code>.claude/workflows/&lt;name&gt;</code> au niveau projet partagé via git, ou <code>~/.claude/workflows/&lt;name&gt;</code> niveau utilisateur). La commande devient <code>/&lt;name&gt;</code> dans toutes les sessions futures. Permissions : les sous-agents tournent en <code>acceptEdits</code> mode, file edits auto-approuvés ; les shell commands, web fetches et MCP tools hors allowlist peuvent encore prompter mid-run. Exemple flagship cité par Anthropic : <strong>Jarred Sumner a porté Bun de Zig à Rust</strong> (~750 000 lignes de code Rust générées) en utilisant les Dynamic Workflows.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🎯 Pourquoi c'est important pour Lynxter</h2>
+        <p><strong>Les Dynamic Workflows débloquent ce que les Routines Cowork ne peuvent pas faire aujourd'hui.</strong> La Routine actuelle de génération du brief veille-IA tourne en orchestrateur séquentiel : Claude scanne Anthropic, résume, passe à OpenAI, résume, etc. — 12 à 15 minutes wall-clock pour ~30 WebSearch et 10-15 WebFetch. La même tâche en Dynamic Workflow paralllélise : un sous-agent dédié à chaque acteur (8 acteurs principaux + secondaires = 12 sous-agents en parallèle, dans la limite de 16 concurrents), un agent de cross-check qui élimine les doublons, un agent rédacteur final. Le contexte de Claude principal reste libre, seul le rapport final atterrit. Estimation : 3-4 minutes wall-clock total, soit un facteur 4×. À tester cette semaine : activer <code>/effort ultracode</code> dans une session Claude Code 2.1.154+, demander la génération du brief, observer le plan automatique. Si la qualité du résultat est égale ou supérieure, la Routine prochaine peut basculer sur ce pattern et économiser ~10 minutes par exécution hebdomadaire.</p>
+        <p><strong>Le mot-clé <code>workflow</code> change ton usage CLI quotidien.</strong> Désormais, pour toute tâche multi-étapes ambiguë (audit firmware S300X complet, migration de scripts test, recherche cross-fichiers dans la base de calibration), tu n'as plus besoin de structurer manuellement le multi-agent. Tape "<code>workflow trouve tous les profils PEI 90A avec une dérive de température &gt; 5°C sur les 6 derniers mois et propose une correction</code>" — Claude écrit le script (un sous-agent par profil identifié, un agent d'analyse statistique, un agent de proposition correctif), tu approuves le plan, le run tourne en arrière-plan pendant que tu continues sur autre chose. Si le run est utile, sauvegarde-le comme <code>/audit-pei90a</code> dans <code>.claude/workflows/</code> du repo Lynxter — il devient une commande standard pour toute l'équipe support.</p>
+        <p><strong>Critère de bascule</strong> : sur les 3 prochaines semaines, identifie les Routines Cowork où le wall-clock dépasse 5 minutes et où la tâche a une structure clairement parallélisable (un sous-job par item d'une liste). Bascule-les en Dynamic Workflow et mesure le gain. Pour les Routines &lt; 2 minutes ou avec des dépendances séquentielles fortes (chaque étape dépend de la sortie de la précédente), garde l'orchestration classique — les workflows consomment plus de tokens par run (l'overhead du script + des agents multiples), donc il faut un vrai gain wall-clock pour amortir. Anthropic mentionne explicitement que <strong>"un workflow utilise meaningfully plus de tokens que la même tâche en conversation"</strong> — à intégrer dans tes monitorings de coût Cowork.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://code.claude.com/docs/en/workflows" target="_blank" rel="noopener">code.claude.com/docs/en/workflows</a>
+        <span class="source-meta">Anthropic · documentation officielle Dynamic Workflows · publié 28 mai 2026</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-06-01-claude-opus-4-8.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Opus 4.8 — fast mode 3× moins cher</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-05-18-claude-code-agent-view-goal.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code 2.1 — Agent View + /goal</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-05-25-antigravity-2-0.html">
+            <span class="related-actor">Google DeepMind</span>
+            <span class="related-title">Antigravity 2.0 — concurrent direct côté multi-agent</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-06-01-claude-opus-4-8.html">
+          <span class="label">← Item précédent</span>
+          <span class="title">Claude Opus 4.8</span>
+        </a>
+        <a class="next" href="2026-06-01-anthropic-series-h-965b.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Anthropic Série H 965 Md$</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-06-01</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
