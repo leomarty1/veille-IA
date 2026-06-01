@@ -1,6 +1,20 @@
 {
   "briefs": [
     {
+      "date": "2026-06-01",
+      "filename": "2026-06-01.html",
+      "items_count": 10,
+      "by_tag": { "lynxter": 2, "useful": 4, "info": 4 },
+      "by_actor": { "Anthropic": 3, "OpenAI": 3, "Google": 0, "Meta": 0, "Mistral": 1, "Cursor": 1, "xAI": 1, "Perplexity": 1 },
+      "mode": "hebdomadaire",
+      "title": "Anthropic frappe trois fois",
+      "highlights": [
+        "Claude Opus 4.8 + Dynamic Workflows + Série H 965 Md$ — Anthropic empile trois annonces le 28 mai",
+        "Codex Computer Use sur Windows (29 mai) — pilotage mobile depuis ChatGPT iOS/Android",
+        "Mistral AI Now Summit — stack industriel (Airbus, BMW, ASML) + datacenter 10 MW aux Ulis Q3 2026"
+      ]
+    },
+    {
       "date": "2026-05-25",
       "filename": "2026-05-25.html",
       "items_count": 13,
