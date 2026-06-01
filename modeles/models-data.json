@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-05-25",
+    "last_updated": "2026-06-01",
     "metric": "SWE-bench Verified",
     "metric_description": "Résolution autonome d'issues GitHub (dataset 500 tâches validées humainement, Scale AI). Scores exprimés en % de tâches résolues.",
     "source": "Annonces officielles acteurs · Scale AI benchlm.ai · analyses indépendantes",
@@ -48,6 +48,12 @@
       "label": "Google I/O 2026",
       "sublabel": "Gemini 3.5 Flash — Flash-tier bat le Pro de l'an passé",
       "type": "event"
+    },
+    {
+      "date": "2026-05-28",
+      "label": "Claude Opus 4.8",
+      "sublabel": "88.6 % SWE-bench Verified · 69.2 % SWE-bench Pro · talonne GPT-5.5 à 0.1 pt",
+      "type": "milestone"
     }
   ],
   "models": [
@@ -401,6 +407,19 @@
       "pricing_out": 9.0,
       "open_weights": false,
       "notes": "Flash-tier qui bat l'ancien Pro-tier · 4× plus rapide · Multimodal · $1.50/$9 · Google I/O 2026"
+    },
+    {
+      "id": "claude-opus-4-8",
+      "name": "Claude Opus 4.8",
+      "actor": "Anthropic",
+      "date": "2026-05-28",
+      "swe_bench_verified": 88.6,
+      "approximate": false,
+      "context_k": 1000,
+      "pricing_in": 5.0,
+      "pricing_out": 25.0,
+      "open_weights": false,
+      "notes": "#2 SWE-bench Verified — talonne GPT-5.5 à 0.1 pt · Leader SWE-bench Pro 69.2 % (+10.6 pts vs GPT-5.5) · OSWorld-Verified 83.4 % · Fast mode 3× moins cher que 4.7 fast mode · Même pricing que 4.7 · 1M ctx"
     },
     {
       "id": "claude-mythos-preview",
