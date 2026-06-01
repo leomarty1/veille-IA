@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cursor 3.6 — Auto-review + Build in Parallel — Veille IA Lynxter</title>
+<meta name="description" content="Analyse de Cursor 3.6 (29 mai 2026) : Auto-review avec classifier subagent, Build in Parallel par graphe de dépendances, Split PRs, billing usage-only. Implications Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-06-01.html">2026-06-01</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Cursor 3.6</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Cursor</span>
+          <span class="dot-sep">·</span>
+          <span>29 mai 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-useful">🛠 Utile</span>
+        </div>
+        <h1>Cursor 3.6 — Auto-review (classifier subagent) + Build in Parallel</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-06-01.html">Anthropic frappe trois fois — 2026-06-01</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">3<span class="unit">surfaces</span></div>
+            <div class="stat-label">Shell · MCP · Fetch (auto-review)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">v3.6<span class="unit">release</span></div>
+            <div class="stat-label">29 mai 2026</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">2.5<span class="unit">Composer</span></div>
+            <div class="stat-label">Long-tasks stabilité++</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">Usage<span class="unit">billing</span></div>
+            <div class="stat-label">Bugbot bascule sur usage-only</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Cursor sort la <strong>version 3.6</strong> de son IDE le 29 mai 2026, focalisée sur deux capacités majeures côté agentique. <strong>Auto-review</strong> est un nouveau run mode qui permet à Cursor de travailler plus longtemps sur des tâches sans demander d'approbation à chaque étape. Le mode s'applique à trois classes de tool calls : <strong>Shell</strong> (commandes système), <strong>MCP</strong> (serveurs Model Context Protocol externes), et <strong>Fetch</strong> (requêtes HTTP/web). Le mécanisme : les appels présents dans une allowlist explicite tournent immédiatement sans prompt ; ceux qui peuvent être sandboxés tournent dans un sandbox isolé ; le reste passe par un <strong>classifier subagent</strong> qui décide en autonomie d'autoriser, de retenter avec une approche différente, ou de demander l'approbation utilisateur. C'est la même philosophie qu'<code>acceptEdits</code> + <code>bypassPermissions</code> côté Claude Code, raffinée avec une couche d'analyse intermédiaire automatique pour réduire la fatigue des prompts d'approbation sans laisser l'agent en roue libre complète.</p>
+          <p><strong>Build in Parallel</strong> attaque le même problème que les Dynamic Workflows Anthropic mais sous un angle différent. Quand on a un plan multi-step, Cursor analyse les <strong>dépendances entre tâches</strong> et construit un <strong>graphe d'exécution orienté</strong>. Les étapes identifiées comme indépendantes (par exemple, "ajouter une route API" et "écrire les tests unitaires existants") sont dispatchées simultanément à des sous-agents async. Les étapes dépendantes restent séquentielles. Cliquer sur "Build in Parallel" déclenche l'analyse et l'exécution — l'utilisateur voit le graphe visualisé dans l'IDE pendant l'exécution. Cursor met aussi à jour <strong>Composer 2.5</strong> avec une meilleure stabilité sur les sustained long tasks, et propose une nouvelle <strong>quick action "Split PRs"</strong> qui découpe automatiquement les changements en plusieurs PRs logiques en se basant sur le contexte chat pour identifier les slices.</p>
+          <p>Côté business model, Cursor bascule <strong>Bugbot en usage-only</strong> (suppression des seat fees) : les Teams payent depuis le on-demand spend, les Individuals depuis leur usage inclus. Les admins Enterprise gagnent une granularité accrue sur le contrôle des modèles : <strong>allowlist / blocklist par modèle ET par provider</strong> — bloquer entièrement Anthropic, ou autoriser uniquement Claude Sonnet, devient possible en un toggle. Côté ecosystème : <strong>Cursor in Jira</strong> permet d'assigner un work item à Cursor ou mentionner <code>@Cursor</code> en commentaire pour lancer un cloud agent qui peut fix bugs, add features, update tests, investigate. <strong>Canvas sharing</strong> (artifacts interactifs créés par les agents — reports, dashboards) gagne un partage par live snapshot link. La release positionne Cursor comme l'<strong>agentic IDE</strong> avec le plus de surface dans la chaîne dev (IDE + Jira + cloud agents + PR review + canvas) — concurrent direct à Claude Code + GitHub Actions, et à Antigravity Desktop + Codex.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🛠 Pourquoi c'est utile à savoir pour Lynxter</h2>
+        <p><strong>Cursor reste sur le radar comme alternative agentic IDE.</strong> Lynxter utilise Claude Code en stack principal — Cursor n'est pas dans le set actif. Mais le pattern de release de Cursor (Auto-review + Build in Parallel le 29 mai, soit le lendemain des Dynamic Workflows d'Anthropic) confirme que la convergence multi-agent / parallel execution est désormais standard sur tous les IDE agentic. Les Dynamic Workflows Anthropic et Build in Parallel Cursor résolvent le même problème (paralléliser quand c'est parallélisable) avec deux approches différentes : Anthropic via script JS rerunnable, Cursor via graphe de dépendances analysé à la volée. Pour Lynxter, ça veut dire qu'<strong>aucun choix d'IDE actuel ne te ferme une porte sur le multi-agent</strong> — la primitive est désormais disponible partout.</p>
+        <p><strong>Auto-review est un pattern à reproduire dans la configuration Claude Code Lynxter.</strong> Le classifier subagent qui décide automatiquement entre allow / retry / ask est plus sophistiqué que le simple <code>acceptEdits</code> de Claude Code. À mettre dans la liste des features à demander en feedback à Anthropic — soit côté Claude Code GitHub Issues, soit en direct via partnership. En attendant, Lynxter peut bricoler un équivalent : configurer un script bash de hook pre-tool-use qui passe les commandes inconnues à un Claude classifier en background, avant d'autoriser ou bloquer. C'est lourd, mais sur les Routines critiques où on ne veut pas tout allowlister mais on veut éviter les prompts incessants, ça vaut un POC.</p>
+        <p><strong>La bascule Bugbot en usage-only est un signal de pricing à anticiper.</strong> Cursor pousse vers le modèle "no seat, pay per use" — Anthropic ne l'a pas (encore) fait sur Claude Code, mais la pression de marché augmente. Pour Lynxter, qui est sur un palier Claude Max actuellement, ça veut dire surveiller les prochaines annonces tarifaires d'Anthropic (rumeurs d'introduction de paliers usage-only enterprise) et ajuster les contrats annuels en conséquence. Si Anthropic introduit un palier "tokens-only enterprise" avant fin 2026, ça peut être plus économique pour Lynxter qu'un palier seat-based — à modéliser dans un tableau avec la conso réelle des Routines actuelles.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://cursor.com/changelog" target="_blank" rel="noopener">cursor.com/changelog</a>
+        <span class="source-meta">Cursor · changelog officiel v3.6 · 29 mai 2026</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-06-01-claude-code-dynamic-workflows.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Dynamic Workflows — pattern parallèle Anthropic</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-06-01-openai-codex-computer-use-windows.html">
+            <span class="related-actor">OpenAI</span>
+            <span class="related-title">Codex Computer Use Windows</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+          <li><a href="2026-05-25-antigravity-2-0.html">
+            <span class="related-actor">Google DeepMind</span>
+            <span class="related-title">Antigravity 2.0 — agentic IDE concurrent</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-06-01-mistral-ai-now-summit-industrial.html">
+          <span class="label">← Item précédent</span>
+          <span class="title">Mistral AI Now Summit</span>
+        </a>
+        <a class="next" href="../briefs/2026-06-01.html">
+          <span class="label">Retour au brief →</span>
+          <span class="title">2026-06-01</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-06-01</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
