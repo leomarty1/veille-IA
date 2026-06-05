@@ -272,6 +272,7 @@
      PARSE
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   const models = raw.models
+    .filter(d => !d.status || d.status === 'released')   // exclut les modèles non sortis (preview/leak/rumeur) du graphe
     .map(d => ({...d, dateObj: new Date(d.date), score: +d.swe_bench_verified}))
     .sort((a,b) => a.dateObj - b.dateObj);
 
