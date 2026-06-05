@@ -149,6 +149,9 @@ Avant de générer, lire via `mcp__github__get_file_contents` (owner: leomarty1,
 
 ### 5. Fichiers à générer
 
+**Voie recommandée — single-source (Track A).** Écrire la source unique du brief `briefs/<date>.json` (schéma : `build/example-brief.json`), puis `node build/gen.js <date>` génère le brief + les pages détail des items 🎯/🛠 (chrome partagé via `build/lib.js`, plus de double saisie brief↔item). Ensuite mettre à jour `data.json` / `index.html` / `briefs/index.html` / `modeles/` comme ci-dessous, puis QA (`node build/qa.js`). La méthode manuelle ci-dessous reste valable pour les sections pas encore générées.
+
+
 #### A. `briefs/YYYY-MM-DD.html` — brief hebdomadaire
 
 Se baser sur `briefs/2026-05-18.html` comme template gold standard (lire via MCP si besoin). Structure :

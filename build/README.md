@@ -32,6 +32,15 @@ QA            node build/qa.js (bloquant)
 
 Lancement : la routine invoque le workflow `veille` avec `args = { date, since, ledger }`. Gain estimé ~3 min vs 12-15, échecs isolés par acteur.
 
-## `build/gen.js` (Track A — à finaliser)
+## `build/gen.js` — générateur de pages (Track A)
 
-Générateur statique : `briefs/<date>.json` (source unique d'un brief) → `briefs/<date>.html` + `items/<date>-*.html` + entrée `data.json` + archive + compteurs home + classement, via `build/templates/`. Objectif : **chaque item écrit une seule fois**, compteurs **dérivés** (fin du drift). Templates partagés (chrome) injectés une fois.
+Source unique → HTML. À partir de `briefs/<date>.json` (un item décrit **une seule fois**), génère la page brief + une page détail par item 🎯/🛠, via les templates `build/templates/` et le chrome partagé `build/lib.js` (header/footer écrits une fois, plus de duplication).
+
+```bash
+node build/gen.js 2026-06-01                 # lit briefs/2026-06-01.json → écrit le HTML
+node build/gen.js build/example-brief.json _preview   # depuis un chemin, suffixe non-destructif
+```
+
+`build/example-brief.json` = schéma de référence (brief 2026-06-01, prouvé rendu dans le navigateur). Champs clés : `title_html`, `intro_html`, `tldr[]`, `lynxter_hero[]`, `synthese_html`, `actors_order[]`, `actor_empty{}`, `items[]` (chaque item : slug, actor, tag, date, title, context_html, sources[], et `detail{}` pour les 🎯/🛠 → stats, context_paragraphs, lynxter_paragraphs, source, related, nav). La section « Acteurs secondaires » = items dont l'`actor` n'est pas dans `actors_order`.
+
+**État** : templates brief + item prouvés fonctionnels (rendu navigateur vérifié). Reste en follow-up : dériver aussi `data.json` + compteurs home + archive + classement depuis la même source (pour l'instant couverts par la QA), et migrer les 4 briefs historiques (transcription pleine).
