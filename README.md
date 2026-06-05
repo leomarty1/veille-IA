@@ -6,7 +6,7 @@ Dashboard hebdomadaire des nouveautés IA (Anthropic, OpenAI, Google DeepMind, M
 
 ## Comment ça marche
 
-Une routine Claude Code distante tourne chaque **lundi à 8h Europe/Paris** dans le cloud Anthropic. Elle :
+Une routine Claude Code distante tourne chaque **lundi à 01:00 Europe/Paris** dans le cloud Anthropic. Elle :
 
 1. Scanne les sources primaires de chaque acteur sur les 7 derniers jours
 2. Filtre le bruit (marketing, repackagings, doublons)
@@ -20,13 +20,24 @@ Aucune dépendance machine locale. La routine tourne même si le PC est éteint.
 
 ```
 /
-├── index.html              # toujours = dernier brief
+├── index.html              # toujours = dernier brief + stats globales
 ├── assets/
-│   └── style.css           # styles partagés
+│   ├── style.css           # styles partagés
+│   └── app.js              # JS archive/filtre + dark mode
 ├── briefs/
-│   ├── index.html          # archive (liste des briefs passés)
-│   ├── data.json           # métadonnées briefs (date, mode, items_count)
+│   ├── index.html          # archive (liste + filtres)
+│   ├── data.json           # métadonnées machine-readable (date, mode, items_count, by_tag, by_actor, items[])
 │   └── YYYY-MM-DD.html     # un fichier par brief
+├── items/
+│   └── YYYY-MM-DD-SLUG.html # pages détail des items 🎯 et 🛠
+├── modeles/
+│   ├── index.html          # classement hebdo
+│   └── models-data.json    # données SWE-bench (graphe D3)
+├── acteurs/index.html
+├── methodo/index.html
+├── futur/index.html
+├── graphe/index.html       # graphe D3 interactif
+├── CLAUDE.md               # instructions de la routine
 └── README.md
 ```
 
@@ -38,4 +49,4 @@ Aucune dépendance machine locale. La routine tourne même si le PC est éteint.
 
 ## Acteurs surveillés (ordre fixe)
 
-Anthropic → OpenAI → Google DeepMind → Meta → Mistral → Autres (optionnel, si majeur)
+Anthropic → OpenAI → Google DeepMind → Meta → Mistral (5 principaux, couverts chaque semaine) → secondaires si annonce majeure : Perplexity, xAI, Cursor, DeepSeek, Cohere, Stability AI

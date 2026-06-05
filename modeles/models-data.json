@@ -427,12 +427,13 @@
       "actor": "Anthropic",
       "date": "2026-05-22",
       "swe_bench_verified": 93.9,
-      "approximate": false,
+      "approximate": true,
+      "status": "unreleased",
       "context_k": 1000,
       "pricing_in": null,
       "pricing_out": null,
       "open_weights": false,
-      "notes": "Preview uniquement · 93.9 % SWE-bench Verified · 94.6 % GPQA Diamond — prochaine génération probable"
+      "notes": "Preview interne NON PUBLIÉE · score 93.9 % SWE-bench NON OFFICIEL (rumeur/leak) · 94.6 % GPQA Diamond non officiel · à ne pas traiter comme un modèle sorti"
     }
   ]
 }

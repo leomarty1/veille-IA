@@ -46,7 +46,8 @@
       "date": "2026-05-11",
       "filename": "2026-05-11.html",
       "items_count": 11,
-      "by_tag": { "lynxter": 5, "useful": 5, "info": 1 },
+      "by_tag": { "lynxter": 4, "useful": 6, "info": 1 },
+      "by_actor": { "Anthropic": 5, "OpenAI": 1, "Google": 2, "Meta": 1, "Mistral": 2 },
       "mode": "rétrospective initiale (14 avril → 11 mai)",
       "highlights": [
         "Claude Opus 4.7 — saut net SWE-bench (87.6%)",
