@@ -5,7 +5,9 @@ Brief hebdomadaire automatique des nouveautés IA, scoré sous l'angle Lynxter (
 **Fréquence :** chaque lundi à 01:00 Europe/Paris  
 **Modèle :** dernier Claude Opus disponible (≥ claude-opus-4-8 — ne pas figer la version dans le prompt ; logger le modèle réel)  
 **Repo :** https://github.com/leomarty1/veille-IA  
-**Site :** https://leomarty1.github.io/veille-IA/
+**Site :** https://leomarty1.github.io/veille-IA/  
+**Exécution :** workflow `.claude/workflows/veille.js` (fan-out par acteur → cross-check/dedup → rédaction → QA `node build/qa.js`)  
+**Outillage :** `build/` (zéro dépendance) — voir `build/README.md`
 
 ---
 
@@ -289,7 +291,7 @@ Inclure `modeles/models-data.json` dans le push_files final.
 
 ### 5.5 Auto-QA bloquante — AVANT le push (ne pas pousser si un check est rouge)
 
-Exécuter ces vérifications sur les fichiers générés ; si l'une échoue, corriger puis re-vérifier — ne PAS pousser tant que tout n'est pas vert :
+**Lancer `node build/qa.js`** — garde-fou exécutable zéro-dépendance (sort en code 1 et bloque le push si rouge). Il couvre les vérifications ci-dessous ; corriger puis relancer jusqu'au vert avant de pousser :
 
 1. **Liens d'items** : chaque `href="../items/AAAA-MM-JJ-*.html"` du brief pointe vers un fichier réellement présent dans le set de push (pas de 404 silencieux).
 2. **Compteurs cohérents** : `Σ by_tag == items_count` ET `Σ by_actor == items_count` (data.json) ; le `stat-strip` du brief == ces totaux ; `by_actor` présent et complet (jamais d'entrée sans `by_actor`).
