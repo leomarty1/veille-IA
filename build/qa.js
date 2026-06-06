@@ -52,6 +52,36 @@ for (const b of briefs) {
   check(`items_count == nb <article> (${b.date})`, arts === b.items_count, `${arts} vs ${b.items_count}`);
 }
 
+/* 3b. COMPLÉTUDE — un brief maigre/incomplet ne doit pas passer ----- */
+const PRINCIPAUX = ['Anthropic', 'OpenAI', 'Google', 'Meta', 'Mistral'];
+const MIN_CTX = 150; // caractères de contexte mini pour un item 🎯/🛠
+const stripTags = (h) => h.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+for (const b of briefs) {
+  const file = 'briefs/' + b.filename;
+  if (!exists(file)) continue;
+  const html = read(file);
+  // sections structurantes présentes
+  check(`section TL;DR (${b.date})`, /class="tldr/.test(html));
+  check(`section lynxter-hero (${b.date})`, /class="lynxter-hero/.test(html));
+  check(`section synthèse (${b.date})`, /class="synthese/.test(html));
+  // les 5 acteurs principaux ont chacun une section (logo présent)
+  const logos = (html.match(/cdn\.simpleicons\.org\/(\w+)/g) || []).join(' ');
+  const SLUGS = { Anthropic: 'anthropic', OpenAI: 'openai', Google: 'googlegemini', Meta: 'meta', Mistral: 'mistralai' };
+  for (const a of PRINCIPAUX) check(`section acteur présente : ${a} (${b.date})`, logos.includes('/' + SLUGS[a]));
+  // chaque item 🎯/🛠 : page détail liée + source + contexte non maigre
+  const blocks = html.split('<article').slice(1).map((s) => '<article' + s.split('</article>')[0]);
+  for (const blk of blocks) {
+    const compact = /class="item item-compact"/.test(blk);
+    if (compact) continue; // les · info sont volontairement courts
+    const m = blk.match(/<h3 class="item-title">(?:<a[^>]*>)?([^<]{5,60})/);
+    const label = m ? m[1].trim().slice(0, 40) : '???';
+    check(`item 🎯/🛠 a une page détail liée (${b.date} · ${label})`, /href="\.\.\/items\/[^"]+\.html"/.test(blk));
+    check(`item 🎯/🛠 a une source (${b.date} · ${label})`, /class="item-source"[\s\S]*?<a /.test(blk));
+    const ctx = (blk.match(/class="item-context">([\s\S]*?)<\/p>/) || [, ''])[1];
+    check(`item 🎯/🛠 contexte ≥ ${MIN_CTX} car (${b.date} · ${label})`, stripTags(ctx).length >= MIN_CTX, stripTags(ctx).length + ' car');
+  }
+}
+
 /* 4. Compteurs home == Σ by_actor sur tous les briefs --------------- */
 const totals = {};
 for (const b of briefs) for (const [k, v] of Object.entries(b.by_actor || {})) totals[k] = (totals[k] || 0) + v;

@@ -13,11 +13,17 @@
   ],
   "lynxter_hero": [
     "<strong>Opus 4.8 est un upgrade silencieux et immédiat de ton stack.</strong> Anthropic livre 4.8 à <strong>même pricing</strong> que 4.7 ($5/$25 par M tokens), donc l'arbitrage est trivial : tu actualises tes Routines Cowork et Claude Code, point. Le saut de +1 pt sur SWE-bench Verified (87.6 → 88.6 %) reste discret face à GPT-5.5 (88.7 %), mais le vrai signal est ailleurs : <strong>+4.9 pts sur SWE-bench Pro (64.3 → 69.2 %)</strong>, soit 10.6 pts d'avance sur GPT-5.5 sur le benchmark le plus représentatif des tâches longues, multi-fichiers, mal spécifiées — exactement le profil d'un audit firmware S300X ou d'une migration de scripts Cowork. Le <strong>fast mode</strong> divise par 3 son surcoût vs la 4.7 fast mode : il devient économiquement viable pour les batch jobs où la latence prime sur la qualité absolue (scan tickets entrants, déduplication base de connaissance, classification logs). Test concret cette semaine : lance une routine Cowork existante en fast mode, mesure la dérive qualité — si elle reste sous 10 %, bascule les workloads non-critiques pour réduire le wall-clock d'un facteur 2.5.",
-    "<strong>Dynamic Workflows change le plafond de ce que tu peux orchestrer depuis Claude Code.</strong> Jusqu'ici, une routine multi-agent saturait vite : la fenêtre de contexte du Claude orchestrateur se remplit des résultats intermédiaires, et passé 5-6 sous-agents la qualité décroche. Les Dynamic Workflows déplacent <strong>le plan dans un script JS exécuté par un runtime séparé</strong> — Claude écrit le script (ou tu réutilises le bundled <code>/deep-research</code>), le runtime fan-out jusqu'à 1 000 agents au total dont 16 concurrents, et seul le rapport final atterrit dans ton contexte. Pour Lynxter, c'est le déblocage du brief veille-IA lui-même : la routine actuelle se contente d'un orchestrateur séquentiel par acteur. En Dynamic Workflow, on parallélise : un sous-agent par acteur (Anthropic, OpenAI, Google, Meta, Mistral, Perplexity, xAI, Cursor) qui fetch + résume en parallèle, un agent de cross-check qui élimine les doublons, un agent rédacteur final. Estimation wall-clock : ~3 min vs 12-15 min actuellement. Active <code>/effort ultracode</code> dans une session test la semaine prochaine pour voir Claude planifier automatiquement les workflows. Requis : Claude Code v2.1.154+. Le mot-clé <code>workflow</code> dans un prompt déclenche aussi un run ad-hoc — utile pour les audits ponctuels firmware S300X/S600D.",
-    "<strong>Le passage Anthropic devant OpenAI sur la valo recadre tes paris fournisseur à 3 ans.</strong> $965 Md post-money, run-rate ARR porté de $30 Md (Série G, février) à $47 Md, soit une valorisation multipliée par ~2,5 depuis février ($380 Md → $965 Md). La signature : un IPO probable dans les 12-18 mois et un appétit confirmé sur l'enterprise. Pour Lynxter, cela conforte le pari Claude comme stack principal : pas de risque crédible de discontinuité fournisseur, capacité d'investissement R&D ≥ OpenAI sur les 24 mois à venir, et roadmap Mythos (preview interne non publiée, score SWE-bench non officiel évoqué en rumeur) qui suggère Claude 5 avant fin 2026. À surveiller : la pression IPO pourrait pousser une monétisation plus agressive (paliers Cowork enterprise, plus de feature-gating sur les Routines). Si tu prévois une montée en charge support client via Claude Cowork au S2 2026, négocie un commit annuel maintenant pour figer le pricing."
+    "<strong>Dynamic Workflows change le plafond de ce que tu peux orchestrer depuis Claude Code.</strong> Jusqu'ici, une routine multi-agent saturait vite : la fenêtre de contexte du Claude orchestrateur se remplit des résultats intermédiaires, et passé 5-6 sous-agents la qualité décroche. Les Dynamic Workflows déplacent <strong>le plan dans un script JS exécuté par un runtime séparé</strong> — Claude écrit le script (ou tu réutilises le bundled <code>/deep-research</code>), le runtime fan-out jusqu'à 1 000 agents au total dont 16 concurrents, et seul le rapport final atterrit dans ton contexte. Pour Lynxter, c'est le déblocage du brief veille-IA lui-même : la routine actuelle se contente d'un orchestrateur séquentiel par acteur. En Dynamic Workflow, on parallélise : un sous-agent par acteur (Anthropic, OpenAI, Google, Meta, Mistral, Perplexity, xAI, Cursor) qui fetch + résume en parallèle, un agent de cross-check qui élimine les doublons, un agent rédacteur final. Estimation wall-clock : ~3 min vs 12-15 min actuellement. Active <code>/effort ultracode</code> dans une session test la semaine prochaine pour voir Claude planifier automatiquement les workflows. Requis : Claude Code v2.1.154+. Le mot-clé <code>workflow</code> dans un prompt déclenche aussi un run ad-hoc — utile pour les audits ponctuels firmware S300X/S600D (\"workflow audit every parameter set in /firmware/profiles for inconsistencies\").",
+    "<strong>Le passage Anthropic devant OpenAI sur la valo recadre tes paris fournisseur à 3 ans.</strong> $965 Md post-money, run-rate ARR porté de $30 Md (Série G, février) à $47 Md, soit une valorisation multipliée par ~2,5 depuis février ($380 Md → $965 Md). La signature : un IPO probable dans les 12-18 mois et un appétit confirmé sur l'enterprise (run-rate cross $47 Md). Pour Lynxter, cela conforte le pari Claude comme stack principal : pas de risque crédible de discontinuité fournisseur, capacité d'investissement R&D ≥ OpenAI sur les 24 mois à venir, et roadmap Mythos (preview interne non publiée, score SWE-bench non officiel évoqué en rumeur) qui suggère Claude 5 avant fin 2026. À surveiller : la pression IPO pourrait pousser une monétisation plus agressive (paliers Cowork enterprise, plus de feature-gating sur les Routines). Si tu prévois une montée en charge support client via Claude Cowork au S2 2026, négocie un commit annuel maintenant pour figer le pricing."
   ],
-  "synthese_html": "Semaine ultra-dense pour <strong>Anthropic</strong> qui empile trois annonces le 28 mai : <strong>Claude Opus 4.8</strong> (88.6 % SWE-bench Verified, 69.2 % Pro — un saut de presque 5 points sur le benchmark le plus dur, pricing inchangé $5/$25, fast mode 3× moins cher), les <strong>Dynamic Workflows</strong> en research preview dans Claude Code (orchestration de 1 000 sous-agents max par run via scripts JS rerunnables, mot-clé <code>workflow</code> et mode <code>ultracode</code>), et une <strong>Série H de 65 milliards $</strong> à 965 Md$ post-money, devant OpenAI sur la valorisation. <strong>OpenAI</strong> répond le 29 mai avec <strong>Codex Computer Use sur Windows</strong> et un pilotage mobile depuis l'app ChatGPT. <strong>Google</strong> et <strong>Meta</strong> : silence post-I/O / post-layoffs. <strong>Mistral</strong> tient son <strong>AI Now Summit</strong> à Paris (28 mai) — stack industriel avec Airbus, BMW Group, ASML, datacenter 10 MW aux Ulis pour Q3 2026. Côté secondaires : <strong>Cursor 3.6</strong> lance Auto-review et Build in Parallel ; <strong>xAI</strong> sort les <strong>Custom Skills</strong> sur Grok ; <strong>CNN poursuit Perplexity</strong> — neuvième litige en cours.",
-  "actors_order": ["Anthropic", "OpenAI", "Google DeepMind", "Meta", "Mistral"],
+  "synthese_html": "Semaine ultra-dense pour <strong>Anthropic</strong> qui empile trois annonces le 28 mai : <strong>Claude Opus 4.8</strong> (88.6 % SWE-bench Verified, 69.2 % Pro — un saut de presque 5 points sur le benchmark le plus dur, pricing inchangé $5/$25, fast mode 3× moins cher), les <strong>Dynamic Workflows</strong> en research preview dans Claude Code (orchestration de 1 000 sous-agents max par run via scripts JS rerunnables, mot-clé <code>workflow</code> et mode <code>ultracode</code>), et une <strong>Série H de 65 milliards $</strong> à 965 Md$ post-money, devant OpenAI sur la valorisation. <strong>OpenAI</strong> répond le 29 mai avec <strong>Codex Computer Use sur Windows</strong> (l'agent voit, clique, tape dans les apps Windows natives) et un pilotage mobile depuis l'app ChatGPT. Côté gouvernance, OpenAI publie son <strong>Frontier Governance Framework</strong> (aligné EU AI Act + California Transparency Act) et lance <strong>Rosalind Biodefense</strong> (accès gratuit à GPT-Rosalind pour agences gouvernementales pandémie). Calendriers de retraite confirmés : <strong>GPT-4.5 retiré de ChatGPT le 27 juin 2026, o3 le 26 août 2026</strong> — l'API garde o3. <strong>Google</strong> et <strong>Meta</strong> : silence post-I/O / post-layoffs. <strong>Mistral</strong> tient son <strong>AI Now Summit</strong> à Paris (28 mai) — stack industriel avec Airbus, BMW Group, ASML, datacenter 10 MW aux Ulis pour Q3 2026, opéré en propre sans dépendance hyperscaler US. Côté secondaires : <strong>Cursor 3.6</strong> (29 mai) lance Auto-review (run mode avec classifier subagent) et Build in Parallel (graphe de dépendances exécuté en async subagents) ; <strong>xAI</strong> sort les <strong>Custom Skills</strong> sur Grok ; <strong>CNN poursuit Perplexity</strong> en justice — neuvième litige en cours, signal que le modèle \"answer engine\" finit par devoir négocier des licences.",
+  "actors_order": [
+    "Anthropic",
+    "OpenAI",
+    "Google DeepMind",
+    "Meta",
+    "Mistral"
+  ],
   "actor_empty": {
     "Google DeepMind": "Rien de notable cette semaine — silence radio post-I/O. Les annonces majeures (Gemini 3.5 Flash, Gemini Omni, Antigravity 2.0) ont toutes été couvertes dans le brief précédent.",
     "Meta": "Rien de notable cette semaine — Meta digère la vague de 8 000 licenciements du 20 mai et la réorganisation Applied AI / Agent Transformation. Pas de release Llama, pas de Behemoth, pas de FAIR paper marquant."
@@ -29,10 +35,18 @@
       "tag": "lynxter",
       "date": "2026-05-28",
       "title": "Claude Opus 4.8 — SWE-bench Pro à 69.2 %, fast mode 3× moins cher, même pricing",
-      "context_html": "Anthropic livre <strong>Opus 4.8</strong> 41 jours après la 4.7. Saut discret sur <strong>SWE-bench Verified (87.6 → 88.6 %)</strong>, juste 0.1 pt derrière GPT-5.5 (88.7 %), mais saut net sur <strong>SWE-bench Pro (64.3 → 69.2 %)</strong> — 10.6 pts d'avance sur GPT-5.5 (58.6 %) sur le benchmark représentatif des tâches longues mal spécifiées. Pricing standard <strong>inchangé à $5/$25 par M tokens</strong>. Le <strong>fast mode</strong> est <strong>3× moins cher qu'en 4.7</strong> — bascule désormais économique pour les batch jobs où la latence prime. Disponible immédiatement via API, Claude Code, Cowork.",
+      "context_html": "Anthropic livre <strong>Opus 4.8</strong> 41 jours après la 4.7. Saut discret sur <strong>SWE-bench Verified (87.6 → 88.6 %)</strong>, juste 0.1 pt derrière GPT-5.5 (88.7 %), mais saut net sur <strong>SWE-bench Pro (64.3 → 69.2 %)</strong> — 10.6 pts d'avance sur GPT-5.5 (58.6 %) sur le benchmark représentatif des tâches longues mal spécifiées. Pricing standard <strong>inchangé à $5/$25 par M tokens</strong>. Le <strong>fast mode</strong> (2.5× plus rapide pour 2× le coût standard, soit $10/$50) est <strong>3× moins cher qu'en 4.7</strong> où il était $30/$150 — bascule désormais économique pour les batch jobs où la latence prime. Améliorations sur l'alignement (honnêteté mesurable, refus calibrés), GDPval-AA à 1890 (121 pts Elo devant GPT-5.5), OSWorld-Verified 83.4 % (computer use). Disponible immédiatement via API, Claude Code, Cowork.",
       "sources": [
-        { "label": "anthropic.com/news/claude-opus-4-8", "url": "https://www.anthropic.com/news/claude-opus-4-8", "primary": true },
-        { "label": "marktechpost.com", "url": "https://www.marktechpost.com/2026/05/28/anthropic-ships-claude-opus-4-8/", "primary": false }
+        {
+          "label": "anthropic.com/news/claude-opus-4-8",
+          "url": "https://www.anthropic.com/news/claude-opus-4-8",
+          "primary": true
+        },
+        {
+          "label": "marktechpost.com",
+          "url": "https://www.marktechpost.com/2026/05/28/anthropic-ships-claude-opus-4-8-alongside-dynamic-workflows-and-cheaper-fast-mode-with-workflows-capped-at-1000-subagents/",
+          "primary": false
+        }
       ],
       "has_primary": true,
       "detail": {
@@ -40,20 +54,36 @@
         "date_long": "28 mai 2026",
         "description": "Analyse approfondie de Claude Opus 4.8 (28 mai 2026) : 88.6 % SWE-bench Verified, 69.2 % SWE-bench Pro, fast mode 3× moins cher, alignement renforcé. Implications Lynxter.",
         "stats": [
-          { "num": "88.6", "unit": "%", "label": "SWE-bench Verified · +1 pt vs 4.7" },
-          { "num": "69.2", "unit": "%", "label": "SWE-bench Pro · +4.9 pts vs 4.7" },
-          { "num": "$5/$25", "unit": "M tok", "label": "Pricing standard inchangé" },
-          { "num": "3×", "unit": "moins cher", "label": "Fast mode vs 4.7 fast mode" }
+          {
+            "num": "88.6",
+            "unit": "%",
+            "label": "SWE-bench Verified · +1 pt vs 4.7"
+          },
+          {
+            "num": "69.2",
+            "unit": "%",
+            "label": "SWE-bench Pro · +4.9 pts vs 4.7"
+          },
+          {
+            "num": "$5/$25",
+            "unit": "M tok",
+            "label": "Pricing standard inchangé"
+          },
+          {
+            "num": "3×",
+            "unit": "moins cher",
+            "label": "Fast mode vs 4.7 fast mode"
+          }
         ],
         "context_paragraphs": [
-          "Anthropic ship <strong>Claude Opus 4.8</strong> le 28 mai 2026, exactement 41 jours après Opus 4.7. Les scores benchmarks officiels positionnent Opus 4.8 quasiment à égalité avec GPT-5.5 sur SWE-bench Verified (<strong>88.6 % vs 88.7 %</strong>). Mais Anthropic met le focus ailleurs : <strong>SWE-bench Pro 69.2 %</strong>, soit +4.9 pts vs Opus 4.7 (64.3 %), et 10.6 pts d'avance sur GPT-5.5 (58.6 %).",
-          "Anthropic met aussi en avant des améliorations mesurables sur l'<strong>alignement</strong> : honnêteté (refus calibrés, moins de hallucinations sur les chiffres et URLs), résistance aux jailbreaks, transparence quand le modèle ne sait pas. Mike Krieger (CPO) parle d'un <em>\"near-Mythos level alignment\"</em> — référence au modèle preview interne que des rumeurs non officielles situent au-dessus de 93 % SWE-bench, mais qui reste à plusieurs mois d'une release publique.",
-          "Le <strong>pricing standard reste inchangé à $5 input / $25 output par M tokens</strong>. Le vrai changement opérationnel concerne le <strong>fast mode</strong> : sur Opus 4.7 il coûtait $30/$150 ; sur 4.8 il est à <strong>$10/$50, soit 3× moins cher</strong>. Combiné aux Dynamic Workflows, le fast mode devient l'option par défaut pour les sous-agents parallèles non-critiques."
+          "Anthropic ship <strong>Claude Opus 4.8</strong> le 28 mai 2026, exactement 41 jours après Opus 4.7. Le rythme — 4.5 → 4.6 → 4.7 → 4.8 en six mois — confirme une cadence trimestrielle d'incréments majeurs, sans encore basculer sur Claude 5 (rumeurs Mythos toujours en preview interne). Les scores benchmarks officiels positionnent Opus 4.8 quasiment à égalité avec GPT-5.5 sur SWE-bench Verified (<strong>88.6 % vs 88.7 %</strong>) — 0.1 pt sous le leader. Mais Anthropic met le focus ailleurs : <strong>SWE-bench Pro 69.2 %</strong>, soit +4.9 pts vs Opus 4.7 (64.3 %), et 10.6 pts d'avance sur GPT-5.5 (58.6 %). Le Pro évalue des tâches longues, multi-fichiers, mal spécifiées — beaucoup plus représentatif du travail réel de support, audit firmware ou migration de codebase que le Verified.",
+          "Anthropic annonce qu'Opus 4.8 <strong>bat GPT-5.5 sur au moins 12 benchmarks</strong>, notamment l'agentic coding (SWE-Bench Pro 69.2 % vs 58.6 %) et le computer use (<strong>OSWorld-Verified 83.4 % vs 78.7 %</strong>). Sur GDPval-AA (un benchmark interne d'Anthropic combinant raisonnement général et utilité), Opus 4.8 monte à <strong>1890 Elo, soit 121 pts devant GPT-5.5</strong>. Anthropic met aussi en avant des améliorations mesurables sur l'<strong>alignement</strong> : honnêteté (refus calibrés, moins de hallucinations sur les chiffres et URLs), résistance aux jailbreaks classiques, transparence quand le modèle ne sait pas. Mike Krieger (CPO) parle d'un <em>\"near-Mythos level alignment\"</em> — référence au modèle preview interne que des rumeurs non officielles situent au-dessus de 93 % SWE-bench, mais qui reste à plusieurs mois d'une release publique.",
+          "Le <strong>pricing standard reste inchangé à $5 input / $25 output par M tokens</strong>, ce qui rend l'upgrade trivial : tu actualises tes Routines Cowork et Claude Code, point. Le vrai changement opérationnel concerne le <strong>fast mode</strong> : variante de Opus qui tourne à 2.5× la vitesse standard pour 2× le prix par token. Sur Opus 4.7, le fast mode coûtait $30/$150 — économiquement inviable pour la plupart des workloads. Sur 4.8, fast mode est à <strong>$10/$50, soit 3× moins cher</strong>. Combiné aux Dynamic Workflows (lancées le même jour), le fast mode devient l'option par défaut pour les sous-agents parallèles non-critiques. Disponible immédiatement via l'API Messages, Claude Code, Cowork, et tous les surfaces Claude. Aucune migration nécessaire : le model ID <code>claude-opus-4-7</code> bascule en alias vers 4.8 sur les plans gérés (Pro, Max, Team, Enterprise) ; l'API garde les deux IDs accessibles."
         ],
         "lynxter_paragraphs": [
-          "<strong>Opus 4.8 est l'upgrade le plus low-friction du semestre.</strong> Pricing inchangé, qualité supérieure, fast mode économiquement viable, alignement renforcé. Pour ton stack Cowork actuel, aucune action n'est requise. À toi de profiter du nouveau fast mode : les Routines qui produisent du contenu volumineux mais ne demandent pas la qualité absolue Opus gagnent à passer en fast mode dès cette semaine.",
-          "<strong>Le saut sur SWE-bench Pro (69.2 %) est le signal opérationnel.</strong> Le Pro mesure des tâches longues, mal spécifiées, multi-fichiers — exactement ton terrain : audit firmware S600D ou migration de scripts de calibration Cowork. Anthropic est désormais à <strong>10.6 pts d'avance sur GPT-5.5</strong> sur ce benchmark.",
-          "<strong>L'amélioration sur computer use (OSWorld 83.4 %) ouvre un nouveau pattern.</strong> Pour Lynxter : potentiel de faire piloter par un agent les vieux outils Windows métier (slicers, propriétaires fournisseurs filaments) qui n'ont pas d'API moderne. À tester en environnement isolé d'abord."
+          "<strong>Opus 4.8 est l'upgrade le plus low-friction du semestre.</strong> Pricing inchangé, qualité supérieure, fast mode économiquement viable, alignement renforcé. Pour ton stack Cowork actuel (génération brief veille-IA, scan tickets support, classification logs S300X), aucune action n'est requise — Anthropic bascule progressivement les sessions vers 4.8. À toi par contre de profiter du nouveau fast mode : les Routines qui produisent du contenu volumineux mais ne demandent pas la qualité absolue Opus (résumés de tickets, classification, déduplication, brief d'arrière-plan) gagnent à passer en fast mode dès cette semaine. <strong>Test cette semaine</strong> : prends une Routine Cowork existante qui prend &gt; 5 minutes wall-clock, force <code>--model claude-opus-4-8 --fast</code>, mesure latence + qualité subjective (note 1-10) + coût total. Si la dérive qualité reste &lt; 10 %, bascule définitivement.",
+          "<strong>Le saut sur SWE-bench Pro (69.2 %) est le signal opérationnel.</strong> Le Pro mesure des tâches longues, mal spécifiées, multi-fichiers — exactement ton terrain : \"trouve pourquoi le profil PEI 90A produit des warpings sur S600D avec ce slicer\" ou \"migre tous les scripts de calibration Cowork de l'ancien API v2 vers v3\". Anthropic est désormais à <strong>10.6 pts d'avance sur GPT-5.5 sur ce benchmark</strong> — un gap qui n'est plus rattrapable par optimisation prompt côté concurrent. Si tu hésitais encore à creuser l'usage Claude Code Pro pour les audits firmware ou les migrations de scripts métier, cette release est le déclic. Concrètement : lance un projet pilote sur une migration scriptes test (par exemple, conversion d'un set de Python 3.9 vers 3.12 sur la base de calibration), exécute en parallèle avec Codex (GPT-5.5 backend) sur le même set, compare les résultats. L'écart de qualité devrait être visible immédiatement sur les tâches multi-fichiers.",
+          "<strong>L'amélioration sur computer use (OSWorld 83.4 %) ouvre un nouveau pattern.</strong> Avec Computer Use de Claude couplé à Opus 4.8, l'agent peut désormais cliquer dans des apps desktop avec une fiabilité supérieure à GPT-5.5 (+4.7 pts). Pour Lynxter, ça veut dire : potentiel de faire piloter par un agent les vieux outils Windows métier (Cura, PrusaSlicer, propriétaires fournisseurs filaments) qui n'ont pas d'API moderne. À tester en environnement isolé d'abord — démarre un cas d'usage simple comme \"ouvre PrusaSlicer, charge ce STL, exporte le gcode avec ces réglages\" et mesure le taux de réussite sur 20 itérations. Si &gt; 80 %, tu as un nouveau pattern d'automation pour les workflows de production où l'API n'existe pas."
         ],
         "source": {
           "kind": "primaire",
@@ -62,13 +92,36 @@
           "meta": "Anthropic · annonce officielle Claude Opus 4.8 · 28 mai 2026"
         },
         "related": [
-          { "slug": "2026-06-01-claude-code-dynamic-workflows", "actor": "Anthropic", "title": "Dynamic Workflows — 1 000 sous-agents par run", "tag": "lynxter" },
-          { "slug": "2026-06-01-anthropic-series-h-965b", "actor": "Anthropic", "title": "Série H 65 Md$ — Anthropic passe devant OpenAI", "tag": "useful" },
-          { "slug": "2026-05-25-antigravity-2-0", "actor": "Google DeepMind", "title": "Antigravity 2.0 — concurrent direct Claude Code", "tag": "lynxter" }
+          {
+            "slug": "2026-06-01-claude-code-dynamic-workflows",
+            "actor": "Anthropic",
+            "title": "Dynamic Workflows — 1 000 sous-agents par run",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-06-01-anthropic-series-h-965b",
+            "actor": "Anthropic",
+            "title": "Série H 65 Md$ — Anthropic passe devant OpenAI",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-05-25-antigravity-2-0",
+            "actor": "Google DeepMind",
+            "title": "Antigravity 2.0 — concurrent direct Claude Code",
+            "tag": "🎯"
+          }
         ],
         "nav": {
-          "prev": { "href": "../briefs/2026-06-01.html", "label": "← Retour au brief", "title": "2026-06-01" },
-          "next": { "href": "2026-06-01-claude-code-dynamic-workflows.html", "label": "Item suivant →", "title": "Dynamic Workflows Claude Code" }
+          "prev": {
+            "href": "../briefs/2026-06-01.html",
+            "label": "← Retour au brief",
+            "title": "2026-06-01"
+          },
+          "next": {
+            "href": "2026-06-01-claude-code-dynamic-workflows.html",
+            "label": "Item suivant →",
+            "title": "Dynamic Workflows Claude Code"
+          }
         }
       }
     },
@@ -78,12 +131,95 @@
       "tag": "lynxter",
       "date": "2026-05-28",
       "title": "Dynamic Workflows en research preview — Claude Code orchestre jusqu'à 1 000 sous-agents",
-      "context_html": "Anthropic introduit les <strong>Dynamic Workflows</strong> dans Claude Code (research preview, v2.1.154+, tous plans payants y compris Pro). Un workflow est un <strong>script JavaScript</strong> que Claude écrit et qu'un runtime exécute en arrière-plan. Le runtime supporte <strong>jusqu'à 16 sous-agents en parallèle, 1 000 au total par run</strong>. Le mot-clé <code>workflow</code> déclenche un run ad-hoc ; le mode <code>/effort ultracode</code> planifie automatiquement des workflows. Workflow bundled fourni : <code>/deep-research</code>. Les runs sont sauvegardables comme commande personnalisée, pausables, resumables.",
+      "context_html": "Anthropic introduit les <strong>Dynamic Workflows</strong> dans Claude Code (research preview, v2.1.154+, tous plans payants y compris Pro). Un workflow est un <strong>script JavaScript</strong> que Claude écrit pour ta tâche et qu'un runtime exécute en arrière-plan — la session reste réactive pendant que les agents bossent. Le runtime supporte <strong>jusqu'à 16 sous-agents en parallèle, 1 000 au total par run</strong>. Le mot-clé <code>workflow</code> dans un prompt déclenche un run ad-hoc ; le mode <code>/effort ultracode</code> planifie automatiquement des workflows pour chaque tâche substantielle de la session. Workflow bundled fourni : <code>/deep-research</code> (fan-out web search, fetch et cross-check de sources, rapport cité avec claims non vérifiés filtrés). Les runs sont sauvegardables comme commande personnalisée (<code>.claude/workflows/</code> projet ou <code>~/.claude/workflows/</code> global), pausables, resumables dans la même session. Anthropic vante Jarred Sumner ayant porté Bun de Zig à Rust (750 k lignes de code) via cette primitive.",
       "sources": [
-        { "label": "code.claude.com/docs/en/workflows", "url": "https://code.claude.com/docs/en/workflows", "primary": true },
-        { "label": "anthropic.com/news", "url": "https://www.anthropic.com/news/claude-opus-4-8", "primary": false }
+        {
+          "label": "code.claude.com/docs/en/workflows",
+          "url": "https://code.claude.com/docs/en/workflows",
+          "primary": true
+        },
+        {
+          "label": "anthropic.com/news",
+          "url": "https://www.anthropic.com/news/claude-opus-4-8",
+          "primary": false
+        }
       ],
-      "has_primary": true
+      "has_primary": true,
+      "detail": {
+        "short": "Dynamic Workflows",
+        "date_long": "28 mai 2026",
+        "description": "Analyse des Dynamic Workflows de Claude Code (28 mai 2026, research preview) : orchestration de 1 000 sous-agents par run, 16 concurrents, scripts JavaScript, mot-clé workflow, mode ultracode. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "1 000",
+            "unit": "agents",
+            "label": "Max par run"
+          },
+          {
+            "num": "16",
+            "unit": "parallèles",
+            "label": "Concurrence max"
+          },
+          {
+            "num": "v2.1.154",
+            "unit": "+",
+            "label": "Claude Code requis"
+          },
+          {
+            "num": "750k",
+            "unit": "lignes",
+            "label": "Port Bun Zig→Rust (démo)"
+          }
+        ],
+        "context_paragraphs": [
+          "Anthropic introduit les <strong>Dynamic Workflows</strong> dans Claude Code le 28 mai 2026, en research preview, sur tous les plans payants (Pro, Max, Team, Enterprise) ainsi que sur l'API Anthropic, AWS Bedrock, Google Cloud Vertex AI et Microsoft Foundry. Requis : <strong>Claude Code v2.1.154+</strong>. C'est la troisième brique d'orchestration multi-agent d'Anthropic après les <strong>subagents</strong> (workers spawned par Claude au tour le tour) et les <strong>skills</strong> (instructions que Claude suit). Un workflow est différent dans la nature : c'est un <strong>script JavaScript</strong> que Claude écrit pour ta tâche, et qu'un runtime exécute en arrière-plan dans un environnement isolé du chat. Les résultats intermédiaires vivent dans des variables de script, pas dans le contexte de Claude — c'est ce qui permet de faire tourner des dizaines à des centaines d'agents sans saturer la fenêtre de contexte.",
+          "Le runtime applique des limites strictes : <strong>jusqu'à 16 agents concurrents</strong> (moins sur les machines avec peu de cœurs CPU) pour borner la conso de ressources locale, et <strong>1 000 agents au total par run</strong> pour éviter les boucles runaway. Trois façons de déclencher : (1) inclure le <strong>mot-clé <code>workflow</code></strong> dans un prompt (<code>Run a workflow to audit every API endpoint under src/routes/ for missing auth checks</code>) — Claude Code highlight le mot et écrit un script à la place de gérer la tâche turn-by-turn ; (2) activer le mode <strong><code>/effort ultracode</code></strong> qui combine reasoning xhigh + orchestration auto — chaque tâche substantielle de la session devient un workflow planifié ; (3) lancer un <strong>workflow bundled</strong> comme <code>/deep-research</code> qui fan-out web searches, fetch et cross-check sources, et synthétise un rapport cité avec les claims non vérifiés filtrés.",
+          "Le workflow tourne en background, la session Claude reste responsive. La commande <code>/workflows</code> ouvre une vue qui affiche chaque phase avec son agent count, son token total et son elapsed time ; on peut drill-in sur chaque agent pour voir son prompt, ses tool calls et son résultat. Le run est <strong>pausable et resumable dans la même session</strong> — les agents déjà complétés rendent leurs résultats cachés, le reste tourne en live. <strong>Sauvegarde</strong> : après un run qui a fait ce qu'on voulait, presser <code>s</code> dans <code>/workflows</code> sauvegarde le script comme commande (<code>.claude/workflows/&lt;name&gt;</code> au niveau projet partagé via git, ou <code>~/.claude/workflows/&lt;name&gt;</code> niveau utilisateur). La commande devient <code>/&lt;name&gt;</code> dans toutes les sessions futures. Permissions : les sous-agents tournent en <code>acceptEdits</code> mode, file edits auto-approuvés ; les shell commands, web fetches et MCP tools hors allowlist peuvent encore prompter mid-run. Exemple flagship cité par Anthropic : <strong>Jarred Sumner a porté Bun de Zig à Rust</strong> (~750 000 lignes de code Rust générées) en utilisant les Dynamic Workflows."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Les Dynamic Workflows débloquent ce que les Routines Cowork ne peuvent pas faire aujourd'hui.</strong> La Routine actuelle de génération du brief veille-IA tourne en orchestrateur séquentiel : Claude scanne Anthropic, résume, passe à OpenAI, résume, etc. — 12 à 15 minutes wall-clock pour ~30 WebSearch et 10-15 WebFetch. La même tâche en Dynamic Workflow paralllélise : un sous-agent dédié à chaque acteur (8 acteurs principaux + secondaires = 12 sous-agents en parallèle, dans la limite de 16 concurrents), un agent de cross-check qui élimine les doublons, un agent rédacteur final. Le contexte de Claude principal reste libre, seul le rapport final atterrit. Estimation : 3-4 minutes wall-clock total, soit un facteur 4×. À tester cette semaine : activer <code>/effort ultracode</code> dans une session Claude Code 2.1.154+, demander la génération du brief, observer le plan automatique. Si la qualité du résultat est égale ou supérieure, la Routine prochaine peut basculer sur ce pattern et économiser ~10 minutes par exécution hebdomadaire.",
+          "<strong>Le mot-clé <code>workflow</code> change ton usage CLI quotidien.</strong> Désormais, pour toute tâche multi-étapes ambiguë (audit firmware S300X complet, migration de scripts test, recherche cross-fichiers dans la base de calibration), tu n'as plus besoin de structurer manuellement le multi-agent. Tape \"<code>workflow trouve tous les profils PEI 90A avec une dérive de température &gt; 5°C sur les 6 derniers mois et propose une correction</code>\" — Claude écrit le script (un sous-agent par profil identifié, un agent d'analyse statistique, un agent de proposition correctif), tu approuves le plan, le run tourne en arrière-plan pendant que tu continues sur autre chose. Si le run est utile, sauvegarde-le comme <code>/audit-pei90a</code> dans <code>.claude/workflows/</code> du repo Lynxter — il devient une commande standard pour toute l'équipe support.",
+          "<strong>Critère de bascule</strong> : sur les 3 prochaines semaines, identifie les Routines Cowork où le wall-clock dépasse 5 minutes et où la tâche a une structure clairement parallélisable (un sous-job par item d'une liste). Bascule-les en Dynamic Workflow et mesure le gain. Pour les Routines &lt; 2 minutes ou avec des dépendances séquentielles fortes (chaque étape dépend de la sortie de la précédente), garde l'orchestration classique — les workflows consomment plus de tokens par run (l'overhead du script + des agents multiples), donc il faut un vrai gain wall-clock pour amortir. Anthropic mentionne explicitement que <strong>\"un workflow utilise meaningfully plus de tokens que la même tâche en conversation\"</strong> — à intégrer dans tes monitorings de coût Cowork."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://code.claude.com/docs/en/workflows",
+          "label": "code.claude.com/docs/en/workflows",
+          "meta": "Anthropic · documentation officielle Dynamic Workflows · publié 28 mai 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-06-01-claude-opus-4-8",
+            "actor": "Anthropic",
+            "title": "Claude Opus 4.8 — fast mode 3× moins cher",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-05-18-claude-code-agent-view-goal",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1 — Agent View + /goal",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-05-25-antigravity-2-0",
+            "actor": "Google DeepMind",
+            "title": "Antigravity 2.0 — concurrent direct côté multi-agent",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-06-01-claude-opus-4-8.html",
+            "label": "← Item précédent",
+            "title": "Claude Opus 4.8"
+          },
+          "next": {
+            "href": "2026-06-01-anthropic-series-h-965b.html",
+            "label": "Item suivant →",
+            "title": "Anthropic Série H 965 Md$"
+          }
+        }
+      }
     },
     {
       "slug": "2026-06-01-anthropic-series-h-965b",
@@ -91,12 +227,100 @@
       "tag": "useful",
       "date": "2026-05-28",
       "title": "Série H 65 Md$ à 965 Md$ post-money — Anthropic passe devant OpenAI",
-      "context_html": "Closing officiel le 28 mai. <strong>65 milliards $</strong> levés, valorisation <strong>965 milliards $ post-money</strong> — devant OpenAI (~500 Md$). <strong>Run-rate revenue $47 Md</strong> début mai (vs $30 Md à la Série G de février). Multiplie par ~2,5 la valorisation de février ($380 Md). Probablement la dernière levée privée avant un IPO — pression de monétisation à anticiper sur les paliers Claude entreprise et Cowork.",
+      "context_html": "Closing officiel le 28 mai. <strong>65 milliards $</strong> levés, valorisation <strong>965 milliards $ post-money</strong> — Anthropic devient la startup IA la plus chère du monde, devant OpenAI (~500 Md$ sur sa dernière levée). Lead : Altimeter Capital, Dragoneer, Greenoaks, Sequoia, Capital Group, Coatue, D1 Capital. <strong>15 Md$ committed</strong> des hyperscalers (dont 5 Md$ Amazon), plus Micron, Samsung, SK hynix côté partenaires infrastructure. <strong>Run-rate revenue $47 Md</strong> début mai (vs $4 Md été 2024 — ARR multiplié par ~12 en 10 mois). Multiplie par ~2,5 la valorisation de février ($380 Md). Anthropic indique vouloir <strong>\"avancer la recherche sécurité et interprétabilité, étendre le compute, scaler produits et partenariats\"</strong>. Probablement la dernière levée privée avant un IPO — pression de monétisation à anticiper sur les paliers Claude entreprise et Cowork.",
       "sources": [
-        { "label": "anthropic.com/news/series-h", "url": "https://www.anthropic.com/news/series-h", "primary": true },
-        { "label": "techcrunch.com", "url": "https://techcrunch.com/2026/05/28/anthropic-raises-65-billion/", "primary": false }
+        {
+          "label": "anthropic.com/news/series-h",
+          "url": "https://www.anthropic.com/news/series-h",
+          "primary": true
+        },
+        {
+          "label": "techcrunch.com",
+          "url": "https://techcrunch.com/2026/05/28/anthropic-raises-65-billion-nears-1t-valuation-ahead-of-ipo/",
+          "primary": false
+        },
+        {
+          "label": "cnbc.com",
+          "url": "https://www.cnbc.com/2026/05/28/anthropic-open-ai-startup-value.html",
+          "primary": false
+        }
       ],
-      "has_primary": true
+      "has_primary": true,
+      "detail": {
+        "short": "Anthropic Série H",
+        "date_long": "28 mai 2026",
+        "description": "Analyse de la Série H d'Anthropic (28 mai 2026) : 65 milliards $ levés, 965 milliards $ post-money, run-rate 47 Md$, dépasse OpenAI sur la valorisation. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "$65",
+            "unit": "Md",
+            "label": "Tour H levé (closing 28 mai)"
+          },
+          {
+            "num": "$965",
+            "unit": "Md",
+            "label": "Valorisation post-money"
+          },
+          {
+            "num": "$47",
+            "unit": "Md ARR",
+            "label": "Run-rate revenue mai 2026"
+          },
+          {
+            "num": "2.5×",
+            "unit": "depuis fév",
+            "label": "Valo ×2,5 vs Série G ($380 Md)"
+          }
+        ],
+        "context_paragraphs": [
+          "Anthropic clôt sa <strong>Série H</strong> le 28 mai 2026 — <strong>65 milliards $ levés</strong>, <strong>965 milliards $ post-money</strong>, soit le plus gros tour de financement privé jamais bouclé par une entreprise technologique. La valorisation place Anthropic <strong>devant OpenAI</strong> (qui plafonnait à ~500 Md$ sur sa dernière levée privée publique) — pour la première fois depuis 2023, Anthropic est techniquement la startup IA la plus chère du monde. Le tour est co-mené par <strong>Altimeter Capital, Dragoneer, Greenoaks, Sequoia Capital</strong>, avec une syndication large incluant Capital Group, Coatue, D1 Capital Partners. À l'intérieur des $65 Md figurent <strong>$15 Md de committed money</strong> déjà engagés par les hyperscalers infrastructure — dont <strong>$5 Md d'Amazon</strong> — plus des participations stratégiques de <strong>Micron, Samsung et SK hynix</strong> (les trois producteurs HBM critiques pour l'inférence à grande échelle).",
+          "Le run-rate révélé : <strong>47 milliards $ annualisés début mai 2026</strong>, contre $4 Md à l'été 2024 et $30 Md à la Série G de février. Soit un <strong>multiplicateur ~12× en 10 mois</strong>. La progression d'ARR sur les six derniers mois confirme une adoption enterprise massive — l'expansion des partenariats (PwC, Goldman Sachs/Blackstone, KPMG, Gates Foundation) annoncés en mai consolide cette base de revenu récurrent. La valorisation à $965 Md représente <strong>~20× le run-rate</strong> — multiple agressif mais cohérent avec ce que le marché a payé pour OpenAI, et inférieur au pic 2021-2022 sur certains SaaS B2B américains.",
+          "Sur l'utilisation des fonds, le communiqué Anthropic est court mais pointu : <strong>\"avancer la recherche sécurité et interprétabilité, étendre le compute pour répondre à la demande Claude, scaler les produits et partenariats clients\"</strong>. Pas de mention explicite de M&A ni d'expansion géographique majeure. La signature stratégique principale : <strong>cette Série H est probablement la dernière levée privée avant un IPO</strong> — c'est explicitement mentionné par TechCrunch et CNBC, et le profil des co-leads (Altimeter, Dragoneer, Greenoaks, Sequoia) ainsi que la syndication large sont typiques d'un dernier round pré-public. Un IPO 2027 est désormais plausible si l'ARR continue de progresser à ce rythme. Anthropic devient simultanément la startup IA la plus chère ET probablement la première à entrer en bourse, devant OpenAI dont la structure capped-profit complique encore la trajectoire publique."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>La consolidation Anthropic verrouille ton pari fournisseur à 3 ans.</strong> Lynxter utilise Claude comme stack principal Cowork + Routines + Claude Code. Avant cette Série H, un risque latent existait sur la trajectoire d'Anthropic — capacité d'investissement R&D vs OpenAI, dépendance Amazon, possibilité de pivot. Avec $65 Md frais, un run-rate $47 Md, et une syndication d'investisseurs élargie (au-delà du couple Amazon+Google), le risque de discontinuité fournisseur tombe à un niveau marginal sur l'horizon 2026-2028. Si tu hésitais sur un engagement annuel Cowork enterprise ou sur la migration de scripts critiques sur le pattern Claude, c'est le signal de sécuriser : pas de risque crédible que Claude soit déprécié ou pivoted dans les 24 prochains mois. À l'inverse : la pression IPO peut pousser une monétisation plus agressive sur les paliers entreprise — négocier maintenant un commit annuel à pricing fixé est une couverture utile.",
+          "<strong>La capacité d'investissement R&D suggère Claude 5 avant fin 2026.</strong> Avec $65 Md de cash + le run-rate $47 Md (~ $4 Md/mois de cash flow opérationnel proche), Anthropic dispose d'une capacité compute supérieure à celle d'OpenAI pour les 18 prochains mois. Le modèle Mythos (preview interne, 93.9 % SWE-bench Verified dans les leaks) confirmé en circulation, et le rythme observé (Opus 4.5 → 4.6 → 4.7 → 4.8 en six mois), pointent vers une bascule de génération avant fin 2026. À intégrer dans la roadmap Lynxter : la routine veille-IA actuelle est déjà sur Opus 4.7/4.8 ; un nouveau saut majeur de capacité aux Q4 2026 ou Q1 2027 pourrait débloquer des cas d'usage encore hors de portée (par exemple, analyse complète d'un firmware S300X embarqué + suggestions correctifs autonomes).",
+          "<strong>Anthropic devient un partenaire industriel crédible à long terme.</strong> Avec une valorisation supérieure à OpenAI et une trajectoire d'ARR forte, Anthropic peut investir dans des verticaux dédiés — Claude Finance (10 templates agents lancés en mai), Claude Legal (20+ MCP connecteurs annoncés au Code with Claude London), Claude Industry n'est pas encore annoncé mais devient probable. Pour Lynxter, c'est une opportunité de positionnement précoce : si Anthropic ouvre un programme \"Claude for Industrial / Manufacturing\" dans les 12 prochains mois (probabilité estimée &gt; 60 % vu le pattern Finance/Legal), être un beta partner identifié vaut la peine. Action : surveiller anthropic.com/news et claude.com/blog sur \"manufacturing\", \"industrial\", \"operations technology\" — et envoyer un mail outreach à <code>partnerships@anthropic.com</code> avec le use case Lynxter (support S300X/S600D, Cowork industriel, intégration MES/ERP)."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://www.anthropic.com/news/series-h",
+          "label": "anthropic.com/news/series-h",
+          "meta": "Anthropic · communiqué officiel Série H · 28 mai 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-06-01-claude-opus-4-8.html",
+            "actor": "Anthropic",
+            "title": "Claude Opus 4.8 — SWE-bench Pro 69.2 %",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-06-01-claude-code-dynamic-workflows.html",
+            "actor": "Anthropic",
+            "title": "Dynamic Workflows Claude Code",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-05-25-claude-compliance-api.html",
+            "actor": "Anthropic",
+            "title": "Compliance API + 28 partenaires sécurité",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-06-01-claude-code-dynamic-workflows.html",
+            "label": "← Item précédent",
+            "title": "Dynamic Workflows"
+          },
+          "next": {
+            "href": "2026-06-01-openai-codex-computer-use-windows.html",
+            "label": "Item suivant →",
+            "title": "Codex Computer Use Windows"
+          }
+        }
+      }
     },
     {
       "slug": "2026-06-01-openai-codex-computer-use-windows",
@@ -104,12 +328,95 @@
       "tag": "useful",
       "date": "2026-05-29",
       "title": "Codex Computer Use sur Windows + pilotage mobile depuis ChatGPT",
-      "context_html": "L'app Codex sur Windows 11 (v26.527, Microsoft Store) gagne deux capacités. <strong>Computer Use</strong> : Codex peut opérer les apps desktop Windows — voir, cliquer, taper — pour tester ses builds. <strong>Mobile remote</strong> : démarrer une session Codex sur Windows depuis l'app ChatGPT iOS/Android et garder la main à distance. Réponse frontale à <strong>Anthropic Computer Use</strong> et à <strong>Antigravity Desktop</strong> de Google.",
+      "context_html": "L'app Codex sur Windows 11 (v26.527, distribuée via Microsoft Store) gagne deux capacités majeures. <strong>Computer Use</strong> : Codex peut désormais opérer les apps desktop Windows — voir, cliquer, taper en foreground pendant qu'il code — pour tester ses builds, débugger les flows, vérifier le rendu dans l'environnement de l'utilisateur. <strong>Mobile remote</strong> : démarrer une session Codex sur Windows depuis l'app ChatGPT iOS/Android (ou depuis un Mac qui fait tourner Codex) et garder la main à distance — suivre l'avancement, valider des actions, relancer. Nouveaux Codex Profiles (usage, tokens, sessions). Réponse frontale à <strong>Anthropic Computer Use</strong> (lancé fin 2024) et à <strong>Antigravity Desktop</strong> de Google sorti à I/O. Le créneau \"agent qui pilote ton OS\" devient un terrain de bataille à 3 acteurs.",
       "sources": [
-        { "label": "thurrott.com", "url": "https://www.thurrott.com/a-i/openai-a-i/336754/openai-brings-computer-use-to-codex-app-on-windows", "primary": false },
-        { "label": "neowin.net", "url": "https://www.neowin.net/news/openai-rolls-out-major-codex-for-windows-update/", "primary": false }
+        {
+          "label": "thurrott.com",
+          "url": "https://www.thurrott.com/a-i/openai-a-i/336754/openai-brings-computer-use-to-codex-app-on-windows",
+          "primary": false
+        },
+        {
+          "label": "neowin.net",
+          "url": "https://www.neowin.net/news/openai-rolls-out-major-codex-for-windows-update-with-computer-use-and-mobile-access/",
+          "primary": false
+        }
       ],
-      "has_primary": false
+      "has_primary": false,
+      "detail": {
+        "short": "Codex Computer Use Windows",
+        "date_long": "29 mai 2026",
+        "description": "Analyse de la sortie Codex Computer Use sur Windows (29 mai 2026) : l'agent OpenAI voit, clique et tape dans les apps Windows. Pilotage mobile depuis ChatGPT. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "v26.527",
+            "unit": "Codex",
+            "label": "Version Windows distribuée"
+          },
+          {
+            "num": "Win 11",
+            "unit": "cible",
+            "label": "Microsoft Store distribution"
+          },
+          {
+            "num": "iOS+And",
+            "unit": "remote",
+            "label": "Pilotage mobile depuis ChatGPT"
+          },
+          {
+            "num": "3",
+            "unit": "acteurs",
+            "label": "Anthropic · OpenAI · Google sur computer use"
+          }
+        ],
+        "context_paragraphs": [
+          "OpenAI sort la version <strong>26.527 de l'app Codex sur Windows</strong> le 29 mai 2026, distribuée via le Microsoft Store. La release introduit deux capacités structurantes. Premièrement, <strong>Computer Use sur Windows</strong> : Codex peut désormais opérer les apps desktop Windows en foreground — voir l'écran, cliquer, taper du texte — pendant qu'il génère, teste et débugge du code. Le pattern type : Codex écrit une nouvelle feature dans le repo, lance l'app cible, teste le flow utilisateur en cliquant à travers l'UI, observe les erreurs, retourne les fixer. L'objectif explicite d'OpenAI : <strong>\"test apps, debug flows, and review work where your project context lives\"</strong> — c'est-à-dire dans l'environnement réel du développeur, pas dans un sandbox cloud.",
+          "Deuxièmement, <strong>Mobile remote control</strong> : tu peux démarrer une session Codex sur ton PC Windows (ou un Mac qui fait tourner Codex) depuis l'app ChatGPT iOS ou Android, et garder le pilotage à distance. En réunion ou en déplacement, l'utilisateur peut suivre la progression d'une longue tâche Codex, valider des actions sensibles, ou relancer un agent bloqué — sans toucher au PC. La même release ajoute aussi <strong>Codex Profiles</strong> dans l'app : section dédiée qui affiche les détails du profil, les usage statistics, et les token activity. Améliorations annexes : browsing plus rapide, stability fixes, support de modèles de raisonnement plus longs.",
+          "Cette release positionne OpenAI sur le créneau \"agent qui pilote ton OS\" — désormais à <strong>trois acteurs en confrontation directe</strong>. <strong>Anthropic Computer Use</strong> (lancé fin 2024, raffiné avec Opus 4.7/4.8) pilote toujours macOS, Linux et Windows avec une API tool dédiée. <strong>Google Antigravity Desktop</strong> (lancé au I/O 2026) joue sur la même surface avec Gemini 3.5 Flash en orchestrateur multi-agent. <strong>OpenAI Codex</strong> arrive maintenant sur Windows avec Computer Use intégré + mobile steering — l'angle \"code-first computer use\" avec couplage CI/CD et pilotage mobile est sa différenciation. Le marché agent CLI/desktop devient un terrain saturé : un développeur sérieux doit désormais évaluer les trois pour son workflow réel."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Pas d'usage opérationnel direct chez Lynxter, mais un signal de positionnement concurrentiel à intégrer.</strong> Lynxter utilise Claude Code en stack principal — Codex sur Windows ne change rien à ce setup. En revanche, deux dynamiques méritent un œil attentif. Premièrement, les <strong>4 millions de devs hebdomadaires</strong> que Codex revendique (selon les chiffres du brief précédent) deviennent un proxy de l'adoption générale du pattern \"agent qui pilote l'OS pour coder\" — pour Lynxter qui pousse Claude Code en interne, c'est un indicateur que le pattern est désormais mainstream et plus seulement adopté par les early adopters Anthropic. Deuxièmement, le <strong>pilotage mobile</strong> est une primitive qui n'existe pas encore côté Claude Code — Anthropic gère uniquement la session via CLI ou Desktop app. Si OpenAI rend ce pattern populaire, attendre Anthropic à suivre dans les 6 mois (la roadmap Claude Code de mars-avril mentionnait des mobile companions en exploration).",
+          "<strong>Le créneau \"computer use industriel\" reste ouvert et croissant.</strong> Tous les outils métier Lynxter (slicers PrusaSlicer/Cura, outils calibration propriétaires, anciens logiciels Windows fournisseurs filament) n'ont pas d'API. Avec trois agents desktop matures (Anthropic, OpenAI, Google), benchmarker leur capacité réelle sur un workflow Lynxter type devient un test décisif. Action concrète à 2-3 semaines : prendre un cas d'usage répétitif (par exemple, \"ouvre PrusaSlicer, charge ce STL, applique le profil PEI 90A, exporte le gcode, sauvegarde dans le bon dossier\") et l'exécuter sur Claude Computer Use + Codex Computer Use + Antigravity en parallèle sur 20 itérations. Mesurer taux de réussite, temps wall-clock, gestion des erreurs UI imprévues. Le gagnant devient le candidat pour automatiser cette classe de tâches en production.",
+          "<strong>Pression accrue sur les éditeurs métier pour exposer des APIs.</strong> Indirectement, quand des agents pilotent les outils par UI, les éditeurs voient leurs propres workflows mesurés en termes de stabilité agent. Les profils de tâches qui réussissent &gt; 90 % sur 3 agents différents deviennent du standard de fait — les autres deviennent du pain point public. À moyen terme (2027+), cela pousse les éditeurs des outils Lynxter à exposer des APIs propres pour ne pas se faire mesurer en \"agent UI compatibility score\". Si Lynxter peut amorcer ce mouvement côté éditeurs filament/slicer en relayant des benchmarks publics, ça peut accélérer la disponibilité d'APIs natives."
+        ],
+        "source": {
+          "kind": "secondaire",
+          "url": "https://www.thurrott.com/a-i/openai-a-i/336754/openai-brings-computer-use-to-codex-app-on-windows",
+          "label": "thurrott.com/openai-brings-computer-use-to-codex-app-on-windows",
+          "meta": "Thurrott · annonce Codex 26.527 Windows + Computer Use + mobile · 29 mai 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-05-25-antigravity-2-0",
+            "actor": "Google DeepMind",
+            "title": "Antigravity 2.0 — desktop + CLI + SDK",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-06-01-claude-opus-4-8",
+            "actor": "Anthropic",
+            "title": "Claude Opus 4.8 — OSWorld 83.4 % computer use",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-05-25-openai-codex-dell-onprem",
+            "actor": "OpenAI",
+            "title": "Codex on-premises Dell partnership",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-06-01-anthropic-series-h-965b.html",
+            "label": "← Item précédent",
+            "title": "Anthropic Série H"
+          },
+          "next": {
+            "href": "2026-06-01-mistral-ai-now-summit-industrial.html",
+            "label": "Item suivant →",
+            "title": "Mistral AI Now Summit"
+          }
+        }
+      }
     },
     {
       "slug": "2026-06-01-openai-frontier-governance",
@@ -117,7 +424,7 @@
       "tag": "info",
       "date": "2026-05-29",
       "title": "OpenAI publie le Frontier Governance Framework — alignement EU AI Act + California SB 53",
-      "context_html": "Document public d'OpenAI qui mappe son Preparedness Framework interne sur les obligations réglementaires émergentes : <strong>EU AI Act Code of Practice</strong> et <strong>California Transparency in Frontier AI Act</strong>. Pas de capacité nouvelle, mais signal de positionnement face à la conformité. À comparer à la Compliance API d'Anthropic : Anthropic livre une API, OpenAI livre un document.",
+      "context_html": "Document public d'OpenAI qui mappe son Preparedness Framework interne sur les obligations réglementaires émergentes : <strong>EU AI Act Code of Practice for General-Purpose AI</strong> et <strong>California Transparency in Frontier AI Act</strong>. Couvre risk assessment & mitigation (cyber offense, CBRN, manipulation, perte de contrôle), model reporting, security risk management, incident response, expert input externe. Pas de capacité nouvelle, mais signal de positionnement face à la conformité — vise à rassurer les régulateurs et clients régulés sans s'engager au-delà du Preparedness Framework existant. À comparer à la Compliance API d'Anthropic (couverte semaine dernière) : Anthropic livre une API, OpenAI livre un document.",
       "sources": [],
       "has_primary": false
     },
@@ -127,7 +434,7 @@
       "tag": "info",
       "date": "2026-05-29",
       "title": "Rosalind Biodefense + retraits o3 (26 août) et GPT-4.5 (27 juin)",
-      "context_html": "<strong>Rosalind Biodefense</strong> : OpenAI ouvre l'accès à GPT-Rosalind (reasoning life sciences) à des partenaires gouvernementaux sur la préparation pandémique. <strong>Calendriers retraite confirmés</strong> : GPT-4.5 sort de ChatGPT le <strong>27 juin 2026</strong>, o3 le <strong>26 août 2026</strong> (l'API garde o3). Pas d'impact opérationnel Lynxter, mais signal de rythme.",
+      "context_html": "<strong>Rosalind Biodefense</strong> (29 mai) : OpenAI ouvre l'accès à GPT-Rosalind (modèle reasoning life sciences, nommé d'après Rosalind Franklin) à des partenaires gouvernementaux US et alliés sur la préparation pandémique — Johns Hopkins APL et autres. Couvre modélisation épidémiologique, détection précoce, screening, NPIs. <strong>Calendriers retraite confirmés</strong> : GPT-4.5 sort de ChatGPT le <strong>27 juin 2026</strong> (sunset 30 jours), o3 sort de ChatGPT le <strong>26 août 2026</strong> (sunset 90 jours). API : o3 reste disponible, GPT-4.5 non concerné côté API. Pas d'impact opérationnel Lynxter (ni o3 ni GPT-4.5 dans le stack actuel), mais signal de rythme — OpenAI accélère le clean-up de son catalogue pour pousser GPT-5.5 partout.",
       "sources": [],
       "has_primary": false
     },
@@ -137,12 +444,95 @@
       "tag": "useful",
       "date": "2026-05-28",
       "title": "AI Now Summit — stack industriel avec Airbus, BMW, ASML + datacenter 10 MW aux Ulis",
-      "context_html": "Mistral tient son <strong>AI Now Summit</strong> à Paris le 28 mai. <strong>Industrial AI</strong> : stack combinant modèles physiques, ingénierie et robotique — premiers clients <strong>Airbus, BMW Group, ASML</strong>. Acquisition d'<strong>Emmi AI</strong> (Physics AI) intégrée. <strong>Datacenter Les Ulis</strong> : site d'inférence <strong>10 MW pour Q3 2026</strong>, <strong>opéré en propre</strong> sans dépendance hyperscaler US. Premier signal sérieux qu'un acteur LLM français vise le créneau industriel européen.",
+      "context_html": "Mistral tient son <strong>AI Now Summit</strong> à Paris le 28 mai. Trois annonces structurantes. <strong>Industrial AI</strong> : nouveau stack qui combine modèles physiques avancés, expertise ingénierie et robotique pour accélérer la conception et optimiser les performances assets — premiers clients confirmés <strong>Airbus, BMW Group, ASML</strong>. Le périmètre couvre design, validation, production, qualité, opérations, en gardant contrôle total sur les données propriétaires, IP et environnements de production. L'acquisition d'<strong>Emmi AI</strong> (Physics AI, 30+ chercheurs/ingénieurs, annoncée le 22 mai) est intégrée à l'offre. <strong>Datacenter Les Ulis</strong> (Essonne) : nouveau site d'inférence <strong>10 MW pour Q3 2026</strong>, <strong>opéré en propre</strong> par Mistral sans dépendance hyperscaler US — argument souverain + contrôle GPU + visibilité sécurité. Pour Lynxter (impression 3D industrielle), c'est le premier signal sérieux qu'un acteur LLM français vise précisément le créneau industriel européen — à suivre pour les benchmarks Vibe CLI sur génération de gcode ou analyse de profils impression.",
       "sources": [
-        { "label": "mistral.ai/news/ai-now-summit-2026", "url": "https://mistral.ai/news/ai-now-summit-2026/", "primary": true },
-        { "label": "venturebeat.com", "url": "https://venturebeat.com/technology/mistral-ai-launches-vibe-industrial-ai/", "primary": false }
+        {
+          "label": "mistral.ai/news/ai-now-summit-2026",
+          "url": "https://mistral.ai/news/ai-now-summit-2026/",
+          "primary": true
+        },
+        {
+          "label": "venturebeat.com",
+          "url": "https://venturebeat.com/technology/mistral-ai-launches-vibe-expands-into-industrial-ai-and-announces-data-center-push-to-challenge-openai",
+          "primary": false
+        }
       ],
-      "has_primary": true
+      "has_primary": true,
+      "detail": {
+        "short": "Mistral AI Now Summit",
+        "date_long": "28 mai 2026",
+        "description": "Analyse de l'AI Now Summit Mistral (28 mai 2026) : stack industriel avec Airbus, BMW Group, ASML, datacenter 10 MW aux Ulis pour Q3 2026, acquisition Emmi AI intégrée. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "3",
+            "unit": "clients",
+            "label": "Airbus · BMW Group · ASML"
+          },
+          {
+            "num": "10",
+            "unit": "MW",
+            "label": "Datacenter inférence Les Ulis"
+          },
+          {
+            "num": "Q3 2026",
+            "unit": "prod.",
+            "label": "Mise en service prévue"
+          },
+          {
+            "num": "30+",
+            "unit": "chercheurs",
+            "label": "Emmi AI absorbé (22 mai)"
+          }
+        ],
+        "context_paragraphs": [
+          "Mistral organise son <strong>AI Now Summit</strong> à Paris le 28 mai 2026 — premier événement public d'envergure de la société depuis le lancement de Vibe début mai. La conférence empile trois annonces structurantes qui repositionnent Mistral d'un éditeur LLM open-weights vers un acteur full-stack industriel européen. <strong>Industrial AI</strong> : nouveau stack qui combine modèles physiques avancés, expertise ingénierie et robotique pour les opérations industrielles critiques. Le périmètre couvre design, validation, production, qualité et opérations — l'argument différenciant étant le <strong>contrôle complet sur les données propriétaires, IP et environnements de production</strong>. Premiers clients confirmés : <strong>Airbus, BMW Group, ASML</strong> — l'aérospatial européen, l'automobile premium allemand, et le leader mondial de la lithographie semi-conducteur.",
+          "Le stack intègre les capacités de <strong>Emmi AI</strong>, société autrichienne spécialisée en Physics AI, acquise par Mistral le 22 mai 2026 (signé une semaine avant le summit, annoncé en publique au summit). Les co-fondateurs et plus de <strong>30 chercheurs/ingénieurs Emmi</strong> rejoignent les équipes Science et Applied AI de Mistral. La proposition de valeur Industrial AI : utiliser un agent qui comprend la physique (fluid dynamics, mécanique des matériaux, thermique) pour accélérer la conception de pièces, éliminer les goulets de simulation, optimiser les performances assets en production. Concrètement : un ingénieur Airbus décrit un cahier des charges aérodynamique, le stack Mistral fait tourner des simulations physiques préliminaires + génère des variants design + valide leur viabilité avant le CFD coûteux — ce qui économise des semaines de calcul HPC.",
+          "Deuxième annonce structurante : <strong>datacenter de Les Ulis</strong> (Essonne, sud-ouest de Paris) — <strong>10 mégawatts dédiés à l'inférence</strong>, mise en service prévue <strong>Q3 2026</strong>. Particularité : <strong>opéré en propre par Mistral, sans dépendance hyperscaler US</strong> (AWS, Azure, GCP). L'argument explicit : réduire l'exposition au supply chain compute, garder le contrôle direct des ressources GPU, garantir la visibilité sécurité bout-en-bout. Le site est francais, soumis au RGPD strict, et offre une option de souveraineté que peu de concurrents peuvent égaler — combien d'acteurs IA frontière exploitent leur propre infrastructure d'inférence en Europe ? Aucun à cette échelle. C'est un déblocage pour les clients sensibles à la juridiction des données (défense française, énergie nucléaire, santé). Troisième annonce, plus discrète : la rebrande de Le Chat en <strong>Vibe</strong> est officialisée comme nom commercial unique, avec consolidation des modes Work + Code dans une interface chat unifiée."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Mistral devient un candidat sérieux pour le créneau \"agent industriel français\".</strong> Lynxter (impression 3D industrielle, support S300X/S600D, clientèle souvent souveraine ou européenne) est très exactement dans la cible que Mistral cherche à attaquer avec Industrial AI. Pas dans la liste des early adopters (Airbus, BMW, ASML sont des géants), mais le pattern de l'offre (physique embarquée + modèles spécialisés + contrôle des données + hébergement souverain) résonne avec les besoins réels de Lynxter : analyse profils impression, optimisation paramètres process, support diagnostic firmware. À planifier dans les 4-6 prochaines semaines : prendre contact avec Mistral via <code>contact@mistral.ai</code> en mettant en avant le use case \"support technique impression 3D industrielle, clients aérospatial / médical, intégration MES\" — voir si Lynxter peut entrer en pilote Industrial AI à un coût raisonnable.",
+          "<strong>Le datacenter Les Ulis change la donne souveraineté.</strong> Pour les clients Lynxter du secteur défense, médical ou aérospatial qui hésitent à exposer leurs données process à un LLM hébergé sur des hyperscalers US, Mistral devient l'alternative crédible avec hébergement <strong>strictement français</strong> dès Q3 2026. Pour les vendeurs Lynxter qui ont des deals bloqués par cette objection souveraineté, c'est un argument de remontée. À tester : intégrer Mistral Medium 3.5 (open-weights, MIT) sur quelques cas d'usage spécifiques (résumé tickets, classification logs) en self-host on-premises Lynxter — sans même attendre Les Ulis. Cela donne déjà un track record interne sur la qualité Mistral vs Claude pour des tâches non-critiques.",
+          "<strong>Le pattern Mistral converge avec le pattern Anthropic Industrial à venir.</strong> Mistral livre Industrial AI maintenant. Anthropic, avec ses verticaux Finance + Legal lancés en mai, ouvrira probablement un vertical Industrial / Manufacturing dans les 6-12 mois (probabilité estimée &gt; 60 %, vu le rythme). Pour Lynxter, l'opportunité est de se positionner comme beta partner crédible côté Anthropic <strong>maintenant</strong>, pendant que Mistral se concentre sur Airbus/BMW/ASML — Lynxter peut être le SMB industriel ambassadeur de Claude for Manufacturing si l'outreach est fait en amont. Plan d'action : (1) prendre RDV pilote Mistral Industrial AI ; (2) écrire une note d'intérêt à <code>partnerships@anthropic.com</code> sur le use case industriel ; (3) en interne, identifier 2-3 cas d'usage Lynxter spécifiques où la physique compte (profil thermique, dérive géométrique) — preuves de concept potentielles pour les deux acteurs."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://mistral.ai/news/ai-now-summit-2026/",
+          "label": "mistral.ai/news/ai-now-summit-2026",
+          "meta": "Mistral AI · annonces officielles AI Now Summit · 28 mai 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-06-01-anthropic-series-h-965b",
+            "actor": "Anthropic",
+            "title": "Anthropic Série H — capacité d'investissement R&D",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-06-01-claude-opus-4-8",
+            "actor": "Anthropic",
+            "title": "Claude Opus 4.8 — alternative LLM frontière",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-06-01-cursor-3-6-auto-review",
+            "actor": "Cursor",
+            "title": "Cursor 3.6 — agentic IDE concurrent",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-06-01-openai-codex-computer-use-windows.html",
+            "label": "← Item précédent",
+            "title": "Codex Computer Use Windows"
+          },
+          "next": {
+            "href": "2026-06-01-cursor-3-6-auto-review.html",
+            "label": "Item suivant →",
+            "title": "Cursor 3.6 Auto-review"
+          }
+        }
+      }
     },
     {
       "slug": "2026-06-01-cursor-3-6-auto-review",
@@ -150,12 +540,95 @@
       "tag": "useful",
       "date": "2026-05-29",
       "title": "Cursor 3.6 — Auto-review (classifier subagent) + Build in Parallel (graphe de dépendances)",
-      "context_html": "Release Cursor 3.6 le 29 mai. <strong>Auto-review</strong> : run mode pour tâches longues avec moins de prompts d'approbation (Shell, MCP, Fetch), via un <strong>classifier subagent</strong>. <strong>Build in Parallel</strong> : graphe de dépendances dispatché à des sous-agents async. <strong>Split PRs</strong>, <strong>Composer 2.5</strong> élargi. Cursor reste le concurrent direct de Claude Code + Composer côté IDE multi-agent.",
+      "context_html": "Release Cursor 3.6 le 29 mai. <strong>Auto-review</strong> : nouveau run mode pour les tâches longues avec moins de prompts d'approbation. S'applique à <strong>Shell, MCP, et Fetch tool calls</strong>. Les appels allowlistés tournent immédiatement, ceux qui peuvent être sandboxés tournent en sandbox, les autres passent par un <strong>classifier subagent</strong> qui décide d'autoriser, retenter autrement, ou demander approbation. <strong>Build in Parallel</strong> : Cursor analyse les dépendances entre les étapes d'un plan multi-step, construit un graphe d'exécution et dispatch les étapes indépendantes simultanément à des sous-agents async. <strong>Split PRs</strong> : action rapide pour découper les changements en PRs logiques. <strong>Composer 2.5</strong> élargi avec meilleure stabilité long-tasks. Modèle de billing Bugbot bascule en usage-only (suppression seat fees). Cursor reste le concurrent direct de Claude Code + Composer côté IDE multi-agent — la convergence agentic IDE est désormais établie (Claude Code, Cursor, Antigravity, Codex).",
       "sources": [
-        { "label": "cursor.com/changelog", "url": "https://cursor.com/changelog", "primary": false },
-        { "label": "cursor.com/changelog/auto-review", "url": "https://cursor.com/changelog/auto-review", "primary": false }
+        {
+          "label": "cursor.com/changelog",
+          "url": "https://cursor.com/changelog",
+          "primary": true
+        },
+        {
+          "label": "cursor.com/changelog/auto-review",
+          "url": "https://cursor.com/changelog/auto-review",
+          "primary": true
+        }
       ],
-      "has_primary": false
+      "has_primary": true,
+      "detail": {
+        "short": "Cursor 3.6",
+        "date_long": "29 mai 2026",
+        "description": "Analyse de Cursor 3.6 (29 mai 2026) : Auto-review avec classifier subagent, Build in Parallel par graphe de dépendances, Split PRs, billing usage-only. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "3",
+            "unit": "surfaces",
+            "label": "Shell · MCP · Fetch (auto-review)"
+          },
+          {
+            "num": "v3.6",
+            "unit": "release",
+            "label": "29 mai 2026"
+          },
+          {
+            "num": "2.5",
+            "unit": "Composer",
+            "label": "Long-tasks stabilité++"
+          },
+          {
+            "num": "Usage",
+            "unit": "billing",
+            "label": "Bugbot bascule sur usage-only"
+          }
+        ],
+        "context_paragraphs": [
+          "Cursor sort la <strong>version 3.6</strong> de son IDE le 29 mai 2026, focalisée sur deux capacités majeures côté agentique. <strong>Auto-review</strong> est un nouveau run mode qui permet à Cursor de travailler plus longtemps sur des tâches sans demander d'approbation à chaque étape. Le mode s'applique à trois classes de tool calls : <strong>Shell</strong> (commandes système), <strong>MCP</strong> (serveurs Model Context Protocol externes), et <strong>Fetch</strong> (requêtes HTTP/web). Le mécanisme : les appels présents dans une allowlist explicite tournent immédiatement sans prompt ; ceux qui peuvent être sandboxés tournent dans un sandbox isolé ; le reste passe par un <strong>classifier subagent</strong> qui décide en autonomie d'autoriser, de retenter avec une approche différente, ou de demander l'approbation utilisateur. C'est la même philosophie qu'<code>acceptEdits</code> + <code>bypassPermissions</code> côté Claude Code, raffinée avec une couche d'analyse intermédiaire automatique pour réduire la fatigue des prompts d'approbation sans laisser l'agent en roue libre complète.",
+          "<strong>Build in Parallel</strong> attaque le même problème que les Dynamic Workflows Anthropic mais sous un angle différent. Quand on a un plan multi-step, Cursor analyse les <strong>dépendances entre tâches</strong> et construit un <strong>graphe d'exécution orienté</strong>. Les étapes identifiées comme indépendantes (par exemple, \"ajouter une route API\" et \"écrire les tests unitaires existants\") sont dispatchées simultanément à des sous-agents async. Les étapes dépendantes restent séquentielles. Cliquer sur \"Build in Parallel\" déclenche l'analyse et l'exécution — l'utilisateur voit le graphe visualisé dans l'IDE pendant l'exécution. Cursor met aussi à jour <strong>Composer 2.5</strong> avec une meilleure stabilité sur les sustained long tasks, et propose une nouvelle <strong>quick action \"Split PRs\"</strong> qui découpe automatiquement les changements en plusieurs PRs logiques en se basant sur le contexte chat pour identifier les slices.",
+          "Côté business model, Cursor bascule <strong>Bugbot en usage-only</strong> (suppression des seat fees) : les Teams payent depuis le on-demand spend, les Individuals depuis leur usage inclus. Les admins Enterprise gagnent une granularité accrue sur le contrôle des modèles : <strong>allowlist / blocklist par modèle ET par provider</strong> — bloquer entièrement Anthropic, ou autoriser uniquement Claude Sonnet, devient possible en un toggle. Côté ecosystème : <strong>Cursor in Jira</strong> permet d'assigner un work item à Cursor ou mentionner <code>@Cursor</code> en commentaire pour lancer un cloud agent qui peut fix bugs, add features, update tests, investigate. <strong>Canvas sharing</strong> (artifacts interactifs créés par les agents — reports, dashboards) gagne un partage par live snapshot link. La release positionne Cursor comme l'<strong>agentic IDE</strong> avec le plus de surface dans la chaîne dev (IDE + Jira + cloud agents + PR review + canvas) — concurrent direct à Claude Code + GitHub Actions, et à Antigravity Desktop + Codex."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Cursor reste sur le radar comme alternative agentic IDE.</strong> Lynxter utilise Claude Code en stack principal — Cursor n'est pas dans le set actif. Mais le pattern de release de Cursor (Auto-review + Build in Parallel le 29 mai, soit le lendemain des Dynamic Workflows d'Anthropic) confirme que la convergence multi-agent / parallel execution est désormais standard sur tous les IDE agentic. Les Dynamic Workflows Anthropic et Build in Parallel Cursor résolvent le même problème (paralléliser quand c'est parallélisable) avec deux approches différentes : Anthropic via script JS rerunnable, Cursor via graphe de dépendances analysé à la volée. Pour Lynxter, ça veut dire qu'<strong>aucun choix d'IDE actuel ne te ferme une porte sur le multi-agent</strong> — la primitive est désormais disponible partout.",
+          "<strong>Auto-review est un pattern à reproduire dans la configuration Claude Code Lynxter.</strong> Le classifier subagent qui décide automatiquement entre allow / retry / ask est plus sophistiqué que le simple <code>acceptEdits</code> de Claude Code. À mettre dans la liste des features à demander en feedback à Anthropic — soit côté Claude Code GitHub Issues, soit en direct via partnership. En attendant, Lynxter peut bricoler un équivalent : configurer un script bash de hook pre-tool-use qui passe les commandes inconnues à un Claude classifier en background, avant d'autoriser ou bloquer. C'est lourd, mais sur les Routines critiques où on ne veut pas tout allowlister mais on veut éviter les prompts incessants, ça vaut un POC.",
+          "<strong>La bascule Bugbot en usage-only est un signal de pricing à anticiper.</strong> Cursor pousse vers le modèle \"no seat, pay per use\" — Anthropic ne l'a pas (encore) fait sur Claude Code, mais la pression de marché augmente. Pour Lynxter, qui est sur un palier Claude Max actuellement, ça veut dire surveiller les prochaines annonces tarifaires d'Anthropic (rumeurs d'introduction de paliers usage-only enterprise) et ajuster les contrats annuels en conséquence. Si Anthropic introduit un palier \"tokens-only enterprise\" avant fin 2026, ça peut être plus économique pour Lynxter qu'un palier seat-based — à modéliser dans un tableau avec la conso réelle des Routines actuelles."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://cursor.com/changelog",
+          "label": "cursor.com/changelog",
+          "meta": "Cursor · changelog officiel v3.6 · 29 mai 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-06-01-claude-code-dynamic-workflows",
+            "actor": "Anthropic",
+            "title": "Dynamic Workflows — pattern parallèle Anthropic",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-06-01-openai-codex-computer-use-windows",
+            "actor": "OpenAI",
+            "title": "Codex Computer Use Windows",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-05-25-antigravity-2-0",
+            "actor": "Google DeepMind",
+            "title": "Antigravity 2.0 — agentic IDE concurrent",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-06-01-mistral-ai-now-summit-industrial.html",
+            "label": "← Item précédent",
+            "title": "Mistral AI Now Summit"
+          },
+          "next": {
+            "href": "../briefs/2026-06-01.html",
+            "label": "Retour au brief →",
+            "title": "2026-06-01"
+          }
+        }
+      }
     },
     {
       "slug": "2026-06-01-xai-grok-custom-skills",
@@ -163,7 +636,7 @@
       "tag": "info",
       "date": "2026-05-26",
       "title": "xAI lance Custom Skills sur Grok — workflows persistants, à la Anthropic Skills",
-      "context_html": "xAI ouvre les <strong>Custom Skills</strong> sur Grok le 26 mai : tâches personnalisées réutilisables qui persistent cross-conversations. Pattern similaire aux Anthropic Skills, mais cette fois <strong>l'utilisateur crée ses propres skills</strong>. xAI consolide une offre productivité agentique, mais reste loin de l'écosystème Claude Code/Cursor côté CLI.",
+      "context_html": "xAI ouvre les <strong>Custom Skills</strong> sur Grok le 26 mai : créer des tâches personnalisées réutilisables qui persistent cross-conversations. Pattern similaire aux Anthropic Skills (fin 2025) et aux Grok Skills natifs sortis la semaine précédente — mais cette fois <strong>l'utilisateur crée ses propres skills</strong>, en quelques secondes, et les déploie quotidiennement. Côté écosystème Grok : Grok 4.3 (modèle 1M ctx avec reasoning et video input, mai 2026), Grok Build (modèle coding agentic), Connectors (SharePoint, Outlook, OneDrive, Google Workspace, Notion, GitHub, Linear + MCP serveur custom). xAI consolide une offre productivité agentique, mais reste loin de l'écosystème Claude Code/Cursor côté CLI.",
       "sources": [],
       "has_primary": false
     },
@@ -173,19 +646,63 @@
       "tag": "info",
       "date": "2026-05-28",
       "title": "CNN poursuit Perplexity — neuvième litige copyright actif",
-      "context_html": "CNN dépose plainte contre Perplexity pour copie illégale de son contenu. Perplexity est désormais visé par <strong>9 actions actives</strong> (CNN, NYT, News Corp, Reddit, Britannica...). À l'opposé : Time, Gannett, Le Monde, Der Spiegel ont signé des accords. Signal de fond : <strong>le modèle \"answer engine\" sans licensing arrive à son plafond légal</strong>. À surveiller pour les agents Lynxter qui scrapent des sources tierces.",
+      "context_html": "CNN dépose plainte contre Perplexity pour copie et redistribution illégale de son contenu, après échec des négos de licensing l'an dernier. Avec ce dépôt, Perplexity est désormais visé par <strong>9 actions actives</strong> : CNN, New York Times, News Corp + Dow Jones, New York Post, Chicago Tribune, Encyclopedia Britannica, Merriam-Webster, Reddit, Yomiuri Shimbun. À l'opposé : Time, Gannett, Le Monde, Der Spiegel ont signé des accords de licensing plutôt que litiger. Croissance Perplexity solide en parallèle (50 % MoM en mars, 100 M MAU avec produits agents inclus). Signal de fond : <strong>le modèle \"answer engine\" sans licensing arrive à son plafond légal</strong> — soit accord soit procès. À surveiller pour les agents Lynxter qui scrapent des sources d'info techniques tierces.",
       "sources": [],
       "has_primary": false
     }
   ],
   "sources_footer": [
-    { "label": "anthropic.com/news", "url": "https://www.anthropic.com/news" },
-    { "label": "code.claude.com/docs/workflows", "url": "https://code.claude.com/docs/en/workflows" },
-    { "label": "openai.com/news", "url": "https://openai.com/news/" },
-    { "label": "blog.google", "url": "https://blog.google/technology/ai/" },
-    { "label": "ai.meta.com", "url": "https://ai.meta.com/blog/" },
-    { "label": "mistral.ai/news", "url": "https://mistral.ai/news/" },
-    { "label": "cursor.com/changelog", "url": "https://cursor.com/changelog" }
+    {
+      "label": "anthropic.com/news",
+      "url": "https://www.anthropic.com/news"
+    },
+    {
+      "label": "code.claude.com/docs/workflows",
+      "url": "https://code.claude.com/docs/en/workflows"
+    },
+    {
+      "label": "code.claude.com/changelog",
+      "url": "https://code.claude.com/docs/en/changelog"
+    },
+    {
+      "label": "openai.com/news",
+      "url": "https://openai.com/news/"
+    },
+    {
+      "label": "developers.openai.com/codex/changelog",
+      "url": "https://developers.openai.com/codex/changelog"
+    },
+    {
+      "label": "blog.google",
+      "url": "https://blog.google/technology/ai/"
+    },
+    {
+      "label": "deepmind.google/discover/blog",
+      "url": "https://deepmind.google/discover/blog/"
+    },
+    {
+      "label": "ai.meta.com",
+      "url": "https://ai.meta.com/blog/"
+    },
+    {
+      "label": "mistral.ai/news",
+      "url": "https://mistral.ai/news/"
+    },
+    {
+      "label": "cursor.com/changelog",
+      "url": "https://cursor.com/changelog"
+    },
+    {
+      "label": "x.ai/news",
+      "url": "https://x.ai/news"
+    },
+    {
+      "label": "perplexity.ai",
+      "url": "https://www.perplexity.ai/changelog"
+    }
   ],
-  "prev": { "href": "2026-05-25.html", "title": "Google joue Antigravity, Anthropic verrouille la conformité" }
+  "prev": {
+    "href": "2026-05-25.html",
+    "title": "Google joue Antigravity, Anthropic verrouille la conformité"
+  }
 }

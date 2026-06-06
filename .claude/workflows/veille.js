@@ -74,6 +74,7 @@ const BRIEF_SCHEMA = {
           context_html: { type: "string" },
           sources: { type: "array", items: { type: "object", properties: { label: { type: "string" }, url: { type: "string" }, primary: { type: "boolean" } }, required: ["label", "url", "primary"] } },
           has_primary: { type: "boolean" },
+          detail: { type: "object", description: "OBLIGATOIRE pour les items 🎯/🛠 (sinon gen.js ne crée pas la page détail -> lien mort). Forme : { short, date_long, description, stats:[{num,unit,label}] (4), context_paragraphs:[...] (3 pour 🎯, 2-3 pour 🛠), lynxter_paragraphs:[...] (3 pour 🎯, 2-3 pour 🛠), source:{kind,url,label,meta}, related:[{slug,actor,title,tag}], nav:{prev:{href,label,title},next:{href,label,title}} }. ABSENT pour les · info (pas de page détail)." },
         },
         required: ["slug", "actor", "tag", "date", "title", "context_html", "sources", "has_primary"],
       },
@@ -113,7 +114,7 @@ Ta tache :
 2. SCORING : 🎯 lynxter (impact direct workflow Lynxter : Claude Code, agents, MCP, automation, support S300X/S600D) · 🛠 useful (a connaitre/anticiper/benchmarker) · · info (culture IA).
 3. GATE source primaire : un item 🎯/🛠 SANS source primaire reste publiable mais marque has_primary=false (le rédacteur ajoutera "· sans annonce officielle"). Jamais d'agregateur en source.
 4. Si < 3 items au total sur les 5 acteurs principaux : produire un brief "semaine calme" honnete (pas de padding).
-5. Construire le brief : titre accrocheur sec, period, 3 highlights, tldr (3 bullets denses), lynxter_hero (2-3 paragraphes HTML actionnables), synthese_html (1 paragraphe couvrant chaque acteur actif), et items[] (slug = ${A.date}-kebab, actor, tag, date, title, context_html = 3-5 phrases pour 🎯/🛠, 1-2 pour ·, sources[]).
+5. Construire le brief : titre accrocheur sec, period, 3 highlights, tldr (3 bullets denses), lynxter_hero (2-3 paragraphes HTML actionnables), synthese_html (1 paragraphe couvrant chaque acteur actif), et items[] (slug = ${A.date}-kebab, actor, tag, date, title, context_html = 3-5 phrases pour 🎯/🛠 (1-3 pour ·), sources[], ET detail{} OBLIGATOIRE pour chaque 🎯/🛠 : 4 stats, 3 paragraphes contexte étendu, 2-3 paragraphes implications Lynxter, source, related, nav — sinon page détail manquante = lien mort). Profondeur attendue : voir build/example-brief.json.
 ${TON}
 Renvoie le BRIEF complet via la sortie structuree.`
 }
@@ -169,5 +170,5 @@ return {
   qa_issues: qa.blocking_issues,
   written,
   brief_json: brief,
-  note: "Si qa_passed=true : pousser via MCP github push_files (un commit atomique), puis verifier le deploiement (HTTP 200 + date). Sinon corriger avant push.",
+  note: "PUBLICATION (critique) : si qa_passed=true, pousser via MCP github push_files (commit atomique) — voie primaire car la GitHub App Claude est installee sur le repo. Le PAT inline du prompt est MORT : ne pas s'y fier. Si l'ecriture echoue (App absente/sans write), ECHOUER BRUYAMMENT (rapport en erreur explicite) — ne JAMAIS terminer en succes silencieux sans brief publie. Puis verifier le deploiement (HTTP 200 + date du brief sur le site). Si qa_passed=false : corriger avant tout push.",
 }

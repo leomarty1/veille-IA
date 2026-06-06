@@ -6,7 +6,7 @@ Brief hebdomadaire automatique des nouveautés IA, scoré sous l'angle Lynxter (
 **Modèle :** dernier Claude Opus disponible (≥ claude-opus-4-8 — ne pas figer la version dans le prompt ; logger le modèle réel)  
 **Repo :** https://github.com/leomarty1/veille-IA  
 **Site :** https://leomarty1.github.io/veille-IA/  
-**Exécution :** workflow `.claude/workflows/veille.js` (fan-out par acteur → cross-check/dedup → rédaction → QA `node build/qa.js`)  
+**Exécution :** voie fiable par défaut = étapes 1 à 7 ci-dessous (manuelle, éprouvée sur 4 briefs). Option parallèle = workflow `.claude/workflows/veille.js`. Dans les deux cas, QA bloquante `node build/qa.js` avant tout push.  
 **Outillage :** `build/` (zéro dépendance) — voir `build/README.md`
 
 ---
@@ -149,7 +149,7 @@ Avant de générer, lire via `mcp__github__get_file_contents` (owner: leomarty1,
 
 ### 5. Fichiers à générer
 
-**Voie recommandée — single-source (Track A).** Écrire la source unique du brief `briefs/<date>.json` (schéma : `build/example-brief.json`), puis `node build/gen.js <date>` génère le brief + les pages détail des items 🎯/🛠 (chrome partagé via `build/lib.js`, plus de double saisie brief↔item). Ensuite mettre à jour `data.json` / `index.html` / `briefs/index.html` / `modeles/` comme ci-dessous, puis QA (`node build/qa.js`). La méthode manuelle ci-dessous reste valable pour les sections pas encore générées.
+**Voie recommandée — single-source (Track A).** Écrire la source unique du brief `briefs/<date>.json` (schéma ET niveau de richesse de référence : `build/example-brief.json` — un brief complet à égaler en profondeur, pas plus court), puis `node build/gen.js <date>` génère le brief + les pages détail des items 🎯/🛠 (chrome partagé via `build/lib.js`, plus de double saisie brief↔item). Ensuite mettre à jour `data.json` / `index.html` / `briefs/index.html` / `modeles/` comme ci-dessous, puis QA (`node build/qa.js`). La méthode manuelle ci-dessous reste valable pour les sections pas encore générées.
 
 
 #### A. `briefs/YYYY-MM-DD.html` — brief hebdomadaire
@@ -307,6 +307,8 @@ Inclure `modeles/models-data.json` dans le push_files final.
 Reporter le résultat QA dans le rapport final (`QA : ✅ / ❌ + check en cause`).
 
 ### 6. Push — stratégie MCP GitHub avec fallback
+
+**⚠ Publication = point critique (un run sans push = pas de brief publié).** Le PAT inline du prompt est **MORT** — ne plus l'utiliser. La voie réelle d'écriture est le MCP GitHub fourni par la **GitHub App Claude installée sur le repo** (Contents: write). Si l'écriture échoue (App retirée/sans write, MCP absent), **échouer bruyamment** et reporter l'échec dans le rapport final — ne JAMAIS terminer en succès silencieux sans brief publié. Secours possible : un PAT fine-grained **frais** stocké en variable secrète de routine (jamais en clair).
 
 **Voie principale (préférée) :** push via `mcp__github__push_files` en un seul appel atomique :
 
