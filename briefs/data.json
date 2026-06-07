@@ -1,6 +1,31 @@
 {
   "briefs": [
     {
+      "date": "2026-06-07",
+      "filename": "2026-06-07.html",
+      "items_count": 9,
+      "by_tag": { "lynxter": 1, "useful": 4, "info": 4 },
+      "by_actor": { "Anthropic": 5, "OpenAI": 2, "Google": 0, "Meta": 0, "Mistral": 0, "Cursor": 1, "xAI": 1 },
+      "mode": "hebdomadaire",
+      "title": "Mythos chasse les failles, Anthropic vise la bourse",
+      "highlights": [
+        "Anthropic dépose un S-1 confidentiel à la SEC (1er juin) — IPO au-dessus de 1 000 Md$ en scénario de base",
+        "Project Glasswing s'étend à ~200 orgs — Mythos Preview a trouvé >10 000 failles critiques (90,6 % vrais positifs)",
+        "Claude Code v2.1.168 — fallback models + durcissement cross-session ; OpenAI déploie la mémoire Dreaming V3"
+      ],
+      "items": [
+        { "slug": "2026-06-07-claude-code-2-1-166-fallback-models", "title": "Claude Code v2.1.166-168 — fallback models, globs deny rules, messagerie cross-session durcie", "primary_url": "https://code.claude.com/docs/en/changelog", "tag": "lynxter", "actor": "Anthropic" },
+        { "slug": "2026-06-07-project-glasswing-expansion", "title": "Project Glasswing s'étend à ~200 orgs — Mythos a trouvé >10 000 failles critiques", "primary_url": "https://www.anthropic.com/news/expanding-project-glasswing", "tag": "useful", "actor": "Anthropic" },
+        { "slug": "2026-06-07-anthropic-s1-ipo-filing", "title": "Anthropic dépose un S-1 confidentiel à la SEC", "primary_url": "https://www.anthropic.com/news/confidential-draft-s1-sec", "tag": "useful", "actor": "Anthropic" },
+        { "slug": "2026-06-07-openai-dreaming-memory", "title": "OpenAI « Dreaming V3 » — mémoire ChatGPT réécrite par synthèse en arrière-plan", "primary_url": "https://openai.com/index/chatgpt-memory-dreaming/", "tag": "useful", "actor": "OpenAI" },
+        { "slug": "2026-06-07-cursor-3-7-design-mode", "title": "Cursor 3.7 — Design Mode (clic/dessin/voix dans le navigateur Cursor)", "primary_url": "https://cursor.com/changelog", "tag": "useful", "actor": "Cursor" },
+        { "slug": "2026-06-07-claude-partner-network", "title": "Anthropic lance le Claude Partner Network — Services Track + Partner Hub", "primary_url": "https://www.anthropic.com/news", "tag": "info", "actor": "Anthropic" },
+        { "slug": "2026-06-07-anthropic-claude-chemist", "title": "Recherche Anthropic — Making Claude a chemist", "primary_url": "https://www.anthropic.com/research", "tag": "info", "actor": "Anthropic" },
+        { "slug": "2026-06-07-openai-codex-workspace-agents", "title": "OpenAI — partage de plugins et workspace agents pour Codex (Enterprise/EDU)", "primary_url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes", "tag": "info", "actor": "OpenAI" },
+        { "slug": "2026-06-07-xai-grok-build-acp", "title": "xAI — Grok Build en beta (TUI, headless, ACP) + Grok V9 en approche", "primary_url": "https://x.ai/build/changelog", "tag": "info", "actor": "xAI" }
+      ]
+    },
+    {
       "date": "2026-06-01",
       "filename": "2026-06-01.html",
       "items_count": 10,
