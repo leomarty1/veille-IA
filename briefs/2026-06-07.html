@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mythos chasse les failles, Anthropic vise la bourse — Veille IA Lynxter</title>
+<meta name="description" content="Brief IA du 1er au 7 juin 2026 : Anthropic dépose un S-1 confidentiel à la SEC, Project Glasswing s'étend à ~200 orgs (Mythos Preview a trouvé >10 000 failles critiques), Claude Code passe en v2.1.168 (fallback models + durcissement cross-session), OpenAI déploie la mémoire Dreaming V3.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/" class="active">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="./">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">2026-06-07</span>
+      </div>
+
+      <header style="margin-bottom:64px;">
+        <p class="section-label">Brief hebdomadaire · 1er → 7 juin 2026</p>
+        <h1 style="font-family:var(--font-display);font-stretch:125%;font-weight:300;font-size:clamp(36px,5.5vw,64px);text-transform:uppercase;letter-spacing:-0.005em;line-height:1.02;margin:0 0 28px;color:var(--text);">Mythos<br>chasse les failles,<br><em style="font-style:normal;color:var(--lx-accent);">Anthropic vise la bourse</em></h1>
+        <p style="font-size:18px;font-weight:300;color:var(--text-soft);max-width:720px;margin:0 0 48px;line-height:1.7;">Semaine de consolidation Anthropic après le triplé du 28 mai. Le 1er juin, Anthropic <strong>dépose un S-1 confidentiel à la SEC</strong> — quatre jours après avoir bouclé sa Série H à 965 Md$, l'IPO devient le scénario de base, possiblement au-dessus de 1 000 Md$. Le 2 juin, <strong>Project Glasswing</strong> s'étend de ~50 à ~200 organisations dans plus de 15 pays : Claude Mythos Preview (modèle frontière non sorti) a déjà identifié <strong>plus de 10 000 vulnérabilités high/critical</strong> dans les logiciels systémiques, avec un taux de vrais positifs de 90,6 %. Côté outillage, Claude Code enchaîne v2.1.165→168 (5-6 juin) : <strong>fallback models</strong>, globs dans les deny rules, et un durcissement de la messagerie cross-session qui retire l'autorité utilisateur aux messages relayés entre sessions. OpenAI réplique sur le terrain produit avec <strong>Dreaming V3</strong>, une réécriture de la mémoire ChatGPT (4 juin, coût compute ÷5). Google, Meta et Mistral : silence dans la fenêtre, tout date d'avant le 1er juin.</p>
+
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">9<span class="unit">items</span></div>
+            <div class="stat-label">Total semaine</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">1<span class="unit">🎯</span></div>
+            <div class="stat-label">Impact Lynxter</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">4<span class="unit">🛠</span></div>
+            <div class="stat-label">À connaître</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">8<span class="unit">acteurs</span></div>
+            <div class="stat-label">Sources scannées</div>
+          </div>
+        </div>
+      </header>
+
+      <p class="section-label">TL;DR</p>
+      <section class="tldr reveal" style="margin-bottom:72px;">
+        <ul>
+          <li><strong>Anthropic dépose un S-1 confidentiel à la SEC (1er juin).</strong> Quatre jours après le closing de la Série H (965 Md$ post-money, run-rate 47 Md$), Anthropic prépare son entrée en bourse — premier des grands labos à franchir l'étape, devant OpenAI dont la structure capped-profit complique la trajectoire publique. Aucun prix, ticker ou calendrier fixé (filing confidentiel), mais une IPO au-dessus de 1 000 Md$ est désormais le scénario de base. Le S-1 finira par exposer marges, concentration client et économie unitaire — données rares sur un labo frontière.</li>
+          <li><strong>Project Glasswing s'étend à ~200 organisations — Mythos Preview a trouvé >10 000 failles critiques (2 juin).</strong> Le programme de cyberdéfense d'Anthropic, bâti autour de Claude Mythos Preview (modèle frontière non sorti), passe de ~50 à ~200 orgs dans 15+ pays, ajoutant énergie, eau, santé, télécoms et hardware. Chiffres : >10 000 vulnérabilités high/critical détectées, taux de bug-finding ×10 chez plusieurs partenaires, Cloudflare seul à 2 000 bugs (400 critiques). Sur 1 752 failles auditées par 6 cabinets indépendants, 90,6 % de vrais positifs. Signal dual-use : les modèles frontière dépassent désormais la quasi-totalité des humains sur la découverte de vulnérabilités.</li>
+          <li><strong>Claude Code v2.1.168 + OpenAI Dreaming V3 (4-6 juin).</strong> Claude Code livre le <code>fallbackModel</code> (jusqu'à 3 modèles de repli en cascade quand le primaire est saturé), les globs dans les deny rules (<code>"*"</code> bloque tous les tools), et un durcissement clé : les messages relayés via <code>SendMessage</code> entre sessions ne portent plus l'autorité utilisateur. OpenAI réécrit la mémoire ChatGPT avec <strong>Dreaming V3</strong> : synthèse en arrière-plan sur des années de conversations, mise à jour temporelle automatique, coût compute divisé par ~5, rappel factuel 82,8 %.</li>
+        </ul>
+      </section>
+
+      <section class="lynxter-hero reveal">
+        <h2>🎯 Implications Lynxter</h2>
+        <div class="body">
+          <p><strong>Claude Code v2.1.166-168 apporte deux primitives directement utiles à tes Routines : la résilience et le durcissement sécurité.</strong> Le <code>fallbackModel</code> permet de configurer jusqu'à trois modèles de repli essayés en cascade quand Opus 4.8 est overloaded ou indisponible — et il s'applique désormais aussi aux sessions interactives, pas seulement aux jobs headless. Pour la routine veille-IA elle-même et les Routines Cowork support, c'est la fin des runs qui plantent en heure de pointe US : configure <code>fallbackModel: ["claude-opus-4-8", "claude-sonnet-4-6", "claude-haiku-4-5"]</code> dans <code>.claude/settings.json</code> et un brief n'échouera plus jamais sur une saturation API. Le second changement est le durcissement de la messagerie cross-session : les messages relayés via <code>SendMessage</code> depuis d'autres sessions Claude <strong>ne portent plus l'autorité de l'utilisateur</strong> — les receivers refusent les demandes de permission relayées, et le mode auto les bloque. Si tu exploites les Dynamic Workflows lancés la semaine dernière (jusqu'à 1 000 sous-agents), c'est la garantie qu'un sous-agent compromis ou mal cadré ne peut pas escalader ses droits via un message à un autre agent. Action cette semaine : mets à jour Claude Code (≥ v2.1.166) sur tous les postes support et ajoute le <code>fallbackModel</code> à la config partagée du repo.</p>
+          <p><strong>Glasswing/Mythos change ton modèle de menace firmware, dans les deux sens.</strong> Anthropic démontre noir sur blanc qu'un modèle frontière trouve >10 000 failles critiques dans du logiciel systémique avec 90,6 % de vrais positifs, et que plusieurs partenaires multiplient par 10 leur rythme de découverte de bugs. Lynxter conçoit du firmware embarqué (S300X/S600D) et pousse des imprimantes connectées : le même outillage qui défend Cloudflare est accessible aux attaquants. Concrètement, deux actions. (1) <strong>Défensif</strong> : avant toute release firmware, fais passer le code par une passe sécurité agentique — le changelog Claude Code v2.1.166 mentionne un <code>security-guidance plugin</code> ; lance-le sur les modules réseau et parsing de gcode, là où une faille mémoire en C se paie cher sur une machine industrielle. (2) <strong>Anticipation</strong> : intègre dans l'argumentaire RFP que Lynxter audite son firmware avec des outils de classe frontière — c'est un différenciateur face aux concurrents qui ne le font pas, et de plus en plus de clients défense/médical le demanderont en 2026-2027. Mythos reste non sorti (preview interne) : ne pas l'inscrire comme modèle officiel, mais suivre sa trajectoire — il préfigure le saut de capacité de la prochaine génération Claude.</p>
+          <p><strong>Le dépôt du S-1 verrouille — encore davantage — ton pari fournisseur Claude.</strong> Une semaine après avoir analysé la Série H, le signal se confirme : Anthropic est le premier labo frontière à déposer pour une IPO, avec 47 Md$ de run-rate et une valo de 965 Md$. Pour Lynxter, qui a Claude en stack principal (Cowork, Routines, Claude Code), le risque de discontinuité fournisseur tombe à un niveau marginal sur 2026-2028 : un acteur qui prépare son entrée en bourse ne pivote pas et ne déprécie pas son produit phare. Mais la cotation publique apporte une contrepartie à anticiper : la discipline de marge. Les marchés exigeront une trajectoire de rentabilité, ce qui peut se traduire par une monétisation plus agressive des paliers entreprise (Cowork, feature-gating sur les Routines, fin de certaines générosités de quota). <strong>Action</strong> : si tu prévois une montée en charge support via Claude Cowork au S2 2026, négocie maintenant un commit annuel à pricing figé — avant que la pression IPO ne resserre les conditions. Et surveille la publication du S-1 public : il révélera la concentration client d'Anthropic, une donnée utile pour évaluer la solidité réelle du fournisseur.</p>
+        </div>
+      </section>
+
+      <p class="section-label">Synthèse</p>
+      <section class="synthese reveal">
+        Semaine dominée par <strong>Anthropic</strong>, en mode consolidation après le triplé du 28 mai. Le 1er juin, dépôt d'un <strong>S-1 confidentiel à la SEC</strong> — première IPO d'un labo frontière en préparation, valo 965 Md$, run-rate 47 Md$, scénario de base au-dessus de 1 000 Md$. Le 2 juin, <strong>Project Glasswing</strong> s'étend de ~50 à ~200 organisations (15+ pays, ajout énergie/eau/santé/télécoms/hardware) : <strong>Claude Mythos Preview</strong> a trouvé >10 000 failles high/critical, taux de vrais positifs 90,6 %, ×10 sur le rythme de découverte chez plusieurs partenaires (Cloudflare : 2 000 bugs dont 400 critiques). Côté outillage, <strong>Claude Code v2.1.165→168</strong> (5-6 juin) : <code>fallbackModel</code> (3 replis en cascade), globs dans les deny rules, durcissement de la messagerie cross-session (les messages relayés perdent l'autorité utilisateur), Opus 4.8 en défaut. Le 3 juin, lancement du <strong>Claude Partner Network</strong> (Services Track + Partner Hub) et publication d'un rapport cartographiant un an de cybermenaces assistées par IA ; le 5 juin, recherche <em>"Making Claude a chemist"</em>. <strong>OpenAI</strong> réplique sur le produit avec <strong>Dreaming V3</strong> (4 juin) : réécriture de la mémoire ChatGPT par synthèse en arrière-plan, mise à jour temporelle auto, coût compute ÷5, rappel factuel 82,8 % ; côté Codex, partage de plugins et workspace agents pour Enterprise/EDU. <strong>Google, Meta et Mistral</strong> : rien dans la fenêtre — toutes leurs annonces récentes (I/O, AI Now Summit, layoffs) datent d'avant le 1er juin. Côté secondaires : <strong>Cursor 3.7</strong> (5 juin) ajoute le Design Mode (éditer l'UI par clic/dessin/voix dans le navigateur Cursor) ; <strong>xAI</strong> sort Grok Build en beta (TUI interactif, scripting headless, support Agent Client Protocol) et prépare Grok V9-Medium (1,5 T paramètres, sortie annoncée mi-juin — non confirmée).
+      </section>
+
+      <!-- ─── ANTHROPIC ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/anthropic/1b1818/f3f1ee" alt="" />Anthropic<span class="count">5 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-06-07-claude-code-2-1-166-fallback-models.html">Claude Code v2.1.166-168 — fallback models, globs dans les deny rules, messagerie cross-session durcie</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-06-06</span>
+          </div>
+          <p class="item-context">Claude Code enchaîne <strong>v2.1.165 (5 juin) → 166/167/168 (6 juin)</strong>. Trois apports structurants. (1) <strong><code>fallbackModel</code></strong> : configure jusqu'à 3 modèles de repli essayés en cascade quand le primaire est overloaded ou indisponible ; <code>--fallback-model</code> s'applique désormais aussi aux sessions interactives. Claude Code retente même une fois sur le fallback quand l'API renvoie une erreur non-retryable inattendue (auth, rate-limit, request-size et transport remontent toujours immédiatement). (2) <strong>Globs dans les deny rules</strong> : le glob est supporté en position nom-de-tool (<code>"*"</code> bloque tous les tools) ; les allow rules rejettent les globs non-MCP, et les noms de tool inconnus dans les deny rules déclenchent un warning au démarrage. (3) <strong>Durcissement messagerie cross-session</strong> : les messages relayés via <code>SendMessage</code> depuis d'autres sessions Claude ne portent plus l'autorité de l'utilisateur — les receivers refusent les demandes de permission relayées, le mode auto les bloque. Aussi : <code>MAX_THINKING_TOKENS=0</code> / <code>--thinking disabled</code> désactivent vraiment le thinking sur les modèles qui pensent par défaut (API Claude) ; Opus 4.8 en modèle par défaut ; fixes JetBrains (flicker IntelliJ/PyCharm/WebStorm), protocole clavier Kitty, hang PowerShell sur Windows, process <code>--bg-pty-host</code> orphelins à 100 % CPU sur macOS, auth voice mode.</p>
+          <p class="item-source"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">code.claude.com/docs/en/changelog</a> · <a href="https://github.com/anthropics/claude-code/releases" target="_blank" rel="noopener">github.com/anthropics/claude-code/releases</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-06-07-project-glasswing-expansion.html">Project Glasswing s'étend à ~200 orgs — Mythos Preview a trouvé >10 000 failles critiques</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-06-02</span>
+          </div>
+          <p class="item-context">Le 2 juin, Anthropic étend <strong>Project Glasswing</strong> de ~50 à <strong>~200 organisations dans plus de 15 pays</strong>, ajoutant des secteurs sous-représentés au lancement : énergie, eau, santé, télécoms, hardware. Le programme, lancé en avril, est bâti autour de <strong>Claude Mythos Preview</strong> — un modèle frontière généraliste <strong>non sorti</strong> qui, selon Anthropic, a atteint un niveau de capacité de code permettant de surpasser tous les humains sauf les plus experts sur la découverte et l'exploitation de vulnérabilités. Chiffres : <strong>>10 000 failles high/critical</strong> trouvées sur les logiciels les plus systémiques au monde ; plusieurs partenaires rapportent un rythme de découverte de bugs <strong>×10</strong> ; <strong>Cloudflare</strong> à lui seul a remonté 2 000 bugs (dont 400 high/critical) sur ses systèmes critiques. Sur un scan de 1 000 projets open-source, Mythos a identifié <strong>6 202 vulnérabilités high/critical sur 23 019</strong> ; sur 1 752 failles auditées par 6 cabinets de sécurité indépendants, <strong>90,6 % de vrais positifs</strong> et 62,4 % confirmées high/critical. Anthropic a publié en parallèle (3 juin) un rapport cartographiant un an de cybermenaces assistées par IA.</p>
+          <p class="item-source"><a href="https://www.anthropic.com/news/expanding-project-glasswing" target="_blank" rel="noopener">anthropic.com/news/expanding-project-glasswing</a> · <a href="https://www.anthropic.com/research/glasswing-initial-update" target="_blank" rel="noopener">anthropic.com/research/glasswing-initial-update</a> · <a href="https://www.csoonline.com/article/4176865/project-glasswing-has-uncovered-10000-vulnerabilities-anthropic.html" target="_blank" rel="noopener">csoonline.com</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-06-07-anthropic-s1-ipo-filing.html">Anthropic dépose un S-1 confidentiel à la SEC — l'IPO devient le scénario de base</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-06-01</span>
+          </div>
+          <p class="item-context">Le 1er juin, Anthropic <strong>soumet confidentiellement un draft de Form S-1 à la SEC</strong> en vue d'une introduction en bourse de ses actions ordinaires — quatre jours seulement après le closing de sa Série H (65 Md$ levés, <strong>965 Md$ post-money</strong>, run-rate <strong>47 Md$</strong>). Un dépôt confidentiel permet de préparer l'opération sans divulguer publiquement les financières détaillées, les facteurs de risque ou les données internes ; aucun prix, nombre d'actions, ticker, place de cotation ou calendrier n'est fixé. Mais le signal est net : Anthropic devient <strong>le premier des grands labos frontière à franchir l'étape pré-IPO</strong>, devant OpenAI dont la structure capped-profit complique la trajectoire publique. Une cotation <strong>au-dessus de 1 000 Md$</strong> est désormais le scénario de base si les marchés coopèrent. Le S-1 public, lorsqu'il sera dévoilé, exposera marges, concentration client et économie unitaire — des données rares sur un labo frontière.</p>
+          <p class="item-source"><a href="https://www.anthropic.com/news/confidential-draft-s1-sec" target="_blank" rel="noopener">anthropic.com/news/confidential-draft-s1-sec</a> · <a href="https://techcrunch.com/2026/06/01/anthropic-files-to-go-public/" target="_blank" rel="noopener">techcrunch.com</a> · <a href="https://fortune.com/2026/06/01/anthropic-s1-confidential/" target="_blank" rel="noopener">fortune.com</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Anthropic lance le Claude Partner Network — Services Track + Partner Hub</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-06-03</span>
+          </div>
+          <p class="item-context">Le 3 juin, Anthropic introduit le <strong>Claude Partner Network</strong> avec un <strong>Services Track</strong> (cabinets de conseil et intégrateurs certifiés pour déployer Claude en entreprise) et un <strong>Partner Hub</strong> centralisant ressources, formations et co-vente. Signal de structuration de l'écosystème enterprise, dans la foulée des verticaux Finance et Legal lancés en mai. Pour Lynxter, c'est la porte d'entrée à surveiller si l'objectif est de devenir partenaire identifié côté industriel — l'inscription au Hub vaut l'évaluation.</p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Recherche Anthropic — « Making Claude a chemist »</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-06-05</span>
+          </div>
+          <p class="item-context">Le 5 juin, Anthropic publie une recherche sur le renforcement des capacités de Claude en chimie (raisonnement sur réactions, propriétés moléculaires, sécurité des manipulations). Pas d'impact opérationnel Lynxter, mais signal de la poussée d'Anthropic vers les sciences appliquées — après la biologie (GPT-Rosalind côté OpenAI), la chimie devient un terrain de spécialisation des modèles frontière.</p>
+        </article>
+      </section>
+
+      <!-- ─── OPENAI ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/openai/1b1818/f3f1ee" alt="" />OpenAI<span class="count">2 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-06-07-openai-dreaming-memory.html">OpenAI « Dreaming V3 » — la mémoire ChatGPT réécrite par synthèse en arrière-plan</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-06-04</span>
+          </div>
+          <p class="item-context">Le 4 juin, OpenAI déploie <strong>Dreaming V3</strong>, une réécriture de l'architecture mémoire de ChatGPT. Au lieu d'une liste de souvenirs sauvegardés manuellement, un <strong>processus de synthèse en arrière-plan</strong> lit à travers des années de conversations et met à jour ce que le système retient, sans prompt de l'utilisateur. La mémoire est <strong>mise à jour dans le temps</strong> : « tu pars à Singapour en juillet » devient « tu es allé à Singapour en juillet 2026 » une fois le voyage passé. Le déploiement à l'échelle est rendu possible par une <strong>réduction ~5× du coût compute</strong> du processus de dreaming. Métriques internes : <strong>rappel factuel 82,8 %</strong>, adhérence aux préférences 71,3 %, exactitude temporelle 75,1 %. Une page de résumé de mémoire (reviewable) accompagne le déploiement. D'abord pour les abonnés <strong>Plus et Pro aux US</strong>, Free/Go et international à suivre. Attention à ne pas confondre avec le « Dreaming » d'Anthropic (agents qui poursuivent leur tâche entre sessions) — ici, c'est de la mémoire, pas de l'exécution.</p>
+          <p class="item-source"><a href="https://openai.com/index/chatgpt-memory-dreaming/" target="_blank" rel="noopener">openai.com/index/chatgpt-memory-dreaming</a> · <a href="https://www.techtimes.com/articles/317797/20260604/openai-improves-chatgpt-memory-feature-free-tier-new-dreaming-architecture.htm" target="_blank" rel="noopener">techtimes.com</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">OpenAI — partage de plugins et workspace agents pour Codex (Enterprise/EDU)</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-06-04</span>
+          </div>
+          <p class="item-context">Côté Codex, OpenAI ajoute pour les workspaces Enterprise/EDU éligibles le <strong>partage de plugins par défaut</strong> (les admins partagent des plugins locaux que les coéquipiers installent depuis le directory) et des <strong>workspace agents</strong> pour les workflows partagés, avec nouveaux contrôles admin et visibilité d'activité (période gratuite étendue au 6 juillet 2026). En parallèle, GPT-5.5 Instant reçoit une mise à jour vers des réponses plus claires et naturelles. Incréments d'outillage collaboratif, sans rupture de capacité.</p>
+        </article>
+      </section>
+
+      <!-- ─── GOOGLE DEEPMIND ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/googlegemini/1b1818/f3f1ee" alt="" />Google DeepMind<span class="count">0 item</span></h2>
+
+        <p class="actor-empty">Rien de notable dans la fenêtre 1-7 juin. Toutes les annonces récentes (Gemini 3.5 Flash, Antigravity 2.0, transition Gemini CLI → Antigravity CLI annoncée le 20 mai avec dépréciation au 18 juin) datent de Google I/O et ont été couvertes dans les briefs précédents.</p>
+      </section>
+
+      <!-- ─── META ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/meta/1b1818/f3f1ee" alt="" />Meta<span class="count">0 item</span></h2>
+
+        <p class="actor-empty">Rien de notable cette semaine. Meta digère toujours la vague de 8 000 licenciements et la réorganisation Applied AI / Agent Transformation. Pas de release Llama, pas de Behemoth, pas de paper FAIR marquant dans la fenêtre.</p>
+      </section>
+
+      <!-- ─── MISTRAL ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/mistralai/1b1818/f3f1ee" alt="" />Mistral<span class="count">0 item</span></h2>
+
+        <p class="actor-empty">Rien de nouveau dans la fenêtre 1-7 juin. L'AI Now Summit (Industrial AI, datacenter Les Ulis, Vibe, Search Toolkit) date du 28 mai et a été couvert dans le brief précédent ; Mistral Small 4 et Voxtral TTS sont antérieurs (mars / mai).</p>
+      </section>
+
+      <!-- ─── ACTEURS SECONDAIRES ─── -->
+      <section class="actor-section reveal">
+        <h2 style="font-size:18px;color:var(--text-muted);">Acteurs secondaires<span class="count">2 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-06-07-cursor-3-7-design-mode.html">Cursor 3.7 — Design Mode : éditer l'UI par clic, dessin ou voix dans le navigateur Cursor</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-06-05</span>
+          </div>
+          <p class="item-context">Le 5 juin, Cursor sort la <strong>version 3.7</strong>, centrée sur le <strong>Design Mode</strong> dans le navigateur intégré (Cursor browser) : l'utilisateur peut <strong>cliquer, dessiner, ou décrire des changements à la voix</strong> directement sur le rendu de la page pour aider l'agent à modifier l'UI. C'est l'extension multimodale du pattern agentique de Cursor, après les apports de la 3.6 (Auto-review avec classifier subagent, Build in Parallel par graphe de dépendances) sortie six jours plus tôt. Le geste type : ouvrir l'app dans le navigateur Cursor, entourer un bouton mal placé ou décrire vocalement « rapproche ces deux blocs et change la couleur du header », l'agent traduit l'intention visuelle en édition de code. Cursor reste le concurrent direct de Claude Code + Composer côté IDE agentique ; la 3.7 ajoute la surface visuelle/multimodale qui manquait au pattern « tout en texte » des CLI.</p>
+          <p class="item-source"><a href="https://cursor.com/changelog" target="_blank" rel="noopener">cursor.com/changelog</a> · <a href="https://releasebot.io/updates/cursor" target="_blank" rel="noopener">releasebot.io/updates/cursor</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">xAI — Grok Build en beta (TUI, headless, Agent Client Protocol) + Grok V9 en approche</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-06-03</span>
+          </div>
+          <p class="item-context">xAI ouvre <strong>Grok Build</strong> en beta : TUI interactif, scripting headless, et support de l'<strong>Agent Client Protocol</strong> (interopérabilité agents/clients) — xAI s'aligne sur les standards de l'écosystème CLI agentique. En parallèle, <strong>Grok V9-Medium</strong> aurait terminé son entraînement à 1,5 T paramètres (×3 vs le modèle de production actuel), avec une sortie publique annoncée mi-juin — <em>non confirmée, à traiter comme rumeur</em> tant qu'il n'y a ni release ni benchmark officiel. xAI reste loin de l'écosystème Claude Code/Cursor côté CLI mais comble l'écart d'interopérabilité.</p>
+        </article>
+      </section>
+
+      <section class="sources-footer">
+        <strong>Sources consultées</strong>
+        <a href="https://www.anthropic.com/news">anthropic.com/news</a> · <a href="https://www.anthropic.com/news/expanding-project-glasswing">anthropic.com/news/expanding-project-glasswing</a> · <a href="https://code.claude.com/docs/en/changelog">code.claude.com/changelog</a> · <a href="https://openai.com/index/chatgpt-memory-dreaming/">openai.com/index/chatgpt-memory-dreaming</a> · <a href="https://blog.google/technology/ai/">blog.google</a> · <a href="https://ai.meta.com/blog/">ai.meta.com</a> · <a href="https://mistral.ai/news/">mistral.ai/news</a> · <a href="https://cursor.com/changelog">cursor.com/changelog</a> · <a href="https://x.ai/build/changelog">x.ai/build/changelog</a>
+      </section>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-06-01.html">
+          <span class="label">← Brief précédent</span>
+          <span class="title">Anthropic frappe trois fois</span>
+        </a>
+        <a class="next" href="./">
+          <span class="label">Voir l'archive →</span>
+          <span class="title">Tous les briefs</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Brief généré le 2026-06-07</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
