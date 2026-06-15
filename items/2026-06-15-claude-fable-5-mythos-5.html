@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Fable 5 — 95 % SWE-bench Verified, le modèle public le plus fort jamais sorti — Veille IA Lynxter</title>
+<meta name="description" content="Analyse de Claude Fable 5 (9 juin 2026), version publique des poids de Mythos 5 : 95,0 % SWE-bench Verified, 80,3 % SWE-bench Pro, 1M/128K tokens, adaptive thinking, $10/$50. Implications Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-06-15.html">2026-06-15</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Claude Fable 5</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Anthropic</span>
+          <span class="dot-sep">·</span>
+          <span>9 juin 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-lynxter">🎯 Lynxter</span>
+        </div>
+        <h1>Claude Fable 5 — 95 % SWE-bench Verified, le modèle public le plus fort jamais sorti</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-06-15.html">Fable 5 : record à 95 %, coupé en trois jours — 2026-06-15</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">95.0<span class="unit">%</span></div>
+            <div class="stat-label">SWE-bench Verified · record GA</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">80.3<span class="unit">%</span></div>
+            <div class="stat-label">SWE-bench Pro · +11.1 pts vs Opus 4.8</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">$10/$50<span class="unit">M tok</span></div>
+            <div class="stat-label">Pricing (2× standard Opus 4.8)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">1M/128K<span class="unit">tokens</span></div>
+            <div class="stat-label">Contexte in / out</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Le <strong>9 juin 2026</strong>, Anthropic ouvre au grand public <strong>Claude Fable 5</strong>, présenté comme son modèle le plus intelligent généralement disponible. Le point clé : Fable 5 utilise les <strong>mêmes poids que Claude Mythos 5</strong>, le modèle de la classe « Mythos » qui était jusqu'ici restreint à des organisations approuvées (notamment Project Glasswing pour la recherche de vulnérabilités). Fable 5 ajoute des mesures de sécurité supplémentaires pour les capacités à double usage, là où Mythos 5 reste accessible sans ces garde-fous aux seules organisations agréées. Concrètement, le public obtient pour la première fois un accès direct à un modèle de la classe la plus capable d'Anthropic, qui se positionne au-dessus de Claude Opus.</p>
+        <p>Les scores officiels sont en rupture avec le reste du marché. Sur <strong>SWE-bench Verified, Fable 5 atteint 95,0 %</strong> — un record pour un modèle généralement disponible, à comparer aux 88,7 % de GPT-5.5 (jusqu'ici #1) et aux 88,6 % d'Opus 4.8. L'écart est encore plus net sur <strong>SWE-bench Pro à 80,3 %</strong> (tâches longues, multi-fichiers, mal spécifiées), soit +11,1 pts sur Opus 4.8 (69,2 %) et +21,7 pts sur GPT-5.5 (58,6 %). S'ajoutent <strong>OSWorld-Verified à 85 %</strong> (computer use) et Terminal-Bench 2.1 autour de 84 %. La fenêtre est de <strong>1M tokens en entrée et 128K en sortie</strong>, avec un <strong>adaptive thinking always-on</strong> : le modèle calibre seul son budget de raisonnement par requête, sans flag explicite.</p>
+        <p>Le pricing est de <strong>$10 en entrée / $50 en sortie par million de tokens</strong> — soit le double du standard Opus 4.8 ($5/$25), ce qui en fait un modèle réservé aux tâches à forte valeur plutôt qu'un remplacement par défaut. Anthropic livre Fable 5 avec un dispositif de sécurité notable : des <strong>classifiers</strong> qui détectent les requêtes sensibles (cyber-offensif, biologie) et <strong>basculent automatiquement la session vers Opus 4.8</strong>, un mécanisme déclenché dans <strong>moins de 5 % des sessions</strong> en moyenne. Le modèle est disponible immédiatement sur les plans Pro, Max, Team et Enterprise (avec crédits requis au-delà d'une période d'introduction), ainsi que dans Claude Code via la version 2.1.170. Ce que cette release ne dit pas encore : sa stabilité dans le temps — la suite l'a montré dès le 12 juin (voir l'item dédié).</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🎯 Pourquoi c'est important pour Lynxter</h2>
+        <p><strong>Le chiffre qui compte pour Lynxter, c'est le 80,3 % SWE-bench Pro, pas le 95 % Verified.</strong> Le Verified mesure des issues GitHub relativement bien cadrées ; le Pro évalue des tâches longues, multi-fichiers et mal spécifiées — c'est-à-dire le profil exact d'un audit firmware S300X/S600D, d'une migration de scripts de calibration Cowork, ou d'un debug transverse sur une base de code mal documentée. Avec +11,1 pts sur Opus 4.8 et +21,7 pts sur GPT-5.5, Fable 5 ouvre un écart qui n'est plus rattrapable par optimisation de prompt côté concurrent. Si tu as un chantier de migration ou d'audit à fort enjeu, c'est le modèle qui maximise le taux de réussite au premier passage.</p>
+        <p><strong>Mais le pricing et l'instabilité imposent un usage chirurgical.</strong> À $10/$50, Fable 5 coûte le double d'Opus 4.8 par token et bien plus que le fast mode. Le calcul n'est rentable que sur des tâches où une seule itération réussie économise des heures humaines — pas sur du batch (scan tickets, classification logs) où Opus 4.8 ou son fast mode suffisent. Surtout, le mécanisme d'auto-fallback vers Opus 4.8 sur requêtes flaggées signifie que certaines tâches (analyse de logs sécurité, par exemple) basculeront silencieusement de modèle : à vérifier si tu mesures la qualité d'une routine.</p>
+        <p><strong>Ne construis rien de critique dessus avant d'avoir vu sa disponibilité tenir dans la durée.</strong> La suite immédiate (suspension du 12 juin) confirme que ce modèle n'est pas, à ce stade, une fondation fiable pour de la production ou du client-facing. La bonne posture : garder Opus 4.8 ($5/$25, 1M ctx) comme socle de tes Routines, et réserver Fable 5 à des sessions ponctuelles d'audit/migration à forte valeur, en A/B contre Opus 4.8 pour mesurer le gain réel. Suis le statut d'accès avant d'industrialiser quoi que ce soit.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://www.anthropic.com/news/claude-fable-5-mythos-5" target="_blank" rel="noopener">anthropic.com/news/claude-fable-5-mythos-5</a>
+        <span class="source-meta">Anthropic · annonce officielle Claude Fable 5 / Mythos 5 · 9 juin 2026</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-06-15-fable-5-mythos-5-suspension.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Suspension de Fable 5 / Mythos 5 par directive US</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-06-15-claude-code-2-1-169-176.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code 2.1.169–176 — sous-agents imbriqués</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-06-01-claude-opus-4-8.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Opus 4.8 — SWE-bench Pro 69.2 %</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="../briefs/2026-06-15.html">
+          <span class="label">← Retour au brief</span>
+          <span class="title">2026-06-15</span>
+        </a>
+        <a class="next" href="2026-06-15-fable-5-mythos-5-suspension.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Suspension Fable 5 / Mythos 5</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-06-15</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

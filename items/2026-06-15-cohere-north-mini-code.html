@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cohere North Mini Code — coding agent open-weights 30B qui tient sur un seul H100 — Veille IA Lynxter</title>
+<meta name="description" content="Cohere North Mini Code (9 juin 2026) : MoE 30B/3B open-weights Apache 2.0, 256K ctx, 1× H100, 80,2 % pass@10 / 61,0 % pass@1 SWE-bench Verified. Analyse et implications Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-06-15.html">2026-06-15</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">North Mini Code</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Cohere</span>
+          <span class="dot-sep">·</span>
+          <span>9 juin 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-useful">🛠 Utile</span>
+        </div>
+        <h1>Cohere North Mini Code — coding agent open-weights 30B qui tient sur un seul H100</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-06-15.html">Fable 5 : record à 95 %, coupé en trois jours — 2026-06-15</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">80.2<span class="unit">% p@10</span></div>
+            <div class="stat-label">SWE-bench Verified (mini-SWE-Agent)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">30B/3B<span class="unit">MoE</span></div>
+            <div class="stat-label">Paramètres totaux / actifs</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">1× H100<span class="unit">FP8</span></div>
+            <div class="stat-label">Déploiement local / souverain</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">Apache 2.0<span class="unit">256K</span></div>
+            <div class="stat-label">Licence open · contexte</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Le <strong>9 juin 2026</strong>, Cohere lance <strong>North Mini Code</strong>, premier modèle de sa nouvelle famille « North » de coding agents. C'est un <strong>MoE de 30B paramètres totaux dont 3B actifs</strong> par token, publié sous <strong>licence Apache 2.0</strong> avec un contexte de <strong>256K tokens</strong>. Son argument d'accessibilité : il tourne sur <strong>un seul H100 en FP8</strong>, ce qui le met à portée d'un déploiement local ou souverain, sans dépendance à un cloud propriétaire. La cible explicite est l'agentic coding — résolution autonome d'issues, navigation et édition multi-fichiers dans un dépôt.</p>
+        <p>Côté performance, North Mini Code est évalué via le harness <strong>mini-SWE-Agent</strong> et affiche <strong>80,2 % pass@10 et 61,0 % pass@1 sur SWE-bench Verified</strong> (la métrique pass@10 autorise plusieurs tentatives par tâche, pass@1 une seule — c'est ce dernier chiffre qui se compare aux scores frontière mono-tentative). Cohere revendique qu'il <strong>bat des modèles open-source jusqu'à 123B paramètres</strong> tout en offrant jusqu'à <strong>2,8× le débit de sortie de Devstral Small 2</strong>, son concurrent open-weights le plus direct sur le créneau du code. Le modèle est aussi benchmarké sur SWE-bench Pro et Terminal-Bench v2.</p>
+        <p>Le positionnement est clair : un modèle <strong>compact, rapide et déployable localement</strong>, qui ne vise pas le sommet absolu du classement (réservé aux Fable 5, GPT-5.5, Opus 4.8 propriétaires) mais le meilleur rapport capacité/empreinte en open weights. Dans un mois marqué par la suspension réglementaire de Fable 5, l'argument « pas de fournisseur qui peut te couper » prend un relief particulier : un modèle Apache 2.0 téléchargé et exécuté sur ton matériel n'est révocable par personne.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🛠 Pourquoi c'est utile à savoir pour Lynxter</h2>
+        <p><strong>North Mini Code est la brique « IA de code souveraine » la plus crédible de la semaine pour Lynxter.</strong> Pour des clients industriels qui ne peuvent pas envoyer leur code ou leurs données vers un cloud US — défense, aéronautique, médical réglementé — un coding agent open-weights qui tient sur un H100 sur site répond à un besoin concret. 61 % pass@1 ne rivalise pas avec Opus 4.8, mais c'est largement suffisant pour de l'assistance de code encadrée, de la génération de helpers, ou de la première passe sur des tâches bien cadrées, le tout sans aucune fuite de données hors du périmètre client.</p>
+        <p><strong>Action : un benchmark comparatif sur une tâche Lynxter réelle.</strong> Monte North Mini Code sur un H100 (ou une instance équivalente) et oppose-le à Devstral sur une tâche représentative — migration d'un set de scripts de calibration, génération de gcode-helpers, ou résolution d'issues sur un dépôt interne. Mesure le taux de réussite pass@1, le débit et la VRAM consommée. S'il tient à 60-80 % de réussite sur du matériel que tu contrôles, tu disposes d'un argumentaire RFP « IA sur site, non révocable » à présenter aux clients sensibles — un différenciateur que la suspension de Fable 5 rend d'autant plus tangible.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://cohere.com/blog/north-mini-code" target="_blank" rel="noopener">cohere.com/blog/north-mini-code</a>
+        <span class="source-meta">Cohere · annonce North Mini Code · 9 juin 2026</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-06-15-diffusiongemma.html">
+            <span class="related-actor">Google DeepMind</span>
+            <span class="related-title">DiffusionGemma — open weights 26B</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+          <li><a href="2026-06-15-fable-5-mythos-5-suspension.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Suspension Fable 5 — l'argument souveraineté</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-06-15-cursor-bugbot-review.html">
+            <span class="related-actor">Cursor</span>
+            <span class="related-title">Cursor Bugbot — reviews en ~90 s</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-06-15-diffusiongemma.html">
+          <span class="label">← Item précédent</span>
+          <span class="title">DiffusionGemma</span>
+        </a>
+        <a class="next" href="2026-06-15-cursor-bugbot-review.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Cursor Bugbot</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-06-15</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

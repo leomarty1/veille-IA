@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-06-01",
+    "last_updated": "2026-06-15",
     "metric": "SWE-bench Verified",
     "metric_description": "Résolution autonome d'issues GitHub (dataset 500 tâches validées humainement, Scale AI). Scores exprimés en % de tâches résolues.",
     "source": "Annonces officielles acteurs · Scale AI benchlm.ai · analyses indépendantes",
@@ -54,6 +54,12 @@
       "label": "Claude Opus 4.8",
       "sublabel": "88.6 % SWE-bench Verified · 69.2 % SWE-bench Pro · talonne GPT-5.5 à 0.1 pt",
       "type": "milestone"
+    },
+    {
+      "date": "2026-06-09",
+      "label": "Claude Fable 5",
+      "sublabel": "95.0 % SWE-bench Verified — record pour un modèle grand public, puis suspendu (export-control US) le 12 juin",
+      "type": "leap"
     }
   ],
   "models": [
@@ -420,6 +426,32 @@
       "pricing_out": 25.0,
       "open_weights": false,
       "notes": "#2 SWE-bench Verified — talonne GPT-5.5 à 0.1 pt · Leader SWE-bench Pro 69.2 % (+10.6 pts vs GPT-5.5) · OSWorld-Verified 83.4 % · Fast mode 3× moins cher que 4.7 fast mode · Même pricing que 4.7 · 1M ctx"
+    },
+    {
+      "id": "claude-fable-5",
+      "name": "Claude Fable 5",
+      "actor": "Anthropic",
+      "date": "2026-06-09",
+      "swe_bench_verified": 95.0,
+      "approximate": false,
+      "context_k": 1000,
+      "pricing_in": 10.0,
+      "pricing_out": 50.0,
+      "open_weights": false,
+      "notes": "Version publique des poids de Mythos 5 · Record modèle grand public : 95.0 % SWE-bench Verified, 80.3 % SWE-bench Pro, OSWorld-Verified 85 % · 1M ctx in / 128K out · adaptive thinking always-on · $10/$50 · SUSPENDU le 12 juin 2026 sur directive d'export-control US (accès coupé pour tous)"
+    },
+    {
+      "id": "cohere-north-mini-code",
+      "name": "North Mini Code",
+      "actor": "Cohere",
+      "date": "2026-06-09",
+      "swe_bench_verified": 61.0,
+      "approximate": true,
+      "context_k": 256,
+      "pricing_in": null,
+      "pricing_out": null,
+      "open_weights": true,
+      "notes": "MoE 30B total / 3B actifs · Apache 2.0 · tourne sur 1 H100 (FP8) · 61.0 % pass@1 (80.2 % pass@10) SWE-bench Verified via mini-SWE-Agent · jusqu'à 2.8× le débit de Devstral Small 2 · pass@1 retenu pour comparabilité, approximate car méthodologie pass@k"
     },
     {
       "id": "claude-mythos-preview",

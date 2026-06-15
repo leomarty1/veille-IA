@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fable 5 : record à 95 %, coupé en trois jours — Veille IA Lynxter</title>
+<meta name="description" content="Brief IA du 8 au 15 juin 2026 : Anthropic lance Claude Fable 5 (95 % SWE-bench Verified, record pour un modèle grand public) puis le coupe sur directive d'export-control US ; Claude Code passe aux sous-agents imbriqués sur 5 niveaux ; OpenAI rachète Ona pour des agents Codex longue durée ; Google sort DiffusionGemma, Cohere North Mini Code.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/" class="active">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="./">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">2026-06-15</span>
+      </div>
+
+      <header style="margin-bottom:64px;">
+        <p class="section-label">Brief hebdomadaire · 8 → 15 juin 2026</p>
+        <h1 style="font-family:var(--font-display);font-stretch:125%;font-weight:300;font-size:clamp(36px,5.5vw,64px);text-transform:uppercase;letter-spacing:-0.005em;line-height:1.02;margin:0 0 28px;color:var(--text);">Fable 5 : record à 95 %,<br><em style="font-style:normal;color:var(--lx-accent);">coupé en trois jours</em></h1>
+        <p style="font-size:18px;font-weight:300;color:var(--text-soft);max-width:720px;margin:0 0 48px;line-height:1.7;">Semaine charnière. Le 9 juin, Anthropic rend public <strong>Claude Fable 5</strong> — les mêmes poids que le Mythos 5 jusque-là réservé à Project Glasswing — qui établit un record pour un modèle grand public : <strong>95,0 % sur SWE-bench Verified</strong> (vs 88,7 % pour GPT-5.5) et <strong>80,3 % sur SWE-bench Pro</strong> (vs 69,2 % pour Opus 4.8). Trois jours plus tard, le <strong>12 juin</strong>, une directive de contrôle à l'export du gouvernement américain force Anthropic à couper Fable 5 et Mythos 5 pour tout le monde — premier cas connu d'un modèle frontière commercial retiré du marché par l'État. En parallèle, Claude Code enchaîne huit versions (sous-agents imbriqués sur 5 niveaux, <code>--safe-mode</code>, <code>enforceAvailableModels</code>), OpenAI rachète <strong>Ona</strong> (ex-Gitpod) pour des agents Codex longue durée, et l'open-weights de code accélère avec <strong>DiffusionGemma</strong> (Google) et <strong>North Mini Code</strong> (Cohere). Meta et Mistral : rien de produit dans la fenêtre.</p>
+
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">13<span class="unit">items</span></div>
+            <div class="stat-label">Total semaine</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3<span class="unit">🎯</span></div>
+            <div class="stat-label">Impact Lynxter</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5<span class="unit">🛠</span></div>
+            <div class="stat-label">À connaître</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">8<span class="unit">acteurs</span></div>
+            <div class="stat-label">Sources scannées</div>
+          </div>
+        </div>
+      </header>
+
+      <p class="section-label">TL;DR</p>
+      <section class="tldr reveal" style="margin-bottom:72px;">
+        <ul>
+          <li><strong>Claude Fable 5 lancé puis coupé en 3 jours.</strong> Le 9 juin, Anthropic ouvre au public Fable 5 (mêmes poids que Mythos 5) : <strong>95,0 % SWE-bench Verified</strong> — record pour un modèle grand public, +6,3 pts sur GPT-5.5 — et <strong>80,3 % SWE-bench Pro</strong> (+11,1 pts sur Opus 4.8), 1M tokens en entrée / 128K en sortie, adaptive thinking always-on, à $10/$50 par M tokens. Le 12 juin, une directive d'export-control US suspend l'accès pour tout ressortissant étranger ; ne pouvant filtrer en temps réel, Anthropic coupe les deux modèles pour tous. Les autres modèles (Opus 4.8…) restent en ligne.</li>
+          <li><strong>Claude Code passe à l'orchestration imbriquée.</strong> Huit versions en cinq jours (2.1.169 → 2.1.176) : les sous-agents peuvent spawner leurs propres sous-agents <strong>jusqu'à 5 niveaux de profondeur</strong> (2.1.172), nouveau flag <strong><code>--safe-mode</code></strong> qui désactive toutes les customisations, et setting <strong><code>enforceAvailableModels</code></strong> qui verrouille le modèle Default dans une allowlist managée — gouvernance de flotte et de coûts. Intégration de Fable 5 livrée en 2.1.170, avec auto-fallback vers Opus 4.8.</li>
+          <li><strong>OpenAI rachète Ona, l'open-weights de code accélère.</strong> OpenAI acquiert <strong>Ona</strong> (ex-Gitpod) pour faire tourner Codex en sandbox cloud des heures voire des jours sans surveillance — <strong>5 M d'utilisateurs Codex/semaine, +400 % depuis janvier</strong>. Côté open weights : <strong>DiffusionGemma</strong> (Google, 26B MoE texte par diffusion, 1 000+ tok/s sur 1 H100, Apache 2.0) et <strong>North Mini Code</strong> (Cohere, 30B/3B, 80,2 % pass@10 SWE-bench, tourne sur 1 H100). OpenAI retire aussi GPT-5.2 de ChatGPT (bascule auto GPT-5.5).</li>
+        </ul>
+      </section>
+
+      <section class="lynxter-hero reveal">
+        <h2>🎯 Implications Lynxter</h2>
+        <div class="body">
+          <p><strong>La leçon Fable 5, ce n'est pas le 95 % — c'est la coupure.</strong> Sur le papier, Fable 5 est le meilleur outil possible pour ton terrain le plus dur : <strong>80,3 % SWE-bench Pro</strong> (+11,1 pts vs Opus 4.8, +21,7 pts vs GPT-5.5), le benchmark des tâches longues, multi-fichiers, mal spécifiées — exactement un audit firmware S300X/S600D ou une migration de scripts Cowork. Mais deux faits commandent la prudence : son pricing à <strong>$10/$50 par M tokens</strong> (2× le standard Opus 4.8 à $5/$25), et surtout sa <strong>suspension le 12 juin</strong>, trois jours après le lancement, par directive d'export-control. Conclusion opérationnelle : <strong>ne fais dépendre aucun workflow critique ou client de Fable 5</strong>. Garde tes Routines Cowork et Claude Code épinglées sur Opus 4.8 (à $5/$25, non affecté par la directive). Si Fable 5 revient, traite-le comme un upgrade expérimental à A/B-tester sur des tâches à forte valeur (audit, migration), pas comme une brique de prod.</p>
+          <p><strong>Claude Code te donne enfin la gouvernance de flotte qui manquait.</strong> Deux settings de la semaine comptent pour Lynxter. <code>enforceAvailableModels</code> verrouille le modèle Default dans une allowlist managée : les settings utilisateur/projet ne peuvent plus élargir la liste — tu peux donc imposer Opus 4.8 (et interdire le premium hors budget) à toute l'équipe depuis une config centrale, et le fallback automatique vers Opus 4.8 couvre les orgs sans accès au modèle haut de gamme. <code>--safe-mode</code> (et l'env <code>CLAUDE_CODE_SAFE_MODE</code>) désactive toutes les customisations pour des runs reproductibles — utile pour débugger une routine qui dérape. Et les <strong>sous-agents imbriqués sur 5 niveaux</strong> (2.1.172) débloquent une orchestration plus profonde : la routine veille elle-même fait déjà du fan-out par acteur, on peut maintenant imbriquer recherche → croisement → rédaction sans saturer le contexte de l'orchestrateur. Action cette semaine : pose <code>enforceAvailableModels</code> avec Opus 4.8 en Default, et audite quelles routines spawnent des sous-agents pour mesurer le coût réel via la nouvelle attribution d'usage VSCode.</p>
+          <p><strong>L'open-weights de code devient une vraie option de souveraineté — et l'épisode Fable 5 le justifie.</strong> Deux sorties cette semaine changent la donne pour tes clients industriels qui ne peuvent pas envoyer leur code/données vers un cloud US (défense, aéro, médical réglementé) : <strong>North Mini Code</strong> de Cohere (MoE 30B/3B actifs, Apache 2.0, 256K de contexte, <strong>80,2 % pass@10 / 61,0 % pass@1 SWE-bench Verified</strong>, tourne sur <strong>un seul H100</strong>) et <strong>DiffusionGemma</strong> de Google (26B MoE par diffusion, 1 000+ tok/s sur 1 H100, Apache 2.0, mais explicitement expérimental). Quand un modèle frontière peut être coupé par décret en trois jours, un modèle open-weights déployé on-prem n'a, lui, aucun fournisseur capable de te débrancher. Action : benchmarke North Mini Code contre Devstral sur une tâche Lynxter réelle (migration de scripts de calibration, génération de gcode-helpers) ; s'il tient à 60-80 % de réussite sur un H100 que tu contrôles, tu as un argumentaire RFP « IA souveraine sur site » à présenter aux clients sensibles.</p>
+        </div>
+      </section>
+
+      <p class="section-label">Synthèse</p>
+      <section class="synthese reveal">
+        Semaine dominée par <strong>Anthropic</strong>. Le 9 juin, <strong>Claude Fable 5</strong> (version publique des poids de Mythos 5) sort en tête de tous les classements généralistes : <strong>95,0 % SWE-bench Verified</strong>, <strong>80,3 % SWE-bench Pro</strong>, OSWorld-Verified 85 %, 1M tokens en entrée / 128K en sortie, adaptive thinking always-on, $10/$50 — avec des classifiers de sécurité qui basculent automatiquement vers Opus 4.8 sur les requêtes flaggées (&lt; 5 % des sessions). Trois jours plus tard, le <strong>12 juin</strong>, une <strong>directive de contrôle à l'export</strong> du gouvernement américain (sécurité nationale, jailbreak supposé) suspend l'accès pour tout ressortissant étranger ; incapable de filtrer en temps réel, Anthropic <strong>coupe Fable 5 et Mythos 5 pour tous</strong> — un précédent réglementaire inédit pour un modèle commercial. Côté outils, <strong>Claude Code</strong> enchaîne huit versions (2.1.169 → 2.1.176) : sous-agents imbriqués sur 5 niveaux, <code>--safe-mode</code>, <code>enforceAvailableModels</code>, <code>/cd</code>, attribution d'usage détaillée dans VSCode. Anthropic signe aussi un partenariat <strong>Global Premier</strong> avec <strong>TCS</strong> (Claude pour 50 000 employés dans 56 pays) et publie une recherche sur les agents en biologie. <strong>OpenAI</strong> rachète <strong>Ona</strong> (ex-Gitpod) pour faire tourner Codex en sandbox cloud sur des heures/jours (5 M d'utilisateurs Codex/semaine, +400 % depuis janvier), retire GPT-5.2 de ChatGPT au profit de GPT-5.5, et étend la personnalisation enrichie aux comptes Go/Free. <strong>Google</strong> sort <strong>DiffusionGemma</strong> (26B MoE texte par diffusion, jusqu'à 4× plus rapide, Apache 2.0, expérimental). <strong>Meta</strong> : rien de notable. <strong>Mistral</strong> : pas de produit, mais une rumeur Bloomberg de levée ~3 Md€ à ~20 Md€ sur fond de « physics AI » industrielle. Côté secondaires : <strong>Cohere North Mini Code</strong> (coding agent open-weights sur 1 H100), <strong>Cursor Bugbot</strong> (reviews en ~90 s + commande <code>/review</code>) et <strong>Perplexity</strong> qui lève 200 M$ pour Comet. À surveiller pour le prochain brief : <strong>Grok V9-Medium</strong> de xAI (entraînement terminé, 1,5 T paramètres, déploiement attendu mi-juin, pas encore d'API officielle).
+      </section>
+
+      <!-- ─── ANTHROPIC ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/anthropic/1b1818/f3f1ee" alt="" />Anthropic<span class="count">5 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-06-15-claude-fable-5-mythos-5.html">Claude Fable 5 — 95 % SWE-bench Verified, le modèle public le plus fort jamais sorti</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-06-09</span>
+          </div>
+          <p class="item-context">Anthropic rend public le <strong>9 juin</strong> <strong>Claude Fable 5</strong>, qui déploie les <strong>mêmes poids que Mythos 5</strong> (jusque-là réservé à Project Glasswing). Records pour un modèle généralement disponible : <strong>95,0 % SWE-bench Verified</strong> (vs 88,7 % GPT-5.5, 88,6 % Opus 4.8) et <strong>80,3 % SWE-bench Pro</strong> (vs 69,2 % Opus 4.8, 58,6 % GPT-5.5), plus OSWorld-Verified 85 % et Terminal-Bench 2.1 ~84 %. Fenêtre de <strong>1M tokens en entrée, 128K en sortie</strong>, <strong>adaptive thinking always-on</strong>, pricing <strong>$10/$50 par M tokens</strong> (2× le standard Opus 4.8). Des classifiers de sécurité basculent automatiquement les requêtes flaggées (cyber, biologie) vers Opus 4.8 — déclenché dans &lt; 5 % des sessions. Disponible Pro/Max/Team/Enterprise au lancement.</p>
+          <p class="item-source"><a href="https://www.anthropic.com/news/claude-fable-5-mythos-5" target="_blank" rel="noopener">anthropic.com/news/claude-fable-5-mythos-5</a> · <a href="https://techcrunch.com/2026/06/09/anthropics-claude-fable-5-is-a-version-of-mythos-the-public-can-access-today/" target="_blank" rel="noopener">techcrunch.com</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-06-15-fable-5-mythos-5-suspension.html">Washington débranche Fable 5 et Mythos 5 — première suspension d'un modèle frontière par l'État</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-06-12</span>
+          </div>
+          <p class="item-context">Moins de <strong>trois jours après le lancement</strong>, le <strong>12 juin</strong>, le gouvernement américain émet une <strong>directive de contrôle à l'export</strong> invoquant la sécurité nationale, interdisant l'accès à Fable 5 et Mythos 5 à <strong>tout ressortissant étranger</strong> — y compris hors US et y compris les employés étrangers d'Anthropic. Ne pouvant filtrer les ressortissants étrangers en temps réel, Anthropic <strong>coupe les deux modèles pour tout le monde</strong> ; les autres modèles (Opus 4.8, Sonnet, Haiku) restent en ligne. Motif invoqué : la découverte supposée d'une méthode de <strong>jailbreak</strong> de Fable 5. Anthropic conteste publiquement qu'un jailbreak étroit justifie le retrait d'un modèle commercial, avertissant qu'un tel standard « halterait tout déploiement de modèle frontière ». C'est le <strong>premier cas connu</strong> d'un modèle frontière commercial retiré du marché par directive d'export US.</p>
+          <p class="item-source"><a href="https://www.anthropic.com/news/fable-mythos-access" target="_blank" rel="noopener">anthropic.com/news/fable-mythos-access</a> · <a href="https://www.cnbc.com/2026/06/12/anthropic-disables-access-to-fable-5-and-mythos-5-to-comply-with-government-directive.html" target="_blank" rel="noopener">cnbc.com</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-06-15-claude-code-2-1-169-176.html">Claude Code 2.1.169–176 — sous-agents imbriqués sur 5 niveaux, --safe-mode, enforceAvailableModels</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-06-10</span>
+          </div>
+          <p class="item-context">Train de huit versions du <strong>8 au 12 juin</strong>. <strong>2.1.172 (10 juin)</strong> : les sous-agents peuvent désormais spawner leurs propres sous-agents <strong>jusqu'à 5 niveaux de profondeur</strong>, barre de recherche dans le marketplace <code>/plugin</code>, et correctif <code>WebFetch</code> qui ne matchait pas les sous-domaines wildcard. <strong>2.1.169 (8 juin)</strong> : nouveau flag <strong><code>--safe-mode</code></strong> (+ env <code>CLAUDE_CODE_SAFE_MODE</code>) qui désactive toutes les customisations, commande <code>/cd</code> pour changer de répertoire en session, setting <code>disableBundledSkills</code>, correctif des policies MCP managées à la reconnexion. <strong>2.1.170 (9 juin)</strong> : intégration de Fable 5. <strong>2.1.174/175 (12 juin)</strong> : setting <strong><code>enforceAvailableModels</code></strong> (verrouille le Default dans une allowlist managée) et attribution d'usage détaillée dans VSCode (cache misses, long context, sous-agents, breakdown par skill/agent/plugin/MCP).</p>
+          <p class="item-source"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">code.claude.com/docs/en/changelog</a> · <a href="https://releasebot.io/updates/anthropic/claude-code" target="_blank" rel="noopener">releasebot.io/updates/anthropic/claude-code</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">TCS devient Global Premier Partner d'Anthropic — Claude pour 50 000 employés</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-06-11</span>
+          </div>
+          <p class="item-context">Tata Consultancy Services devient <strong>Global Premier Partner</strong> du Claude Partner Network et déploie Claude auprès de <strong>50 000 employés dans 56 pays</strong>, avec une business unit dédiée et des offres packagées par industrie (assurance, banque, santé, aviation, telecom). Premier cas cité : <strong>Diligenta</strong> (filiale TCS régulée FCA, &gt;22 M de clients au UK) pour de la transformation de processus agentique. Extension de la stratégie GSI d'Anthropic après Accenture et Deloitte — positionnement frontal vs OpenAI/Microsoft sur les industries régulées.</p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Recherche Anthropic — « Paving the way for agents in biology »</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-06-08</span>
+          </div>
+          <p class="item-context">Anthropic publie une recherche soutenant que le goulot d'étranglement des agents biologiques n'est <strong>pas</strong> la capacité de raisonnement des modèles, mais l'état arriéré de l'<strong>infrastructure de données biologiques</strong> (illustré par l'épidémie de virus Bundibugyo en RDC). Pas de benchmark exploitable, pas d'impact pratique immédiat — signal de R&D verticale d'Anthropic vers les sciences du vivant.</p>
+        </article>
+      </section>
+
+      <!-- ─── OPENAI ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/openai/1b1818/f3f1ee" alt="" />OpenAI<span class="count">3 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-06-15-openai-acquires-ona.html">OpenAI rachète Ona (ex-Gitpod) pour des agents Codex longue durée</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-06-11</span>
+          </div>
+          <p class="item-context">OpenAI annonce le <strong>11 juin</strong> l'acquisition d'<strong>Ona</strong> (entité Gitpod GmbH), dont la plateforme exécute des agents IA dans des <strong>sandboxes cloud</strong>. Objectif : permettre à Codex de poursuivre une tâche <strong>pendant des heures voire des jours</strong>, sans surveillance, après que le développeur a fermé son laptop — passage d'un agent supervisé frappe-par-frappe à un « worker » à qui on confie un job. OpenAI revendique <strong>5 M d'utilisateurs Codex/semaine, +400 % depuis janvier</strong>. L'équipe Ona (CEO Johannes Landgraf) rejoint le groupe Codex à la clôture (montant non divulgué, sous réserve d'approbations réglementaires).</p>
+          <p class="item-source"><a href="https://openai.com/index/openai-to-acquire-ona/" target="_blank" rel="noopener">openai.com/index/openai-to-acquire-ona</a> · <a href="https://www.cnbc.com/2026/06/11/open-ai-ona-acquisition-codex.html" target="_blank" rel="noopener">cnbc.com</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-06-15-gpt-5-2-retired.html">GPT-5.2 retiré de ChatGPT — bascule automatique sur GPT-5.5</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-06-12</span>
+          </div>
+          <p class="item-context">Depuis le <strong>12 juin</strong>, <strong>GPT-5.2 Instant, Thinking et Pro</strong> ne sont plus disponibles dans ChatGPT ; les conversations existantes basculent automatiquement sur le modèle <strong>GPT-5.5</strong> correspondant. Retrait planifié au titre de la politique des <strong>90 jours</strong> de disponibilité après la sortie d'un successeur (GPT-5.3 Instant). <strong>Changement ChatGPT uniquement — l'API n'est pas affectée</strong>, GPT-5.2 y reste accessible. À connaître si des outils ou agents pointent encore explicitement « gpt-5.2 » côté ChatGPT.</p>
+          <p class="item-source"><a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes" target="_blank" rel="noopener">help.openai.com — ChatGPT release notes</a> · <a href="https://www.techtimes.com/articles/318345/20260613/openai-retires-gpt-52-moves-everyone-gpt-55-what-changes-chatgpt-users-developers.htm" target="_blank" rel="noopener">techtimes.com</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">OpenAI étend la personnalisation enrichie de ChatGPT à Go &amp; Free</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-06-09</span>
+          </div>
+          <p class="item-context">OpenAI étend la <strong>personnalisation enrichie</strong> de ChatGPT (qui puise dans l'historique des conversations, les fichiers uploadés et le Gmail connecté) aux comptes <strong>Go et Free</strong>, après un lancement Plus/Pro le 5 mai. Le tier Free utilise une <strong>fenêtre d'historique réduite</strong> par rapport à l'historique complet de Plus/Pro. Pas d'impact technique actionnable — élargissement grand public.</p>
+        </article>
+      </section>
+
+      <!-- ─── GOOGLE DEEPMIND ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/googlegemini/1b1818/f3f1ee" alt="" />Google DeepMind<span class="count">1 item</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-06-15-diffusiongemma.html">DiffusionGemma — modèle texte par diffusion 26B open weights, jusqu'à 4× plus rapide</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-06-10</span>
+          </div>
+          <p class="item-context">Google sort le <strong>10 juin</strong> <strong>DiffusionGemma</strong> (<code>diffusiongemma-26B-A4B-it</code>), un <strong>MoE 26B total / 3,8B actifs</strong> bâti sur le backbone Gemma 4 mais qui génère le texte <strong>par diffusion discrète</strong> : il denoise des blocs de 256 tokens en parallèle au lieu d'un token autorégressif à la fois. Débit : <strong>1 000–1 100+ tokens/s sur un seul H100 (FP8)</strong>, 700+ sur RTX 5090, annoncé <strong>jusqu'à 4× plus rapide</strong> que l'équivalent autorégressif. Contexte <strong>256K</strong>, ~18 Go de VRAM quantifié, <strong>licence Apache 2.0</strong>, dispo day-zero sur Hugging Face, Kaggle et Vertex AI. Caveat majeur : Google le qualifie d'<strong>expérimental</strong>, avec des scores nettement inférieurs à Gemma 4 en raisonnement, maths et code.</p>
+          <p class="item-source"><a href="https://developers.googleblog.com/diffusiongemma-the-developer-guide/" target="_blank" rel="noopener">developers.googleblog.com — DiffusionGemma guide</a> · <a href="https://www.marktechpost.com/2026/06/10/google-ai-releases-diffusiongemma-a-26b-moe-open-model-using-text-diffusion-for-up-to-4x-faster-generation/" target="_blank" rel="noopener">marktechpost.com</a></p>
+        </article>
+      </section>
+
+      <!-- ─── META ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/meta/1b1818/f3f1ee" alt="" />Meta<span class="count">0 item</span></h2>
+
+        <p class="actor-empty">Rien de notable cette semaine — aucune sortie produit, modèle ou recherche datée dans la fenêtre. Muse Spark (avril), TRIBE v2 (mars) et CWM (5 juin, juste avant la fenêtre) sont antérieurs ; Behemoth reste non sorti.</p>
+      </section>
+
+      <!-- ─── MISTRAL ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/mistralai/1b1818/f3f1ee" alt="" />Mistral<span class="count">1 item</span></h2>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Mistral en discussions pour lever ~3 Md€ à ~20 Md€ de valorisation (rumeur)</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-06-12</span>
+          </div>
+          <p class="item-context">Mistral serait en discussions pour lever <strong>~3 Md€</strong> à une valorisation <strong>~20 Md€</strong> — près du double des 11,7 Md€ du Series C de septembre 2025 — sur fond de poussée « physics AI » industrielle et d'infrastructure datacenter (<strong>rumeur, source Bloomberg</strong>, reprise par TechCrunch et SiliconANGLE ; pas d'annonce officielle Mistral). Loin des centaines de Md$ d'OpenAI/Anthropic, mais consolide le champion européen ; l'angle « physics AI » (modèles pour ingénieurs industriels) est le plus pertinent pour Lynxter, mais reste au stade projet.</p>
+        </article>
+      </section>
+
+      <!-- ─── ACTEURS SECONDAIRES ─── -->
+      <section class="actor-section reveal">
+        <h2 style="font-size:18px;color:var(--text-muted);">Acteurs secondaires<span class="count">3 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-06-15-cohere-north-mini-code.html">Cohere North Mini Code — coding agent open-weights 30B qui tient sur un seul H100</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-06-09</span>
+          </div>
+          <p class="item-context">Cohere sort le <strong>9 juin</strong> <strong>North Mini Code</strong>, un <strong>MoE 30B total / 3B actifs</strong> par token, <strong>licence Apache 2.0</strong>, contexte <strong>256K</strong>, qui tourne sur <strong>un seul H100 en FP8</strong> (déploiement local/souverain). Scores via le harness mini-SWE-Agent : <strong>80,2 % pass@10 et 61,0 % pass@1 sur SWE-bench Verified</strong>. Il battrait des modèles open-source jusqu'à <strong>123B paramètres</strong>, avec jusqu'à <strong>2,8× le débit de sortie de Devstral Small 2</strong>. Premier modèle de la famille « North » coding agents de Cohere — option directe d'IA de code on-prem sans dépendance cloud.</p>
+          <p class="item-source"><a href="https://cohere.com/blog/north-mini-code" target="_blank" rel="noopener">cohere.com/blog/north-mini-code</a> · <a href="https://huggingface.co/CohereLabs/North-Mini-Code-1.0" target="_blank" rel="noopener">huggingface.co — model card</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-06-15-cursor-bugbot-review.html">Cursor Bugbot — reviews en ~90 s et commande /review avant push</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-06-10</span>
+          </div>
+          <p class="item-context">Cursor met à jour le <strong>10 juin</strong> son agent de code review <strong>Bugbot</strong> : temps de review moyen ramené à <strong>~90 secondes</strong> (vs ~5 min), <strong>+10 % de bugs trouvés par review</strong> (0,62 vs 0,56) et <strong>~22 % moins cher par run</strong>. Nouvelle commande <code>/review</code> qui lance Bugbot + Security Review avant un push, déclinée en <code>/review-bugbot</code> et <code>/review-security</code>. Amélioration concrète d'un agent de revue intégré à l'IDE — repère concurrentiel pour les workflows de qualité de code.</p>
+          <p class="item-source"><a href="https://cursor.com/changelog" target="_blank" rel="noopener">cursor.com/changelog</a> · <a href="https://www.digitalapplied.com/blog/cursor-bugbot-90-second-reviews-june-2026-release" target="_blank" rel="noopener">digitalapplied.com</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Perplexity lève 200 M$ pour son navigateur agentique Comet</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-06-08</span>
+          </div>
+          <p class="item-context">Perplexity lève <strong>200 M$</strong> à une valorisation <strong>~20 Md$</strong> pour son navigateur agentique <strong>Comet</strong>, deux mois après un tour de 100 M$ à 18 Md$. Financement et course à la valorisation, pas de nouveauté produit technique dans la fenêtre — à noter pour suivre la trajectoire de l'« answer engine » vers l'agentique navigateur.</p>
+        </article>
+      </section>
+
+      <section class="sources-footer">
+        <strong>Sources consultées</strong>
+        <a href="https://www.anthropic.com/news">anthropic.com/news</a> · <a href="https://code.claude.com/docs/en/changelog">code.claude.com/changelog</a> · <a href="https://openai.com/news/">openai.com/news</a> · <a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">help.openai.com — ChatGPT release notes</a> · <a href="https://developers.googleblog.com/">developers.googleblog.com</a> · <a href="https://deepmind.google/models/gemma/diffusiongemma/">deepmind.google/models/gemma/diffusiongemma</a> · <a href="https://cohere.com/blog/north-mini-code">cohere.com/blog</a> · <a href="https://cursor.com/changelog">cursor.com/changelog</a> · <a href="https://ai.meta.com/blog/">ai.meta.com</a> · <a href="https://mistral.ai/news/">mistral.ai/news</a>
+      </section>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-06-07.html">
+          <span class="label">← Brief précédent</span>
+          <span class="title">Mythos chasse les failles, Anthropic vise la bourse</span>
+        </a>
+        <a class="next" href="./">
+          <span class="label">Voir l'archive →</span>
+          <span class="title">Tous les briefs</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Brief généré le 2026-06-15</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+{
+  "date": "2026-06-15",
+  "title": "Fable 5 : record à 95 %, coupé en trois jours",
+  "title_html": "Fable 5 : record à 95 %,<br><em style=\"font-style:normal;color:var(--lx-accent);\">coupé en trois jours</em>",
+  "description": "Brief IA du 8 au 15 juin 2026 : Anthropic lance Claude Fable 5 (95 % SWE-bench Verified, record pour un modèle grand public) puis le coupe sur directive d'export-control US ; Claude Code passe aux sous-agents imbriqués sur 5 niveaux ; OpenAI rachète Ona pour des agents Codex longue durée ; Google sort DiffusionGemma, Cohere North Mini Code.",
+  "period": "8 → 15 juin 2026",
+  "actors_scanned": 8,
+  "intro_html": "Semaine charnière. Le 9 juin, Anthropic rend public <strong>Claude Fable 5</strong> — les mêmes poids que le Mythos 5 jusque-là réservé à Project Glasswing — qui établit un record pour un modèle grand public : <strong>95,0 % sur SWE-bench Verified</strong> (vs 88,7 % pour GPT-5.5) et <strong>80,3 % sur SWE-bench Pro</strong> (vs 69,2 % pour Opus 4.8). Trois jours plus tard, le <strong>12 juin</strong>, une directive de contrôle à l'export du gouvernement américain force Anthropic à couper Fable 5 et Mythos 5 pour tout le monde — premier cas connu d'un modèle frontière commercial retiré du marché par l'État. En parallèle, Claude Code enchaîne huit versions (sous-agents imbriqués sur 5 niveaux, <code>--safe-mode</code>, <code>enforceAvailableModels</code>), OpenAI rachète <strong>Ona</strong> (ex-Gitpod) pour des agents Codex longue durée, et l'open-weights de code accélère avec <strong>DiffusionGemma</strong> (Google) et <strong>North Mini Code</strong> (Cohere). Meta et Mistral : rien de produit dans la fenêtre.",
+  "tldr": [
+    "<strong>Claude Fable 5 lancé puis coupé en 3 jours.</strong> Le 9 juin, Anthropic ouvre au public Fable 5 (mêmes poids que Mythos 5) : <strong>95,0 % SWE-bench Verified</strong> — record pour un modèle grand public, +6,3 pts sur GPT-5.5 — et <strong>80,3 % SWE-bench Pro</strong> (+11,1 pts sur Opus 4.8), 1M tokens en entrée / 128K en sortie, adaptive thinking always-on, à $10/$50 par M tokens. Le 12 juin, une directive d'export-control US suspend l'accès pour tout ressortissant étranger ; ne pouvant filtrer en temps réel, Anthropic coupe les deux modèles pour tous. Les autres modèles (Opus 4.8…) restent en ligne.",
+    "<strong>Claude Code passe à l'orchestration imbriquée.</strong> Huit versions en cinq jours (2.1.169 → 2.1.176) : les sous-agents peuvent spawner leurs propres sous-agents <strong>jusqu'à 5 niveaux de profondeur</strong> (2.1.172), nouveau flag <strong><code>--safe-mode</code></strong> qui désactive toutes les customisations, et setting <strong><code>enforceAvailableModels</code></strong> qui verrouille le modèle Default dans une allowlist managée — gouvernance de flotte et de coûts. Intégration de Fable 5 livrée en 2.1.170, avec auto-fallback vers Opus 4.8.",
+    "<strong>OpenAI rachète Ona, l'open-weights de code accélère.</strong> OpenAI acquiert <strong>Ona</strong> (ex-Gitpod) pour faire tourner Codex en sandbox cloud des heures voire des jours sans surveillance — <strong>5 M d'utilisateurs Codex/semaine, +400 % depuis janvier</strong>. Côté open weights : <strong>DiffusionGemma</strong> (Google, 26B MoE texte par diffusion, 1 000+ tok/s sur 1 H100, Apache 2.0) et <strong>North Mini Code</strong> (Cohere, 30B/3B, 80,2 % pass@10 SWE-bench, tourne sur 1 H100). OpenAI retire aussi GPT-5.2 de ChatGPT (bascule auto GPT-5.5)."
+  ],
+  "lynxter_hero": [
+    "<strong>La leçon Fable 5, ce n'est pas le 95 % — c'est la coupure.</strong> Sur le papier, Fable 5 est le meilleur outil possible pour ton terrain le plus dur : <strong>80,3 % SWE-bench Pro</strong> (+11,1 pts vs Opus 4.8, +21,7 pts vs GPT-5.5), le benchmark des tâches longues, multi-fichiers, mal spécifiées — exactement un audit firmware S300X/S600D ou une migration de scripts Cowork. Mais deux faits commandent la prudence : son pricing à <strong>$10/$50 par M tokens</strong> (2× le standard Opus 4.8 à $5/$25), et surtout sa <strong>suspension le 12 juin</strong>, trois jours après le lancement, par directive d'export-control. Conclusion opérationnelle : <strong>ne fais dépendre aucun workflow critique ou client de Fable 5</strong>. Garde tes Routines Cowork et Claude Code épinglées sur Opus 4.8 (à $5/$25, non affecté par la directive). Si Fable 5 revient, traite-le comme un upgrade expérimental à A/B-tester sur des tâches à forte valeur (audit, migration), pas comme une brique de prod.",
+    "<strong>Claude Code te donne enfin la gouvernance de flotte qui manquait.</strong> Deux settings de la semaine comptent pour Lynxter. <code>enforceAvailableModels</code> verrouille le modèle Default dans une allowlist managée : les settings utilisateur/projet ne peuvent plus élargir la liste — tu peux donc imposer Opus 4.8 (et interdire le premium hors budget) à toute l'équipe depuis une config centrale, et le fallback automatique vers Opus 4.8 couvre les orgs sans accès au modèle haut de gamme. <code>--safe-mode</code> (et l'env <code>CLAUDE_CODE_SAFE_MODE</code>) désactive toutes les customisations pour des runs reproductibles — utile pour débugger une routine qui dérape. Et les <strong>sous-agents imbriqués sur 5 niveaux</strong> (2.1.172) débloquent une orchestration plus profonde : la routine veille elle-même fait déjà du fan-out par acteur, on peut maintenant imbriquer recherche → croisement → rédaction sans saturer le contexte de l'orchestrateur. Action cette semaine : pose <code>enforceAvailableModels</code> avec Opus 4.8 en Default, et audite quelles routines spawnent des sous-agents pour mesurer le coût réel via la nouvelle attribution d'usage VSCode.",
+    "<strong>L'open-weights de code devient une vraie option de souveraineté — et l'épisode Fable 5 le justifie.</strong> Deux sorties cette semaine changent la donne pour tes clients industriels qui ne peuvent pas envoyer leur code/données vers un cloud US (défense, aéro, médical réglementé) : <strong>North Mini Code</strong> de Cohere (MoE 30B/3B actifs, Apache 2.0, 256K de contexte, <strong>80,2 % pass@10 / 61,0 % pass@1 SWE-bench Verified</strong>, tourne sur <strong>un seul H100</strong>) et <strong>DiffusionGemma</strong> de Google (26B MoE par diffusion, 1 000+ tok/s sur 1 H100, Apache 2.0, mais explicitement expérimental). Quand un modèle frontière peut être coupé par décret en trois jours, un modèle open-weights déployé on-prem n'a, lui, aucun fournisseur capable de te débrancher. Action : benchmarke North Mini Code contre Devstral sur une tâche Lynxter réelle (migration de scripts de calibration, génération de gcode-helpers) ; s'il tient à 60-80 % de réussite sur un H100 que tu contrôles, tu as un argumentaire RFP « IA souveraine sur site » à présenter aux clients sensibles."
+  ],
+  "synthese_html": "Semaine dominée par <strong>Anthropic</strong>. Le 9 juin, <strong>Claude Fable 5</strong> (version publique des poids de Mythos 5) sort en tête de tous les classements généralistes : <strong>95,0 % SWE-bench Verified</strong>, <strong>80,3 % SWE-bench Pro</strong>, OSWorld-Verified 85 %, 1M tokens en entrée / 128K en sortie, adaptive thinking always-on, $10/$50 — avec des classifiers de sécurité qui basculent automatiquement vers Opus 4.8 sur les requêtes flaggées (&lt; 5 % des sessions). Trois jours plus tard, le <strong>12 juin</strong>, une <strong>directive de contrôle à l'export</strong> du gouvernement américain (sécurité nationale, jailbreak supposé) suspend l'accès pour tout ressortissant étranger ; incapable de filtrer en temps réel, Anthropic <strong>coupe Fable 5 et Mythos 5 pour tous</strong> — un précédent réglementaire inédit pour un modèle commercial. Côté outils, <strong>Claude Code</strong> enchaîne huit versions (2.1.169 → 2.1.176) : sous-agents imbriqués sur 5 niveaux, <code>--safe-mode</code>, <code>enforceAvailableModels</code>, <code>/cd</code>, attribution d'usage détaillée dans VSCode. Anthropic signe aussi un partenariat <strong>Global Premier</strong> avec <strong>TCS</strong> (Claude pour 50 000 employés dans 56 pays) et publie une recherche sur les agents en biologie. <strong>OpenAI</strong> rachète <strong>Ona</strong> (ex-Gitpod) pour faire tourner Codex en sandbox cloud sur des heures/jours (5 M d'utilisateurs Codex/semaine, +400 % depuis janvier), retire GPT-5.2 de ChatGPT au profit de GPT-5.5, et étend la personnalisation enrichie aux comptes Go/Free. <strong>Google</strong> sort <strong>DiffusionGemma</strong> (26B MoE texte par diffusion, jusqu'à 4× plus rapide, Apache 2.0, expérimental). <strong>Meta</strong> : rien de notable. <strong>Mistral</strong> : pas de produit, mais une rumeur Bloomberg de levée ~3 Md€ à ~20 Md€ sur fond de « physics AI » industrielle. Côté secondaires : <strong>Cohere North Mini Code</strong> (coding agent open-weights sur 1 H100), <strong>Cursor Bugbot</strong> (reviews en ~90 s + commande <code>/review</code>) et <strong>Perplexity</strong> qui lève 200 M$ pour Comet. À surveiller pour le prochain brief : <strong>Grok V9-Medium</strong> de xAI (entraînement terminé, 1,5 T paramètres, déploiement attendu mi-juin, pas encore d'API officielle).",
+  "actors_order": [
+    "Anthropic",
+    "OpenAI",
+    "Google DeepMind",
+    "Meta",
+    "Mistral"
+  ],
+  "actor_empty": {
+    "Meta": "Rien de notable cette semaine — aucune sortie produit, modèle ou recherche datée dans la fenêtre. Muse Spark (avril), TRIBE v2 (mars) et CWM (5 juin, juste avant la fenêtre) sont antérieurs ; Behemoth reste non sorti."
+  },
+  "items": [
+    {
+      "slug": "2026-06-15-claude-fable-5-mythos-5",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "date": "2026-06-09",
+      "title": "Claude Fable 5 — 95 % SWE-bench Verified, le modèle public le plus fort jamais sorti",
+      "context_html": "Anthropic rend public le <strong>9 juin</strong> <strong>Claude Fable 5</strong>, qui déploie les <strong>mêmes poids que Mythos 5</strong> (jusque-là réservé à Project Glasswing). Records pour un modèle généralement disponible : <strong>95,0 % SWE-bench Verified</strong> (vs 88,7 % GPT-5.5, 88,6 % Opus 4.8) et <strong>80,3 % SWE-bench Pro</strong> (vs 69,2 % Opus 4.8, 58,6 % GPT-5.5), plus OSWorld-Verified 85 % et Terminal-Bench 2.1 ~84 %. Fenêtre de <strong>1M tokens en entrée, 128K en sortie</strong>, <strong>adaptive thinking always-on</strong>, pricing <strong>$10/$50 par M tokens</strong> (2× le standard Opus 4.8). Des classifiers de sécurité basculent automatiquement les requêtes flaggées (cyber, biologie) vers Opus 4.8 — déclenché dans &lt; 5 % des sessions. Disponible Pro/Max/Team/Enterprise au lancement.",
+      "sources": [
+        { "label": "anthropic.com/news/claude-fable-5-mythos-5", "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5", "primary": true },
+        { "label": "techcrunch.com", "url": "https://techcrunch.com/2026/06/09/anthropics-claude-fable-5-is-a-version-of-mythos-the-public-can-access-today/", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Claude Fable 5",
+        "date_long": "9 juin 2026",
+        "description": "Analyse de Claude Fable 5 (9 juin 2026), version publique des poids de Mythos 5 : 95,0 % SWE-bench Verified, 80,3 % SWE-bench Pro, 1M/128K tokens, adaptive thinking, $10/$50. Implications Lynxter.",
+        "stats": [
+          { "num": "95.0", "unit": "%", "label": "SWE-bench Verified · record GA" },
+          { "num": "80.3", "unit": "%", "label": "SWE-bench Pro · +11.1 pts vs Opus 4.8" },
+          { "num": "$10/$50", "unit": "M tok", "label": "Pricing (2× standard Opus 4.8)" },
+          { "num": "1M/128K", "unit": "tokens", "label": "Contexte in / out" }
+        ],
+        "context_paragraphs": [
+          "Le <strong>9 juin 2026</strong>, Anthropic ouvre au grand public <strong>Claude Fable 5</strong>, présenté comme son modèle le plus intelligent généralement disponible. Le point clé : Fable 5 utilise les <strong>mêmes poids que Claude Mythos 5</strong>, le modèle de la classe « Mythos » qui était jusqu'ici restreint à des organisations approuvées (notamment Project Glasswing pour la recherche de vulnérabilités). Fable 5 ajoute des mesures de sécurité supplémentaires pour les capacités à double usage, là où Mythos 5 reste accessible sans ces garde-fous aux seules organisations agréées. Concrètement, le public obtient pour la première fois un accès direct à un modèle de la classe la plus capable d'Anthropic, qui se positionne au-dessus de Claude Opus.",
+          "Les scores officiels sont en rupture avec le reste du marché. Sur <strong>SWE-bench Verified, Fable 5 atteint 95,0 %</strong> — un record pour un modèle généralement disponible, à comparer aux 88,7 % de GPT-5.5 (jusqu'ici #1) et aux 88,6 % d'Opus 4.8. L'écart est encore plus net sur <strong>SWE-bench Pro à 80,3 %</strong> (tâches longues, multi-fichiers, mal spécifiées), soit +11,1 pts sur Opus 4.8 (69,2 %) et +21,7 pts sur GPT-5.5 (58,6 %). S'ajoutent <strong>OSWorld-Verified à 85 %</strong> (computer use) et Terminal-Bench 2.1 autour de 84 %. La fenêtre est de <strong>1M tokens en entrée et 128K en sortie</strong>, avec un <strong>adaptive thinking always-on</strong> : le modèle calibre seul son budget de raisonnement par requête, sans flag explicite.",
+          "Le pricing est de <strong>$10 en entrée / $50 en sortie par million de tokens</strong> — soit le double du standard Opus 4.8 ($5/$25), ce qui en fait un modèle réservé aux tâches à forte valeur plutôt qu'un remplacement par défaut. Anthropic livre Fable 5 avec un dispositif de sécurité notable : des <strong>classifiers</strong> qui détectent les requêtes sensibles (cyber-offensif, biologie) et <strong>basculent automatiquement la session vers Opus 4.8</strong>, un mécanisme déclenché dans <strong>moins de 5 % des sessions</strong> en moyenne. Le modèle est disponible immédiatement sur les plans Pro, Max, Team et Enterprise (avec crédits requis au-delà d'une période d'introduction), ainsi que dans Claude Code via la version 2.1.170. Ce que cette release ne dit pas encore : sa stabilité dans le temps — la suite l'a montré dès le 12 juin (voir l'item dédié)."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Le chiffre qui compte pour Lynxter, c'est le 80,3 % SWE-bench Pro, pas le 95 % Verified.</strong> Le Verified mesure des issues GitHub relativement bien cadrées ; le Pro évalue des tâches longues, multi-fichiers et mal spécifiées — c'est-à-dire le profil exact d'un audit firmware S300X/S600D, d'une migration de scripts de calibration Cowork, ou d'un debug transverse sur une base de code mal documentée. Avec +11,1 pts sur Opus 4.8 et +21,7 pts sur GPT-5.5, Fable 5 ouvre un écart qui n'est plus rattrapable par optimisation de prompt côté concurrent. Si tu as un chantier de migration ou d'audit à fort enjeu, c'est le modèle qui maximise le taux de réussite au premier passage.",
+          "<strong>Mais le pricing et l'instabilité imposent un usage chirurgical.</strong> À $10/$50, Fable 5 coûte le double d'Opus 4.8 par token et bien plus que le fast mode. Le calcul n'est rentable que sur des tâches où une seule itération réussie économise des heures humaines — pas sur du batch (scan tickets, classification logs) où Opus 4.8 ou son fast mode suffisent. Surtout, le mécanisme d'auto-fallback vers Opus 4.8 sur requêtes flaggées signifie que certaines tâches (analyse de logs sécurité, par exemple) basculeront silencieusement de modèle : à vérifier si tu mesures la qualité d'une routine.",
+          "<strong>Ne construis rien de critique dessus avant d'avoir vu sa disponibilité tenir dans la durée.</strong> La suite immédiate (suspension du 12 juin) confirme que ce modèle n'est pas, à ce stade, une fondation fiable pour de la production ou du client-facing. La bonne posture : garder Opus 4.8 ($5/$25, 1M ctx) comme socle de tes Routines, et réserver Fable 5 à des sessions ponctuelles d'audit/migration à forte valeur, en A/B contre Opus 4.8 pour mesurer le gain réel. Suis le statut d'accès avant d'industrialiser quoi que ce soit."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+          "label": "anthropic.com/news/claude-fable-5-mythos-5",
+          "meta": "Anthropic · annonce officielle Claude Fable 5 / Mythos 5 · 9 juin 2026"
+        },
+        "related": [
+          { "slug": "2026-06-15-fable-5-mythos-5-suspension", "actor": "Anthropic", "title": "Suspension de Fable 5 / Mythos 5 par directive US", "tag": "lynxter" },
+          { "slug": "2026-06-15-claude-code-2-1-169-176", "actor": "Anthropic", "title": "Claude Code 2.1.169–176 — sous-agents imbriqués", "tag": "lynxter" },
+          { "slug": "2026-06-01-claude-opus-4-8", "actor": "Anthropic", "title": "Claude Opus 4.8 — SWE-bench Pro 69.2 %", "tag": "lynxter" }
+        ],
+        "nav": {
+          "prev": { "href": "../briefs/2026-06-15.html", "label": "← Retour au brief", "title": "2026-06-15" },
+          "next": { "href": "2026-06-15-fable-5-mythos-5-suspension.html", "label": "Item suivant →", "title": "Suspension Fable 5 / Mythos 5" }
+        }
+      }
+    },
+    {
+      "slug": "2026-06-15-fable-5-mythos-5-suspension",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "date": "2026-06-12",
+      "title": "Washington débranche Fable 5 et Mythos 5 — première suspension d'un modèle frontière par l'État",
+      "context_html": "Moins de <strong>trois jours après le lancement</strong>, le <strong>12 juin</strong>, le gouvernement américain émet une <strong>directive de contrôle à l'export</strong> invoquant la sécurité nationale, interdisant l'accès à Fable 5 et Mythos 5 à <strong>tout ressortissant étranger</strong> — y compris hors US et y compris les employés étrangers d'Anthropic. Ne pouvant filtrer les ressortissants étrangers en temps réel, Anthropic <strong>coupe les deux modèles pour tout le monde</strong> ; les autres modèles (Opus 4.8, Sonnet, Haiku) restent en ligne. Motif invoqué : la découverte supposée d'une méthode de <strong>jailbreak</strong> de Fable 5. Anthropic conteste publiquement qu'un jailbreak étroit justifie le retrait d'un modèle commercial, avertissant qu'un tel standard « halterait tout déploiement de modèle frontière ». C'est le <strong>premier cas connu</strong> d'un modèle frontière commercial retiré du marché par directive d'export US.",
+      "sources": [
+        { "label": "anthropic.com/news/fable-mythos-access", "url": "https://www.anthropic.com/news/fable-mythos-access", "primary": true },
+        { "label": "cnbc.com", "url": "https://www.cnbc.com/2026/06/12/anthropic-disables-access-to-fable-5-and-mythos-5-to-comply-with-government-directive.html", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Suspension Fable 5 / Mythos 5",
+        "date_long": "12 juin 2026",
+        "description": "Le 12 juin 2026, une directive d'export-control US force Anthropic à suspendre Fable 5 et Mythos 5 pour tous les utilisateurs — premier retrait d'un modèle frontière commercial par l'État. Analyse et implications Lynxter.",
+        "stats": [
+          { "num": "3", "unit": "jours", "label": "Entre lancement (9 juin) et coupure" },
+          { "num": "12 juin", "unit": "2026", "label": "Directive reçue · arrêt 12-13 juin" },
+          { "num": "100", "unit": "%", "label": "Utilisateurs coupés (filtrage impossible)" },
+          { "num": "1er", "unit": "cas", "label": "Modèle frontière retiré par l'État US" }
+        ],
+        "context_paragraphs": [
+          "Le <strong>12 juin 2026</strong>, trois jours après avoir rendu Fable 5 public, Anthropic reçoit une <strong>directive de contrôle à l'export</strong> du gouvernement américain. Au nom de la sécurité nationale, la directive interdit l'accès à Fable 5 et Mythos 5 à <strong>tout ressortissant étranger</strong> — pas seulement hors des États-Unis, mais aussi sur le sol américain, et y compris les employés étrangers d'Anthropic. Faute de pouvoir vérifier la nationalité de chaque utilisateur en temps réel, Anthropic prend la seule décision techniquement possible : <strong>désactiver les deux modèles pour l'ensemble des utilisateurs</strong>. Les autres modèles de la gamme (Opus 4.8, Sonnet, Haiku) ne sont pas concernés et restent disponibles.",
+          "Le motif rapporté est la découverte supposée, par le gouvernement, d'une <strong>méthode de jailbreak</strong> de Fable 5 — un contournement des garde-fous qui exposerait des capacités à double usage. Anthropic conteste publiquement la proportionnalité de la mesure : l'entreprise estime qu'un jailbreak étroit ne justifie pas le rappel d'un produit commercial entier, et avertit que si ce standard était appliqué à toute l'industrie, il « halterait tout déploiement de modèle frontière ». L'épisode pose un précédent : c'est le <strong>premier cas connu</strong> où un modèle d'IA frontière commercial est retiré du marché non pas pour un bug ou une décision business, mais par <strong>directive réglementaire d'export-control</strong>.",
+          "Au-delà du cas Anthropic, l'événement envoie un signal à tout le secteur. Les régimes d'export-control, conçus pour les semi-conducteurs et les technologies duales, s'appliquent désormais aux <strong>poids de modèles</strong> et à leur accès en ligne — avec une granularité (la nationalité de l'utilisateur final) qu'aucune infrastructure SaaS ne sait appliquer en temps réel. Pour OpenAI, Google et les autres labos frontière, la question devient : un modèle suffisamment capable peut-il être déployé publiquement sans s'exposer à une coupure étatique ? La réponse conditionnera les roadmaps de release des prochains mois, et renforce mécaniquement l'argument des modèles open-weights, qu'aucun fournisseur ne peut révoquer une fois téléchargés."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>La règle à retenir : aucun workflow critique ou client-facing de Lynxter ne doit dépendre d'un modèle unique « bleeding-edge ».</strong> Fable 5 est passé de « meilleur modèle public au monde » à « indisponible » en 72 heures, sans préavis exploitable. Si une de tes Routines de production avait été câblée sur Fable 5 le 9 juin, elle serait tombée le 12. La parade est simple et déjà à ta portée : garde Opus 4.8 ($5/$25, 1M ctx, non affecté par la directive) comme modèle socle de tout ce qui tourne en continu (génération du brief, scan tickets, support client), et configure un fallback explicite. La nouvelle option <code>enforceAvailableModels</code> de Claude Code (voir l'item dédié) sert précisément à ça : verrouiller le Default sur un modèle stable et autorisé.",
+          "<strong>Cet épisode est aussi l'argument le plus net de la semaine pour l'open-weights on-prem.</strong> Un modèle déployé sur ton propre H100 (North Mini Code de Cohere, par exemple) n'a aucun fournisseur capable de le débrancher par décret. Pour les clients industriels de Lynxter en secteurs sensibles (défense, aéro, médical), « IA souveraine sur site, non révocable » devient un argument commercial concret, pas théorique. À intégrer dans l'argumentaire RFP : la résilience réglementaire d'un déploiement local face au risque de coupure d'un service frontière US.",
+          "<strong>Enfin, surveille le statut d'accès avant toute décision d'industrialisation.</strong> Anthropic conteste la directive ; Fable 5 peut revenir, sous conditions, ou rester suspendu durablement. Tant que la situation n'est pas stabilisée, considère Fable 5 comme indisponible pour la planification. Concrètement : ne promets aucune capacité « Fable 5 » à un client ou en interne, et continue à évaluer tes gains de productivité sur la base d'Opus 4.8, qui reste la frontière fiable de ton stack."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://www.anthropic.com/news/fable-mythos-access",
+          "label": "anthropic.com/news/fable-mythos-access",
+          "meta": "Anthropic · communiqué suspension Fable 5 / Mythos 5 · 12 juin 2026"
+        },
+        "related": [
+          { "slug": "2026-06-15-claude-fable-5-mythos-5", "actor": "Anthropic", "title": "Claude Fable 5 — 95 % SWE-bench Verified", "tag": "lynxter" },
+          { "slug": "2026-06-15-claude-code-2-1-169-176", "actor": "Anthropic", "title": "Claude Code 2.1.169–176 — enforceAvailableModels", "tag": "lynxter" },
+          { "slug": "2026-06-15-cohere-north-mini-code", "actor": "Cohere", "title": "North Mini Code — coding agent open-weights sur 1 H100", "tag": "useful" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-06-15-claude-fable-5-mythos-5.html", "label": "← Item précédent", "title": "Claude Fable 5" },
+          "next": { "href": "2026-06-15-claude-code-2-1-169-176.html", "label": "Item suivant →", "title": "Claude Code 2.1.169–176" }
+        }
+      }
+    },
+    {
+      "slug": "2026-06-15-claude-code-2-1-169-176",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "date": "2026-06-10",
+      "title": "Claude Code 2.1.169–176 — sous-agents imbriqués sur 5 niveaux, --safe-mode, enforceAvailableModels",
+      "context_html": "Train de huit versions du <strong>8 au 12 juin</strong>. <strong>2.1.172 (10 juin)</strong> : les sous-agents peuvent désormais spawner leurs propres sous-agents <strong>jusqu'à 5 niveaux de profondeur</strong>, barre de recherche dans le marketplace <code>/plugin</code>, et correctif <code>WebFetch</code> qui ne matchait pas les sous-domaines wildcard. <strong>2.1.169 (8 juin)</strong> : nouveau flag <strong><code>--safe-mode</code></strong> (+ env <code>CLAUDE_CODE_SAFE_MODE</code>) qui désactive toutes les customisations, commande <code>/cd</code> pour changer de répertoire en session, setting <code>disableBundledSkills</code>, correctif des policies MCP managées à la reconnexion. <strong>2.1.170 (9 juin)</strong> : intégration de Fable 5. <strong>2.1.174/175 (12 juin)</strong> : setting <strong><code>enforceAvailableModels</code></strong> (verrouille le Default dans une allowlist managée) et attribution d'usage détaillée dans VSCode (cache misses, long context, sous-agents, breakdown par skill/agent/plugin/MCP).",
+      "sources": [
+        { "label": "code.claude.com/docs/en/changelog", "url": "https://code.claude.com/docs/en/changelog", "primary": true },
+        { "label": "releasebot.io/updates/anthropic/claude-code", "url": "https://releasebot.io/updates/anthropic/claude-code", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Claude Code 2.1.169–176",
+        "date_long": "8–12 juin 2026",
+        "description": "Claude Code v2.1.169 à 2.1.176 (8-12 juin 2026) : sous-agents imbriqués sur 5 niveaux, --safe-mode, enforceAvailableModels, /cd, attribution d'usage VSCode. Implications Lynxter.",
+        "stats": [
+          { "num": "5", "unit": "niveaux", "label": "Sous-agents imbriqués (2.1.172)" },
+          { "num": "8", "unit": "versions", "label": "2.1.169 → 2.1.176 en 5 jours" },
+          { "num": "--safe-mode", "unit": "flag", "label": "Désactive toutes les customisations" },
+          { "num": "enforce", "unit": "Models", "label": "Allowlist de modèles managée" }
+        ],
+        "context_paragraphs": [
+          "Entre le <strong>8 et le 12 juin 2026</strong>, Claude Code enchaîne huit versions (2.1.169 → 2.1.176). La plus structurante est la <strong>2.1.172 (10 juin)</strong>, qui autorise les <strong>sous-agents à spawner leurs propres sous-agents jusqu'à 5 niveaux de profondeur</strong>. Jusqu'ici, un sous-agent était une feuille de l'arbre d'orchestration ; il peut maintenant devenir lui-même orchestrateur, ce qui permet de décomposer une tâche en hiérarchies (un agent « acteur » qui pilote des agents « recherche » puis « rédaction », par exemple). La même version ajoute une barre de recherche dans le marketplace <code>/plugin</code> et corrige un bug <code>WebFetch</code> où un domaine wildcard de l'allowlist ne matchait pas les sous-domaines.",
+          "La <strong>2.1.169 (8 juin)</strong> introduit le flag <strong><code>--safe-mode</code></strong> (et la variable d'environnement <code>CLAUDE_CODE_SAFE_MODE</code>), qui <strong>désactive toutes les customisations</strong> — skills, plugins, hooks, MCP servers — pour repartir d'un état vierge. S'ajoutent la commande <code>/cd</code> pour déplacer une session de répertoire de travail sans la relancer, un setting <code>disableBundledSkills</code>, et un correctif des policies MCP managées qui n'étaient pas réappliquées à la reconnexion. La <strong>2.1.170 (9 juin)</strong> branche Fable 5 dans Claude Code, avec auto-fallback vers Opus 4.8 pour les organisations sans accès au modèle premium.",
+          "Les versions <strong>2.1.174/175 (12 juin)</strong> apportent les deux leviers de gouvernance. <strong><code>enforceAvailableModels</code></strong> verrouille le modèle Default dans une <strong>allowlist managée</strong> : les settings utilisateur ou projet ne peuvent plus élargir une liste <code>availableModels</code> définie au niveau de l'organisation. Côté observabilité, l'extension VSCode affiche désormais une <strong>attribution d'usage détaillée</strong> — cache misses, long context, sous-agents — avec un breakdown par skill, agent, plugin et MCP. Enfin la 2.1.176 génère les titres de session dans la langue de la conversation et ajoute un setting <code>footerLinksRegexes</code>."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Les sous-agents imbriqués changent le plafond de ce que la routine veille peut orchestrer.</strong> Le brief que tu lis fait déjà du fan-out (un agent par acteur). Avec l'imbrication sur 5 niveaux, on peut structurer plus proprement : un orchestrateur top-level → un agent par acteur → des sous-agents recherche/croisement/rédaction par acteur, chacun rendant un résultat consolidé sans saturer le contexte du parent. À combiner avec les Dynamic Workflows : tu gagnes en parallélisme sans perdre la lisibilité du plan. Action : refactore la routine veille pour tester un niveau d'imbrication supplémentaire sur l'acteur le plus dense (Anthropic) et mesure le wall-clock.",
+          "<strong><code>enforceAvailableModels</code> et l'attribution d'usage VSCode sont les outils de gouvernance de flotte qui manquaient.</strong> Avec <code>enforceAvailableModels</code>, tu imposes Opus 4.8 comme Default à toute l'équipe depuis une config centrale et tu bloques l'usage d'un modèle hors budget (ou instable, comme Fable 5 après sa suspension) sans pouvoir être contourné en local. L'attribution d'usage te donne enfin le coût réel par skill/agent/MCP — indispensable pour identifier quelle routine consomme et où placer le fast mode. <code>--safe-mode</code> complète le tableau pour débugger : quand une routine dérape, relance-la sans aucune customisation pour isoler si le problème vient d'un hook/skill maison. Pose ces trois leviers cette semaine."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://code.claude.com/docs/en/changelog",
+          "label": "code.claude.com/docs/en/changelog",
+          "meta": "Anthropic · changelog officiel Claude Code v2.1.169–176 · 8–12 juin 2026"
+        },
+        "related": [
+          { "slug": "2026-06-15-claude-fable-5-mythos-5", "actor": "Anthropic", "title": "Claude Fable 5 — intégré en 2.1.170", "tag": "lynxter" },
+          { "slug": "2026-06-15-fable-5-mythos-5-suspension", "actor": "Anthropic", "title": "Suspension Fable 5 — d'où l'intérêt d'enforceAvailableModels", "tag": "lynxter" },
+          { "slug": "2026-06-07-claude-code-2-1-166-fallback-models", "actor": "Anthropic", "title": "Claude Code 2.1.166-168 — fallback models", "tag": "lynxter" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-06-15-fable-5-mythos-5-suspension.html", "label": "← Item précédent", "title": "Suspension Fable 5 / Mythos 5" },
+          "next": { "href": "2026-06-15-openai-acquires-ona.html", "label": "Item suivant →", "title": "OpenAI rachète Ona" }
+        }
+      }
+    },
+    {
+      "slug": "2026-06-15-tcs-anthropic-partnership",
+      "actor": "Anthropic",
+      "tag": "info",
+      "date": "2026-06-11",
+      "title": "TCS devient Global Premier Partner d'Anthropic — Claude pour 50 000 employés",
+      "context_html": "Tata Consultancy Services devient <strong>Global Premier Partner</strong> du Claude Partner Network et déploie Claude auprès de <strong>50 000 employés dans 56 pays</strong>, avec une business unit dédiée et des offres packagées par industrie (assurance, banque, santé, aviation, telecom). Premier cas cité : <strong>Diligenta</strong> (filiale TCS régulée FCA, &gt;22 M de clients au UK) pour de la transformation de processus agentique. Extension de la stratégie GSI d'Anthropic après Accenture et Deloitte — positionnement frontal vs OpenAI/Microsoft sur les industries régulées.",
+      "sources": [
+        { "label": "anthropic.com/news/tcs-anthropic-partnership", "url": "https://www.anthropic.com/news/tcs-anthropic-partnership", "primary": true }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-06-15-anthropic-agents-in-biology",
+      "actor": "Anthropic",
+      "tag": "info",
+      "date": "2026-06-08",
+      "title": "Recherche Anthropic — « Paving the way for agents in biology »",
+      "context_html": "Anthropic publie une recherche soutenant que le goulot d'étranglement des agents biologiques n'est <strong>pas</strong> la capacité de raisonnement des modèles, mais l'état arriéré de l'<strong>infrastructure de données biologiques</strong> (illustré par l'épidémie de virus Bundibugyo en RDC). Pas de benchmark exploitable, pas d'impact pratique immédiat — signal de R&D verticale d'Anthropic vers les sciences du vivant.",
+      "sources": [
+        { "label": "anthropic.com/research/agents-in-biology", "url": "https://www.anthropic.com/research/agents-in-biology", "primary": true }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-06-15-openai-acquires-ona",
+      "actor": "OpenAI",
+      "tag": "useful",
+      "date": "2026-06-11",
+      "title": "OpenAI rachète Ona (ex-Gitpod) pour des agents Codex longue durée",
+      "context_html": "OpenAI annonce le <strong>11 juin</strong> l'acquisition d'<strong>Ona</strong> (entité Gitpod GmbH), dont la plateforme exécute des agents IA dans des <strong>sandboxes cloud</strong>. Objectif : permettre à Codex de poursuivre une tâche <strong>pendant des heures voire des jours</strong>, sans surveillance, après que le développeur a fermé son laptop — passage d'un agent supervisé frappe-par-frappe à un « worker » à qui on confie un job. OpenAI revendique <strong>5 M d'utilisateurs Codex/semaine, +400 % depuis janvier</strong>. L'équipe Ona (CEO Johannes Landgraf) rejoint le groupe Codex à la clôture (montant non divulgué, sous réserve d'approbations réglementaires).",
+      "sources": [
+        { "label": "openai.com/index/openai-to-acquire-ona", "url": "https://openai.com/index/openai-to-acquire-ona/", "primary": true },
+        { "label": "cnbc.com", "url": "https://www.cnbc.com/2026/06/11/open-ai-ona-acquisition-codex.html", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "OpenAI rachète Ona",
+        "date_long": "11 juin 2026",
+        "description": "OpenAI acquiert Ona (ex-Gitpod) le 11 juin 2026 pour faire tourner Codex en sandbox cloud sur des heures/jours. 5 M d'utilisateurs Codex/semaine, +400 % YTD. Analyse et implications Lynxter.",
+        "stats": [
+          { "num": "5 M", "unit": "/semaine", "label": "Utilisateurs Codex hebdomadaires" },
+          { "num": "+400", "unit": "%", "label": "Croissance Codex depuis janvier" },
+          { "num": "heures", "unit": "→ jours", "label": "Autonomie visée des agents" },
+          { "num": "ex-Gitpod", "unit": "Ona", "label": "Cible acquise (sandbox cloud)" }
+        ],
+        "context_paragraphs": [
+          "Le <strong>11 juin 2026</strong>, OpenAI annonce le rachat d'<strong>Ona</strong>, la startup allemande anciennement connue sous le nom de Gitpod (entité juridique Gitpod GmbH). Le cœur de la technologie d'Ona : l'exécution d'agents IA dans des <strong>sandboxes cloud</strong> isolées et reproductibles. L'objectif explicite d'OpenAI est de faire passer Codex d'un agent que l'on supervise en continu à un <strong>« worker » asynchrone</strong> : on lui confie une tâche, on ferme son laptop, et l'agent continue à coder, tester et itérer dans le cloud pendant <strong>des heures, voire des jours</strong>, avant de rendre son travail. C'est un changement de nature, pas seulement d'échelle.",
+          "OpenAI accompagne l'annonce de chiffres d'adoption : <strong>plus de 5 millions d'utilisateurs hebdomadaires de Codex</strong>, soit <strong>+400 % depuis le début de l'année</strong>. L'équipe Ona, dirigée par son CEO et co-fondateur Johannes Landgraf, rejoint le groupe Codex une fois la transaction close — celle-ci reste soumise aux approbations réglementaires et n'est pas encore finalisée, le montant n'ayant pas été divulgué. Stratégiquement, OpenAI internalise l'infrastructure d'exécution longue durée plutôt que de la louer, ce qui sécurise une brique critique de sa roadmap agentique.",
+          "Le mouvement est directement comparable à l'orientation « agents asynchrones longue durée » du reste du marché : Claude Code et ses agents persistants côté Anthropic, les background agents côté Cursor, les Managed Agents côté Google Antigravity. La bataille des agents de code se déplace du chat interactif vers l'<strong>exécution autonome en arrière-plan</strong>, où la valeur est de confier un chantier entier (migration, refactor, port de langage) à une flotte d'agents qui travaillent sans supervision continue. L'acquisition d'une plateforme de sandboxing dédiée donne à OpenAI les fondations d'exécution que cette vision exige."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Le signal pour Lynxter est le pattern, pas l'outil.</strong> Lynxter tourne sur Claude, pas sur Codex — mais l'industrialisation des agents asynchrones longue durée concerne directement tes workflows. Pense aux chantiers qui bloquent un poste pendant des heures : migration d'un set de scripts de calibration, audit exhaustif des profils firmware S300X/S600D, génération/validation de gcode-helpers sur un grand catalogue. Avec une exécution en sandbox cloud, ces tâches se confient et se récupèrent finies, sans monopoliser une machine locale. Anthropic offre déjà l'équivalent via Claude Code et les Dynamic Workflows — l'enjeu est de t'en saisir maintenant que la primitive est mûre des deux côtés.",
+          "<strong>Action concrète : identifie un chantier « fire-and-forget » et teste-le en agent long.</strong> Choisis une tâche bornée mais longue (par exemple, convertir tout un répertoire de scripts Python 3.9 → 3.12 avec tests), lance-la via un agent Claude Code en mode autonome, et compare le résultat à un run interactif supervisé. Mesure le taux de complétion sans intervention et le temps humain économisé. Si le pattern tient, tu as une nouvelle classe de workflows à industrialiser — et un repère pour benchmarker Codex/Ona si un client ou un partenaire l'évoque."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://openai.com/index/openai-to-acquire-ona/",
+          "label": "openai.com/index/openai-to-acquire-ona",
+          "meta": "OpenAI · annonce officielle acquisition Ona · 11 juin 2026"
+        },
+        "related": [
+          { "slug": "2026-06-15-gpt-5-2-retired", "actor": "OpenAI", "title": "GPT-5.2 retiré de ChatGPT", "tag": "useful" },
+          { "slug": "2026-06-15-claude-code-2-1-169-176", "actor": "Anthropic", "title": "Claude Code 2.1.169–176 — sous-agents imbriqués", "tag": "lynxter" },
+          { "slug": "2026-06-01-claude-code-dynamic-workflows", "actor": "Anthropic", "title": "Dynamic Workflows — 1 000 sous-agents", "tag": "lynxter" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-06-15-claude-code-2-1-169-176.html", "label": "← Item précédent", "title": "Claude Code 2.1.169–176" },
+          "next": { "href": "2026-06-15-gpt-5-2-retired.html", "label": "Item suivant →", "title": "GPT-5.2 retiré de ChatGPT" }
+        }
+      }
+    },
+    {
+      "slug": "2026-06-15-gpt-5-2-retired",
+      "actor": "OpenAI",
+      "tag": "useful",
+      "date": "2026-06-12",
+      "title": "GPT-5.2 retiré de ChatGPT — bascule automatique sur GPT-5.5",
+      "context_html": "Depuis le <strong>12 juin</strong>, <strong>GPT-5.2 Instant, Thinking et Pro</strong> ne sont plus disponibles dans ChatGPT ; les conversations existantes basculent automatiquement sur le modèle <strong>GPT-5.5</strong> correspondant. Retrait planifié au titre de la politique des <strong>90 jours</strong> de disponibilité après la sortie d'un successeur (GPT-5.3 Instant). <strong>Changement ChatGPT uniquement — l'API n'est pas affectée</strong>, GPT-5.2 y reste accessible. À connaître si des outils ou agents pointent encore explicitement « gpt-5.2 » côté ChatGPT.",
+      "sources": [
+        { "label": "help.openai.com — ChatGPT release notes", "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes", "primary": true },
+        { "label": "techtimes.com", "url": "https://www.techtimes.com/articles/318345/20260613/openai-retires-gpt-52-moves-everyone-gpt-55-what-changes-chatgpt-users-developers.htm", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "GPT-5.2 retiré de ChatGPT",
+        "date_long": "12 juin 2026",
+        "description": "OpenAI retire GPT-5.2 (Instant/Thinking/Pro) de ChatGPT le 12 juin 2026, bascule automatique sur GPT-5.5. Changement ChatGPT uniquement, API inchangée. Implications Lynxter.",
+        "stats": [
+          { "num": "12 juin", "unit": "2026", "label": "Retrait de GPT-5.2 dans ChatGPT" },
+          { "num": "90", "unit": "jours", "label": "Disponibilité après un successeur" },
+          { "num": "GPT-5.5", "unit": "auto", "label": "Modèle de bascule" },
+          { "num": "API", "unit": "OK", "label": "Aucun impact côté développeurs" }
+        ],
+        "context_paragraphs": [
+          "Le <strong>12 juin 2026</strong>, OpenAI retire de ChatGPT les trois variantes de <strong>GPT-5.2 (Instant, Thinking, Pro)</strong>. Les conversations qui les utilisaient encore basculent automatiquement sur la variante <strong>GPT-5.5</strong> équivalente, sans action de l'utilisateur. Le retrait s'inscrit dans la <strong>politique de cycle de vie d'OpenAI</strong> : un modèle reste disponible dans ChatGPT pendant 90 jours après la sortie de son successeur — ici GPT-5.3 Instant, dont l'arrivée déclenche la fenêtre de retrait de la génération 5.2.",
+          "Le point critique pour les intégrateurs : <strong>ce changement ne concerne que ChatGPT, pas l'API</strong>. GPT-5.2 reste accessible aux développeurs via l'API pour leurs intégrations existantes. La distinction est importante car elle évite une rupture côté production, mais elle crée une asymétrie : un utilisateur ChatGPT et une intégration API peuvent désormais tourner sur des modèles différents pour un même produit. Ce retrait est par ailleurs distinct du calendrier déjà connu pour GPT-4.5 (retiré le 27 juin) et o3."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>L'utilité directe est l'hygiène de cycle de vie des modèles.</strong> Le cas OpenAI rappelle que tout modèle a une date de péremption, y compris ceux que tu pointes explicitement. Profite de cette annonce pour auditer ton propre stack : où as-tu codé en dur un identifiant de modèle (dans une Routine Cowork, un script, une intégration MCP, un outil client-facing) ? Un ID figé est une dette qui casse silencieusement le jour du retrait. La bonne pratique, déjà outillée côté Anthropic, est de viser un alias géré (qui suit la dernière version stable) plutôt qu'une version figée, sauf besoin explicite de reproductibilité.",
+          "<strong>À rapprocher de la semaine côté Anthropic.</strong> Entre le retrait de GPT-5.2 et la suspension de Fable 5, le message est cohérent : la disponibilité d'un modèle donné n'est jamais garantie. C'est exactement ce que le nouveau <code>enforceAvailableModels</code> de Claude Code permet de gérer — verrouiller le Default sur un modèle stable et autorisé, et basculer proprement quand il faut. Mets en place dès maintenant un point de contrôle « quels modèles mes outils ciblent-ils, et que se passe-t-il si l'un disparaît ? »"
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "label": "help.openai.com — ChatGPT release notes",
+          "meta": "OpenAI · notes de version ChatGPT · 12 juin 2026"
+        },
+        "related": [
+          { "slug": "2026-06-15-openai-acquires-ona", "actor": "OpenAI", "title": "OpenAI rachète Ona", "tag": "useful" },
+          { "slug": "2026-06-15-claude-code-2-1-169-176", "actor": "Anthropic", "title": "Claude Code — enforceAvailableModels", "tag": "lynxter" },
+          { "slug": "2026-06-15-fable-5-mythos-5-suspension", "actor": "Anthropic", "title": "Suspension Fable 5 — disponibilité non garantie", "tag": "lynxter" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-06-15-openai-acquires-ona.html", "label": "← Item précédent", "title": "OpenAI rachète Ona" },
+          "next": { "href": "2026-06-15-diffusiongemma.html", "label": "Item suivant →", "title": "DiffusionGemma" }
+        }
+      }
+    },
+    {
+      "slug": "2026-06-15-openai-chatgpt-personalization-free",
+      "actor": "OpenAI",
+      "tag": "info",
+      "date": "2026-06-09",
+      "title": "OpenAI étend la personnalisation enrichie de ChatGPT à Go &amp; Free",
+      "context_html": "OpenAI étend la <strong>personnalisation enrichie</strong> de ChatGPT (qui puise dans l'historique des conversations, les fichiers uploadés et le Gmail connecté) aux comptes <strong>Go et Free</strong>, après un lancement Plus/Pro le 5 mai. Le tier Free utilise une <strong>fenêtre d'historique réduite</strong> par rapport à l'historique complet de Plus/Pro. Pas d'impact technique actionnable — élargissement grand public.",
+      "sources": [
+        { "label": "help.openai.com — ChatGPT release notes", "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes", "primary": true }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-06-15-diffusiongemma",
+      "actor": "Google DeepMind",
+      "tag": "useful",
+      "date": "2026-06-10",
+      "title": "DiffusionGemma — modèle texte par diffusion 26B open weights, jusqu'à 4× plus rapide",
+      "context_html": "Google sort le <strong>10 juin</strong> <strong>DiffusionGemma</strong> (<code>diffusiongemma-26B-A4B-it</code>), un <strong>MoE 26B total / 3,8B actifs</strong> bâti sur le backbone Gemma 4 mais qui génère le texte <strong>par diffusion discrète</strong> : il denoise des blocs de 256 tokens en parallèle au lieu d'un token autorégressif à la fois. Débit : <strong>1 000–1 100+ tokens/s sur un seul H100 (FP8)</strong>, 700+ sur RTX 5090, annoncé <strong>jusqu'à 4× plus rapide</strong> que l'équivalent autorégressif. Contexte <strong>256K</strong>, ~18 Go de VRAM quantifié, <strong>licence Apache 2.0</strong>, dispo day-zero sur Hugging Face, Kaggle et Vertex AI. Caveat majeur : Google le qualifie d'<strong>expérimental</strong>, avec des scores nettement inférieurs à Gemma 4 en raisonnement, maths et code.",
+      "sources": [
+        { "label": "developers.googleblog.com — DiffusionGemma guide", "url": "https://developers.googleblog.com/diffusiongemma-the-developer-guide/", "primary": true },
+        { "label": "marktechpost.com", "url": "https://www.marktechpost.com/2026/06/10/google-ai-releases-diffusiongemma-a-26b-moe-open-model-using-text-diffusion-for-up-to-4x-faster-generation/", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "DiffusionGemma",
+        "date_long": "10 juin 2026",
+        "description": "DiffusionGemma (Google, 10 juin 2026) : MoE 26B/3,8B texte par diffusion discrète, 1 000+ tok/s sur 1 H100, 256K ctx, Apache 2.0, expérimental. Analyse et implications Lynxter.",
+        "stats": [
+          { "num": "26B/3.8B", "unit": "MoE", "label": "Paramètres totaux / actifs" },
+          { "num": "1 000+", "unit": "tok/s", "label": "Débit sur 1 H100 (FP8)" },
+          { "num": "256K", "unit": "ctx", "label": "Fenêtre de contexte" },
+          { "num": "Apache 2.0", "unit": "open", "label": "Licence open weights" }
+        ],
+        "context_paragraphs": [
+          "Le <strong>10 juin 2026</strong>, Google publie <strong>DiffusionGemma</strong>, un modèle open-weights qui rompt avec l'architecture autorégressive dominante. Là où un LLM classique génère un token à la fois conditionné par les précédents, DiffusionGemma <strong>génère le texte par diffusion discrète</strong> : il part d'un bloc bruité et le denoise en plusieurs passes, en produisant <strong>256 tokens en parallèle</strong> par forward pass. Le modèle est un <strong>MoE de 26B paramètres totaux dont 3,8B actifs</strong>, bâti sur le backbone Gemma 4. Il tient dans <strong>~18 Go de VRAM</strong> une fois quantifié, offre <strong>256K tokens de contexte</strong>, et sort sous <strong>licence Apache 2.0</strong>, disponible dès le premier jour sur Hugging Face, Kaggle et Vertex AI Model Garden, avec optimisation NVIDIA (NVFP4) et support vLLM/Unsloth.",
+          "L'argument central est la <strong>vitesse</strong> : <strong>1 000 à 1 100+ tokens/s sur un seul H100 en FP8</strong>, 700+ sur une RTX 5090, soit <strong>jusqu'à 4× plus rapide</strong> que l'équivalent autorégressif sur les mêmes machines (gains rapportés d'environ 1,9× en output TPS et 3,3× en end-to-end vs baseline). La diffusion troque le time-to-first-token (il faut plusieurs passes de denoising) contre un débit par requête nettement supérieur — un profil intéressant pour les charges où l'on génère de grands volumes et où la latence du premier token importe peu.",
+          "Le caveat est explicite et doit être pris au sérieux : Google qualifie DiffusionGemma d'<strong>expérimental</strong> et recommande de rester sur Gemma 4 pour la production qualité-critique, le modèle par diffusion étant <strong>nettement inférieur en raisonnement, maths et code</strong> (aucun score MMLU/HumanEval chiffré n'a été publié à ce stade). C'est néanmoins le premier modèle texte-diffusion poussé à cette échelle par un acteur frontière en open weights, ce qui en fait un jalon d'architecture à suivre, sur le créneau latence/throughput où se positionnent aussi Mercury (Inception Labs) et le Gemini Diffusion teasé à I/O."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>L'intérêt pour Lynxter est expérimental et ciblé : le débit, pas la qualité.</strong> DiffusionGemma n'est pas un candidat pour tes tâches de raisonnement (audit firmware, migration, support technique pointu) — Opus 4.8 ou Gemma 4 restent les bons outils là. En revanche, son débit ouvre une piste pour les étapes d'un pipeline agentique où l'on produit beaucoup de texte structuré peu exigeant en raisonnement : reformulation/normalisation de tickets en masse, génération de variantes de descriptions produit, expansion de templates. Sur un H100 que tu contrôles, 1 000 tok/s change l'économie de ces sous-tâches.",
+          "<strong>Action : un test de débit borné, pas une mise en prod.</strong> Si tu as un H100 (ou un accès Vertex), prends une étape volumineuse et non-critique d'une routine existante et mesure le throughput et la qualité de DiffusionGemma vs ton modèle actuel. Garde-le hors de toute chaîne qualité-critique tant qu'il est étiqueté expérimental. La vraie valeur cette semaine est de noter le pari d'architecture : si la diffusion discrète tient ses promesses de latence aux prochaines itérations, elle deviendra pertinente pour les agents temps-réel — à re-benchmarker à chaque nouvelle version."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://developers.googleblog.com/diffusiongemma-the-developer-guide/",
+          "label": "developers.googleblog.com — DiffusionGemma guide",
+          "meta": "Google Developers Blog · annonce DiffusionGemma · 10 juin 2026"
+        },
+        "related": [
+          { "slug": "2026-06-15-cohere-north-mini-code", "actor": "Cohere", "title": "North Mini Code — open-weights coding sur 1 H100", "tag": "useful" },
+          { "slug": "2026-06-15-claude-fable-5-mythos-5", "actor": "Anthropic", "title": "Claude Fable 5 — la frontière propriétaire", "tag": "lynxter" },
+          { "slug": "2026-06-15-fable-5-mythos-5-suspension", "actor": "Anthropic", "title": "Suspension Fable 5 — l'argument open-weights", "tag": "lynxter" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-06-15-gpt-5-2-retired.html", "label": "← Item précédent", "title": "GPT-5.2 retiré de ChatGPT" },
+          "next": { "href": "2026-06-15-cohere-north-mini-code.html", "label": "Item suivant →", "title": "North Mini Code" }
+        }
+      }
+    },
+    {
+      "slug": "2026-06-15-mistral-funding-20b",
+      "actor": "Mistral",
+      "tag": "info",
+      "date": "2026-06-12",
+      "title": "Mistral en discussions pour lever ~3 Md€ à ~20 Md€ de valorisation (rumeur)",
+      "context_html": "Mistral serait en discussions pour lever <strong>~3 Md€</strong> à une valorisation <strong>~20 Md€</strong> — près du double des 11,7 Md€ du Series C de septembre 2025 — sur fond de poussée « physics AI » industrielle et d'infrastructure datacenter (<strong>rumeur, source Bloomberg</strong>, reprise par TechCrunch et SiliconANGLE ; pas d'annonce officielle Mistral). Loin des centaines de Md$ d'OpenAI/Anthropic, mais consolide le champion européen ; l'angle « physics AI » (modèles pour ingénieurs industriels) est le plus pertinent pour Lynxter, mais reste au stade projet.",
+      "sources": [
+        { "label": "techcrunch.com (reprise Bloomberg)", "url": "https://techcrunch.com/2026/06/12/mistral-is-rumored-to-be-raising-e3b-at-e20-valuation/", "primary": false },
+        { "label": "siliconangle.com", "url": "https://siliconangle.com/2026/06/12/mistral-reportedly-seeking-3-5b-funding-round-amid-physics-ai-push/", "primary": false }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-06-15-cohere-north-mini-code",
+      "actor": "Cohere",
+      "tag": "useful",
+      "date": "2026-06-09",
+      "title": "Cohere North Mini Code — coding agent open-weights 30B qui tient sur un seul H100",
+      "context_html": "Cohere sort le <strong>9 juin</strong> <strong>North Mini Code</strong>, un <strong>MoE 30B total / 3B actifs</strong> par token, <strong>licence Apache 2.0</strong>, contexte <strong>256K</strong>, qui tourne sur <strong>un seul H100 en FP8</strong> (déploiement local/souverain). Scores via le harness mini-SWE-Agent : <strong>80,2 % pass@10 et 61,0 % pass@1 sur SWE-bench Verified</strong>. Il battrait des modèles open-source jusqu'à <strong>123B paramètres</strong>, avec jusqu'à <strong>2,8× le débit de sortie de Devstral Small 2</strong>. Premier modèle de la famille « North » coding agents de Cohere — option directe d'IA de code on-prem sans dépendance cloud.",
+      "sources": [
+        { "label": "cohere.com/blog/north-mini-code", "url": "https://cohere.com/blog/north-mini-code", "primary": true },
+        { "label": "huggingface.co — model card", "url": "https://huggingface.co/CohereLabs/North-Mini-Code-1.0", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "North Mini Code",
+        "date_long": "9 juin 2026",
+        "description": "Cohere North Mini Code (9 juin 2026) : MoE 30B/3B open-weights Apache 2.0, 256K ctx, 1× H100, 80,2 % pass@10 / 61,0 % pass@1 SWE-bench Verified. Analyse et implications Lynxter.",
+        "stats": [
+          { "num": "80.2", "unit": "% p@10", "label": "SWE-bench Verified (mini-SWE-Agent)" },
+          { "num": "30B/3B", "unit": "MoE", "label": "Paramètres totaux / actifs" },
+          { "num": "1× H100", "unit": "FP8", "label": "Déploiement local / souverain" },
+          { "num": "Apache 2.0", "unit": "256K", "label": "Licence open · contexte" }
+        ],
+        "context_paragraphs": [
+          "Le <strong>9 juin 2026</strong>, Cohere lance <strong>North Mini Code</strong>, premier modèle de sa nouvelle famille « North » de coding agents. C'est un <strong>MoE de 30B paramètres totaux dont 3B actifs</strong> par token, publié sous <strong>licence Apache 2.0</strong> avec un contexte de <strong>256K tokens</strong>. Son argument d'accessibilité : il tourne sur <strong>un seul H100 en FP8</strong>, ce qui le met à portée d'un déploiement local ou souverain, sans dépendance à un cloud propriétaire. La cible explicite est l'agentic coding — résolution autonome d'issues, navigation et édition multi-fichiers dans un dépôt.",
+          "Côté performance, North Mini Code est évalué via le harness <strong>mini-SWE-Agent</strong> et affiche <strong>80,2 % pass@10 et 61,0 % pass@1 sur SWE-bench Verified</strong> (la métrique pass@10 autorise plusieurs tentatives par tâche, pass@1 une seule — c'est ce dernier chiffre qui se compare aux scores frontière mono-tentative). Cohere revendique qu'il <strong>bat des modèles open-source jusqu'à 123B paramètres</strong> tout en offrant jusqu'à <strong>2,8× le débit de sortie de Devstral Small 2</strong>, son concurrent open-weights le plus direct sur le créneau du code. Le modèle est aussi benchmarké sur SWE-bench Pro et Terminal-Bench v2.",
+          "Le positionnement est clair : un modèle <strong>compact, rapide et déployable localement</strong>, qui ne vise pas le sommet absolu du classement (réservé aux Fable 5, GPT-5.5, Opus 4.8 propriétaires) mais le meilleur rapport capacité/empreinte en open weights. Dans un mois marqué par la suspension réglementaire de Fable 5, l'argument « pas de fournisseur qui peut te couper » prend un relief particulier : un modèle Apache 2.0 téléchargé et exécuté sur ton matériel n'est révocable par personne."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>North Mini Code est la brique « IA de code souveraine » la plus crédible de la semaine pour Lynxter.</strong> Pour des clients industriels qui ne peuvent pas envoyer leur code ou leurs données vers un cloud US — défense, aéronautique, médical réglementé — un coding agent open-weights qui tient sur un H100 sur site répond à un besoin concret. 61 % pass@1 ne rivalise pas avec Opus 4.8, mais c'est largement suffisant pour de l'assistance de code encadrée, de la génération de helpers, ou de la première passe sur des tâches bien cadrées, le tout sans aucune fuite de données hors du périmètre client.",
+          "<strong>Action : un benchmark comparatif sur une tâche Lynxter réelle.</strong> Monte North Mini Code sur un H100 (ou une instance équivalente) et oppose-le à Devstral sur une tâche représentative — migration d'un set de scripts de calibration, génération de gcode-helpers, ou résolution d'issues sur un dépôt interne. Mesure le taux de réussite pass@1, le débit et la VRAM consommée. S'il tient à 60-80 % de réussite sur du matériel que tu contrôles, tu disposes d'un argumentaire RFP « IA sur site, non révocable » à présenter aux clients sensibles — un différenciateur que la suspension de Fable 5 rend d'autant plus tangible."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://cohere.com/blog/north-mini-code",
+          "label": "cohere.com/blog/north-mini-code",
+          "meta": "Cohere · annonce North Mini Code · 9 juin 2026"
+        },
+        "related": [
+          { "slug": "2026-06-15-diffusiongemma", "actor": "Google DeepMind", "title": "DiffusionGemma — open weights 26B", "tag": "useful" },
+          { "slug": "2026-06-15-fable-5-mythos-5-suspension", "actor": "Anthropic", "title": "Suspension Fable 5 — l'argument souveraineté", "tag": "lynxter" },
+          { "slug": "2026-06-15-cursor-bugbot-review", "actor": "Cursor", "title": "Cursor Bugbot — reviews en ~90 s", "tag": "useful" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-06-15-diffusiongemma.html", "label": "← Item précédent", "title": "DiffusionGemma" },
+          "next": { "href": "2026-06-15-cursor-bugbot-review.html", "label": "Item suivant →", "title": "Cursor Bugbot" }
+        }
+      }
+    },
+    {
+      "slug": "2026-06-15-cursor-bugbot-review",
+      "actor": "Cursor",
+      "tag": "useful",
+      "date": "2026-06-10",
+      "title": "Cursor Bugbot — reviews en ~90 s et commande /review avant push",
+      "context_html": "Cursor met à jour le <strong>10 juin</strong> son agent de code review <strong>Bugbot</strong> : temps de review moyen ramené à <strong>~90 secondes</strong> (vs ~5 min), <strong>+10 % de bugs trouvés par review</strong> (0,62 vs 0,56) et <strong>~22 % moins cher par run</strong>. Nouvelle commande <code>/review</code> qui lance Bugbot + Security Review avant un push, déclinée en <code>/review-bugbot</code> et <code>/review-security</code>. Amélioration concrète d'un agent de revue intégré à l'IDE — repère concurrentiel pour les workflows de qualité de code.",
+      "sources": [
+        { "label": "cursor.com/changelog", "url": "https://cursor.com/changelog", "primary": true },
+        { "label": "digitalapplied.com", "url": "https://www.digitalapplied.com/blog/cursor-bugbot-90-second-reviews-june-2026-release", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Cursor Bugbot",
+        "date_long": "10 juin 2026",
+        "description": "Cursor Bugbot (10 juin 2026) : reviews en ~90 s (vs 5 min), +10 % de bugs trouvés, -22 % de coût, commande /review pre-push. Analyse et implications Lynxter.",
+        "stats": [
+          { "num": "~90", "unit": "s", "label": "Temps de review (vs ~5 min)" },
+          { "num": "+10", "unit": "%", "label": "Bugs trouvés (0,62 vs 0,56/review)" },
+          { "num": "-22", "unit": "%", "label": "Coût par run" },
+          { "num": "/review", "unit": "cmd", "label": "Bugbot + Security avant push" }
+        ],
+        "context_paragraphs": [
+          "Le <strong>10 juin 2026</strong>, Cursor pousse une mise à jour de <strong>Bugbot</strong>, son agent de revue de code intégré à l'IDE. Les gains annoncés sont triples : le <strong>temps de review moyen tombe à ~90 secondes</strong> (contre environ 5 minutes auparavant), le taux de détection monte de <strong>~10 %</strong> (0,62 bug trouvé par review contre 0,56), et le coût par exécution baisse d'environ <strong>22 %</strong>. La revue devient donc à la fois plus rapide, plus efficace et moins chère — un triple optimum rare dans ce type d'itération.",
+          "L'autre nouveauté est ergonomique : une commande <strong><code>/review</code></strong> qui déclenche, avant un push, à la fois Bugbot (recherche de bugs) et la Security Review, avec des variantes ciblées <code>/review-bugbot</code> et <code>/review-security</code>. Le geste de revue passe d'un service de fond à une commande explicite intégrée au flux git, ce qui en fait un garde-fou activable au moment précis où il a le plus de valeur — juste avant d'envoyer le code. C'est un mouvement parallèle à la Security Review de Claude Code, signe que la revue automatisée pré-push se standardise chez les agents de code."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Le repère utile pour Lynxter est le benchmark de la revue automatisée pré-push.</strong> Que ton équipe utilise Cursor ou Claude Code, l'idée à retenir est qu'une revue agentique systématique avant chaque push devient assez rapide (~90 s) et bon marché pour être non-négociable dans le workflow. Pour le code qui pilote des machines (firmware, scripts de calibration, générateurs de gcode), une passe automatique « bugs + sécurité » avant intégration réduit le risque d'une régression qui se propagerait à une imprimante en production.",
+          "<strong>Action : instaurer une revue agentique pré-push comme garde-fou par défaut.</strong> Si tu es sur Claude Code, câble une Security Review en hook pre-push sur les dépôts critiques ; si une partie de l'équipe est sur Cursor, active <code>/review</code>. Mesure sur un mois le nombre de bugs/issues de sécurité attrapés avant merge — c'est le genre de métrique qui justifie l'outillage auprès d'un dirigeant, et qui transforme une bonne pratique optionnelle en standard d'équipe."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://cursor.com/changelog",
+          "label": "cursor.com/changelog",
+          "meta": "Cursor · changelog officiel · entrée du 10 juin 2026"
+        },
+        "related": [
+          { "slug": "2026-06-15-cohere-north-mini-code", "actor": "Cohere", "title": "North Mini Code — coding agent open-weights", "tag": "useful" },
+          { "slug": "2026-06-15-claude-code-2-1-169-176", "actor": "Anthropic", "title": "Claude Code 2.1.169–176", "tag": "lynxter" },
+          { "slug": "2026-06-07-cursor-3-7-design-mode", "actor": "Cursor", "title": "Cursor 3.7 — Design Mode", "tag": "useful" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-06-15-cohere-north-mini-code.html", "label": "← Item précédent", "title": "North Mini Code" },
+          "next": { "href": "../briefs/2026-06-15.html", "label": "Retour au brief →", "title": "Brief du 15 juin 2026" }
+        }
+      }
+    },
+    {
+      "slug": "2026-06-15-perplexity-comet-200m",
+      "actor": "Perplexity",
+      "tag": "info",
+      "date": "2026-06-08",
+      "title": "Perplexity lève 200 M$ pour son navigateur agentique Comet",
+      "context_html": "Perplexity lève <strong>200 M$</strong> à une valorisation <strong>~20 Md$</strong> pour son navigateur agentique <strong>Comet</strong>, deux mois après un tour de 100 M$ à 18 Md$. Financement et course à la valorisation, pas de nouveauté produit technique dans la fenêtre — à noter pour suivre la trajectoire de l'« answer engine » vers l'agentique navigateur.",
+      "sources": [
+        { "label": "techtimes.com", "url": "https://www.techtimes.com/articles/318028/20260608/perplexity-raises-200-million-comet-ai-browser-agent-economy-front-door.htm", "primary": false }
+      ],
+      "has_primary": false
+    }
+  ],
+  "sources_footer": [
+    { "label": "anthropic.com/news", "url": "https://www.anthropic.com/news" },
+    { "label": "code.claude.com/changelog", "url": "https://code.claude.com/docs/en/changelog" },
+    { "label": "openai.com/news", "url": "https://openai.com/news/" },
+    { "label": "help.openai.com — ChatGPT release notes", "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes" },
+    { "label": "developers.googleblog.com", "url": "https://developers.googleblog.com/" },
+    { "label": "deepmind.google/models/gemma/diffusiongemma", "url": "https://deepmind.google/models/gemma/diffusiongemma/" },
+    { "label": "cohere.com/blog", "url": "https://cohere.com/blog/north-mini-code" },
+    { "label": "cursor.com/changelog", "url": "https://cursor.com/changelog" },
+    { "label": "ai.meta.com", "url": "https://ai.meta.com/blog/" },
+    { "label": "mistral.ai/news", "url": "https://mistral.ai/news/" }
+  ],
+  "prev": {
+    "href": "2026-06-07.html",
+    "title": "Mythos chasse les failles, Anthropic vise la bourse"
+  }
+}

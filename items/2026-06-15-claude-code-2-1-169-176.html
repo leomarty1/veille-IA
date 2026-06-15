@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code 2.1.169–176 — sous-agents imbriqués sur 5 niveaux, --safe-mode, enforceAvailableModels — Veille IA Lynxter</title>
+<meta name="description" content="Claude Code v2.1.169 à 2.1.176 (8-12 juin 2026) : sous-agents imbriqués sur 5 niveaux, --safe-mode, enforceAvailableModels, /cd, attribution d'usage VSCode. Implications Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-06-15.html">2026-06-15</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Claude Code 2.1.169–176</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Anthropic</span>
+          <span class="dot-sep">·</span>
+          <span>8–12 juin 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-lynxter">🎯 Lynxter</span>
+        </div>
+        <h1>Claude Code 2.1.169–176 — sous-agents imbriqués sur 5 niveaux, --safe-mode, enforceAvailableModels</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-06-15.html">Fable 5 : record à 95 %, coupé en trois jours — 2026-06-15</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">5<span class="unit">niveaux</span></div>
+            <div class="stat-label">Sous-agents imbriqués (2.1.172)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">8<span class="unit">versions</span></div>
+            <div class="stat-label">2.1.169 → 2.1.176 en 5 jours</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">--safe-mode<span class="unit">flag</span></div>
+            <div class="stat-label">Désactive toutes les customisations</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">enforce<span class="unit">Models</span></div>
+            <div class="stat-label">Allowlist de modèles managée</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Entre le <strong>8 et le 12 juin 2026</strong>, Claude Code enchaîne huit versions (2.1.169 → 2.1.176). La plus structurante est la <strong>2.1.172 (10 juin)</strong>, qui autorise les <strong>sous-agents à spawner leurs propres sous-agents jusqu'à 5 niveaux de profondeur</strong>. Jusqu'ici, un sous-agent était une feuille de l'arbre d'orchestration ; il peut maintenant devenir lui-même orchestrateur, ce qui permet de décomposer une tâche en hiérarchies (un agent « acteur » qui pilote des agents « recherche » puis « rédaction », par exemple). La même version ajoute une barre de recherche dans le marketplace <code>/plugin</code> et corrige un bug <code>WebFetch</code> où un domaine wildcard de l'allowlist ne matchait pas les sous-domaines.</p>
+        <p>La <strong>2.1.169 (8 juin)</strong> introduit le flag <strong><code>--safe-mode</code></strong> (et la variable d'environnement <code>CLAUDE_CODE_SAFE_MODE</code>), qui <strong>désactive toutes les customisations</strong> — skills, plugins, hooks, MCP servers — pour repartir d'un état vierge. S'ajoutent la commande <code>/cd</code> pour déplacer une session de répertoire de travail sans la relancer, un setting <code>disableBundledSkills</code>, et un correctif des policies MCP managées qui n'étaient pas réappliquées à la reconnexion. La <strong>2.1.170 (9 juin)</strong> branche Fable 5 dans Claude Code, avec auto-fallback vers Opus 4.8 pour les organisations sans accès au modèle premium.</p>
+        <p>Les versions <strong>2.1.174/175 (12 juin)</strong> apportent les deux leviers de gouvernance. <strong><code>enforceAvailableModels</code></strong> verrouille le modèle Default dans une <strong>allowlist managée</strong> : les settings utilisateur ou projet ne peuvent plus élargir une liste <code>availableModels</code> définie au niveau de l'organisation. Côté observabilité, l'extension VSCode affiche désormais une <strong>attribution d'usage détaillée</strong> — cache misses, long context, sous-agents — avec un breakdown par skill, agent, plugin et MCP. Enfin la 2.1.176 génère les titres de session dans la langue de la conversation et ajoute un setting <code>footerLinksRegexes</code>.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🎯 Pourquoi c'est important pour Lynxter</h2>
+        <p><strong>Les sous-agents imbriqués changent le plafond de ce que la routine veille peut orchestrer.</strong> Le brief que tu lis fait déjà du fan-out (un agent par acteur). Avec l'imbrication sur 5 niveaux, on peut structurer plus proprement : un orchestrateur top-level → un agent par acteur → des sous-agents recherche/croisement/rédaction par acteur, chacun rendant un résultat consolidé sans saturer le contexte du parent. À combiner avec les Dynamic Workflows : tu gagnes en parallélisme sans perdre la lisibilité du plan. Action : refactore la routine veille pour tester un niveau d'imbrication supplémentaire sur l'acteur le plus dense (Anthropic) et mesure le wall-clock.</p>
+        <p><strong><code>enforceAvailableModels</code> et l'attribution d'usage VSCode sont les outils de gouvernance de flotte qui manquaient.</strong> Avec <code>enforceAvailableModels</code>, tu imposes Opus 4.8 comme Default à toute l'équipe depuis une config centrale et tu bloques l'usage d'un modèle hors budget (ou instable, comme Fable 5 après sa suspension) sans pouvoir être contourné en local. L'attribution d'usage te donne enfin le coût réel par skill/agent/MCP — indispensable pour identifier quelle routine consomme et où placer le fast mode. <code>--safe-mode</code> complète le tableau pour débugger : quand une routine dérape, relance-la sans aucune customisation pour isoler si le problème vient d'un hook/skill maison. Pose ces trois leviers cette semaine.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">code.claude.com/docs/en/changelog</a>
+        <span class="source-meta">Anthropic · changelog officiel Claude Code v2.1.169–176 · 8–12 juin 2026</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-06-15-claude-fable-5-mythos-5.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Fable 5 — intégré en 2.1.170</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-06-15-fable-5-mythos-5-suspension.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Suspension Fable 5 — d'où l'intérêt d'enforceAvailableModels</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-06-07-claude-code-2-1-166-fallback-models.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code 2.1.166-168 — fallback models</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-06-15-fable-5-mythos-5-suspension.html">
+          <span class="label">← Item précédent</span>
+          <span class="title">Suspension Fable 5 / Mythos 5</span>
+        </a>
+        <a class="next" href="2026-06-15-openai-acquires-ona.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">OpenAI rachète Ona</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-06-15</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

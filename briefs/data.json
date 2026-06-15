@@ -1,6 +1,35 @@
 {
   "briefs": [
     {
+      "date": "2026-06-15",
+      "filename": "2026-06-15.html",
+      "items_count": 13,
+      "by_tag": { "lynxter": 3, "useful": 5, "info": 5 },
+      "by_actor": { "Anthropic": 5, "OpenAI": 3, "Google": 1, "Meta": 0, "Mistral": 1, "Cohere": 1, "Cursor": 1, "Perplexity": 1 },
+      "mode": "hebdomadaire",
+      "title": "Fable 5 : record à 95 %, coupé en trois jours",
+      "highlights": [
+        "Claude Fable 5 lancé le 9 juin (95 % SWE-bench Verified, record grand public) puis coupé le 12 par directive d'export-control US",
+        "Claude Code 2.1.169–176 — sous-agents imbriqués sur 5 niveaux, --safe-mode, enforceAvailableModels",
+        "OpenAI rachète Ona (agents Codex longue durée) ; open-weights de code : DiffusionGemma (Google) + North Mini Code (Cohere)"
+      ],
+      "items": [
+        { "slug": "2026-06-15-claude-fable-5-mythos-5", "title": "Claude Fable 5 — 95 % SWE-bench Verified, le modèle public le plus fort jamais sorti", "primary_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5", "tag": "lynxter", "actor": "Anthropic" },
+        { "slug": "2026-06-15-fable-5-mythos-5-suspension", "title": "Washington débranche Fable 5 et Mythos 5 — première suspension d'un modèle frontière par l'État", "primary_url": "https://www.anthropic.com/news/fable-mythos-access", "tag": "lynxter", "actor": "Anthropic" },
+        { "slug": "2026-06-15-claude-code-2-1-169-176", "title": "Claude Code 2.1.169–176 — sous-agents imbriqués sur 5 niveaux, --safe-mode, enforceAvailableModels", "primary_url": "https://code.claude.com/docs/en/changelog", "tag": "lynxter", "actor": "Anthropic" },
+        { "slug": "2026-06-15-tcs-anthropic-partnership", "title": "TCS devient Global Premier Partner d'Anthropic — Claude pour 50 000 employés", "primary_url": "https://www.anthropic.com/news/tcs-anthropic-partnership", "tag": "info", "actor": "Anthropic" },
+        { "slug": "2026-06-15-anthropic-agents-in-biology", "title": "Recherche Anthropic — Paving the way for agents in biology", "primary_url": "https://www.anthropic.com/research/agents-in-biology", "tag": "info", "actor": "Anthropic" },
+        { "slug": "2026-06-15-openai-acquires-ona", "title": "OpenAI rachète Ona (ex-Gitpod) pour des agents Codex longue durée", "primary_url": "https://openai.com/index/openai-to-acquire-ona/", "tag": "useful", "actor": "OpenAI" },
+        { "slug": "2026-06-15-gpt-5-2-retired", "title": "GPT-5.2 retiré de ChatGPT — bascule automatique sur GPT-5.5", "primary_url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes", "tag": "useful", "actor": "OpenAI" },
+        { "slug": "2026-06-15-openai-chatgpt-personalization-free", "title": "OpenAI étend la personnalisation enrichie de ChatGPT à Go & Free", "primary_url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes", "tag": "info", "actor": "OpenAI" },
+        { "slug": "2026-06-15-diffusiongemma", "title": "DiffusionGemma — modèle texte par diffusion 26B open weights, jusqu'à 4× plus rapide", "primary_url": "https://developers.googleblog.com/diffusiongemma-the-developer-guide/", "tag": "useful", "actor": "Google" },
+        { "slug": "2026-06-15-mistral-funding-20b", "title": "Mistral en discussions pour lever ~3 Md€ à ~20 Md€ de valorisation (rumeur)", "primary_url": "https://techcrunch.com/2026/06/12/mistral-is-rumored-to-be-raising-e3b-at-e20-valuation/", "tag": "info", "actor": "Mistral" },
+        { "slug": "2026-06-15-cohere-north-mini-code", "title": "Cohere North Mini Code — coding agent open-weights 30B qui tient sur un seul H100", "primary_url": "https://cohere.com/blog/north-mini-code", "tag": "useful", "actor": "Cohere" },
+        { "slug": "2026-06-15-cursor-bugbot-review", "title": "Cursor Bugbot — reviews en ~90 s et commande /review avant push", "primary_url": "https://cursor.com/changelog", "tag": "useful", "actor": "Cursor" },
+        { "slug": "2026-06-15-perplexity-comet-200m", "title": "Perplexity lève 200 M$ pour son navigateur agentique Comet", "primary_url": "https://www.techtimes.com/articles/318028/20260608/perplexity-raises-200-million-comet-ai-browser-agent-economy-front-door.htm", "tag": "info", "actor": "Perplexity" }
+      ]
+    },
+    {
       "date": "2026-06-07",
       "filename": "2026-06-07.html",
       "items_count": 9,
