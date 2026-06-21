@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code 2.1.178–185 — agent teams simplifiés, Tool(param:value), auto-mode qui bloque les commandes destructrices — Veille IA Lynxter</title>
+<meta name="description" content="Analyse des releases Claude Code 2.1.178 à 2.1.185 (juin 2026) : agent teams simplifiés, syntaxe de permission Tool(param:value), /config key=value, auto-mode qui bloque les commandes git/terraform destructrices. Implications Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-06-22.html">2026-06-22</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Claude Code 2.1.178–185</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Anthropic</span>
+          <span class="dot-sep">·</span>
+          <span>15 → 20 juin 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-lynxter">🎯 Lynxter</span>
+        </div>
+        <h1>Claude Code 2.1.178–185 — agent teams simplifiés, Tool(param:value), auto-mode qui bloque les commandes destructrices</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-06-22.html">Claude Code passe aux Artifacts, GLM-5.2 casse les prix — 2026-06-22</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">2.1.185<span class="unit"></span></div>
+            <div class="stat-label">Dernière version (20 juin)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5<span class="unit">releases</span></div>
+            <div class="stat-label">178 → 185 sur la fenêtre</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">git<span class="unit">safe</span></div>
+            <div class="stat-label">Auto-mode bloque reset/clean/destroy</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">Tool()<span class="unit">perms</span></div>
+            <div class="stat-label">Filtrage par paramètre</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>La fenêtre couvre cinq releases de Claude Code. La plus structurante, <strong>2.1.178 (15 juin)</strong>, refond les <strong>agent teams</strong> : les outils <code>TeamCreate</code> et <code>TeamDelete</code> disparaissent ; avec <code>CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1</code>, chaque session a désormais <strong>une équipe implicite</strong> et on spawne des coéquipiers directement via le paramètre <code>name</code> de l'outil Agent — plus d'étape de setup. Surtout, elle introduit une nouvelle <strong>syntaxe de règles de permission <code>Tool(param:value)</code></strong> qui matche les paramètres d'entrée d'un outil avec wildcard <code>*</code> : on peut par exemple écrire <code>Agent(model:opus)</code> pour <strong>interdire les sous-agents Opus</strong> (et donc plafonner le coût d'un run multi-agent). Les <code>.claude/</code> imbriqués sont mieux gérés (le plus proche du répertoire de travail gagne en cas de collision), et l'auto-mode évalue désormais les spawns de sous-agents <em>avant</em> lancement.</p>
+        <p><strong>2.1.181 (17 juin)</strong> ajoute <strong><code>/config key=value</code></strong> pour régler n'importe quel paramètre depuis le prompt (interactif, <code>-p</code>, Remote Control), un opt-in <code>sandbox.allowAppleEvents</code> sur macOS, une variable <code>CLAUDE_CLIENT_PRESENCE_FILE</code> pour couper les notifications push quand on est à la machine, et fait passer le <strong>runtime Bun bundlé en 1.4</strong>. <strong>2.1.183 (19 juin)</strong> est la release sécurité : l'<strong>auto-mode bloque les commandes destructrices non demandées</strong> — <code>git reset --hard</code>, <code>git checkout -- .</code>, <code>git clean -fd</code>, <code>git stash drop</code> quand tu n'as pas demandé à jeter le travail local, <code>git commit --amend</code> sur un commit non créé par l'agent dans la session, et <code>terraform destroy</code>/<code>pulumi destroy</code>/<code>cdk destroy</code> hors du stack explicitement visé. S'y ajoutent un <strong>avertissement quand le modèle demandé est déprécié</strong> ou auto-mis à jour (y compris en frontmatter d'agent) et un réglage <code>attribution.sessionUrl</code> pour omettre le lien de session dans les commits/PR.</p>
+        <p>Les deux autres releases sont des correctifs de fiabilité. <strong>2.1.179 (16 juin)</strong> préserve les réponses partielles lors d'un drop de connexion mid-stream (au lieu d'une erreur brute), corrige le scroll molette sous WSL2 (Windows Terminal et VS Code) et un cas où une glob <code>denyRead</code>/<code>allowRead</code> sur une grande arborescence rendait la session inutilisable sous Linux. <strong>2.1.185 (20 juin)</strong> ajuste le timing et le texte du hint de stall (« Waiting for API response · will retry in … » après 20 s de silence au lieu de 10 s). Pris ensemble, le fil directeur de la semaine est clair : <strong>plus de garde-fous par défaut</strong> (auto-mode, permissions paramétriques, garde sur les modèles dépréciés) et une orchestration multi-agent plus simple à câbler.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🎯 Pourquoi c'est important pour Lynxter</h2>
+        <p><strong>L'auto-mode durci est une assurance directe pour une équipe qui fait tourner Claude Code sur des repos réels.</strong> Le blocage par défaut de <code>git reset --hard</code>, <code>git clean -fd</code> et consorts évite la classe d'incidents la plus coûteuse : un agent qui, en voulant « nettoyer », efface du travail non commité sur le repo firmware ou les profils de calibration. C'est gratuit (mise à jour de version) et ça change le profil de risque de l'usage agentique en interne. <strong>Action</strong> : épingle Claude Code à ≥ 2.1.183 sur les postes de l'équipe support/firmware et vérifie que l'auto-mode est actif sur les repos sensibles.</p>
+        <p><strong>La syntaxe <code>Tool(param:value)</code> est le levier de contrôle de coût qui manquait aux runs multi-agents.</strong> Le brief veille-IA et les audits firmware de Lynxter reposent sur des sous-agents ; pouvoir écrire une règle <code>Agent(model:opus)</code> pour forcer les coéquipiers sur un modèle moins cher (ou réserver Opus à l'orchestrateur) borne la facture d'un run qui fan-out. Combine-la avec les agent teams simplifiés (paramètre <code>name</code>) pour câbler un workflow « un sous-agent par acteur » sans setup. <strong>À faire</strong> : auditer les règles de permission du repo Lynxter (<code>.claude/settings</code>) pour ajouter des plafonds explicites par paramètre.</p>
+        <p><strong>Le warning sur modèle déprécié tombe à pic vu la cadence de retraits Anthropic.</strong> Avec Sonnet 4 et Opus 4 retirés de l'API la même semaine, une Routine qui épinglait un ID mort se serait cassée silencieusement ; Claude Code prévient désormais sur stderr (y compris pour les modèles fixés en frontmatter d'agent). Profite-en pour passer en revue les IDs de modèle codés en dur dans les Routines Cowork et les agents <code>.claude/</code> de Lynxter, et bascule vers des alias maintenus (Sonnet 4.6, Opus 4.8) plutôt que des versions datées.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">code.claude.com/docs/en/changelog</a>
+        <span class="source-meta">Anthropic · changelog officiel Claude Code · entrées 2.1.178 → 2.1.185</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-06-22-claude-code-artifacts.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code Artifacts — dashboards HTML live</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-06-22-deepmind-securing-ai-agents.html">
+            <span class="related-actor">Google DeepMind</span>
+            <span class="related-title">DeepMind : agents traités comme insider threats</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+          <li><a href="2026-06-15-claude-code-2-1-169-176.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code 2.1.169–176 — --safe-mode</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-06-22-claude-code-artifacts.html">
+          <span class="label">← Item précédent</span>
+          <span class="title">Claude Code Artifacts</span>
+        </a>
+        <a class="next" href="2026-06-22-project-fetch-phase-two.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Project Fetch Phase 2</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-06-22</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
