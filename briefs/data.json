@@ -1,6 +1,32 @@
 {
   "briefs": [
     {
+      "date": "2026-06-22",
+      "filename": "2026-06-22.html",
+      "items_count": 10,
+      "by_tag": { "lynxter": 3, "useful": 3, "info": 4 },
+      "by_actor": { "Anthropic": 5, "OpenAI": 2, "Google": 1, "Meta": 0, "Mistral": 0, "Z.ai": 1, "xAI": 1 },
+      "mode": "hebdomadaire",
+      "title": "Claude Code passe aux Artifacts, GLM-5.2 casse les prix",
+      "highlights": [
+        "Artifacts arrive dans Claude Code (18 juin, beta Team/Enterprise) — sessions de code publiées en pages HTML interactives partageables, mises à jour en live, 16 MiB sous CSP stricte ; Claude Code 2.1.178–185 simplifie les agent teams et bloque les commandes git/terraform destructrices",
+        "Project Fetch Phase 2 — Opus 4.7 pilote un robodog ~20× plus vite qu'une équipe humaine, mais échoue sur le contrôle en boucle fermée",
+        "GLM-5.2 (Z.ai, open weights MIT) passe GPT-5.5 sur SWE-bench Pro (62.1 %) à ~1/6 du prix ; DeepMind traite les agents comme des « insider threats »"
+      ],
+      "items": [
+        { "slug": "2026-06-22-claude-code-artifacts", "title": "Claude Code Artifacts — les sessions de code deviennent des dashboards HTML live partageables", "primary_url": "https://code.claude.com/docs/en/artifacts", "tag": "lynxter", "actor": "Anthropic" },
+        { "slug": "2026-06-22-claude-code-2-1-178-185", "title": "Claude Code 2.1.178–185 — agent teams simplifiés, Tool(param:value), auto-mode durci", "primary_url": "https://code.claude.com/docs/en/changelog", "tag": "lynxter", "actor": "Anthropic" },
+        { "slug": "2026-06-22-project-fetch-phase-two", "title": "Project Fetch Phase 2 — Opus 4.7 pilote un robodog ~20× plus vite qu'une équipe humaine", "primary_url": "https://www.anthropic.com/research/project-fetch-phase-two", "tag": "lynxter", "actor": "Anthropic" },
+        { "slug": "2026-06-22-claude-sonnet-4-opus-4-retired", "title": "Anthropic retire Sonnet 4 et Opus 4 de l'API", "primary_url": "https://platform.claude.com/docs/en/release-notes/overview", "tag": "info", "actor": "Anthropic" },
+        { "slug": "2026-06-22-openai-for-healthcare", "title": "OpenAI ouvre son vertical santé — ChatGPT for Healthcare (HIPAA)", "primary_url": "https://openai.com/index/openai-for-healthcare/", "tag": "info", "actor": "OpenAI" },
+        { "slug": "2026-06-22-openai-lifescibench", "title": "OpenAI publie LifeSciBench — 750 tâches, meilleur modèle à 36.1 %", "primary_url": "https://openai.com/index/introducing-life-sci-bench/", "tag": "info", "actor": "OpenAI" },
+        { "slug": "2026-06-22-deepmind-securing-ai-agents", "title": "Google DeepMind traite les agents comme des « insider threats » — AI Control Roadmap", "primary_url": "https://deepmind.google/blog/securing-the-future-of-ai-agents/", "tag": "useful", "actor": "Google" },
+        { "slug": "2026-06-22-anthropic-seoul-korea", "title": "Anthropic ouvre Séoul — NAVER et Samsung SDS déploient Claude Code", "primary_url": "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem", "tag": "useful", "actor": "Anthropic" },
+        { "slug": "2026-06-22-glm-5-2-open-weights", "title": "GLM-5.2 (Z.ai) — open weights MIT qui passe GPT-5.5 sur le code à 1/6 du prix", "primary_url": "https://huggingface.co/zai-org/GLM-5.2", "tag": "useful", "actor": "Z.ai" },
+        { "slug": "2026-06-22-grok-office-addins", "title": "xAI déploie Grok en add-in Microsoft 365 (Word, Excel, PowerPoint)", "primary_url": "https://x.ai/news", "tag": "info", "actor": "xAI" }
+      ]
+    },
+    {
       "date": "2026-06-15",
       "filename": "2026-06-15.html",
       "items_count": 13,
