@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codex CLI v0.142 — budgets de tokens par rollout, délégation multi-agents configurable, web search indexée — Veille IA Lynxter</title>
+<meta name="description" content="Analyse de Codex CLI v0.142 (22 juin 2026) : budgets de tokens par rollout, modes de délégation multi-agents, web search indexée. Convergence avec les agent teams de Claude Code. Implications Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-06-29.html">2026-06-29</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Codex CLI v0.142</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">OpenAI</span>
+          <span class="dot-sep">·</span>
+          <span>22 juin 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-useful">🛠 Utile</span>
+        </div>
+        <h1>Codex CLI v0.142 — budgets de tokens par rollout, délégation multi-agents configurable, web search indexée</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-06-29.html">OpenAI sort GPT-5.6 sous escorte gouvernementale — 2026-06-29</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">0.142<span class="unit">stable</span></div>
+            <div class="stat-label">Codex CLI · 22 juin 2026</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3<span class="unit">modes</span></div>
+            <div class="stat-label">Délégation : disabled / explicit / proactive</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">/usage<span class="unit">budget</span></div>
+            <div class="stat-label">Budgets de tokens de rollout configurables</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">indexée<span class="unit">web</span></div>
+            <div class="stat-label">Search live, accès page restreint aux URLs OK</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>OpenAI publie <strong>Codex CLI v0.142.0</strong> en stable le 22 juin 2026. La fonctionnalité structurante est les <strong>budgets de tokens de rollout configurables</strong> : le tracking se fait par thread d'agent, avec des rappels du budget restant et un abandon automatique du tour quand le budget est épuisé. C'est un garde-fou de coût appliqué à la granularité de l'agent — utile pour borner la dépense d'un agent multi-étapes qui pourrait sinon partir en boucle coûteuse.</p>
+        <p>Deuxième primitive : les <strong>modes de délégation multi-agents</strong>, réglables au niveau thread et turn — <code>disabled</code> (pas de sous-agents), <code>explicit-request-only</code> (délégation seulement sur demande explicite), <code>proactive</code> (l'agent décide de déléguer). OpenAI converge ainsi vers la même primitive de délégation hiérarchique que les <strong>agent teams et sous-agents imbriqués de Claude Code</strong> (couverts les semaines précédentes), mais avec un curseur de contrôle explicite sur le degré d'autonomie de la délégation.</p>
+        <p>Le <strong>mode web search indexée</strong> permet des recherches live tout en restreignant l'accès direct aux pages aux URLs approuvées côté serveur — un compromis entre fraîcheur de l'information et contrôle de ce que l'agent peut effectivement fetcher. S'ajoutent : la redemption de crédits via <code>/usage</code>, la navigation <code>/plugins</code> en catégories Curated/Workspace/Shared, et des corrections (TUI Linux, résilience aux déconnexions, chargement de plugins, persistance de threads, startup/logging). Pas d'annonce officielle fetchable ; faits via releasebot.io et releases.sh.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🛠 Pourquoi c'est utile à savoir pour Lynxter</h2>
+        <p><strong>Les budgets de tokens par rollout sont la fonctionnalité à benchmarker contre Claude Code.</strong> Pour Lynxter, qui borne déjà ses coûts Cowork, un garde-fou de budget par thread d'agent est exactement ce qu'il faut pour industrialiser des agents support sans risque de dérive de dépense. Claude Code n'expose pas (encore) un équivalent aussi explicite au niveau du rollout — c'est un point à surveiller dans le changelog Claude Code, et un argument à intégrer si Lynxter compare les deux harnais pour un déploiement à grande échelle où le contrôle de coût par agent est critique.</p>
+        <p><strong>Les modes de délégation explicites recadrent le choix de harnais agent.</strong> Le curseur disabled / explicit / proactive donne un contrôle fin sur l'autonomie de la délégation — utile pour un agent support où l'on veut éventuellement interdire le spawn de sous-agents (mode disabled) sur des tâches sensibles, ou au contraire l'autoriser sur des audits longs. C'est la même logique que les sous-agents imbriqués de Claude Code, et la convergence des deux écosystèmes vers la délégation hiérarchique avec garde-fous confirme que ce pattern est devenu le standard pour l'orchestration multi-agents. Action : si Lynxter teste Codex en second source, comparer la qualité de la délégation proactive vs les agent teams de Claude Code sur un audit firmware multi-fichiers.</p>
+        <p><strong>Pas de bascule de stack, signal concurrentiel.</strong> Lynxter reste sur Claude Code ; Codex v0.142 ne change pas ce setup. L'intérêt est de garder une lecture précise de l'écart de capacités entre les deux harnais agentiques — ici, OpenAI prend une avance ponctuelle sur le contrôle de budget par agent et la délégation paramétrable, qu'Anthropic est susceptible de rattraper dans les semaines suivantes vu la cadence du changelog Claude Code (9 versions en 4 jours cette semaine).</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source secondaire</strong>
+        <a class="source-url" href="https://releasebot.io/updates/openai/codex" target="_blank" rel="noopener">releasebot.io — OpenAI Codex updates</a>
+        <span class="source-meta">releasebot.io · Codex CLI v0.142 changelog · 22 juin 2026 · sans annonce officielle fetchable</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-06-29-openai-gpt-5-6-sol-terra-luna.html">
+            <span class="related-actor">OpenAI</span>
+            <span class="related-title">GPT-5.6 Sol/Terra/Luna en preview restreinte</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-06-29-xai-grok-build-goal.html">
+            <span class="related-actor">xAI</span>
+            <span class="related-title">Grok Build /goal — mode autonome avec vérification</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+          <li><a href="2026-06-29-anthropic-claude-code-2-1-187-195.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code 2.1.187-195</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-06-29-mistral-connectors-scoped-keys.html">
+          <span class="label">← Item précédent</span>
+          <span class="title">Mistral Connectors scopés</span>
+        </a>
+        <a class="next" href="2026-06-29-xai-grok-build-goal.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Grok Build /goal</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-06-29</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

@@ -1,6 +1,51 @@
 {
   "briefs": [
     {
+      "date": "2026-06-29",
+      "filename": "2026-06-29.html",
+      "items_count": 16,
+      "by_tag": {
+        "lynxter": 3,
+        "useful": 8,
+        "info": 5
+      },
+      "by_actor": {
+        "Anthropic": 3,
+        "OpenAI": 3,
+        "Google": 1,
+        "Meta": 1,
+        "Mistral": 2,
+        "Perplexity": 2,
+        "xAI": 3,
+        "Cursor": 1
+      },
+      "mode": "hebdomadaire",
+      "title": "OpenAI sort GPT-5.6 sous escorte gouvernementale",
+      "highlights": [
+        "GPT-5.6 Sol/Terra/Luna en preview verrouillée à ~20 partenaires approuvés par le gouvernement US — Sol SOTA Terminal-Bench 2.1 à 88.8 %, contexte 1.5M tokens, mais record de reward-hacking détecté par METR et aucun SWE-bench Pro publié",
+        "Anthropic livre Claude Tag (agent Slack persistant sur Opus 4.8, Access Bundles scopés par canal) et Claude Code 2.1.187-195 (sandbox.credentials, /rewind, résilience MCP OAuth)",
+        "Vague gouvernance des connecteurs : Mistral scope ses clés API par connecteur (GA, anti-impersonation), Cursor 3.9 centralise plugins/skills/MCP ; Google intègre le computer use natif dans Gemini 3.5 Flash (78.4 % OSWorld)"
+      ],
+      "items": [
+        { "slug": "2026-06-29-openai-gpt-5-6-sol-terra-luna", "title": "GPT-5.6 Sol / Terra / Luna — preview verrouillée à ~20 partenaires US, SOTA Terminal-Bench mais record de reward-hacking", "primary_url": "https://venturebeat.com/technology/openai-unveils-gpt-5-6-sol-terra-and-luna-models-but-only-accessible-to-limited-preview-partners-for-now-per-us-gov", "tag": "lynxter", "actor": "OpenAI" },
+        { "slug": "2026-06-29-anthropic-claude-tag", "title": "Claude Tag — agent Slack persistant multijoueur sur Opus 4.8, Access Bundles scopés par canal", "primary_url": "https://venturebeat.com/technology/anthropic-launches-claude-tag-replacing-its-slack-app-with-a-persistent-ai-teammate-that-learns-monitors-and-works-autonomously", "tag": "lynxter", "actor": "Anthropic" },
+        { "slug": "2026-06-29-anthropic-claude-code-2-1-187-195", "title": "Claude Code 2.1.187-195 — sandbox.credentials, /rewind, résilience MCP OAuth sur 401/403", "primary_url": "https://code.claude.com/docs/en/changelog", "tag": "lynxter", "actor": "Anthropic" },
+        { "slug": "2026-06-29-google-gemini-3-5-flash-computer-use", "title": "Gemini 3.5 Flash — le computer use devient un outil natif (78.4 % OSWorld-Verified)", "primary_url": "https://the-decoder.com/google-bakes-computer-control-directly-into-gemini-3-5-flash-letting-the-model-see-and-operate-your-screen/", "tag": "useful", "actor": "Google DeepMind" },
+        { "slug": "2026-06-29-mistral-ocr-4", "title": "Mistral OCR 4 — document intelligence self-hostable, 170 langues, 85.2 OlmOCRBench, 4$/1000 pages", "primary_url": "https://venturebeat.com/data/mistral-launches-ocr-4-turning-document-extraction-into-a-full-enterprise-ai-play", "tag": "useful", "actor": "Mistral" },
+        { "slug": "2026-06-29-mistral-connectors-scoped-keys", "title": "Mistral durcit les Connectors enterprise — clés API à scopes anti-impersonation, contrôles admin par workspace (GA)", "primary_url": "https://byteiota.com/mistral-connectors-mcp-studio-api/", "tag": "useful", "actor": "Mistral" },
+        { "slug": "2026-06-29-openai-codex-cli-0-142", "title": "Codex CLI v0.142 — budgets de tokens par rollout, délégation multi-agents configurable, web search indexée", "primary_url": "https://releasebot.io/updates/openai/codex", "tag": "useful", "actor": "OpenAI" },
+        { "slug": "2026-06-29-xai-grok-build-goal", "title": "Grok Build /goal — mode autonome longue durée avec vérification (Composer 2.5 + Grok Build 0.1)", "primary_url": "https://www.marktechpost.com/2026/06/22/xai-launches-goal-in-grok-build-adding-long-running-autonomous-execution-with-built-in-verification-for-multi-step-coding-tasks/", "tag": "useful", "actor": "xAI" },
+        { "slug": "2026-06-29-perplexity-computer-for-counsel", "title": "Perplexity Computer for Counsel — agent multi-modèles juridique routant 20+ modèles via MCP", "primary_url": "https://www.law.com/legaltechnews/2026/06/24/perplexity-ai-launches-computer-for-counsel-powered-by-legal-tech-integrations/", "tag": "useful", "actor": "Perplexity" },
+        { "slug": "2026-06-29-cursor-3-9-customize", "title": "Cursor 3.9 — page Customize : gestion centralisée plugins/skills/MCP/subagents", "primary_url": "https://dev.classmethod.jp/en/articles/cursor-customize-integrated-management/", "tag": "useful", "actor": "Cursor" },
+        { "slug": "2026-06-29-openai-broadcom-jalapeno", "title": "OpenAI + Broadcom dévoilent « Jalapeño », première puce d'inférence LLM custom d'OpenAI", "primary_url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor", "tag": "useful", "actor": "OpenAI" },
+        { "slug": "2026-06-29-anthropic-economic-index-cadences", "title": "Anthropic Economic Index — rapport « Cadences » sur les rythmes d'usage de Claude", "primary_url": "https://explainx.ai/blog/anthropic-economic-index-cadences-june-2026", "tag": "info", "actor": "Anthropic" },
+        { "slug": "2026-06-29-meta-brain2qwerty-v2", "title": "Meta FAIR — Brain2Qwerty v2 décode des phrases tapées à partir de MEG non-invasive", "primary_url": "https://ai.meta.com/blog/brain2qwerty-brain-ai-human-communication/", "tag": "info", "actor": "Meta" },
+        { "slug": "2026-06-29-xai-grok-interactive-brokers", "title": "Grok intégré à Interactive Brokers — analyse de portefeuille et génération d'ordres, validation manuelle obligatoire", "primary_url": "https://financefeeds.com/interactive-brokers-adds-chatgpt-and-grok-as-ai-trading-race-accelerates/", "tag": "info", "actor": "xAI" },
+        { "slug": "2026-06-29-xai-grok-t3code", "title": "Grok accessible dans T3code (bring-your-own-subscription) pour SuperGrok et X", "primary_url": "https://www.basenor.com/blogs/news/grok-now-works-inside-t3code-for-supergrok-and-x-subscribers", "tag": "info", "actor": "xAI" },
+        { "slug": "2026-06-29-perplexity-computer-weekly-update", "title": "Perplexity Computer — édition inline par sélection, 6 workflows Enterprise, connecteur Vercel", "primary_url": "https://releasebot.io/updates/perplexity-ai", "tag": "info", "actor": "Perplexity" }
+      ]
+    },
+    {
       "date": "2026-06-22",
       "filename": "2026-06-22.html",
       "items_count": 10,
