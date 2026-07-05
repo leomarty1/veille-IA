@@ -1,0 +1,748 @@
+{
+  "date": "2026-07-06",
+  "title": "Sonnet 5 par défaut, Fable 5 déverrouillé",
+  "title_html": "Sonnet 5 par<br>défaut,<br><em style=\"font-style:normal;color:var(--lx-accent);\">Fable 5 déverrouillé</em>",
+  "description": "Brief IA du 29 juin au 6 juillet 2026 : Claude Sonnet 5 devient le défaut de Claude Code (85.2 % SWE-bench Verified, promo $2/$10), six versions de Claude Code (subagents background, Claude in Chrome GA), levée des export controls sur Fable 5, et vague MCP/open weights (Gemini Spark, ZCode, LongCat-2.0, Voice Agent Builder).",
+  "period": "29 juin → 6 juillet 2026",
+  "actors_scanned": 12,
+  "intro_html": "Semaine dense côté Anthropic. Le 30 juin, <strong>Claude Sonnet 5</strong> sort et devient <strong>le modèle par défaut de Claude Code (v2.1.197)</strong> : 85.2 % SWE-bench Verified, contexte 1M natif, pricing promo $2/$10 par M tokens jusqu'au 31 août. En parallèle, <strong>six versions de Claude Code (2.1.196 → 2.1.201)</strong> font passer les subagents en arrière-plan par défaut, Claude in Chrome en GA et le mode de permission par défaut sur « Manual ». Le 30 juin toujours, le Department of Commerce <strong>lève les export controls sur Fable 5 et Mythos 5</strong> après un blackout de 19 jours — Fable 5 redéployé mondialement dès le 1er juillet, mais bridé à 50 % des quotas hebdo jusqu'au 7. Côté écosystème, MCP s'impose comme couche d'intégration cross-vendor (<strong>Gemini Spark</strong> sur macOS, <strong>Voice Agent Builder</strong> de xAI), et la poussée chinoise open/low-cost s'accélère (<strong>ZCode</strong> de Z.ai, <strong>LongCat-2.0</strong> 1.6T MoE MIT de Meituan). Meta : silence radio.",
+  "tldr": [
+    "<strong>Claude Sonnet 5 devient le défaut de Claude Code (30 juin, v2.1.197).</strong> 85.2 % SWE-bench Verified, 63.2 % Pro, contexte 1M natif, thinking adaptatif jusqu'à <code>xhigh</code>. Pricing d'introduction $2/$10 par M tokens jusqu'au 31 août (puis $3/$15) — ~40 % du tarif Opus. Il resserre l'écart agentique avec Opus 4.8 (Terminal-Bench 2.1 à 80.4 %, OSWorld 81.2 %) en jouant le rapport perf/prix plutôt que la performance brute face à GPT-5.5 (88.7 % Verified).",
+    "<strong>Claude Code enchaîne six versions + Fable 5 est déverrouillé.</strong> 2.1.196 → 2.1.201 : subagents en arrière-plan par défaut (auto-commit/push/PR draft), Claude in Chrome en GA, permission « Manual » par défaut, modèles par défaut d'organisation, skill <code>/dataviz</code>. En parallèle, les export controls sur Fable 5 (95 % Verified) et Mythos 5 sont levés le 30 juin ; Fable 5 revient mondialement le 1er juillet, quotas bridés à 50 % jusqu'au 7.",
+    "<strong>MCP se généralise et l'open weights chinois pousse.</strong> Google met le MCP natif dans Gemini Spark sur macOS (agent desktop, AI Ultra 99 $/mois) ; xAI ouvre Voice Agent Builder (voix single-stack, MCP natif, ~$0.06/min). Côté open weights : Meituan open-source LongCat-2.0 (1.6T MoE MIT, entraîné 100 % sur ASIC chinois, SWE-bench Pro 59.5 self-reported) et Z.ai lance ZCode autour de GLM-5.2 (18-160 $/mois)."
+  ],
+  "lynxter_hero": [
+    "<strong>Sonnet 5 est déjà le modèle que tes sessions Claude Code utilisent — c'est l'action n° 1 de la semaine.</strong> Dès la v2.1.197, le défaut n'est plus Opus mais Sonnet 5 : pour tes routines (brief veille, scan tickets, audit de profils S300X/S600D), ça veut dire un coût divisé par ~2,5 pendant la promo $2/$10, contre un léger recul sur les tâches multi-fichiers mal spécifiées (63.2 % SWE-bench Pro vs 69.2 % pour Opus 4.8). Ne subis pas le défaut : relance une routine représentative sur Sonnet 5, compare à ta baseline Opus, et pose une règle explicite — « Opus (ou Fable 5) pour les audits firmware, Sonnet 5 pour le volume » — puis versionne-la dans les settings d'équipe via les modèles par défaut d'organisation (arrivés en 2.1.196). La fenêtre promo court jusqu'au 31 août : si un engagement annuel Cowork/Claude Code est sur la table, c'est le moment de figer le tarif avant le passage à $3/$15.",
+    "<strong>La vague Claude Code change ta boucle agentique, pas seulement tes prix.</strong> Les subagents tournent désormais <strong>en arrière-plan par défaut</strong> (2.1.198) et, lancés via <code>claude agents</code>, commitent/poussent/ouvrent une PR draft en fin de tâche : les jobs longs (génération de profils d'impression, audit croisé de paramètres firmware, balayage de tickets) passent d'un mode bloquant à du fire-and-forget avec livrable Git. Côté gouvernance, le <strong>mode permission « Manual » par défaut</strong> (2.1.200) redonne un cran de contrôle sur les actions sensibles — à ajuster par workflow pour ne pas ralentir les boucles — et <strong>Claude in Chrome passe en GA</strong>, brique réelle pour piloter les vieux outils web sans API. Structure dès cette semaine tes tâches longues en sous-agents nommés et décide explicitement où tu gardes Manual vs auto-mode.",
+    "<strong>Fable 5 est de retour, mais l'épisode est un rappel sur la dépendance à un modèle unique.</strong> Le modèle le plus capable d'Anthropic (95 % SWE-bench Verified) est de nouveau accessible dans Claude Code après 19 jours de blackout purement réglementaire — mais bridé à 50 % des quotas hebdo jusqu'au 7 juillet, puis via crédits. Si un workflow Lynxter en dépend, planifie les runs lourds cette semaine et garde Opus 4.8 / Sonnet 5 en repli. Le vrai enseignement dépasse Fable 5 : un blackout d'origine réglementaire peut sortir un modèle du marché du jour au lendemain, indépendamment de sa qualité. Garde tes routines de production <strong>portables entre modèles</strong> (Sonnet 5 / Opus 4.8 / Fable 5), avec un fallback testé — et vois la standardisation de MCP (adopté cette semaine par Google et xAI) comme un atout : les serveurs MCP que tu construis pour tes outils métier deviennent réutilisables au-delà d'un seul fournisseur."
+  ],
+  "synthese_html": "Semaine très dense pour <strong>Anthropic</strong>, qui empile quatre annonces : <strong>Claude Sonnet 5</strong> (30 juin, 85.2 % SWE-bench Verified, 63.2 % Pro, contexte 1M, promo $2/$10 jusqu'au 31 août) devenu <strong>défaut de Claude Code dès la v2.1.197</strong> ; <strong>six versions de Claude Code</strong> (2.1.196 → 2.1.201) qui font passer les subagents en arrière-plan par défaut, Claude in Chrome en GA, le mode permission sur « Manual » et ajoutent les modèles par défaut d'organisation et la skill <code>/dataviz</code> ; la <strong>levée des export controls sur Fable 5 et Mythos 5</strong> (30 juin, fin d'un blackout de 19 jours, Fable 5 redéployé le 1er juillet mais bridé à 50 % des quotas) ; et le lancement de <strong>Claude Science</strong>, workbench agentique pour la recherche (60+ bases, sur Opus 4.8). <strong>OpenAI</strong> se contente d'incréments Codex CLI en alpha (ligne 0.143 : délégation multi-agents configurable, recherche web indexée). <strong>Google DeepMind</strong> porte <strong>Gemini Spark sur macOS</strong> avec MCP natif (agent desktop, AI Ultra 99 $/mois, US). <strong>Meta</strong> : silence radio — pas de release Llama ni de paper FAIR dans la fenêtre. <strong>Mistral</strong> publie <strong>Leanstral 1.5</strong> (open weights Apache-2.0 pour le proof engineering Lean 4, 587/672 PutnamBench). Côté secondaires : <strong>Meituan</strong> open-source <strong>LongCat-2.0</strong> (1.6T MoE MIT, entraîné sur ASIC chinois), <strong>Z.ai</strong> lance <strong>ZCode</strong> (IDE agentique autour de GLM-5.2), <strong>xAI</strong> ouvre <strong>Voice Agent Builder</strong> (voix + MCP natif à ~$0.06/min) et finalise Grok Imagine, et <strong>Cursor</strong> sort son app iOS (pilotage d'agents depuis le mobile, post-rachat SpaceX). <strong>DeepSeek</strong> annonce V4 officiel pour mi-juillet.",
+  "actors_order": [
+    "Anthropic",
+    "OpenAI",
+    "Google DeepMind",
+    "Meta",
+    "Mistral"
+  ],
+  "actor_empty": {
+    "Meta": "Rien de notable cette semaine — pas de release Llama, pas de Behemoth, pas de paper FAIR daté dans la fenêtre. Les candidats repérés (SAM 3.1, CWM, tactile sensing) sont tous hors fenêtre ou antérieurs."
+  },
+  "items": [
+    {
+      "slug": "2026-07-06-claude-sonnet-5",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "date": "2026-06-30",
+      "title": "Claude Sonnet 5 — 85.2 % SWE-bench Verified, contexte 1M natif, promo $2/$10 et défaut de Claude Code",
+      "context_html": "Anthropic sort <strong>Claude Sonnet 5</strong> le 30 juin et en fait le <strong>modèle par défaut de Claude Code dès la v2.1.197</strong>. Il monte à <strong>85.2 % sur SWE-bench Verified</strong> et 63.2 % sur SWE-bench Pro, avec un <strong>contexte natif de 1M tokens</strong> et un thinking adaptatif jusqu'à l'effort <code>xhigh</code>. Positionné comme le Sonnet le plus agentique, il resserre l'écart avec Opus 4.8 (88.6 % Verified) sur le tool use et le computer use — Terminal-Bench 2.1 à 80.4 %, OSWorld-Verified 81.2 % — tout en restant nettement moins cher : <strong>pricing d'introduction $2/$10 par M tokens jusqu'au 31 août</strong>, puis $3/$15. Face à GPT-5.5 (88.7 % Verified) il ne joue pas la performance brute mais le rapport perf/prix sur les boucles agentiques longues.",
+      "sources": [
+        {
+          "label": "code.claude.com/docs/en/changelog",
+          "url": "https://code.claude.com/docs/en/changelog",
+          "primary": true
+        },
+        {
+          "label": "llm-stats.com/models/claude-sonnet-5",
+          "url": "https://llm-stats.com/models/claude-sonnet-5",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Claude Sonnet 5",
+        "date_long": "30 juin 2026",
+        "description": "Analyse de Claude Sonnet 5 (30 juin 2026) : 85.2 % SWE-bench Verified, 63.2 % Pro, contexte 1M, pricing promo $2/$10, défaut de Claude Code. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "85.2",
+            "unit": "%",
+            "label": "SWE-bench Verified"
+          },
+          {
+            "num": "63.2",
+            "unit": "%",
+            "label": "SWE-bench Pro"
+          },
+          {
+            "num": "$2/$10",
+            "unit": "M tok",
+            "label": "Promo jusqu'au 31 août (puis $3/$15)"
+          },
+          {
+            "num": "1M",
+            "unit": "tokens",
+            "label": "Contexte natif"
+          }
+        ],
+        "context_paragraphs": [
+          "Anthropic publie <strong>Claude Sonnet 5</strong> le 30 juin 2026 et le bascule <strong>modèle par défaut de Claude Code dès la version 2.1.197</strong>, le jour même. Sur les benchmarks officiels, il atteint <strong>85.2 % sur SWE-bench Verified</strong> et 63.2 % sur SWE-bench Pro — en deçà d'Opus 4.8 (88.6 % Verified, 69.2 % Pro) et de GPT-5.5 (88.7 % Verified) sur la performance brute, mais avec un profil agentique nettement plus abouti que le Sonnet précédent : <strong>Terminal-Bench 2.1 à 80.4 %</strong>, OSWorld-Verified 81.2 %, SWE-bench Multilingual 78.3 %, et BrowseComp à 84.7 % en single-agent (86.6 % en multi-agent).",
+          "Le vrai argument est le <strong>rapport perf/prix</strong>. Le pricing d'introduction est fixé à <strong>$2 input / $10 output par M tokens jusqu'au 31 août 2026</strong>, puis $3/$15 — soit, même après la promo, environ 40 % du tarif standard d'Opus ($5/$25). Sonnet 5 embarque un <strong>contexte natif de 1M tokens</strong> et un thinking adaptatif dont l'effort se sélectionne jusqu'à <code>xhigh</code>, ce qui permet d'arbitrer coût et profondeur de raisonnement au niveau de l'appel. Pour un usage agentique où les tokens s'accumulent vite (long context, multi-tours, sous-agents), l'écart de prix avec Opus se paie directement sur la facture mensuelle.",
+          "Le timing est coordonné avec le reste de la semaine Anthropic : Sonnet 5 arrive en même temps que la vague de versions Claude Code (subagents en arrière-plan par défaut, Claude in Chrome en GA) et deux jours avant la levée des export controls sur Fable 5. La gamme se lit désormais en trois étages : <strong>Sonnet 5 pour le volume agentique</strong> (défaut, pas cher, 1M ctx), <strong>Opus 4.8 pour les tâches les plus dures</strong> (leader SWE-bench Pro), et <strong>Fable 5 pour le frontier absolu</strong> (95 % Verified, mais quotas bridés post-blackout). Aucun concurrent n'aligne un modèle à ce rapport perf/prix agentique à cette date."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Sonnet 5 devient le modèle que tes sessions Claude Code utilisent par défaut — sans que tu changes rien.</strong> C'est le point d'action prioritaire de la semaine : dès la v2.1.197, toute nouvelle session Claude Code tourne sur Sonnet 5, pas sur Opus. Pour les workflows Lynxter déjà en place (génération du brief veille, scan de tickets support, audit de profils d'impression S300X/S600D), ça signifie un <strong>coût divisé par ~2,5 vs Opus</strong> pendant la fenêtre promo, au prix d'un léger recul sur les tâches multi-fichiers mal spécifiées (63.2 % Pro vs 69.2 % pour Opus 4.8). À faire cette semaine : relance une routine représentative sur Sonnet 5, compare la qualité subjective à ta baseline Opus, et fixe une règle explicite (« Opus pour les audits firmware, Sonnet 5 pour le reste ») plutôt que de subir le défaut.",
+          "<strong>La fenêtre de pricing promo est un levère de négociation à exploiter avant fin août.</strong> À $2/$10, Sonnet 5 rend économiquement viable ce qui était limite sur Opus : batch de classification de logs, déduplication de base de connaissance, pré-traitement de gros volumes documentaires. Le contexte 1M autorise en plus d'avaler un firmware complet ou une base de profils d'un coup, sans chunking. Si tu envisages une montée en charge du support client assisté par agent au S2, c'est le moment de dimensionner les coûts sur la base Sonnet 5 promo et, si un engagement annuel est sur la table, de figer le tarif avant le passage à $3/$15.",
+          "<strong>Re-benchmarke avant de basculer les workflows critiques.</strong> Le gain de prix ne vaut que si la qualité tient sur <em>tes</em> tâches. Prends deux cas réels — un audit de cohérence de paramètres firmware et une migration de scripts de calibration — exécute-les en parallèle sur Sonnet 5 et Opus 4.8, et mesure l'écart concret (pas le benchmark public). Si la dérive reste sous ~10 %, bascule ces workloads sur Sonnet 5 ; sinon garde Opus là où le coût d'erreur est élevé. Documente la règle dans les settings partagés de l'équipe pour que le choix de modèle ne dépende pas de qui lance la session."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://code.claude.com/docs/en/changelog",
+          "label": "code.claude.com/docs/en/changelog",
+          "meta": "Anthropic · changelog Claude Code (Sonnet 5 défaut, v2.1.197) · 30 juin 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-07-06-claude-code-2-1-196-201",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.196–201 — subagents background par défaut",
+            "tag": "lynxter"
+          },
+          {
+            "slug": "2026-07-06-anthropic-fable-5-export-controls-lifted",
+            "actor": "Anthropic",
+            "title": "Fable 5 déverrouillé — export controls levés",
+            "tag": "useful"
+          },
+          {
+            "slug": "2026-07-06-zai-zcode",
+            "actor": "Z.ai",
+            "title": "ZCode — environnement agentique autour de GLM-5.2",
+            "tag": "useful"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-07-06.html",
+            "label": "← Retour au brief",
+            "title": "2026-07-06"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-07-06-claude-code-2-1-196-201",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "date": "2026-07-03",
+      "title": "Claude Code 2.1.196 → 2.1.201 — subagents en arrière-plan par défaut, Claude in Chrome en GA, permission « Manual » par défaut",
+      "context_html": "Six versions de Claude Code livrées dans la fenêtre (<strong>2.1.196 le 29 juin → 2.1.201 le 3 juillet</strong>). Trois changements structurants : les <strong>subagents tournent en arrière-plan par défaut</strong> et notifient à la fin (2.1.198), <strong>Claude in Chrome passe en disponibilité générale</strong> (2.1.198), et le <strong>mode de permission par défaut bascule sur « Manual »</strong> à travers CLI/VS Code/JetBrains (2.1.200). Les admins peuvent désormais définir des <strong>modèles par défaut d'organisation</strong> (2.1.196), les agents en arrière-plan lancés via <code>claude agents</code> commitent, poussent et ouvrent une PR draft à la fin d'un travail en worktree, et la skill <code>/dataviz</code> fait son entrée. Gros lot de correctifs fiabilité : subagents coupés par rate-limit renvoyant leur travail partiel, sessions background après sleep/wake, daemon Linux.",
+      "sources": [
+        {
+          "label": "code.claude.com/docs/en/changelog",
+          "url": "https://code.claude.com/docs/en/changelog",
+          "primary": true
+        },
+        {
+          "label": "releasebot.io/updates/anthropic/claude-code",
+          "url": "https://releasebot.io/updates/anthropic/claude-code",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Claude Code 2.1.196–201",
+        "date_long": "29 juin – 3 juillet 2026",
+        "description": "Six versions de Claude Code (2.1.196–201) : subagents en arrière-plan par défaut, Claude in Chrome GA, permission Manual par défaut, modèles par défaut d'org. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "6",
+            "unit": "versions",
+            "label": "2.1.196 → 2.1.201 (29 juin–3 juil.)"
+          },
+          {
+            "num": "GA",
+            "unit": "",
+            "label": "Claude in Chrome (2.1.198)"
+          },
+          {
+            "num": "Manual",
+            "unit": "",
+            "label": "Mode permission par défaut (2.1.200)"
+          },
+          {
+            "num": "/dataviz",
+            "unit": "",
+            "label": "Nouvelle skill (validateur palette)"
+          }
+        ],
+        "context_paragraphs": [
+          "Anthropic a livré <strong>six versions de Claude Code en cinq jours</strong>, du 2.1.196 (29 juin) au 2.1.201 (3 juillet). Le changement le plus impactant : à partir de la <strong>2.1.198 (1er juillet), les subagents s'exécutent en arrière-plan par défaut</strong> et émettent une notification à la fin, au lieu de bloquer la session principale. Combiné aux agents lancés depuis <code>claude agents</code> — qui, en fin de tâche de code dans un worktree, <strong>commitent, poussent et ouvrent une PR draft</strong> automatiquement — la boucle agentique passe d'un mode synchrone bloquant à un mode fire-and-forget avec livrable Git en sortie.",
+          "La <strong>2.1.198 fait aussi passer Claude in Chrome en disponibilité générale</strong> : l'extension qui laisse Claude voir et agir dans l'onglet navigateur n'est plus en accès restreint. Côté gouvernance, la <strong>2.1.200 (3 juillet) bascule le mode de permission par défaut sur « Manual »</strong> sur CLI, VS Code et JetBrains — chaque action sensible redemande une validation explicite, un durcissement par défaut après la vague d'auto-mode des versions précédentes. La <strong>2.1.196</strong> permet en amont aux administrateurs d'imposer des <strong>modèles par défaut au niveau organisation</strong>, ce qui, couplé à l'arrivée de Sonnet 5 comme défaut, donne aux équipes un contrôle central sur quel modèle tourne où.",
+          "Le reste est de la consolidation, mais elle compte pour un usage en production : les <strong>subagents interrompus par un rate-limit renvoient désormais leur travail partiel</strong> au lieu de le perdre, les <strong>sessions en arrière-plan survivent au sleep/wake</strong> de la machine, le daemon Linux est fiabilisé, le watchdog de retry sur erreur de non-capacité est relevé à 300. Ajout notable côté outillage : la skill <code>/dataviz</code> (avec un validateur de palette accessible) pour produire des graphes cohérents. L'ensemble confirme la cadence quasi quotidienne de Claude Code, où les défauts changent vite — d'où l'intérêt de figer ses settings d'équipe."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Les subagents en arrière-plan par défaut changent la manière de piloter les tâches longues.</strong> Pour Lynxter, les jobs qui prenaient plusieurs minutes en bloquant la session — génération de profils d'impression, audit croisé de paramètres firmware S300X/S600D, balayage de la base de tickets — peuvent désormais tourner en fond pendant que tu continues autre chose, avec notification et, si c'est du code, une PR draft prête à relire. Concrètement : structure ces workflows en sous-agents nommés, lance-les via <code>claude agents</code>, et récupère le résultat en fin de session plutôt que d'attendre devant l'écran.",
+          "<strong>Le passage à « Manual » par défaut et les modèles d'organisation sont à intégrer dans les settings partagés de l'équipe.</strong> Le mode Manual redonne un cran de contrôle sur les actions sensibles (utile quand un agent touche à des scripts de production), mais il ralentit les boucles s'il n'est pas ajusté par workflow — décide explicitement où tu autorises l'auto-mode et où tu gardes Manual. Côté admin, la possibilité de fixer un modèle par défaut d'org évite que chaque développeur tombe sur Sonnet 5 ou Opus au hasard : pose une politique (« Sonnet 5 par défaut, Opus sur demande pour les audits ») et versionne-la. Profite aussi de <code>/dataviz</code> pour les visualisations du brief veille et des KPI support."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://code.claude.com/docs/en/changelog",
+          "label": "code.claude.com/docs/en/changelog",
+          "meta": "Anthropic · changelog Claude Code 2.1.196–2.1.201 · 29 juin–3 juillet 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-07-06-claude-sonnet-5",
+            "actor": "Anthropic",
+            "title": "Claude Sonnet 5 — défaut de Claude Code",
+            "tag": "lynxter"
+          },
+          {
+            "slug": "2026-07-06-google-gemini-spark-macos",
+            "actor": "Google DeepMind",
+            "title": "Gemini Spark sur macOS — agent desktop MCP",
+            "tag": "useful"
+          },
+          {
+            "slug": "2026-07-06-xai-voice-agent-builder",
+            "actor": "xAI",
+            "title": "xAI Voice Agent Builder — voix + MCP natif",
+            "tag": "useful"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-07-06.html",
+            "label": "← Retour au brief",
+            "title": "2026-07-06"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-07-06-anthropic-fable-5-export-controls-lifted",
+      "actor": "Anthropic",
+      "tag": "useful",
+      "date": "2026-07-01",
+      "title": "Fable 5 déverrouillé — les export controls levés, fin d'un blackout de 19 jours, quotas bridés jusqu'au 7 juillet",
+      "context_html": "Le <strong>Department of Commerce a levé le 30 juin les contrôles à l'export</strong> imposés sur <strong>Fable 5 et Mythos 5</strong>, mettant fin à un <strong>blackout mondial de 19 jours</strong> (restriction déclenchée après qu'une équipe Amazon a décrit un jailbreak contournant une sauvegarde cyber de Fable 5). <strong>Fable 5 a été redéployé mondialement dès le 1er juillet</strong> sur Claude Platform, Claude.ai, Claude Code et Claude Cowork ; il est inclus jusqu'à <strong>50 % des limites hebdomadaires jusqu'au 7 juillet</strong> pour Pro/Max/Team et enterprise sélectionnés, puis via crédits. <strong>Mythos 5</strong>, lui, n'est réintroduit qu'aux organisations US approuvées via Project Glasswing. Anthropic a publié le 2 juillet un brouillon de framework de sévérité des jailbreaks avec ses partenaires Glasswing (Amazon, Microsoft, Google).",
+      "sources": [
+        {
+          "label": "anthropic.com/news/redeploying-fable-5",
+          "url": "https://www.anthropic.com/news/redeploying-fable-5",
+          "primary": true
+        },
+        {
+          "label": "cnbc.com",
+          "url": "https://www.cnbc.com/2026/06/30/anthropic-says-trump-admin-has-lifted-export-controls-on-claude-fable-5-and-mythos-5.html",
+          "primary": false
+        },
+        {
+          "label": "forbes.com",
+          "url": "https://www.forbes.com/sites/siladityaray/2026/07/01/trump-administration-lifts-export-controls-on-anthropics-mythos-5-and-fable-5-ai-models/",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Fable 5 déverrouillé",
+        "date_long": "1er juillet 2026",
+        "description": "Levée des export controls sur Fable 5 et Mythos 5 (30 juin 2026) : fin d'un blackout de 19 jours, Fable 5 redéployé mondialement, quotas bridés jusqu'au 7 juillet. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "19",
+            "unit": "jours",
+            "label": "Durée du blackout Fable 5 / Mythos 5"
+          },
+          {
+            "num": "95.0",
+            "unit": "%",
+            "label": "SWE-bench Verified de Fable 5 (record GA)"
+          },
+          {
+            "num": "50",
+            "unit": "%",
+            "label": "Part des limites hebdo jusqu'au 7 juillet"
+          },
+          {
+            "num": "3",
+            "unit": "clouds",
+            "label": "AWS, Google Cloud, Microsoft Foundry en restauration"
+          }
+        ],
+        "context_paragraphs": [
+          "Le 30 juin 2026, le <strong>Department of Commerce américain a levé les contrôles à l'export</strong> qui frappaient <strong>Fable 5 et Mythos 5</strong> depuis 19 jours. La restriction avait été déclenchée le 12 juin, après qu'une équipe Amazon a décrit publiquement un jailbreak contournant une des sauvegardes cyber de Fable 5 — l'épisode avait sorti du marché le modèle le plus capable d'Anthropic (95.0 % SWE-bench Verified, leader du classement) en pleine montée en charge.",
+          "<strong>Fable 5 est redéployé mondialement dès le 1er juillet</strong> sur Claude Platform, Claude.ai, Claude Code et Claude Cowork, avec une restauration « aussi vite que possible » annoncée sur AWS, Google Cloud et Microsoft Foundry. Le redéploiement est toutefois <strong>bridé</strong> : jusqu'au 7 juillet, Fable 5 est inclus jusqu'à 50 % des limites hebdomadaires pour les abonnés Pro/Max/Team et une partie de l'enterprise, l'excédent passant en crédits. <strong>Mythos 5</strong> reste, lui, réservé aux organisations US approuvées après revue gouvernementale, dans le cadre du <strong>Project Glasswing</strong>.",
+          "En parallèle, Anthropic a publié le 2 juillet un <strong>brouillon de framework de sévérité des jailbreaks</strong>, co-signé avec les partenaires Glasswing (Amazon, Microsoft, Google) — une tentative de standardiser la manière de classer la gravité d'un contournement de garde-fou, directement issue de l'épisode Fable 5. Le message de fond : les modèles frontière les plus capables sont désormais soumis à un aléa réglementaire qui peut les rendre indisponibles du jour au lendemain, indépendamment de leur qualité technique."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Le modèle le plus capable d'Anthropic est de nouveau accessible dans Claude Code — mais avec des quotas bridés jusqu'au 7 juillet.</strong> Si un workflow Lynxter dépend de Fable 5 (les tâches où les 95 % SWE-bench Verified font une différence réelle : audit firmware complexe, refactor multi-fichiers), sache que la capacité est plafonnée cette semaine — planifie les runs lourds en conséquence et garde Opus 4.8 ou Sonnet 5 comme repli. Après le 7 juillet, l'accès passe en crédits, ce qui change le calcul de coût à anticiper.",
+          "<strong>L'épisode est un rappel opérationnel : ne pas chaîner un process critique à un modèle unique.</strong> Un blackout de 19 jours sur Fable 5, purement réglementaire, aurait cassé tout pipeline qui en dépendait sans repli. Pour Lynxter, la leçon est de garder les routines de production <strong>portables entre modèles</strong> (Sonnet 5 / Opus 4.8 / Fable 5), avec un modèle par défaut paramétrable et un fallback testé — exactement ce que permettent désormais les modèles par défaut d'organisation de Claude Code. La disponibilité d'un modèle frontier n'est plus seulement une question de prix ou de performance, mais aussi de risque d'indisponibilité."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://www.anthropic.com/news/redeploying-fable-5",
+          "label": "anthropic.com/news/redeploying-fable-5",
+          "meta": "Anthropic · annonce redéploiement Fable 5 · 1er juillet 2026 (export controls levés le 30 juin)"
+        },
+        "related": [
+          {
+            "slug": "2026-07-06-claude-sonnet-5",
+            "actor": "Anthropic",
+            "title": "Claude Sonnet 5 — nouveau défaut de Claude Code",
+            "tag": "lynxter"
+          },
+          {
+            "slug": "2026-07-06-claude-code-2-1-196-201",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.196–201 — modèles par défaut d'org",
+            "tag": "lynxter"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-07-06.html",
+            "label": "← Retour au brief",
+            "title": "2026-07-06"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-07-06-google-gemini-spark-macos",
+      "actor": "Google DeepMind",
+      "tag": "useful",
+      "date": "2026-07-01",
+      "title": "Gemini Spark débarque sur macOS — agent desktop autonome avec MCP natif et automatisation de fichiers locaux",
+      "context_html": "Google étend son agent personnel <strong>Gemini Spark à l'app desktop macOS</strong> (beta, abonnés <strong>AI Ultra à 99 $/mois</strong>, US uniquement) le 1er juillet. Spark sort de la fenêtre de chat pour exécuter des tâches sur les <strong>fichiers et apps locaux</strong> : tri automatique des PDF d'un dossier Downloads en sous-dossiers labellisés, extraction de chiffres depuis des factures locales vers un tableur Workspace. Nouveauté côté écosystème : <strong>support natif du MCP</strong>, plus cinq intégrations tierces (Canva, Dropbox, Instacart, OpenTable, Zillow Rentals) et Google Tasks/Keep. Positionnement frontal face à Claude computer use sur le terrain de l'agent desktop, mais verrouillé au tier le plus cher.",
+      "sources": [
+        {
+          "label": "blog.google — Gemini Spark",
+          "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-june-2026/",
+          "primary": true
+        },
+        {
+          "label": "techcrunch.com",
+          "url": "https://techcrunch.com/2026/07/01/gemini-spark-googles-agentic-assistant-is-now-available-on-mac/",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Gemini Spark macOS",
+        "date_long": "1er juillet 2026",
+        "description": "Gemini Spark arrive sur macOS (1er juillet 2026) : agent desktop autonome, MCP natif, automatisation de fichiers locaux, réservé AI Ultra 99 $/mois US. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "MCP",
+            "unit": "natif",
+            "label": "Support Model Context Protocol"
+          },
+          {
+            "num": "99",
+            "unit": "$/mois",
+            "label": "Réservé AI Ultra (US, 18+)"
+          },
+          {
+            "num": "5",
+            "unit": "intégrations",
+            "label": "Canva, Dropbox, Instacart, OpenTable, Zillow"
+          },
+          {
+            "num": "macOS",
+            "unit": "beta",
+            "label": "App desktop (US uniquement)"
+          }
+        ],
+        "context_paragraphs": [
+          "Google a porté son agent personnel <strong>Gemini Spark sur l'app desktop macOS</strong> le 1er juillet 2026, en beta réservée aux abonnés <strong>Google AI Ultra (99 $/mois)</strong> aux États-Unis. L'intérêt est le passage de l'assistant conversationnel à un agent qui <strong>agit sur le système local</strong> : trier automatiquement les PDF d'un dossier Downloads en sous-dossiers labellisés, extraire les montants de factures stockées en local pour construire un tableur Workspace sur un planning récurrent. C'est le pendant Google du computer use d'Anthropic et de Codex sur desktop.",
+          "Le point marquant pour l'écosystème est le <strong>support natif du MCP (Model Context Protocol)</strong>. Après Anthropic (qui l'a créé), OpenAI et Mistral, Google adopte MCP dans un agent grand public — ce qui ancre un peu plus le protocole comme <strong>standard de facto d'intégration cross-vendor</strong>. S'y ajoutent le suivi temps réel de sujets, cinq intégrations tierces (Canva, Dropbox, Instacart, OpenTable, Zillow Rentals) et le branchement à Google Tasks et Keep. L'agent peut donc enchaîner des actions sur des services externes standardisés plutôt que via des connecteurs propriétaires isolés.",
+          "La limite est l'accès : <strong>AI Ultra à 99 $/mois, US, 18 ans et plus</strong>, en beta. À ce tarif et sur ce périmètre, l'adoption réelle à court terme reste faible, et le produit se lit surtout comme un signal de trajectoire : Google veut le même terrain que Claude sur l'automatisation desktop, avec MCP comme couche commune. Pour un observateur côté intégration, c'est la standardisation MCP qui compte plus que la disponibilité immédiate de Spark."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Le vrai signal Lynxter, c'est MCP qui devient un standard multi-éditeurs.</strong> Les workflows Lynxter bâtis sur des serveurs MCP (Claude Code, connecteurs internes) gagnent à voir Google adopter le même protocole : les serveurs MCP que tu construis pour tes outils métier (base de profils d'impression, tickets support, doc technique S300X/S600D) deviennent potentiellement réutilisables au-delà de l'écosystème Anthropic. Investir dans des serveurs MCP propres est donc de moins en moins un pari sur un seul fournisseur.",
+          "<strong>Comme point de comparaison, Gemini Spark vaut surtout pour le pattern, pas pour l'adoption.</strong> L'automatisation de fichiers locaux et d'actions desktop est exactement le genre de tâche que Lynxter pourrait vouloir déléguer à un agent (préparation de dossiers, extraction de données depuis des exports fournisseurs). Mais le verrou AI Ultra 99 $/mois US rend Spark inutilisable en pratique ici à court terme — garde plutôt Claude computer use / Claude in Chrome (passé en GA cette semaine) comme brique réelle, et regarde Spark comme un repère concurrentiel à surveiller."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-june-2026/",
+          "label": "blog.google — Gemini Spark updates",
+          "meta": "Google · blog officiel Gemini Spark macOS · 1er juillet 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-07-06-claude-code-2-1-196-201",
+            "actor": "Anthropic",
+            "title": "Claude in Chrome en GA (Claude Code 2.1.198)",
+            "tag": "lynxter"
+          },
+          {
+            "slug": "2026-07-06-xai-voice-agent-builder",
+            "actor": "xAI",
+            "title": "xAI Voice Agent Builder — MCP natif",
+            "tag": "useful"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-07-06.html",
+            "label": "← Retour au brief",
+            "title": "2026-07-06"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-07-06-zai-zcode",
+      "actor": "Z.ai",
+      "tag": "useful",
+      "date": "2026-07-02",
+      "title": "Z.ai lance ZCode — environnement de dev agentique (Electron) autour de GLM-5.2, de 18 à 160 $/mois",
+      "context_html": "<strong>Z.ai</strong> (ex-Zhipu AI) a lancé <strong>ZCode le 2 juillet</strong>, un environnement de développement agentique (app Electron, macOS/Windows/Linux) bâti autour de <strong>GLM-5.2</strong>. L'UI met la conversation agent au centre, entourée d'un file manager, terminal, panneau Git et preview navigateur live — positionnement frontal contre Cursor, Claude Code, GitHub Copilot et Google Antigravity. Essai gratuit 5 jours (<strong>5M tokens/jour</strong>), puis GLM Coding Plan de <strong>18 $ (Lite) à 160 $/mois (Max)</strong>, avec support <strong>BYOK</strong> pour modèles tiers. GLM-5.2 (contexte 1M) affiche <strong>62.1 sur SWE-bench Pro</strong> (vs 58.6 pour GPT-5.5, 69.2 pour Opus 4.8). Point de vigilance : chaque appel API GLM-5.2 est soumis au droit chinois.",
+      "sources": [
+        {
+          "label": "zcode.z.ai/en/docs/welcome",
+          "url": "https://zcode.z.ai/en/docs/welcome",
+          "primary": true
+        },
+        {
+          "label": "venturebeat.com",
+          "url": "https://venturebeat.com/technology/z-ai-launches-zcode-to-challenge-cursor-claude-code-and-github-copilot-in-ai-coding",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Z.ai ZCode",
+        "date_long": "2 juillet 2026",
+        "description": "Z.ai lance ZCode (2 juillet 2026), un IDE agentique Electron autour de GLM-5.2 : essai 5M tokens/jour, plans 18-160 $/mois, BYOK. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "62.1",
+            "unit": "%",
+            "label": "GLM-5.2 SWE-bench Pro (vs 58.6 GPT-5.5)"
+          },
+          {
+            "num": "18–160",
+            "unit": "$/mois",
+            "label": "GLM Coding Plan (Lite → Max)"
+          },
+          {
+            "num": "5M",
+            "unit": "tok/j",
+            "label": "Essai gratuit 5 jours"
+          },
+          {
+            "num": "BYOK",
+            "unit": "",
+            "label": "Support modèles tiers"
+          }
+        ],
+        "context_paragraphs": [
+          "<strong>Z.ai</strong> (ex-Zhipu AI) a officiellement lancé <strong>ZCode le 2 juillet 2026</strong>, un environnement de développement agentique gratuit à l'essai, distribué comme app Electron sur macOS, Windows et Linux, et bâti autour de son modèle maison <strong>GLM-5.2</strong>. L'interface place la conversation avec l'agent au centre, avec autour un gestionnaire de fichiers, un terminal, un panneau Git et une preview navigateur live. C'est un concurrent direct, dans la forme, de Cursor, Claude Code, GitHub Copilot et Google Antigravity.",
+          "Le modèle d'accès est agressif : <strong>essai de 5 jours à 5M tokens/jour</strong> (3M GLM-5.2 + 2M GLM-5-turbo), puis un GLM Coding Plan de <strong>18 $ (Lite), 72 $ (Pro) et 160 $/mois (Max)</strong>, avec un bonus de quota 1,5× pour les abonnés et un support <strong>BYOK</strong> pour brancher des modèles tiers. Côté performance, <strong>GLM-5.2</strong> (contexte 1M tokens) revendique <strong>62.1 sur SWE-bench Pro</strong> — au-dessus de GPT-5.5 (58.6) mais en deçà de Claude Opus 4.8 (69.2) et de Sonnet 5 (63.2) — pour une fraction du prix des offres frontière US.",
+          "Le point de vigilance est juridique : <strong>chaque appel API GLM-5.2 est soumis au droit chinois</strong>, ce qui pose un problème immédiat pour tout code propriétaire ou donnée sensible. C'est la contrepartie du rapport perf/prix : ZCode est crédible comme option low-cost pour des tâches non sensibles ou du prototypage, beaucoup moins pour un pipeline touchant à de la propriété industrielle. Le lancement confirme la poussée des éditeurs chinois (Z.ai, Meituan avec LongCat-2.0 la même semaine) sur le terrain de l'agentic coding open/low-cost."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>ZCode est à benchmarker comme option low-cost, pas à adopter sur du code sensible.</strong> Le rapport perf/prix de GLM-5.2 (18 $/mois, 62.1 % SWE-bench Pro) est intéressant pour des scripts internes non critiques, du prototypage ou de la génération de code jetable. Mais la clause de droit chinois sur chaque appel API est rédhibitoire pour tout ce qui touche au firmware, aux profils clients ou à la propriété industrielle Lynxter : garde ces workloads sur Claude Code (Sonnet 5 / Opus).",
+          "<strong>Le vrai enseignement est la pression sur les prix de l'agentic coding.</strong> Avec ZCode à 18 $/mois et Sonnet 5 en promo à $2/$10, le coût d'un agent de code chute vite. Pour Lynxter, ça conforte l'idée de dimensionner les workflows agents en supposant un coût marginal faible — et de réserver l'arbitrage au critère qualité/confidentialité plutôt qu'au prix brut. À surveiller si un usage BYOK permettait un jour de piloter un agent low-cost sur un modèle hébergé en propre."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://zcode.z.ai/en/docs/welcome",
+          "label": "zcode.z.ai/en/docs/welcome",
+          "meta": "Z.ai · documentation officielle ZCode · 2 juillet 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-07-06-meituan-longcat-2",
+            "actor": "Meituan",
+            "title": "LongCat-2.0 — 1.6T MoE open weights MIT",
+            "tag": "useful"
+          },
+          {
+            "slug": "2026-07-06-claude-sonnet-5",
+            "actor": "Anthropic",
+            "title": "Claude Sonnet 5 — promo $2/$10",
+            "tag": "lynxter"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-07-06.html",
+            "label": "← Retour au brief",
+            "title": "2026-07-06"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-07-06-meituan-longcat-2",
+      "actor": "Meituan",
+      "tag": "useful",
+      "date": "2026-06-30",
+      "title": "Meituan open-source LongCat-2.0 — 1.6T MoE sous MIT, agentic coding, entraîné 100 % sur puces chinoises",
+      "context_html": "<strong>Meituan</strong> a open-sourcé le <strong>30 juin LongCat-2.0</strong>, un MoE de <strong>1.6T paramètres</strong> à contexte natif 1M tokens sous licence <strong>MIT</strong>, taillé pour le coding agentique. Le modèle tournait depuis ~2 mois sur OpenRouter sous le codename anonyme « Owl Alpha », devenant l'un des plus utilisés de la plateforme (~10.1T tokens/mois) avant la révélation. Meituan revendique <strong>59.5 sur SWE-bench Pro (self-reported)</strong> contre 58.6 pour GPT-5.5 — marge sous 1 point, chiffres non vérifiés indépendamment, donc compétitif plutôt que supérieur. Fait notable : premier modèle trillion-paramètres <strong>entraîné et servi entièrement sur 50 000+ ASIC chinois, sans aucun GPU Nvidia</strong>.",
+      "sources": [
+        {
+          "label": "longcatai.org/models/longcat-2",
+          "url": "https://www.longcatai.org/models/longcat-2",
+          "primary": true
+        },
+        {
+          "label": "venturebeat.com",
+          "url": "https://venturebeat.com/technology/meituan-open-sources-longcat-2-0-the-1-6t-near-frontier-agentic-coding-model-thats-been-leading-openrouter-trained-entirely-on-chinese-chips",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Meituan LongCat-2.0",
+        "date_long": "30 juin 2026",
+        "description": "Meituan open-source LongCat-2.0 (30 juin 2026) : 1.6T MoE MIT, SWE-bench Pro 59.5 self-reported, entraîné sur ASIC chinois. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "1.6T",
+            "unit": "params",
+            "label": "MoE · contexte natif 1M tokens"
+          },
+          {
+            "num": "59.5",
+            "unit": "%",
+            "label": "SWE-bench Pro self-reported (vs 58.6 GPT-5.5)"
+          },
+          {
+            "num": "MIT",
+            "unit": "",
+            "label": "Licence open weights permissive"
+          },
+          {
+            "num": "50k+",
+            "unit": "ASIC",
+            "label": "Entraîné/servi 100 % puces chinoises"
+          }
+        ],
+        "context_paragraphs": [
+          "<strong>Meituan</strong> — le géant chinois de la livraison — a open-sourcé le <strong>30 juin 2026 LongCat-2.0</strong>, un modèle Mixture-of-Experts de <strong>1.6 trillion de paramètres</strong> à contexte natif 1M tokens, sous licence <strong>MIT permissive</strong>, conçu pour le coding agentique. Le modèle n'est pas un inconnu : il tournait depuis environ deux mois sur OpenRouter sous le codename anonyme <strong>« Owl Alpha »</strong>, où il était devenu l'un des modèles les plus utilisés de la plateforme (~10.1T tokens/mois) — un test grandeur nature avant révélation de son origine.",
+          "Sur les chiffres, Meituan revendique <strong>59.5 sur SWE-bench Pro</strong> contre 58.6 pour GPT-5.5, soit une marge inférieure à un point. Ces scores sont <strong>self-reported et non vérifiés indépendamment</strong> : le modèle est à lire comme compétitif avec le milieu de la frontière US, pas clairement supérieur — et à re-benchmarker avant tout usage sérieux. Le pricing annoncé sous-cote GPT-5.5 et Claude Sonnet 5, dans la logique low-cost des éditeurs chinois.",
+          "Le fait le plus notable est industriel : LongCat-2.0 serait le <strong>premier modèle trillion-paramètres entraîné et servi entièrement sur 50 000+ ASIC chinois, sans aucun GPU Nvidia</strong>. C'est un signal de souveraineté compute : le découplage matériel chinois est désormais capable de produire un modèle open weights proche de la frontière, ce qui a des implications géopolitiques (résilience aux contrôles à l'export) autant que techniques. Combiné au lancement de ZCode par Z.ai la même semaine, la poussée chinoise sur l'agentic coding open/low-cost s'accélère."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>LongCat-2.0 est une option open weights crédible à garder en veille, self-hostable pour des workflows sensibles.</strong> Sa licence MIT et son profil agentique en font, sur le papier, une alternative auto-hébergeable à Claude pour des tâches où la confidentialité prime et où l'on veut maîtriser l'infra. Mais le score SWE-bench Pro étant self-reported, c'est un candidat à <strong>re-benchmarker sur tes propres tâches</strong> (audit firmware, scripts de calibration) avant tout déploiement — pas un modèle à mettre en production sur la foi de l'annonce.",
+          "<strong>Le signal stratégique compte plus que le modèle lui-même.</strong> Un trillion-paramètres entraîné sans Nvidia et diffusé en MIT montre que l'écosystème open weights continue de se rapprocher de la frontière à coût décroissant. Pour Lynxter, ça renforce l'intérêt d'une architecture agents <strong>portable et model-agnostic</strong> : plus les alternatives open weights se rapprochent, plus il devient rentable de garder la possibilité de basculer un workflow non critique vers un modèle auto-hébergé si le coût ou la confidentialité l'exigent."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://www.longcatai.org/models/longcat-2",
+          "label": "longcatai.org/models/longcat-2",
+          "meta": "Meituan · page modèle officielle LongCat-2.0 · 30 juin 2026 (scores self-reported)"
+        },
+        "related": [
+          {
+            "slug": "2026-07-06-zai-zcode",
+            "actor": "Z.ai",
+            "title": "ZCode — IDE agentique autour de GLM-5.2",
+            "tag": "useful"
+          },
+          {
+            "slug": "2026-07-06-xai-voice-agent-builder",
+            "actor": "xAI",
+            "title": "Voice Agent Builder — voix + MCP natif",
+            "tag": "useful"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-07-06.html",
+            "label": "← Retour au brief",
+            "title": "2026-07-06"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-07-06-xai-voice-agent-builder",
+      "actor": "xAI",
+      "tag": "useful",
+      "date": "2026-07-01",
+      "title": "xAI lance Voice Agent Builder (beta) — plateforme voix single-stack à $0.06/min avec MCP natif",
+      "context_html": "<strong>xAI</strong> a lancé le <strong>1er juillet Voice Agent Builder</strong> en beta, une plateforme no-code qui transforme une description en langage naturel en <strong>agent vocal téléphonique live en ~2 minutes</strong>. Le stack packagé fournit téléphonie, retrieval, tools, guardrails et observabilité, avec un point notable : <strong>support MCP natif out of the box</strong> (branchement de serveurs MCP existants, WebSocket/SIP). Le chemin speech-to-speech est tightly coupled à Grok Voice, pas trois briques assemblées. Pricing agressif : <strong>$0.05/min audio + $0.01/min téléphonie (~$0.06/min tout compris)</strong>, avec 80+ voix ou voice cloning depuis ~2 min d'audio. Face aux stacks OpenAI Realtime et aux assemblages multi-fournisseurs.",
+      "sources": [
+        {
+          "label": "x.ai/news — Voice Agent Builder",
+          "url": "https://x.ai/news/grok-voice-agent-builder",
+          "primary": true
+        },
+        {
+          "label": "cryptobriefing.com",
+          "url": "https://cryptobriefing.com/xai-voice-agent-builder-beta-pricing/",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "xAI Voice Agent Builder",
+        "date_long": "1er juillet 2026",
+        "description": "xAI lance Voice Agent Builder (1er juillet 2026) : plateforme voix single-stack, MCP natif, ~$0.06/min, agent live en 2 min. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "$0.06",
+            "unit": "/min",
+            "label": "Tout compris (audio + téléphonie)"
+          },
+          {
+            "num": "MCP",
+            "unit": "natif",
+            "label": "Serveurs MCP branchables out of the box"
+          },
+          {
+            "num": "~2",
+            "unit": "min",
+            "label": "D'une description à un agent live"
+          },
+          {
+            "num": "80+",
+            "unit": "voix",
+            "label": "Ou voice cloning (~2 min d'audio)"
+          }
+        ],
+        "context_paragraphs": [
+          "<strong>xAI</strong> a lancé le <strong>1er juillet 2026 Voice Agent Builder</strong> en beta, une plateforme no-code qui transforme une description en langage naturel en <strong>agent vocal téléphonique live en environ deux minutes</strong>. Contrairement aux montages classiques qui assemblent trois briques (STT, LLM, TTS de fournisseurs différents), le chemin speech-to-speech est <strong>tightly coupled à Grok Voice</strong>, ce qui réduit la latence et simplifie l'exploitation. Le stack packagé fournit téléphonie, retrieval de connaissances, tools, guardrails, observabilité et 80+ voix intégrées (ou voice cloning depuis ~2 minutes d'audio).",
+          "Le point saillant pour l'écosystème est le <strong>support MCP natif out of the box</strong> : on branche des serveurs MCP existants, on connecte ses APIs, ou on relie un client via WebSocket/SIP. Autrement dit, un agent vocal xAI peut appeler directement les mêmes serveurs MCP qu'un agent Claude Code — la couche d'intégration est mutualisée. C'est, avec Gemini Spark la même semaine, un deuxième acteur majeur qui expose MCP comme brique standard, cette fois sur le canal voix.",
+          "Le pricing est agressif : <strong>$0.05/min audio (voix incluses, sans frais de plateforme) + $0.01/min de téléphonie sur numéro provisionné, soit ~$0.06/min tout compris</strong>. Les outils serveur sont facturés à part (web/X search à $5/1000 appels, doc search à $2.50/1000). À ce tarif, xAI se positionne sous les stacks voix assemblés traditionnels et en concurrence directe avec l'OpenAI Realtime API, en mettant en avant la simplicité (un seul fournisseur, un agent live en deux minutes) plutôt que la modularité."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Si Lynxter envisage un canal support vocal, Voice Agent Builder fixe un repère de coût et d'intégration.</strong> À ~$0.06/min tout compris, un agent vocal branché sur tes serveurs MCP internes (base de connaissance S300X/S600D, tickets, doc technique) devient chiffrable : compare ce coût à celui d'une solution maison ou d'un centre d'appel pour du support de niveau 1. Le fait que MCP soit natif signifie que les serveurs déjà construits pour Claude Code sont réutilisables tels quels côté voix — pas de ré-intégration.",
+          "<strong>À tester en pilote isolé avant tout engagement.</strong> Un agent vocal de support technique doit être évalué sur des cas réels (compréhension d'un problème d'extrusion décrit oralement, routage vers la bonne procédure) avant d'être exposé à des clients. Monte un prototype sur un périmètre étroit (FAQ matériel, prise de rendez-vous SAV), mesure le taux de résolution et l'expérience perçue, et garde la beta xAI comme une option à comparer à OpenAI Realtime plutôt que comme un choix arrêté. Le vrai actif reste tes serveurs MCP : le fournisseur voix est interchangeable."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://x.ai/news/grok-voice-agent-builder",
+          "label": "x.ai/news/grok-voice-agent-builder",
+          "meta": "xAI · annonce officielle Voice Agent Builder (beta) · 1er juillet 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-07-06-google-gemini-spark-macos",
+            "actor": "Google DeepMind",
+            "title": "Gemini Spark — MCP natif sur desktop",
+            "tag": "useful"
+          },
+          {
+            "slug": "2026-07-06-claude-code-2-1-196-201",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.196–201",
+            "tag": "lynxter"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-07-06.html",
+            "label": "← Retour au brief",
+            "title": "2026-07-06"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-07-06-anthropic-claude-science",
+      "actor": "Anthropic",
+      "tag": "info",
+      "date": "2026-06-30",
+      "title": "Claude Science — workbench agentique pour la recherche (60+ bases scientifiques, sur Opus 4.8)",
+      "context_html": "Anthropic lance le 30 juin <strong>Claude Science</strong>, présenté comme l'équivalent de Claude Code pour la recherche : un agent coordinateur sur Opus 4.8 avec <strong>60+ skills et connecteurs préconfigurés</strong> (génomique, protéomique, biologie structurale, cheminformatique), en beta immédiate pour Pro/Max/Team/Enterprise. Programme de subventions associé : jusqu'à <strong>30 000 $ de crédits pour 50 équipes</strong> (candidatures jusqu'au 15 juillet). Sans lien direct impression 3D, mais signal net — Anthropic généralise le pattern « agent coordinateur + skills métier » à de nouveaux verticaux.",
+      "sources": [],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-07-06-openai-codex-cli-0-143",
+      "actor": "OpenAI",
+      "tag": "info",
+      "date": "2026-07-05",
+      "title": "Codex CLI ouvre la ligne 0.143 (alpha) — délégation multi-agents configurable, recherche web indexée",
+      "context_html": "OpenAI a poussé la préversion <strong>0.143 du Codex CLI</strong> entre le 1er et le 5 juillet (alpha.32 → alpha.36), la 0.142.5 stable du 1er juillet restant un simple patch de sécurité (fuite de payloads WebSocket dans les trace logs corrigée). La 0.143 introduit une <strong>délégation multi-agents configurable</strong> (désactivée / sur-demande / proactive) et un <strong>mode de recherche web indexée</strong> restreignant l'accès direct à des URLs approuvées côté serveur, plus des budgets de tokens de rollout. OpenAI rattrape ici le terrain des subagents de Claude Code, mais le tout reste en alpha (aucune stable 0.143 au 5 juillet).",
+      "sources": [],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-07-06-cursor-ios-app",
+      "actor": "Cursor",
+      "tag": "info",
+      "date": "2026-06-29",
+      "title": "Cursor lance son app iOS (beta publique) — piloter des agents de code depuis le mobile",
+      "context_html": "Cursor a publié le 29 juin sa première app native iPhone/iPad (beta publique, tous plans payants), dans la foulée de son rachat par SpaceX. L'app lance des always-on agents dans le cloud ou télécommande des agents tournant sur le poste de bureau, avec contrôle vocal, notifications push et review/merge de PR depuis le mobile (promo de lancement -75 % sur Composer 2.5 jusqu'au 5 juillet). Extension du pattern agentic loop au mobile, utile pour surveiller des agents longue durée hors du poste de travail.",
+      "sources": [],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-07-06-mistral-leanstral-1-5",
+      "actor": "Mistral",
+      "tag": "info",
+      "date": "2026-07-02",
+      "title": "Mistral publie Leanstral 1.5 — open weights Apache-2.0 pour le proof engineering Lean 4",
+      "context_html": "Mistral a publié vers le 2 juillet <strong>Leanstral 1.5</strong>, un modèle open weights Apache-2.0 (~6B params actifs, MoE) dédié au proof engineering Lean 4. Il sature miniF2F, résout <strong>587/672 problèmes PutnamBench</strong>, atteint l'état de l'art sur FATE-H (87 %) et FATE-X (34 %), et aurait trouvé 5 bugs inédits sur 57 dépôts testés. Niche (vérification formelle) diffusée gratuitement sur Hugging Face et via API — à surveiller comme brique de fiabilité d'agents plutôt qu'à intégrer.",
+      "sources": [],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-07-06-deepseek-v4-announce",
+      "actor": "DeepSeek",
+      "tag": "info",
+      "date": "2026-06-30",
+      "title": "DeepSeek annonce V4 officiel pour mi-juillet, avec tarification API heures pleines/creuses",
+      "context_html": "Fin juin, DeepSeek a annoncé le passage de <strong>V4</strong> (en preview depuis le 24 avril) au statut officiel pour la mi-juillet — hors fenêtre — avec une première tarification API différenciée : <strong>heures pleines (9h-12h, 14h-18h) facturées 2× les heures creuses</strong>. Deux variantes : V4 Pro (MoE 1.6T, ~49B actifs) et V4 Flash (284B total, ~13B actifs), contexte porté à 1M tokens sur toute la gamme. Les legacy deepseek-chat et deepseek-reasoner sont retirés le 24 juillet.",
+      "sources": [],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-07-06-xai-grok-imagine-done",
+      "actor": "xAI",
+      "tag": "info",
+      "date": "2026-07-05",
+      "title": "Musk annonce « Done with Grok Imagine » — génération image/vidéo finalisée",
+      "context_html": "Le 5 juillet, Elon Musk a posté un « Done with Grok Imagine », signalant que le développement de la capacité de génération d'images/vidéos de Grok est finalisé — jalon qui pousse Grok pleinement en territoire multimodal (distribution via l'app Grok iOS/Android et intégration dans l'app X). Simple tweet-jalon, sans release note formelle ni chiffres de perf : à retenir surtout comme signal de maturité multimodale de xAI face à Gemini et GPT.",
+      "sources": [],
+      "has_primary": false
+    }
+  ],
+  "sources_footer": [
+    {
+      "label": "anthropic.com/news",
+      "url": "https://www.anthropic.com/news"
+    },
+    {
+      "label": "code.claude.com/changelog",
+      "url": "https://code.claude.com/docs/en/changelog"
+    },
+    {
+      "label": "openai.com/news",
+      "url": "https://openai.com/news/"
+    },
+    {
+      "label": "github.com/openai/codex/releases",
+      "url": "https://github.com/openai/codex/releases"
+    },
+    {
+      "label": "blog.google",
+      "url": "https://blog.google/technology/ai/"
+    },
+    {
+      "label": "ai.meta.com",
+      "url": "https://ai.meta.com/blog/"
+    },
+    {
+      "label": "mistral.ai/news",
+      "url": "https://mistral.ai/news/"
+    },
+    {
+      "label": "x.ai/news",
+      "url": "https://x.ai/news"
+    },
+    {
+      "label": "cursor.com/changelog",
+      "url": "https://cursor.com/changelog"
+    },
+    {
+      "label": "zcode.z.ai",
+      "url": "https://zcode.z.ai/en/docs/welcome"
+    },
+    {
+      "label": "longcatai.org",
+      "url": "https://www.longcatai.org/models/longcat-2"
+    }
+  ],
+  "prev": {
+    "href": "2026-06-29.html",
+    "title": "OpenAI sort GPT-5.6 sous escorte gouvernementale"
+  }
+}

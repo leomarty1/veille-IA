@@ -1,6 +1,128 @@
 {
   "briefs": [
     {
+      "date": "2026-07-06",
+      "filename": "2026-07-06.html",
+      "items_count": 13,
+      "by_tag": {
+        "lynxter": 2,
+        "useful": 5,
+        "info": 6
+      },
+      "by_actor": {
+        "Anthropic": 4,
+        "OpenAI": 1,
+        "Google": 1,
+        "Meta": 0,
+        "Mistral": 1,
+        "xAI": 2,
+        "Cursor": 1,
+        "Z.ai": 1,
+        "Meituan": 1,
+        "DeepSeek": 1
+      },
+      "mode": "hebdomadaire",
+      "title": "Sonnet 5 par défaut, Fable 5 déverrouillé",
+      "highlights": [
+        "Claude Sonnet 5 devient le défaut de Claude Code (v2.1.197) — 85.2 % SWE-bench Verified, 63.2 % Pro, contexte 1M natif, pricing promo $2/$10 par M tokens jusqu'au 31 août (puis $3/$15), ~40 % du tarif Opus",
+        "Six versions de Claude Code (2.1.196→201) : subagents en arrière-plan par défaut avec auto-commit/push/PR draft, Claude in Chrome en GA, permission « Manual » par défaut ; export controls sur Fable 5 (95 % Verified) et Mythos 5 levés le 30 juin, Fable 5 redéployé mais bridé à 50 % jusqu'au 7 juillet",
+        "MCP se généralise (Gemini Spark sur macOS, Voice Agent Builder de xAI à ~$0.06/min) et l'open weights chinois pousse : Meituan open-source LongCat-2.0 (1.6T MoE MIT, ASIC chinois) et Z.ai lance ZCode autour de GLM-5.2"
+      ],
+      "items": [
+        {
+          "slug": "2026-07-06-claude-sonnet-5",
+          "title": "Claude Sonnet 5 — 85.2 % SWE-bench Verified, contexte 1M natif, promo $2/$10 et défaut de Claude Code",
+          "primary_url": "https://code.claude.com/docs/en/changelog",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-07-06-claude-code-2-1-196-201",
+          "title": "Claude Code 2.1.196 → 2.1.201 — subagents en arrière-plan par défaut, Claude in Chrome en GA, permission « Manual » par défaut",
+          "primary_url": "https://code.claude.com/docs/en/changelog",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-07-06-anthropic-fable-5-export-controls-lifted",
+          "title": "Fable 5 déverrouillé — les export controls levés, fin d'un blackout de 19 jours, quotas bridés jusqu'au 7 juillet",
+          "primary_url": "https://www.anthropic.com/news/redeploying-fable-5",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-07-06-google-gemini-spark-macos",
+          "title": "Gemini Spark débarque sur macOS — agent desktop autonome avec MCP natif et automatisation de fichiers locaux",
+          "primary_url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-spark-updates-june-2026/",
+          "tag": "useful",
+          "actor": "Google DeepMind"
+        },
+        {
+          "slug": "2026-07-06-zai-zcode",
+          "title": "Z.ai lance ZCode — environnement de dev agentique (Electron) autour de GLM-5.2, de 18 à 160 $/mois",
+          "primary_url": "https://zcode.z.ai/en/docs/welcome",
+          "tag": "useful",
+          "actor": "Z.ai"
+        },
+        {
+          "slug": "2026-07-06-meituan-longcat-2",
+          "title": "Meituan open-source LongCat-2.0 — 1.6T MoE sous MIT, agentic coding, entraîné 100 % sur puces chinoises",
+          "primary_url": "https://www.longcatai.org/models/longcat-2",
+          "tag": "useful",
+          "actor": "Meituan"
+        },
+        {
+          "slug": "2026-07-06-xai-voice-agent-builder",
+          "title": "xAI lance Voice Agent Builder (beta) — plateforme voix single-stack à $0.06/min avec MCP natif",
+          "primary_url": "https://x.ai/news/grok-voice-agent-builder",
+          "tag": "useful",
+          "actor": "xAI"
+        },
+        {
+          "slug": "2026-07-06-anthropic-claude-science",
+          "title": "Claude Science — workbench agentique pour la recherche (60+ bases scientifiques, sur Opus 4.8)",
+          "primary_url": "",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-07-06-openai-codex-cli-0-143",
+          "title": "Codex CLI ouvre la ligne 0.143 (alpha) — délégation multi-agents configurable, recherche web indexée",
+          "primary_url": "",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-07-06-cursor-ios-app",
+          "title": "Cursor lance son app iOS (beta publique) — piloter des agents de code depuis le mobile",
+          "primary_url": "",
+          "tag": "info",
+          "actor": "Cursor"
+        },
+        {
+          "slug": "2026-07-06-mistral-leanstral-1-5",
+          "title": "Mistral publie Leanstral 1.5 — open weights Apache-2.0 pour le proof engineering Lean 4",
+          "primary_url": "",
+          "tag": "info",
+          "actor": "Mistral"
+        },
+        {
+          "slug": "2026-07-06-deepseek-v4-announce",
+          "title": "DeepSeek annonce V4 officiel pour mi-juillet, avec tarification API heures pleines/creuses",
+          "primary_url": "",
+          "tag": "info",
+          "actor": "DeepSeek"
+        },
+        {
+          "slug": "2026-07-06-xai-grok-imagine-done",
+          "title": "Musk annonce « Done with Grok Imagine » — génération image/vidéo finalisée",
+          "primary_url": "",
+          "tag": "info",
+          "actor": "xAI"
+        }
+      ]
+    },
+    {
       "date": "2026-06-29",
       "filename": "2026-06-29.html",
       "items_count": 16,
@@ -27,30 +149,138 @@
         "Vague gouvernance des connecteurs : Mistral scope ses clés API par connecteur (GA, anti-impersonation), Cursor 3.9 centralise plugins/skills/MCP ; Google intègre le computer use natif dans Gemini 3.5 Flash (78.4 % OSWorld)"
       ],
       "items": [
-        { "slug": "2026-06-29-openai-gpt-5-6-sol-terra-luna", "title": "GPT-5.6 Sol / Terra / Luna — preview verrouillée à ~20 partenaires US, SOTA Terminal-Bench mais record de reward-hacking", "primary_url": "https://venturebeat.com/technology/openai-unveils-gpt-5-6-sol-terra-and-luna-models-but-only-accessible-to-limited-preview-partners-for-now-per-us-gov", "tag": "lynxter", "actor": "OpenAI" },
-        { "slug": "2026-06-29-anthropic-claude-tag", "title": "Claude Tag — agent Slack persistant multijoueur sur Opus 4.8, Access Bundles scopés par canal", "primary_url": "https://venturebeat.com/technology/anthropic-launches-claude-tag-replacing-its-slack-app-with-a-persistent-ai-teammate-that-learns-monitors-and-works-autonomously", "tag": "lynxter", "actor": "Anthropic" },
-        { "slug": "2026-06-29-anthropic-claude-code-2-1-187-195", "title": "Claude Code 2.1.187-195 — sandbox.credentials, /rewind, résilience MCP OAuth sur 401/403", "primary_url": "https://code.claude.com/docs/en/changelog", "tag": "lynxter", "actor": "Anthropic" },
-        { "slug": "2026-06-29-google-gemini-3-5-flash-computer-use", "title": "Gemini 3.5 Flash — le computer use devient un outil natif (78.4 % OSWorld-Verified)", "primary_url": "https://the-decoder.com/google-bakes-computer-control-directly-into-gemini-3-5-flash-letting-the-model-see-and-operate-your-screen/", "tag": "useful", "actor": "Google DeepMind" },
-        { "slug": "2026-06-29-mistral-ocr-4", "title": "Mistral OCR 4 — document intelligence self-hostable, 170 langues, 85.2 OlmOCRBench, 4$/1000 pages", "primary_url": "https://venturebeat.com/data/mistral-launches-ocr-4-turning-document-extraction-into-a-full-enterprise-ai-play", "tag": "useful", "actor": "Mistral" },
-        { "slug": "2026-06-29-mistral-connectors-scoped-keys", "title": "Mistral durcit les Connectors enterprise — clés API à scopes anti-impersonation, contrôles admin par workspace (GA)", "primary_url": "https://byteiota.com/mistral-connectors-mcp-studio-api/", "tag": "useful", "actor": "Mistral" },
-        { "slug": "2026-06-29-openai-codex-cli-0-142", "title": "Codex CLI v0.142 — budgets de tokens par rollout, délégation multi-agents configurable, web search indexée", "primary_url": "https://releasebot.io/updates/openai/codex", "tag": "useful", "actor": "OpenAI" },
-        { "slug": "2026-06-29-xai-grok-build-goal", "title": "Grok Build /goal — mode autonome longue durée avec vérification (Composer 2.5 + Grok Build 0.1)", "primary_url": "https://www.marktechpost.com/2026/06/22/xai-launches-goal-in-grok-build-adding-long-running-autonomous-execution-with-built-in-verification-for-multi-step-coding-tasks/", "tag": "useful", "actor": "xAI" },
-        { "slug": "2026-06-29-perplexity-computer-for-counsel", "title": "Perplexity Computer for Counsel — agent multi-modèles juridique routant 20+ modèles via MCP", "primary_url": "https://www.law.com/legaltechnews/2026/06/24/perplexity-ai-launches-computer-for-counsel-powered-by-legal-tech-integrations/", "tag": "useful", "actor": "Perplexity" },
-        { "slug": "2026-06-29-cursor-3-9-customize", "title": "Cursor 3.9 — page Customize : gestion centralisée plugins/skills/MCP/subagents", "primary_url": "https://dev.classmethod.jp/en/articles/cursor-customize-integrated-management/", "tag": "useful", "actor": "Cursor" },
-        { "slug": "2026-06-29-openai-broadcom-jalapeno", "title": "OpenAI + Broadcom dévoilent « Jalapeño », première puce d'inférence LLM custom d'OpenAI", "primary_url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor", "tag": "useful", "actor": "OpenAI" },
-        { "slug": "2026-06-29-anthropic-economic-index-cadences", "title": "Anthropic Economic Index — rapport « Cadences » sur les rythmes d'usage de Claude", "primary_url": "https://explainx.ai/blog/anthropic-economic-index-cadences-june-2026", "tag": "info", "actor": "Anthropic" },
-        { "slug": "2026-06-29-meta-brain2qwerty-v2", "title": "Meta FAIR — Brain2Qwerty v2 décode des phrases tapées à partir de MEG non-invasive", "primary_url": "https://ai.meta.com/blog/brain2qwerty-brain-ai-human-communication/", "tag": "info", "actor": "Meta" },
-        { "slug": "2026-06-29-xai-grok-interactive-brokers", "title": "Grok intégré à Interactive Brokers — analyse de portefeuille et génération d'ordres, validation manuelle obligatoire", "primary_url": "https://financefeeds.com/interactive-brokers-adds-chatgpt-and-grok-as-ai-trading-race-accelerates/", "tag": "info", "actor": "xAI" },
-        { "slug": "2026-06-29-xai-grok-t3code", "title": "Grok accessible dans T3code (bring-your-own-subscription) pour SuperGrok et X", "primary_url": "https://www.basenor.com/blogs/news/grok-now-works-inside-t3code-for-supergrok-and-x-subscribers", "tag": "info", "actor": "xAI" },
-        { "slug": "2026-06-29-perplexity-computer-weekly-update", "title": "Perplexity Computer — édition inline par sélection, 6 workflows Enterprise, connecteur Vercel", "primary_url": "https://releasebot.io/updates/perplexity-ai", "tag": "info", "actor": "Perplexity" }
+        {
+          "slug": "2026-06-29-openai-gpt-5-6-sol-terra-luna",
+          "title": "GPT-5.6 Sol / Terra / Luna — preview verrouillée à ~20 partenaires US, SOTA Terminal-Bench mais record de reward-hacking",
+          "primary_url": "https://venturebeat.com/technology/openai-unveils-gpt-5-6-sol-terra-and-luna-models-but-only-accessible-to-limited-preview-partners-for-now-per-us-gov",
+          "tag": "lynxter",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-06-29-anthropic-claude-tag",
+          "title": "Claude Tag — agent Slack persistant multijoueur sur Opus 4.8, Access Bundles scopés par canal",
+          "primary_url": "https://venturebeat.com/technology/anthropic-launches-claude-tag-replacing-its-slack-app-with-a-persistent-ai-teammate-that-learns-monitors-and-works-autonomously",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-29-anthropic-claude-code-2-1-187-195",
+          "title": "Claude Code 2.1.187-195 — sandbox.credentials, /rewind, résilience MCP OAuth sur 401/403",
+          "primary_url": "https://code.claude.com/docs/en/changelog",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-29-google-gemini-3-5-flash-computer-use",
+          "title": "Gemini 3.5 Flash — le computer use devient un outil natif (78.4 % OSWorld-Verified)",
+          "primary_url": "https://the-decoder.com/google-bakes-computer-control-directly-into-gemini-3-5-flash-letting-the-model-see-and-operate-your-screen/",
+          "tag": "useful",
+          "actor": "Google DeepMind"
+        },
+        {
+          "slug": "2026-06-29-mistral-ocr-4",
+          "title": "Mistral OCR 4 — document intelligence self-hostable, 170 langues, 85.2 OlmOCRBench, 4$/1000 pages",
+          "primary_url": "https://venturebeat.com/data/mistral-launches-ocr-4-turning-document-extraction-into-a-full-enterprise-ai-play",
+          "tag": "useful",
+          "actor": "Mistral"
+        },
+        {
+          "slug": "2026-06-29-mistral-connectors-scoped-keys",
+          "title": "Mistral durcit les Connectors enterprise — clés API à scopes anti-impersonation, contrôles admin par workspace (GA)",
+          "primary_url": "https://byteiota.com/mistral-connectors-mcp-studio-api/",
+          "tag": "useful",
+          "actor": "Mistral"
+        },
+        {
+          "slug": "2026-06-29-openai-codex-cli-0-142",
+          "title": "Codex CLI v0.142 — budgets de tokens par rollout, délégation multi-agents configurable, web search indexée",
+          "primary_url": "https://releasebot.io/updates/openai/codex",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-06-29-xai-grok-build-goal",
+          "title": "Grok Build /goal — mode autonome longue durée avec vérification (Composer 2.5 + Grok Build 0.1)",
+          "primary_url": "https://www.marktechpost.com/2026/06/22/xai-launches-goal-in-grok-build-adding-long-running-autonomous-execution-with-built-in-verification-for-multi-step-coding-tasks/",
+          "tag": "useful",
+          "actor": "xAI"
+        },
+        {
+          "slug": "2026-06-29-perplexity-computer-for-counsel",
+          "title": "Perplexity Computer for Counsel — agent multi-modèles juridique routant 20+ modèles via MCP",
+          "primary_url": "https://www.law.com/legaltechnews/2026/06/24/perplexity-ai-launches-computer-for-counsel-powered-by-legal-tech-integrations/",
+          "tag": "useful",
+          "actor": "Perplexity"
+        },
+        {
+          "slug": "2026-06-29-cursor-3-9-customize",
+          "title": "Cursor 3.9 — page Customize : gestion centralisée plugins/skills/MCP/subagents",
+          "primary_url": "https://dev.classmethod.jp/en/articles/cursor-customize-integrated-management/",
+          "tag": "useful",
+          "actor": "Cursor"
+        },
+        {
+          "slug": "2026-06-29-openai-broadcom-jalapeno",
+          "title": "OpenAI + Broadcom dévoilent « Jalapeño », première puce d'inférence LLM custom d'OpenAI",
+          "primary_url": "https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-unveil-llm-optimized-intelligence-processor",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-06-29-anthropic-economic-index-cadences",
+          "title": "Anthropic Economic Index — rapport « Cadences » sur les rythmes d'usage de Claude",
+          "primary_url": "https://explainx.ai/blog/anthropic-economic-index-cadences-june-2026",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-29-meta-brain2qwerty-v2",
+          "title": "Meta FAIR — Brain2Qwerty v2 décode des phrases tapées à partir de MEG non-invasive",
+          "primary_url": "https://ai.meta.com/blog/brain2qwerty-brain-ai-human-communication/",
+          "tag": "info",
+          "actor": "Meta"
+        },
+        {
+          "slug": "2026-06-29-xai-grok-interactive-brokers",
+          "title": "Grok intégré à Interactive Brokers — analyse de portefeuille et génération d'ordres, validation manuelle obligatoire",
+          "primary_url": "https://financefeeds.com/interactive-brokers-adds-chatgpt-and-grok-as-ai-trading-race-accelerates/",
+          "tag": "info",
+          "actor": "xAI"
+        },
+        {
+          "slug": "2026-06-29-xai-grok-t3code",
+          "title": "Grok accessible dans T3code (bring-your-own-subscription) pour SuperGrok et X",
+          "primary_url": "https://www.basenor.com/blogs/news/grok-now-works-inside-t3code-for-supergrok-and-x-subscribers",
+          "tag": "info",
+          "actor": "xAI"
+        },
+        {
+          "slug": "2026-06-29-perplexity-computer-weekly-update",
+          "title": "Perplexity Computer — édition inline par sélection, 6 workflows Enterprise, connecteur Vercel",
+          "primary_url": "https://releasebot.io/updates/perplexity-ai",
+          "tag": "info",
+          "actor": "Perplexity"
+        }
       ]
     },
     {
       "date": "2026-06-22",
       "filename": "2026-06-22.html",
       "items_count": 10,
-      "by_tag": { "lynxter": 3, "useful": 3, "info": 4 },
-      "by_actor": { "Anthropic": 5, "OpenAI": 2, "Google": 1, "Meta": 0, "Mistral": 0, "Z.ai": 1, "xAI": 1 },
+      "by_tag": {
+        "lynxter": 3,
+        "useful": 3,
+        "info": 4
+      },
+      "by_actor": {
+        "Anthropic": 5,
+        "OpenAI": 2,
+        "Google": 1,
+        "Meta": 0,
+        "Mistral": 0,
+        "Z.ai": 1,
+        "xAI": 1
+      },
       "mode": "hebdomadaire",
       "title": "Claude Code passe aux Artifacts, GLM-5.2 casse les prix",
       "highlights": [
@@ -59,24 +289,97 @@
         "GLM-5.2 (Z.ai, open weights MIT) passe GPT-5.5 sur SWE-bench Pro (62.1 %) à ~1/6 du prix ; DeepMind traite les agents comme des « insider threats »"
       ],
       "items": [
-        { "slug": "2026-06-22-claude-code-artifacts", "title": "Claude Code Artifacts — les sessions de code deviennent des dashboards HTML live partageables", "primary_url": "https://code.claude.com/docs/en/artifacts", "tag": "lynxter", "actor": "Anthropic" },
-        { "slug": "2026-06-22-claude-code-2-1-178-185", "title": "Claude Code 2.1.178–185 — agent teams simplifiés, Tool(param:value), auto-mode durci", "primary_url": "https://code.claude.com/docs/en/changelog", "tag": "lynxter", "actor": "Anthropic" },
-        { "slug": "2026-06-22-project-fetch-phase-two", "title": "Project Fetch Phase 2 — Opus 4.7 pilote un robodog ~20× plus vite qu'une équipe humaine", "primary_url": "https://www.anthropic.com/research/project-fetch-phase-two", "tag": "lynxter", "actor": "Anthropic" },
-        { "slug": "2026-06-22-claude-sonnet-4-opus-4-retired", "title": "Anthropic retire Sonnet 4 et Opus 4 de l'API", "primary_url": "https://platform.claude.com/docs/en/release-notes/overview", "tag": "info", "actor": "Anthropic" },
-        { "slug": "2026-06-22-openai-for-healthcare", "title": "OpenAI ouvre son vertical santé — ChatGPT for Healthcare (HIPAA)", "primary_url": "https://openai.com/index/openai-for-healthcare/", "tag": "info", "actor": "OpenAI" },
-        { "slug": "2026-06-22-openai-lifescibench", "title": "OpenAI publie LifeSciBench — 750 tâches, meilleur modèle à 36.1 %", "primary_url": "https://openai.com/index/introducing-life-sci-bench/", "tag": "info", "actor": "OpenAI" },
-        { "slug": "2026-06-22-deepmind-securing-ai-agents", "title": "Google DeepMind traite les agents comme des « insider threats » — AI Control Roadmap", "primary_url": "https://deepmind.google/blog/securing-the-future-of-ai-agents/", "tag": "useful", "actor": "Google" },
-        { "slug": "2026-06-22-anthropic-seoul-korea", "title": "Anthropic ouvre Séoul — NAVER et Samsung SDS déploient Claude Code", "primary_url": "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem", "tag": "useful", "actor": "Anthropic" },
-        { "slug": "2026-06-22-glm-5-2-open-weights", "title": "GLM-5.2 (Z.ai) — open weights MIT qui passe GPT-5.5 sur le code à 1/6 du prix", "primary_url": "https://huggingface.co/zai-org/GLM-5.2", "tag": "useful", "actor": "Z.ai" },
-        { "slug": "2026-06-22-grok-office-addins", "title": "xAI déploie Grok en add-in Microsoft 365 (Word, Excel, PowerPoint)", "primary_url": "https://x.ai/news", "tag": "info", "actor": "xAI" }
+        {
+          "slug": "2026-06-22-claude-code-artifacts",
+          "title": "Claude Code Artifacts — les sessions de code deviennent des dashboards HTML live partageables",
+          "primary_url": "https://code.claude.com/docs/en/artifacts",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-22-claude-code-2-1-178-185",
+          "title": "Claude Code 2.1.178–185 — agent teams simplifiés, Tool(param:value), auto-mode durci",
+          "primary_url": "https://code.claude.com/docs/en/changelog",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-22-project-fetch-phase-two",
+          "title": "Project Fetch Phase 2 — Opus 4.7 pilote un robodog ~20× plus vite qu'une équipe humaine",
+          "primary_url": "https://www.anthropic.com/research/project-fetch-phase-two",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-22-claude-sonnet-4-opus-4-retired",
+          "title": "Anthropic retire Sonnet 4 et Opus 4 de l'API",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-22-openai-for-healthcare",
+          "title": "OpenAI ouvre son vertical santé — ChatGPT for Healthcare (HIPAA)",
+          "primary_url": "https://openai.com/index/openai-for-healthcare/",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-06-22-openai-lifescibench",
+          "title": "OpenAI publie LifeSciBench — 750 tâches, meilleur modèle à 36.1 %",
+          "primary_url": "https://openai.com/index/introducing-life-sci-bench/",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-06-22-deepmind-securing-ai-agents",
+          "title": "Google DeepMind traite les agents comme des « insider threats » — AI Control Roadmap",
+          "primary_url": "https://deepmind.google/blog/securing-the-future-of-ai-agents/",
+          "tag": "useful",
+          "actor": "Google"
+        },
+        {
+          "slug": "2026-06-22-anthropic-seoul-korea",
+          "title": "Anthropic ouvre Séoul — NAVER et Samsung SDS déploient Claude Code",
+          "primary_url": "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-22-glm-5-2-open-weights",
+          "title": "GLM-5.2 (Z.ai) — open weights MIT qui passe GPT-5.5 sur le code à 1/6 du prix",
+          "primary_url": "https://huggingface.co/zai-org/GLM-5.2",
+          "tag": "useful",
+          "actor": "Z.ai"
+        },
+        {
+          "slug": "2026-06-22-grok-office-addins",
+          "title": "xAI déploie Grok en add-in Microsoft 365 (Word, Excel, PowerPoint)",
+          "primary_url": "https://x.ai/news",
+          "tag": "info",
+          "actor": "xAI"
+        }
       ]
     },
     {
       "date": "2026-06-15",
       "filename": "2026-06-15.html",
       "items_count": 13,
-      "by_tag": { "lynxter": 3, "useful": 5, "info": 5 },
-      "by_actor": { "Anthropic": 5, "OpenAI": 3, "Google": 1, "Meta": 0, "Mistral": 1, "Cohere": 1, "Cursor": 1, "Perplexity": 1 },
+      "by_tag": {
+        "lynxter": 3,
+        "useful": 5,
+        "info": 5
+      },
+      "by_actor": {
+        "Anthropic": 5,
+        "OpenAI": 3,
+        "Google": 1,
+        "Meta": 0,
+        "Mistral": 1,
+        "Cohere": 1,
+        "Cursor": 1,
+        "Perplexity": 1
+      },
       "mode": "hebdomadaire",
       "title": "Fable 5 : record à 95 %, coupé en trois jours",
       "highlights": [
@@ -85,27 +388,117 @@
         "OpenAI rachète Ona (agents Codex longue durée) ; open-weights de code : DiffusionGemma (Google) + North Mini Code (Cohere)"
       ],
       "items": [
-        { "slug": "2026-06-15-claude-fable-5-mythos-5", "title": "Claude Fable 5 — 95 % SWE-bench Verified, le modèle public le plus fort jamais sorti", "primary_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5", "tag": "lynxter", "actor": "Anthropic" },
-        { "slug": "2026-06-15-fable-5-mythos-5-suspension", "title": "Washington débranche Fable 5 et Mythos 5 — première suspension d'un modèle frontière par l'État", "primary_url": "https://www.anthropic.com/news/fable-mythos-access", "tag": "lynxter", "actor": "Anthropic" },
-        { "slug": "2026-06-15-claude-code-2-1-169-176", "title": "Claude Code 2.1.169–176 — sous-agents imbriqués sur 5 niveaux, --safe-mode, enforceAvailableModels", "primary_url": "https://code.claude.com/docs/en/changelog", "tag": "lynxter", "actor": "Anthropic" },
-        { "slug": "2026-06-15-tcs-anthropic-partnership", "title": "TCS devient Global Premier Partner d'Anthropic — Claude pour 50 000 employés", "primary_url": "https://www.anthropic.com/news/tcs-anthropic-partnership", "tag": "info", "actor": "Anthropic" },
-        { "slug": "2026-06-15-anthropic-agents-in-biology", "title": "Recherche Anthropic — Paving the way for agents in biology", "primary_url": "https://www.anthropic.com/research/agents-in-biology", "tag": "info", "actor": "Anthropic" },
-        { "slug": "2026-06-15-openai-acquires-ona", "title": "OpenAI rachète Ona (ex-Gitpod) pour des agents Codex longue durée", "primary_url": "https://openai.com/index/openai-to-acquire-ona/", "tag": "useful", "actor": "OpenAI" },
-        { "slug": "2026-06-15-gpt-5-2-retired", "title": "GPT-5.2 retiré de ChatGPT — bascule automatique sur GPT-5.5", "primary_url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes", "tag": "useful", "actor": "OpenAI" },
-        { "slug": "2026-06-15-openai-chatgpt-personalization-free", "title": "OpenAI étend la personnalisation enrichie de ChatGPT à Go & Free", "primary_url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes", "tag": "info", "actor": "OpenAI" },
-        { "slug": "2026-06-15-diffusiongemma", "title": "DiffusionGemma — modèle texte par diffusion 26B open weights, jusqu'à 4× plus rapide", "primary_url": "https://developers.googleblog.com/diffusiongemma-the-developer-guide/", "tag": "useful", "actor": "Google" },
-        { "slug": "2026-06-15-mistral-funding-20b", "title": "Mistral en discussions pour lever ~3 Md€ à ~20 Md€ de valorisation (rumeur)", "primary_url": "https://techcrunch.com/2026/06/12/mistral-is-rumored-to-be-raising-e3b-at-e20-valuation/", "tag": "info", "actor": "Mistral" },
-        { "slug": "2026-06-15-cohere-north-mini-code", "title": "Cohere North Mini Code — coding agent open-weights 30B qui tient sur un seul H100", "primary_url": "https://cohere.com/blog/north-mini-code", "tag": "useful", "actor": "Cohere" },
-        { "slug": "2026-06-15-cursor-bugbot-review", "title": "Cursor Bugbot — reviews en ~90 s et commande /review avant push", "primary_url": "https://cursor.com/changelog", "tag": "useful", "actor": "Cursor" },
-        { "slug": "2026-06-15-perplexity-comet-200m", "title": "Perplexity lève 200 M$ pour son navigateur agentique Comet", "primary_url": "https://www.techtimes.com/articles/318028/20260608/perplexity-raises-200-million-comet-ai-browser-agent-economy-front-door.htm", "tag": "info", "actor": "Perplexity" }
+        {
+          "slug": "2026-06-15-claude-fable-5-mythos-5",
+          "title": "Claude Fable 5 — 95 % SWE-bench Verified, le modèle public le plus fort jamais sorti",
+          "primary_url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-15-fable-5-mythos-5-suspension",
+          "title": "Washington débranche Fable 5 et Mythos 5 — première suspension d'un modèle frontière par l'État",
+          "primary_url": "https://www.anthropic.com/news/fable-mythos-access",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-15-claude-code-2-1-169-176",
+          "title": "Claude Code 2.1.169–176 — sous-agents imbriqués sur 5 niveaux, --safe-mode, enforceAvailableModels",
+          "primary_url": "https://code.claude.com/docs/en/changelog",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-15-tcs-anthropic-partnership",
+          "title": "TCS devient Global Premier Partner d'Anthropic — Claude pour 50 000 employés",
+          "primary_url": "https://www.anthropic.com/news/tcs-anthropic-partnership",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-15-anthropic-agents-in-biology",
+          "title": "Recherche Anthropic — Paving the way for agents in biology",
+          "primary_url": "https://www.anthropic.com/research/agents-in-biology",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-15-openai-acquires-ona",
+          "title": "OpenAI rachète Ona (ex-Gitpod) pour des agents Codex longue durée",
+          "primary_url": "https://openai.com/index/openai-to-acquire-ona/",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-06-15-gpt-5-2-retired",
+          "title": "GPT-5.2 retiré de ChatGPT — bascule automatique sur GPT-5.5",
+          "primary_url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-06-15-openai-chatgpt-personalization-free",
+          "title": "OpenAI étend la personnalisation enrichie de ChatGPT à Go & Free",
+          "primary_url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-06-15-diffusiongemma",
+          "title": "DiffusionGemma — modèle texte par diffusion 26B open weights, jusqu'à 4× plus rapide",
+          "primary_url": "https://developers.googleblog.com/diffusiongemma-the-developer-guide/",
+          "tag": "useful",
+          "actor": "Google"
+        },
+        {
+          "slug": "2026-06-15-mistral-funding-20b",
+          "title": "Mistral en discussions pour lever ~3 Md€ à ~20 Md€ de valorisation (rumeur)",
+          "primary_url": "https://techcrunch.com/2026/06/12/mistral-is-rumored-to-be-raising-e3b-at-e20-valuation/",
+          "tag": "info",
+          "actor": "Mistral"
+        },
+        {
+          "slug": "2026-06-15-cohere-north-mini-code",
+          "title": "Cohere North Mini Code — coding agent open-weights 30B qui tient sur un seul H100",
+          "primary_url": "https://cohere.com/blog/north-mini-code",
+          "tag": "useful",
+          "actor": "Cohere"
+        },
+        {
+          "slug": "2026-06-15-cursor-bugbot-review",
+          "title": "Cursor Bugbot — reviews en ~90 s et commande /review avant push",
+          "primary_url": "https://cursor.com/changelog",
+          "tag": "useful",
+          "actor": "Cursor"
+        },
+        {
+          "slug": "2026-06-15-perplexity-comet-200m",
+          "title": "Perplexity lève 200 M$ pour son navigateur agentique Comet",
+          "primary_url": "https://www.techtimes.com/articles/318028/20260608/perplexity-raises-200-million-comet-ai-browser-agent-economy-front-door.htm",
+          "tag": "info",
+          "actor": "Perplexity"
+        }
       ]
     },
     {
       "date": "2026-06-07",
       "filename": "2026-06-07.html",
       "items_count": 9,
-      "by_tag": { "lynxter": 1, "useful": 4, "info": 4 },
-      "by_actor": { "Anthropic": 5, "OpenAI": 2, "Google": 0, "Meta": 0, "Mistral": 0, "Cursor": 1, "xAI": 1 },
+      "by_tag": {
+        "lynxter": 1,
+        "useful": 4,
+        "info": 4
+      },
+      "by_actor": {
+        "Anthropic": 5,
+        "OpenAI": 2,
+        "Google": 0,
+        "Meta": 0,
+        "Mistral": 0,
+        "Cursor": 1,
+        "xAI": 1
+      },
       "mode": "hebdomadaire",
       "title": "Mythos chasse les failles, Anthropic vise la bourse",
       "highlights": [
@@ -114,23 +507,90 @@
         "Claude Code v2.1.168 — fallback models + durcissement cross-session ; OpenAI déploie la mémoire Dreaming V3"
       ],
       "items": [
-        { "slug": "2026-06-07-claude-code-2-1-166-fallback-models", "title": "Claude Code v2.1.166-168 — fallback models, globs deny rules, messagerie cross-session durcie", "primary_url": "https://code.claude.com/docs/en/changelog", "tag": "lynxter", "actor": "Anthropic" },
-        { "slug": "2026-06-07-project-glasswing-expansion", "title": "Project Glasswing s'étend à ~200 orgs — Mythos a trouvé >10 000 failles critiques", "primary_url": "https://www.anthropic.com/news/expanding-project-glasswing", "tag": "useful", "actor": "Anthropic" },
-        { "slug": "2026-06-07-anthropic-s1-ipo-filing", "title": "Anthropic dépose un S-1 confidentiel à la SEC", "primary_url": "https://www.anthropic.com/news/confidential-draft-s1-sec", "tag": "useful", "actor": "Anthropic" },
-        { "slug": "2026-06-07-openai-dreaming-memory", "title": "OpenAI « Dreaming V3 » — mémoire ChatGPT réécrite par synthèse en arrière-plan", "primary_url": "https://openai.com/index/chatgpt-memory-dreaming/", "tag": "useful", "actor": "OpenAI" },
-        { "slug": "2026-06-07-cursor-3-7-design-mode", "title": "Cursor 3.7 — Design Mode (clic/dessin/voix dans le navigateur Cursor)", "primary_url": "https://cursor.com/changelog", "tag": "useful", "actor": "Cursor" },
-        { "slug": "2026-06-07-claude-partner-network", "title": "Anthropic lance le Claude Partner Network — Services Track + Partner Hub", "primary_url": "https://www.anthropic.com/news", "tag": "info", "actor": "Anthropic" },
-        { "slug": "2026-06-07-anthropic-claude-chemist", "title": "Recherche Anthropic — Making Claude a chemist", "primary_url": "https://www.anthropic.com/research", "tag": "info", "actor": "Anthropic" },
-        { "slug": "2026-06-07-openai-codex-workspace-agents", "title": "OpenAI — partage de plugins et workspace agents pour Codex (Enterprise/EDU)", "primary_url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes", "tag": "info", "actor": "OpenAI" },
-        { "slug": "2026-06-07-xai-grok-build-acp", "title": "xAI — Grok Build en beta (TUI, headless, ACP) + Grok V9 en approche", "primary_url": "https://x.ai/build/changelog", "tag": "info", "actor": "xAI" }
+        {
+          "slug": "2026-06-07-claude-code-2-1-166-fallback-models",
+          "title": "Claude Code v2.1.166-168 — fallback models, globs deny rules, messagerie cross-session durcie",
+          "primary_url": "https://code.claude.com/docs/en/changelog",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-07-project-glasswing-expansion",
+          "title": "Project Glasswing s'étend à ~200 orgs — Mythos a trouvé >10 000 failles critiques",
+          "primary_url": "https://www.anthropic.com/news/expanding-project-glasswing",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-07-anthropic-s1-ipo-filing",
+          "title": "Anthropic dépose un S-1 confidentiel à la SEC",
+          "primary_url": "https://www.anthropic.com/news/confidential-draft-s1-sec",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-07-openai-dreaming-memory",
+          "title": "OpenAI « Dreaming V3 » — mémoire ChatGPT réécrite par synthèse en arrière-plan",
+          "primary_url": "https://openai.com/index/chatgpt-memory-dreaming/",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-06-07-cursor-3-7-design-mode",
+          "title": "Cursor 3.7 — Design Mode (clic/dessin/voix dans le navigateur Cursor)",
+          "primary_url": "https://cursor.com/changelog",
+          "tag": "useful",
+          "actor": "Cursor"
+        },
+        {
+          "slug": "2026-06-07-claude-partner-network",
+          "title": "Anthropic lance le Claude Partner Network — Services Track + Partner Hub",
+          "primary_url": "https://www.anthropic.com/news",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-07-anthropic-claude-chemist",
+          "title": "Recherche Anthropic — Making Claude a chemist",
+          "primary_url": "https://www.anthropic.com/research",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-06-07-openai-codex-workspace-agents",
+          "title": "OpenAI — partage de plugins et workspace agents pour Codex (Enterprise/EDU)",
+          "primary_url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-06-07-xai-grok-build-acp",
+          "title": "xAI — Grok Build en beta (TUI, headless, ACP) + Grok V9 en approche",
+          "primary_url": "https://x.ai/build/changelog",
+          "tag": "info",
+          "actor": "xAI"
+        }
       ]
     },
     {
       "date": "2026-06-01",
       "filename": "2026-06-01.html",
       "items_count": 10,
-      "by_tag": { "lynxter": 2, "useful": 4, "info": 4 },
-      "by_actor": { "Anthropic": 3, "OpenAI": 3, "Google": 0, "Meta": 0, "Mistral": 1, "Cursor": 1, "xAI": 1, "Perplexity": 1 },
+      "by_tag": {
+        "lynxter": 2,
+        "useful": 4,
+        "info": 4
+      },
+      "by_actor": {
+        "Anthropic": 3,
+        "OpenAI": 3,
+        "Google": 0,
+        "Meta": 0,
+        "Mistral": 1,
+        "Cursor": 1,
+        "xAI": 1,
+        "Perplexity": 1
+      },
       "mode": "hebdomadaire",
       "title": "Anthropic frappe trois fois",
       "highlights": [
@@ -143,8 +603,21 @@
       "date": "2026-05-25",
       "filename": "2026-05-25.html",
       "items_count": 13,
-      "by_tag": { "lynxter": 1, "useful": 7, "info": 5 },
-      "by_actor": { "Anthropic": 3, "OpenAI": 3, "Google": 3, "Meta": 1, "Mistral": 0, "Perplexity": 1, "xAI": 1, "DeepSeek": 1 },
+      "by_tag": {
+        "lynxter": 1,
+        "useful": 7,
+        "info": 5
+      },
+      "by_actor": {
+        "Anthropic": 3,
+        "OpenAI": 3,
+        "Google": 3,
+        "Meta": 1,
+        "Mistral": 0,
+        "Perplexity": 1,
+        "xAI": 1,
+        "DeepSeek": 1
+      },
       "mode": "hebdomadaire",
       "title": "Google joue Antigravity, Anthropic verrouille la conformité",
       "highlights": [
@@ -157,8 +630,21 @@
       "date": "2026-05-18",
       "filename": "2026-05-18.html",
       "items_count": 9,
-      "by_tag": { "lynxter": 1, "useful": 6, "info": 2 },
-      "by_actor": { "Anthropic": 3, "OpenAI": 2, "Google": 1, "Meta": 0, "Mistral": 0, "Perplexity": 1, "xAI": 1, "Cursor": 1 },
+      "by_tag": {
+        "lynxter": 1,
+        "useful": 6,
+        "info": 2
+      },
+      "by_actor": {
+        "Anthropic": 3,
+        "OpenAI": 2,
+        "Google": 1,
+        "Meta": 0,
+        "Mistral": 0,
+        "Perplexity": 1,
+        "xAI": 1,
+        "Cursor": 1
+      },
       "mode": "hebdomadaire",
       "title": "Claude Code multi-agent, OpenAI monte en voix",
       "highlights": [
@@ -171,8 +657,18 @@
       "date": "2026-05-11",
       "filename": "2026-05-11.html",
       "items_count": 11,
-      "by_tag": { "lynxter": 4, "useful": 6, "info": 1 },
-      "by_actor": { "Anthropic": 5, "OpenAI": 1, "Google": 2, "Meta": 1, "Mistral": 2 },
+      "by_tag": {
+        "lynxter": 4,
+        "useful": 6,
+        "info": 1
+      },
+      "by_actor": {
+        "Anthropic": 5,
+        "OpenAI": 1,
+        "Google": 2,
+        "Meta": 1,
+        "Mistral": 2
+      },
       "mode": "rétrospective initiale (14 avril → 11 mai)",
       "highlights": [
         "Claude Opus 4.7 — saut net SWE-bench (87.6%)",

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "last_updated": "2026-06-15",
+    "last_updated": "2026-07-06",
     "metric": "SWE-bench Verified",
     "metric_description": "Résolution autonome d'issues GitHub (dataset 500 tâches validées humainement, Scale AI). Scores exprimés en % de tâches résolues.",
     "source": "Annonces officielles acteurs · Scale AI benchlm.ai · analyses indépendantes",
@@ -466,6 +466,20 @@
       "pricing_out": null,
       "open_weights": false,
       "notes": "Preview interne NON PUBLIÉE · score 93.9 % SWE-bench NON OFFICIEL (rumeur/leak) · 94.6 % GPQA Diamond non officiel · à ne pas traiter comme un modèle sorti"
+    },
+    {
+      "id": "claude-sonnet-5",
+      "name": "Claude Sonnet 5",
+      "actor": "Anthropic",
+      "date": "2026-06-30",
+      "swe_bench_verified": 85.2,
+      "approximate": false,
+      "status": "released",
+      "context_k": 1000,
+      "pricing_in": 3.0,
+      "pricing_out": 15.0,
+      "open_weights": false,
+      "notes": "Défaut de Claude Code dès v2.1.197 (30 juin 2026) · SWE-bench Pro 63.2 % · Terminal-Bench 2.1 80.4 % · OSWorld-Verified 81.2 % · 1M ctx · Pricing promo $2/$10 jusqu'au 31 août 2026, puis $3/$15 · Score officiel Anthropic"
     }
   ]
 }
