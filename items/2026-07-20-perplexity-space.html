@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perplexity SPACE — runtime sandbox sécurisé pour agents long-horizon (microVM Firecracker, spin-up 3-5×, isolation credentials) — Veille IA Lynxter</title>
+<meta name="description" content="Analyse de Perplexity SPACE (15 juillet 2026) : runtime sandbox à microVM Firecracker pour agents long-horizon, isolation des credentials hors sandbox, spin-up 3-5× plus rapide. Le modèle d'isolation de référence pour les agents Lynxter sur données machine sensibles.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-07-20.html">2026-07-20</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Perplexity SPACE</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Perplexity</span>
+          <span class="dot-sep">·</span>
+          <span>15 juillet 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-useful">🛠 Utile</span>
+        </div>
+        <h1>Perplexity SPACE — runtime sandbox sécurisé pour agents long-horizon (microVM Firecracker, spin-up 3-5×, isolation credentials)</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-07-20.html">Claude Code orchestre, Meta ferme, xAI fuit — 2026-07-20</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">Firecracker<span class="unit">microVM</span></div>
+            <div class="stat-label">sandbox éphémère par tâche</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3-5×<span class="unit">spin-up</span></div>
+            <div class="stat-label">plus rapide que la solution précédente</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3<span class="unit">services</span></div>
+            <div class="stat-label">Network Gateway · Space Daemon · File Service</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">millions<span class="unit">sandboxes</span></div>
+            <div class="stat-label">créées la 1re semaine</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Le 15 juillet 2026, Perplexity dévoile <strong>SPACE</strong> (Secure and Efficient Runtimes for Long-Running Agents), la couche d'exécution derrière son agent Perplexity Computer. Chaque tâche s'exécute dans une <strong>microVM Firecracker</strong> (la techno d'isolation open-source d'AWS), un sandbox éphémère détruit en fin de tâche — mais encapsulé dans une session pausable, resumable et forkable, capable de survivre aux redémarrages et de brancher plusieurs sandboxes.</p>
+        <p>L'architecture de sécurité repose sur trois services séparés du sandbox : <strong>Network Gateway, Space Daemon et File Service</strong>. Ils injectent les credentials depuis l'<em>extérieur</em> du sandbox, uniquement au moment précis du besoin. Conséquence : un agent compromis (par une entrée non fiable, un contenu web piégé, un fichier malveillant) n'a par défaut aucun chemin vers les credentials plateforme ni d'accès au-delà de sa tâche.</p>
+        <p>Perplexity revendique un <strong>spin-up 3-5× plus rapide</strong> que sa solution précédente et, sur la première semaine, des millions de créations de sandbox et des dizaines de millions de reconnexions. C'est le même problème d'isolation d'exécution que les code-execution sandboxes de Claude Code (bash) et d'OpenAI, mais packagé ici comme couche runtime dédiée aux agents tournant 24/7 — la direction que prend toute l'industrie sur la sécurité des agents long-horizon.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🛠 Pourquoi c'est utile à savoir pour Lynxter</h2>
+        <p>SPACE est le modèle d'isolation de référence à connaître au moment exact où l'incident Grok Build (exfiltration de dépôts et clés SSH) rappelle le coût d'un agent sans sandbox. Le principe clé — <strong>injecter les credentials hors du sandbox, au dernier moment</strong>, plutôt que de les laisser accessibles à l'agent — est directement applicable si Lynxter laisse tourner des agents long-horizon sur des données machine sensibles (logs S300X/S600D, base de tickets, configurations client).</p>
+        <p>Action architecturale : pour tout workflow agent qui manipule des secrets ou accède au réseau (connecteurs MCP internes, agents de support autonomes), isole l'exécution dans un sandbox éphémère sans credentials persistants, et fais transiter les accès par un service externe qui ne les expose qu'à la demande. Que ce soit via les sandboxes bash de Claude Code, une microVM Firecracker maison ou une offre managée, le pattern est le même — et il devient la baseline attendue, pas une option. À évaluer avant d'industrialiser des routines Cowork qui touchent à des données production.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source secondaire</strong>
+        <a class="source-url" href="https://siliconangle.com/2026/07/15/perplexity-launches-secure-sandbox-make-ai-agents-secure-powerful/" target="_blank" rel="noopener">siliconangle.com — Perplexity SPACE</a>
+        <span class="source-meta">Perplexity · SPACE · 15 juillet 2026 · sans annonce officielle fetchée (perplexity.ai non confirmé dans le scan)</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-07-20-grok-build-open-source.html">
+            <span class="related-actor">xAI</span>
+            <span class="related-title">Grok Build — exfiltration de dépôts</span>
+            undefined
+          </a></li>
+          <li><a href="2026-07-20-claude-code-2-1-202-215.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code 2.1.202→215 — durcissement permissions</span>
+            undefined
+          </a></li>
+          <li><a href="2026-07-20-cursor-3-11.html">
+            <span class="related-actor">Cursor</span>
+            <span class="related-title">Cursor 3.11 — Team MCP servers</span>
+            undefined
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="../briefs/2026-07-20.html">
+          <span class="label">← Retour au brief</span>
+          <span class="title">2026-07-20</span>
+        </a>
+        <a class="next" href="../briefs/index.html">
+          <span class="label">Toutes les archives →</span>
+          <span class="title">Archive des briefs</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-07-20</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

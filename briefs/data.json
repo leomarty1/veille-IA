@@ -1,6 +1,161 @@
 {
   "briefs": [
     {
+      "date": "2026-07-20",
+      "filename": "2026-07-20.html",
+      "items_count": 18,
+      "by_tag": {
+        "lynxter": 3,
+        "useful": 5,
+        "info": 10
+      },
+      "by_actor": {
+        "Anthropic": 3,
+        "OpenAI": 4,
+        "Google": 3,
+        "Meta": 2,
+        "Mistral": 1,
+        "xAI": 3,
+        "Cursor": 1,
+        "Perplexity": 1
+      },
+      "mode": "hebdomadaire",
+      "title": "Claude Code orchestre, Meta ferme, xAI fuit",
+      "highlights": [
+        "Quatorze releases Claude Code (2.1.202→215) : Opus 4.8 défaut sur Bedrock/Vertex/AWS + auto mode sans opt-in, /fork en session de fond, cap 200 subagents/session, MCP >2 min en arrière-plan, et /verify + /code-review désormais sur invocation explicite",
+        "GPT-5.6 en GA (Sol $5/$30, Terra $2,50/$15, Luna $1/$6 ; Sol Ultra 91,9 % Terminal-Bench vs Opus 4.8 78,9 %) — et OpenAI audite SWE-Bench Pro : ~30 % des 731 tâches jugées cassées, recommandation d'usage retirée",
+        "Meta rompt avec l'open weights (Muse Spark 1.1 closed API, 1,25 $/4,25 $, MCP Atlas 88,1 devant Opus 4.8) ; xAI open-source Grok Build ~72 h après une exfiltration de dépôts Git et clés SSH vers un bucket xAI"
+      ],
+      "items": [
+        {
+          "slug": "2026-07-20-claude-code-2-1-202-215",
+          "title": "Claude Code 2.1.202 → 2.1.215 — Opus 4.8 défaut sur Bedrock/Vertex/AWS, /fork en session de fond, cap 200 subagents, /verify et /code-review sur invocation explicite",
+          "primary_url": "https://code.claude.com/docs/en/changelog",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-07-20-cursor-3-11",
+          "title": "Cursor 3.11 — side chats, recherche de transcripts d'agents (Cmd+K), distribution Team MCP servers",
+          "primary_url": "https://cursor.com/changelog",
+          "tag": "lynxter",
+          "actor": "Cursor"
+        },
+        {
+          "slug": "2026-07-20-grok-build-open-source",
+          "title": "Grok Build passe en open source (Apache 2.0) 72 h après une exfiltration silencieuse de dépôts Git et clés SSH",
+          "primary_url": "https://github.com/xai-org/grok-build",
+          "tag": "lynxter",
+          "actor": "xAI"
+        },
+        {
+          "slug": "2026-07-20-gpt-5-6-ga",
+          "title": "GPT-5.6 en disponibilité générale (Sol/Terra/Luna) + agent ChatGPT Work et mode ultra à délégation",
+          "primary_url": "https://openai.com/index/gpt-5-6/",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-07-20-openai-swe-bench-pro-audit",
+          "title": "OpenAI audite SWE-Bench Pro et retire sa recommandation — ~30 % des tâches cassées",
+          "primary_url": "https://openai.com/index/separating-signal-from-noise-coding-evaluations/",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-07-20-meta-muse-spark-1-1",
+          "title": "Muse Spark 1.1 + Meta Model API — premier modèle Meta closed-weights, agentique, à 1,25 $/4,25 $ par M tokens",
+          "primary_url": "https://www.techtimes.com/articles/320088/20260710/metas-muse-spark-11-opens-paid-api-one-quarter-anthropic-openai-rates.htm",
+          "tag": "useful",
+          "actor": "Meta"
+        },
+        {
+          "slug": "2026-07-20-grok-4-5",
+          "title": "Grok 4.5 — 4e de l'Intelligence Index à 54, 76 au Coding Agent Index, 2 $/6 $ par M tokens, co-entraîné avec Cursor",
+          "primary_url": "https://artificialanalysis.ai/articles/grok-4-5-brings-spacexai-to-the-the-intelligence-frontier",
+          "tag": "useful",
+          "actor": "xAI"
+        },
+        {
+          "slug": "2026-07-20-perplexity-space",
+          "title": "Perplexity SPACE — runtime sandbox sécurisé pour agents long-horizon (microVM Firecracker, spin-up 3-5×, isolation credentials)",
+          "primary_url": "https://siliconangle.com/2026/07/15/perplexity-launches-secure-sandbox-make-ai-agents-secure-powerful/",
+          "tag": "useful",
+          "actor": "Perplexity"
+        },
+        {
+          "slug": "2026-07-20-claude-reflect",
+          "title": "Claude Reflect — dashboard d'usage en beta pour Free/Pro/Max",
+          "primary_url": "https://www.anthropic.com/news/reflect-with-claude",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-07-20-claude-for-teachers",
+          "title": "Claude for Teachers — accès gratuit pour les enseignants K-12 américains vérifiés",
+          "primary_url": "https://www.anthropic.com/news/claude-for-teachers",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-07-20-gpt-live",
+          "title": "GPT-Live — voix full-duplex qui écoute et parle simultanément, délègue à GPT-5.5",
+          "primary_url": "https://openai.com/index/introducing-gpt-live/",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-07-20-gpt-red",
+          "title": "GPT-Red — red-teaming automatisé par self-play, 6× moins d'injections de prompt réussies sur GPT-5.6",
+          "primary_url": "https://openai.com/index/unlocking-self-improvement-gpt-red/",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-07-20-gemini-3-5-pro-slip",
+          "title": "Gemini 3.5 Pro — cible du 17 juillet manquée, toujours en preview Vertex AI restreinte (rumeur/leak)",
+          "primary_url": "https://www.techtimes.com/articles/320308/20260713/gemini-35-pro-targets-july-17-after-full-rebuild-every-spec-remains-unconfirmed.htm",
+          "tag": "info",
+          "actor": "Google DeepMind"
+        },
+        {
+          "slug": "2026-07-20-google-vids-gemini-omni",
+          "title": "Google Vids — Gemini Omni et avatars personnels : génération/édition vidéo par prompt",
+          "primary_url": "https://techcrunch.com/2026/07/16/google-vids-now-lets-you-star-in-your-own-ai-videos/",
+          "tag": "info",
+          "actor": "Google DeepMind"
+        },
+        {
+          "slug": "2026-07-20-gemini-chrome-uk",
+          "title": "Gemini in Chrome arrive au Royaume-Uni (desktop), transformation d'images via Nano Banana 2",
+          "primary_url": "https://9to5google.com/2026/07/14/gemini-chrome-uk/",
+          "tag": "info",
+          "actor": "Google DeepMind"
+        },
+        {
+          "slug": "2026-07-20-meta-muse-image",
+          "title": "Muse Image lancé, Muse Video en preview — premiers modèles de génération média maison de MSL",
+          "primary_url": "https://www.cnbc.com/2026/07/07/meta-ai-muse-image.html",
+          "tag": "info",
+          "actor": "Meta"
+        },
+        {
+          "slug": "2026-07-20-mistral-robostral-navigate",
+          "title": "Robostral Navigate — modèle embodied 8B de navigation robotique par caméra RGB unique, 76,6 % R2R-CE",
+          "primary_url": "https://the-decoder.com/mistral-enters-robotics-with-robostral-navigate-an-8b-model-that-steers-robots-using-just-one-camera/",
+          "tag": "info",
+          "actor": "Mistral"
+        },
+        {
+          "slug": "2026-07-20-grok-automations",
+          "title": "Automations dans Grok — tâches planifiées et déclencheurs email",
+          "primary_url": "https://www.testingcatalog.com/xai-is-working-on-automations-feature-for-grok/",
+          "tag": "info",
+          "actor": "xAI"
+        }
+      ]
+    },
+    {
       "date": "2026-07-06",
       "filename": "2026-07-06.html",
       "items_count": 13,

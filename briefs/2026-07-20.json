@@ -1,0 +1,1082 @@
+{
+  "date": "2026-07-20",
+  "title": "Claude Code orchestre, Meta ferme, xAI fuit",
+  "title_html": "Claude Code<br>orchestre, Meta ferme,<br><em style=\"font-style:normal;color:var(--lx-accent);\">xAI fuit</em>",
+  "description": "Brief IA du 6 au 20 juillet 2026 : 14 releases Claude Code (Opus 4.8 défaut Bedrock/Vertex/AWS, /verify explicite), GPT-5.6 GA et audit SWE-Bench Pro, Meta ferme ses poids (Muse Spark 1.1), xAI open-source Grok Build après une exfiltration de dépôts.",
+  "period": "6 juillet → 20 juillet 2026",
+  "actors_scanned": 9,
+  "intro_html": "Fenêtre de deux semaines très dense. Anthropic industrialise la boucle agentique de Claude Code sur quatorze releases, OpenAI passe GPT-5.6 en GA tout en démolissant le crédit des benchmarks SWE-bench, Meta rompt avec l'open weights, et la sécurité des agents s'impose comme fil rouge après l'exfiltration silencieuse de dépôts par une version de Grok Build.",
+  "tldr": [
+    "<strong>Quatorze releases Claude Code (2.1.202→215) en deux semaines.</strong> 2.1.207 bascule le défaut sur Opus 4.8 pour Bedrock/Vertex/AWS et active l'auto mode sans opt-in ; 2.1.212 refond l'orchestration (<code>/fork</code> en session de fond, <code>/subtask</code> pour l'ancien comportement, cap 200 subagents/session, MCP >2 min en arrière-plan, 200 WebSearch/session) ; 2.1.214 ajoute <code>EndConversation</code> et colmate des trous de permissions (plan mode lançant des Bash mutants, règles <code>dir/**</code> trop larges) ; 2.1.215 impose l'invocation explicite de <code>/verify</code> et <code>/code-review</code>.",
+    "<strong>Le paysage benchmarks se recompose.</strong> OpenAI passe GPT-5.6 en GA (Sol $5/$30, Terra $2,50/$15, Luna $1/$6 ; Sol Ultra 91,9 % Terminal-Bench vs Opus 4.8 78,9 %) ET audite SWE-Bench Pro — ~30 % des 731 tâches jugées cassées, recommandation d'usage retirée : les scores SWE-bench des slides/RFP sont à relativiser. Meta rompt avec l'open weights via Muse Spark 1.1 (closed API, 1,25 $/4,25 $ par M tokens, MCP Atlas 88,1 devant Opus 4.8 82,2), xAI sort Grok 4.5 (Intelligence Index 54, 4e ; 2 $/6 $).",
+    "<strong>Sécurité des agents au premier plan.</strong> xAI open-source Grok Build sous Apache 2.0 (~72 h après la preuve qu'une version du CLI exfiltrait des dépôts Git complets et des clés SSH vers un bucket xAI) — à comparer à Claude Code et Codex qui n'exfiltrent pas par défaut. Perplexity dévoile SPACE (microVM Firecracker, injection de credentials hors sandbox), Cursor 3.11 distribue des Team MCP servers vers IDE/CLI/cloud, et OpenAI durcit GPT-5.6 avec GPT-Red (6× moins d'injections de prompt réussies)."
+  ],
+  "lynxter_hero": [
+    "La séquence Claude Code 2.1.202→215 impose deux actions cette semaine. Sur les déploiements cloud d'abord : la 2.1.207 bascule le défaut sur Opus 4.8 et active l'auto mode <em>sans opt-in</em> sur Bedrock, Vertex et Claude Platform on AWS — audite tes variables d'environnement avant toute montée de version sur ces clouds, car un pipeline qui écrit dans un repo firmware S300X/S600D peut passer en auto mode par simple upgrade. Sur les routines Cowork ensuite : la 2.1.215 met fin à l'exécution <em>implicite</em> de <code>/verify</code> et <code>/code-review</code>. Tout workflow qui comptait dessus ne les lancera plus — ajoute les appels explicites sans attendre, sous peine de merges non vérifiés qui passent en silence. Et dimensionne tes workflows fan-out sous le nouveau cap de 200 subagents/session, en migrant les usages in-session de <code>/fork</code> vers <code>/subtask</code>.",
+    "La sécurité des agents devient le sujet dominant, et il tombe au bon moment pour trancher la gouvernance interne. L'incident Grok Build — une version du CLI xAI qui exfiltrait des dépôts Git complets et jusqu'aux clés SSH du poste vers un bucket xAI — prouve que le périmètre à risque n'est pas le repo mais tout le home de la machine. Établis une allowlist des CLI d'agents autorisés sur les postes dev/support (Claude Code, Codex, Grok Build, Cursor CLI…), documente leur politique de rétention par défaut, et isole toute exécution non vérifiée hors des clés de production. Le modèle d'isolation de Perplexity SPACE (microVM Firecracker éphémère, credentials injectés depuis l'extérieur du sandbox au dernier moment) est la référence architecturale à répliquer dès que des agents long-horizon touchent des données machine sensibles. À l'inverse, le durcissement de permissions de Claude Code 2.1.214 (fin des Bash mutants en plan mode, resserrement des règles <code>dir/**</code>) renforce l'argument « Claude Code est le CLI d'agent le plus verrouillé par défaut ».",
+    "Côté modèles, trois sorties concurrentes sont à benchmarker, pas à adopter les yeux fermés — et l'audit SWE-Bench Pro d'OpenAI oblige à en relativiser les chiffres. GPT-5.6 GA (Terra à $2,50/$15, Sol Ultra 91,9 % Terminal-Bench), Muse Spark 1.1 (closed API à 1,25 $/4,25 $, MCP Atlas 88,1 devant Opus 4.8 à 82,2) et Grok 4.5 (Coding Agent Index 76, ~4,2× moins de tokens qu'Opus 4.8) cassent tous la grille de prix, mais chacun porte un défaut opposable : Muse Spark est une closed API sans self-host (dépendance fournisseur totale), Grok 4.5 hallucine 54 % du temps et n'est pas dispo dans l'UE. Puisqu'OpenAI reconnaît lui-même que ~30 % des tâches SWE-Bench Pro sont cassées, ajoute sur la page Modèles et dans tes RFP une note « benchmark contesté (juillet 2026) » et déplace l'argumentaire vers le vrai discriminant : un test coût/fiabilité sur un corpus S300X/S600D représentatif, pas un score public."
+  ],
+  "synthese_html": "Fenêtre dense de deux semaines. <strong>Anthropic</strong> enchaîne <strong>quatorze releases Claude Code (2.1.202→215)</strong> : Opus 4.8 en défaut sur Bedrock/Vertex/AWS + auto mode sans opt-in (2.1.207), refonte de l'orchestration agent (<code>/fork</code> en session de fond, <code>/subtask</code>, cap 200 subagents/session, MCP >2 min en arrière-plan — 2.1.212), outil <code>EndConversation</code> et colmatage de permissions (2.1.214), <code>/verify</code> et <code>/code-review</code> désormais sur invocation explicite (2.1.215) ; côté grand public, beta de <strong>Reflect</strong> (dashboard d'usage) et <strong>Claude for Teachers</strong> (gratuit K-12 US). <strong>OpenAI</strong> passe <strong>GPT-5.6 en GA</strong> (Sol/Terra/Luna, Sol Ultra 91,9 % Terminal-Bench, ChatGPT Work), <strong>audite SWE-Bench Pro</strong> (~30 % des tâches cassées, recommandation retirée), déploie <strong>GPT-Live</strong> (voix full-duplex) et dévoile <strong>GPT-Red</strong> (red-teaming self-play, 6× moins d'injections de prompt). <strong>Google DeepMind</strong> rate sa cible du 17 juillet pour <strong>Gemini 3.5 Pro</strong> (toujours en preview Vertex restreinte, rumeur/leak), et déploie <strong>Gemini Omni dans Google Vids</strong> et <strong>Gemini in Chrome au Royaume-Uni</strong> — peu de substance technique nouvelle. <strong>Meta</strong> rompt avec l'open weights via <strong>Muse Spark 1.1</strong> (premier modèle Meta closed-weights, agentique, 1,25 $/4,25 $ par M tokens, domine les benchmarks tool-use) et internalise sa stack créative (<strong>Muse Image/Video</strong>). <strong>Mistral</strong> entre dans la robotique avec <strong>Robostral Navigate</strong> (embodied 8B mono-caméra, 76,6 % R2R-CE). Côté secondaires : <strong>xAI</strong> sort <strong>Grok 4.5</strong> (Intelligence Index 54), open-source <strong>Grok Build</strong> après une exfiltration de dépôts, et lance les <strong>Automations</strong> ; <strong>Perplexity</strong> dévoile le runtime sandbox <strong>SPACE</strong> ; <strong>Cursor 3.11</strong> ajoute side chats, recherche de transcripts et Team MCP servers. <strong>DeepSeek</strong> : rien de notable.",
+  "actors_order": [
+    "Anthropic",
+    "OpenAI",
+    "Google DeepMind",
+    "Meta",
+    "Mistral"
+  ],
+  "actor_empty": {},
+  "sources_footer": [
+    {
+      "label": "code.claude.com/changelog",
+      "url": "https://code.claude.com/docs/en/changelog"
+    },
+    {
+      "label": "anthropic.com/news",
+      "url": "https://www.anthropic.com/news"
+    },
+    {
+      "label": "openai.com/news",
+      "url": "https://openai.com/news/"
+    },
+    {
+      "label": "blog.google/technology/ai",
+      "url": "https://blog.google/technology/ai/"
+    },
+    {
+      "label": "ai.meta.com/blog",
+      "url": "https://ai.meta.com/blog/"
+    },
+    {
+      "label": "mistral.ai/news",
+      "url": "https://mistral.ai/news/"
+    },
+    {
+      "label": "github.com/xai-org/grok-build",
+      "url": "https://github.com/xai-org/grok-build"
+    },
+    {
+      "label": "cursor.com/changelog",
+      "url": "https://cursor.com/changelog"
+    },
+    {
+      "label": "artificialanalysis.ai",
+      "url": "https://artificialanalysis.ai/"
+    },
+    {
+      "label": "simonwillison.net",
+      "url": "https://simonwillison.net/"
+    }
+  ],
+  "prev": {
+    "href": "2026-07-06.html",
+    "title": "Sonnet 5 par défaut, Fable 5 déverrouillé"
+  },
+  "highlights": [
+    "Quatorze releases Claude Code (2.1.202→215) : Opus 4.8 défaut sur Bedrock/Vertex/AWS + auto mode sans opt-in, /fork en session de fond, cap 200 subagents/session, MCP >2 min en arrière-plan, et /verify + /code-review désormais sur invocation explicite",
+    "GPT-5.6 en GA (Sol $5/$30, Terra $2,50/$15, Luna $1/$6 ; Sol Ultra 91,9 % Terminal-Bench vs Opus 4.8 78,9 %) — et OpenAI audite SWE-Bench Pro : ~30 % des 731 tâches jugées cassées, recommandation d'usage retirée",
+    "Meta rompt avec l'open weights (Muse Spark 1.1 closed API, 1,25 $/4,25 $, MCP Atlas 88,1 devant Opus 4.8) ; xAI open-source Grok Build ~72 h après une exfiltration de dépôts Git et clés SSH vers un bucket xAI"
+  ],
+  "items": [
+    {
+      "slug": "2026-07-20-claude-code-2-1-202-215",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "date": "2026-07-19",
+      "title": "Claude Code 2.1.202 → 2.1.215 — Opus 4.8 défaut sur Bedrock/Vertex/AWS, /fork en session de fond, cap 200 subagents, /verify et /code-review sur invocation explicite",
+      "context_html": "Quatorze releases dans la fenêtre. <strong>2.1.207</strong> (11 juil.) bascule le défaut sur <strong>Claude Opus 4.8</strong> pour Amazon Bedrock, Google Vertex/Agent Platform et Claude Platform on AWS, et active l'auto mode sans <code>CLAUDE_CODE_ENABLE_AUTO_MODE</code> sur ces clouds. <strong>2.1.212</strong> (17 juil.) refond l'orchestration : <code>/fork</code> copie la conversation dans une session de fond (l'ancien comportement passe sous <code>/subtask</code>), cap de <strong>200 spawns de subagents/session</strong> (<code>CLAUDE_CODE_MAX_SUBAGENTS_PER_SESSION</code>), appels MCP >2 min auto en arrière-plan, plafond 200 WebSearch/session. <strong>2.1.214</strong> (18 juil.) ajoute l'outil <code>EndConversation</code> (clôture face à abus/jailbreak), un heartbeat de progression, et colmate des trous de permissions (plan mode lançant des Bash mutants sans prompt, règles <code>dir/**</code> trop larges, commandes >10 000 chars désormais promptées). <strong>2.1.215</strong> (19 juil.) impose l'invocation explicite de <code>/verify</code> et <code>/code-review</code> — fin de l'exécution automatique.",
+      "sources": [
+        {
+          "label": "code.claude.com/docs/en/changelog",
+          "url": "https://code.claude.com/docs/en/changelog",
+          "primary": true
+        },
+        {
+          "label": "github.com/anthropics/claude-code CHANGELOG",
+          "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
+          "primary": false
+        },
+        {
+          "label": "releasebot.io/updates/anthropic/claude-code",
+          "url": "https://releasebot.io/updates/anthropic/claude-code",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Claude Code 2.1.202→215",
+        "date_long": "11–19 juillet 2026",
+        "description": "Analyse des quatorze releases Claude Code 2.1.202→215 (11–19 juillet 2026) : Opus 4.8 en défaut sur Bedrock/Vertex/AWS, refonte de l'orchestration agent, colmatage de permissions, /verify et /code-review sur invocation explicite. Implications pour les routines Cowork et audits S300X/S600D.",
+        "stats": [
+          {
+            "num": "14",
+            "unit": "releases",
+            "label": "2.1.202 → 2.1.215 en 2 semaines"
+          },
+          {
+            "num": "Opus 4.8",
+            "unit": "défaut",
+            "label": "Bedrock/Vertex/AWS (2.1.207)"
+          },
+          {
+            "num": "200",
+            "unit": "subagents",
+            "label": "cap par session (2.1.212)"
+          },
+          {
+            "num": "explicite",
+            "unit": "/verify /code-review",
+            "label": "fin de l'auto-exécution (2.1.215)"
+          }
+        ],
+        "context_paragraphs": [
+          "En quatorze releases sur deux semaines, Anthropic industrialise la boucle agentique de Claude Code plutôt que d'ajouter des capacités visibles. La <strong>2.1.207</strong> (11 juil.) est la plus lourde de conséquences pour les déploiements cloud : elle bascule le modèle par défaut sur <strong>Claude Opus 4.8</strong> pour Amazon Bedrock, Google Vertex / Agent Platform et Claude Platform on AWS, et surtout active l'<strong>auto mode</strong> sur ces plateformes <em>sans</em> exiger la variable <code>CLAUDE_CODE_ENABLE_AUTO_MODE</code> qui restait nécessaire ailleurs. Un pipeline CI qui tournait en mode contrôlé sur Bedrock peut donc se retrouver en auto mode par simple montée de version.",
+          "La <strong>2.1.212</strong> (17 juil.) refond l'orchestration multi-agent. <code>/fork</code> change de sémantique : au lieu de brancher une variante dans la session courante, il <strong>copie la conversation dans une nouvelle session de fond</strong> — l'ancien comportement est déplacé sous <code>/subtask</code>. Un <strong>cap de 200 spawns de subagents par session</strong> (<code>CLAUDE_CODE_MAX_SUBAGENTS_PER_SESSION</code>) borne désormais les workflows fan-out, les appels MCP dépassant 2 minutes passent automatiquement en arrière-plan (<code>CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS</code>), et une limite de 200 WebSearch par session s'ajoute — autant de garde-fous qui prolongent le modèle des Dynamic Workflows (1 000 sous-agents/run) vu chez Anthropic depuis mai.",
+          "La <strong>2.1.214</strong> (18 juil.) est une release de durcissement : nouvel outil <code>EndConversation</code> permettant à Claude de clore face à des abus ou tentatives de jailbreak, heartbeat de progression pour les tool calls longs, et plusieurs corrections de permissions notables — le plan mode pouvait lancer des commandes Bash modifiant des fichiers sans prompt, les règles <code>dir/**</code> étaient trop permissives, les commandes de plus de 10 000 caractères passent maintenant par un prompt, et des flags docker daemon-redirect sont corrigés. Enfin la <strong>2.1.215</strong> (19 juil.) met fin à l'exécution automatique de <code>/verify</code> et <code>/code-review</code>, désormais uniquement sur invocation explicite ; la 2.1.200 avait par ailleurs renommé le mode « Default » en « Manual »."
+        ],
+        "lynxter_paragraphs": [
+          "Action immédiate sur les déploiements : si Lynxter fait tourner Claude Code sur Bedrock, Vertex ou Claude Platform on AWS pour des tâches serveur/CI, <strong>audite tes variables d'environnement avant la montée en 2.1.207+</strong>. L'auto mode s'active désormais sans opt-in explicite sur ces clouds — ce qui est souhaitable pour des routines batch mais dangereux pour un pipeline qui écrit dans des repos firmware S300X/S600D sans revue. Épingle une version connue et teste le comportement auto mode en environnement isolé avant de propager.",
+          "Le changement le plus piégeux est la 2.1.215 : toute routine Cowork ou script maison qui reposait sur l'exécution <em>implicite</em> de <code>/verify</code> ou <code>/code-review</code> ne les lancera plus. <strong>Ajoute les appels explicites cette semaine</strong> dans tes workflows de génération/migration de scripts métier, sous peine de merges non vérifiés qui passent silencieusement. Dans le même temps, dimensionne tes workflows fan-out (brief veille-IA, audits paramétriques de profils firmware) <strong>sous le cap de 200 subagents/session</strong> et adapte les scripts qui utilisaient <code>/fork</code> pour du branchement in-session vers <code>/subtask</code>.",
+          "À l'inverse, le durcissement des permissions de la 2.1.214 est une bonne nouvelle exploitable dans ton argumentaire de gouvernance : la fermeture du trou « plan mode → Bash mutant sans prompt » et le resserrement des règles <code>dir/**</code> réduisent la surface d'un agent qui déraperait sur des données machine. Combiné à l'outil <code>EndConversation</code>, cela renforce le dossier « Claude Code est le CLI d'agent le plus verrouillé par défaut » — argument directement opposable, cette semaine, à l'incident d'exfiltration Grok Build (voir item xAI)."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://code.claude.com/docs/en/changelog",
+          "label": "code.claude.com/docs/en/changelog",
+          "meta": "Anthropic · changelog officiel Claude Code · 2.1.202→215, 11–19 juillet 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-07-20-cursor-3-11",
+            "actor": "Cursor",
+            "title": "Cursor 3.11 — side chats, Team MCP servers",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-07-20-grok-build-open-source",
+            "actor": "xAI",
+            "title": "Grok Build open source après exfiltration de dépôts",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-07-20-openai-swe-bench-pro-audit",
+            "actor": "OpenAI",
+            "title": "OpenAI audite SWE-Bench Pro",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-07-20.html",
+            "label": "← Retour au brief",
+            "title": "2026-07-20"
+          },
+          "next": {
+            "href": "2026-07-20-cursor-3-11.html",
+            "label": "Item suivant →",
+            "title": "Cursor 3.11"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-07-20-cursor-3-11",
+      "actor": "Cursor",
+      "tag": "lynxter",
+      "date": "2026-07-10",
+      "title": "Cursor 3.11 — side chats, recherche de transcripts d'agents (Cmd+K), distribution Team MCP servers",
+      "context_html": "Cursor 3.11 (10 juil.) ajoute quatre briques agentiques. <strong>Side chats</strong> : conversations secondaires durables ouvertes via <code>/side</code>, <code>/btw</code> ou le bouton +, qui héritent du contexte du thread principal et se re-injectent par at-mention — explorer une tangente sans casser la boucle en cours. <strong>Recherche de transcripts d'agents</strong> : index local via Cmd+K dans l'Agents Window, dimensionné pour des milliers de conversations, plus Cmd+F intra-conversation. <strong>Team MCP servers</strong> : un admin configure une fois et distribue vers cloud agents, Agents Window, IDE et CLI, avec marketplace d'équipe (Dashboard → Integrations &amp; MCP) pour installer localement les intégrations approuvées. Plus 5 nouveaux hook events pour cloud agents et des pickers projet/repo redessinés. Suit la 3.10 (30 juin : Team MCPs, org groups).",
+      "sources": [
+        {
+          "label": "cursor.com/changelog",
+          "url": "https://cursor.com/changelog",
+          "primary": false
+        },
+        {
+          "label": "testingcatalog.com",
+          "url": "https://www.testingcatalog.com/cursor-3-11-adds-side-chats-and-agent-transcript-search/",
+          "primary": false
+        },
+        {
+          "label": "byteiota.com",
+          "url": "https://byteiota.com/cursor-3-11-side-chats-team-mcp-cloud-agent-hooks/",
+          "primary": false
+        }
+      ],
+      "has_primary": false,
+      "detail": {
+        "short": "Cursor 3.11",
+        "date_long": "10 juillet 2026",
+        "description": "Analyse de Cursor 3.11 (10 juillet 2026) : side chats, recherche de transcripts d'agents, distribution centralisée de Team MCP servers et hook events cloud. Le pattern MCP d'équipe à répliquer pour standardiser les connecteurs internes S300X/S600D.",
+        "stats": [
+          {
+            "num": "3.11",
+            "unit": "version",
+            "label": "10 juillet 2026 (suit 3.10)"
+          },
+          {
+            "num": "Team MCP",
+            "unit": "1 config",
+            "label": "→ IDE, CLI, cloud agents"
+          },
+          {
+            "num": "Side chats",
+            "unit": "/side /btw",
+            "label": "tangentes héritant du contexte"
+          },
+          {
+            "num": "5",
+            "unit": "hook events",
+            "label": "nouveaux, cloud agents"
+          }
+        ],
+        "context_paragraphs": [
+          "Cursor 3.11 (10 juil.) est une release d'ergonomie agentique. Les <strong>side chats</strong> répondent à un problème concret des longues sessions agent : explorer une question annexe sans polluer ni casser la boucle principale. Ouverts par <code>/side</code>, <code>/btw</code> ou le bouton +, ils branchent depuis le thread principal en héritant de son contexte, et leur résultat se re-injecte par at-mention. La <strong>recherche de transcripts d'agents</strong> ajoute un index local exposé via Cmd+K dans l'Agents Window, dimensionné pour des milliers de conversations, avec Cmd+F intra-conversation — une réponse directe à l'accumulation de sessions agent qu'aucun IDE ne gérait proprement.",
+          "La brique la plus structurante est <strong>Team MCP servers</strong> : un administrateur configure un serveur MCP une seule fois et le distribue vers les cloud agents, l'Agents Window, l'IDE et le CLI, avec un marketplace d'équipe (Dashboard → Integrations &amp; MCP) où les membres installent localement les intégrations approuvées sans reconfigurer chaque serveur. C'est le prolongement de la 3.10 (30 juin), qui avait introduit les Team MCPs et les org groups.",
+          "S'y ajoutent cinq nouveaux hook events pour cloud agents et des pickers projet/repo redessinés. Ces hooks rapprochent Cursor du modèle d'automation en arrière-plan que Claude Code industrialise déjà (subagents de fond, auto-commit/push/PR draft), et confirment que la bataille entre IDE agentiques se joue moins sur le modèle sous-jacent que sur l'orchestration d'équipe et la gouvernance des connecteurs."
+        ],
+        "lynxter_paragraphs": [
+          "Le pattern Team MCP servers est directement transposable chez Lynxter. Plutôt que de faire configurer à chaque poste dev/support les connecteurs MCP maison — accès à la doc technique S300X/S600D, base de tickets support, référentiel de profils d'impression — un administrateur les définit une fois et les pousse vers IDE, CLI et agents cloud via un marketplace interne. Cela élimine la dérive de configuration (versions de serveurs MCP divergentes entre postes) et pose une couche de gouvernance : seuls les connecteurs approuvés sont installables.",
+          "C'est le même besoin que Claude Code adresse côté Anthropic, et le bon moment pour trancher : si la stack Lynxter est majoritairement Claude Code/Cowork, réplique ce pattern avec les mécanismes MCP natifs de Claude Code ; si des devs utilisent Cursor en parallèle, la distribution Team MCP de la 3.11 permet d'aligner les deux environnements sur le <em>même</em> jeu de connecteurs approuvés. À tester cette semaine : centraliser un premier connecteur MCP « doc S300X/S600D » et mesurer le temps de setup gagné vs configuration par poste."
+        ],
+        "source": {
+          "kind": "secondaire",
+          "url": "https://cursor.com/changelog",
+          "label": "cursor.com/changelog",
+          "meta": "Cursor · changelog 3.11 · 10 juillet 2026 · non fetché (sans annonce officielle confirmée dans le scan)"
+        },
+        "related": [
+          {
+            "slug": "2026-07-20-claude-code-2-1-202-215",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.202→215",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-07-20-perplexity-space",
+            "actor": "Perplexity",
+            "title": "Perplexity SPACE — runtime sandbox pour agents",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-07-20-grok-build-open-source",
+            "actor": "xAI",
+            "title": "Grok Build open source",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-07-20.html",
+            "label": "← Retour au brief",
+            "title": "2026-07-20"
+          },
+          "next": {
+            "href": "2026-07-20-grok-build-open-source.html",
+            "label": "Item suivant →",
+            "title": "Grok Build open source"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-07-20-grok-build-open-source",
+      "actor": "xAI",
+      "tag": "lynxter",
+      "date": "2026-07-15",
+      "title": "Grok Build passe en open source (Apache 2.0) 72 h après une exfiltration silencieuse de dépôts Git et clés SSH",
+      "context_html": "xAI open-source <strong>Grok Build</strong> — son agent de code CLI/TUI en Rust (99,6 %), harness d'~<strong>844 530 lignes</strong> selon Simon Willison, avec skills/plugins/hooks/serveurs MCP/subagents et Agent Client Protocol — sous <strong>Apache 2.0</strong> le 15 juil. (github.com/xai-org/grok-build, ~20,3k stars, contributions externes refusées). Le geste survient ~<strong>72 h après</strong> des preuves wire-level qu'une version du CLI uploadait silencieusement des dépôts Git complets vers un bucket cloud contrôlé par xAI — un utilisateur l'ayant lancé dans son home rapportant l'envoi de ses clés SSH, base de mots de passe, documents, photos et vidéos. xAI a désactivé la rétention par défaut le 12 juil. et supprimé les données retenues ; le binaire peut désormais tourner local-first. À comparer à Claude Code et OpenAI Codex, qui n'exfiltrent pas les repos par défaut.",
+      "sources": [
+        {
+          "label": "github.com/xai-org/grok-build",
+          "url": "https://github.com/xai-org/grok-build",
+          "primary": true
+        },
+        {
+          "label": "simonwillison.net",
+          "url": "https://simonwillison.net/2026/Jul/15/grok-build/",
+          "primary": false
+        },
+        {
+          "label": "the-decoder.com",
+          "url": "https://the-decoder.com/xai-open-sources-grok-build-on-github-after-massive-data-breach/",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Grok Build open source",
+        "date_long": "15 juillet 2026",
+        "description": "Analyse de l'open-sourcing de Grok Build (Apache 2.0, 15 juillet 2026) survenu ~72 h après la preuve d'une exfiltration silencieuse de dépôts Git et de clés SSH. Pourquoi Lynxter doit établir une allowlist des CLI d'agents avant d'exposer ses repos S300X/S600D.",
+        "stats": [
+          {
+            "num": "Apache 2.0",
+            "unit": "open source",
+            "label": "15 juil., ~20,3k stars"
+          },
+          {
+            "num": "844 530",
+            "unit": "lignes",
+            "label": "harness Rust 99,6 %"
+          },
+          {
+            "num": "~72 h",
+            "unit": "après",
+            "label": "preuve d'exfiltration de dépôts"
+          },
+          {
+            "num": "12 juil.",
+            "unit": "rétention off",
+            "label": "désactivée par défaut, données supprimées"
+          }
+        ],
+        "context_paragraphs": [
+          "Grok Build est l'agent de code CLI/TUI de xAI, écrit à 99,6 % en Rust, un harness d'environ <strong>844 530 lignes</strong> selon le décompte de Simon Willison, doté d'extensions skills/plugins/hooks, de serveurs MCP, de subagents et de l'Agent Client Protocol. Le 15 juillet 2026, xAI le publie en open source sous <strong>Apache 2.0</strong> sur github.com/xai-org/grok-build (~20,3k stars en quelques jours, contributions externes explicitement refusées). Sur le papier, c'est un concurrent frontal de Claude Code et OpenAI Codex, désormais exécutable en local-first (inférence locale, configuration via <code>config.toml</code>).",
+          "Le contexte est ce qui compte. L'open-sourcing intervient environ <strong>72 heures après</strong> la publication de preuves wire-level qu'une version du CLI <strong>uploadait silencieusement des dépôts Git complets</strong> vers un bucket cloud contrôlé par xAI. Un utilisateur l'ayant lancé dans son répertoire home rapporte l'envoi de ses clés SSH, de sa base de mots de passe, de documents, photos et vidéos. xAI a réagi le 12 juillet en désactivant la rétention par défaut pour tous les utilisateurs et en supprimant les données de code retenues.",
+          "La comparaison inter-acteurs est nette : ni Claude Code ni OpenAI Codex n'exfiltrent les dépôts par défaut ; leur télémétrie est opt-in ou limitée, et le durcissement de permissions de Claude Code 2.1.214 (fermeture des Bash mutants en plan mode) va dans le sens inverse de l'incident xAI. L'open-sourcing sous licence permissive est autant un geste de transparence qu'une opération de confiance post-incident — mais le code étant désormais auditable, il devient possible de vérifier ce que le binaire fait réellement du réseau."
+        ],
+        "lynxter_paragraphs": [
+          "Action de gouvernance directe : avant d'exposer un repo interne ou un workflow S300X/S600D à un agent de code, <strong>établis une allowlist des CLI d'agents autorisés sur les postes dev et support</strong>, et documente pour chacun sa politique de rétention et de télémétrie. L'incident Grok Build prouve qu'un agent peut exfiltrer bien au-delà du dépôt visé (clés SSH, secrets locaux) sans signal visible — le périmètre à risque n'est pas le repo, c'est tout le home du poste.",
+          "Concrètement cette semaine : recense les agents CLI présents sur les machines dev/support (Claude Code, Codex, Grok Build, Cursor CLI, autres), vérifie leurs réglages de rétention par défaut, et isole toute exécution d'agent non vérifié dans un environnement sans clés de production ni accès réseau sortant libre. Le modèle d'isolation de Perplexity SPACE (microVM éphémère, credentials injectés hors sandbox) est la référence architecturale si Lynxter laisse tourner des agents sur des données machine sensibles. Pour la stack principale, cet incident renforce le choix Claude Code, dont les défauts de télémétrie et de permissions sont plus conservateurs."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://github.com/xai-org/grok-build",
+          "label": "github.com/xai-org/grok-build",
+          "meta": "xAI · dépôt open source Grok Build · Apache 2.0 · 15 juillet 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-07-20-perplexity-space",
+            "actor": "Perplexity",
+            "title": "Perplexity SPACE — isolation d'agents",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-07-20-claude-code-2-1-202-215",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.202→215 — durcissement permissions",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-07-20-grok-4-5",
+            "actor": "xAI",
+            "title": "Grok 4.5 — modèle code/agentique",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-07-20.html",
+            "label": "← Retour au brief",
+            "title": "2026-07-20"
+          },
+          "next": {
+            "href": "2026-07-20-gpt-5-6-ga.html",
+            "label": "Item suivant →",
+            "title": "GPT-5.6 GA"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-07-20-gpt-5-6-ga",
+      "actor": "OpenAI",
+      "tag": "useful",
+      "date": "2026-07-09",
+      "title": "GPT-5.6 en disponibilité générale (Sol/Terra/Luna) + agent ChatGPT Work et mode ultra à délégation",
+      "context_html": "GA publique le 9 juil. après feu vert du gouvernement US (rollout depuis la preview verrouillée du 26 juin, couverte le 29-06). Trois tiers persistants : <strong>Sol $5/$30</strong>, <strong>Terra $2,50/$15</strong>, <strong>Luna $1/$6</strong> par M tokens. Sur Terminal-Bench : Sol Ultra <strong>91,9 %</strong>, Sol 88,8 %, Terra 84,3 %, Luna 82,5 % vs GPT-5.5 83,4 %, Claude Mythos 5 88,0 % et Claude Opus 4.8 78,9 %. Nouveau mode ultra dans Sol qui délègue à des sous-modèles ; Altman annonce Sol <strong>54 % plus efficient en tokens</strong> sur le coding agentique. Lancement conjoint de ChatGPT Work (agent bureautique enterprise sur desktop/web/mobile) et de GPT-Live ; custom instructions passées de 1500 à 5000 caractères.",
+      "sources": [
+        {
+          "label": "openai.com/index/gpt-5-6",
+          "url": "https://openai.com/index/gpt-5-6/",
+          "primary": false
+        },
+        {
+          "label": "techcrunch.com",
+          "url": "https://techcrunch.com/2026/07/09/openai-launches-its-new-family-of-models-with-gpt-5-6/",
+          "primary": false
+        },
+        {
+          "label": "axios.com",
+          "url": "https://www.axios.com/2026/07/09/ai-openai-gpt-release",
+          "primary": false
+        }
+      ],
+      "has_primary": false,
+      "detail": {
+        "short": "GPT-5.6 GA",
+        "date_long": "9 juillet 2026",
+        "description": "Analyse de la GA de GPT-5.6 (9 juillet 2026) : trois tiers Sol/Terra/Luna, scores Terminal-Bench, mode ultra à délégation, ChatGPT Work. Comparaison avec Claude Opus 4.8 / Sonnet 5 et implications de benchmark pour Lynxter.",
+        "stats": [
+          {
+            "num": "91,9",
+            "unit": "%",
+            "label": "Terminal-Bench · Sol Ultra (vs Opus 4.8 78,9 %)"
+          },
+          {
+            "num": "$5/$30",
+            "unit": "M tok",
+            "label": "Sol · Terra $2,50/$15 · Luna $1/$6"
+          },
+          {
+            "num": "54",
+            "unit": "%",
+            "label": "plus efficient en tokens · coding agentique (Sol)"
+          },
+          {
+            "num": "5000",
+            "unit": "chars",
+            "label": "custom instructions (vs 1500)"
+          }
+        ],
+        "context_paragraphs": [
+          "OpenAI passe <strong>GPT-5.6 en disponibilité générale le 9 juillet 2026</strong>, après feu vert du gouvernement US et un rollout échelonné depuis la preview verrouillée du 26 juin (déjà couverte dans le brief du 29 juin). La famille s'organise en trois tiers persistants — <strong>Sol à $5/$30, Terra à $2,50/$15, Luna à $1/$6 par M tokens</strong> — soit une segmentation par coût/capacité qui répond directement à la gamme Anthropic (Opus/Sonnet/Haiku) et à la gamme xAI (Grok tiers).",
+          "Sur Terminal-Bench, un mode ultra dans Sol qui délègue à des sous-modèles atteint <strong>91,9 %</strong>, Sol 88,8 %, Terra 84,3 %, Luna 82,5 %, contre GPT-5.5 à 83,4 %, Claude Mythos 5 à 88,0 % et Claude Opus 4.8 à 78,9 %. Altman revendique une <strong>efficience en tokens supérieure de 54 %</strong> pour Sol sur le coding agentique — argument de coût réel autant que de score brut. Ces chiffres sont à lire avec la prudence imposée par l'audit SWE-Bench Pro d'OpenAI lui-même (voir item dédié).",
+          "Au-delà des modèles, OpenAI lance conjointement <strong>ChatGPT Work</strong> (agent bureautique enterprise sur desktop/web/mobile, drafting de documents, spreadsheets et slides) et <strong>GPT-Live</strong> (voix full-duplex), et fait passer les custom instructions de 1500 à 5000 caractères — un signal que la surface d'usage se déplace vers l'agent bureautique persistant plutôt que le chat ponctuel."
+        ],
+        "lynxter_paragraphs": [
+          "Pour Lynxter, GPT-5.6 est un point de comparaison à benchmarker, pas un basculement. Le tier Terra ($2,50/$15) se positionne juste au-dessus de la promo Sonnet 5 ($2/$10 jusqu'au 31 août) tout en restant sous Opus 4.8 ($5/$25) sur le coût. Si un client industriel évalue une alternative à la stack Claude, ces tarifs et le score Terminal-Bench de Sol Ultra (91,9 %) apparaîtront dans les argumentaires concurrents — prépare la réponse : sur SWE-bench Pro, Opus 4.8 (69,2 %) reste devant, et Terminal-Bench mesure surtout l'exécution shell, pas les tâches longues multi-fichiers représentatives d'un audit firmware.",
+          "Action concrète : sur un corpus S300X/S600D représentatif (migration de scripts, revue de configuration, génération de doc technique), exécute la même tâche via Sol/Terra et via Sonnet 5/Opus 4.8, et mesure coût réel (tokens facturés × efficience) et qualité. L'efficience tokens de +54 % annoncée par OpenAI ne se vérifie que sur ton propre workload — et l'écart de qualité sur les tâches mal spécifiées reste le vrai discriminant, pas le score de benchmark."
+        ],
+        "source": {
+          "kind": "secondaire",
+          "url": "https://openai.com/index/gpt-5-6/",
+          "label": "openai.com/index/gpt-5-6",
+          "meta": "OpenAI · page GPT-5.6 · 9 juillet 2026 · non fetché (egress bloqué) — sans annonce officielle confirmée"
+        },
+        "related": [
+          {
+            "slug": "2026-07-20-openai-swe-bench-pro-audit",
+            "actor": "OpenAI",
+            "title": "OpenAI audite SWE-Bench Pro",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-07-20-grok-4-5",
+            "actor": "xAI",
+            "title": "Grok 4.5 — Intelligence Index 54",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-07-20-meta-muse-spark-1-1",
+            "actor": "Meta",
+            "title": "Muse Spark 1.1 — closed API agentique",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-07-20.html",
+            "label": "← Retour au brief",
+            "title": "2026-07-20"
+          },
+          "next": {
+            "href": "2026-07-20-openai-swe-bench-pro-audit.html",
+            "label": "Item suivant →",
+            "title": "Audit SWE-Bench Pro"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-07-20-openai-swe-bench-pro-audit",
+      "actor": "OpenAI",
+      "tag": "useful",
+      "date": "2026-07-08",
+      "title": "OpenAI audite SWE-Bench Pro et retire sa recommandation — ~30 % des tâches cassées",
+      "context_html": "Dans <em>Separating signal from noise in coding evaluations</em> (8 juil.), OpenAI juge ~<strong>30 % des 731 tâches publiques de SWE-Bench Pro cassées</strong>, en quatre catégories : tests trop stricts rejetant des solutions fonctionnellement correctes, specs vagues masquant les attentes des tests, tâches superficielles laissant passer des solutions incomplètes, descriptions trompeuses orientant l'agent vers le mauvais code. Conclusion : le benchmark ne mesure plus fiablement la capacité de coding frontière, <strong>recommandation d'usage retirée</strong>, accompagnée d'un post séparé sur les limites de SWE-bench Verified. Implication directe : les scores SWE-bench cités dans slides/RFP (dont ce brief et la page Modèles du site) sont à relativiser.",
+      "sources": [
+        {
+          "label": "openai.com/index/separating-signal-from-noise-coding-evaluations",
+          "url": "https://openai.com/index/separating-signal-from-noise-coding-evaluations/",
+          "primary": false
+        },
+        {
+          "label": "technologyreview.com",
+          "url": "https://www.technologyreview.com/2026/07/15/1140514/meet-gpt-red-an-llm-super-hacker-openai-built-to-make-its-models-safer/",
+          "primary": false
+        }
+      ],
+      "has_primary": false,
+      "detail": {
+        "short": "Audit SWE-Bench Pro",
+        "date_long": "8 juillet 2026",
+        "description": "OpenAI audite SWE-Bench Pro (8 juillet 2026) : ~30 % des 731 tâches jugées cassées, recommandation d'usage retirée. Pourquoi Lynxter doit relativiser les scores SWE-bench dans ses RFP et sur la page Modèles.",
+        "stats": [
+          {
+            "num": "~30",
+            "unit": "%",
+            "label": "tâches cassées sur 731 publiques"
+          },
+          {
+            "num": "4",
+            "unit": "catégories",
+            "label": "de défauts identifiés"
+          },
+          {
+            "num": "retirée",
+            "unit": "reco",
+            "label": "d'usage du benchmark"
+          },
+          {
+            "num": "Verified",
+            "unit": "aussi",
+            "label": "limites publiées séparément"
+          }
+        ],
+        "context_paragraphs": [
+          "Le 8 juillet 2026, OpenAI publie <em>Separating signal from noise in coding evaluations</em> et estime qu'environ <strong>30 % des 731 tâches publiques de SWE-Bench Pro sont cassées</strong>. L'audit répartit les défauts en quatre catégories : tests trop stricts qui rejettent des solutions fonctionnellement correctes, spécifications vagues masquant les véritables attentes encodées dans les tests, tâches superficielles laissant passer des solutions incomplètes, et descriptions trompeuses orientant l'agent vers le mauvais code.",
+          "La conclusion est tranchée : SWE-Bench Pro ne mesure plus fiablement la capacité de coding frontière, et OpenAI <strong>retire sa recommandation d'usage</strong>. Un post séparé documente en parallèle les limites de SWE-bench Verified. Le geste est notable venant d'un acteur dont les modèles sont eux-mêmes évalués sur ces benchmarks — il déplace la conversation de « quel score » vers « quel benchmark est encore valide ».",
+          "L'effet de bord est immédiat pour toute l'industrie : les comparaisons chiffrées qui structurent les argumentaires — Opus 4.8 à 69,2 % SWE-bench Pro, Sonnet 5 à 63,2 %, GPT-5.5 à 58,6 %, Grok 4.5 à 64,7 % — reposent sur un socle qu'un éditeur frontière déclare désormais bruité à hauteur de ~30 %. Cela ne rend pas les modèles moins bons ; cela rend l'écart chiffré moins interprétable."
+        ],
+        "lynxter_paragraphs": [
+          "Action éditoriale directe sur le site de veille : la page Modèles et le classement SWE-bench Verified doivent porter une note « benchmark contesté par OpenAI (juillet 2026) — scores indicatifs, ~30 % des tâches SWE-Bench Pro jugées défectueuses ». Ne supprime pas les scores (ils restent le meilleur proxy public disponible), mais retire-leur le statut de vérité absolue dans les comparaisons.",
+          "Côté argumentaire commercial et RFP : si un dossier Lynxter s'appuie sur des scores SWE-bench pour justifier le choix Claude, ajoute la nuance que même l'éditeur concurrent reconnaît les limites du benchmark, et déplace l'argument vers des critères plus robustes — coût réel par tâche sur ton corpus, taux d'hallucination (où Grok 4.5 passe à 54 %), fiabilité sur les tâches longues multi-fichiers, et gouvernance/télémétrie de l'agent. Le meilleur benchmark reste un test sur un échantillon représentatif S300X/S600D, pas un score public."
+        ],
+        "source": {
+          "kind": "secondaire",
+          "url": "https://openai.com/index/separating-signal-from-noise-coding-evaluations/",
+          "label": "openai.com/index/separating-signal-from-noise-coding-evaluations",
+          "meta": "OpenAI · post d'évaluation · 8 juillet 2026 · non fetché (egress bloqué) — sans annonce officielle confirmée"
+        },
+        "related": [
+          {
+            "slug": "2026-07-20-gpt-5-6-ga",
+            "actor": "OpenAI",
+            "title": "GPT-5.6 GA — Sol/Terra/Luna",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-07-20-grok-4-5",
+            "actor": "xAI",
+            "title": "Grok 4.5 — 64,7 % SWE-bench Pro",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-07-20-meta-muse-spark-1-1",
+            "actor": "Meta",
+            "title": "Muse Spark 1.1 — benchmarks tool-use",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-07-20.html",
+            "label": "← Retour au brief",
+            "title": "2026-07-20"
+          },
+          "next": {
+            "href": "2026-07-20-meta-muse-spark-1-1.html",
+            "label": "Item suivant →",
+            "title": "Muse Spark 1.1"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-07-20-meta-muse-spark-1-1",
+      "actor": "Meta",
+      "tag": "useful",
+      "date": "2026-07-09",
+      "title": "Muse Spark 1.1 + Meta Model API — premier modèle Meta closed-weights, agentique, à 1,25 $/4,25 $ par M tokens",
+      "context_html": "Meta Superintelligence Labs sort <strong>Muse Spark 1.1</strong> le 9 juil. en API payante (Meta Model API, preview US) : <strong>premier modèle Meta sans poids ouverts</strong>, rupture nette avec la doctrine Llama open weights et bascule vers un produit frontière commercial. Modèle de raisonnement multimodal orienté agentique, contexte 1M tokens, effort de raisonnement ajustable par requête. Il domine les benchmarks tool-use : <strong>MCP Atlas 88,1</strong> devant Opus 4.8 (82,2) et GPT-5.5 (75,3), JobBench 54,7 vs 48,4 (Opus 4.8) et 38,3 (GPT-5.5) ; 3e seulement sur coding et multimodal. Pricing agressif à <strong>1,25 $/4,25 $ par M tokens</strong> — ~1/4 des tarifs Anthropic/OpenAI, API OpenAI-compatible, 20 $ de crédits offerts, brièvement listé sur OpenRouter. Closed API sans self-host : dépendance fournisseur totale.",
+      "sources": [
+        {
+          "label": "techtimes.com",
+          "url": "https://www.techtimes.com/articles/320088/20260710/metas-muse-spark-11-opens-paid-api-one-quarter-anthropic-openai-rates.htm",
+          "primary": false
+        },
+        {
+          "label": "marktechpost.com",
+          "url": "https://www.marktechpost.com/2026/07/09/meta-superintelligence-labs-releases-muse-spark-1-1/",
+          "primary": false
+        },
+        {
+          "label": "datacamp.com",
+          "url": "https://www.datacamp.com/blog/muse-spark-1-1",
+          "primary": false
+        }
+      ],
+      "has_primary": false,
+      "detail": {
+        "short": "Muse Spark 1.1",
+        "date_long": "9 juillet 2026",
+        "description": "Analyse de Muse Spark 1.1 (9 juillet 2026), premier modèle Meta closed-weights : API agentique à 1,25 $/4,25 $ par M tokens, domine MCP Atlas (88,1) et JobBench. Concurrent direct de Sonnet 5/Claude Code à benchmarker avant tout arbitrage Lynxter.",
+        "stats": [
+          {
+            "num": "$1,25/$4,25",
+            "unit": "M tok",
+            "label": "~1/4 des tarifs Anthropic/OpenAI"
+          },
+          {
+            "num": "88,1",
+            "unit": "MCP Atlas",
+            "label": "devant Opus 4.8 (82,2), GPT-5.5 (75,3)"
+          },
+          {
+            "num": "1M",
+            "unit": "tokens",
+            "label": "contexte · multimodal agentique"
+          },
+          {
+            "num": "closed",
+            "unit": "weights",
+            "label": "1er modèle Meta sans poids ouverts"
+          }
+        ],
+        "context_paragraphs": [
+          "Le 9 juillet 2026, Meta Superintelligence Labs sort <strong>Muse Spark 1.1</strong> en API payante (Meta Model API, preview publique, US d'abord) — et c'est une rupture doctrinale : <strong>premier modèle Meta sans poids ouverts</strong>, abandon de la ligne Llama open weights au profit d'un produit frontière commercial. Le modèle est un raisonneur multimodal orienté agentique, contexte 1M tokens, avec un effort de raisonnement ajustable par requête.",
+          "Sur les benchmarks tool-use, il prend la tête : <strong>MCP Atlas 88,1</strong> devant Claude Opus 4.8 (82,2) et GPT-5.5 (75,3), et JobBench 54,7 contre 48,4 pour Opus 4.8 et 38,3 pour GPT-5.5. Il n'est en revanche que 3e sur le coding et le multimodal — le positionnement est clairement « agent qui orchestre des outils » plutôt que « meilleur codeur brut ».",
+          "Le pricing est l'argument de rupture : <strong>1,25 $ input / 4,25 $ output par M tokens</strong>, soit environ un quart des tarifs Anthropic et OpenAI, avec une API OpenAI-compatible, 20 $ de crédits offerts et un bref listing sur OpenRouter. Le prix est ~60 % sous la promo Sonnet 5 (2 $/10 $). Contrepartie majeure : c'est une closed API sans option de self-host, donc une dépendance fournisseur totale — l'inverse exact de ce que la doctrine Llama promettait."
+        ],
+        "lynxter_paragraphs": [
+          "Muse Spark 1.1 est un concurrent direct de Sonnet 5/Claude Code sur les workflows agents à orchestration MCP — précisément le terrain de la stack Lynxter. Sa domination sur MCP Atlas (88,1 vs 82,2 pour Opus 4.8) et JobBench en fait un candidat sérieux à benchmarker avant tout arbitrage, d'autant que le prix casse la grille (~1/4 des tarifs Anthropic).",
+          "Mais deux réserves conditionnent tout usage industriel : (1) closed API sans self-host signifie dépendance fournisseur totale, sans repli souverain ni exécution on-prem — un point rédhibitoire pour des clients industriels sensibles à la localisation des données ; (2) les scores tool-use sont des benchmarks publics, à valider sur un vrai enchaînement MCP Lynxter (doc S300X/S600D, tickets support, connecteurs internes). Action : monter un test A/B Muse Spark 1.1 vs Sonnet 5 sur un workflow agent existant, en mesurant le taux de succès des enchaînements d'outils et la fiabilité, pas seulement le coût. Tant que la dépendance closed API n'est pas levée, ce reste un point de comparaison, pas un candidat de production."
+        ],
+        "source": {
+          "kind": "secondaire",
+          "url": "https://www.techtimes.com/articles/320088/20260710/metas-muse-spark-11-opens-paid-api-one-quarter-anthropic-openai-rates.htm",
+          "label": "techtimes.com — Muse Spark 1.1",
+          "meta": "Meta Superintelligence Labs · Muse Spark 1.1 · 9 juillet 2026 · sans annonce officielle fetchée (ai.meta.com non confirmé dans le scan)"
+        },
+        "related": [
+          {
+            "slug": "2026-07-20-grok-4-5",
+            "actor": "xAI",
+            "title": "Grok 4.5 — modèle code/agentique low-cost",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-07-20-gpt-5-6-ga",
+            "actor": "OpenAI",
+            "title": "GPT-5.6 GA — Sol/Terra/Luna",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-07-20-openai-swe-bench-pro-audit",
+            "actor": "OpenAI",
+            "title": "Audit SWE-Bench Pro",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-07-20.html",
+            "label": "← Retour au brief",
+            "title": "2026-07-20"
+          },
+          "next": {
+            "href": "2026-07-20-grok-4-5.html",
+            "label": "Item suivant →",
+            "title": "Grok 4.5"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-07-20-grok-4-5",
+      "actor": "xAI",
+      "tag": "useful",
+      "date": "2026-07-08",
+      "title": "Grok 4.5 — 4e de l'Intelligence Index à 54, 76 au Coding Agent Index, 2 $/6 $ par M tokens, co-entraîné avec Cursor",
+      "context_html": "xAI sort <strong>Grok 4.5</strong> le 8 juil., premier modèle maison pensé code/agentique, co-entraîné avec Cursor sur des trillions de tokens d'interactions dev/agent. Artificial Analysis le classe <strong>4e de l'Intelligence Index à 54</strong>, derrière Fable 5 (60), Opus 4.8 (56) et GPT-5.5 (55), soit +16 pts vs Grok 4.3 ; il marque <strong>76 au Coding Agent Index</strong> (parité GPT-5.5 xhigh sous Codex, juste sous Fable 5 max sous Claude Code) et 64,7 % sur SWE-bench Pro. Pricing <strong>2 $/6 $ par M tokens</strong> jusqu'à 200K (cached 0,50 $), 4 $/12 $ au-delà, fenêtre 500K, ~4,2× moins de tokens qu'Opus 4.8 par tâche (~0,31 $). Contrepartie : le taux d'hallucination (AA-Omniscience) bondit de 25 % à <strong>54 %</strong>. Dispo dans Cursor tous plans, pas encore dans l'UE.",
+      "sources": [
+        {
+          "label": "artificialanalysis.ai",
+          "url": "https://artificialanalysis.ai/articles/grok-4-5-brings-spacexai-to-the-the-intelligence-frontier",
+          "primary": false
+        },
+        {
+          "label": "techcrunch.com",
+          "url": "https://techcrunch.com/2026/07/08/spacexai-releases-grok-4-5-which-elon-describes-as-an-opus-class-model/",
+          "primary": false
+        },
+        {
+          "label": "the-decoder.com",
+          "url": "https://the-decoder.com/grok-4-5-is-so-cheap-compared-to-fable-5-and-gpt-5-5-that-benchmark-gaps-may-not-matter-much/",
+          "primary": false
+        }
+      ],
+      "has_primary": false,
+      "detail": {
+        "short": "Grok 4.5",
+        "date_long": "8 juillet 2026",
+        "description": "Analyse de Grok 4.5 (8 juillet 2026), premier modèle xAI orienté code/agentique co-entraîné avec Cursor : Intelligence Index 54, Coding Agent Index 76, 2 $/6 $ par M tokens, mais hallucination à 54 %. Positionnement face à Opus 4.8 et Sonnet 5.",
+        "stats": [
+          {
+            "num": "54",
+            "unit": "Intel. Index",
+            "label": "4e (Fable 5 60, Opus 4.8 56, GPT-5.5 55)"
+          },
+          {
+            "num": "76",
+            "unit": "Coding Agent",
+            "label": "parité GPT-5.5 xhigh · 64,7 % SWE-bench Pro"
+          },
+          {
+            "num": "$2/$6",
+            "unit": "M tok",
+            "label": "≤200K (cached 0,50 $) · fenêtre 500K"
+          },
+          {
+            "num": "54",
+            "unit": "%",
+            "label": "hallucination AA-Omniscience (vs 25 %)"
+          }
+        ],
+        "context_paragraphs": [
+          "xAI sort <strong>Grok 4.5</strong> le 8 juillet 2026, son premier modèle explicitement pensé pour le code et l'agentique, co-entraîné avec Cursor sur des trillions de tokens d'interactions dev/agent. Artificial Analysis le place <strong>4e de son Intelligence Index à 54</strong>, derrière Fable 5 (60), Claude Opus 4.8 (56) et GPT-5.5 (55) — un saut de +16 points par rapport à Grok 4.3.",
+          "Sur le code, il marque <strong>76 au Coding Agent Index</strong> — à parité avec GPT-5.5 (xhigh) sous Codex, juste sous Fable 5 (max) sous Claude Code — et 64,7 % sur SWE-bench Pro. L'argument central est économique : <strong>2 $/6 $ par M tokens</strong> jusqu'à 200K de contexte (cached 0,50 $), 4 $/12 $ au-delà, fenêtre de 500K, et environ 4,2× moins de tokens consommés qu'Opus 4.8 pour une tâche facturée ~0,31 $. Le co-entraînement Cursor le rend disponible dans Cursor sur tous les plans.",
+          "La contrepartie est sévère et documentée par Artificial Analysis : le taux d'hallucination (AA-Omniscience) <strong>bondit de 25 % à 54 %</strong> entre Grok 4.3 et 4.5 — le modèle est optimisé pour agir vite et pas cher, au prix de la fiabilité factuelle. Il n'est pas encore disponible dans l'UE."
+        ],
+        "lynxter_paragraphs": [
+          "Grok 4.5 est le pendant xAI de Muse Spark côté « modèle agentique low-cost » : un candidat sérieux sur le rapport coût/exécution (~4,2× moins de tokens qu'Opus 4.8, à parité GPT-5.5 sur le Coding Agent Index), mais avec un défaut disqualifiant pour la plupart des usages Lynxter — un taux d'hallucination de 54 %. Pour un audit firmware S300X/S600D, une migration de scripts ou une réponse support technique, la fiabilité factuelle prime sur le prix : un modèle qui hallucine une réponse sur deux n'est pas utilisable sans double-vérification systématique, ce qui annule le gain de coût.",
+          "Deux points d'attention pratiques : (1) l'indisponibilité UE bloque tout usage conforme pour des clients européens sensibles à la localisation ; (2) le co-entraînement avec Cursor signifie que les devs Lynxter utilisant Cursor y ont accès par défaut sur tous les plans — cadre cet accès dans ta politique de gouvernance des agents. À benchmarker éventuellement pour des tâches non-critiques et tolérantes à l'erreur (brouillons, exploration), mais à exclure des workflows où une hallucination coûte cher."
+        ],
+        "source": {
+          "kind": "secondaire",
+          "url": "https://artificialanalysis.ai/articles/grok-4-5-brings-spacexai-to-the-the-intelligence-frontier",
+          "label": "artificialanalysis.ai — Grok 4.5",
+          "meta": "xAI · Grok 4.5 · 8 juillet 2026 · benchmarks Artificial Analysis · sans annonce officielle fetchée"
+        },
+        "related": [
+          {
+            "slug": "2026-07-20-meta-muse-spark-1-1",
+            "actor": "Meta",
+            "title": "Muse Spark 1.1 — closed API agentique",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-07-20-grok-build-open-source",
+            "actor": "xAI",
+            "title": "Grok Build open source",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-07-20-openai-swe-bench-pro-audit",
+            "actor": "OpenAI",
+            "title": "Audit SWE-Bench Pro",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-07-20.html",
+            "label": "← Retour au brief",
+            "title": "2026-07-20"
+          },
+          "next": {
+            "href": "2026-07-20-perplexity-space.html",
+            "label": "Item suivant →",
+            "title": "Perplexity SPACE"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-07-20-perplexity-space",
+      "actor": "Perplexity",
+      "tag": "useful",
+      "date": "2026-07-15",
+      "title": "Perplexity SPACE — runtime sandbox sécurisé pour agents long-horizon (microVM Firecracker, spin-up 3-5×, isolation credentials)",
+      "context_html": "Perplexity dévoile <strong>SPACE</strong> (Secure and Efficient Runtimes for Long-Running Agents, 15 juil.), la couche runtime de son agent Perplexity Computer. Chaque tâche tourne dans une <strong>microVM Firecracker</strong> éphémère, détruite en fin de tâche mais encapsulée dans une session pausable/resumable/forkable. La sécurité repose sur trois services séparés — Network Gateway, Space Daemon, File Service — qui injectent les credentials depuis l'extérieur du sandbox uniquement au moment du besoin : un agent compromis n'a par défaut aucun chemin vers les credentials plateforme. Perplexity revendique un <strong>spin-up 3-5× plus rapide</strong> et, sur la 1re semaine, des millions de créations de sandbox et des dizaines de millions de reconnexions. Même problème d'isolation que les code-execution sandboxes de Claude Code (bash) et OpenAI, packagé en couche runtime dédiée.",
+      "sources": [
+        {
+          "label": "siliconangle.com",
+          "url": "https://siliconangle.com/2026/07/15/perplexity-launches-secure-sandbox-make-ai-agents-secure-powerful/",
+          "primary": false
+        },
+        {
+          "label": "aibusiness.com",
+          "url": "https://aibusiness.com/agentic-ai/perplexity-ai-introduces-sandbox-for-agents",
+          "primary": false
+        }
+      ],
+      "has_primary": false,
+      "detail": {
+        "short": "Perplexity SPACE",
+        "date_long": "15 juillet 2026",
+        "description": "Analyse de Perplexity SPACE (15 juillet 2026) : runtime sandbox à microVM Firecracker pour agents long-horizon, isolation des credentials hors sandbox, spin-up 3-5× plus rapide. Le modèle d'isolation de référence pour les agents Lynxter sur données machine sensibles.",
+        "stats": [
+          {
+            "num": "Firecracker",
+            "unit": "microVM",
+            "label": "sandbox éphémère par tâche"
+          },
+          {
+            "num": "3-5×",
+            "unit": "spin-up",
+            "label": "plus rapide que la solution précédente"
+          },
+          {
+            "num": "3",
+            "unit": "services",
+            "label": "Network Gateway · Space Daemon · File Service"
+          },
+          {
+            "num": "millions",
+            "unit": "sandboxes",
+            "label": "créées la 1re semaine"
+          }
+        ],
+        "context_paragraphs": [
+          "Le 15 juillet 2026, Perplexity dévoile <strong>SPACE</strong> (Secure and Efficient Runtimes for Long-Running Agents), la couche d'exécution derrière son agent Perplexity Computer. Chaque tâche s'exécute dans une <strong>microVM Firecracker</strong> (la techno d'isolation open-source d'AWS), un sandbox éphémère détruit en fin de tâche — mais encapsulé dans une session pausable, resumable et forkable, capable de survivre aux redémarrages et de brancher plusieurs sandboxes.",
+          "L'architecture de sécurité repose sur trois services séparés du sandbox : <strong>Network Gateway, Space Daemon et File Service</strong>. Ils injectent les credentials depuis l'<em>extérieur</em> du sandbox, uniquement au moment précis du besoin. Conséquence : un agent compromis (par une entrée non fiable, un contenu web piégé, un fichier malveillant) n'a par défaut aucun chemin vers les credentials plateforme ni d'accès au-delà de sa tâche.",
+          "Perplexity revendique un <strong>spin-up 3-5× plus rapide</strong> que sa solution précédente et, sur la première semaine, des millions de créations de sandbox et des dizaines de millions de reconnexions. C'est le même problème d'isolation d'exécution que les code-execution sandboxes de Claude Code (bash) et d'OpenAI, mais packagé ici comme couche runtime dédiée aux agents tournant 24/7 — la direction que prend toute l'industrie sur la sécurité des agents long-horizon."
+        ],
+        "lynxter_paragraphs": [
+          "SPACE est le modèle d'isolation de référence à connaître au moment exact où l'incident Grok Build (exfiltration de dépôts et clés SSH) rappelle le coût d'un agent sans sandbox. Le principe clé — <strong>injecter les credentials hors du sandbox, au dernier moment</strong>, plutôt que de les laisser accessibles à l'agent — est directement applicable si Lynxter laisse tourner des agents long-horizon sur des données machine sensibles (logs S300X/S600D, base de tickets, configurations client).",
+          "Action architecturale : pour tout workflow agent qui manipule des secrets ou accède au réseau (connecteurs MCP internes, agents de support autonomes), isole l'exécution dans un sandbox éphémère sans credentials persistants, et fais transiter les accès par un service externe qui ne les expose qu'à la demande. Que ce soit via les sandboxes bash de Claude Code, une microVM Firecracker maison ou une offre managée, le pattern est le même — et il devient la baseline attendue, pas une option. À évaluer avant d'industrialiser des routines Cowork qui touchent à des données production."
+        ],
+        "source": {
+          "kind": "secondaire",
+          "url": "https://siliconangle.com/2026/07/15/perplexity-launches-secure-sandbox-make-ai-agents-secure-powerful/",
+          "label": "siliconangle.com — Perplexity SPACE",
+          "meta": "Perplexity · SPACE · 15 juillet 2026 · sans annonce officielle fetchée (perplexity.ai non confirmé dans le scan)"
+        },
+        "related": [
+          {
+            "slug": "2026-07-20-grok-build-open-source",
+            "actor": "xAI",
+            "title": "Grok Build — exfiltration de dépôts",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-07-20-claude-code-2-1-202-215",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.202→215 — durcissement permissions",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-07-20-cursor-3-11",
+            "actor": "Cursor",
+            "title": "Cursor 3.11 — Team MCP servers",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-07-20.html",
+            "label": "← Retour au brief",
+            "title": "2026-07-20"
+          },
+          "next": {
+            "href": "../briefs/index.html",
+            "label": "Toutes les archives →",
+            "title": "Archive des briefs"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-07-20-claude-reflect",
+      "actor": "Anthropic",
+      "tag": "info",
+      "date": "2026-07-09",
+      "title": "Claude Reflect — dashboard d'usage en beta pour Free/Pro/Max",
+      "context_html": "Anthropic lance en beta <strong>Reflect</strong> (9 juil.), un dashboard qui synthétise l'usage de Claude sur 1/3/6/12 mois (sujets récurrents, créneaux, types de tâches) pour les tiers Free/Pro/Max ayant activé la mémoire, avec quiet hours et nudges de pause. Nul impact industriel, mais précédent de télémétrie d'usage produit à surveiller s'il est étendu aux plans Team/Enterprise pour les workflows agents.",
+      "sources": [
+        {
+          "label": "anthropic.com/news/reflect-with-claude",
+          "url": "https://www.anthropic.com/news/reflect-with-claude",
+          "primary": true
+        },
+        {
+          "label": "techcrunch.com",
+          "url": "https://techcrunch.com/2026/07/09/anthropics-new-claude-feature-is-quietly-selling-you-on-ai/",
+          "primary": false
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-07-20-claude-for-teachers",
+      "actor": "Anthropic",
+      "tag": "info",
+      "date": "2026-07-14",
+      "title": "Claude for Teachers — accès gratuit pour les enseignants K-12 américains vérifiés",
+      "context_html": "Anthropic ouvre <strong>Claude for Teachers</strong> (14 juil.) : accès gratuit aux capacités premium pour les enseignants K-12 vérifiés aux US, bibliothèque de teaching skills, connexion à Learning Commons (standards académiques des 50 États), données hors entraînement (addendum K-12 conforme FERPA). Sans impact Lynxter direct, mais signal du modèle « skills packagés par domaine » que Lynxter pourrait répliquer pour son support technique.",
+      "sources": [
+        {
+          "label": "anthropic.com/news/claude-for-teachers",
+          "url": "https://www.anthropic.com/news/claude-for-teachers",
+          "primary": true
+        },
+        {
+          "label": "chalkbeat.org",
+          "url": "https://www.chalkbeat.org/2026/07/14/anthropic-launches-claude-for-teachers-as-ai-companies-battle-for-classrooms/",
+          "primary": false
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-07-20-gpt-live",
+      "actor": "OpenAI",
+      "tag": "info",
+      "date": "2026-07-08",
+      "title": "GPT-Live — voix full-duplex qui écoute et parle simultanément, délègue à GPT-5.5",
+      "context_html": "OpenAI déploie <strong>GPT-Live-1</strong> et GPT-Live-1 mini le 8 juil. à tous les utilisateurs ChatGPT : architecture <strong>full-duplex</strong> (écoute et parle en même temps, vs interaction turn-based), avec backchannels et silences, et délégation de la recherche/raisonnement à GPT-5.5 en arrière-plan. Se positionne face au Voice Agent Builder de xAI (~0,06 $/min) et prolonge la Realtime API OpenAI passée en GA en mai.",
+      "sources": [
+        {
+          "label": "openai.com/index/introducing-gpt-live",
+          "url": "https://openai.com/index/introducing-gpt-live/",
+          "primary": false
+        },
+        {
+          "label": "macrumors.com",
+          "url": "https://www.macrumors.com/2026/07/08/openai-gpt-live-voice/",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-07-20-gpt-red",
+      "actor": "OpenAI",
+      "tag": "info",
+      "date": "2026-07-15",
+      "title": "GPT-Red — red-teaming automatisé par self-play, 6× moins d'injections de prompt réussies sur GPT-5.6",
+      "context_html": "OpenAI dévoile <strong>GPT-Red</strong> (15 juil.), modèle attaquant entraîné par self-play RL contre des défenseurs entraînés simultanément, utilisé pour durcir GPT-5.6 : <strong>6× moins d'échecs</strong> sur les benchmarks d'injection directe de prompt vs le prédécesseur d'il y a quatre mois. Reste interne, non exposé à ChatGPT ni à l'API (capacités offensives délibérées). Pertinent pour la robustesse des workflows agentiques exposés à des entrées non fiables (web, fichiers, MCP).",
+      "sources": [
+        {
+          "label": "openai.com/index/unlocking-self-improvement-gpt-red",
+          "url": "https://openai.com/index/unlocking-self-improvement-gpt-red/",
+          "primary": false
+        },
+        {
+          "label": "technologyreview.com",
+          "url": "https://www.technologyreview.com/2026/07/15/1140514/meet-gpt-red-an-llm-super-hacker-openai-built-to-make-its-models-safer/",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-07-20-gemini-3-5-pro-slip",
+      "actor": "Google DeepMind",
+      "tag": "info",
+      "date": "2026-07-17",
+      "title": "Gemini 3.5 Pro — cible du 17 juillet manquée, toujours en preview Vertex AI restreinte (rumeur/leak)",
+      "context_html": "La date du 17 juil., largement relayée par des reports tiers et marchés de prédiction pour <strong>Gemini 3.5 Pro</strong>, est passée sans lancement : ni model card, ni pricing, ni listing <code>gemini-3.5-pro</code> dans l'API. Google aurait rebuild complètement l'architecture 2.5 Pro après des échecs sur le recursive tool-calling ; le modèle reste en preview Vertex AI restreinte, une fenêtre août évoquée. Aucune annonce officielle — rumeur/leak, rien d'actionnable tant que le model card n'est pas publié.",
+      "sources": [
+        {
+          "label": "techtimes.com",
+          "url": "https://www.techtimes.com/articles/320308/20260713/gemini-35-pro-targets-july-17-after-full-rebuild-every-spec-remains-unconfirmed.htm",
+          "primary": false
+        },
+        {
+          "label": "centraljersey.com",
+          "url": "https://centraljersey.com/2026/07/17/google-gemini-3-5-pro-launch-what-to-expect/",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-07-20-google-vids-gemini-omni",
+      "actor": "Google DeepMind",
+      "tag": "info",
+      "date": "2026-07-16",
+      "title": "Google Vids — Gemini Omni et avatars personnels : génération/édition vidéo par prompt",
+      "context_html": "Google déploie <strong>Gemini Omni</strong> et les avatars personnels dans Google Vids (16 juil.) : génération/édition de clips en langage naturel (swap d'arrière-plan, correction d'éclairage, effets par prompt) et création d'un avatar numérique depuis un selfie + un enregistrement vocal. Réservé aux abonnés AI Pro/Ultra et Workspace éligibles ; anglais uniquement, 18+, exclu de l'EEE, de la Suisse et du Royaume-Uni. Sans surface agent/MCP ni impact Lynxter.",
+      "sources": [
+        {
+          "label": "techcrunch.com",
+          "url": "https://techcrunch.com/2026/07/16/google-vids-now-lets-you-star-in-your-own-ai-videos/",
+          "primary": false
+        },
+        {
+          "label": "ppc.land",
+          "url": "https://ppc.land/google-vids-gains-gemini-omni-editing-and-avatars-for-paid-users-only/",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-07-20-gemini-chrome-uk",
+      "actor": "Google DeepMind",
+      "tag": "info",
+      "date": "2026-07-14",
+      "title": "Gemini in Chrome arrive au Royaume-Uni (desktop), transformation d'images via Nano Banana 2",
+      "context_html": "Depuis le 14 juil., les fonctions IA de Chrome (bouton « Ask Gemini ») arrivent aux utilisateurs desktop au Royaume-Uni — résumé de pages longues, comparaison multi-onglets, mémoire des conversations, intégrations Calendar/Maps/Gmail/YouTube, et transformation d'images web par prompt via Nano Banana 2 ; support iOS annoncé pour le mois suivant. Expansion géographique à faible substance technique nouvelle, sans impact Lynxter.",
+      "sources": [
+        {
+          "label": "9to5google.com",
+          "url": "https://9to5google.com/2026/07/14/gemini-chrome-uk/",
+          "primary": false
+        },
+        {
+          "label": "macrumors.com",
+          "url": "https://www.macrumors.com/2026/07/14/google-chrome-gemini-ai-features-uk/",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-07-20-meta-muse-image",
+      "actor": "Meta",
+      "tag": "info",
+      "date": "2026-07-07",
+      "title": "Muse Image lancé, Muse Video en preview — premiers modèles de génération média maison de MSL",
+      "context_html": "Meta Superintelligence Labs lance <strong>Muse Image</strong> (7 juil., Meta AI app, meta.ai, Instagram Stories US) et prévisualise Muse Video, ses premiers modèles de génération image/vidéo internes : No. 2 sur l'Arena Elo text-to-image et édition, No. 3 en text-to-video. Impact Lynxter quasi nul (génération média grand public), mais signale que Meta internalise sa stack créative plutôt que de dépendre de fournisseurs tiers.",
+      "sources": [
+        {
+          "label": "cnbc.com",
+          "url": "https://www.cnbc.com/2026/07/07/meta-ai-muse-image.html",
+          "primary": false
+        },
+        {
+          "label": "kingy.ai",
+          "url": "https://kingy.ai/ai-launch-tracker/meta-muse-image-and-video-preview-2026-07-07-3/",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-07-20-mistral-robostral-navigate",
+      "actor": "Mistral",
+      "tag": "info",
+      "date": "2026-07-08",
+      "title": "Robostral Navigate — modèle embodied 8B de navigation robotique par caméra RGB unique, 76,6 % R2R-CE",
+      "context_html": "Mistral entre dans la robotique / physical AI avec <strong>Robostral Navigate</strong>, un modèle <strong>8B</strong> qui pilote un robot depuis une seule caméra RGB (pas de LiDAR ni depth) et une instruction en langage naturel : <strong>76,6 %</strong> de succès sur R2R-CE val-unseen (+9,7 pts vs le meilleur système mono-caméra), entraîné 100 % en simulation (~400 000 trajectoires, SFT puis RL online via CISPO). Signal souveraineté/IA industrielle, mais pas un agent code/MCP — non actionnable court terme sur la stack agentique S300X/S600D.",
+      "sources": [
+        {
+          "label": "the-decoder.com",
+          "url": "https://the-decoder.com/mistral-enters-robotics-with-robostral-navigate-an-8b-model-that-steers-robots-using-just-one-camera/",
+          "primary": false
+        },
+        {
+          "label": "heise.de",
+          "url": "https://www.heise.de/en/news/Robostral-Navigate-Mistral-releases-single-camera-AI-for-robots-11359759.html",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-07-20-grok-automations",
+      "actor": "xAI",
+      "tag": "info",
+      "date": "2026-07-16",
+      "title": "Automations dans Grok — tâches planifiées et déclencheurs email",
+      "context_html": "Grok lance les <strong>Automations</strong> (16 juil.) : décrire une tâche une fois puis la faire exécuter sur planning (une fois, quotidien, jours ouvrés, hebdo, mensuel, annuel) ou à réception d'un email, avec connecteurs (Slack, Google Workspace, GitHub, Airtable, Salesforce) et Skills. Dispo sur grok.com et apps iOS/Android ; triggers email réservés à SuperGrok — équivalent des Scheduled Tasks d'OpenAI et des routines Claude.",
+      "sources": [
+        {
+          "label": "testingcatalog.com",
+          "url": "https://www.testingcatalog.com/xai-is-working-on-automations-feature-for-grok/",
+          "primary": false
+        },
+        {
+          "label": "basenor.com",
+          "url": "https://www.basenor.com/blogs/news/grok-automations-explained-in-5-points",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    }
+  ]
+}

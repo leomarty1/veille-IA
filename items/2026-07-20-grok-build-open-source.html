@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grok Build passe en open source (Apache 2.0) 72 h après une exfiltration silencieuse de dépôts Git et clés SSH — Veille IA Lynxter</title>
+<meta name="description" content="Analyse de l'open-sourcing de Grok Build (Apache 2.0, 15 juillet 2026) survenu ~72 h après la preuve d'une exfiltration silencieuse de dépôts Git et de clés SSH. Pourquoi Lynxter doit établir une allowlist des CLI d'agents avant d'exposer ses repos S300X/S600D.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-07-20.html">2026-07-20</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Grok Build open source</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">xAI</span>
+          <span class="dot-sep">·</span>
+          <span>15 juillet 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-lynxter">🎯 Lynxter</span>
+        </div>
+        <h1>Grok Build passe en open source (Apache 2.0) 72 h après une exfiltration silencieuse de dépôts Git et clés SSH</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-07-20.html">Claude Code orchestre, Meta ferme, xAI fuit — 2026-07-20</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">Apache 2.0<span class="unit">open source</span></div>
+            <div class="stat-label">15 juil., ~20,3k stars</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">844 530<span class="unit">lignes</span></div>
+            <div class="stat-label">harness Rust 99,6 %</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">~72 h<span class="unit">après</span></div>
+            <div class="stat-label">preuve d'exfiltration de dépôts</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">12 juil.<span class="unit">rétention off</span></div>
+            <div class="stat-label">désactivée par défaut, données supprimées</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Grok Build est l'agent de code CLI/TUI de xAI, écrit à 99,6 % en Rust, un harness d'environ <strong>844 530 lignes</strong> selon le décompte de Simon Willison, doté d'extensions skills/plugins/hooks, de serveurs MCP, de subagents et de l'Agent Client Protocol. Le 15 juillet 2026, xAI le publie en open source sous <strong>Apache 2.0</strong> sur github.com/xai-org/grok-build (~20,3k stars en quelques jours, contributions externes explicitement refusées). Sur le papier, c'est un concurrent frontal de Claude Code et OpenAI Codex, désormais exécutable en local-first (inférence locale, configuration via <code>config.toml</code>).</p>
+        <p>Le contexte est ce qui compte. L'open-sourcing intervient environ <strong>72 heures après</strong> la publication de preuves wire-level qu'une version du CLI <strong>uploadait silencieusement des dépôts Git complets</strong> vers un bucket cloud contrôlé par xAI. Un utilisateur l'ayant lancé dans son répertoire home rapporte l'envoi de ses clés SSH, de sa base de mots de passe, de documents, photos et vidéos. xAI a réagi le 12 juillet en désactivant la rétention par défaut pour tous les utilisateurs et en supprimant les données de code retenues.</p>
+        <p>La comparaison inter-acteurs est nette : ni Claude Code ni OpenAI Codex n'exfiltrent les dépôts par défaut ; leur télémétrie est opt-in ou limitée, et le durcissement de permissions de Claude Code 2.1.214 (fermeture des Bash mutants en plan mode) va dans le sens inverse de l'incident xAI. L'open-sourcing sous licence permissive est autant un geste de transparence qu'une opération de confiance post-incident — mais le code étant désormais auditable, il devient possible de vérifier ce que le binaire fait réellement du réseau.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🎯 Pourquoi c'est important pour Lynxter</h2>
+        <p>Action de gouvernance directe : avant d'exposer un repo interne ou un workflow S300X/S600D à un agent de code, <strong>établis une allowlist des CLI d'agents autorisés sur les postes dev et support</strong>, et documente pour chacun sa politique de rétention et de télémétrie. L'incident Grok Build prouve qu'un agent peut exfiltrer bien au-delà du dépôt visé (clés SSH, secrets locaux) sans signal visible — le périmètre à risque n'est pas le repo, c'est tout le home du poste.</p>
+        <p>Concrètement cette semaine : recense les agents CLI présents sur les machines dev/support (Claude Code, Codex, Grok Build, Cursor CLI, autres), vérifie leurs réglages de rétention par défaut, et isole toute exécution d'agent non vérifié dans un environnement sans clés de production ni accès réseau sortant libre. Le modèle d'isolation de Perplexity SPACE (microVM éphémère, credentials injectés hors sandbox) est la référence architecturale si Lynxter laisse tourner des agents sur des données machine sensibles. Pour la stack principale, cet incident renforce le choix Claude Code, dont les défauts de télémétrie et de permissions sont plus conservateurs.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://github.com/xai-org/grok-build" target="_blank" rel="noopener">github.com/xai-org/grok-build</a>
+        <span class="source-meta">xAI · dépôt open source Grok Build · Apache 2.0 · 15 juillet 2026</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-07-20-perplexity-space.html">
+            <span class="related-actor">Perplexity</span>
+            <span class="related-title">Perplexity SPACE — isolation d'agents</span>
+            undefined
+          </a></li>
+          <li><a href="2026-07-20-claude-code-2-1-202-215.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code 2.1.202→215 — durcissement permissions</span>
+            undefined
+          </a></li>
+          <li><a href="2026-07-20-grok-4-5.html">
+            <span class="related-actor">xAI</span>
+            <span class="related-title">Grok 4.5 — modèle code/agentique</span>
+            undefined
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="../briefs/2026-07-20.html">
+          <span class="label">← Retour au brief</span>
+          <span class="title">2026-07-20</span>
+        </a>
+        <a class="next" href="2026-07-20-gpt-5-6-ga.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">GPT-5.6 GA</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-07-20</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
