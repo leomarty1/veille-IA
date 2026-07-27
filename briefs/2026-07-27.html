@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opus 5 débarque, l'open weights contre-attaque — Veille IA Lynxter</title>
+<meta name="description" content="Brief IA du 20 au 27 juillet 2026 : Claude Opus 5 (79,2 % SWE-bench Pro, pricing inchangé $5/$25, nouveau défaut Claude Code), DeepSeek V4 GA à 80,6 % SWE-bench Verified, Gemini 3.6 Flash, OpenAI Presence, Cursor Router, Mistral sur Azure Local.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/" class="active">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="./">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">2026-07-27</span>
+      </div>
+
+      <header style="margin-bottom:64px;">
+        <p class="section-label">Brief hebdomadaire · 20 juil → 27 juil 2026</p>
+        <h1 style="font-family:var(--font-display);font-stretch:125%;font-weight:300;font-size:clamp(36px,5.5vw,64px);text-transform:uppercase;letter-spacing:-0.005em;line-height:1.02;margin:0 0 28px;color:var(--text);">Opus 5 débarque,<br>l'open weights<br><em style="font-style:normal;color:var(--lx-accent);">contre-attaque</em></h1>
+        <p style="font-size:18px;font-weight:300;color:var(--text-soft);max-width:720px;margin:0 0 48px;line-height:1.7;">Semaine dense côté frontière. Anthropic sort <strong>Claude Opus 5</strong> à pricing inchangé et en fait le défaut de Claude Code, pendant que <strong>DeepSeek V4</strong> et les <strong>Gemini Flash</strong> déclenchent une guerre des prix côté open weights et bas-coût. En toile de fond, la gouvernance et le routing d'agents montent d'un cran chez OpenAI (Presence, spend limits), Cursor (Router) et Mistral (Azure Local on-prem).</p>
+
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">13<span class="unit">items</span></div>
+            <div class="stat-label">Total semaine</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">2<span class="unit">🎯</span></div>
+            <div class="stat-label">Impact Lynxter</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">7<span class="unit">🛠</span></div>
+            <div class="stat-label">À connaître</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">9<span class="unit">acteurs</span></div>
+            <div class="stat-label">Sources scannées</div>
+          </div>
+        </div>
+      </header>
+
+      <p class="section-label">TL;DR</p>
+      <section class="tldr reveal" style="margin-bottom:72px;">
+        <ul>
+          <li><strong>Claude Opus 5 (24 juil.) — nouveau défaut Opus, pricing inchangé $5/$25 par M tokens, contexte 1M.</strong> 79,2 % SWE-bench Pro (+10 pts vs Opus 4.8 à 69,2 %), ~96 % SWE-bench Verified (quasi-saturation, devant Fable 5 ~95 %), 43,3 % Frontier-Bench en effort max, 30,2 % ARC-AGI-3 (~3× le suivant). Nouveau toggle d'effort low→high + palier max pour arbitrer intelligence vs tokens ; fast mode ~2,5× plus rapide à $10/$50. Claude Code v2.1.219 le passe en défaut, imbrique les subagents jusqu'à depth 3 (CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH) et borne les cascades (200 spawns/session, 20 concurrents) + sandbox.network.strictAllowlist.</li>
+          <li><strong>Guerre des prix côté open weights et Flash.</strong> DeepSeek V4 en GA (bascule dure des alias legacy le 24 juil. 15:59 UTC) : deepseek-v4-pro 1,6T total / 49B actifs (MoE, MIT, contexte 1M natif) à 80,6 % SWE-bench Verified — meilleure entrée open weights, à égalité Gemini 3.1 Pro, sous Opus 4.8 (~87-88 %) — à $0,435/$0,87 off-peak (~1/6 d'Opus) mais première tarification API à surcharge horaire ×2 en heures pleines. Google sort Gemini 3.6 Flash (-17 % de tokens en sortie, $1,50/$7,50 vs $9 out) et Flash-Lite ($0,30/$2,50, 350 tok/s), pendant que le pré-entraînement de Gemini 4 est confirmé.</li>
+          <li><strong>Gouvernance et routing d'agents montent d'un cran.</strong> OpenAI Presence déploie des agents voix/chat scopés par tâche via Forward Deployed Engineers (zéro self-serve/API), ~75 % de résolution sans humain sur sa propre ligne support, Codex en boucle d'amélioration. Cursor Router route chaque requête vers Intelligence/Balance/Cost (30-50 % de coût en moins à qualité frontière, $4,63-$6,76 par commit). Côté API OpenAI, spend limits mensuels par org ET par projet (hard cap ou alerte). Mistral pousse Azure Local (Medium 3.5 + OCR 4 on-prem/edge) via un deal multi-Md$ avec Microsoft ; Meta montre SAM 3 + DINOv3 open weights (labellisation 3D d'un mois à ~15 min, air-gapped).</li>
+        </ul>
+      </section>
+
+      <section class="lynxter-hero reveal">
+        <h2>🎯 Implications Lynxter</h2>
+        <div class="body">
+          <p><strong>Opus 5 est un upgrade sans friction du stack agent Lynxter — actualise, mesure, exploite le toggle d'effort.</strong> Même pricing qu'Opus 4.8 ($5/$25 par M tokens), contexte 1M, et un saut réel là où ça compte : <strong>79,2 % sur SWE-bench Pro (+10 pts vs 4.8)</strong>, le benchmark le plus représentatif des tâches longues, multi-fichiers et mal spécifiées — audit firmware S300X, migration de scripts de calibration, diagnostic support multi-logs. Opus 5 étant le <strong>nouveau défaut dans Claude Code (v2.1.219)</strong>, tes Routines Cowork et sessions Claude Code y basculent automatiquement. Le vrai levier opérationnel est le <strong>toggle d'effort (low→high + palier max)</strong> : sur les boucles agentiques longues et peu critiques (triage tickets entrants, déduplication base de connaissance, pré-traitement RAG de datasheets), passe en effort <code>low</code> pour couper le coût par tâche à budget constant ; garde <code>max</code> pour les audits firmware où la profondeur de raisonnement prime. Test cette semaine : prends une Routine qui tourne &gt; 5 min, compare effort <code>low</code> vs défaut sur latence + qualité subjective + tokens consommés, et fige le palier par classe de tâche.</p>
+          <p><strong>Les caps de session de Claude Code v2.1.216→219 rendent enfin les orchestrations multi-agents sûres à mettre en prod support.</strong> L'imbrication des subagents passe de depth 1 à <strong>depth 3 par défaut</strong> (<code>CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH</code>) — un orchestrateur peut désormais déléguer à un sous-agent qui délègue lui-même, ce qui débloque des pipelines réels de diagnostic (agent tri → agent parsing logs machine → agent rédaction réponse). Les garde-fous <strong>200 spawns/session et 20 concurrents</strong> bornent les cascades runaway qui, jusqu'ici, faisaient exploser le coût d'un run mal cadré. Surtout, <code>sandbox.network.strictAllowlist</code> durcit le sandbox réseau : tu peux exécuter du code client (scripts de calibration, parseurs de gcode fournis par un utilisateur S600D) sans risque d'exfiltration hors des domaines explicitement autorisés — prérequis dur pour tout workflow support qui touche des données client. Action : câble une allowlist réseau minimale sur ton profil Claude Code support et teste un run de parsing de logs sur un dump client réel avant d'ouvrir ça à l'équipe.</p>
+          <p><strong>Trois signaux à benchmarker, pas à adopter tels quels.</strong> (1) <strong>DeepSeek V4-Pro</strong> (80,6 % SWE-bench Verified, MIT, contexte 1M, ~1/6 du prix d'Opus off-peak) devient le candidat open weights sérieux pour de l'auto-hébergement on-prem sur tâches non-critiques — mais la surcharge horaire ×2 en heures pleines (9-12h/14-18h Pékin, qui recoupe partiellement l'après-midi européen) casse la prévisibilité FinOps si tu passes par l'API plutôt que par tes propres poids. (2) <strong>Gemini 3.5 Flash-Lite</strong> (350 tok/s, $0,30/$2,50) est un offload crédible pour le haut-débit peu critique (classification de tickets, triage de logs) en complément des boucles Claude Code — à mesurer sur un lot réel avant tout basculement. (3) Côté souveraineté, <strong>Mistral sur Azure Local</strong> (Medium 3.5 + OCR 4 exécutables on-prem/edge) et <strong>Meta SAM 3 + DINOv3 en open weights</strong> (inspection de défauts, segmentation d'images sur pièces imprimées, exécutables en local air-gapped) ouvrent des options concrètes pour les clients Lynxter défense/médical/aérospatial dont les données ne peuvent pas sortir du réseau — argument commercial à préparer, pas encore un déploiement.</p>
+        </div>
+      </section>
+
+      <p class="section-label">Synthèse</p>
+      <section class="synthese reveal">
+        Semaine dominée par <strong>Anthropic</strong> qui sort <strong>Claude Opus 5</strong> (24 juil.) au même tarif qu'Opus 4.8 ($5/$25 par M tokens, contexte 1M) : <strong>79,2 % SWE-bench Pro</strong> (+10 pts), <strong>~96 % SWE-bench Verified</strong> (quasi-saturation, devant Fable 5 ~95 %), 43,3 % Frontier-Bench en effort max, 30,2 % ARC-AGI-3, un nouveau <strong>toggle d'effort</strong> low→max et un fast mode $10/$50. <strong>Claude Code v2.1.216→219</strong> le passe en défaut, imbrique les subagents jusqu'à <strong>depth 3</strong>, ajoute des caps de session (200 spawns, 20 concurrents), <code>sandbox.network.strictAllowlist</code>, passe <code>/code-review</code> en subagent d'arrière-plan et corrige des fuites mémoire. <strong>OpenAI</strong> lance <strong>Presence</strong> (22 juil.), plateforme entreprise d'agents voix/chat scopés par tâche, livrée par Forward Deployed Engineers sans self-serve, ~75 % de résolution sans humain sur sa propre ligne support ; et une vague Codex/API le 20 juil. (Mermaid inline, formulaires interactifs, <strong>spend limits mensuels par org et par projet</strong>). <strong>Google DeepMind</strong> sort trois modèles Flash (21 juil.) — <strong>Gemini 3.6 Flash</strong> (-17 % de tokens en sortie, $1,50/$7,50), <strong>3.5 Flash-Lite</strong> ($0,30/$2,50, 350 tok/s) et 3.5 Flash Cyber (pilote sécu) — et confirme le pré-entraînement de <strong>Gemini 4</strong>. <strong>Meta</strong> montre <strong>SAM 3 + DINOv3</strong> en open weights dans le projet SYNAPS-I du Genesis Mission (DOE) : labellisation de volumes 3D d'un mois à ~15 min, air-gapped. <strong>Mistral</strong> étend son partenariat <strong>Microsoft</strong> (deal compute multi-Md$ sur ses datacenters EU sans nouvelle prise de participation ; Medium 3.5 + OCR 4 sur Foundry / Copilot Studio / <strong>Azure Local</strong>). Côté secondaires : <strong>Cursor Router</strong> (routage par requête Intelligence/Balance/Cost, 30-50 % de coût en moins) ; <strong>DeepSeek V4</strong> en GA (deepseek-v4-pro 80,6 % SWE-bench Verified, MIT, 1M contexte, ~1/6 du prix d'Opus, première tarification API à surcharge horaire) et suspension de son second tour (~74 Md$) ; <strong>xAI</strong> annonce Grok 4.6 (2T, training bouclé, GA sous ~2 semaines) sans benchmarks, un add-on Google Workspace et un mode WebSocket pour la Responses API. <strong>Perplexity</strong> : rien de notable.
+      </section>
+
+      <!-- ─── ANTHROPIC ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/anthropic/1b1818/f3f1ee" alt="" />Anthropic<span class="count">2 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-07-27-claude-opus-5.html">Claude Opus 5 — nouveau défaut Opus, pricing inchangé $5/$25, contexte 1M, 79,2 % SWE-bench Pro et toggle d'effort</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-07-24</span>
+          </div>
+          <p class="item-context">Anthropic lance <strong>Claude Opus 5</strong> le 24 juillet 2026 au même tarif qu'Opus 4.8 (<strong>$5 in / $25 out par M tokens</strong>), contexte 1M. Scores : <strong>79,2 % SWE-bench Pro</strong> (+10 pts vs Opus 4.8 à 69,2 %), <strong>~96 % SWE-bench Verified</strong> (quasi-saturation, devant Fable 5 ~95 %), 43,3 % Frontier-Bench en effort max (44,4 % en xhigh), 30,2 % ARC-AGI-3 soit ~3× le modèle suivant. Nouveau <strong>toggle d'effort</strong> (low→high + palier max) pour arbitrer intelligence vs coût tokens ; fast mode ~2,5× plus rapide à prix double ($10/$50, confirmé par le changelog Claude Code). Anthropic positionne Opus 5 comme approchant l'intelligence frontière de Fable 5 (le heavyweight) à ~la moitié du prix. C'est le <strong>nouveau défaut dans Claude Code (v2.1.219)</strong> — à intégrer aux workflows agents S300X/S600D, le pricing inchangé + le toggle permettant de baisser le coût par tâche sur les boucles longues.</p>
+          <p class="item-source"><a href="https://www.anthropic.com/news/claude-opus-5" target="_blank" rel="noopener">anthropic.com/news/claude-opus-5</a> · <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">code.claude.com/docs/en/changelog</a> · <a href="https://techcrunch.com/2026/07/24/anthropic-launches-opus-5/" target="_blank" rel="noopener">techcrunch.com</a> · <a href="https://www.marktechpost.com/2026/07/24/meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing/" target="_blank" rel="noopener">marktechpost.com</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-07-27-claude-code-2-1-216-219.html">Claude Code v2.1.216 → v2.1.219 — Opus 5 par défaut, subagents imbriqués jusqu'à depth 3, caps de session, strictAllowlist</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-07-24</span>
+          </div>
+          <p class="item-context">Le changelog officiel couvre <strong>v2.1.216 (20 juil.) → v2.1.219 (24 juil.)</strong>. v2.1.219 fait de <strong>claude-opus-5 le nouveau défaut Opus</strong> (contexte 1M, fast mode $10/$50), passe la profondeur d'imbrication des subagents de <strong>1 à 3 par défaut</strong> (<code>CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH</code>), ajoute des <strong>caps de session anti-runaway (200 spawns de subagents/session, 20 concurrents)</strong> et le réglage <code>sandbox.network.strictAllowlist</code>. v2.1.218 passe <code>/code-review</code> en subagent d'arrière-plan et corrige un coût de normalisation de messages devenu quadratique en session longue ; v2.1.217/216 corrigent des fuites mémoire (sorties MCP tronquées gardant le résultat complet en mémoire) et une régression de perf (stalls multi-secondes au resume). Pour Lynxter : depth 3 + caps rendent les orchestrations multi-agents (diagnostic support, parsing logs machine) plus profondes tout en bornant les cascades ; strictAllowlist durcit le sandbox réseau pour exécuter du code client sans exfiltration.</p>
+          <p class="item-source"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">code.claude.com/docs/en/changelog</a> · <a href="https://releasebot.io/updates/anthropic/claude-code" target="_blank" rel="noopener">releasebot.io</a></p>
+        </article>
+      </section>
+
+      <!-- ─── OPENAI ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/openai/1b1818/f3f1ee" alt="" />OpenAI<span class="count">2 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-07-27-openai-presence.html">OpenAI Presence — plateforme entreprise d'agents voix/chat livrée par Forward Deployed Engineers, zéro self-serve</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-07-22</span>
+          </div>
+          <p class="item-context">OpenAI lance <strong>Presence</strong> (22 juil.), produit entreprise pour déployer des <strong>agents voix et chat</strong> sur des workflows client-facing et internes (support, ventes sortantes, tickets IT). Chaque déploiement est <strong>scopé par tâche</strong> avec des policies définissant ce que l'agent peut faire, quand il demande une approbation et quand un humain reprend la main. Particularité forte : <strong>aucune voie self-serve/API</strong> — chaque install passe par les Forward Deployed Engineers d'OpenAI ou des intégrateurs agréés. Sur sa propre ligne support anglophone, Presence résout <strong>~75 % des demandes entrantes sans humain</strong>, avec <strong>-15 % de handoffs sur 10 jours</strong>. Codex agit comme boucle d'amélioration : il analyse les interactions de prod et les escalades, propose des updates de comportement validées par un humain avant mise en ligne. Angle Lynxter : modèle de gouvernance d'agents support (périmètre par tâche + approbation humaine + amélioration continue) transposable à un agent S300X/S600D, à opposer au verrou FDE face à une stack Claude Code/MCP auto-hébergée.</p>
+          <p class="item-source"><a href="https://openai.com/index/introducing-openai-presence/" target="_blank" rel="noopener">openai.com/index/introducing-openai-presence</a> · <a href="https://www.helpnetsecurity.com/2026/07/22/openai-presence-ai-agent-platform/" target="_blank" rel="noopener">helpnetsecurity.com</a> · <a href="https://www.cxtoday.com/security-privacy-compliance/openai-presence-enterprise-ai-agent-governance/" target="_blank" rel="noopener">cxtoday.com</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-07-27-openai-codex-spend-limits.html">Codex + API platform — Mermaid inline et formulaires interactifs, spend limits mensuels par org ET par projet</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-07-20</span>
+          </div>
+          <p class="item-context">Vague de GA côté Codex le 20 juillet : <strong>rendu Mermaid inline</strong> dans les transcripts de tâches, <strong>formulaires interactifs</strong> dans les tâches (human-in-the-loop), restauration des prompts non envoyés au changement de tâche/host/workspace, tri des tâches par activité récente. Côté plateforme API, OpenAI ajoute des <strong>spend limits mensuels au niveau organisation ET projet</strong> : mode alerte (notification e-mail + bandeau, la clé continue de facturer) ou <strong>hard cap</strong> qui fait échouer les requêtes API au dépassement, avec ventilation de l'usage par projet. Items distincts des releases Codex CLI 0.142/0.143 déjà couvertes. Angle Lynxter : les spend limits par projet = garde-fou FinOps pour cloisonner un projet agent staging d'un budget prod (un script qui s'emballe ne draine plus les crédits de prod) ; les formulaires interactifs rapprochent Codex des boucles d'approbation de Claude Code que Lynxter benchmarke.</p>
+          <p class="item-source"><a href="https://developers.openai.com/codex/changelog" target="_blank" rel="noopener">developers.openai.com/codex/changelog</a> · <a href="https://blog.alephant.io/openai-spend-limit-how-to-cap-your-api-bill-2026/" target="_blank" rel="noopener">blog.alephant.io</a></p>
+        </article>
+      </section>
+
+      <!-- ─── GOOGLE DEEPMIND ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/googlegemini/1b1818/f3f1ee" alt="" />Google DeepMind<span class="count">1 item</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-07-27-gemini-3-6-flash.html">Gemini 3.6 Flash, 3.5 Flash-Lite et Flash Cyber — baisse de prix, -17 % de tokens en sortie, Gemini 4 en pré-entraînement</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-07-21</span>
+          </div>
+          <p class="item-context">Google DeepMind sort trois modèles Flash le 21 juillet. <strong>Gemini 3.6 Flash</strong> consomme <strong>17 % de tokens en sortie de moins</strong> que 3.5 Flash (indice Artificial Analysis ; jusqu'à -65 % sur le benchmark de code DeepSWE de Datacurve où il passe de 37 % à 49 %), garde la fenêtre 1M et un cutoff mars 2026 ; pricing <strong>$1,50/M in et $7,50/M out</strong> (contre $9 out auparavant). <strong>Gemini 3.5 Flash-Lite</strong> tourne à <strong>350 tokens/s</strong> en sortie pour <strong>$0,30/M in et $2,50/M out</strong>, rapport prix/perf le plus agressif de la classe 3.5 (à comparer à GPT-5.6 Luna $1/$6). <strong>Gemini 3.5 Flash Cyber</strong>, spécialisé recherche/correction de vulnérabilités et couplé à l'agent CodeMender, reste en pilote à accès limité. Google confirme que le <strong>pré-entraînement de Gemini 4 a démarré</strong>, sans specs ni date. Pour Lynxter : Flash-Lite est un candidat crédible pour les étapes agent haut-débit peu critiques (triage de logs S300X/S600D, classification de tickets, pré-traitement RAG) en offload des boucles Claude Code, à benchmarker avant tout basculement.</p>
+          <p class="item-source"><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/" target="_blank" rel="noopener">blog.google — gemini 3.6 flash / 3.5 flash-lite / flash cyber</a> · <a href="https://9to5google.com/2026/07/21/gemini-3-6-flash-launch/" target="_blank" rel="noopener">9to5google.com</a> · <a href="https://techcrunch.com/2026/07/21/google-releases-three-new-gemini-models-but-no-3-5-pro/" target="_blank" rel="noopener">techcrunch.com</a></p>
+        </article>
+      </section>
+
+      <!-- ─── META ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/meta/1b1818/f3f1ee" alt="" />Meta<span class="count">1 item</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-07-27-meta-sam3-dinov3-genesis.html">Meta déploie SAM 3 + DINOv3 (open weights) dans SYNAPS-I du Genesis Mission (DOE) — labellisation 3D d'un mois à ~15 minutes</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-07-21</span>
+          </div>
+          <p class="item-context">Meta publie (blog AI at Meta, 21 juillet) le premier retour terrain de ses modèles vision open weights au sein du <strong>Genesis Mission du DOE</strong>. Le projet <strong>SYNAPS-I</strong>, piloté par Lawrence Berkeley National Lab avec SLAC, fait tourner <strong>Segment Anything Model 3 (SAM 3)</strong> couplé à <strong>DINOv3</strong> sur <strong>300 GPU NVIDIA A100 au NERSC</strong>. DINOv3 fournit le contexte sémantique global et la localisation spatiale, SAM 3 l'extraction de contours au pixel : la labellisation de volumes 3D en science X/neutrons passe d'<strong>un mois de travail manuel à ~15 minutes</strong>, entièrement dans une infrastructure gouvernementale <strong>air-gapped</strong> — usage hors de portée légale de tout modèle closed API. Le Genesis Mission couvre 278 projets, 50 États, 342 institutions. C'est un showcase (pas une release), qui tranche avec le virage closed de Meta la semaine précédente (Muse Spark 1.1, API payante). Angle Lynxter : SAM 3 + DINOv3 en open weights, exécutables en local sans dépendance API, pertinents pour l'inspection de défauts et la segmentation d'images sur pièces imprimées S300X/S600D dans un contexte où les données ne sortent pas du réseau.</p>
+          <p class="item-source"><a href="https://newscenter.lbl.gov/2026/07/22/berkeley-lab-to-lead-13-new-genesis-mission-ai-projects/" target="_blank" rel="noopener">newscenter.lbl.gov (Berkeley Lab)</a> · <a href="https://www.hpcwire.com/off-the-wire/berkeley-lab-to-lead-13-new-genesis-mission-ai-projects/" target="_blank" rel="noopener">hpcwire.com</a> · <a href="https://www.techtimes.com/articles/321456/20260724/meta-open-source-ai-cuts-doe-beamline-analysis-month-minutes.htm" target="_blank" rel="noopener">techtimes.com</a></p>
+        </article>
+      </section>
+
+      <!-- ─── MISTRAL ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/mistralai/1b1818/f3f1ee" alt="" />Mistral<span class="count">1 item</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-07-27-mistral-microsoft-azure-local.html">Microsoft x Mistral — deal compute multi-Md$ sur datacenters EU (sans nouvelle prise de participation), Medium 3.5 + OCR 4 sur Azure Local</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-07-21</span>
+          </div>
+          <p class="item-context">Microsoft et Mistral annoncent le 21 juillet une expansion de leur partenariat : Microsoft s'engage sur <strong>plusieurs milliards de dollars</strong> pour louer la capacité de calcul des datacenters européens de Mistral (France — site Les Ulis 10 MW — et Suède), donnant aux clients Azure une <strong>alternative hébergée en Europe</strong> aux infrastructures sous contrôle US. Le deal est structuré comme un achat de compute <strong>SANS nouvelle prise de participation</strong> (Microsoft ne relève pas sa part au capital), lecture destinée à désamorcer le scrutin antitrust de Bruxelles. Côté produit, <strong>Mistral Medium 3.5 et OCR 4</strong> sont intégrés à Microsoft Foundry, Copilot Studio et <strong>Azure Local</strong> — exécution en cloud, on-premise ou sur edge déconnecté, ciblant les industries régulées. Pour Lynxter (fabricant FR d'imprimantes 3D industrielles) : Azure Local ouvre la voie à faire tourner un modèle sur site pour des workflows agents confidentiels (support, RFP, parsing de datasheets via OCR 4) sans dépendance à un cloud US — à benchmarker contre Claude Code/Cowork.</p>
+          <p class="item-source"><a href="https://news.microsoft.com/source/2026/07/21/microsoft-and-mistral-expand-strategic-partnership-to-give-enterprises-and-regulated-industries-frontier-ai-they-can-control/" target="_blank" rel="noopener">news.microsoft.com/source</a> · <a href="https://siliconangle.com/2026/07/21/mistral-ai-strikes-multibillion-dollar-deal-microsoft-build-azure-infrastructure-europe/" target="_blank" rel="noopener">siliconangle.com</a> · <a href="https://www.france24.com/en/france/20260721-microsoft-strikes-multi-billion-dollar-deal-to-expand-france-ai-firm-mistral" target="_blank" rel="noopener">france24.com</a></p>
+        </article>
+      </section>
+
+      <!-- ─── ACTEURS SECONDAIRES ─── -->
+      <section class="actor-section reveal">
+        <h2 style="font-size:18px;color:var(--text-muted);">Acteurs secondaires<span class="count">6 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-07-27-cursor-router.html">Cursor Router — routeur de modèles au niveau requête pour le mode Auto (profils Intelligence / Balance / Cost)</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-07-22</span>
+          </div>
+          <p class="item-context">Le 22 juillet, Cursor lance <strong>Cursor Router</strong>, un classifieur au niveau requête qui pilote le mode Auto en envoyant chaque requête au modèle jugé adéquat selon trois profils : <strong>Intelligence</strong> (qualité frontière), <strong>Balance</strong> (qualité forte des daily-drivers) et <strong>Cost</strong> (intelligence max sous contrainte de budget). Selon Cursor, Auto Intelligence approche Fable en satisfaction utilisateur à <strong>~60 % de coût en moins</strong> et gagne ~15 % de satisfaction sur Opus 4.8 à coût quasi égal ; Auto Balance passe au-dessus d'Opus 4.8 en satisfaction à ~36 % de coût en moins, avec un coût par commit de <strong>$6,76 (Intelligence) et $4,63 (Balance)</strong> — MarkTechPost résume le gain à <strong>30-50 % de coût en moins à qualité frontière</strong>. Disponible sur desktop, web, iOS, CLI et SDK, activé par défaut sur les plans Teams. Angle Lynxter : un routeur qui arbitre coût/qualité par requête est un patron d'architecture à surveiller pour les workflows multi-modèles ; revers pour l'usage industriel : l'opacité du routage nuit à la reproductibilité et à l'auditabilité d'un run d'automatisation. Note fiabilité : source primaire cursor.com/changelog non fetchée (403 egress), chiffres issus de MarkTechPost — item marqué sans annonce officielle.</p>
+          <p class="item-source"><a href="https://www.marktechpost.com/2026/07/22/cursor-releases-cursor-router-a-request-level-classifier/" target="_blank" rel="noopener">marktechpost.com</a> · <a href="https://www.digitalapplied.com/blog/cursor-router-automatic-model-routing-cost-savings" target="_blank" rel="noopener">digitalapplied.com</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-07-27-deepseek-v4-ga.html">DeepSeek V4 en GA — deepseek-v4-pro 80,6 % SWE-bench Verified (MIT, 1M contexte), retrait des alias legacy, première tarification API à surcharge horaire</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-07-24</span>
+          </div>
+          <p class="item-context">DeepSeek sort la famille V4 de preview vers la GA : rollout à partir du 20 juil., avec <strong>bascule dure le 24 juil. à 15:59 UTC</strong> où les alias <code>deepseek-chat</code> et <code>deepseek-reasoner</code> cessent de répondre au profit de <code>deepseek-v4-flash</code> et <code>deepseek-v4-pro</code>. <strong>V4-Pro</strong> (1,6T total / 49B actifs, MoE, open weights MIT, contexte 1M natif, 384K max output) affiche <strong>80,6 % sur SWE-bench Verified</strong> — meilleure entrée open weights, à égalité avec Gemini 3.1 Pro et sous Opus 4.8 (~87-88 %) / Opus 5 (~96 %). Pricing off-peak V4-Pro <strong>$0,435/$0,87</strong> (~1/6 d'Opus 4.8), V4-Flash $0,14/$0,28, cache-hit dès $0,0028/M. Nouveauté structurelle : <strong>première tarification API à surcharge horaire</strong> du secteur — les tarifs <strong>doublent en heures pleines</strong> (9h-12h et 14h-18h heure de Pékin). Note fiabilité : source primaire api-docs.deepseek.com bloquée (403 egress), chiffres issus de secondaires non fetchés, à revérifier — item marqué sans annonce officielle.</p>
+          <p class="item-source"><a href="https://thenextweb.com/news/deepseek-peak-hour-api-surcharge-v4-price-war" target="_blank" rel="noopener">thenextweb.com</a> · <a href="https://technode.com/2026/06/30/deepseek-to-launch-v4-in-mid-july-with-new-peak-time-api-pricing/" target="_blank" rel="noopener">technode.com</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Grok 4.6 (2T params) — training terminé, GA sous ~2 semaines, Grok 4.7 (4-6T) ~2 semaines après</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-07-24</span>
+          </div>
+          <p class="item-context">Musk annonce le 24 juillet que <strong>Grok 4.6</strong>, modèle de 2 000 milliards de paramètres, a bouclé son pré-entraînement et sortira en GA sous ~2 semaines, avec <strong>Grok 4.7 (estimé 4-6T)</strong> enchaîné ~2 semaines plus tard — successeur de Grok 4.5 (1,5T, $2/$6, contexte 500k). Cible affichée : dépasser Moonshot Kimi K3 tout en étant plus rapide et plus économe en tokens ; <strong>aucun benchmark public</strong> (SWE-bench, AIME, GPQA) disponible — jalon roadmap, modèle non publié. Rien d'actionnable pour Lynxter tant qu'il n'y a pas de score confirmé ; à re-benchmarker face à Opus 5/GPT-5.6 dès la sortie.</p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Grok débarque dans Google Workspace (Docs/Sheets/Slides) — add-on gratuit, après les add-ins Microsoft 365</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-07-24</span>
+          </div>
+          <p class="item-context">xAI publie le 24 juillet un <strong>add-on Google Workspace gratuit</strong> intégrant Grok nativement dans Docs, Sheets et Slides : réponses sourcées sur cellules citées, génération de formules et graphiques, transformation d'un plan en deck Slides, rédaction/reformulation, appui web et X. Fait suite aux add-ins <strong>Microsoft 365</strong> de la semaine précédente — stratégie cross-plateforme face à Gemini (natif Workspace) et Copilot (natif M365). Impact Lynxter direct faible : bureautique généraliste, pas de lien impression 3D/support S300X-S600D ; à noter comme signal de la poussée agent-office de xAI.</p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">xAI API — mode WebSocket pour la Responses API, recherche d'images, expiration des fichiers</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-07-23</span>
+          </div>
+          <p class="item-context">Les release notes développeur de xAI (23 juil.) ajoutent un <strong>mode WebSocket à la Responses API</strong> : connexion unique et persistante pour réduire la latence bout-en-bout sur les workloads agent lourds en tool-use (état gardé chaud entre appels d'outils). S'ajoutent la recherche d'images dans Web Search (flag <code>enable_image_search</code>) et une politique d'<strong>expiration des fichiers uploadés</strong> (<code>expires_after</code>/<code>expires_at</code>). Volet potentiellement pertinent (latence de l'agentic loop = facteur limitant en support/automation) mais couverture indépendante encore mince (une seule analyse tierce, source primaire docs.x.ai bloquée en 403) — à confirmer avant tout usage.</p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">DeepSeek suspend son second tour de table (~74 Md$) avant une éventuelle IPO</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-07-25</span>
+          </div>
+          <p class="item-context">Selon Bloomberg (25 juil., repris par Reuters/Fortune), DeepSeek a informé plusieurs investisseurs qu'il ne signera pas d'accords dans les prochains jours, <strong>suspendant un second tour visé à ~500 Md¥ (~74 Md$)</strong> — après un premier tour d'environ 7,4 Md$. La pause serait liée à l'agacement du fondateur Liang Wenfeng après des fuites de propos du premier tour. Reuters évoquait des délibérations précoces d'IPO sur le STAR Market de Shanghai. Item business à faible substance technique — reporting de presse uniquement, aucune source primaire DeepSeek.</p>
+        </article>
+      </section>
+
+      <section class="sources-footer">
+        <strong>Sources consultées</strong>
+        <a href="https://code.claude.com/docs/en/changelog">code.claude.com/changelog</a> · <a href="https://www.anthropic.com/news">anthropic.com/news</a> · <a href="https://openai.com/news/">openai.com/news</a> · <a href="https://blog.google/technology/ai/">blog.google</a> · <a href="https://ai.meta.com/blog/">ai.meta.com/blog</a> · <a href="https://mistral.ai/news/">mistral.ai/news</a> · <a href="https://news.microsoft.com/source/2026/07/21/microsoft-and-mistral-expand-strategic-partnership-to-give-enterprises-and-regulated-industries-frontier-ai-they-can-control/">news.microsoft.com</a> · <a href="https://newscenter.lbl.gov/2026/07/22/berkeley-lab-to-lead-13-new-genesis-mission-ai-projects/">newscenter.lbl.gov</a> · <a href="https://api-docs.deepseek.com/">api-docs.deepseek.com</a> · <a href="https://cursor.com/changelog">cursor.com/changelog</a>
+      </section>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-07-20.html">
+          <span class="label">← Brief précédent</span>
+          <span class="title">Claude Code orchestre, Meta ferme, xAI fuit</span>
+        </a>
+        <a class="next" href="./">
+          <span class="label">Voir l'archive →</span>
+          <span class="title">Tous les briefs</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Brief généré le 2026-07-27</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

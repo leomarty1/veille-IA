@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Opus 5 — nouveau défaut Opus, pricing inchangé $5/$25, contexte 1M, 79,2 % SWE-bench Pro et toggle d'effort — Veille IA Lynxter</title>
+<meta name="description" content="Analyse de Claude Opus 5 (24 juillet 2026) : 79,2 % SWE-bench Pro, ~96 % SWE-bench Verified, pricing inchangé $5/$25, contexte 1M, toggle d'effort low→max, nouveau défaut Claude Code. Implications Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-07-27.html">2026-07-27</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Claude Opus 5</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Anthropic</span>
+          <span class="dot-sep">·</span>
+          <span>24 juillet 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-lynxter">🎯 Lynxter</span>
+        </div>
+        <h1>Claude Opus 5 — nouveau défaut Opus, pricing inchangé $5/$25, contexte 1M, 79,2 % SWE-bench Pro et toggle d'effort</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-07-27.html">Opus 5 débarque, l'open weights contre-attaque — 2026-07-27</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">79.2<span class="unit">%</span></div>
+            <div class="stat-label">SWE-bench Pro · +10 pts vs Opus 4.8 (69,2 %)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">~96<span class="unit">%</span></div>
+            <div class="stat-label">SWE-bench Verified · devant Fable 5 (~95 %)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">$5/$25<span class="unit">M tok</span></div>
+            <div class="stat-label">Pricing standard inchangé vs Opus 4.8</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">1M<span class="unit">contexte</span></div>
+            <div class="stat-label">+ toggle d'effort low→high→max</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Anthropic sort <strong>Claude Opus 5</strong> le 24 juillet 2026 au <strong>même pricing qu'Opus 4.8</strong> ($5 input / $25 output par M tokens), contexte 1M tokens. Le saut se concentre sur les benchmarks agentiques : <strong>79,2 % sur SWE-bench Pro</strong>, soit +10 pts vs Opus 4.8 (69,2 %) sur le benchmark le plus représentatif des tâches longues, multi-fichiers et mal spécifiées ; et <strong>~96 % sur SWE-bench Verified</strong>, une quasi-saturation qui place Opus 5 devant Fable 5 (~95 %), le heavyweight frontière. Anthropic positionne explicitement Opus 5 comme approchant l'intelligence de Fable 5 à environ la moitié du prix.</p>
+        <p>Au-delà du code, Opus 5 pousse sur le raisonnement général et l'agentique large : <strong>43,3 % sur Frontier-Bench en effort max</strong> (44,4 % en xhigh) et <strong>30,2 % sur ARC-AGI-3</strong>, soit environ 3× le score du modèle suivant sur ce benchmark de raisonnement abstrait. La nouveauté d'usage est le <strong>toggle d'effort</strong> : un curseur low→high assorti d'un palier <code>max</code> qui arbitre explicitement entre profondeur de raisonnement et coût en tokens — l'équivalent d'un dial de reasoning exposé au niveau de l'appel, là où Opus 4.8 gérait ça de manière plus opaque.</p>
+        <p>Le <strong>fast mode</strong> reste ~2,5× plus rapide pour un prix doublé ($10/$50 par M tokens, confirmé par le changelog Claude Code v2.1.219). Opus 5 devient le <strong>nouveau défaut Opus dans Claude Code</strong> (v2.1.219, sortie le même jour) et est disponible via l'API Messages. Face à la concurrence de la fenêtre : DeepSeek V4-Pro plafonne à 80,6 % SWE-bench Verified (meilleure entrée open weights mais ~16 pts sous Opus 5 sur Verified), et GPT-5.6 Sol Ultra (couvert le 20 juil.) était à 91,9 % Terminal-Bench — Opus 5 conserve l'avance sur le SWE-bench Pro, le terrain le plus proche du travail d'ingénierie réel.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🎯 Pourquoi c'est important pour Lynxter</h2>
+        <p><strong>Upgrade zéro-friction du stack agent Lynxter.</strong> Pricing inchangé, bascule automatique en défaut dans Claude Code : tes Routines Cowork et sessions Claude Code passent sur Opus 5 sans action ni renégociation de budget. Le gain de +10 pts sur SWE-bench Pro touche directement ton terrain — audit firmware S300X, migration de scripts de calibration, diagnostic support multi-fichiers — là où le Verified (déjà ~saturé) n'apportait plus de signal. Action immédiate : relance un run de diagnostic firmware ou une migration de scripts que tu avais laissé de côté sous Opus 4.8 faute de fiabilité, et mesure le taux de réussite sur les tâches multi-fichiers.</p>
+        <p><strong>Le toggle d'effort est ton nouveau levier FinOps par classe de tâche.</strong> Sur les boucles agentiques longues et peu critiques (triage de tickets entrants, déduplication de base de connaissance, pré-traitement RAG de datasheets techniques, génération de brouillons de réponses support), passe en effort <code>low</code> pour couper le coût par tâche à budget constant ; réserve <code>max</code> aux audits où la profondeur de raisonnement conditionne la justesse (analyse de dérive thermique sur profils S600D, recherche cross-fichiers dans la base de calibration). Test cette semaine : prends une Routine qui tourne &gt; 5 min, compare effort <code>low</code> vs défaut sur latence, qualité subjective (note 1-10) et tokens consommés, puis fige un palier par type de Routine dans ta config Cowork.</p>
+        <p><strong>Consolide l'argumentaire fournisseur.</strong> Opus 5 à pricing inchangé conforte le pari Claude comme stack principal : pas de discontinuité, capacité frontière maintenue face à Fable 5 pour ~la moitié du prix, et une avance sur SWE-bench Pro que la concurrence open weights (DeepSeek V4 à 80,6 % Verified, ~1/6 du prix mais loin sur le Pro) ne rattrape pas sur les tâches complexes. Pour les workflows critiques (support client, génération de RFP, parsing de logs machine), garde Opus 5 ; réserve l'exploration open weights / Flash-Lite aux étapes haut-débit peu critiques en offload, sans migrer le cœur du stack.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://www.anthropic.com/news/claude-opus-5" target="_blank" rel="noopener">anthropic.com/news/claude-opus-5</a>
+        <span class="source-meta">Anthropic · annonce officielle Claude Opus 5 · 24 juillet 2026</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-07-27-claude-code-2-1-216-219.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code v2.1.219 — Opus 5 défaut, subagents depth 3</span>
+            undefined
+          </a></li>
+          <li><a href="2026-07-27-deepseek-v4-ga.html">
+            <span class="related-actor">DeepSeek</span>
+            <span class="related-title">DeepSeek V4 GA — 80,6 % SWE-bench Verified, MIT</span>
+            undefined
+          </a></li>
+          <li><a href="2026-07-27-cursor-router.html">
+            <span class="related-actor">Cursor</span>
+            <span class="related-title">Cursor Router — routage coût/qualité par requête</span>
+            undefined
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="../briefs/2026-07-27.html">
+          <span class="label">← Retour au brief</span>
+          <span class="title">2026-07-27</span>
+        </a>
+        <a class="next" href="2026-07-27-claude-code-2-1-216-219.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Claude Code v2.1.216→219</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-07-27</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

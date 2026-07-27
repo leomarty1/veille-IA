@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code v2.1.216 → v2.1.219 — Opus 5 par défaut, subagents imbriqués jusqu'à depth 3, caps de session, strictAllowlist — Veille IA Lynxter</title>
+<meta name="description" content="Analyse des releases Claude Code v2.1.216→219 (20-24 juillet 2026) : Opus 5 par défaut, subagents imbriqués depth 3, caps 200 spawns/20 concurrents, sandbox.network.strictAllowlist, /code-review en subagent, corrections de fuites mémoire. Implications Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-07-27.html">2026-07-27</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Claude Code v2.1.216→219</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Anthropic</span>
+          <span class="dot-sep">·</span>
+          <span>20-24 juillet 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-lynxter">🎯 Lynxter</span>
+        </div>
+        <h1>Claude Code v2.1.216 → v2.1.219 — Opus 5 par défaut, subagents imbriqués jusqu'à depth 3, caps de session, strictAllowlist</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-07-27.html">Opus 5 débarque, l'open weights contre-attaque — 2026-07-27</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">depth 3<span class="unit">subagents</span></div>
+            <div class="stat-label">Imbrication par défaut (1→3)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">200<span class="unit">spawns/session</span></div>
+            <div class="stat-label">Cap anti-runaway · 20 concurrents</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">v2.1.219<span class="unit">release</span></div>
+            <div class="stat-label">Opus 5 défaut · fast $10/$50</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">strictAllowlist<span class="unit">réseau</span></div>
+            <div class="stat-label">sandbox.network durci</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Le changelog code.claude.com couvre <strong>v2.1.216 (20 juil.) à v2.1.219 (24 juil.)</strong>. Le point structurant est v2.1.219, qui accompagne la sortie d'Opus 5 : <strong>claude-opus-5 devient le défaut Opus</strong> (contexte 1M, fast mode $10/$50). Deux changements d'orchestration : la profondeur d'imbrication des subagents passe de <strong>1 à 3 par défaut</strong> (réglable via <code>CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH</code>) — un orchestrateur peut déléguer à un sous-agent qui délègue à son tour — et des <strong>caps de session</strong> plafonnent les cascades à <strong>200 spawns de subagents par session et 20 concurrents</strong>, garde-fous anti-runaway sur les runs mal cadrés.</p>
+        <p>v2.1.219 ajoute aussi <code>sandbox.network.strictAllowlist</code>, qui restreint le sandbox réseau des sous-agents aux seuls domaines explicitement autorisés — durcissement pour exécuter du code non fiable sans risque d'exfiltration. v2.1.218 (22 juil.) passe <code>/code-review</code> en <strong>subagent d'arrière-plan</strong> (dans la lignée du /code-review et /verify sur invocation explicite du brief précédent) et corrige un coût de normalisation de messages devenu <strong>quadratique en session longue</strong> — gain de latence net sur les sessions qui accumulent l'historique.</p>
+        <p>v2.1.217 et v2.1.216 sont des correctifs de robustesse : <strong>fuites mémoire</strong> (les sorties MCP tronquées gardaient le résultat complet en mémoire) et une <strong>régression de perf</strong> provoquant des stalls multi-secondes au resume de session. La cadence — 14 releases 2.1.202→215 la semaine précédente, puis 216→219 cette semaine — confirme un rythme d'itération quasi-quotidien sur Claude Code, avec un focus alternant features d'orchestration et durcissement mémoire/sandbox.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🎯 Pourquoi c'est important pour Lynxter</h2>
+        <p><strong>depth 3 + caps débloquent des pipelines support réels tout en les bornant.</strong> L'imbrication à depth 3 permet enfin des orchestrations à trois niveaux : agent de tri → agent de parsing de logs machine → agent de rédaction de réponse, sans aplatir le pipeline dans un seul orchestrateur qui sature son contexte. Les caps (200 spawns, 20 concurrents) garantissent qu'un run de diagnostic mal formulé ne draine pas le budget en spawnant à l'infini — indispensable avant d'ouvrir ces workflows à l'équipe support. Action : structure ton diagnostic support S300X/S600D en trois niveaux de subagents et mesure le coût plafonné d'un run complet sur un ticket réel.</p>
+        <p><strong>strictAllowlist est le prérequis pour exécuter du code client en sandbox.</strong> Sur les workflows où un utilisateur fournit un script de calibration, un parseur de gcode ou un dump de logs, <code>sandbox.network.strictAllowlist</code> te laisse restreindre le réseau aux seuls domaines nécessaires — aucune exfiltration possible vers un endpoint tiers. Câble une allowlist minimale sur ton profil Claude Code support (registres de packages internes + API Anthropic uniquement), teste un run de parsing sur un dump client, et fais-en le profil standard avant tout run touchant des données client. Le correctif quadratique de v2.1.218 aide en prime sur les sessions support longues qui accumulent l'historique de conversation.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">code.claude.com/docs/en/changelog</a>
+        <span class="source-meta">Anthropic · changelog officiel Claude Code v2.1.216→219 · 20-24 juillet 2026</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-07-27-claude-opus-5.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Opus 5 — nouveau défaut, 79,2 % SWE-bench Pro</span>
+            undefined
+          </a></li>
+          <li><a href="2026-07-27-openai-presence.html">
+            <span class="related-actor">OpenAI</span>
+            <span class="related-title">OpenAI Presence — gouvernance d'agents voix/chat</span>
+            undefined
+          </a></li>
+          <li><a href="2026-07-27-cursor-router.html">
+            <span class="related-actor">Cursor</span>
+            <span class="related-title">Cursor Router — routage par requête</span>
+            undefined
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-07-27-claude-opus-5.html">
+          <span class="label">← Item précédent</span>
+          <span class="title">Claude Opus 5</span>
+        </a>
+        <a class="next" href="2026-07-27-openai-presence.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">OpenAI Presence</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-07-27</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

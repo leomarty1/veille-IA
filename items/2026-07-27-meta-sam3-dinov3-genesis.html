@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meta déploie SAM 3 + DINOv3 (open weights) dans SYNAPS-I du Genesis Mission (DOE) — labellisation 3D d'un mois à ~15 minutes — Veille IA Lynxter</title>
+<meta name="description" content="Analyse du déploiement Meta SAM 3 + DINOv3 (open weights) dans le projet SYNAPS-I du Genesis Mission DOE (21 juillet 2026) : labellisation de volumes 3D d'un mois à ~15 min, air-gapped. Implications Lynxter inspection de défauts.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-07-27.html">2026-07-27</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Meta SAM 3 + DINOv3</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Meta</span>
+          <span class="dot-sep">·</span>
+          <span>21 juillet 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-useful">🛠 Utile</span>
+        </div>
+        <h1>Meta déploie SAM 3 + DINOv3 (open weights) dans SYNAPS-I du Genesis Mission (DOE) — labellisation 3D d'un mois à ~15 minutes</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-07-27.html">Opus 5 débarque, l'open weights contre-attaque — 2026-07-27</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">1 mois→~15 min<span class="unit">labellisation</span></div>
+            <div class="stat-label">Volumes 3D science X/neutrons</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">300<span class="unit">GPU A100</span></div>
+            <div class="stat-label">NERSC · projet SYNAPS-I (LBNL + SLAC)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">open<span class="unit">weights</span></div>
+            <div class="stat-label">SAM 3 + DINOv3 · exécutables on-prem air-gapped</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">278<span class="unit">projets</span></div>
+            <div class="stat-label">Genesis Mission DOE · 50 États, 342 institutions</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Meta publie le 21 juillet 2026, sur le blog AI at Meta, le premier retour terrain de ses modèles vision open weights dans le cadre du <strong>Genesis Mission du DOE</strong>. Le projet <strong>SYNAPS-I</strong>, piloté par <strong>Lawrence Berkeley National Lab (LBNL) avec SLAC</strong>, fait tourner <strong>Segment Anything Model 3 (SAM 3)</strong> couplé à <strong>DINOv3</strong> (vision auto-supervisée, sans labels) sur <strong>300 GPU NVIDIA A100 au NERSC</strong>. Le rôle des deux modèles est complémentaire : DINOv3 fournit le contexte sémantique global et la localisation spatiale fine, SAM 3 l'extraction de contours au pixel.</p>
+        <p>Le résultat mesuré : la labellisation de volumes 3D en science X et neutrons passe d'<strong>un mois de travail manuel à environ 15 minutes</strong>, et l'ensemble tourne dans une infrastructure gouvernementale <strong>air-gapped</strong> — un usage explicitement hors de portée légale de tout modèle closed accessible seulement par API. C'est là tout l'argument : les poids ouverts sont déployables on-prem, sans qu'aucune donnée ne quitte le réseau. Le Genesis Mission couvre 278 projets sélectionnés sur les 50 États et 342 institutions (142 universités, 157 entreprises, 16 labos nationaux).</p>
+        <p>L'item est un <strong>showcase, pas une release</strong> — SAM 3 et DINOv3 sont déjà publiés — mais il est notable pour ce qu'il signale : Meta capitalise sur ses poids ouverts déployables on-prem, ce qui tranche avec son virage closed de la semaine précédente (Muse Spark 1.1 en API payante 1,25 $/4,25 $ par M tokens). Deux stratégies coexistent chez Meta : monétiser le frontière génératif en closed, et garder la vision open weights comme levier d'adoption dans les environnements souverains et régulés.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🛠 Pourquoi c'est utile à savoir pour Lynxter</h2>
+        <p><strong>SAM 3 + DINOv3 en open weights sont directement pertinents pour l'inspection de défauts sur pièces imprimées.</strong> Le couple segmentation interactive (SAM 3) + vision auto-supervisée sans labels (DINOv3) est exactement l'outillage pour de la segmentation d'images et de la détection d'anomalies sur des pièces S300X/S600D : identifier warpings, délaminations, défauts de surface sur des photos ou scans de pièces, sans avoir à constituer un gros dataset labellisé au préalable (c'est l'apport de DINOv3). Le fait que ce soit exécutable en local, sans dépendance API, est décisif pour les clients industriels dont les données pièces sont confidentielles.</p>
+        <p><strong>C'est un POC à cadrer, pas un déploiement immédiat.</strong> Avant d'investir, monte un test sur un lot réel : quelques dizaines d'images de pièces imprimées avec défauts connus, DINOv3 pour le contexte sémantique + SAM 3 pour la segmentation fine des zones défectueuses, et mesure le taux de détection vs une inspection manuelle. Cadre-le comme brique complémentaire (vision on-prem) au stack agent Claude Code, pas comme concurrent : la vision segmente et remonte les anomalies, un agent Claude Code contextualise et propose l'action support. L'argument souveraineté (traitement 100 % local, air-gappable) est aussi un point de vente pour les clients défense/médical qui refusent tout envoi d'images à un cloud tiers.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://newscenter.lbl.gov/2026/07/22/berkeley-lab-to-lead-13-new-genesis-mission-ai-projects/" target="_blank" rel="noopener">newscenter.lbl.gov — Berkeley Lab Genesis Mission</a>
+        <span class="source-meta">Lawrence Berkeley National Lab · communiqué officiel Genesis Mission / SYNAPS-I · 22 juillet 2026 (blog Meta ai.meta.com non fetché, egress 403 — chiffres corroborés par Berkeley Lab, HPCwire)</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-07-27-mistral-microsoft-azure-local.html">
+            <span class="related-actor">Mistral</span>
+            <span class="related-title">Mistral x Microsoft — Azure Local on-prem/edge</span>
+            undefined
+          </a></li>
+          <li><a href="2026-07-27-deepseek-v4-ga.html">
+            <span class="related-actor">DeepSeek</span>
+            <span class="related-title">DeepSeek V4 GA — open weights MIT</span>
+            undefined
+          </a></li>
+          <li><a href="2026-07-27-claude-opus-5.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Opus 5 — nouveau défaut Claude Code</span>
+            undefined
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-07-27-gemini-3-6-flash.html">
+          <span class="label">← Item précédent</span>
+          <span class="title">Gemini 3.6 Flash</span>
+        </a>
+        <a class="next" href="2026-07-27-mistral-microsoft-azure-local.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Mistral x Microsoft</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-07-27</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

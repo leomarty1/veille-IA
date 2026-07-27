@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codex + API platform — Mermaid inline et formulaires interactifs, spend limits mensuels par org ET par projet — Veille IA Lynxter</title>
+<meta name="description" content="Analyse de la vague Codex/API du 20 juillet 2026 : Mermaid inline, formulaires interactifs, spend limits mensuels par org et par projet (alerte ou hard cap). Implications Lynxter FinOps.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-07-27.html">2026-07-27</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Codex + API spend limits</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">OpenAI</span>
+          <span class="dot-sep">·</span>
+          <span>20 juillet 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-useful">🛠 Utile</span>
+        </div>
+        <h1>Codex + API platform — Mermaid inline et formulaires interactifs, spend limits mensuels par org ET par projet</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-07-27.html">Opus 5 débarque, l'open weights contre-attaque — 2026-07-27</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">org + projet<span class="unit">2 niveaux</span></div>
+            <div class="stat-label">Spend limits mensuels</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">hard cap<span class="unit">mode</span></div>
+            <div class="stat-label">Requêtes échouent au dépassement (ou alerte)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">Mermaid<span class="unit">inline</span></div>
+            <div class="stat-label">Diagrammes dans les transcripts de tâches</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">human-in-loop<span class="unit">formulaires</span></div>
+            <div class="stat-label">Formulaires interactifs dans les tâches</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>OpenAI livre le 20 juillet une vague de GA côté <strong>Codex</strong> : rendu de <strong>diagrammes Mermaid inline</strong> dans les transcripts de tâches, <strong>formulaires interactifs</strong> dans les tâches (points de collecte human-in-the-loop où l'agent demande une saisie structurée avant de continuer), restauration des prompts non envoyés au changement de tâche/host/workspace, et tri des listes de tâches par activité récente avec affichage des hosts indisponibles. Ces items sont distincts des releases Codex CLI 0.142/0.143 déjà couvertes le 20 juil. (délégation multi-agents, budgets de tokens par rollout, web search indexée).</p>
+        <p>Côté plateforme API, l'ajout structurant est le système de <strong>spend limits mensuels à deux niveaux — organisation ET projet</strong>. Deux modes : <strong>alerte</strong> (notification e-mail + bandeau dashboard au seuil, mais la clé continue de facturer) ou <strong>hard cap</strong> (les requêtes API échouent au dépassement du plafond). L'usage est ventilé par projet, ce qui permet d'attribuer et de plafonner la dépense au grain du projet plutôt qu'au grain de l'organisation entière.</p>
+        <p>Le sourcing de cet item est faible côté première main : le changelog officiel <code>developers.openai.com/codex/changelog</code> et les release notes API n'étaient pas fetchables (egress openai.com/developers.openai.com bloqué, 403 proxy), et les secondaires disponibles sont principalement des trackers de changelog. La fonctionnalité spend limits est néanmoins largement documentée et cohérente avec la trajectoire FinOps de la plateforme API OpenAI.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🛠 Pourquoi c'est utile à savoir pour Lynxter</h2>
+        <p><strong>Les spend limits par projet sont le garde-fou FinOps qui manquait pour cloisonner staging et prod.</strong> Sur une stack agent, le risque n°1 en coût est un script d'automatisation qui s'emballe (boucle mal bornée, retry agressif). Un plafond mensuel <em>par projet</em> en mode hard cap garantit qu'un run de test qui dérape épuise le budget du projet staging et fait échouer ses propres requêtes — sans jamais toucher les crédits du projet production. Si Lynxter benchmarke Codex en parallèle de Claude Code, câble immédiatement un projet dédié avec hard cap bas pour les expérimentations, et réserve le mode alerte au projet prod où couper les requêtes serait pire que dépasser légèrement.</p>
+        <p><strong>Les formulaires interactifs rapprochent Codex des boucles d'approbation que tu benchmarkes déjà.</strong> Le pattern human-in-the-loop de Codex (l'agent s'arrête et demande une saisie structurée) est l'équivalent des points d'approbation de Claude Code — utile à comparer en tête-à-tête sur un workflow support réel pour juger de l'ergonomie et de la fiabilité des deux. Le rendu Mermaid inline, lui, est un confort de lecture pour visualiser un plan d'agent ou un flux de diagnostic directement dans le transcript, sans outil externe. À noter comme signal, pas comme raison de migrer : le cœur du stack Lynxter reste Claude Code.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source secondaire</strong>
+        <a class="source-url" href="https://blog.alephant.io/openai-spend-limit-how-to-cap-your-api-bill-2026/" target="_blank" rel="noopener">blog.alephant.io/openai-spend-limit</a>
+        <span class="source-meta">Analyse tierce · spend limits API OpenAI · changelog officiel developers.openai.com/codex non fetché (egress 403) — sans annonce officielle confirmée</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-07-27-openai-presence.html">
+            <span class="related-actor">OpenAI</span>
+            <span class="related-title">OpenAI Presence — gouvernance d'agents</span>
+            undefined
+          </a></li>
+          <li><a href="2026-07-27-cursor-router.html">
+            <span class="related-actor">Cursor</span>
+            <span class="related-title">Cursor Router — arbitrage coût/qualité</span>
+            undefined
+          </a></li>
+          <li><a href="2026-07-27-claude-code-2-1-216-219.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code v2.1.219 — caps de session</span>
+            undefined
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-07-27-openai-presence.html">
+          <span class="label">← Item précédent</span>
+          <span class="title">OpenAI Presence</span>
+        </a>
+        <a class="next" href="2026-07-27-gemini-3-6-flash.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Gemini 3.6 Flash</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-07-27</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
