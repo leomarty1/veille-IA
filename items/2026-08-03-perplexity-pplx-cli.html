@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pplx — CLI mono-binaire qui expose la Search API de Perplexity en JSON aux agents de code — Veille IA Lynxter</title>
+<meta name="description" content="pplx, le CLI mono-binaire de Perplexity : deux commandes, un objet JSON sur stdout, filtres domaine et date, extraction sur 50 URLs, 5,00 $ / 1 000 requêtes. Le chaînon manquant pour du grounding web reproductible dans Claude Code.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-08-03.html">2026-08-03</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">CLI pplx</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Perplexity</span>
+          <span class="dot-sep">·</span>
+          <span>27 juillet 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-lynxter">🎯 Lynxter</span>
+        </div>
+        <h1>pplx — CLI mono-binaire qui expose la Search API de Perplexity en JSON aux agents de code</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-08-03.html">MCP passe stateless, les labos avouent leurs évasions — 2026-08-03</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">2<span class="unit">commandes</span></div>
+            <div class="stat-label">search web et content snippets · un objet JSON sur stdout</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">50<span class="unit">URLs</span></div>
+            <div class="stat-label">Extraction ciblée par appel · --max-tokens 1 à 16 384 (défaut 4 096)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5,00<span class="unit">$/1 000 req</span></div>
+            <div class="stat-label">Facturation Search API · plafond 50 QPS tous paliers</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3<span class="unit">cibles</span></div>
+            <div class="stat-label">macOS Apple Silicon, Linux x86_64, arm64 — pas de build Windows</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Le CLI <strong>pplx</strong> tient en un binaire et deux commandes. <code>pplx search web</code> interroge la Search API avec des filtres qui sont exactement ceux dont un agent a besoin pour cadrer une recherche : <code>--domains</code> pour restreindre à une liste de sites, <code>--recency-filter</code> et le couple <code>--published-after-date</code>/<code>--published-before-date</code> pour la fenêtre temporelle, <code>--country</code>, et <code>--search-context-size</code> pour doser le volume ramené. <code>pplx content snippets</code> fait l'extraction ciblée sur jusqu'à <strong>50 URLs</strong> par appel, avec <code>--max-tokens</code> réglable de 1 à 16 384 (défaut 4 096). Le contrat de sortie est le point important : exit code 0 et <strong>exactement un objet JSON sur stdout</strong>, de forme <code>{hits:[{url,title,domain,snippet}], total}</code>, directement pipeable vers <code>jq</code>.</p>
+        <p>Ce que <code>pplx</code> n'est pas mérite d'être souligné, parce que c'est contre-intuitif venant de Perplexity : pas de mode conversationnel, pas de sélection de modèle, pas de réponse synthétisée. C'est une couche de <strong>retrieval déterministe</strong> — l'outil ramène des documents, pas une opinion. Pour un agent, c'est exactement la bonne primitive : la synthèse est déjà le travail du modèle appelant, ce qui manquait était une recherche dont la sortie soit stable, filtrable et parsable sans heuristique.</p>
+        <p>La distribution est soignée mais étroite. L'installeur vérifie le <strong>SHA-256</strong> et pose le binaire dans <code>~/.local/bin/pplx</code> sans sudo, avec un <code>pplx update</code> atomique. La couverture se limite à <strong>trois cibles</strong> — macOS Apple Silicon, Linux x86_64, Linux arm64 : <strong>ni Windows, ni macOS Intel</strong>. <code>pplx auth login</code> est TTY-only, donc toute exécution non interactive (agent, CI, cron) doit exporter <code>PERPLEXITY_API_KEY</code>. Une <strong>Agent Skill</strong> packagée est fournie pour Claude et les autres agents de code, et la facturation de la Search API est annoncée à <strong>5,00 $ pour 1 000 requêtes</strong>, plafonnée à 50 QPS sur tous les paliers — ce dernier chiffre venant d'une source secondaire.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🎯 Pourquoi c'est important pour Lynxter</h2>
+        <p><strong>C'est le chaînon manquant pour du grounding web reproductible dans Claude Code.</strong> Aujourd'hui, quand une routine a besoin d'une information externe — une fiche technique fournisseur silicone, une norme, une révision de doc machine, un communiqué constructeur — on laisse un modèle improviser une recherche et on récupère une synthèse dont on ne sait pas d'où elle vient. Avec <code>pplx</code>, la routine émet une requête cadrée (<code>--domains</code> sur les sites fournisseurs et normalisateurs, <code>--published-after-date</code> pour ne pas ressortir une révision périmée) et reçoit une liste d'URLs avec snippets, que le modèle traite ensuite explicitement. La chaîne devient auditable : on peut rejouer la même requête et comparer.</p>
+        <p><strong>Le modèle de coût change la façon de dimensionner.</strong> <strong>5,00 $ pour 1 000 requêtes</strong>, c'est un coût par appel prévisible, indépendant du volume de tokens ramené — l'inverse d'une facturation au token où une recherche verbeuse coûte cher sans prévenir. Pour la routine veille elle-même, pour un enrichissement de base de connaissances support, ou pour vérifier périodiquement qu'une doc fournisseur n'a pas changé, le budget se calcule au nombre de requêtes planifiées. Le plafond de 50 QPS n'est pas une contrainte à notre échelle.</p>
+        <p><strong>Deux réserves opérationnelles à intégrer avant de standardiser.</strong> D'abord l'absence de binaire Windows : les postes atelier sont sous Windows, donc tout usage y passe par WSL ou par un poste Linux/macOS de rebond — à trancher avant de mettre <code>pplx</code> dans une procédure destinée aux techniciens. Ensuite l'auth TTY-only : <code>pplx auth login</code> ne fonctionne pas dans un run non interactif, il faut donc gérer <code>PERPLEXITY_API_KEY</code> comme un secret d'environnement — et, au vu des post-mortems Anthropic et OpenAI de cette même semaine, ne surtout pas le déposer dans un fichier du workspace visible par l'agent.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://github.com/perplexityai/perplexity-cli" target="_blank" rel="noopener">github.com/perplexityai/perplexity-cli</a>
+        <span class="source-meta">Perplexity · dépôt officiel du CLI pplx (README, installeur, contrat de sortie JSON) · 27 juillet 2026</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-08-03-perplexity-skills-agent-api.html">
+            <span class="related-actor">Perplexity</span>
+            <span class="related-title">Skills composables dans l'Agent API + Opus 5</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+          <li><a href="2026-08-03-mcp-spec-2026-07-28.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">MCP 2026-07-28 — protocole stateless</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-07-20-perplexity-space.html">
+            <span class="related-actor">Perplexity</span>
+            <span class="related-title">Perplexity Space</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="../briefs/2026-08-03.html">
+          <span class="label">← Retour au brief</span>
+          <span class="title">2026-08-03</span>
+        </a>
+        <a class="next" href="2026-08-03-perplexity-personal-computer-windows.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Personal Computer sur Windows</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-08-03</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

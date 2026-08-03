@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lot du 28 juillet — Skills composables dans l'Agent API, Claude Opus 5 dans Search et Computer, rôles Enterprise + SCIM — Veille IA Lynxter</title>
+<meta name="description" content="Perplexity introduit des Skills composables dans son Agent API (chargement paresseux du contexte, built-in + inline), expose Claude Opus 5 dans Search et Computer, et ajoute rôles Enterprise, SCIM et plafonds de crédits par groupe.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-08-03.html">2026-08-03</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Skills dans l'Agent API</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Perplexity</span>
+          <span class="dot-sep">·</span>
+          <span>28 juillet 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-useful">🛠 Utile</span>
+        </div>
+        <h1>Lot du 28 juillet — Skills composables dans l'Agent API, Claude Opus 5 dans Search et Computer, rôles Enterprise + SCIM</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-08-03.html">MCP passe stateless, les labos avouent leurs évasions — 2026-08-03</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">2<span class="unit">types de skills</span></div>
+            <div class="stat-label">Built-in du catalogue (office/pdf) + inline définies dans la requête</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">nom<span class="unit">+ description</span></div>
+            <div class="stat-label">Seul contexte chargé d'emblée — instructions complètes à la demande</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">Opus 5<span class="unit">dans Search</span></div>
+            <div class="stat-label">Et dans Computer, sans contrat Anthropic distinct</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">500 / 15 000<span class="unit">crédits/mois</span></div>
+            <div class="stat-label">Allocations de référence Enterprise Pro / Enterprise Max</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Le mécanisme de <strong>Skills</strong> introduit dans l'Agent API reprend le patron des Agent Skills d'Anthropic, sans détour : un tableau <code>skills</code> accepte à la fois des entrées <strong>built-in</strong> issues d'un catalogue (par exemple <code>office/pdf</code>) et des skills <strong>inline</strong> définies pour la requête en cours. Le point d'ingénierie est le chargement paresseux : le modèle ne voit d'abord que le <strong>nom et la description</strong> de chaque skill, et n'en charge les instructions complètes qu'au moment où il décide d'en avoir besoin. Conséquence directe sur la facture, le contexte d'une skill n'est payé que si elle est effectivement utilisée — ce qui rend viable d'en exposer une dizaine sans faire exploser le prompt système. Un Skills Directory étendu est annoncé comme à venir.</p>
+        <p>Le reste du lot côté produit est plus classique mais pas anodin : <strong>Claude Opus 5 est disponible dans Search et dans Computer</strong>, Computer devient accessible depuis Comet Assistant, s'ajoutent des credentials API personnalisés, l'extension de la mémoire Brain à davantage de langues, Check Sources, un Source Context Panel et de nouveaux outils de gestion de sessions. Le fait qu'Opus 5 soit consommable via Perplexity est le point le plus structurant : il découple l'accès au modèle du contrat fournisseur.</p>
+        <p>Côté <strong>Enterprise</strong>, Perplexity comble un retard d'administration : rôles personnalisés à permissions granulaires, synchronisation de groupes depuis l'IdP via <strong>SCIM</strong>, et plafonds de consommation de crédits par groupe — le tout réservé aux organisations sous contrat annuel, avec des allocations mensuelles de référence de <strong>500 crédits en Enterprise Pro et 15 000 en Enterprise Max</strong>. Note de sourcing : aucune source primaire n'a pu être fetchée, tous les hôtes perplexity.ai (hub, changelog, docs, help-center, forum) renvoyant 403 via le proxy d'egress.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🛠 Pourquoi c'est utile à savoir pour Lynxter</h2>
+        <p><strong>Le modèle Skills rend transférable ce qui est déjà écrit pour Claude Code.</strong> Une skill « doc technique Lynxter » ou « format rapport d'intervention » — c'est-à-dire un bloc d'instructions et de conventions maison — peut être exposée à un agent Perplexity via le tableau <code>skills</code> sans réécriture d'architecture. C'est la deuxième convergence de la semaine après MCP : les briques d'outillage agent (protocole de connexion d'un côté, instructions conditionnelles de l'autre) se standardisent de fait autour des formats Anthropic, ce qui réduit le risque d'enfermement quand on écrit du contenu d'agent aujourd'hui.</p>
+        <p><strong>Opus 5 accessible via Perplexity change l'arbitrage fournisseur, pas la stack.</strong> Pouvoir consommer Opus 5 sans contrat Anthropic distinct est un argument commercial pour qui veut un socle unique — mais pour Lynxter, dont le poste de travail agent est déjà Claude Code, ça n'a d'intérêt que comme point de comparaison de coût : facturation en crédits Perplexity contre facturation au token Anthropic, sur un volume mensuel réel. À vérifier avant toute conclusion, un modèle en crédits masque le prix marginal.</p>
+        <p><strong>Le volet SCIM et plafonds par groupe est le vrai signal Enterprise.</strong> Provisioning depuis l'IdP et plafond de consommation par groupe, c'est l'outillage qu'on demandera nous-mêmes le jour où plusieurs postes support consomment des agents — savoir qui a accès à quoi et couper le robinet avant la surprise de facturation. À noter comme critère d'évaluation pour toute plateforme d'agents qu'on considérerait, Perplexity ou autre : sans rôles granulaires ni plafonds par groupe, un déploiement multi-postes n'est pas administrable.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source secondaire</strong>
+        <a class="source-url" href="https://www.perplexity.ai/help-center/en/articles/11652604-scim-based-user-account-management" target="_blank" rel="noopener">perplexity.ai/help-center — SCIM-based user account management</a>
+        <span class="source-meta">Centre d'aide Perplexity · 28 juillet 2026 · page non fetchable depuis cet environnement (403 proxy d'egress) — sans annonce officielle vérifiée, lot corroboré par des secondaires</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-08-03-mcp-spec-2026-07-28.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">MCP 2026-07-28 — protocole stateless</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-08-03-perplexity-pplx-cli.html">
+            <span class="related-actor">Perplexity</span>
+            <span class="related-title">CLI pplx — retrieval déterministe en JSON</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-07-27-claude-opus-5.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Opus 5 — $5/$25, contexte 1M</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="../briefs/2026-08-03.html">
+          <span class="label">← Retour au brief</span>
+          <span class="title">2026-08-03</span>
+        </a>
+        <a class="next" href="2026-08-03-xai-grok-voice-2.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Grok Voice Think Fast 2.0</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-08-03</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

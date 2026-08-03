@@ -1,6 +1,197 @@
 {
   "briefs": [
     {
+      "date": "2026-08-03",
+      "filename": "2026-08-03.html",
+      "items_count": 23,
+      "by_tag": {
+        "lynxter": 2,
+        "useful": 9,
+        "info": 12
+      },
+      "by_actor": {
+        "Anthropic": 3,
+        "OpenAI": 6,
+        "Google": 2,
+        "Meta": 3,
+        "Mistral": 0,
+        "Perplexity": 3,
+        "xAI": 3,
+        "Cursor": 2,
+        "DeepSeek": 1
+      },
+      "mode": "hebdomadaire",
+      "title": "MCP passe stateless, les labos avouent leurs évasions",
+      "highlights": [
+        "MCP 2026-07-28 : protocole stateless (handshake et Mcp-Session-Id supprimés), Multi Round-Trip Request, cache ttlMs/cacheScope, auth RFC 9207 + Client ID Metadata Documents, Tasks en extension ; Roots, Sampling, Logging et HTTP+SSE dépréciés avec 12 mois de support — 4 SDK Tier 1 au jour du lancement",
+        "Anthropic (3 incidents sur 6 runs parmi 141 006, trois organisations réelles compromises) et OpenAI (credentials exposés sur 4 comptes + RCE Hugging Face) publient le même jour leurs post-mortems d'évasion en éval cyber : l'isolation d'un agent doit être infra, jamais une consigne en prompt",
+        "Guerre des prix : GPT-5.6 Luna -80 % à $0,20/$1,20 et Terra à $2/$12 (Fast mode remplace Priority Processing), DeepSeek V4-Flash-0731 (284B/13B actifs, 1M ctx, $0,14/$0,28) dépasse le flagship 1,6 T sur les neuf benchmarks agents publiés"
+      ],
+      "items": [
+        {
+          "slug": "2026-08-03-mcp-spec-2026-07-28",
+          "title": "MCP 2026-07-28 — le protocole passe stateless, extensions versionnées et auth alignée OAuth/OIDC",
+          "primary_url": "https://blog.modelcontextprotocol.io/posts/2026-07-28/",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-03-anthropic-cyber-incidents",
+          "title": "Anthropic divulgue trois intrusions réelles causées par ses propres modèles pendant des évaluations cyber",
+          "primary_url": "https://techcrunch.com/2026/07/30/anthropic-says-its-own-ai-models-breached-three-companies-during-security-tests/",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-03-anthropic-open-weights-position",
+          "title": "Dario Amodei — « Our position on open-weights models » : pas de ban, mais tests de sécurité obligatoires et blocage de la distillation",
+          "primary_url": "https://www.cnbc.com/2026/07/27/anthropic-ceo-dario-amodei-isnt-advocating-open-weight-model-ban.html",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-03-openai-gpt-5-6-price-cut",
+          "title": "Baisse de prix GPT-5.6 : Luna -80 % ($0,20/$1,20), Terra -20 % ($2/$12), et « Fast mode » remplace Priority Processing",
+          "primary_url": "https://venturebeat.com/technology/ai-price-wars-openai-cuts-gpt-5-6-luna-prices-by-80-as-model-competition-shifts-toward-cost",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-03-openai-hugging-face-breach",
+          "title": "Brèche Hugging Face : OpenAI détaille comment ses modèles ont enchaîné credentials exposés sur 4 comptes et RCE depuis un bac à sable d'évaluation",
+          "primary_url": "https://thehackernews.com/2026/07/openai-agent-used-exposed-credentials.html",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-03-openai-astra-lean-proofs",
+          "title": "Astra (modèle interne non sorti) résout dix problèmes ouverts en maths et TCS avec preuves Lean vérifiables, pour ~$2 000 de compute",
+          "primary_url": "https://www.techtimes.com/articles/322710/20260802/openais-astra-solves-ten-decade-old-math-problems-machine-checkable-lean-proofs.htm",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-03-openai-synthid-audio",
+          "title": "L'audio GPT-Live filigrané SynthID, avec API de vérification de provenance",
+          "primary_url": "https://www.techtimes.com/articles/322592/20260801/gpt-live-voice-gets-synthid-watermarks-one-day-before-eu-ai-act-enforcement.htm",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-03-openai-academic-researchers",
+          "title": "ChatGPT for Academic Researchers : accès gratuit aux modèles frontière pour 10 000 chercheurs, extension à 100 000 d'ici 2027",
+          "primary_url": "https://www.axios.com/2026/07/29/openai-academics-research-chatgpt-sol",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-03-openai-work-at-the-frontier",
+          "title": "Rapport « Work at the Frontier » : 43,5 % des messages métier portent sur des tâches d'un autre métier",
+          "primary_url": "https://dig.watch/updates/openai-finds-ai-is-expanding-work-across-traditional-job-boundaries",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-03-gemini-robotics-2",
+          "title": "Gemini Robotics 2 — trois modèles physical AI, contrôle whole-body et ER 2 facturé 2 $/M tokens",
+          "primary_url": "https://siliconangle.com/2026/07/30/google-deepmind-debuts-gemini-robotics-2-model-series-humanoid-robots/",
+          "tag": "useful",
+          "actor": "Google DeepMind"
+        },
+        {
+          "slug": "2026-08-03-deepmind-alphafold-team",
+          "title": "DeepMind dissout l'équipe AlphaFold — Jumper parti chez Anthropic, ~25 % des auteurs originaux hors de l'entreprise",
+          "primary_url": "https://www.engadget.com/2225849/google-shuts-down-alphafold/",
+          "tag": "info",
+          "actor": "Google DeepMind"
+        },
+        {
+          "slug": "2026-08-03-meta-q2-2026-capex",
+          "title": "Meta Q2 2026 : capex FY relevé à 130-145 Md$, free cash flow effondré à 784 M$, titre -9 %",
+          "primary_url": "https://www.cnbc.com/2026/07/29/meta-q2-earnings-report-2026.html",
+          "tag": "info",
+          "actor": "Meta"
+        },
+        {
+          "slug": "2026-08-03-meta-blackrock-el-paso",
+          "title": "Meta + BlackRock : JV de 14 Md$ pour un campus datacenter 1 GW à El Paso, 80 % hors bilan",
+          "primary_url": "https://www.cnbc.com/2026/07/28/meta-blackrock-partner-on-14-billion-el-paso-data-center.html",
+          "tag": "info",
+          "actor": "Meta"
+        },
+        {
+          "slug": "2026-08-03-meta-sam3-dino-rammp",
+          "title": "SAM 3 + DINO embarqués sur le fauteuil robotisé RAMMP de Pitt (ARPA-H, jusqu'à 41,5 M$)",
+          "primary_url": "https://www.pittwire.pitt.edu/features-articles/2026/04/23/herl-rammp-wheelchair-arpa-h",
+          "tag": "info",
+          "actor": "Meta"
+        },
+        {
+          "slug": "2026-08-03-perplexity-pplx-cli",
+          "title": "pplx — CLI mono-binaire qui expose la Search API de Perplexity en JSON aux agents de code",
+          "primary_url": "https://github.com/perplexityai/perplexity-cli",
+          "tag": "lynxter",
+          "actor": "Perplexity"
+        },
+        {
+          "slug": "2026-08-03-perplexity-personal-computer-windows",
+          "title": "Personal Computer arrive sur Windows — agent desktop à 200 $/mois, orchestration de 20+ modèles, contexte local qui transite par le cloud",
+          "primary_url": "https://www.techtimes.com/articles/321882/20260728/perplexity-brings-ai-desktop-agent-windows-routing-tasks-across-20-models.htm",
+          "tag": "useful",
+          "actor": "Perplexity"
+        },
+        {
+          "slug": "2026-08-03-perplexity-skills-agent-api",
+          "title": "Lot du 28 juillet — Skills composables dans l'Agent API, Claude Opus 5 dans Search et Computer, rôles Enterprise + SCIM",
+          "primary_url": "https://www.perplexity.ai/help-center/en/articles/11187754-enterprise-roles-and-permissions",
+          "tag": "useful",
+          "actor": "Perplexity"
+        },
+        {
+          "slug": "2026-08-03-xai-grok-voice-2",
+          "title": "Grok Voice Think Fast 2.0 : speech-to-speech à 82,9 % sur l'index Artificial Analysis, 0,70 s de time-to-first-audio",
+          "primary_url": "https://techresearchonline.com/news/grok-voice-think-fast-2-outperforms-openai-google/",
+          "tag": "useful",
+          "actor": "xAI"
+        },
+        {
+          "slug": "2026-08-03-xai-grok-imagine-video-1-5",
+          "title": "Grok Imagine Video 1.5 : 1080p natif, text-to-video et jusqu'à 7 références image/voix dans l'API",
+          "primary_url": "https://www.techtimes.com/articles/322670/20260802/grok-imagine-video-update-adds-1080p-voice-cloning-seven-reference-scene-control.htm",
+          "tag": "info",
+          "actor": "xAI"
+        },
+        {
+          "slug": "2026-08-03-xai-grok-build-0-2-116",
+          "title": "Grok Build 0.2.116 : pilotage des serveurs MCP en CLI, sortie streaming-json et /undo",
+          "primary_url": "https://codersera.com/blog/xai-grok-build-skills-connectors-guide-2026/",
+          "tag": "info",
+          "actor": "xAI"
+        },
+        {
+          "slug": "2026-08-03-cursor-ipad",
+          "title": "Cursor sur iPad — layout multi-agents en split screen, Inbox de supervision, review de PR complète, SCM Bitbucket et Azure DevOps",
+          "primary_url": "https://alternativeto.net/news/2026/7/cursor-launches-full-featured-ipad-app-with-advanced-multitasking-inbox-and-review-tools/",
+          "tag": "useful",
+          "actor": "Cursor"
+        },
+        {
+          "slug": "2026-08-03-cursor-start-inde",
+          "title": "Cursor Start — premier tarif localisé, ₹649/mois (~7 $) réservé à l'Inde, Grok 4.5 + Composer 2.5 mais sans Auto ni SDK",
+          "primary_url": "https://thenextweb.com/news/cursor-start-india-pricing-own-models-spacex",
+          "tag": "info",
+          "actor": "Cursor"
+        },
+        {
+          "slug": "2026-08-03-deepseek-v4-flash-0731",
+          "title": "DeepSeek-V4-Flash-0731 en beta publique officielle : le 284B/13B actif dépasse V4-Pro-Preview sur les neuf benchmarks agents publiés",
+          "primary_url": "https://www.marktechpost.com/2026/07/31/deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains/",
+          "tag": "useful",
+          "actor": "DeepSeek"
+        }
+      ]
+    },
+    {
       "date": "2026-07-27",
       "filename": "2026-07-27.html",
       "items_count": 13,
@@ -27,19 +218,97 @@
         "Gouvernance/routing d'agents : OpenAI Presence (déploiement voix/chat par FDE, ~75 % résolu sans humain, zéro self-serve), Cursor Router (30-50 % de coût en moins à qualité frontière), spend limits par projet OpenAI ; Mistral sur Azure Local et Meta SAM 3 + DINOv3 open weights on-prem"
       ],
       "items": [
-        { "slug": "2026-07-27-claude-opus-5", "title": "Claude Opus 5 — nouveau défaut Opus, pricing inchangé $5/$25, contexte 1M, 79,2 % SWE-bench Pro et toggle d'effort", "primary_url": "https://www.anthropic.com/news/claude-opus-5", "tag": "lynxter", "actor": "Anthropic" },
-        { "slug": "2026-07-27-claude-code-2-1-216-219", "title": "Claude Code v2.1.216 → v2.1.219 — Opus 5 par défaut, subagents imbriqués jusqu'à depth 3, caps de session, strictAllowlist", "primary_url": "https://code.claude.com/docs/en/changelog", "tag": "lynxter", "actor": "Anthropic" },
-        { "slug": "2026-07-27-openai-presence", "title": "OpenAI Presence — plateforme entreprise d'agents voix/chat livrée par Forward Deployed Engineers, zéro self-serve", "primary_url": "https://openai.com/index/introducing-openai-presence/", "tag": "useful", "actor": "OpenAI" },
-        { "slug": "2026-07-27-openai-codex-spend-limits", "title": "Codex + API platform — Mermaid inline et formulaires interactifs, spend limits mensuels par org ET par projet", "primary_url": "https://developers.openai.com/codex/changelog", "tag": "useful", "actor": "OpenAI" },
-        { "slug": "2026-07-27-gemini-3-6-flash", "title": "Gemini 3.6 Flash, 3.5 Flash-Lite et Flash Cyber — baisse de prix, -17 % de tokens en sortie, Gemini 4 en pré-entraînement", "primary_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/", "tag": "useful", "actor": "Google DeepMind" },
-        { "slug": "2026-07-27-meta-sam3-dinov3-genesis", "title": "Meta déploie SAM 3 + DINOv3 (open weights) dans SYNAPS-I du Genesis Mission (DOE) — labellisation 3D d'un mois à ~15 minutes", "primary_url": "https://newscenter.lbl.gov/2026/07/22/berkeley-lab-to-lead-13-new-genesis-mission-ai-projects/", "tag": "useful", "actor": "Meta" },
-        { "slug": "2026-07-27-mistral-microsoft-azure-local", "title": "Microsoft x Mistral — deal compute multi-Md$ sur datacenters EU (sans nouvelle prise de participation), Medium 3.5 + OCR 4 sur Azure Local", "primary_url": "https://news.microsoft.com/source/2026/07/21/microsoft-and-mistral-expand-strategic-partnership-to-give-enterprises-and-regulated-industries-frontier-ai-they-can-control/", "tag": "useful", "actor": "Mistral" },
-        { "slug": "2026-07-27-cursor-router", "title": "Cursor Router — routeur de modèles au niveau requête pour le mode Auto (profils Intelligence / Balance / Cost)", "primary_url": "https://www.marktechpost.com/2026/07/22/cursor-releases-cursor-router-a-request-level-classifier/", "tag": "useful", "actor": "Cursor" },
-        { "slug": "2026-07-27-deepseek-v4-ga", "title": "DeepSeek V4 en GA — deepseek-v4-pro 80,6 % SWE-bench Verified (MIT, 1M contexte), retrait des alias legacy, première tarification API à surcharge horaire", "primary_url": "https://thenextweb.com/news/deepseek-peak-hour-api-surcharge-v4-price-war", "tag": "useful", "actor": "DeepSeek" },
-        { "slug": "2026-07-27-grok-4-6-roadmap", "title": "Grok 4.6 (2T params) — training terminé, GA sous ~2 semaines, Grok 4.7 (4-6T) ~2 semaines après", "primary_url": "https://dataconomy.com/2026/07/20/musk-xai-grok-4-6-2t-model-training-next-week/", "tag": "info", "actor": "xAI" },
-        { "slug": "2026-07-27-grok-google-workspace", "title": "Grok débarque dans Google Workspace (Docs/Sheets/Slides) — add-on gratuit, après les add-ins Microsoft 365", "primary_url": "https://stocktwits.com/news-articles/markets/equity/space-xai-expands-grok-integration-to-google-workspace-after-microsoft-365/cZZp49cR7zf", "tag": "info", "actor": "xAI" },
-        { "slug": "2026-07-27-xai-websocket-api", "title": "xAI API — mode WebSocket pour la Responses API, recherche d'images, expiration des fichiers", "primary_url": "https://insights.marvin-42.com/articles/responses-api-websockets-cut-agent-loop-latency-by-up-to-40", "tag": "info", "actor": "xAI" },
-        { "slug": "2026-07-27-deepseek-funding-pause", "title": "DeepSeek suspend son second tour de table (~74 Md$) avant une éventuelle IPO", "primary_url": "https://fortune.com/2026/07/25/deepseek-liang-wenfeng-backers-fundraising-pause-viral-posts-investors/", "tag": "info", "actor": "DeepSeek" }
+        {
+          "slug": "2026-07-27-claude-opus-5",
+          "title": "Claude Opus 5 — nouveau défaut Opus, pricing inchangé $5/$25, contexte 1M, 79,2 % SWE-bench Pro et toggle d'effort",
+          "primary_url": "https://www.anthropic.com/news/claude-opus-5",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-07-27-claude-code-2-1-216-219",
+          "title": "Claude Code v2.1.216 → v2.1.219 — Opus 5 par défaut, subagents imbriqués jusqu'à depth 3, caps de session, strictAllowlist",
+          "primary_url": "https://code.claude.com/docs/en/changelog",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-07-27-openai-presence",
+          "title": "OpenAI Presence — plateforme entreprise d'agents voix/chat livrée par Forward Deployed Engineers, zéro self-serve",
+          "primary_url": "https://openai.com/index/introducing-openai-presence/",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-07-27-openai-codex-spend-limits",
+          "title": "Codex + API platform — Mermaid inline et formulaires interactifs, spend limits mensuels par org ET par projet",
+          "primary_url": "https://developers.openai.com/codex/changelog",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-07-27-gemini-3-6-flash",
+          "title": "Gemini 3.6 Flash, 3.5 Flash-Lite et Flash Cyber — baisse de prix, -17 % de tokens en sortie, Gemini 4 en pré-entraînement",
+          "primary_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/",
+          "tag": "useful",
+          "actor": "Google DeepMind"
+        },
+        {
+          "slug": "2026-07-27-meta-sam3-dinov3-genesis",
+          "title": "Meta déploie SAM 3 + DINOv3 (open weights) dans SYNAPS-I du Genesis Mission (DOE) — labellisation 3D d'un mois à ~15 minutes",
+          "primary_url": "https://newscenter.lbl.gov/2026/07/22/berkeley-lab-to-lead-13-new-genesis-mission-ai-projects/",
+          "tag": "useful",
+          "actor": "Meta"
+        },
+        {
+          "slug": "2026-07-27-mistral-microsoft-azure-local",
+          "title": "Microsoft x Mistral — deal compute multi-Md$ sur datacenters EU (sans nouvelle prise de participation), Medium 3.5 + OCR 4 sur Azure Local",
+          "primary_url": "https://news.microsoft.com/source/2026/07/21/microsoft-and-mistral-expand-strategic-partnership-to-give-enterprises-and-regulated-industries-frontier-ai-they-can-control/",
+          "tag": "useful",
+          "actor": "Mistral"
+        },
+        {
+          "slug": "2026-07-27-cursor-router",
+          "title": "Cursor Router — routeur de modèles au niveau requête pour le mode Auto (profils Intelligence / Balance / Cost)",
+          "primary_url": "https://www.marktechpost.com/2026/07/22/cursor-releases-cursor-router-a-request-level-classifier/",
+          "tag": "useful",
+          "actor": "Cursor"
+        },
+        {
+          "slug": "2026-07-27-deepseek-v4-ga",
+          "title": "DeepSeek V4 en GA — deepseek-v4-pro 80,6 % SWE-bench Verified (MIT, 1M contexte), retrait des alias legacy, première tarification API à surcharge horaire",
+          "primary_url": "https://thenextweb.com/news/deepseek-peak-hour-api-surcharge-v4-price-war",
+          "tag": "useful",
+          "actor": "DeepSeek"
+        },
+        {
+          "slug": "2026-07-27-grok-4-6-roadmap",
+          "title": "Grok 4.6 (2T params) — training terminé, GA sous ~2 semaines, Grok 4.7 (4-6T) ~2 semaines après",
+          "primary_url": "https://dataconomy.com/2026/07/20/musk-xai-grok-4-6-2t-model-training-next-week/",
+          "tag": "info",
+          "actor": "xAI"
+        },
+        {
+          "slug": "2026-07-27-grok-google-workspace",
+          "title": "Grok débarque dans Google Workspace (Docs/Sheets/Slides) — add-on gratuit, après les add-ins Microsoft 365",
+          "primary_url": "https://stocktwits.com/news-articles/markets/equity/space-xai-expands-grok-integration-to-google-workspace-after-microsoft-365/cZZp49cR7zf",
+          "tag": "info",
+          "actor": "xAI"
+        },
+        {
+          "slug": "2026-07-27-xai-websocket-api",
+          "title": "xAI API — mode WebSocket pour la Responses API, recherche d'images, expiration des fichiers",
+          "primary_url": "https://insights.marvin-42.com/articles/responses-api-websockets-cut-agent-loop-latency-by-up-to-40",
+          "tag": "info",
+          "actor": "xAI"
+        },
+        {
+          "slug": "2026-07-27-deepseek-funding-pause",
+          "title": "DeepSeek suspend son second tour de table (~74 Md$) avant une éventuelle IPO",
+          "primary_url": "https://fortune.com/2026/07/25/deepseek-liang-wenfeng-backers-fundraising-pause-viral-posts-investors/",
+          "tag": "info",
+          "actor": "DeepSeek"
+        }
       ]
     },
     {

@@ -7,10 +7,15 @@ const INTRO_STYLE = 'font-size:18px;font-weight:300;color:var(--text-soft);max-w
 
 const plural = (n) => (n > 1 ? 'items' : 'item');
 
-function sourcesLine(sources) {
-  return sources
+function sourcesLine(sources, noOfficial) {
+  const links = sources
     .map((s) => `<a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`)
     .join(' · ');
+  // Gate source primaire (CLAUDE.md §2) : un item 🎯/🛠 sans annonce officielle
+  // doit le dire explicitement, sur le brief comme sur sa page détail.
+  return noOfficial
+    ? `${links} <span style="color:var(--text-muted);">· sans annonce officielle</span>`
+    : links;
 }
 
 function article(it) {
@@ -33,7 +38,7 @@ function article(it) {
             ${date}
           </div>
           <p class="item-context">${it.context_html}</p>
-          <p class="item-source">${sourcesLine(it.sources)}</p>
+          <p class="item-source">${sourcesLine(it.sources, it.has_primary === false)}</p>
         </article>`;
 }
 
