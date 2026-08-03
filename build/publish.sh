@@ -58,8 +58,13 @@ echo "── ✅ publié sur main : $(git log --oneline origin/main -1)"
 # 5. Vérification post-déploiement (best-effort : l'egress peut bloquer).
 echo "── vérification déploiement (90 s d'attente Pages)"
 sleep 90
+# curl écrit déjà le code via -w (000 s'il n'a pas pu se connecter) : pas de
+# `|| echo 000` ici, il concaténerait un second code au premier.
+set +e
 CODE=$(curl -s -o /tmp/veille-home.html -w "%{http_code}" --max-time 20 \
-  https://leomarty1.github.io/veille-IA/ || echo 000)
+  https://leomarty1.github.io/veille-IA/ 2>/dev/null)
+set -e
+CODE=${CODE:-000}
 if [ "$CODE" = "200" ]; then
   if grep -q "$DATE" /tmp/veille-home.html; then
     echo "── ✅ déploiement OK : 200 + date $DATE servie"
