@@ -19,6 +19,13 @@ function check(name, cond, detail) {
   if (cond) { console.log('  ✓  ' + name); }
   else { console.log('  ✗  ' + name + (detail ? '  — ' + detail : '')); fails.push(name); }
 }
+/* Écarts sur des briefs DÉJÀ publiés : signalés, non bloquants. Le gate
+   protège ce qu'on s'apprête à publier ; réécrire de l'éditorial en ligne
+   n'est pas son rôle. */
+const warns = [];
+function warn(name, cond, detail) {
+  if (!cond) { console.log('  ⚠  ' + name + (detail ? '  — ' + detail : '')); warns.push(name); }
+}
 
 /* 1. JSON parsable ------------------------------------------------ */
 let data = null, models = null;
@@ -116,8 +123,68 @@ for (const m of (models && models.models) || []) {
   }
 }
 
+/* 7. Règles éditoriales de CLAUDE.md, depuis la source unique JSON ---
+   Bloquant sur le brief le plus récent (celui qu'on publie), warning sur
+   les briefs déjà en ligne. Couvre les règles qui étaient jusqu'ici
+   vérifiées à la main : longueur des · info, gate source primaire,
+   présence du bloc detail (sans lui, gen.js ne crée pas la page → lien
+   mort), et tags des items connexes. */
+const CANON = ['lynxter', 'useful', 'info'];
+const ALIAS = { '🎯': 'lynxter', '🛠': 'useful', '·': 'info' };
+const sentences = (h) => (h.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
+  .match(/[.!?…](?=\s|$)/g) || []).length;
+
+briefs.forEach((b, idx) => {
+  const src = 'briefs/' + b.date + '.json';
+  if (!exists(src)) return;
+  let j; try { j = JSON.parse(read(src)); } catch (e) { check(`source JSON parsable (${b.date})`, false, e.message); return; }
+  const latest = idx === 0;            // data.json est trié du plus récent au plus ancien
+  const gate = latest ? check : warn;
+
+  for (const it of j.items || []) {
+    const id = `${b.date} · ${it.slug}`;
+    if (it.tag === 'info') {
+      const n = sentences(it.context_html || '');
+      gate(`· info ≤ 3 phrases (${id})`, n <= 3, n + ' phrases');
+      continue;
+    }
+    // Gate source primaire : ≥1 source primaire, sinon marqueur explicite + ≥2 secondaires
+    const hasPrimary = (it.sources || []).some((s) => s.primary);
+    const marked = /sans annonce officielle/i.test(JSON.stringify(it));
+    gate(`gate source primaire (${id})`, hasPrimary || marked,
+      'ni source primaire ni marqueur « sans annonce officielle »');
+    if (!hasPrimary) {
+      gate(`≥ 2 secondaires si pas de primaire (${id})`, (it.sources || []).length >= 2,
+        (it.sources || []).length + ' source(s)');
+    }
+    // Jamais étiqueter une secondaire comme primaire sur la page détail
+    if (it.detail && it.detail.source) {
+      gate(`source non sur-étiquetée primaire (${id})`,
+        !(it.detail.source.kind === 'primaire' && !hasPrimary), 'kind=primaire sans source primaire');
+    }
+    // detail obligatoire pour 🎯/🛠, sinon page manquante = lien mort
+    gate(`bloc detail présent (${id})`, !!it.detail, 'detail absent → lien mort');
+    for (const r of (it.detail && it.detail.related) || []) {
+      gate(`tag related résolvable (${id} → ${r.slug})`,
+        CANON.includes(ALIAS[r.tag] || r.tag), 'tag="' + r.tag + '"');
+    }
+  }
+});
+
+/* 8. Aucun "undefined" littéral dans le HTML généré (tous briefs) ---- */
+for (const b of briefs) {
+  const pages = ['briefs/' + b.filename].concat(
+    fs.existsSync(path.join(ROOT, 'items'))
+      ? fs.readdirSync(path.join(ROOT, 'items')).filter((f) => f.startsWith(b.date)).map((f) => 'items/' + f)
+      : []
+  );
+  const dirty = pages.filter((p) => exists(p) && /undefined/.test(read(p)));
+  check(`aucun "undefined" rendu (${b.date})`, dirty.length === 0, dirty.join(', '));
+}
+
 /* Résumé ---------------------------------------------------------- */
 console.log('');
+if (warns.length) console.log(`QA: ⚠ ${warns.length} écart(s) sur des briefs déjà publiés (non bloquant).`);
 if (fails.length) {
   console.log(`QA: ❌ ${fails.length} check(s) en échec — NE PAS POUSSER.`);
   process.exit(1);

@@ -170,5 +170,5 @@ return {
   qa_issues: qa.blocking_issues,
   written,
   brief_json: brief,
-  note: "PUBLICATION (critique) : si qa_passed=true, pousser via MCP github push_files (commit atomique) — voie primaire car la GitHub App Claude est installee sur le repo. Le PAT inline du prompt est MORT : ne pas s'y fier. Si l'ecriture echoue (App absente/sans write), ECHOUER BRUYAMMENT (rapport en erreur explicite) — ne JAMAIS terminer en succes silencieux sans brief publie. Puis verifier le deploiement (HTTP 200 + date du brief sur le site). Si qa_passed=false : corriger avant tout push.",
+  note: "PUBLICATION (critique) : si qa_passed=true, lancer `bash build/publish.sh <date>` — QA + commit + push branche + fast-forward et push de main + verif deploiement. GitHub Pages sert `main` : un brief pousse sur une branche de travail n'est PAS publie, meme avec tous les voyants au vert. Verifier `git log origin/main -1` avant d'annoncer un succes ; sinon reporter `Deploiement : NON PUBLIE`. Le PAT inline du prompt est MORT : ne pas s'y fier. Si qa_passed=false : corriger avant tout push.",
 }

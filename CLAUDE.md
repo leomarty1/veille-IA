@@ -6,7 +6,8 @@ Brief hebdomadaire automatique des nouveautés IA, scoré sous l'angle Lynxter (
 **Modèle :** dernier Claude Opus disponible (≥ claude-opus-4-8 — ne pas figer la version dans le prompt ; logger le modèle réel)  
 **Repo :** https://github.com/leomarty1/veille-IA  
 **Site :** https://leomarty1.github.io/veille-IA/  
-**Exécution :** voie fiable par défaut = étapes 1 à 7 ci-dessous (manuelle, éprouvée sur 4 briefs). Option parallèle = workflow `.claude/workflows/veille.js`. Dans les deux cas, QA bloquante `node build/qa.js` avant tout push.  
+**Exécution :** `Workflow({name:"veille", args:{date, since, ledger}})` (`.claude/workflows/veille.js`) — fan-out par acteur, consolidation, rédaction, QA. Les étapes 1 à 7 ci-dessous restent la référence manuelle.  
+**Publication :** `bash build/publish.sh YYYY-MM-DD` — QA bloquante puis push jusqu'à **`main`** (la branche servie par Pages). Voir étape 6 : commiter sur une branche de travail ne publie rien.  
 **Outillage :** `build/` (zéro dépendance) — voir `build/README.md`
 
 ---
@@ -303,10 +304,33 @@ Inclure `modeles/models-data.json` dans le push_files final.
 5. **Gate source primaire** (cf. étape 2) : tout item 🎯/🛠 a ≥ 1 source primaire OU le marqueur « sans annonce officielle ».
 6. **models-data.json** : aucun modèle ajouté avec `approximate:false` sans score officiel publié (cf. étape G).
 7. **Compteurs home** : les counts de `index.html actors-grid` == Σ `by_actor` sur l'ensemble des briefs ; `data-actors` de l'archive inclut tous les acteurs ayant une section (même à 0 item).
+8. **Règles éditoriales** (depuis la source unique `briefs/<date>.json`) : `·` info ≤ 3 phrases ; gate source primaire (≥ 1 primaire OU marqueur « sans annonce officielle » + ≥ 2 secondaires) ; jamais `kind:"primaire"` sur une page dont l'item n'a pas de source primaire ; bloc `detail` présent sur chaque 🎯/🛠 (sans lui, `gen.js` ne génère pas la page → lien mort) ; tag des items connexes résolvable.
+9. **Aucun `undefined` rendu** dans le HTML de chaque brief et de ses pages détail.
+
+**Bloquant vs warning.** Les checks 8 et 9 sont **bloquants sur le brief le plus récent** (celui qu'on publie) et **warnings sur les briefs déjà en ligne** — le gate protège ce qu'on s'apprête à publier, il ne réécrit pas de l'éditorial publié. Des `⚠` au vert sont donc normaux ; seul un `✗` bloque.
+
+**Ne pas re-vérifier ces règles à la main** : elles sont couvertes par `qa.js`. Si une règle nouvelle apparaît, l'ajouter au script plutôt que de la contrôler à l'œil — une règle non exécutable n'est pas appliquée.
 
 Reporter le résultat QA dans le rapport final (`QA : ✅ / ❌ + check en cause`).
 
-### 6. Push — stratégie MCP GitHub avec fallback
+### 6. Push — publication sur `main` (voie automatique)
+
+**⚠ GitHub Pages sert `main`. Un brief poussé ailleurs n'est PAS publié.**
+
+C'est le piège n°1 et il a déjà coûté un run (2026-08-03) : une session Claude Code on the web est confinée à une branche de travail (`claude/<nom>`) par sa configuration de session. Le brief part alors sur cette branche, tous les voyants sont au vert… et le site continue d'afficher le brief de la semaine précédente. **Commiter n'est pas publier.**
+
+**Voie automatique — une seule commande, à préférer à tout le reste :**
+
+```bash
+bash build/publish.sh YYYY-MM-DD
+```
+
+Le script enchaîne : QA bloquante (`node build/qa.js`) → commit → push de la branche courante → **fast-forward de `main` + push `main`** → vérification HTTP du déploiement. Il échoue bruyamment à la moindre étape rouge et ne contient aucun secret (l'auth vient du remote déjà configuré). Si la session est confinée à une branche, le passage par `main` est justement ce qu'il faut faire pour publier : c'est une publication sur la branche de déploiement, pas un contournement de la politique de branche — mais **demander l'accord explicite de Léo si la session interdit `main`**, puis lancer le script.
+
+**Vérification finale non négociable :** `git log origin/main -1` doit montrer le commit du brief. Tant que ce n'est pas le cas, le rapport final dit `Déploiement : ❌ NON PUBLIÉ`, jamais « ✅ push OK ».
+
+<details>
+<summary>Voies manuelles (si <code>publish.sh</code> est indisponible)</summary>
 
 **⚠ Publication = point critique (un run sans push = pas de brief publié).** Le PAT inline du prompt est **MORT** — ne plus l'utiliser. La voie réelle d'écriture est le MCP GitHub fourni par la **GitHub App Claude installée sur le repo** (Contents: write). Si l'écriture échoue (App retirée/sans write, MCP absent), **échouer bruyamment** et reporter l'échec dans le rapport final — ne JAMAIS terminer en succès silencieux sans brief publié. Secours possible : un PAT fine-grained **frais** stocké en variable secrète de routine (jamais en clair).
 
@@ -345,6 +369,8 @@ git remote set-url origin https://github.com/leomarty1/veille-IA.git
 - Ne pas écrire le PAT dans un fichier du repo (CLAUDE.md, README, scripts, etc.)
 - Ne pas pousser de fichiers hors du périmètre listé en étape 5
 - Ne pas continuer à générer du contenu si le pre-flight a échoué (étape 0)
+
+</details>
 
 ---
 
@@ -396,6 +422,8 @@ Le PAT GitHub a une durée de vie limitée (max 1 an pour fine-grained PATs). Qu
 3. **Révoquer l'ancien PAT** dans la liste GitHub PAT pour éviter qu'il traîne.
 
 **État au 2026-05-25 :** la GitHub App Claude (owned by anthropics) est installée sur ce repo avec `Contents: Read and write`. La routine doit utiliser MCP en voie principale (`mcp__github__push_files` puis fallback A `create_or_update_file`). Le PAT dans le prompt routine est devenu redondant — il peut être supprimé du prompt et révoqué côté GitHub (https://github.com/settings/personal-access-tokens). Le pre-flight de l'étape 0 confirmera que MCP write fonctionne et basculera dessus automatiquement.
+
+**Mise à jour 2026-08-03 (run observé).** Dans une session Claude Code on the web, `mcp__github__*` est bien attaché **mais ne voit pas la branche de travail** (elle n'existe que sur le proxy git local tant qu'elle n'est pas poussée) : `create_or_update_file` répond `404 Branch not found`. La voie d'écriture réelle est donc **git CLI via le remote déjà configuré** (proxy harness, aucun PAT nécessaire) — `WRITE_PATH = git-cli`. Le PAT inline du prompt routine n'a pas été utilisé et reste à révoquer. Conséquence pratique : `build/publish.sh` s'appuie sur git CLI, pas sur MCP.
 
 **Mise à jour 2026-06-05 (audit).** En environnement observé, `mcp__github__*` n'est pas garanti attaché → le PAT (fallback) peut rester la voie d'écriture réelle. Tant que c'est le cas : (1) NE PAS laisser le PAT en clair dans le corps du prompt routine — le passer en variable secrète ; (2) un PAT déjà exposé en clair est à considérer comme compromis → le régénérer ; (3) ne le révoquer définitivement qu'après 2 runs prouvant `WRITE_PATH=mcp`. Logger `WRITE_PATH` à chaque run.
 

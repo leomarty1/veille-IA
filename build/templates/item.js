@@ -11,6 +11,11 @@ const TAG_MINI = {
   useful: '<span class="tag tag-useful">🛠</span>',
   info: '<span class="tag tag-info">·</span>',
 };
+// Les JSON de brief ont stocké le tag des items connexes sous deux formes :
+// clé canonique ("lynxter") et emoji ("🎯"). Indexer sans normaliser rendait
+// littéralement "undefined" dans la liste des items connexes.
+const TAG_ALIAS = { '🎯': 'lynxter', '🛠': 'useful', '·': 'info' };
+const tagMini = (t) => TAG_MINI[TAG_ALIAS[t] || t] || '';
 const LYNXTER_H2 = {
   lynxter: "🎯 Pourquoi c'est important pour Lynxter",
   useful: "🛠 Pourquoi c'est utile à savoir pour Lynxter",
@@ -25,7 +30,7 @@ module.exports = function renderItem(it, ctx) {
     `          <li><a href="${r.slug}.html">
             <span class="related-actor">${r.actor}</span>
             <span class="related-title">${r.title}</span>
-            ${TAG_MINI[r.tag]}
+            ${tagMini(r.tag)}
           </a></li>`;
   const navLink = (cls, n) =>
     n
