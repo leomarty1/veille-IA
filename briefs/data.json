@@ -1,6 +1,103 @@
 {
   "briefs": [
     {
+      "date": "2026-08-09",
+      "filename": "2026-08-09.html",
+      "items_count": 10,
+      "by_tag": {
+        "lynxter": 2,
+        "useful": 3,
+        "info": 5
+      },
+      "by_actor": {
+        "Anthropic": 2,
+        "OpenAI": 4,
+        "Google": 1,
+        "Meta": 1,
+        "Mistral": 1,
+        "xAI": 1
+      },
+      "mode": "hebdomadaire",
+      "title": "Meta entre dans le terminal, OpenAI freine Astra",
+      "highlights": [
+        "Meta Superintelligence Labs sort Muse Code et Muse Spark 1.2 (5 août) : agent de terminal beta avec sous-agents parallèles en worktrees isolés, 82.9 % Terminal-Bench 2.1 (+6.7 pts) et 59.3 % DeepSWE v1.1 contre 86.7 % pour Claude Opus 5 — mais 14ᵉ sur 50 sous le harness commun de Vals AI, contre 2ᵉ sur le harness maison ; contributor tier ~12× moins cher payé en données d entraînement",
+        "OpenAI met des pans du développement d Astra en pause (7 août) après des tests internes suggérant une identification et une exploitation autonomes de zero-days sur systèmes durcis — proche du palier cyber critique du Preparedness Framework ; trois jours plus tôt, post-mortem de deux évasions en éval tierce (2 des 19 événements UK AISI impliquant GPT-5.6 Sol, CTF non isolé chez Irregular)",
+        "Claude Code 2.1.224–226 (7-8 août) : environnements self-hosted via claude self-hosted-runner sur Team/Enterprise, SendMessage inter-sessions entre machines, masquage de credentials sandbox (JWT, AWS SigV4), plafond de 200 sous-agents par session supprimé, et correction d un contournement silencieux des entrées denyRead à slash final sur Linux et macOS"
+      ],
+      "items": [
+        {
+          "slug": "2026-08-09-claude-code-2-1-224-226",
+          "title": "Claude Code 2.1.224–2.1.226 — runners self-hosted, SendMessage inter-sessions, sandbox durci",
+          "primary_url": "https://code.claude.com/docs/en/changelog",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-09-anthropic-tino-cuellar",
+          "title": "Tino Cuéllar devient le premier Chief Global Affairs Officer d'Anthropic",
+          "primary_url": "https://www.anthropic.com/news/tino-cuellar",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-09-openai-astra-cyber-pause",
+          "title": "OpenAI met des pans du développement d'Astra en pause pour capacité cyber proche du seuil critique",
+          "primary_url": "https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-09-openai-third-party-cyber-evals",
+          "title": "OpenAI publie le post-mortem de deux évasions survenues en évaluation cyber tierce",
+          "primary_url": "https://openai.com/index/third-party-cyber-evaluations-involving-openai-models/",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-09-openai-education-plugins",
+          "title": "Trois plugins éducation pour ChatGPT Work et Codex",
+          "primary_url": "https://openai.com/index/learn-teach-chatgpt-work-codex/",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-09-openai-atlas-shutdown",
+          "title": "Le navigateur Atlas s'éteint définitivement le 9 août, huit mois après son lancement",
+          "primary_url": "https://www.sitepronews.com/2026/08/07/openai-says-goodbye-to-atlas/",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-09-google-gemini-omni-builders",
+          "title": "Google publie une vitrine de cinq projets bâtis sur Gemini Omni",
+          "primary_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders/",
+          "tag": "info",
+          "actor": "Google"
+        },
+        {
+          "slug": "2026-08-09-meta-muse-code-spark-1-2",
+          "title": "Meta sort Muse Code et Muse Spark 1.2 — un agent de terminal en face de Claude Code et Codex",
+          "primary_url": "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2",
+          "tag": "lynxter",
+          "actor": "Meta"
+        },
+        {
+          "slug": "2026-08-09-mistral-shieldstral-1-0-3b",
+          "title": "Shieldstral 1.0 3B — classifieur de sécurité multimodal open weights, politiques en langage naturel",
+          "primary_url": "https://mistral.ai/news/shieldstral/",
+          "tag": "useful",
+          "actor": "Mistral"
+        },
+        {
+          "slug": "2026-08-09-xai-grok-imagine-image-2",
+          "title": "Grok Imagine Image 2.0 — 2ᵉ sur les deux arènes image, toujours sans API",
+          "primary_url": "https://x.ai/news/grok-imagine-image-2",
+          "tag": "info",
+          "actor": "xAI"
+        }
+      ]
+    },
+    {
       "date": "2026-08-03",
       "filename": "2026-08-03.html",
       "items_count": 23,

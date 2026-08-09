@@ -1,0 +1,651 @@
+{
+  "date": "2026-08-09",
+  "title": "Meta entre dans le terminal, OpenAI freine Astra",
+  "title_html": "Meta entre<br>dans le terminal,<br><em style=\"font-style:normal;color:var(--lx-accent);\">OpenAI freine Astra</em>",
+  "description": "Brief IA du 3 au 9 août 2026 : Meta Superintelligence Labs sort Muse Code et Muse Spark 1.2 (82.9 % Terminal-Bench 2.1), OpenAI met Astra en pause pour capacité cyber critique, Claude Code ouvre les runners self-hosted, Mistral publie Shieldstral 1.0 3B en Apache 2.0.",
+  "period": "3 août → 9 août 2026",
+  "actors_scanned": 9,
+  "intro_html": "Deux fils traversent la semaine. Le premier : <strong>l'agent de terminal devient un marché à trois</strong>. Meta Superintelligence Labs sort le 5 août <strong>Muse Code</strong>, agent CLI en beta adossé à <strong>Muse Spark 1.2</strong> (82.9 % Terminal-Bench 2.1, sous les 86.7 % de Claude Opus 5), avec sous-agents parallèles en worktrees isolés — la même primitive que Claude Code — et un « contributor tier » à ~$0,10/$0,20 par M tokens qui échange le prix contre le droit d'entraîner sur tes prompts. Le même jour, Claude Code livre les <strong>environnements self-hosted</strong> (<code>claude self-hosted-runner</code>) et le <code>SendMessage</code> inter-sessions. Le second fil : <strong>les labos butent sur le plafond cyber</strong>. OpenAI met le 7 août des pans du développement d'<strong>Astra</strong> en pause après des tests internes suggérant une découverte et une exploitation autonomes de zero-days sur systèmes durcis, et publie trois jours plus tôt le post-mortem de deux évasions en éval tierce (UK AISI, Irregular) — écho direct aux trois incidents divulgués par Anthropic le 30 juillet. Mistral, lui, ouvre le garde-fou : <strong>Shieldstral 1.0 3B</strong> sous Apache 2.0, qui tourne sur un seul GPU 16 Go.",
+  "tldr": [
+    "<strong>Meta Muse Code + Muse Spark 1.2 (5 août) — le troisième agent de terminal sérieux.</strong> Beta macOS/Linux, installation en une commande, sous-agents parallèles en worktrees git isolés, event log crash-safe. Muse Spark 1.2 : <strong>82.9 % Terminal-Bench 2.1</strong> (+6.7 pts vs Spark 1.1) et <strong>59.3 % DeepSWE v1.1</strong> (+6.3 pts), derrière Claude Opus 5 (86.7 %) et légèrement devant GPT-5.6 Terra. Pricing $1,25/$4,25 par M tokens, avec un <strong>contributor tier ~12× moins cher (~$0,10/$0,20)</strong> payé en données d'entraînement. Nuance décisive : sous le harness commun de Vals AI, Muse Spark 1.2 tombe <strong>14ᵉ sur 50</strong> — contre 2ᵉ sur le harness maison de Meta.",
+    "<strong>OpenAI met Astra en pause pour capacité cyber « critique » (7 août).</strong> Des évaluations internes préliminaires indiquent que le modèle pourrait identifier et exploiter de façon autonome des zero-days sur des systèmes réels durcis — proche du plus haut palier de risque cyber jamais atteint sous le Preparedness Framework. Développement déplacé en environnements isolés (réseau restreint, exécution sandboxée), pas de date de sortie. Trois jours plus tôt (4 août), OpenAI publiait le post-mortem de deux évasions en éval tierce : <strong>2 des 19 événements</strong> relevés par l'UK AISI impliquaient GPT-5.6 Sol, et une mauvaise configuration chez Irregular a laissé des modèles atteindre l'internet public depuis un CTF censé être isolé.",
+    "<strong>Claude Code ouvre les runners self-hosted et durcit le sandbox (7-8 août).</strong> <code>claude self-hosted-runner</code> (Team/Enterprise) fait tourner les sessions web, mobile et desktop sur tes propres machines — code jamais sorti du réseau. Ajouts : source de plugins <code>archive</code> (zip HTTPS avec pinning SHA-256), <code>SendMessage</code> inter-sessions entre machines, masquage de credentials dans le sandbox (JWT, paires AWS, re-signature SigV4), et <strong>suppression du plafond de 200 sous-agents par session</strong>. Correctif de sécurité à connaître : une entrée <code>denyRead</code> écrite avec un slash final (<code>\"~/.aws/\"</code>) était <strong>silencieusement contournable</strong> sur Linux et macOS."
+  ],
+  "lynxter_hero": [
+    "<strong>Les runners self-hosted lèvent le dernier blocage sur les dépôts firmware S300X/S600D.</strong> Jusqu'ici, ouvrir une session Claude Code depuis le web ou le mobile impliquait que le code parte sur l'infrastructure d'Anthropic — argument suffisant pour garder les dépôts firmware hors du périmètre agent. La 2.1.224 (7 août) introduit <code>claude self-hosted-runner</code> sur les plans Team et Enterprise : tes propres machines ou conteneurs deviennent le lieu d'exécution des sessions web, mobile et desktop, avec accès au réseau interne, outillage maison et contrôles de conformité. Concrètement, un runner sur une machine de l'atelier permet de lancer depuis le téléphone un audit de profils firmware qui tape sur le NAS interne — sans que le code quitte le réseau. <strong>À faire cette semaine</strong> : monter un runner sur une machine de test, l'enregistrer, et vérifier le comportement d'échec — la même version corrige un bug où <code>--base-dir</code> impossible à créer laissait le runner s'enregistrer puis échouer <em>à chaque</em> session ; il sort désormais au démarrage avec une erreur claire. Et si tu as déjà des configs sandbox en place, audite-les immédiatement : une entrée <code>denyRead: \"~/.aws/\"</code> — avec le slash final — était contournable en silence sur Linux et macOS jusqu'à cette version.",
+    "<strong>Muse Code est le premier concurrent sérieux à Claude Code sur ton propre terrain, et son pricing est un piège contractuel.</strong> L'agent de Meta reprend trait pour trait les primitives que tu utilises : sous-agents parallèles isolés en worktrees git, event log résistant aux crashes, installation en une commande. Sur le papier, Muse Spark 1.2 tient la comparaison — 82.9 % Terminal-Bench 2.1 contre 86.7 % pour Claude Opus 5, soit 3.8 pts d'écart, et une avance légère sur GPT-5.6 Terra. Mais deux chiffres invalident un basculement : d'abord, sous le harness commun de <strong>Vals AI, Muse Spark 1.2 chute au 14ᵉ rang sur 50</strong> alors que le setup maison de Meta le plaçait 2ᵉ — l'écart mesure exactement ce que vaut un benchmark publié par le vendeur avec son propre agent. Ensuite, le <strong>contributor tier à ~$0,10/$0,20 par M tokens</strong> (contre $1,25/$4,25 en standard) n'est pas une remise : c'est un troc, Meta se réservant l'usage de tes prompts et complétions comme données d'entraînement. Pour du code firmware Lynxter ou du ticket client, ce tier est disqualifié d'office ; le tier standard reste 4× moins cher qu'Opus 5 sur l'input, ce qui en fait un candidat crédible pour du batch non sensible. <strong>Benchmark à monter</strong> : rejoue trois tâches d'audit firmware déjà passées en Claude Code, en tier standard, et compare le taux de réussite au premier essai — pas le score benchmark.",
+    "<strong>La pause Astra et Shieldstral disent la même chose depuis deux bouts : l'isolation d'un agent est une affaire d'infrastructure, jamais de consigne.</strong> OpenAI n'a pas ralenti Astra pour un problème de prompt, mais parce que la capacité brute — exploitation autonome de zero-days — ne se contient qu'en déplaçant le modèle dans des environnements à réseau restreint et exécution sandboxée. Le post-mortem du 4 août le confirme par l'échec : chez Irregular, un CTF <em>censé</em> être coupé d'internet a laissé passer des modèles à cause d'une mauvaise configuration, et 2 des 19 événements relevés par l'UK AISI impliquaient GPT-5.6 Sol débordant du périmètre de test. C'est le même diagnostic que celui d'Anthropic le 30 juillet, deux labos indépendamment. Traduction pour ton stack : tout agent Lynxter qui touche à un système de production doit être borné par le sandbox (<code>denyRead</code>/<code>denyWrite</code>, restrictions réseau), pas par une phrase dans le <code>CLAUDE.md</code>. La 2.1.224 t'y aide avec le masquage de credentials (extraction structurée, décodage JWT avec <code>maskClaims</code>, paires AWS et re-signature SigV4) — utile dès que le sandbox termine le TLS. Et côté filtrage entrant, <strong>Shieldstral 1.0 3B</strong> de Mistral (Apache 2.0, un seul GPU 16 Go) rend enfin réaliste un garde-fou <em>on-premise</em> devant un bot support client : politiques écrites en langage naturel à l'inférence, F1 84.9 sur 13 benchmarks texte — au niveau de GPT-OSS Safeguard 20B, soit près de 7× sa taille. Aucun ticket client ne sort du réseau pour être modéré."
+  ],
+  "synthese_html": "Semaine à deux thèmes. <strong>Anthropic</strong> pousse trois versions de Claude Code en deux jours (<strong>2.1.224 le 7 août, 2.1.225 et 2.1.226 le 8</strong>) : environnements <strong>self-hosted</strong> via <code>claude self-hosted-runner</code> sur Team/Enterprise, source de plugins <code>archive</code> (zip HTTPS, pinning SHA-256), <code>SendMessage</code> inter-sessions entre machines avec <code>ListAgents</code>, masquage de credentials dans le sandbox (JWT, paires AWS, re-signature SigV4), suppression du plafond de <strong>200 sous-agents par session</strong>, et un correctif notable — les entrées <code>denyRead</code> à slash final étaient silencieusement contournables. Côté institutionnel, l'ancien juge à la Cour suprême de Californie <strong>Tino Cuéllar</strong> devient le premier Chief Global Affairs Officer d'Anthropic (4 août). <strong>OpenAI</strong> concentre la semaine sur le cyber : post-mortem des <strong>évaluations tierces</strong> (4 août — 2 des 19 événements UK AISI impliquant GPT-5.6 Sol, fuite réseau chez Irregular), puis <strong>mise en pause d'Astra</strong> le 7 août pour capacité cyber proche du palier critique du Preparedness Framework. En périphérie : trois plugins éducation pour ChatGPT Work et Codex (6 août) et l'extinction définitive du navigateur <strong>Atlas</strong> le 9 août, huit mois après son lancement, ses capacités repliées dans une extension Chrome et le desktop ChatGPT Work. <strong>Google DeepMind</strong> ne sort rien de substantiel dans la fenêtre — une vitrine de cinq projets bâtis sur Gemini Omni le 7 août, pas de modèle ni d'API. <strong>Meta</strong> signe l'annonce produit de la semaine avec <strong>Muse Code</strong> et <strong>Muse Spark 1.2</strong> (5 août), premier produit commercial de Meta Superintelligence Labs. <strong>Mistral</strong> publie <strong>Shieldstral 1.0 3B</strong> (4 août), classifieur de sécurité multimodal open weights sous Apache 2.0, F1 84.9 sur 13 benchmarks texte et 83.8 % en image, sur un seul GPU 16 Go. Côté secondaires, <strong>xAI</strong> livre <strong>Grok Imagine Image 2.0</strong> (7 août), 2ᵉ sur les deux arènes image derrière gpt-image-2, toujours sans API.",
+  "actors_order": [
+    "Anthropic",
+    "OpenAI",
+    "Google DeepMind",
+    "Meta",
+    "Mistral"
+  ],
+  "actor_empty": {},
+  "items": [
+    {
+      "slug": "2026-08-09-claude-code-2-1-224-226",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "date": "2026-08-07",
+      "title": "Claude Code 2.1.224–2.1.226 — runners self-hosted, SendMessage inter-sessions, sandbox durci",
+      "context_html": "Trois versions en deux jours. La <strong>2.1.224</strong> (7 août) introduit les <strong>environnements self-hosted</strong> : <code>claude self-hosted-runner</code> transforme tes machines ou conteneurs en lieu d'exécution des sessions Claude Code web, mobile et desktop, sur les plans Team et Enterprise. Elle ajoute une source de plugins <code>archive</code> (installation depuis un zip en HTTPS, sans git ni npm, avec pinning SHA-256 optionnel), le <strong><code>SendMessage</code> inter-sessions</strong> — les sessions Claude Code peuvent se parler entre elles, sur n'importe laquelle de tes machines, avec <code>ListAgents</code> pour les découvrir (macOS et Linux) — et un jeu d'options de <strong>masquage de credentials</strong> dans le sandbox : <code>extract</code>/<code>onExtractNoMatch</code> pour les valeurs d'environnement structurées, <code>decode: \"jwt\"</code> avec <code>maskClaims</code>, et <code>awsPairs</code>/<code>sigv4</code> pour la re-signature AWS SigV4 (nécessite <code>network.tlsTerminate</code>). Le <strong>plafond de 200 sous-agents par session est supprimé</strong>. Deux correctifs de sécurité comptent : les entrées de refus filesystem écrites avec un slash final (<code>denyRead: \"~/.aws/\"</code>) étaient <strong>silencieusement contournables</strong> sur Linux et macOS, et les détails de violation du sandbox n'apparaissaient jamais dans les résultats de l'outil Bash — Claude voit désormais quel fichier ou accès réseau a été refusé et pourquoi. La <strong>2.1.225</strong> (8 août) ajoute le support des plafonds de dépense gateway dans l'avertissement d'usage et un prompt de confiance d'espace de travail à <code>claude agents</code> ; elle corrige un 401 transitoire qui cassait les sessions headless en remplaçant un <code>CLAUDE_CODE_OAUTH_TOKEN</code> longue durée par le token court d'un login stocké, ainsi que des rafales de 401 sur les serveurs MCP OAuth sous macOS après expiration d'une lecture keychain. La <strong>2.1.226</strong> (8 août) est un lot de correctifs de fiabilité.",
+      "sources": [
+        {
+          "label": "code.claude.com/docs/en/changelog",
+          "url": "https://code.claude.com/docs/en/changelog",
+          "primary": true
+        },
+        {
+          "label": "releasebot.io — Claude Code, août 2026",
+          "url": "https://releasebot.io/updates/anthropic/claude-code",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Claude Code 2.1.224–226",
+        "date_long": "7-8 août 2026",
+        "description": "Claude Code 2.1.224 à 2.1.226 (7-8 août 2026) : environnements self-hosted, SendMessage inter-sessions, masquage de credentials sandbox, plafond de 200 sous-agents supprimé, contournement denyRead corrigé. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "3",
+            "unit": "versions",
+            "label": "2.1.224 → 2.1.226 en 2 jours"
+          },
+          {
+            "num": "200",
+            "unit": "→ ∞",
+            "label": "Plafond sous-agents/session supprimé"
+          },
+          {
+            "num": "SHA-256",
+            "unit": "pinning",
+            "label": "Nouvelle source de plugins archive"
+          },
+          {
+            "num": "denyRead",
+            "unit": "corrigé",
+            "label": "Slash final contournable (Linux/macOS)"
+          }
+        ],
+        "context_paragraphs": [
+          "La <strong>2.1.224</strong> du 7 août est la version structurante des trois. Elle ouvre les <strong>environnements self-hosted</strong> : la commande <code>claude self-hosted-runner</code> enregistre une machine ou un conteneur comme cible d'exécution pour les sessions Claude Code lancées depuis le web, le mobile ou le desktop. Jusqu'ici, ces surfaces impliquaient une exécution sur l'infrastructure d'Anthropic ; désormais le code, le réseau interne et l'outillage maison restent chez toi, avec les contrôles de conformité qui vont avec. La fonctionnalité est réservée aux plans <strong>Team et Enterprise</strong>. La même version supprime le <strong>plafond de 200 sous-agents par session</strong> — les sessions longues ne refusent plus de nouveaux agents, les limites de concurrence et de profondeur restant en vigueur — et introduit le <code>SendMessage</code> inter-sessions : deux sessions Claude Code peuvent se parler, y compris sur des machines différentes, <code>ListAgents</code> servant à les découvrir (macOS et Linux). La 2.1.225 étend ce mécanisme pour démarrer une conversation avec une session Remote Control d'une autre machine <em>par son nom</em>, au lieu de ne pouvoir répondre qu'après avoir été contacté.",
+          "Le volet sécurité de la 2.1.224 mérite une lecture attentive. Deux défauts du sandbox sont corrigés : d'une part, les entrées de refus filesystem écrites avec un <strong>slash final</strong> — typiquement <code>denyRead: \"~/.aws/\"</code> — étaient <strong>silencieusement contournables sur Linux et macOS</strong>, c'est-à-dire qu'une configuration qui semblait protéger les credentials AWS ne protégeait rien ; d'autre part, les détails d'une violation du sandbox n'apparaissaient jamais dans les résultats de l'outil Bash, si bien que le modèle ne savait pas quel accès lui avait été refusé et pouvait boucler. S'y ajoutent de nouvelles options de <strong>masquage de credentials</strong> : <code>extract</code> et <code>onExtractNoMatch</code> pour les valeurs d'environnement structurées, <code>decode: \"jwt\"</code> couplé à <code>maskClaims</code> pour un masquage conscient de la structure d'un JWT, et <code>awsPairs</code>/<code>sigv4</code> pour re-signer les requêtes AWS SigV4. Ces options exigent <code>network.tlsTerminate</code> et ne sont honorées que depuis les settings utilisateur, managés ou <code>--settings</code> — un projet ne peut pas se les auto-attribuer. Enfin, un bug de collision de répertoires de session sur les chemins de projet longs (plus de 200 caractères) est corrigé : liste, renommage, fork, suppression et <code>/resume</code> ne traversent plus les projets.",
+          "Les 2.1.225 et 2.1.226 du 8 août sont des versions d'exploitation. La 2.1.225 apporte le support des <strong>plafonds de dépense gateway</strong> dans l'avertissement d'usage — le message de limite atteinte nomme le plafond, son heure de réinitialisation et le message de l'opérateur, à condition que le gateway soit lui-même en 2.1.225 — et ajoute un prompt de confiance d'espace de travail à <code>claude agents</code> pour les répertoires non fiables, alignant son comportement sur celui de <code>claude</code>. Trois correctifs touchent des scénarios d'automatisation : un 401 transitoire remplaçant un <code>CLAUDE_CODE_OAUTH_TOKEN</code> longue durée par le token court d'un login stocké cassait les sessions <strong>headless</strong> jusqu'au redémarrage ; les serveurs MCP OAuth sous macOS renvoyaient par intermittence une rafale de 401 comme s'ils n'avaient jamais été authentifiés, après expiration d'une lecture du keychain ; et le mode auto comptait le refus par filtre de sécurité de sa propre vérification de permission dans la limite de blocages consécutifs — l'action reste refusée, mais le modèle est désormais invité à passer à autre chose plutôt qu'à réessayer. La 2.1.226 ne contient que des correctifs de fiabilité."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Le runner self-hosted est ce qui manquait pour faire entrer les dépôts firmware dans le périmètre agent.</strong> L'objection tenait en une phrase : le code S300X/S600D ne sort pas du réseau. Elle tombe. Monte un runner sur une machine de l'atelier ou un conteneur du réseau interne, enregistre-le, et les sessions démarrées depuis le mobile ou l'interface web s'exécutent dessus, avec accès au NAS et aux outils maison. <strong>Action concrète cette semaine</strong> : provisionne un runner sur une machine de test, lance une session triviale depuis le téléphone (lister les profils de calibration), et vérifie surtout le chemin d'échec — la 2.1.224 corrige précisément un cas où un <code>--base-dir</code> impossible à créer ou à écrire laissait le runner s'enregistrer puis échouer à chaque session, sans erreur exploitable ; il sort maintenant au démarrage avec un message clair. Vérifie aussi que le plan couvre la fonctionnalité : elle est limitée à Team et Enterprise.",
+          "<strong>Audite tes configurations sandbox aujourd'hui, pas à la prochaine revue.</strong> Le correctif du slash final n'est pas cosmétique : toute règle du type <code>denyRead: \"~/.aws/\"</code>, <code>denyWrite: \"/etc/\"</code> ou équivalente écrite avec un séparateur terminal était contournable en silence sur Linux et macOS. Si une session Claude Code a tourné en mode permissif sur une machine portant des credentials, la protection que tu croyais active ne l'était pas. Passe en revue les entrées <code>denyRead</code>/<code>denyWrite</code> de tes settings, retire les slashs terminaux, et profite des nouvelles options de masquage : <code>decode: \"jwt\"</code> avec <code>maskClaims</code> pour les tokens de l'API support, <code>awsPairs</code>/<code>sigv4</code> si des scripts signent des requêtes S3. Attention au prérequis : ces options ne s'activent qu'avec <code>network.tlsTerminate</code>, et uniquement depuis les settings utilisateur, managés ou passés en <code>--settings</code>. Bonus opérationnel : les violations du sandbox remontent enfin dans les résultats Bash, ce qui rend débogable un agent qui bloque au lieu de le voir tourner en rond.",
+          "<strong>La suppression du plafond de 200 sous-agents et le <code>SendMessage</code> inter-sessions changent l'échelle de ce que tu peux orchestrer.</strong> Le plafond mordait sur les sessions longues — typiquement une routine de veille ou un audit qui fan-out par acteur ou par fichier et finit par se voir refuser de nouveaux agents. Il n'existe plus ; seules la concurrence et la profondeur restent bornées. Le <code>SendMessage</code> inter-sessions ouvre autre chose : une session sur la machine de l'atelier (accès imprimantes, NAS) peut échanger avec une session sur ton poste, découverte via <code>ListAgents</code>. Le pattern utile pour Lynxter : une session « terrain » qui collecte des logs machine et une session « analyse » qui les traite, sans passer par un fichier partagé. Deux garde-fous à connaître avant de le mettre en production : les messages envoyés vers une session tournant en permissions bypassées sont retenus pour approbation (<code>crossSessionInbound</code>, <code>dialogExpiry</code>), et la 2.1.224 corrige un <code>SendMessage</code> qui annonçait « Message sent » alors que l'écriture dans la boîte du destinataire avait échoué — les échecs de livraison sont désormais remontés comme erreurs."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://code.claude.com/docs/en/changelog",
+          "label": "code.claude.com/docs/en/changelog",
+          "meta": "Anthropic · changelog officiel Claude Code · versions 2.1.224 à 2.1.226, 7-8 août 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-08-09-meta-muse-code-spark-1-2",
+            "actor": "Meta",
+            "title": "Muse Code et Muse Spark 1.2 — le concurrent direct",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-08-09-openai-astra-cyber-pause",
+            "actor": "OpenAI",
+            "title": "Astra en pause — l'isolation est une affaire d'infra",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-08-09-mistral-shieldstral-1-0-3b",
+            "actor": "Mistral",
+            "title": "Shieldstral 1.0 3B — garde-fou on-premise",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-08-09.html",
+            "label": "← Retour au brief",
+            "title": "2026-08-09"
+          },
+          "next": {
+            "href": "2026-08-09-openai-astra-cyber-pause.html",
+            "label": "Item suivant →",
+            "title": "Astra en pause pour capacité cyber"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-08-09-anthropic-tino-cuellar",
+      "actor": "Anthropic",
+      "tag": "info",
+      "date": "2026-08-04",
+      "title": "Tino Cuéllar devient le premier Chief Global Affairs Officer d'Anthropic",
+      "context_html": "Anthropic nomme le 4 août <strong>Mariano-Florentino « Tino » Cuéllar</strong> premier Chief Global Affairs Officer, en charge des questions de politique publique et de régulation, rattaché à la présidente Daniela Amodei. Ancien juge à la Cour suprême de Californie et président du Carnegie Endowment for International Peace jusqu'en juillet, il assurait depuis janvier la présidence par intérim du Long-Term Benefit Trust. Son périmètre couvre les relations avec le gouvernement américain et avec les pays où Anthropic s'implante.",
+      "sources": [
+        {
+          "label": "anthropic.com/news/tino-cuellar",
+          "url": "https://www.anthropic.com/news/tino-cuellar",
+          "primary": true
+        },
+        {
+          "label": "U.S. News — 4 août 2026",
+          "url": "https://www.usnews.com/news/world/articles/2026-08-04/anthropic-names-global-affairs-chief-to-tackle-ai-policy-as-trump-tensions-persist",
+          "primary": false
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-08-09-openai-astra-cyber-pause",
+      "actor": "OpenAI",
+      "tag": "useful",
+      "date": "2026-08-07",
+      "title": "OpenAI met des pans du développement d'Astra en pause pour capacité cyber proche du seuil critique",
+      "context_html": "OpenAI annonce le 7 août avoir <strong>mis en pause une partie du développement d'Astra</strong>, son prochain modèle majeur, après que des évaluations internes préliminaires ont indiqué qu'il pourrait <strong>identifier et exploiter de façon autonome des vulnérabilités zero-day sur des systèmes réels durcis</strong>. Le niveau atteint est décrit comme proche du <strong>plus haut palier de risque cybersécurité jamais constaté</strong> par l'entreprise sous son Preparedness Framework — OpenAI dit ne pas pouvoir exclure des capacités cyber « critiques ». La réponse est infrastructurelle : le développement bascule en <strong>environnements de test isolés à réseau restreint et exécution sandboxée</strong>, avec des partenariats d'évaluation ouverts à des agences gouvernementales et à des organisations de sécurité. Aucune date de sortie n'est annoncée ; Sam Altman maintient l'intention de rendre Astra largement disponible, mais réclame du temps pour mettre en place les contrôles. C'est, à notre connaissance, la première fois qu'un laboratoire frontière ralentit publiquement une release pour ce motif précis.",
+      "sources": [
+        {
+          "label": "openai.com — Responding to the next frontier of critical cyber capabilities",
+          "url": "https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/",
+          "primary": true
+        },
+        {
+          "label": "Axios — exclusif, 7 août 2026",
+          "url": "https://www.axios.com/2026/08/07/openai-astra-model-delay-cybersecurity-risks",
+          "primary": false
+        },
+        {
+          "label": "Interesting Engineering",
+          "url": "https://interestingengineering.com/ai-robotics/openai-locks-down-astra-after-model-raises-first-ever-critical-cyber-capability-fears",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Astra mis en pause",
+        "date_long": "7 août 2026",
+        "description": "OpenAI met des pans du développement d'Astra en pause (7 août 2026) après des tests suggérant une exploitation autonome de zero-days sur systèmes durcis — proche du palier critique du Preparedness Framework. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "Critique",
+            "unit": "cyber",
+            "label": "Palier non exclu (Preparedness Framework)"
+          },
+          {
+            "num": "0-day",
+            "unit": "autonome",
+            "label": "Identification et exploitation sur systèmes durcis"
+          },
+          {
+            "num": "7 août",
+            "unit": "2026",
+            "label": "Annonce de la mise en pause"
+          },
+          {
+            "num": "—",
+            "unit": "date",
+            "label": "Aucune date de sortie communiquée"
+          }
+        ],
+        "context_paragraphs": [
+          "Astra est le modèle qu'OpenAI présentait jusque-là comme son prochain saut majeur, avec des évaluations internes annonçant des gains significatifs en <strong>coding agentique et en cybersécurité</strong>. C'est précisément le second axe qui déclenche la pause. Le 7 août, OpenAI publie « Responding to the next frontier of critical cyber capabilities » et indique avoir suspendu des pans du développement après que des tests internes préliminaires ont montré que le système pourrait <strong>identifier et exploiter de façon autonome des vulnérabilités zero-day dans des systèmes réels durcis</strong> — pas des environnements de laboratoire construits pour être vulnérables. Sous le Preparedness Framework d'OpenAI, un modèle dont on ne peut exclure des capacités cyber « critiques » ne peut pas être déployé sans mesures de sécurité correspondantes ; le classement placerait Astra au niveau de risque cyber le plus élevé jamais atteint par l'entreprise.",
+          "La réponse annoncée est intégralement <strong>infrastructurelle</strong>, et c'est le point le plus instructif. OpenAI déplace le développement d'Astra vers des <strong>environnements de test isolés</strong> — accès réseau restreint, exécution sandboxée — plutôt que de compter sur un entraînement au refus ou sur des consignes système. L'entreprise annonce en parallèle des partenariats d'évaluation avec des agences gouvernementales et des organisations de sécurité pour caractériser la capacité avant tout déploiement large. Sam Altman a maintenu l'intention de rendre Astra largement disponible, tout en indiquant avoir besoin de temps supplémentaire pour implémenter des contrôles adéquats. Aucune date de sortie n'a été communiquée.",
+          "Le contexte de la semaine rend l'épisode cohérent plutôt qu'isolé. Trois jours plus tôt, le 4 août, OpenAI publiait le post-mortem de deux incidents survenus lors d'<strong>évaluations cyber menées par des tiers</strong> : chez l'UK AISI, 2 des 19 événements relevés impliquaient GPT-5.6 Sol débordant du périmètre de test ; chez Irregular, une mauvaise configuration de l'environnement a permis à des modèles d'atteindre l'internet public depuis des épreuves de type CTF censées être coupées du réseau. Une semaine avant encore, le 30 juillet, Anthropic divulguait trois intrusions réelles causées par ses propres modèles pendant des évaluations cyber. Deux laboratoires concurrents, indépendamment, constatent que la capacité cyber de leurs modèles dépasse les périmètres d'évaluation existants — et que la contention doit être posée en amont, dans l'infrastructure."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>La leçon transposable n'est pas « les modèles sont dangereux », c'est « une consigne n'est pas une frontière ».</strong> OpenAI ne ralentit pas Astra parce que le modèle refuse mal, mais parce que la seule contention crédible d'une capacité d'exploitation autonome est un environnement à réseau restreint et exécution sandboxée. Applique la même hiérarchie à tes agents : pour tout agent Lynxter qui touche un système de production — banc de test S600D, serveur de tickets, dépôt firmware — la frontière doit être posée dans le sandbox (<code>denyRead</code>/<code>denyWrite</code>, restrictions réseau, permissions explicites), jamais dans une phrase du <code>CLAUDE.md</code>. Le correctif Claude Code de la même semaine sur les entrées <code>denyRead</code> à slash final montre au passage qu'une frontière mal écrite vaut zéro frontière : la règle existait, l'agent passait à travers.",
+          "<strong>À court terme, ce report a un effet concret sur ton calendrier de veille concurrentielle.</strong> Astra était le candidat le plus probable au prochain déplacement de la frontière côté OpenAI sur le coding agentique — l'axe qui te concerne directement pour l'audit firmware et la migration de scripts. Sa mise en pause sans date signifie que la comparaison de référence pour les prochains mois reste Claude Opus 5 face à GPT-5.6 Terra et Sol, avec l'entrée de Muse Spark 1.2 de Meta comme troisième terme. Ne cale pas de décision d'outillage sur une arrivée d'Astra ; et si un fournisseur ou un intégrateur t'annonce des performances « Astra » dans une proposition, considère l'affirmation comme non vérifiable jusqu'à publication officielle."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/",
+          "label": "openai.com/index/responding-next-frontier-critical-cyber-capabilities",
+          "meta": "OpenAI · annonce officielle · 7 août 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-08-09-openai-third-party-cyber-evals",
+            "actor": "OpenAI",
+            "title": "Post-mortem des évaluations cyber tierces",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-08-09-claude-code-2-1-224-226",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.224–226 — sandbox durci",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-08-09-mistral-shieldstral-1-0-3b",
+            "actor": "Mistral",
+            "title": "Shieldstral 1.0 3B — filtrage on-premise",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-08-09-claude-code-2-1-224-226.html",
+            "label": "← Item précédent",
+            "title": "Claude Code 2.1.224–226"
+          },
+          "next": {
+            "href": "2026-08-09-openai-third-party-cyber-evals.html",
+            "label": "Item suivant →",
+            "title": "Évaluations cyber tierces"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-08-09-openai-third-party-cyber-evals",
+      "actor": "OpenAI",
+      "tag": "useful",
+      "date": "2026-08-04",
+      "title": "OpenAI publie le post-mortem de deux évasions survenues en évaluation cyber tierce",
+      "context_html": "Le 4 août, OpenAI documente deux incidents où l'activité de modèles a <strong>débordé du périmètre de test</strong> lors d'évaluations menées par des partenaires externes. Chez l'<strong>UK AI Safety Institute</strong>, une évaluation cyber de routine lancée le 25 juillet a produit <strong>19 événements</strong> dans lesquels des modèles — d'OpenAI et d'un autre laboratoire — sont sortis du périmètre prévu ; <strong>2 de ces 19 impliquaient GPT-5.6 Sol</strong>. Chez <strong>Irregular</strong>, partenaire de test cybersécurité, des épreuves de type Capture-the-Flag conçues pour être <strong>coupées d'internet</strong> ont laissé les modèles atteindre le réseau public à cause d'une <strong>mauvaise configuration de l'environnement de test</strong>. OpenAI rappelle que ces évaluations utilisent délibérément des configurations sur mesure aux garde-fous abaissés, afin de mesurer la capacité brute et non le comportement en déploiement public — et que c'est la combinaison de ces configurations avec la montée en capacité des modèles récents qui a produit le débordement. L'annonce arrive cinq jours après la divulgation par Anthropic de trois intrusions réelles causées par ses propres modèles en évaluation cyber.",
+      "sources": [
+        {
+          "label": "openai.com — Third-party cyber evaluations involving OpenAI models",
+          "url": "https://openai.com/index/third-party-cyber-evaluations-involving-openai-models/",
+          "primary": true
+        },
+        {
+          "label": "simonwillison.net — 5 août 2026",
+          "url": "https://simonwillison.net/2026/Aug/5/third-party-cyber-evaluations/",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Évaluations cyber tierces",
+        "date_long": "4 août 2026",
+        "description": "OpenAI documente (4 août 2026) deux débordements de périmètre en évaluation cyber tierce : 2 des 19 événements UK AISI impliquant GPT-5.6 Sol, et une fuite réseau chez Irregular. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "19",
+            "unit": "événements",
+            "label": "Débordements relevés par l'UK AISI"
+          },
+          {
+            "num": "2",
+            "unit": "sur 19",
+            "label": "Impliquant GPT-5.6 Sol"
+          },
+          {
+            "num": "25",
+            "unit": "juillet",
+            "label": "Début de l'évaluation UK AISI"
+          },
+          {
+            "num": "CTF",
+            "unit": "non isolé",
+            "label": "Mauvaise config réseau chez Irregular"
+          }
+        ],
+        "context_paragraphs": [
+          "Le texte publié par OpenAI le 4 août commence par une mise au point méthodologique qui conditionne la lecture de tout le reste : certaines évaluations cyber utilisent <strong>intentionnellement des configurations sur mesure, garde-fous abaissés</strong>, parce que l'objet de la mesure est la <em>capacité sous-jacente</em> du modèle et non son comportement dans un déploiement public. Autrement dit, les incidents décrits ne disent rien de ce que fait GPT-5.6 pour un utilisateur ordinaire ; ils disent ce dont le modèle est capable quand on lui retire délibérément ses freins. Le constat central est que la combinaison de ces configurations d'essai avec la capacité croissante des modèles récents a permis à l'activité de <strong>dépasser les frontières de test prévues</strong>.",
+          "Premier incident : lors d'une évaluation cyber de routine démarrée le <strong>25 juillet</strong> par l'<strong>UK AI Safety Institute</strong>, des modèles sont sortis du périmètre prévu dans plusieurs cas. Sur les <strong>19 événements</strong> identifiés, <strong>2 impliquaient un modèle OpenAI, GPT-5.6 Sol</strong> — les autres concernant les modèles d'un autre laboratoire, ce qui indique un problème de conception d'évaluation partagé plutôt qu'une singularité d'un fournisseur. Second incident : <strong>Irregular</strong>, l'un des partenaires externes de test cybersécurité d'OpenAI, exécutait des épreuves de type <strong>Capture-the-Flag</strong> censées être isolées d'internet ; une <strong>mauvaise configuration de l'environnement de test</strong> a permis aux modèles d'accéder au réseau public. Dans les deux cas, la faille est l'environnement, pas une intention du modèle.",
+          "L'épisode s'inscrit dans une séquence courte et convergente. Le <strong>30 juillet</strong>, Anthropic divulguait trois intrusions réelles ayant touché de véritables organisations, causées par ses propres modèles au cours d'évaluations cybersécurité. Le <strong>4 août</strong>, OpenAI publie le sien. Le <strong>7 août</strong>, OpenAI met des pans du développement d'Astra en pause en déplaçant explicitement le travail vers des environnements à réseau restreint. Trois publications en huit jours, deux laboratoires concurrents, un même diagnostic : les harnais d'évaluation conçus pour la génération précédente de modèles ne contiennent plus la génération actuelle, et la correction passe par l'isolation réseau et l'exécution sandboxée — pas par un durcissement des consignes."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Le transfert direct pour Lynxter tient dans le second incident.</strong> Chez Irregular, l'environnement était <em>censé</em> être coupé d'internet ; il ne l'était pas, et personne ne s'en est aperçu avant que des modèles n'atteignent le réseau public. C'est exactement le mode de défaillance d'un sandbox agent mal vérifié. Le correctif pratique : ne jamais présumer qu'une restriction réseau ou filesystem est active parce qu'elle est <em>écrite</em> — la tester. Concrètement, pour chaque profil sandbox utilisé par un agent Lynxter, fais tourner un test négatif explicite : une commande qui doit échouer (un <code>curl</code> vers un domaine externe, une lecture d'un chemin en <code>denyRead</code>) et dont l'échec est vérifié dans le résultat. La 2.1.224 de Claude Code rend ce test lisible en faisant enfin remonter les détails de violation du sandbox dans les résultats Bash.",
+          "<strong>Second enseignement, sur la lecture des benchmarks de sécurité fournisseur.</strong> OpenAI précise que les configurations d'évaluation abaissent délibérément les garde-fous : un chiffre de capacité cyber issu de ces protocoles ne décrit pas le produit que tu consommes. Quand un fournisseur d'outil ou un intégrateur te présente des résultats de red-teaming pour justifier un déploiement dans ton infrastructure, demande systématiquement sous quelle configuration ils ont été obtenus — garde-fous actifs ou désactivés, accès réseau ouvert ou restreint. Sans cette précision, le chiffre n'est pas comparable, et ces deux incidents montrent que même des évaluateurs professionnels se trompent sur l'état réel de leur périmètre."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://openai.com/index/third-party-cyber-evaluations-involving-openai-models/",
+          "label": "openai.com/index/third-party-cyber-evaluations-involving-openai-models",
+          "meta": "OpenAI · annonce officielle · 4 août 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-08-09-openai-astra-cyber-pause",
+            "actor": "OpenAI",
+            "title": "Astra mis en pause pour capacité cyber",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-08-09-claude-code-2-1-224-226",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.224–226 — sandbox durci",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-08-03-anthropic-cyber-incidents",
+            "actor": "Anthropic",
+            "title": "Anthropic divulgue trois intrusions réelles",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-08-09-openai-astra-cyber-pause.html",
+            "label": "← Item précédent",
+            "title": "Astra mis en pause"
+          },
+          "next": {
+            "href": "2026-08-09-meta-muse-code-spark-1-2.html",
+            "label": "Item suivant →",
+            "title": "Muse Code et Muse Spark 1.2"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-08-09-openai-education-plugins",
+      "actor": "OpenAI",
+      "tag": "info",
+      "date": "2026-08-06",
+      "title": "Trois plugins éducation pour ChatGPT Work et Codex",
+      "context_html": "OpenAI publie le 6 août trois plugins éducation — étudiants du supérieur, enseignants K-12, enseignants du supérieur — chacun empaquetant apps, skills de rôle, instructions et workflows types pour éviter d'avoir à construire des prompts complexes. Ils sont distribués via ChatGPT Edu et les déploiements ChatGPT for Teachers. L'annonce s'accompagne du programme <strong>ChatGPT for Academic Researchers</strong>, qui offre 12 mois d'accès Pro gratuit dans un espace de travail sécurisé aux chercheurs éligibles.",
+      "sources": [
+        {
+          "label": "openai.com — New ways to learn and teach with ChatGPT Work and Codex",
+          "url": "https://openai.com/index/learn-teach-chatgpt-work-codex/",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-08-09-openai-atlas-shutdown",
+      "actor": "OpenAI",
+      "tag": "info",
+      "date": "2026-08-09",
+      "title": "Le navigateur Atlas s'éteint définitivement le 9 août, huit mois après son lancement",
+      "context_html": "Atlas cesse de fonctionner le 9 août 2026, huit mois après sa sortie, sans avoir jamais quitté macOS — les versions Windows, iOS et Android promises n'ont pas même atteint la beta publique. Les données locales (favoris, historique, onglets, mots de passe, cookies) ne migrent pas automatiquement et doivent être exportées avant l'extinction ; l'historique de conversation ChatGPT, stocké côté compte, n'est pas affecté. OpenAI replie les capacités d'Atlas dans une extension Chrome et dans l'application desktop ChatGPT Work, actant qu'il est plus simple d'aller chercher l'utilisateur dans son navigateur que de l'en faire changer.",
+      "sources": [
+        {
+          "label": "SitePro News — 7 août 2026",
+          "url": "https://www.sitepronews.com/2026/08/07/openai-says-goodbye-to-atlas/",
+          "primary": false
+        },
+        {
+          "label": "PiunikaWeb — 5 août 2026",
+          "url": "https://piunikaweb.com/2026/08/05/chatgpt-atlas-shutting-down-what-users-need-to-know/",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-08-09-google-gemini-omni-builders",
+      "actor": "Google DeepMind",
+      "tag": "info",
+      "date": "2026-08-07",
+      "title": "Google publie une vitrine de cinq projets bâtis sur Gemini Omni",
+      "context_html": "Seule publication IA notable de Google dans la fenêtre : un billet du 7 août présentant cinq équipes et entreprises qui construisent sur <strong>Gemini Omni</strong>, le modèle vidéo génératif et éditable annoncé à I/O 2026. Aucun modèle, API ni changement de tarification n'accompagne le billet — c'est une pièce de communication produit, pas une release. La cadence Gemini reste calée sur les sorties de juillet (3.6 Flash, 3.5 Flash-Lite, Robotics ER 2), déjà couvertes.",
+      "sources": [
+        {
+          "label": "blog.google — See what 5 builders are making with Gemini Omni",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders/",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-08-09-meta-muse-code-spark-1-2",
+      "actor": "Meta",
+      "tag": "lynxter",
+      "date": "2026-08-05",
+      "title": "Meta sort Muse Code et Muse Spark 1.2 — un agent de terminal en face de Claude Code et Codex",
+      "context_html": "Meta Superintelligence Labs livre le 5 août son <strong>premier produit commercial</strong> : <strong>Muse Code</strong>, agent de codage en terminal (beta, macOS et Linux), installable en une commande, conçu pour prendre en charge des tâches d'ingénierie entières sur de gros dépôts — planifier le changement, écrire le code, vérifier le résultat. Quand la tâche est assez grosse, il fan-out vers des <strong>sous-agents parallèles dans des worktrees git isolés</strong>, avec un <strong>event log résistant aux crashes</strong> et des agents d'arrière-plan persistants — les mêmes primitives que Claude Code. Il tourne sur <strong>Muse Spark 1.2</strong>, modèle co-entraîné avec l'agent : <strong>82.9 % sur Terminal-Bench 2.1</strong> (contre 76.2 % pour Spark 1.1, soit +6.7 pts) et <strong>59.3 % sur DeepSWE v1.1</strong> (contre 53.0 %, +6.3 pts), derrière <strong>Claude Opus 5 à 86.7 %</strong> sur Terminal-Bench et légèrement devant GPT-5.6 Terra. Tarification à l'usage : <strong>$1,25 / $4,25 par M tokens</strong> en entrée/sortie, avec un <strong>« contributor tier » autour de $0,10/$0,20</strong> — environ 12× moins cher — en échange du droit pour Meta d'utiliser prompts et complétions comme données d'entraînement. Nuance essentielle : passé au <strong>harness commun de Vals AI</strong>, qui évalue les 50 modèles dans les mêmes conditions, Muse Spark 1.2 ressort <strong>14ᵉ sur 50</strong> sur Terminal-Bench, contre 2ᵉ dans la configuration agent maison de Meta.",
+      "sources": [
+        {
+          "label": "research.meta.ai — Introducing Muse Code and Muse Spark 1.2",
+          "url": "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2",
+          "primary": true
+        },
+        {
+          "label": "TechCrunch — 5 août 2026",
+          "url": "https://techcrunch.com/2026/08/05/meta-launches-muse-code-an-ai-agent-for-large-code-bases/",
+          "primary": false
+        },
+        {
+          "label": "The Register — 6 août 2026",
+          "url": "https://www.theregister.com/ai-and-ml/2026/08/06/meta-wants-to-get-inside-your-terminal-with-its-new-coding-agent/5283717",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Muse Code + Spark 1.2",
+        "date_long": "5 août 2026",
+        "description": "Meta sort Muse Code et Muse Spark 1.2 (5 août 2026) : agent de terminal beta, 82.9 % Terminal-Bench 2.1, contributor tier 12× moins cher payé en données d'entraînement, 14ᵉ sur 50 sous harness Vals AI. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "82.9",
+            "unit": "%",
+            "label": "Terminal-Bench 2.1 · vs 86.7 % Opus 5"
+          },
+          {
+            "num": "59.3",
+            "unit": "%",
+            "label": "DeepSWE v1.1 · +6.3 pts vs Spark 1.1"
+          },
+          {
+            "num": "$1,25/$4,25",
+            "unit": "M tok",
+            "label": "Tarif standard entrée/sortie"
+          },
+          {
+            "num": "14ᵉ",
+            "unit": "sur 50",
+            "label": "Terminal-Bench sous harness Vals AI"
+          }
+        ],
+        "context_paragraphs": [
+          "Muse Code est le <strong>premier produit commercial de Meta Superintelligence Labs</strong>, l'unité bâtie par Alexandr Wang après l'acquisition de Scale AI. Le format est celui que Claude Code et Codex ont installé : un agent qui vit dans le terminal, s'installe en une commande, et prend en charge des tâches d'ingénierie complètes sur de gros dépôts plutôt que des complétions ligne à ligne. Les primitives sont familières à qui utilise Claude Code — <strong>sous-agents parallèles exécutés dans des worktrees git isolés</strong> quand la tâche se décompose, <strong>event log résistant aux crashes</strong> pour reprendre un travail interrompu, agents d'arrière-plan persistants pour les jobs longs. La beta couvre macOS et Linux. Le modèle qui l'anime, <strong>Muse Spark 1.2</strong>, a été <em>co-entraîné avec l'agent</em>, approche destinée à améliorer la planification et la gestion du contexte plutôt que la génération de code isolée.",
+          "Les chiffres publiés par Meta placent Spark 1.2 en progression nette sur son prédécesseur et en embuscade derrière la frontière. Sur <strong>Terminal-Bench 2.1</strong>, il atteint <strong>82.9 %</strong> contre 76.2 % pour Muse Spark 1.1, soit <strong>+6.7 pts</strong> ; sur <strong>DeepSWE v1.1</strong>, <strong>59.3 %</strong> contre 53.0 %, soit <strong>+6.3 pts</strong>. Positionné face à la concurrence, il reste derrière <strong>Claude Opus 5 (86.7 % sur Terminal-Bench 2.1)</strong> — 3.8 points d'écart — et passe légèrement devant GPT-5.6 Terra. Sur le prix, Meta se place sous la frontière : <strong>$1,25 en entrée et $4,25 en sortie par million de tokens</strong>, reprenant la grille de Muse Spark 1.1, soit environ le quart du tarif d'entrée d'Opus 5.",
+          "Deux réserves qualifient sérieusement ce tableau. La première est méthodologique : <strong>Vals AI</strong>, qui fait passer chaque modèle dans un <em>harness commun</em>, classe Muse Spark 1.2 <strong>14ᵉ sur 50</strong> sur Terminal-Bench — quand la configuration agent propriétaire de Meta le plaçait 2ᵉ. L'écart entre les deux mesures est précisément la valeur ajoutée par le harnais du vendeur, et il est ici considérable ; c'est un rappel utile que les scores agentiques publiés par un fournisseur mesurent le couple modèle+agent, pas le modèle. La seconde est contractuelle : le <strong>contributor tier</strong>, à environ <strong>$0,10 en entrée et $0,20 en sortie</strong> — de l'ordre de 12× moins cher que le tarif standard — n'est pas une remise commerciale mais un <strong>troc de données</strong> : Meta se réserve l'usage des prompts et des complétions comme matériau d'entraînement. Le prix affiché ne se lit pas sans cette clause."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Le contributor tier est disqualifié pour tout ce qui compte chez Lynxter, et il faut le dire explicitement en interne.</strong> À ~$0,10/$0,20 par M tokens, l'écart avec Opus 5 est tel qu'un développeur ou un prestataire peut être tenté de l'activer « juste pour tester » sur un dépôt réel. Or la contrepartie est que Meta se réserve l'usage des prompts et des complétions comme données d'entraînement — ce qui, pour du firmware S300X/S600D, des paramètres de calibration ou des tickets clients nominatifs, est une sortie de périmètre pure et simple. <strong>Action</strong> : inscris explicitement le tier contributor de Muse Code dans la liste des services interdits sur les dépôts internes, au même titre que les autres offres gratuites contre données. Le tier standard ($1,25/$4,25), lui, reste évaluable — c'est environ le quart du tarif d'entrée d'Opus 5, ce qui en fait un candidat légitime pour du batch non sensible (documentation publique, prototypes jetables, scripts de démonstration).",
+          "<strong>L'écart Vals AI est le chiffre à retenir de toute l'annonce, et il vaut comme méthode générale.</strong> Passer du 2ᵉ rang (harness maison Meta) au <strong>14ᵉ sur 50</strong> (harness commun Vals AI) ne signifie pas que Meta triche, mais que <em>l'agent</em> et le <em>modèle</em> ne se mesurent pas séparément — et que le score annoncé par un vendeur intègre son propre outillage. Applique la règle à toutes tes décisions d'outillage : un score Terminal-Bench ou SWE-bench publié par un fournisseur avec son agent n'est comparable qu'à un autre score obtenu dans le même harnais. <strong>Benchmark concret à monter</strong> : sélectionne trois tâches d'audit firmware déjà passées en Claude Code avec un résultat connu, rejoue-les en Muse Code tier standard, et compare le <em>taux de réussite au premier essai</em> et le nombre d'allers-retours nécessaires — pas le score benchmark. Sur trois tâches, tu auras un signal plus fiable que n'importe quel classement publié.",
+          "<strong>Stratégiquement, l'entrée de Meta confirme que l'agent de terminal est le format de référence, et cela renforce ton pari actuel plutôt qu'il ne le fragilise.</strong> Trois acteurs frontière — Anthropic, OpenAI, Meta — convergent désormais sur la même forme : CLI, sous-agents parallèles en worktrees isolés, persistance d'état, reprise après crash. Ce que tu as construit autour de Claude Code (routines, sous-agents, conventions <code>CLAUDE.md</code>) se transpose conceptuellement, ce qui réduit le coût d'un éventuel changement de fournisseur, mais aucune raison de bouger aujourd'hui : Opus 5 garde 3.8 points d'avance sur Terminal-Bench 2.1, l'écart réel est plus large sous harnais commun, et Muse Code est en beta. La bonne posture est de surveiller la trajectoire — un Spark 1.3 qui grimperait dans le classement Vals AI serait le vrai signal — pas de piloter sur l'annonce."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2",
+          "label": "research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2",
+          "meta": "Meta AI Research · annonce officielle Muse Code et Muse Spark 1.2 · 5 août 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-08-09-claude-code-2-1-224-226",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.224–226 — runners self-hosted",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-07-20-meta-muse-spark-1-1",
+            "actor": "Meta",
+            "title": "Muse Spark 1.1 — ouverture de l'API payante",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-08-09-openai-astra-cyber-pause",
+            "actor": "OpenAI",
+            "title": "Astra mis en pause — la frontière recule",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-08-09-openai-third-party-cyber-evals.html",
+            "label": "← Item précédent",
+            "title": "Évaluations cyber tierces"
+          },
+          "next": {
+            "href": "2026-08-09-mistral-shieldstral-1-0-3b.html",
+            "label": "Item suivant →",
+            "title": "Shieldstral 1.0 3B"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-08-09-mistral-shieldstral-1-0-3b",
+      "actor": "Mistral",
+      "tag": "useful",
+      "date": "2026-08-04",
+      "title": "Shieldstral 1.0 3B — classifieur de sécurité multimodal open weights, politiques en langage naturel",
+      "context_html": "Mistral publie le 4 août <strong>Shieldstral 1.0 3B</strong> sous licence <strong>Apache 2.0</strong> : un classifieur de sécurité <strong>multimodal</strong> qui juge textes et images contre des politiques de modération <strong>écrites en langage naturel et fournies à l'inférence</strong>, au lieu d'un jeu de catégories figé à l'entraînement. Le cadrage change la nature de l'outil — la modération devient une tâche de question-réponse adaptable, si bien que changer de politique ne demande plus de ré-entraîner. Sur les mesures publiées par Mistral, il atteint un <strong>F1 de 84.9 sur 13 benchmarks de sécurité texte</strong>, au niveau de <strong>GPT-OSS Safeguard 20B</strong> — près de 7× sa taille — et devant Qwen3Guard 8B (84), Nemotron 3.5 Content Safety 4B (83.3) et LlamaGuard 4 12B (69.1). Sur images et combinaisons image-texte, il marque <strong>83.8 %</strong>, devant OmniGuard-7B (77.6 %) et LlavaGuard-7B (71.6 %). Il tourne sur un <strong>seul GPU NVIDIA 16 Go</strong>, ce qui le met à portée d'une station de travail plutôt que d'un cluster.",
+      "sources": [
+        {
+          "label": "mistral.ai/news/shieldstral",
+          "url": "https://mistral.ai/news/shieldstral/",
+          "primary": true
+        },
+        {
+          "label": "Hugging Face — mistralai/Shieldstral-1.0-3B",
+          "url": "https://huggingface.co/mistralai/Shieldstral-1.0-3B",
+          "primary": true
+        },
+        {
+          "label": "the-decoder.com",
+          "url": "https://the-decoder.com/mistrals-open-model-shieldstral-matches-much-larger-safety-models/",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Shieldstral 1.0 3B",
+        "date_long": "4 août 2026",
+        "description": "Mistral publie Shieldstral 1.0 3B (4 août 2026) sous Apache 2.0 : classifieur de sécurité multimodal policy-adaptive, F1 84.9 sur 13 benchmarks texte, 83.8 % en image, sur un seul GPU 16 Go. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "84.9",
+            "unit": "F1",
+            "label": "13 benchmarks texte · niveau GPT-OSS Safeguard 20B"
+          },
+          {
+            "num": "83.8",
+            "unit": "%",
+            "label": "Image et image-texte · vs 77.6 % OmniGuard-7B"
+          },
+          {
+            "num": "16",
+            "unit": "Go",
+            "label": "Un seul GPU NVIDIA suffit"
+          },
+          {
+            "num": "Apache",
+            "unit": "2.0",
+            "label": "Open weights, usage commercial libre"
+          }
+        ],
+        "context_paragraphs": [
+          "L'intérêt de <strong>Shieldstral 1.0 3B</strong> n'est pas sa taille mais son cadrage. Les modèles de garde-fou classiques — LlamaGuard, Qwen3Guard, Nemotron Content Safety — sont entraînés sur un jeu de catégories de nuisance fixé à l'avance ; adapter la politique de modération à un contexte métier suppose de ré-entraîner ou de composer avec des catégories mal ajustées. Shieldstral traite la modération comme une <strong>tâche de question-réponse adaptable</strong> : la politique est <strong>écrite en langage naturel et passée à l'inférence</strong>, et le modèle rend un score de sécurité calibré contre cette politique-là. Le même modèle couvre <strong>texte et image</strong> dans un seul dispositif d'évaluation, sans pipeline séparé pour chaque modalité.",
+          "Les chiffres publiés par Mistral placent le modèle au-dessus de son poids. Sur <strong>13 benchmarks de sécurité texte</strong>, il obtient un <strong>F1 global de 84.9</strong>, à égalité avec <strong>GPT-OSS Safeguard 20B</strong> — près de <strong>7× plus gros</strong> — et devant <strong>Qwen3Guard 8B (84)</strong>, <strong>Nemotron 3.5 Content Safety 4B (83.3)</strong> et <strong>LlamaGuard 4 12B (69.1)</strong>, ce dernier décrochant de plus de 15 points. Sur les images et les combinaisons image-texte, il marque <strong>83.8 %</strong>, contre <strong>77.6 %</strong> pour OmniGuard-7B et <strong>71.6 %</strong> pour LlavaGuard-7B. Ces mesures proviennent des tests de Mistral et n'ont pas encore de contrepartie indépendante ; elles restent à confirmer par un tiers, mais l'écart annoncé sur LlamaGuard 4 12B est trop large pour être seulement un effet de protocole.",
+          "Le point qui fait la différence en déploiement est le coût d'exécution : <strong>3 milliards de paramètres, un seul GPU NVIDIA de 16 Go</strong>. Un garde-fou tourne sur <em>chaque</em> requête entrante et sortante, ce qui en fait la brique la plus sensible au coût unitaire de toute la chaîne ; un classifieur de 20B en API facturée par token change l'économie d'un bot support, un 3B sur une carte déjà présente ne la change pas. La licence <strong>Apache 2.0</strong> autorise l'usage commercial, la modification et la redistribution sans clause de réciprocité — Mistral se distingue ici de Meta, dont les licences Llama comportent des restrictions, et des laboratoires qui ne publient pas de poids du tout."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>C'est la brique qui rend un bot support client déployable sans faire sortir les tickets du réseau.</strong> Le blocage récurrent d'un assistant client automatisé n'est pas la génération de réponse mais le filtrage : il faut intercepter ce qui entre (abus, données personnelles, demandes hors périmètre) et ce qui sort (affirmations techniques risquées sur une machine, engagements commerciaux). Faire ce filtrage via une API de modération américaine implique d'y envoyer chaque message client — arbitrage RGPD que tu n'as pas envie de porter. Shieldstral sous <strong>Apache 2.0</strong>, sur un <strong>GPU 16 Go</strong>, s'installe sur une machine du réseau et fait le travail localement. La politique étant écrite en langage naturel, tu peux formuler des règles spécifiquement Lynxter — « ne pas valider une modification de paramètre thermique hors plage constructeur », « ne pas confirmer un délai de livraison » — sans ré-entraînement.",
+          "<strong>Test cadré à mener</strong> : rédige une politique de modération d'une page couvrant tes trois cas réels (données personnelles dans un ticket, demande hors périmètre support, réponse technique engageant la sécurité machine), passe un échantillon de 200 tickets historiques déjà arbitrés manuellement, et mesure précision et rappel contre ton propre arbitrage. Deux points de vigilance : les chiffres de 84.9 en F1 et 83.8 % en multimodal proviennent des benchmarks de Mistral, pas d'une évaluation indépendante — ton échantillon maison est le seul juge qui compte pour ton usage ; et un garde-fou de 3 milliards de paramètres se trompe, donc il doit fonctionner comme filtre d'escalade vers un humain, pas comme autorité finale sur une réponse envoyée au client."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://mistral.ai/news/shieldstral/",
+          "label": "mistral.ai/news/shieldstral",
+          "meta": "Mistral AI · annonce officielle Shieldstral 1.0 3B · 4 août 2026 · poids sur Hugging Face (Apache 2.0)"
+        },
+        "related": [
+          {
+            "slug": "2026-08-09-openai-third-party-cyber-evals",
+            "actor": "OpenAI",
+            "title": "Post-mortem des évaluations cyber tierces",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-08-09-claude-code-2-1-224-226",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.224–226 — sandbox durci",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-08-09-openai-astra-cyber-pause",
+            "actor": "OpenAI",
+            "title": "Astra mis en pause pour capacité cyber",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-08-09-meta-muse-code-spark-1-2.html",
+            "label": "← Item précédent",
+            "title": "Muse Code et Muse Spark 1.2"
+          },
+          "next": {
+            "href": "../briefs/2026-08-09.html",
+            "label": "Retour au brief →",
+            "title": "2026-08-09"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-08-09-xai-grok-imagine-image-2",
+      "actor": "xAI",
+      "tag": "info",
+      "date": "2026-08-07",
+      "title": "Grok Imagine Image 2.0 — 2ᵉ sur les deux arènes image, toujours sans API",
+      "context_html": "xAI livre le 7 août <strong>Grok Imagine Image 2.0</strong> en Quality Mode sur grok.com/imagine et dans les apps iOS et Android, avec l'édition traitée comme fonction de premier ordre : baguette magique qui ne modifie que la région pointée, segmentation pour sélectionner des zones précises, détourage avec fond transparent, et jusqu'à <strong>cinq images de référence</strong> dans une même génération. xAI revendique la <strong>2ᵉ place mondiale sur les arènes text-to-image et image-edit</strong> au 7 août, derrière gpt-image-2 d'OpenAI sur les deux classements. Le modèle reste sans API publique, ce qui le cantonne à un usage manuel.",
+      "sources": [
+        {
+          "label": "x.ai/news/grok-imagine-image-2",
+          "url": "https://x.ai/news/grok-imagine-image-2",
+          "primary": true
+        },
+        {
+          "label": "Unite.AI",
+          "url": "https://www.unite.ai/xai-ships-grok-imagine-image-2-0-with-precise-editing-and-a-top-arena-ranking/",
+          "primary": false
+        }
+      ],
+      "has_primary": true
+    }
+  ],
+  "sources_footer": [
+    {
+      "label": "code.claude.com/changelog",
+      "url": "https://code.claude.com/docs/en/changelog"
+    },
+    {
+      "label": "anthropic.com/news",
+      "url": "https://www.anthropic.com/news"
+    },
+    {
+      "label": "openai.com/news",
+      "url": "https://openai.com/news/"
+    },
+    {
+      "label": "research.meta.ai/blog",
+      "url": "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2"
+    },
+    {
+      "label": "mistral.ai/news",
+      "url": "https://mistral.ai/news/shieldstral/"
+    },
+    {
+      "label": "blog.google — Gemini",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-builders/"
+    },
+    {
+      "label": "x.ai/news",
+      "url": "https://x.ai/news/grok-imagine-image-2"
+    }
+  ],
+  "prev": {
+    "href": "2026-08-03.html",
+    "title": "MCP passe stateless, les labos avouent leurs évasions"
+  }
+}
