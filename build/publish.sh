@@ -47,8 +47,13 @@ if [ "$BR" != "main" ]; then
 fi
 
 # 4. Publier sur main — c'est CE pas qui met le brief en ligne.
+# Le main local est presque toujours en retard : le pre-flight (étape 0 de
+# CLAUDE.md) écrit .keepalive sur origin/main via MCP, sans que le clone
+# local le voie. Sans ce recalage, `merge --ff-only` réussit en local puis
+# le push part en non-fast-forward et la publication échoue.
 git fetch origin main
 git checkout main
+git merge --ff-only origin/main 2>/dev/null || git merge --no-edit origin/main
 git merge --ff-only "$BR" 2>/dev/null || git merge --no-edit "$BR"
 push_retry main || { echo "❌ PUBLICATION ÉCHOUÉE — le brief n'est PAS en ligne"; exit 1; }
 git checkout "$BR" 2>/dev/null || true
