@@ -1,6 +1,127 @@
 {
   "briefs": [
     {
+      "date": "2026-08-16",
+      "filename": "2026-08-16.html",
+      "items_count": 13,
+      "by_tag": {
+        "lynxter": 3,
+        "useful": 6,
+        "info": 4
+      },
+      "by_actor": {
+        "Anthropic": 4,
+        "OpenAI": 2,
+        "Google": 1,
+        "Meta": 1,
+        "Mistral": 1,
+        "xAI": 1,
+        "DeepSeek": 1,
+        "Cursor": 1,
+        "Perplexity": 1
+      },
+      "mode": "hebdomadaire",
+      "title": "Claude Code arrête de demander",
+      "highlights": [
+        "Auto mode devient le défaut de Claude Code le 14 août sur Pro, Max et Team : le classificateur bloque 89 % des commandes dangereuses (937/1053) contre 13.6 % pour les relecteurs humains (143/1053), et 800 commandes qu un humain avait approuvées — étude vendor-run non répliquée, les règles deny restent la seule politique dure",
+        "Meta rouvre les poids avec Muse Glimmer (10 août) : 30B sous Apache 2.0, 76.0 % SWE-bench Verified, 51.2 % SWE-bench Pro, 75.5 sur MCP-Atlas, 131 072 tokens de contexte, sur un seul GPU consumer et sans réseau — cinq jours après Muse Code et Spark 1.2 restés fermés",
+        "Le mid-tier casse ses prix en trois jours : Gemini 3.7 Flash à $0.75/$3.75 (13 août, moitié du prix de lancement de 3.6 Flash, DeepSWE v1.1 de 49.0 à 65.3 %), Grok 4.6 à $2/$6 mais doublé au-delà de 200k tokens sur toute la requête, DeepSeek V4-Pro en GA à $0.435/$0.87 avec hausse le 16 août"
+      ],
+      "items": [
+        {
+          "slug": "2026-08-16-claude-code-auto-mode-default",
+          "title": "Auto mode devient le défaut de Claude Code sur Pro, Max et Team",
+          "primary_url": "https://claude.com/blog/auto-mode-default-in-claude-code",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-16-claude-code-2-1-227-233",
+          "title": "Claude Code 2.1.227–2.1.233 — forking par défaut, sessions qui se parlent, GitLab de bout en bout",
+          "primary_url": "https://code.claude.com/docs/en/changelog",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-16-anthropic-text-watermark",
+          "title": "Claude watermarke son texte — SynthID-Text pour le texte, C2PA pour les fichiers, déploiement mondial",
+          "primary_url": "https://www.anthropic.com/news/claude-text-watermark",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-16-claude-tag-proactivity",
+          "title": "Claude Tag juge mieux quand se taire dans Slack",
+          "primary_url": "https://claude.com/blog/claude-tag-now-reads-even-more-of-the-room",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-16-openai-gpt-5-6-cyber-daybreak",
+          "title": "GPT-5.6-Cyber et la scission de Daybreak en Blue et Red",
+          "primary_url": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-16-openai-chatgpt-linux-desktop",
+          "title": "L'app desktop ChatGPT arrive sur Linux en preview publique",
+          "primary_url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-16-gemini-3-7-flash",
+          "title": "Gemini 3.7 Flash sort 23 jours après 3.6 Flash, à moitié prix",
+          "primary_url": "https://deepmind.google/models/model-cards/gemini-3-7-flash/",
+          "tag": "useful",
+          "actor": "Google"
+        },
+        {
+          "slug": "2026-08-16-meta-muse-glimmer-30b",
+          "title": "Muse Glimmer — Meta rouvre les poids avec un 30B agentique sous Apache 2.0",
+          "primary_url": "https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model",
+          "tag": "lynxter",
+          "actor": "Meta"
+        },
+        {
+          "slug": "2026-08-16-mistral-regional-endpoints-glm",
+          "title": "Mistral épingle l'inférence par région, ouvre un SLA et héberge le GLM-5.2 de Z.ai",
+          "primary_url": "https://mistral.ai/news/regional-inference-open-models-new-compute/",
+          "tag": "useful",
+          "actor": "Mistral"
+        },
+        {
+          "slug": "2026-08-16-xai-grok-4-6",
+          "title": "Grok 4.6 — gros gains agentiques, et un piège tarifaire au-delà de 200k tokens",
+          "primary_url": "https://x.ai/news",
+          "tag": "useful",
+          "actor": "xAI"
+        },
+        {
+          "slug": "2026-08-16-deepseek-v4-pro-0813-ga",
+          "title": "DeepSeek V4-Pro passe en GA sans annonce, et augmente ses prix trois jours après",
+          "primary_url": "https://api-docs.deepseek.com/quick_start/pricing",
+          "tag": "useful",
+          "actor": "DeepSeek"
+        },
+        {
+          "slug": "2026-08-16-cursor-cloud-agents-builds",
+          "title": "Cursor préchauffe les environnements de ses Cloud Agents",
+          "primary_url": "https://cursor.com/changelog/08-13-26",
+          "tag": "info",
+          "actor": "Cursor"
+        },
+        {
+          "slug": "2026-08-16-perplexity-agent-api-grok",
+          "title": "Perplexity ajoute grok-4.6 à son Agent API",
+          "primary_url": "https://docs.perplexity.ai/changelog/changelog",
+          "tag": "info",
+          "actor": "Perplexity"
+        }
+      ]
+    },
+    {
       "date": "2026-08-09",
       "filename": "2026-08-09.html",
       "items_count": 10,
