@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code arrête de demander — Veille IA Lynxter</title>
+<meta name="description" content="Brief IA du 9 au 16 août 2026 : auto mode devient le défaut de Claude Code (89 % vs 13.6 % sur les commandes dangereuses), Meta rouvre les poids avec Muse Glimmer 30B en Apache 2.0, OpenAI ouvre GPT-5.6-Cyber aux défenseurs approuvés, et le mid-tier casse ses prix (Gemini 3.7 Flash, Grok 4.6, DeepSeek V4-Pro GA).">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/" class="active">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="./">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">2026-08-16</span>
+      </div>
+
+      <header style="margin-bottom:64px;">
+        <p class="section-label">Brief hebdomadaire · 9 août → 16 août 2026</p>
+        <h1 style="font-family:var(--font-display);font-stretch:125%;font-weight:300;font-size:clamp(36px,5.5vw,64px);text-transform:uppercase;letter-spacing:-0.005em;line-height:1.02;margin:0 0 28px;color:var(--text);">Claude Code<br>arrête<br><em style="font-style:normal;color:var(--lx-accent);">de demander</em></h1>
+        <p style="font-size:18px;font-weight:300;color:var(--text-soft);max-width:720px;margin:0 0 48px;line-height:1.7;">Le 14 août, Anthropic bascule <strong>auto mode en défaut</strong> sur Claude Code pour les plans Pro, Max et Team : un classificateur décide à la place de l'humain sur la majorité des appels d'outils, sur la base d'une étude maison où les testeurs humains ne repéraient la commande dangereuse plantée que <strong>13.6 % du temps (143/1053)</strong> contre <strong>89 % (937/1053)</strong> pour le classificateur. Cinq jours plus tôt, Meta Superintelligence Labs rouvre les poids avec <strong>Muse Glimmer</strong>, 30 milliards de paramètres sous Apache 2.0, 76.0 % SWE-bench Verified et 75.5 sur MCP-Atlas, sur un seul GPU consumer et sans réseau. OpenAI publie <em>Expanding Daybreak as the Cyber Defense Window Narrows</em> et met <strong>GPT-5.6-Cyber</strong> entre les mains de défenseurs approuvés — 95 % de complétion sur son éval cyber avancée contre 1.5 % pour Sol standard, deux 0-days V8 trouvés au passage (CVE-2026-15903). Décision exactement inverse de celle prise sur Astra sept jours plus tôt. Et le mid-tier se met à casser les prix : <strong>Gemini 3.7 Flash</strong> à moitié tarif (13 août), <strong>Grok 4.6</strong> (12 août), <strong>DeepSeek V4-Pro</strong> en GA (13 août) avec une hausse programmée le 16.</p>
+
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">13<span class="unit">items</span></div>
+            <div class="stat-label">Total semaine</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3<span class="unit">🎯</span></div>
+            <div class="stat-label">Impact Lynxter</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">6<span class="unit">🛠</span></div>
+            <div class="stat-label">À connaître</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">9<span class="unit">acteurs</span></div>
+            <div class="stat-label">Sources scannées</div>
+          </div>
+        </div>
+      </header>
+
+      <p class="section-label">TL;DR</p>
+      <section class="tldr reveal" style="margin-bottom:72px;">
+        <ul>
+          <li><strong>Auto mode devient le défaut de Claude Code le 14 août (Pro, Max, Team).</strong> Le classificateur de permissions remplace l'approbation manuelle sur la majorité des appels d'outils. Étude contrôlée Anthropic : 89 % des commandes dangereuses bloquées (937/1053) contre 13.6 % pour les relecteurs humains (143/1053) ; en tête-à-tête, auto mode a bloqué <strong>800 commandes qu'un humain avait approuvées</strong>, les humains n'en ayant bloqué que 6 qu'auto mode laissait passer. Étude vendor-run non répliquée, et Anthropic maintient que « les classificateurs n'éliminent pas le risque ». Conséquence pratique : les règles <code>deny</code> deviennent la seule politique dure qui reste.</li>
+          <li><strong>Meta rouvre les poids : Muse Glimmer, 30B sous Apache 2.0 (10 août).</strong> 76.0 % SWE-bench Verified (Qwen3.6-27B : 77.2), 51.2 % SWE-bench Pro (Gemma4-31B : 36.9), 75.5 sur MCP-Atlas public, 131 072 tokens de contexte, texte et images, 100+ langues — sur un Mac ou un PC à un seul GPU consumer, avec ou sans réseau. Cinq jours après Muse Code et Muse Spark 1.2, restés en poids fermés. Builds llama.cpp, MLX et ExecuTorch annoncés ; Ollama, LM Studio et Unsloth couvrent le local, vLLM et SGLang le serving.</li>
+          <li><strong>Le mid-tier casse ses prix en trois jours.</strong> Gemini 3.7 Flash (13 août) sort à <strong>$0.75/$3.75</strong> par M tokens jusqu'au 31 décembre — la moitié du prix de lancement de 3.6 Flash, 23 jours plus tôt — avec DeepSWE v1.1 qui passe de 49.0 % à 65.3 %. Grok 4.6 (12 août) s'aligne à $2/$6 mais double le tarif au-delà de 200k tokens, sur <em>tous</em> les tokens de la requête. DeepSeek V4-Pro passe en GA (13 août) à $0.435/$0.87 avec une hausse effective le 16 août à 16:00 UTC et une tarification peak/off-peak. En face, la promo Sonnet 5 à $2/$10 se termine le 31 août.</li>
+        </ul>
+      </section>
+
+      <section class="lynxter-hero reveal">
+        <h2>🎯 Implications Lynxter</h2>
+        <div class="body">
+          <p><strong>Le 14 août, le modèle de permission de Claude Code a changé sous tes sessions — et ce sont tes règles <code>deny</code> qui portent désormais toute la politique.</strong> Auto mode est passé en défaut sur Pro, Max et Team : un classificateur évalue chaque appel d'outil et n'interrompt que sur ce qu'il juge risqué. Les chiffres d'Anthropic sont sérieux — <strong>89 % de détection (937/1053) contre 13.6 % pour les relecteurs humains (143/1053)</strong>, et surtout 800 commandes bloquées par le classificateur qu'un humain avait laissé passer contre 6 dans l'autre sens — mais ils viennent d'une étude vendor-run en environnement construit pour l'occasion, que personne n'a répliquée. La lecture utile n'est pas « c'est plus sûr » ou « c'est moins sûr », c'est que <strong>le point de contrôle a bougé</strong> : tant que le prompt manuel existait, ta politique de sécurité, c'était toi devant l'écran. Maintenant, ce sont les entrées <code>deny</code> / <code>denyRead</code> de <code>.claude/settings.json</code>, parce qu'elles sont les seules qui ne passent pas par un jugement de modèle. Action cette semaine : ouvrir les settings de chaque repo Lynxter et lister explicitement ce qui ne doit jamais être touché par un agent — profils firmware S300X/S600D en production, clés de signature, scripts de flash, exports client. Et se rappeler que cette surface a des régressions réelles : la 2.1.225 corrigeait auto mode comptant le refus d'un filtre de sécurité dans sa limite de blocages consécutifs, la 2.1.227 le voyait échouer sur <em>chaque</em> appel d'outil quand <code>CLAUDE_CODE_ATTRIBUTION_HEADER</code> était désactivé, et la 2.1.233 corrige, sur Windows, un arrêt pour approbation manuelle sur de simples <code>cd &lt;dir&gt; &amp;&amp; &lt;commande&gt; &gt; fichier</code> — régression introduite la veille par la 2.1.232.</p>
+          <p><strong>Muse Glimmer est le premier modèle agentique en poids ouverts qui rend un déploiement atelier crédible.</strong> 30 milliards de paramètres, Apache 2.0, un seul GPU consumer, texte et images, 131 072 tokens de contexte, et surtout <strong>75.5 sur MCP-Atlas</strong> — l'éval de tool use multi-étapes, celle qui compte quand un agent doit enchaîner lecture de logs, appel d'outil et récupération après échec. Le score de code, <strong>76.0 % SWE-bench Verified</strong>, dit clairement ce que ce modèle n'est pas : Claude Opus 5 est à ~96 %, l'écart de 20 points interdit d'en faire un agent de développement. Mais ce n'est pas l'usage. L'usage, c'est l'assistant de support qui tourne <strong>dans l'atelier, sans réseau</strong> : classification de tickets S300X/S600D entrants, extraction de codes d'erreur depuis les logs machine, réponse de premier niveau sur la base de connaissance, LLM-as-a-judge pour scorer les réponses avant envoi. Le pari technique tient parce que Meta a évalué exactement ces axes (DeepSearch QA, MCP-Atlas, τ-Bench) et pas seulement le code. Le pari commercial tient parce qu'Apache 2.0 sans clause d'usage acceptable te laisse l'embarquer chez un client qui refuse contractuellement toute sortie de données — un argument RFP qu'aucune API frontière ne peut égaler. Test concret : monter Glimmer sous Ollama sur une machine d'atelier, lui brancher le serveur MCP de la base de connaissance support, et mesurer le taux de tickets correctement routés contre la même tâche passée à Sonnet 5. Si l'écart reste sous 10 points, le déport local est rentable dès le premier client sensible.</p>
+          <p><strong>Recalcule le coût de tes routines batch avant le 1er septembre — la fenêtre tarifaire se referme d'un côté et s'ouvre de l'autre.</strong> La promo Claude Sonnet 5 à <strong>$2/$10</strong> par M tokens s'arrête le 31 août : au 1er septembre, tout ce qui tourne en Sonnet passe à <strong>$3/$15</strong>, soit +50 % sur l'input et l'output à volume constant. Dans le même temps, trois alternatives mid-tier sont arrivées en trois jours : Gemini 3.7 Flash à <strong>$0.75/$3.75</strong> jusqu'au 31 décembre 2026 (puis $1.50/$7.50 au 1er janvier), avec DeepSWE v1.1 qui saute de 49.0 % à 65.3 % ; Grok 4.6 à <strong>$2/$6</strong> — mais attention au piège de bande longue : au-delà de 200k tokens, le tarif double à $4/$12 <em>sur tous les tokens de la requête</em>, ce qui disqualifie les prompts qui embarquent une base de connaissance entière ; et DeepSeek V4-Pro à $0.435/$0.87, dont la hausse prend effet le 16 août à 16:00 UTC avec une bascule peak/off-peak (off-peak à la moitié du peak). Concrètement : les workloads Lynxter qui ne demandent pas de raisonnement frontière — tri des tickets entrants, déduplication de la base de connaissance, classification de logs, première passe de la routine veille — n'ont plus de raison de tourner sur un modèle à $3/$15. Chiffre l'arbitrage cette semaine sur une semaine réelle de volume, en gardant Opus 5 sur ce qui touche au firmware et au code client, et bascule le reste. Le pire scénario est de découvrir la hausse Sonnet le 1er septembre sur la facture.</p>
+        </div>
+      </section>
+
+      <p class="section-label">Synthèse</p>
+      <section class="synthese reveal">
+        Semaine dense, et un fil rouge : la question du <em>qui décide</em>. <strong>Anthropic</strong> fait basculer auto mode en défaut sur Claude Code le 14 août pour Pro, Max et Team, en s'appuyant sur une étude maison où le classificateur bloque 89 % des commandes dangereuses contre 13.6 % pour les relecteurs humains ; la même semaine, les versions <strong>2.1.227 à 2.1.233</strong> livrent le forking de sous-agents par défaut, la mention <code>@</code> d'une autre session dans le prompt, le support GitLab (merge requests dans <code>--worktree</code> et <code>claude agents</code>, redaction des familles de tokens <code>glpat-</code>/<code>gldt-</code>, marketplaces de plugins), un plafond mémoire cgroup pour les commandes Bash sous Linux, et trois correctifs de contournement de permissions (PowerShell <code>$PSDefaultParameterValues</code>, symlinks Cygwin sous Git Bash, préfixe NT <code>\??\</code> qui ouvrait un vecteur de fuite de credentials NTLM). Anthropic annonce par ailleurs le <strong>watermarking</strong> du texte généré par Claude — variante de SynthID-Text, C2PA pour les fichiers, déploiement mondial — et améliore d'environ 30 % le jugement de proactivité de Claude Tag dans Slack. <strong>OpenAI</strong> publie le 10 août <em>Expanding Daybreak as the Cyber Defense Window Narrows</em> : le programme se scinde en <strong>Daybreak Blue</strong> (modèles généralistes aux garde-fous cyber levés) et <strong>Daybreak Red</strong> (modèles entraînés pour le cyber, dont le nouveau <strong>GPT-5.6-Cyber</strong> à 95 % de complétion sur l'éval cyber avancée contre 1.5 % pour Sol standard), et sort la version Linux de l'app desktop ChatGPT en preview le 11 août. <strong>Google DeepMind</strong> livre <strong>Gemini 3.7 Flash</strong> le 13 août, 23 jours après 3.6 Flash, à moitié prix et avec un bond de 16 points sur DeepSWE — pendant que Gemini 3.5 Pro reste en retard. <strong>Meta</strong> rouvre les poids avec <strong>Muse Glimmer</strong> (10 août), 30B sous Apache 2.0, pensé pour l'agent local permanent. <strong>Mistral</strong> pousse sa carte souveraineté le 11 août : Regional Endpoints en GA (inférence épinglée UE ou US, +10 %), Priority Tier en preview (SLA 99.5 %, 1.75× le prix liste) et l'hébergement de modèles tiers en poids ouverts, à commencer par <strong>GLM-5.2</strong> de Z.ai. Côté acteurs secondaires, <strong>xAI</strong> sort <strong>Grok 4.6</strong> (12 août), <strong>DeepSeek</strong> passe <strong>V4-Pro</strong> en GA (13 août) sans le moindre billet d'annonce, <strong>Cursor</strong> préchauffe les environnements de ses Cloud Agents pour un démarrage 3× plus rapide, et <strong>Perplexity</strong> ajoute grok-4.6 à son Agent API.
+      </section>
+
+      <!-- ─── ANTHROPIC ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/anthropic/1b1818/f3f1ee" alt="" />Anthropic<span class="count">4 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-16-claude-code-auto-mode-default.html">Auto mode devient le défaut de Claude Code sur Pro, Max et Team</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-08-14</span>
+          </div>
+          <p class="item-context">Depuis le <strong>14 août</strong>, auto mode est le mode de permission par défaut de Claude Code pour les abonnements <strong>Pro, Max et Team</strong>. Concrètement, un classificateur évalue chaque appel d'outil et n'interrompt la session que sur ce qu'il juge risqué, au lieu de demander une approbation manuelle sur chaque commande. La justification d'Anthropic est un problème mesuré, la <em>permission fatigue</em> : dans une étude contrôlée, les relecteurs humains n'ont repéré la commande dangereuse plantée que <strong>143 fois sur 1 053 (13.6 %)</strong>, là où auto mode en a bloqué <strong>937 sur 1 053 (89 %)</strong>. En comparaison directe, le classificateur a bloqué <strong>800 commandes qu'un humain avait approuvées</strong>, tandis que les humains n'en ont bloqué que <strong>6</strong> qu'auto mode laissait passer. Anthropic pose lui-même les limites : « les classificateurs n'éliminent pas le risque », et la revue humaine reste recommandée sur ce qui part en production. L'étude est vendor-run, conduite dans un environnement construit pour l'occasion, et n'a été répliquée par personne à ce jour. Le changement s'est accompagné de trois correctifs sur la même surface en une semaine : la <strong>2.1.225</strong> (8 août) empêchait le refus d'un filtre de sécurité de compter dans la limite de blocages consécutifs, la <strong>2.1.227</strong> (10 août) corrigeait un auto mode qui échouait sur chaque appel d'outil quand <code>CLAUDE_CODE_ATTRIBUTION_HEADER</code> était désactivé, et la <strong>2.1.233</strong> (14 août) corrige, sous Windows, des arrêts répétés pour approbation manuelle sur de simples <code>cd &lt;dir&gt; &amp;&amp; &lt;commande&gt; &gt; fichier</code> — une régression de la 2.1.232, sortie la veille.</p>
+          <p class="item-source"><a href="https://claude.com/blog/auto-mode-default-in-claude-code" target="_blank" rel="noopener">claude.com/blog — Auto mode is now the default in Claude Code</a> · <a href="https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/" target="_blank" rel="noopener">TechCrunch — 9 août 2026</a> · <a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">code.claude.com/docs/en/changelog — 2.1.225, 2.1.227, 2.1.233</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-16-claude-code-2-1-227-233.html">Claude Code 2.1.227–2.1.233 — forking par défaut, sessions qui se parlent, GitLab de bout en bout</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-08-14</span>
+          </div>
+          <p class="item-context">Cinq versions en cinq jours. La <strong>2.1.232</strong> (13 août) est la plus lourde : le <strong>forking de sous-agents passe en défaut</strong> — un sous-agent <code>subagent_type: "fork"</code> hérite de la conversation complète et du prompt cache — et les spawns d'agents non-teammate en session interactive tournent désormais en arrière-plan par défaut. On peut taper <code>@</code> dans le prompt pour <strong>mentionner une autre session Claude par son nom</strong>, Claude passant alors par <code>SendMessage</code> pour l'atteindre directement ; les sessions d'une même machine reçoivent des noms uniques automatiquement. Elle ajoute la redaction des familles de tokens GitLab (<code>glrt-</code>, <code>gloas-</code>, <code>glptt-</code>…, avec redaction complète des <code>glpat-</code>/<code>gldt-</code> routables), le support GitLab dans les marketplaces de plugins, et surtout trois correctifs de contournement de permissions : PowerShell où des paramètres d'écriture de variables pouvaient écraser <code>$PSDefaultParameterValues</code> et rediriger les accès fichiers des commandes suivantes, Git Bash sous Windows qui suivait des symlinks Cygwin que la validation de chemin voyait comme des fichiers ordinaires, et les dépôts git imbriqués qui héritaient de la confiance d'un répertoire parent. La <strong>2.1.233</strong> (14 août) apporte les <strong>URL de merge request GitLab</strong> au flag <code>--worktree</code> et à la vue <code>claude agents</code> (les MR s'affichent <code>!N</code>), un plafond mémoire cgroup optionnel pour les commandes Bash sous Linux (<code>CLAUDE_CODE_TOOL_MEMORY_LIMIT</code>), un <code>CLAUDE_CODE_WEBFETCH_CACHE_TTL_MS</code> configurable, et ferme un <strong>vecteur de fuite de credentials NTLM</strong> — les chemins Windows écrits avec le préfixe device NT <code>\??\</code> contournaient la validation UNC. Elle retire aussi les outils de suivi de tâches (<code>TaskCreate/Get/Update/List</code>, <code>TodoWrite</code>) sur Opus 4.8, Sonnet 5, Fable 5, Mythos 5 et modèles plus récents (<code>CLAUDE_CODE_ENABLE_TODO_TOOLS=1</code> pour les rétablir). Entre les deux, la <strong>2.1.229</strong> (12 août) documente <code>claude remote-control --continue</code>, ajoute des hooks fournis par le serveur pour les sessions self-hosted runner, des keepalives SSE sur les réponses streamées du gateway (évite les déconnexions par timeout sur Vertex et Bedrock), et fait apparaître dans <code>ListAgents</code> les sessions Remote Control déconnectées comme <code>offline</code> et les sessions cloud comme <code>cloud</code>. La <strong>2.1.231</strong> (13 août) corrige un échec de connexion OAuth MCP par mismatch de redirect URI sur les serveurs à client OAuth pré-enregistré, dont Slack.</p>
+          <p class="item-source"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">code.claude.com/docs/en/changelog</a> · <a href="https://releasebot.io/updates/anthropic/claude" target="_blank" rel="noopener">releasebot.io — Claude Code, août 2026</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-16-anthropic-text-watermark.html">Claude watermarke son texte — SynthID-Text pour le texte, C2PA pour les fichiers, déploiement mondial</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-11</span>
+          </div>
+          <p class="item-context">Anthropic annonce le <strong>11 août</strong> que les modèles Claude sortis après le <strong>2 août 2026</strong> intègrent automatiquement un watermark lisible par machine dans le texte généré, et publie le <strong>14 août</strong> une FAQ détaillant le mécanisme. Deux techniques distinctes cohabitent : un <strong>signal imperceptible inséré dans le texte lui-même</strong> — une variante de <strong>SynthID-Text</strong> de Google DeepMind — invisible à la lecture, détectable par machine, et qui survit au copier-coller ; et, pour les fichiers générés, des <strong>métadonnées de provenance signées au standard C2PA</strong>. Le déclencheur est réglementaire : Anthropic a signé en juillet 2026 le <em>Code of Practice on Transparency of AI-Generated Content</em> européen, adossé à l'<strong>article 50 de l'EU AI Act</strong>. Mais l'application est <strong>mondiale</strong>, pas limitée aux utilisateurs européens. Les limites sont posées explicitement par Anthropic : toute réécriture qui change substantiellement les tokens produits — y compris une réécriture par un autre modèle — détruit le signal, l'édition manuelle lourde le dégrade, et surtout une marque détectée indique que <strong>Claude a traité le texte, pas qu'il l'a écrit</strong>. La distinction n'est pas cosmétique : elle interdit d'utiliser la détection comme preuve d'autorat. L'annonce a été mal reçue par une partie des utilisateurs, qui y voient un mouchard sur leur usage professionnel ou scolaire.</p>
+          <p class="item-source"><a href="https://www.anthropic.com/news/claude-text-watermark" target="_blank" rel="noopener">anthropic.com/news/claude-text-watermark</a> · <a href="https://techcrunch.com/2026/08/11/anthropic-says-it-will-watermark-text-generated-by-its-ai-models/" target="_blank" rel="noopener">TechCrunch — 11 août 2026</a> · <a href="https://techcrunch.com/2026/08/15/anthropic-shares-more-details-about-how-claudes-new-watermarks-will-work/" target="_blank" rel="noopener">TechCrunch — précisions du 15 août 2026</a> · <a href="https://www.theregister.com/ai-and-ml/2026/08/11/anthropic-pledges-to-embed-watermarks-to-help-discern-ai-slop-in-sop-to-eu/5285792" target="_blank" rel="noopener">The Register — 11 août 2026</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Claude Tag juge mieux quand se taire dans Slack</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-08-13</span>
+          </div>
+          <p class="item-context">Anthropic met à jour <strong>Claude Tag</strong>, son agent Slack persistant lancé le 23 juin, avec un gain d'environ <strong>30 %</strong> sur la décision de répondre ou non de façon proactive. Claude s'appuie désormais sur le contexte de l'ensemble du canal, sa mémoire et les <em>standing instructions</em> reçues pour arbitrer, au lieu de réagir principalement au dernier message. La mise à jour est incluse sans surcoût.</p>
+        </article>
+      </section>
+
+      <!-- ─── OPENAI ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/openai/1b1818/f3f1ee" alt="" />OpenAI<span class="count">2 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-16-openai-gpt-5-6-cyber-daybreak.html">GPT-5.6-Cyber et la scission de Daybreak en Blue et Red</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-10</span>
+          </div>
+          <p class="item-context">OpenAI publie le <strong>10 août</strong> <em>Expanding Daybreak as the Cyber Defense Window Narrows</em> et restructure son programme cyber en deux paliers d'accès. <strong>Daybreak Blue</strong> donne aux défenseurs approuvés l'accès aux modèles généralistes de frontière, dont GPT-5.6 Sol, avec les garde-fous cyber de niveau système levés — découverte de vulnérabilités, revue de code sécurisée, analyse de malware, réponse à incident, validation de patch. <strong>Daybreak Red</strong> va plus loin et ouvre les modèles entraînés spécifiquement pour le cyber, dont le nouveau <strong>GPT-5.6-Cyber</strong>, construit sur GPT-5.6 Sol, pour la recherche de vulnérabilités, la validation d'exploits et les tests de sécurité. L'écart mesuré sur l'éval interne <em>Advanced Cybersecurity Completion Rate</em> est brutal : <strong>95 %</strong> de complétion pour GPT-5.6-Cyber sur des requêtes couvrant chaînes d'exploits, contournement d'authentification et élévation de privilèges, contre <strong>57.3 %</strong> pour GPT-5.5-Cyber, <strong>2 %</strong> pour Sol via Daybreak Blue et <strong>1.5 %</strong> pour Sol standard. La validation terrain est concrète : OpenAI a lancé GPT-5.6-Cyber sur le moteur JavaScript <strong>V8</strong> de Chrome et y a trouvé deux failles inédites, chaînables pour corrompre la mémoire et s'échapper du sandbox du heap ; Google a corrigé et attribué le <strong>CVE-2026-15903</strong>. Les modèles Daybreak sont également disponibles sur Amazon Bedrock. Le contraste avec la semaine précédente est frappant : le 7 août, OpenAI mettait des pans d'Astra en pause pour capacité cyber jugée proche du seuil critique de son Preparedness Framework. Même capacité, deux décisions opposées selon qui tient le clavier.</p>
+          <p class="item-source"><a href="https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/" target="_blank" rel="noopener">openai.com — Expanding Daybreak as the Cyber Defense Window Narrows</a> · <a href="https://openai.com/index/daybreak-models-are-now-available-on-aws/" target="_blank" rel="noopener">openai.com — Daybreak models are now available on AWS</a> · <a href="https://thehackernews.com/2026/08/openai-launches-gpt-56-cyber-with.html" target="_blank" rel="noopener">The Hacker News — 11 août 2026</a> · <a href="https://www.cnbc.com/2026/08/10/open-ai-daybreak-cybersecurity.html" target="_blank" rel="noopener">CNBC — 10 août 2026</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">L'app desktop ChatGPT arrive sur Linux en preview publique</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-08-11</span>
+          </div>
+          <p class="item-context">OpenAI publie le <strong>11 août</strong> une preview publique mondiale de l'app desktop ChatGPT pour Linux, en paquets natifs <code>.deb</code> et <code>.rpm</code> ciblant Ubuntu 24.04 et 26.04 LTS, Debian 13 et Fedora 43/44, en x64 comme en ARM64. Le paquet embarque ChatGPT, ChatGPT Work et <strong>Codex</strong>, et l'installeur ajoute un dépôt OpenAI pour que les mises à jour suivent le gestionnaire de paquets système.</p>
+        </article>
+      </section>
+
+      <!-- ─── GOOGLE DEEPMIND ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/googlegemini/1b1818/f3f1ee" alt="" />Google DeepMind<span class="count">1 item</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-16-gemini-3-7-flash.html">Gemini 3.7 Flash sort 23 jours après 3.6 Flash, à moitié prix</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-13</span>
+          </div>
+          <p class="item-context">Google lance <strong>Gemini 3.7 Flash</strong> en GA le <strong>13 août</strong>, soit <strong>23 jours</strong> après Gemini 3.6 Flash — un rythme inhabituel même pour la gamme Flash. Le modèle n'a pas été réentraîné de zéro : Google décrit des améliorations algorithmiques et des retours utilisateurs qui remplacent intégralement la version précédente. Les gains sont concentrés sur le code et l'agentique : <strong>DeepSWE v1.1 passe de 49.0 % à 65.3 %</strong> (+16.3 pts), FrontierCode 1.1 Main de 34.4 % à 43.6 %, AutomationBench de 17.0 % à 30.4 %, et l'Elo WebDev Arena de 1538 à 1588. S'y ajoutent 97.0 % sur GDM-MRCR en long contexte et 90.7 % sur Harvey LAB-AA. Le prix est l'autre moitié de l'annonce : <strong>$0.75 par M tokens en entrée et $3.75 en sortie</strong> jusqu'au 31 décembre 2026, soit la moitié du tarif de lancement de 3.6 Flash ; au 1<sup>er</sup> janvier 2027, les tarifs doublent à $1.50/$7.50. Pendant ce temps, <strong>Gemini 3.5 Pro reste en retard</strong>, ce que la presse relie au départ groupé du 5 août de Demis Hassabis (passé chairman et chief scientist d'Alphabet), Jeff Dean, Oriol Vinyals et Quoc Le.</p>
+          <p class="item-source"><a href="https://deepmind.google/models/model-cards/gemini-3-7-flash/" target="_blank" rel="noopener">deepmind.google — Gemini 3.7 Flash model card</a> · <a href="https://ai.google.dev/gemini-api/docs/changelog" target="_blank" rel="noopener">ai.google.dev — Gemini API changelog</a> · <a href="https://www.axios.com/2026/08/13/google-gemini-37-flash" target="_blank" rel="noopener">Axios — 13 août 2026</a> · <a href="https://9to5google.com/2026/08/13/gemini-3-7-flash-launch/" target="_blank" rel="noopener">9to5Google — 13 août 2026</a></p>
+        </article>
+      </section>
+
+      <!-- ─── META ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/meta/1b1818/f3f1ee" alt="" />Meta<span class="count">1 item</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-16-meta-muse-glimmer-30b.html">Muse Glimmer — Meta rouvre les poids avec un 30B agentique sous Apache 2.0</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-08-10</span>
+          </div>
+          <p class="item-context">Meta Superintelligence Labs publie le <strong>10 août</strong> <strong>Muse Glimmer</strong>, modèle de <strong>30 milliards de paramètres</strong> dont les poids sont ouverts sous licence <strong>Apache 2.0</strong> — cinq jours seulement après Muse Code et Muse Spark 1.2, restés en poids fermés. Le modèle vise explicitement l'agent local permanent : function calling, code local, sessions longues de tool use et LLM-as-a-judge, sur un Mac ou un PC équipé d'<strong>un seul GPU consumer</strong>, avec ou sans connexion réseau. Il accepte texte et images, annonce un contexte de <strong>131 072 tokens</strong> et plus de 100 langues d'entraînement. Les benchmarks publiés par Meta le comparent à Gemma4-31B et Qwen3.6-27B : <strong>76.0 % sur SWE-bench Verified</strong> (Qwen3.6-27B : 77.2 %), <strong>51.2 % sur SWE-bench Pro</strong> (Gemma4-31B : 36.9 %, Qwen3.6-27B : 50.2 %) et <strong>75.5 sur MCP-Atlas public</strong>, où Meta le place en tête de sa classe de taille sur l'évaluation de tool use agentique. Les évaluations couvrent aussi DeepSearch QA et τ-Bench, Meta mettant en avant la fiabilité multi-étapes et la récupération après échec plutôt que le pur score de code. Côté déploiement, des builds optimisés llama.cpp, MLX et ExecuTorch sont annoncés ; Ollama, LM Studio et Unsloth couvrent l'exécution locale, vLLM et SGLang le serving, et des quantisations GGUF sont déjà publiées.</p>
+          <p class="item-source"><a href="https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model" target="_blank" rel="noopener">research.meta.ai — Introducing Muse Glimmer</a> · <a href="https://huggingface.co/meta-models/Muse-Glimmer-30B" target="_blank" rel="noopener">huggingface.co/meta-models/Muse-Glimmer-30B</a> · <a href="https://venturebeat.com/technology/meta-returns-to-open-source-with-muse-glimmer-an-apache-2-0-licensed-30b-parameter-ai-model-optimized-for-agents-available-now" target="_blank" rel="noopener">VentureBeat — 10 août 2026</a> · <a href="https://www.infoq.com/news/2026/08/meta-muse-glimmer/" target="_blank" rel="noopener">InfoQ — Meta Open-Sources Muse Glimmer</a></p>
+        </article>
+      </section>
+
+      <!-- ─── MISTRAL ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/mistralai/1b1818/f3f1ee" alt="" />Mistral<span class="count">1 item</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-16-mistral-regional-endpoints-glm.html">Mistral épingle l'inférence par région, ouvre un SLA et héberge le GLM-5.2 de Z.ai</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-11</span>
+          </div>
+          <p class="item-context">Mistral publie le <strong>11 août</strong> une annonce en trois volets sur la souveraineté. Les <strong>Regional Endpoints</strong> passent en disponibilité générale : le client choisit si son inférence s'exécute en Europe ou aux États-Unis, pour un surcoût de <strong>10 %</strong>, avec des transferts limités et encadrés vers des sous-traitants pouvant intervenir hors de la région choisie. Le <strong>Priority Tier</strong>, en preview publique, ajoute des niveaux de service engagés pour les charges critiques : rate limits personnalisés et <strong>SLA de 99.5 % d'uptime</strong>, à <strong>1.75× le prix liste</strong>. Le troisième volet est le plus inattendu : Mistral se met à <strong>héberger des modèles tiers en poids ouverts</strong> sur sa propre infrastructure, en commençant par <strong>GLM-5.2</strong> de Z.ai — le laboratoire chinois anciennement Zhipu — servi « sans modification Mistral », avec les mêmes contrôles régionaux et les mêmes engagements de service que les modèles maison. GLM-5.2 est exposé sous l'identifiant <code>zai-glm-5-2</code> à <strong>$1.40 / $4.40</strong> par M tokens, entrée cachée à $0.14. Le tout s'inscrit dans un objectif affiché de <strong>1 GW de compute européen d'ici 2030</strong>. Mistral cesse ainsi d'être uniquement un laboratoire de modèles pour devenir aussi un opérateur d'inférence souverain.</p>
+          <p class="item-source"><a href="https://mistral.ai/news/regional-inference-open-models-new-compute/" target="_blank" rel="noopener">mistral.ai/news — In-region inference, open models, and new European infrastructure</a> · <a href="https://thenewstack.io/mistral-third-party-open-models/" target="_blank" rel="noopener">The New Stack — Mistral third-party open models</a> · <a href="https://www.techzine.eu/news/analytics/143617/mistral-to-host-external-models-chinese-z-ai-to-be-first/" target="_blank" rel="noopener">Techzine — 11 août 2026</a></p>
+        </article>
+      </section>
+
+      <!-- ─── ACTEURS SECONDAIRES ─── -->
+      <section class="actor-section reveal">
+        <h2 style="font-size:18px;color:var(--text-muted);">Acteurs secondaires<span class="count">4 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-16-xai-grok-4-6.html">Grok 4.6 — gros gains agentiques, et un piège tarifaire au-delà de 200k tokens</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-12</span>
+          </div>
+          <p class="item-context">xAI annonce <strong>Grok 4.6</strong> le <strong>12 août</strong>, sur un checkpoint daté du 10, positionné sur les agents longue durée, le code et le travail interactif et visuel. Le contexte reste à <strong>500 000 tokens</strong>, inchangé depuis 4.5. Les gains agentiques sont nets : <strong>Terminal-Bench v3.0 passe de 15.7 % à 26 %</strong> et <strong>DeepSWE v1.1 de 54 % à 65.9 %</strong>. Sur l'Artificial Analysis Intelligence Index — composite de neuf benchmarks — Grok 4.6 marque <strong>61</strong>, à égalité avec GPT-5.6 Sol, Fable 5 Max restant devant à 62. xAI place son modèle au niveau ou au-dessus de GPT-5.6 Sol Max sur six des neuf lignes où un score GPT est publié, mais reconnaît un retard net sur DeepSWE et Terminal-Bench. Le tarif est de <strong>$2 en entrée et $6 en sortie</strong> par M tokens, entrée cachée à $0.50, avec une variante <em>fast</em> au double. Le piège est dans la bande longue : dès qu'une requête franchit <strong>200 000 tokens</strong>, le tarif passe à <strong>$4/$12</strong> — et xAI précise que le tarif majoré s'applique à <strong>tous</strong> les tokens de la requête, pas seulement à ceux au-delà du seuil. Le modèle est disponible dans Cursor, Grok Build, l'API et chez les plateformes partenaires, avec un boost d'usage de 2× la première semaine.</p>
+          <p class="item-source"><a href="https://x.ai/news" target="_blank" rel="noopener">x.ai/news</a> · <a href="https://appwrite.io/blog/post/whats-new-in-grok-46-from-500k-context-to-pricing" target="_blank" rel="noopener">Appwrite — What's new in Grok 4.6</a> · <a href="https://codersera.com/blog/grok-4-6-launch-guide-2026/" target="_blank" rel="noopener">Codersera — Grok 4.6 launch guide</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-16-deepseek-v4-pro-0813-ga.html">DeepSeek V4-Pro passe en GA sans annonce, et augmente ses prix trois jours après</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-13</span>
+          </div>
+          <p class="item-context">DeepSeek fait passer <strong>V4-Pro</strong> en disponibilité générale le <strong>13 août</strong> sous le checkpoint <strong>DeepSeek-V4-Pro-0813</strong>, mettant fin à une preview ouverte depuis le 24 avril — sans billet de blog, sans changelog, sans communiqué : la page de tarification officielle mise à jour le 12 août est la seule trace primaire. Le modèle vise l'agentique : contexte de <strong>1 million de tokens</strong>, sorties jusqu'à <strong>384 000 tokens</strong>, modes <em>thinking</em> et <em>non-thinking</em>, niveaux d'effort de raisonnement low / high / max, API Responses OpenAI native avec configuration Codex en un clic, et un Expert Mode dans l'app et le client web. Les chiffres annoncés sont élevés : <strong>87.9 % sur Terminal-Bench 2.1</strong> — 0.1 point derrière Fable 5 (88.0) et au-dessus d'Opus 4.8 (85.0) — <strong>DeepSWE de 12.8 à 62.7</strong>, <strong>CyberGym de 52.7 à 83.3</strong> et 61.5 sur NL2Repo. Une réserve majeure les accompagne : Terminal-Bench est mesuré sur le <em>DeepSeek Harness minimal mode</em>, un harness maison <strong>non publié</strong>, ce qui rend le score non comparable aux résultats obtenus sous harness commun. Côté tarif, $0.435 en entrée et $0.87 en sortie par M tokens — mais une hausse prend effet le <strong>16 août à 16:00 UTC</strong>, avec bascule en tarification peak / off-peak (l'off-peak à la moitié du peak) et une sortie peak annoncée à $3.96 par M. Les poids du checkpoint 0813 <strong>ne sont pas publiés</strong>.</p>
+          <p class="item-source"><a href="https://api-docs.deepseek.com/quick_start/pricing" target="_blank" rel="noopener">api-docs.deepseek.com — page de tarification officielle (mise à jour 12 août 2026)</a> · <a href="https://qz.com/deepseek-v4-pro-official-launch-081326" target="_blank" rel="noopener">Quartz — 13 août 2026</a> · <a href="https://www.unite.ai/deepseek-ships-v4-pro-as-its-flagship-model-leaves-preview/" target="_blank" rel="noopener">Unite.AI — DeepSeek ships V4 Pro as its flagship leaves preview</a> · <a href="https://www.techtimes.com/articles/324241/20260813/deepseek-v4-pro-0813-goes-ga-benchmark-claims-await-independent-proof.htm" target="_blank" rel="noopener">TechTimes — 13 août 2026</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Cursor préchauffe les environnements de ses Cloud Agents</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-08-13</span>
+          </div>
+          <p class="item-context">Cursor introduit le <strong>13 août</strong> les <em>builds</em> pour ses Cloud Agents : des copies prêtes à l'emploi de l'environnement de développement sont préparées en continu en arrière-plan, si bien qu'un agent démarre dans un espace déjà configuré — jusqu'à <strong>3× plus vite</strong> sur le time-to-first-token, avec des environnements internes qui bootent 10× plus vite. La même livraison ajoute le support multi-repo, des logs de build et un statut de debug dans le dashboard, ainsi que des upgrades Slack : plan communiqué avant exécution et statuts plus détaillés.</p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Perplexity ajoute grok-4.6 à son Agent API</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-08-13</span>
+          </div>
+          <p class="item-context">L'Agent API de Perplexity prend en charge <code>xai/grok-4.6</code> dans la semaine même de sa sortie, confirmant la stratégie multi-modèles de la plateforme. Le changelog ajoute par ailleurs la compatibilité de la Search API avec le Vercel AI SDK et la disponibilité générale de Pro Search pour Sonar Pro.</p>
+        </article>
+      </section>
+
+      <section class="sources-footer">
+        <strong>Sources consultées</strong>
+        <a href="https://code.claude.com/docs/en/changelog">code.claude.com/changelog</a> · <a href="https://claude.com/blog/auto-mode-default-in-claude-code">claude.com/blog — auto mode</a> · <a href="https://www.anthropic.com/news/claude-text-watermark">anthropic.com/news — watermark</a> · <a href="https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/">openai.com — Daybreak</a> · <a href="https://deepmind.google/models/model-cards/gemini-3-7-flash/">deepmind.google — Gemini 3.7 Flash</a> · <a href="https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model">research.meta.ai — Muse Glimmer</a> · <a href="https://mistral.ai/news/regional-inference-open-models-new-compute/">mistral.ai/news — regional inference</a> · <a href="https://x.ai/news">x.ai/news</a> · <a href="https://cursor.com/changelog/08-13-26">cursor.com/changelog</a> · <a href="https://docs.perplexity.ai/changelog/changelog">docs.perplexity.ai/changelog</a>
+      </section>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-08-09.html">
+          <span class="label">← Brief précédent</span>
+          <span class="title">Meta entre dans le terminal, OpenAI freine Astra</span>
+        </a>
+        <a class="next" href="./">
+          <span class="label">Voir l'archive →</span>
+          <span class="title">Tous les briefs</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Brief généré le 2026-08-16</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
