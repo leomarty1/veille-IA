@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roadmap MCP du 22 août — cinq chantiers, dont les tâches longues et l'identité d'agent — Veille IA Lynxter</title>
+<meta name="description" content="Le 22 août 2026, les Core Maintainers de MCP publient une roadmap en cinq chantiers : messagerie agentique et tâches longues, transport HTTP unifié, identité d'agent avec DPoP, primitives améliorées, ergonomie des SDK.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-08-23.html">2026-08-23</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Roadmap MCP</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Anthropic</span>
+          <span class="dot-sep">·</span>
+          <span>22 août 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-lynxter">🎯 Lynxter</span>
+        </div>
+        <h1>Roadmap MCP du 22 août — cinq chantiers, dont les tâches longues et l'identité d'agent</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-08-23.html">La plateforme Claude sort du beta — 2026-08-23</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">5<span class="unit">chantiers</span></div>
+            <div class="stat-label">priorités de la roadmap</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">DPoP<span class="unit">+ WIF</span></div>
+            <div class="stat-label">identité d'agent standardisée</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">2026-07-28<span class="unit">spec courante</span></div>
+            <div class="stat-label">cœur du protocole sans état</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">~500M<span class="unit">dl/mois</span></div>
+            <div class="stat-label">SDK Tier 1 cumulés</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>La roadmap publiée le 22 août par les Core Maintainers, avec la communauté des mainteneurs et les Working Groups, aligne cinq chantiers. Le premier, les <strong>primitives de messagerie agentique</strong>, est celui qui change la nature de ce qu'on peut brancher : il s'agit de faire mûrir les patterns de tâches longues via des <strong>événements initiés par le serveur</strong> et la composition de tâches, en portant l'extension <em>Tasks</em> à maturité. Aujourd'hui, un serveur MCP répond à une demande ; demain, il pourra tenir une tâche qui dure et notifier son avancement. Le deuxième, <strong>l'unification du transport HTTP</strong>, standardise sur des transports HTTP pour les déploiements locaux comme distants, jusqu'à faire passer du Streamable HTTP par-dessus stdio — la fin, à terme, de la distinction entre « serveur local » et « serveur distant » dans la façon d'écrire un serveur.</p>
+        <p>Le troisième chantier vise directement l'entreprise : <strong>identité d'agent et sécurité</strong>, avec une reconnaissance d'identité d'agent standardisée reposant sur <strong>DPoP</strong> (Demonstrating Proof of Possession) et sur la <strong>Workload Identity Federation</strong>. C'est la réponse à la question qui bloque l'adoption chez les grands comptes : quand un agent appelle un outil au nom d'un utilisateur, qui est l'appelant, et comment le prouver sans distribuer des jetons porteurs à longue durée de vie. Le quatrième, les <strong>primitives améliorées</strong>, standardise les contrats de traitement des résultats d'outils et introduit la <strong>découverte progressive</strong> pour les catalogues d'outils volumineux — un point pratique immédiat, puisqu'un serveur qui expose des centaines d'outils sature aujourd'hui le contexte du client avant même le premier appel. Le cinquième porte sur l'ergonomie des SDK, leur conformité à la spécification et leur documentation.</p>
+        <p>Aucune date n'est donnée pour la prochaine version de la spécification : le document parle des « mois à venir » et se réfère à la version courante <strong>2026-07-28</strong>, celle qui a rendu le cœur du protocole entièrement sans état en supprimant le handshake <code>initialize</code>/<code>initialized</code> et l'en-tête logique <code>Mcp-Session-Id</code>, tout en apportant les Multi Round-Trip Requests, le routage par en-têtes, les résultats de liste cachables et un durcissement de l'autorisation. L'ordre de grandeur d'adoption cité par le projet — <strong>près d'un demi-milliard de téléchargements par mois</strong> sur les SDK Tier 1, TypeScript et Python ayant chacun franchi le milliard cumulé — situe l'enjeu : MCP n'est plus une convention émergente qu'on peut ignorer dans un choix d'architecture, c'est l'interface par défaut entre agents et systèmes tiers, y compris chez des acteurs qui ne sont pas Anthropic.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🎯 Pourquoi c'est important pour Lynxter</h2>
+        <p><strong>Le chantier « tâches longues » est celui qui concerne le plus directement un serveur MCP maison côté Lynxter.</strong> Un serveur qui expose l'état d'un parc S300X/S600D, une file de tickets ou un référentiel de profils d'impression est aujourd'hui contraint au modèle question-réponse : l'agent demande, le serveur répond, fin. La maturation de l'extension <em>Tasks</em> et les événements initiés par le serveur ouvrent le pattern inverse — un serveur qui signale qu'une impression a dévié, qu'un ticket a changé d'état, qu'un lot de matière est arrivé. <strong>Action concrète</strong> : si tu prévois d'écrire ou de refondre un serveur MCP interne dans les six mois, conçois-le dès maintenant avec des identifiants de tâche stables et un état interrogeable plutôt qu'avec des appels purement synchrones — c'est la structure qui absorbera l'extension <em>Tasks</em> sans réécriture.</p>
+        <p><strong>DPoP et Workload Identity Federation, c'est l'argument de sécurité qui manquait pour proposer un serveur MCP à un client industriel.</strong> La question posée en appel d'offres n'est pas « est-ce que ça marche » mais « qu'est-ce qui empêche un agent d'agir au nom de quelqu'un d'autre ». Une identité d'agent standardisée adossée à une preuve de possession répond dans le vocabulaire des équipes sécurité, sans passer par des jetons porteurs partagés. <strong>Action concrète</strong> : note ce chantier dans ton argumentaire RFP, et ne t'engage pas encore sur une implémentation propriétaire d'authentification qu'il faudra défaire — la spécification n'a pas de date, mais elle a une direction publique et opposable.</p>
+        <p><strong>La découverte progressive change la façon de dimensionner un catalogue d'outils.</strong> Le réflexe naturel quand on construit un serveur MCP métier est d'exposer un outil par opération : lire un profil, écrire un profil, lister les machines, récupérer un log, chercher un ticket… Passé quelques dizaines d'entrées, la définition des outils occupe une part significative du contexte avant le premier appel utile, et la qualité de sélection se dégrade. <strong>Action concrète</strong> : en attendant que la découverte progressive soit spécifiée, garde ton catalogue resserré — regroupe les opérations proches derrière un outil paramétré plutôt que de multiplier les entrées. C'est la même discipline, et elle sera compatible avec la spécification à venir.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://blog.modelcontextprotocol.io/posts/mcp-roadmap/" target="_blank" rel="noopener">blog.modelcontextprotocol.io/posts/mcp-roadmap</a>
+        <span class="source-meta">Model Context Protocol · roadmap publiée par les Core Maintainers · 22 août 2026</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-08-23-managed-agents-domaines-memoire.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Managed Agents : domaines et memory stores</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+          <li><a href="2026-08-23-claude-code-2-1-234-241.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code 2.1.234 → 2.1.241</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="../briefs/2026-08-23.html">
+          <span class="label">← Retour au brief</span>
+          <span class="title">2026-08-23</span>
+        </a>
+        <a class="next" href="2026-08-23-openai-model-spec-u18.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Model Spec — principes U18</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-08-23</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

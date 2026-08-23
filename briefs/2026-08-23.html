@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La plateforme Claude sort du beta — Veille IA Lynxter</title>
+<meta name="description" content="Brief IA du 16 au 23 août 2026 : Anthropic sort computer use, Files API, Agent Skills et l'Admin API du beta et lance le browser use tool, huit versions de Claude Code en sept jours, SDK Python v1.0 cassant, roadmap MCP en cinq chantiers, OpenAI recadre son Model Spec sur les mineurs, Cursor lance son hébergement de code.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/" class="active">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="./">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">2026-08-23</span>
+      </div>
+
+      <header style="margin-bottom:64px;">
+        <p class="section-label">Brief hebdomadaire · 16 août → 23 août 2026</p>
+        <h1 style="font-family:var(--font-display);font-stretch:125%;font-weight:300;font-size:clamp(36px,5.5vw,64px);text-transform:uppercase;letter-spacing:-0.005em;line-height:1.02;margin:0 0 28px;color:var(--text);">La plateforme Claude<br>sort du <em style="font-style:normal;color:var(--lx-accent);">beta</em></h1>
+        <p style="font-size:18px;font-weight:300;color:var(--text-soft);max-width:720px;margin:0 0 48px;line-height:1.7;">Semaine de consolidation côté Anthropic plutôt que de nouveaux modèles : le <strong>19 août</strong>, cinq briques de la plateforme quittent le beta d'un coup — <strong>computer use</strong> (<code>computer_toolset_20260801</code>), <strong>Files API</strong>, <strong>Agent Skills</strong> et la <strong>Skills API</strong>, les endpoints user-management de l'<strong>Admin API</strong> — et un outil neuf apparaît, le <strong>browser use tool</strong> (<code>browser_toolset_20260801</code>), qui pilote un navigateur hébergé par l'application plutôt qu'un bureau entier. Claude Code enchaîne <strong>huit versions en sept jours</strong> (2.1.234 → 2.1.241) dont un correctif de facturation Bedrock qui doublait silencieusement les appels API. Le <strong>20 août</strong>, le SDK Python passe en <strong>v1.0</strong> avec migration <code>httpx</code> → <code>httpx2</code> et suppressions cassantes. Le <strong>22 août</strong>, les mainteneurs MCP publient une roadmap en cinq chantiers. Côté OpenAI, deux annonces le 18 août — mise à jour du <strong>Model Spec</strong> avec des principes U18 et une nouvelle section sur les limites de capacité, et <strong>ChatGPT for Teens</strong> — sur fond de dissolution rapportée (et contestée) de l'équipe Preparedness. Google éteint les endpoints Imagen 4 le 17 août. Meta et Mistral : rien de daté dans la fenêtre.</p>
+
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">13<span class="unit">items</span></div>
+            <div class="stat-label">Total semaine</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3<span class="unit">🎯</span></div>
+            <div class="stat-label">Impact Lynxter</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5<span class="unit">🛠</span></div>
+            <div class="stat-label">À connaître</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">9<span class="unit">acteurs</span></div>
+            <div class="stat-label">Sources scannées</div>
+          </div>
+        </div>
+      </header>
+
+      <p class="section-label">TL;DR</p>
+      <section class="tldr reveal" style="margin-bottom:72px;">
+        <ul>
+          <li><strong>Le 19 août, Anthropic sort cinq briques du beta et lance le browser use tool.</strong> Computer use devient <code>computer_toolset_20260801</code> sans header beta, avec actions en batch (plusieurs actions par tour) et <code>zoom</code> activé par défaut ; le nouveau <code>browser_toolset_20260801</code> travaille dans un viewport que l'application héberge, lit l'arbre d'accessibilité de la page et ajoute références d'éléments, saisie de formulaires, gestion d'onglets et upload de fichiers en opt-in. Files API, Agent Skills, Skills API (<code>/v1/skills</code>) et les endpoints user-management de l'Admin API perdent aussi leurs headers beta. Les deux toolsets tournent sur Fable 5, Mythos 5, Opus 5, Sonnet 5 et Opus 4.8.</li>
+          <li><strong>Claude Code sort huit versions en sept jours (2.1.234 → 2.1.241).</strong> Deux correctifs pèsent en production : le streaming Bedrock derrière un proxy qui supprime le header <code>Content-Type</code> <strong>doublait silencieusement les appels API facturés</strong> en rejouant chaque tour en non-streaming, et la croissance mémoire non bornée des sessions longues est corrigée (les résultats d'outils des sous-agents sont libérés une fois hors fenêtre d'affichage). Côté nouveautés : style de sortie <strong>Concise</strong>, variable <code>ANTHROPIC_DEFAULT_MODEL</code>, <code>keybindingFlavor: "readline"</code>, <code>notify_when_idle</code> sur <code>SendMessage</code>, badge merge request GitLab, et <code>/claude-api upgrade</code> pour migrer les projets Python vers le SDK 1.x.</li>
+          <li><strong>SDK Python v1.0 le 20 août : migration obligatoire, pas un simple bump.</strong> La couche HTTP passe de <code>httpx</code> à <code>httpx2</code>, Python 3.10 devient le minimum, et la surface dépréciée disparaît — API Text Completions legacy, paramètres <code>temperature</code>, <code>top_p</code> et <code>top_k</code> sur les méthodes Messages, <code>compaction_control</code> côté client du tool runner. Sur le client async, <code>.with_raw_response</code> exige désormais <code>await response.parse()</code>, et <code>AnthropicBedrock</code> lève une erreur au lieu de retomber sur <code>us-east-1</code> quand aucune région AWS n'est configurée.</li>
+        </ul>
+      </section>
+
+      <section class="lynxter-hero reveal">
+        <h2>🎯 Implications Lynxter</h2>
+        <div class="body">
+          <p><strong>Le browser use tool est la brique qui manquait pour automatiser les portails fournisseurs.</strong> Depuis un an, l'automation des vieux outils métier passait par <em>computer use</em> — l'agent voit un bureau entier, prend des captures, clique à l'aveugle sur des coordonnées. Le <code>browser_toolset_20260801</code> change la nature du contrôle : il travaille <strong>dans un viewport que ton application héberge</strong>, lit <strong>l'arbre d'accessibilité de la page</strong> (éléments, formulaires, onglets) et manipule des <strong>références d'éléments</strong> plutôt que des pixels — plus la gestion des onglets, le report des téléchargements et l'upload de fichiers en opt-in. Concrètement pour Lynxter : les portails de commande filaments, les extranets de transporteurs, les back-offices SAV sans API deviennent scriptables avec une fiabilité qui ne dépend plus du rendu graphique ni de la résolution d'écran. À faire cette semaine : prends le workflow le plus pénible de la liste (relevé hebdomadaire des délais fournisseurs, dépôt de dossier de garantie), monte un prototype sur <code>browser_toolset_20260801</code> et mesure le taux de réussite sur 20 itérations. Ne pars pas de <em>computer use</em> pour ce cas d'usage : le browser tool est plus étroit, donc plus prévisible, et c'est exactement ce que tu veux sur un process qui touche des commandes.</p>
+          <p><strong>Agent Skills en GA transforme les Skills d'expérimentation en dépendance assumée.</strong> Le retrait du header <code>skills-2025-10-02</code> n'est pas cosmétique : une capacité en beta chez Anthropic peut changer de forme de requête sans préavis, une capacité GA non. Tes Skills maison — procédure de diagnostic S300X, arbre de décision extrusion, gabarit de réponse SAV — peuvent maintenant être adossées à la <code>/v1/skills</code> API et chargées via le paramètre <code>container</code> des requêtes Messages sans header spécial, ce qui les rend versionnables et testables comme du code. Deux compléments du 19 août rendent l'ensemble déployable en production : les agents Managed Agents acceptent désormais <code>allowed_domains</code> et <code>blocked_domains</code> sur <code>web_search</code> et <code>web_fetch</code>, et les sessions en <strong>sandbox auto-hébergée</strong> peuvent attacher des <strong>memory stores</strong> synchronisés dans les deux sens à leur <code>mount_path</code>. Ça répond à la question qui bloquait le déploiement d'un agent SAV chez un client industriel : garantir que l'agent ne sorte pas d'une liste blanche de domaines, et garder sa mémoire de travail sur une infrastructure que le client contrôle. Chiffrage à faire : liste les cinq domaines que ton agent support a le droit d'atteindre et écris la config <code>configs</code> correspondante — c'est vingt lignes, et c'est ce qui transforme un POC en argumentaire RFP.</p>
+          <p><strong>Les deux correctifs Claude Code de la semaine valent un audit de facture.</strong> Le bug Bedrock corrigé en 2.1.239 est le genre de défaut qu'on ne voit pas : derrière un proxy qui supprime le header <code>Content-Type</code> de la réponse, le streaming échouait et Claude Code <strong>rejouait chaque tour en non-streaming</strong> — soit deux appels API facturés pour un seul tour de conversation, sans message d'erreur. Si une partie de ton usage passe par Bedrock derrière un proxy d'entreprise, compare le nombre d'appels facturés au nombre de tours réels sur juillet et août avant de conclure. Le second correctif, la croissance mémoire non bornée des sessions interactives longues (2.1.238), concerne directement les routines qui tournent des heures avec des sous-agents : leurs résultats d'outils restaient en mémoire indéfiniment. En pratique, épingle une version : <code>ANTHROPIC_DEFAULT_MODEL</code> arrivé en 2.1.236 permet de fixer le modèle de démarrage des nouvelles sessions sans figer le choix <code>/model</code> — utile pour homogénéiser un poste d'astreinte SAV sans imposer le modèle à qui veut monter en <code>xhigh</code> sur un audit firmware. Et si tu maintiens du Python contre l'API Claude, lance <code>/claude-api upgrade</code> (2.1.239) avant que le SDK 0.x ne dérive : la v1.0 sortie la veille casse assez de surface pour qu'une migration manuelle coûte une demi-journée.</p>
+        </div>
+      </section>
+
+      <p class="section-label">Synthèse</p>
+      <section class="synthese reveal">
+        <p><strong>Anthropic</strong> concentre l'essentiel de la fenêtre. Le 19 août, la plateforme sort du beta cinq briques d'un coup (computer use, Files API, Agent Skills, Skills API, endpoints user-management de l'Admin API) et lance le <strong>browser use tool</strong>, un contrôle de navigateur qui lit la page plutôt que l'écran. Les Managed Agents gagnent des listes blanches de domaines sur <code>web_search</code> et <code>web_fetch</code>, des memory stores en sandbox auto-hébergée, et un session viewer Console redessiné. Claude Code enchaîne <strong>2.1.234 → 2.1.241</strong> en sept jours, avec deux correctifs à impact facture et mémoire. Le 20 août, le <strong>SDK Python v1.0</strong> casse volontairement la compatibilité. Le 22 août, les mainteneurs MCP publient une <strong>roadmap en cinq chantiers</strong> centrée sur les tâches longues, le transport HTTP unifié et l'identité d'agent. Côté produit, Cowork arrive sur web et mobile pour tous les plans payants et les connecteurs Gmail/Drive passent en écriture, le Workbench devient <strong>Playground</strong>.</p><p><strong>OpenAI</strong> tient une semaine réglementaire plutôt que technique : mise à jour du <strong>Model Spec</strong> le 18 août avec des principes U18 pour les 13-17 ans et une nouvelle section « Be clear about capabilities and limits », lancement de <strong>ChatGPT for Teens</strong> le même jour, et couverture presse de la dissolution rapportée de l'équipe <strong>Preparedness</strong> — que l'entreprise conteste. <strong>Google DeepMind</strong> éteint les endpoints Imagen 4 le 17 août ; la migration vers la famille Gemini 3.x Image n'est pas un simple renommage. <strong>Meta</strong> et <strong>Mistral</strong> n'ont rien de daté dans la fenêtre. Côté secondaires, <strong>Cursor</strong> ouvre <strong>Origin</strong> en beta le 17 août (hébergement de code intégré à l'éditeur) puis muscle ses cloud agents le 19, et <strong>DeepSeek</strong> sort le 21 août un <strong>V4-Flash-Vision-Exp</strong> multimodal expérimental qui bat Opus 4.8 sur 3 benchmarks sur 11.</p>
+      </section>
+
+      <!-- ─── ANTHROPIC ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/anthropic/1b1818/f3f1ee" alt="" />Anthropic<span class="count">7 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-23-claude-platform-ga-browser-use.html">Computer use, Files API, Agent Skills et Admin API sortent du beta — et le browser use tool arrive</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-08-19</span>
+          </div>
+          <p class="item-context">Le 19 août, cinq briques de la plateforme Claude quittent le beta le même jour. <strong>Computer use</strong> devient le toolset <code>computer_toolset_20260801</code> : plus de header beta, <strong>actions en batch</strong> (plusieurs actions dans un seul tour), <code>zoom</code> activé par défaut et configuration par membre via <code>configs</code> — la mise à niveau change la forme de requête, ce n'est pas un renommage. Anthropic lance en parallèle le <strong>browser use tool</strong> (<code>browser_toolset_20260801</code>), un toolset client qui pilote un navigateur hébergé par l'application : il travaille dans un viewport plutôt que sur un bureau entier, <strong>lit la page elle-même</strong> (arbre d'accessibilité, éléments, formulaires, onglets) et ajoute références d'éléments, saisie de formulaires, gestion d'onglets, report de téléchargements et upload de fichiers en opt-in par-dessus le contrôle capture-et-clic. Les deux toolsets sont disponibles sur <strong>Fable 5, Mythos 5, Opus 5, Sonnet 5 et Opus 4.8</strong>. La <strong>Files API</strong> perd le header <code>files-api-2025-04-14</code> et adopte l'expiration de fichiers (<code>expires_in_seconds</code>, <code>expires_at</code>) plus la pagination <code>page</code>/<code>next_page</code> avec filtre <code>ids[]</code>. <strong>Agent Skills et la Skills API</strong> (<code>/v1/skills</code>) perdent <code>skills-2025-10-02</code>, y compris pour les requêtes Messages qui chargent des Skills via <code>container</code>. Les endpoints user-management de l'<strong>Admin API</strong> pour les organisations Claude Enterprise (membres, invitations, groupes, rôles personnalisés) sortent aussi du beta.</p>
+          <p class="item-source"><a href="https://platform.claude.com/docs/en/release-notes/overview" target="_blank" rel="noopener">platform.claude.com — release notes (19 août 2026)</a> · <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/browser-use-tool" target="_blank" rel="noopener">browser use tool — documentation</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-23-claude-code-2-1-234-241.html">Claude Code 2.1.234 → 2.1.241 — huit versions, un bug de double facturation Bedrock, une fuite mémoire</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-08-23</span>
+          </div>
+          <p class="item-context">Huit versions en sept jours, du <strong>17 au 23 août</strong>. Deux correctifs comptent en production. La <strong>2.1.239</strong> répare le streaming Bedrock derrière un proxy qui supprime le header <code>Content-Type</code> de la réponse : le tour repartait en non-streaming, ce qui <strong>doublait silencieusement les appels API facturés</strong>. La <strong>2.1.238</strong> corrige une croissance mémoire non bornée dans les sessions interactives longues — les résultats d'outils des sous-agents sont désormais libérés dès qu'ils quittent la fenêtre d'affichage récente. Côté nouveautés : style de sortie intégré <strong>Concise</strong> (2.1.237), variable <code>ANTHROPIC_DEFAULT_MODEL</code> qui fixe le modèle de démarrage des nouvelles sessions sans écraser un choix <code>/model</code> (2.1.236), <code>notify_when_idle</code> sur <code>SendMessage</code> pour être prévenu une seule fois quand une autre session passe en idle (2.1.236), réglage <code>keybindingFlavor: "readline"</code> (2.1.238), <code>headersHelper</code> sur les marketplaces de plugins pour générer des en-têtes HTTP éphémères (2.1.238), options <code>--defer-shutdown-max-min</code> et <code>--proxy-authorization-command</code> sur le self-hosted runner (2.1.238), badge merge request GitLab dans le footer et la statusline (2.1.234), continuation automatique de session à la remise à zéro du quota claude.ai (2.1.234), et <code>/claude-api upgrade</code> pour migrer un projet Python de <code>anthropic</code> 0.x vers 1.x (2.1.239). Le mode auto gagne en rigueur : les règles d'autorisation <code>Monitor</code> sont mises de côté quand il est actif, et le contrôle de propreté du dépôt ne se laisse plus tromper par <code>status.showUntrackedFiles=no</code> (2.1.236). Sur macOS, les règles sandbox de refus de lecture à joker (par exemple <code>**/.env</code>) priment désormais à l'intérieur des zones autorisées et ne peuvent plus être contournées en renommant le fichier (2.1.236).</p>
+          <p class="item-source"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">code.claude.com/docs/en/changelog</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-23-managed-agents-domaines-memoire.html">Managed Agents — listes blanches de domaines, memory stores en sandbox auto-hébergée, session viewer redessiné</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-19</span>
+          </div>
+          <p class="item-context">Trois changements le 19 août sur Claude Managed Agents. On peut désormais <strong>restreindre les sites</strong> que les outils <code>web_search</code> et <code>web_fetch</code> d'un agent peuvent atteindre : <code>allowed_domains</code> ou <code>blocked_domains</code> se posent sur l'entrée de l'outil dans le tableau <code>configs</code> du toolset <code>agent_toolset_20260401</code>, <code>web_fetch</code> acceptant en plus <code>max_content_tokens</code> et <code>web_search</code> un <code>user_location</code>. Chaque entrée <code>configs</code> est identifiée par son <code>name</code> et typée par un <code>type</code> facultatif ; les requêtes qui ne passent que <code>name</code>, <code>enabled</code> et <code>permission_policy</code> continuent de fonctionner. Deuxième changement : les sessions qui tournent dans une <strong>sandbox auto-hébergée</strong> peuvent attacher des <strong>memory stores</strong> — les workers des SDK Python, TypeScript et Go téléchargent chaque store attaché dans la sandbox à son <code>mount_path</code> et resynchronisent les modifications de l'agent vers le store. Troisième : le <strong>session viewer</strong> de la Console est redessiné, avec minimap chronologique, transcription groupée par requête modèle et panneau Inspector (détails et coût de session, événements bruts, statistiques par outil, ressources montées, activité par thread).</p>
+          <p class="item-source"><a href="https://platform.claude.com/docs/en/release-notes/overview" target="_blank" rel="noopener">platform.claude.com — release notes (19 août 2026)</a> · <a href="https://platform.claude.com/docs/en/managed-agents/tools" target="_blank" rel="noopener">Restrict web search and web fetch domains — doc</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-23-anthropic-python-sdk-v1.html">SDK Python v1.0 — passage à httpx2, Python 3.10 minimum, suppressions cassantes</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-20</span>
+          </div>
+          <p class="item-context">Le 20 août, le SDK Python d'Anthropic passe en <strong>v1.0</strong>. La couche HTTP quitte <code>httpx</code> pour <strong><code>httpx2</code></strong>, un fork maintenu et compatible API : les objets <code>http_client</code>, <code>Timeout</code> et transports personnalisés se construisent désormais depuis <code>httpx2</code> (les helpers <code>DefaultHttpxClient</code> ne changent pas), et il faut appeler <code>httpx2.alias_httpx()</code> au démarrage si une bibliothèque de tracing ou de mock patche <code>httpx</code>. La v1.0 exige <strong>Python 3.10 ou supérieur</strong> et supprime la surface dépréciée de longue date : <strong>API Text Completions legacy</strong>, paramètres <code>temperature</code>, <code>top_p</code> et <code>top_k</code> sur les méthodes Messages, et <code>compaction_control</code> côté client du tool runner. Sur le client asynchrone, les résultats de <code>.with_raw_response</code> exigent maintenant <code>await response.parse()</code>, et <code>AnthropicBedrock</code> lève une erreur quand aucune région AWS n'est configurée au lieu de retomber sur <code>us-east-1</code>. Le guide de migration v1 liste chaque changement avec des extraits avant/après — et Claude Code a ajouté dès le lendemain une commande <code>/claude-api upgrade</code> qui fait la migration 0.x → 1.x sur un projet Python.</p>
+          <p class="item-source"><a href="https://platform.claude.com/docs/en/release-notes/overview" target="_blank" rel="noopener">platform.claude.com — release notes (20 août 2026)</a> · <a href="https://github.com/anthropics/anthropic-sdk-python/blob/main/MIGRATION.md" target="_blank" rel="noopener">anthropic-sdk-python — guide de migration v1</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-23-mcp-roadmap-aout-2026.html">Roadmap MCP du 22 août — cinq chantiers, dont les tâches longues et l'identité d'agent</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-08-22</span>
+          </div>
+          <p class="item-context">Les Core Maintainers de MCP publient le <strong>22 août</strong> une roadmap pour la prochaine version de spécification et au-delà, élaborée avec la communauté des mainteneurs et les Working Groups. Cinq chantiers prioritaires : <strong>primitives de messagerie agentique</strong> (patterns de tâches longues via événements initiés par le serveur, composition de tâches, maturation de l'extension <em>Tasks</em>) ; <strong>unification du transport HTTP</strong> (standardisation sur des transports HTTP en local comme en distant, y compris Streamable HTTP par-dessus stdio) ; <strong>identité d'agent et sécurité entreprise</strong> (identité d'agent standardisée avec DPoP — Demonstrating Proof of Possession — et Workload Identity Federation) ; <strong>primitives améliorées</strong> (contrats de traitement des résultats d'outils, découverte progressive pour les catalogues d'outils volumineux) ; <strong>ergonomie des SDK</strong> (conformité à la spécification et documentation). Aucune date de release n'est donnée pour la prochaine version au-delà de la référence à l'actuelle <strong>2026-07-28</strong> — celle qui a rendu le cœur du protocole sans état en supprimant le handshake <code>initialize</code>/<code>initialized</code> et l'en-tête <code>Mcp-Session-Id</code>. Ordre de grandeur d'adoption cité par le projet : les SDK Tier 1 approchent le demi-milliard de téléchargements par mois, TypeScript et Python ayant franchi le milliard cumulé.</p>
+          <p class="item-source"><a href="https://blog.modelcontextprotocol.io/posts/mcp-roadmap/" target="_blank" rel="noopener">blog.modelcontextprotocol.io — The New MCP Roadmap</a> · <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/" target="_blank" rel="noopener">blog.modelcontextprotocol.io — spécification 2026-07-28</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Cowork arrive sur web et mobile, les connecteurs Gmail et Drive passent en écriture</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-08-18</span>
+          </div>
+          <p class="item-context">Claude Cowork devient disponible sur le web et les applications mobiles pour <strong>tous les plans payants</strong>, avec sessions distantes et fichiers accessibles d'un appareil à l'autre. Les connecteurs <strong>Gmail et Google Drive</strong> gagnent des actions d'écriture — rédiger, envoyer, répondre et transférer des courriels, gérer des fichiers Drive — avec <strong>approbation demandée par défaut</strong> avant toute action modifiante. Le passage de la lecture à l'écriture sur une boîte mail professionnelle mérite un réglage explicite des approbations avant tout usage en production.</p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Le Workbench devient Playground dans la Console</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-08-18</span>
+          </div>
+          <p class="item-context">Le Workbench de la Console Claude devient <strong>Playground</strong> le 18 août : il supporte tous les paramètres de l'API Messages, embarque des modèles d'exemple qui démontrent des fonctionnalités comme l'exécution de code et la recherche web, et affiche pour chaque exécution la requête SDK complète et la réponse de l'API. L'ancien Workbench et les endpoints expérimentaux de prompt tooling (<code>generate_prompt</code>, <code>improve_prompt</code>, <code>templatize_prompt</code>) ont été retirés le <strong>17 août</strong> comme annoncé un mois plus tôt. Les prompts sauvegardés, variables et évaluations de l'ancien outil ne sont pas repris — l'export devait être fait avant la coupure.</p>
+        </article>
+      </section>
+
+      <!-- ─── OPENAI ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/openai/1b1818/f3f1ee" alt="" />OpenAI<span class="count">3 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-23-openai-model-spec-u18.html">OpenAI met à jour son Model Spec — principes U18 et section sur les limites de capacité</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-18</span>
+          </div>
+          <p class="item-context">Le 18 août, OpenAI met à jour son <strong>Model Spec</strong>, le document vivant qui décrit le comportement attendu de ses modèles. L'ajout principal est un ensemble de <strong>principes U18</strong> qui s'empile sur les règles de sécurité applicables à tous les utilisateurs et précise leur application aux conversations avec des adolescents de <strong>13 à 17 ans</strong> : pas de jeu de rôle romantique immersif ni d'intimité à la première personne, refus des mises en scène violentes ou sexualisées même non graphiques, refus des activités dangereuses, du mésusage de substances et de toute tentative de dissimuler un préjudice, prudence accrue sur l'image du corps et les comportements alimentaires. Deux modifications intéressent directement la conception de prompts : une <strong>nouvelle section « Be clear about capabilities and limits »</strong>, et une clarification de la façon dont l'assistant doit traiter les <strong>prémisses fausses ou non étayées</strong> — le point de friction classique quand un utilisateur affirme un fait erroné dans sa question. La mise à jour retire par ailleurs les consignes devenues obsolètes qui visaient les modèles antérieurs au raisonnement.</p>
+          <p class="item-source"><a href="https://openai.com/index/updating-model-spec-with-teen-protections/" target="_blank" rel="noopener">openai.com — Updating our Model Spec with teen protections</a> · <a href="https://www.edtechinnovationhub.com/news/openai-updates-model-rules-to-strengthen-protections-for-teens-using-chatgpt" target="_blank" rel="noopener">EdTech Innovation Hub — analyse de la mise à jour</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">ChatGPT for Teens — expérience dédiée aux 13-17 ans</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-08-18</span>
+          </div>
+          <p class="item-context">OpenAI lance le 18 août <strong>ChatGPT for Teens</strong> : toute personne que le système estime mineure, ou qui déclare avoir entre 13 et 17 ans, bascule automatiquement dans cette expérience. Elle ajoute des restrictions de contenu autour du suicide, de l'automutilation et des échanges romantiques ou sexuels, des contrôles parentaux, un <strong>Study Mode</strong> qui pousse des questions guidées et un accompagnement pas à pas plutôt que la réponse directe, et des rappels de devoirs qui apparaissent quand l'usage ressemble à de la triche. Le lancement accompagne la mise à jour du Model Spec publiée le même jour.</p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Équipe Preparedness — dissolution rapportée par le Financial Times, contestée par OpenAI</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-08-17</span>
+          </div>
+          <p class="item-context">Plusieurs médias reprennent à partir du 17 août une information du Financial Times selon laquelle OpenAI aurait dissous fin juillet son équipe <strong>Preparedness</strong>, chargée d'évaluer si ses modèles peuvent présenter des risques graves voire catastrophiques, en réaffectant ses membres seniors aux équipes cyber et bio existantes — sans licenciement. <strong>Sans annonce officielle</strong> : OpenAI conteste la dissolution et affirme que l'équipe existe toujours, et l'entreprise n'a publié aucun communiqué sur le sujet. À suivre comme signal de gouvernance plutôt que comme fait établi, dans un contexte de départs de dirigeants et de préparation d'introduction en bourse.</p>
+        </article>
+      </section>
+
+      <!-- ─── GOOGLE DEEPMIND ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/googlegemini/1b1818/f3f1ee" alt="" />Google DeepMind<span class="count">1 item</span></h2>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Google éteint les endpoints Imagen 4 — la migration n'est pas un renommage</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-08-17</span>
+          </div>
+          <p class="item-context">Les trois modèles <code>imagen-4.0-generate-001</code>, <code>imagen-4.0-ultra-generate-001</code> et <code>imagen-4.0-fast-generate-001</code> atteignent le <strong>17 août</strong> leur date d'extinction sur l'API Gemini, Google recommandant la bascule vers la famille <strong>Gemini 3.x Image</strong> et en particulier <code>gemini-3.1-flash-image</code>. Le remplacement change la forme d'appel et pas seulement le nom du modèle : Imagen utilisait <code>generate_images</code> et renvoyait une réponse image dédiée, la nouvelle famille passe par <code>generate_content</code> et renvoie des parties de contenu susceptibles de porter des données image. Prochaine échéance sur le même calendrier : l'extinction des modèles Gemini 2.5 en octobre 2026.</p>
+        </article>
+      </section>
+
+      <!-- ─── META ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/meta/1b1818/f3f1ee" alt="" />Meta<span class="count">0 item</span></h2>
+
+        <p class="actor-empty">Rien de notable cette semaine — aucune annonce datée entre le 16 et le 23 août. La vague Muse (Muse Code et Spark 1.2 le 6 août, Muse Glimmer 30B sous Apache 2.0 le 10 août) a été couverte dans les deux briefs précédents ; pas de nouveau modèle, pas de publication FAIR marquante depuis.</p>
+      </section>
+
+      <!-- ─── MISTRAL ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/mistralai/1b1818/f3f1ee" alt="" />Mistral<span class="count">0 item</span></h2>
+
+        <p class="actor-empty">Rien de notable cette semaine — aucune annonce datée dans la fenêtre. Les dernières sorties (Shieldstral 3B le 5 août, endpoints régionaux et nouveaux modèles ouverts mi-août) restent les plus récentes ; le datacenter d'inférence 10 MW des Ulis est toujours annoncé pour le Q3.</p>
+      </section>
+
+      <!-- ─── ACTEURS SECONDAIRES ─── -->
+      <section class="actor-section reveal">
+        <h2 style="font-size:18px;color:var(--text-muted);">Acteurs secondaires<span class="count">2 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-23-cursor-origin-cloud-agents.html">Cursor ouvre Origin, son hébergement de code, puis muscle ses cloud agents</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-19</span>
+          </div>
+          <p class="item-context">Deux livraisons en trois jours. Le <strong>17 août</strong>, Cursor ouvre <strong>Origin</strong> en beta anticipée sur tous les plans payants (Pro, Teams, Enterprise) : hébergement de code intégré à l'éditeur, avec dépôts, pull requests, navigation de code et <strong>synchronisation GitHub</strong>, accessible par un onglet du client desktop et par un outil en ligne de commande dédié ; les fonctionnalités pensées pour les agents sont annoncées pour plus tard, et le changelog de Cursor maintient GitHub comme source de vérité. Cursor ajoute au passage des <strong>Builds</strong> pour les cloud agents — des environnements de développement préparés en arrière-plan pour que les agents démarrent plus vite et plus sûrement, avec conservation à chaud des builds réussis et récupération après un environnement cassé. Le <strong>19 août</strong>, l'éditeur muscle ses cloud agents et son harness : ils peuvent <strong>déclencher du travail sur événement</strong>, tenir un objectif jusqu'à ce qu'il soit atteint, et rester sur les rails sur des sessions longues — surveiller des pull requests, suivre un fil Slack ou exécuter des tâches planifiées. Contexte notable : le lancement d'Origin est tombé le jour d'une panne majeure de GitHub, et c'est la première grande sortie produit depuis le rachat de Cursor par SpaceX en juin.</p>
+          <p class="item-source"><a href="https://cursor.com/changelog/08-19-26" target="_blank" rel="noopener">cursor.com/changelog — Cloud Agents and Cursor Harness Improvements (19 août)</a> · <a href="https://siliconangle.com/2026/08/17/cursor-launches-origin-code-hosting-service-to-compete-with-github/" target="_blank" rel="noopener">SiliconANGLE — Cursor launches Origin code hosting service</a> · <a href="https://thenewstack.io/cursor-origin-github-alternative/" target="_blank" rel="noopener">The New Stack — Cursor launches Origin as GitHub goes dark</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-23-deepseek-v4-flash-vision-exp.html">DeepSeek V4-Flash-Vision-Exp — multimodal expérimental, 3 benchmarks sur 11 devant Opus 4.8</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-21</span>
+          </div>
+          <p class="item-context">DeepSeek publie le <strong>21 août</strong> <strong>DeepSeek-V4-Flash-Vision-Exp</strong>, version expérimentale de son modèle V4 Flash jusque-là uniquement textuel, qui accepte désormais des entrées visuelles — images et captures d'écran — et peut agir dessus. Architecture MoE creuse à <strong>13 milliards de paramètres actifs sur 284 milliards au total</strong>. DeepSeek annonce des performances proches de <strong>Claude Opus 4.8</strong> sur les benchmarks agentiques multimodaux ; dans le détail, le modèle <strong>dépasse Opus 4.8 sur 3 benchmarks sur 11</strong> — DeepSWE de 1.3 point, Agents' Last Exam de 1.6 et ZeroBench de 1.0 — et reste derrière sur les huit autres. Disponible via l'API DeepSeek. La sortie intervient alors que l'entreprise prépare une introduction en bourse en Chine continentale, avec un dépôt visé en 2026 pour une cotation possible en 2027.</p>
+          <p class="item-source"><a href="https://api-docs.deepseek.com/news/news260821/" target="_blank" rel="noopener">api-docs.deepseek.com — DeepSeek-V4-Flash-Vision-Exp Release</a> · <a href="https://thenextweb.com/news/deepseek-v4-flash-vision-exp-opus-benchmarks" target="_blank" rel="noopener">The Next Web — DeepSeek launches an experimental multimodal model to rival Anthropic</a> · <a href="https://dataconomy.com/2026/08/21/deepseek-unveils-vision-model-challenging-anthropics-opus/" target="_blank" rel="noopener">Dataconomy — DeepSeek unveils vision model challenging Anthropic's Opus</a></p>
+        </article>
+      </section>
+
+      <section class="sources-footer">
+        <strong>Sources consultées</strong>
+        <a href="https://platform.claude.com/docs/en/release-notes/overview">platform.claude.com — release notes</a> · <a href="https://code.claude.com/docs/en/changelog">code.claude.com/changelog</a> · <a href="https://github.com/anthropics/anthropic-sdk-python/blob/main/MIGRATION.md">anthropic-sdk-python — MIGRATION.md</a> · <a href="https://blog.modelcontextprotocol.io/posts/mcp-roadmap/">blog.modelcontextprotocol.io — roadmap</a> · <a href="https://openai.com/index/updating-model-spec-with-teen-protections/">openai.com — Model Spec teen protections</a> · <a href="https://openai.com/index/chatgpt-for-teens/">openai.com — ChatGPT for Teens</a> · <a href="https://ai.google.dev/gemini-api/docs/changelog">ai.google.dev — Gemini API changelog</a> · <a href="https://cursor.com/changelog/08-19-26">cursor.com/changelog — 19 août 2026</a> · <a href="https://api-docs.deepseek.com/news/news260821/">api-docs.deepseek.com — V4-Flash-Vision-Exp</a>
+      </section>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-08-16.html">
+          <span class="label">← Brief précédent</span>
+          <span class="title">Claude Code arrête de demander</span>
+        </a>
+        <a class="next" href="./">
+          <span class="label">Voir l'archive →</span>
+          <span class="title">Tous les briefs</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Brief généré le 2026-08-23</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

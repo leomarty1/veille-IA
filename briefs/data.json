@@ -1,6 +1,125 @@
 {
   "briefs": [
     {
+      "date": "2026-08-23",
+      "filename": "2026-08-23.html",
+      "items_count": 13,
+      "by_tag": {
+        "lynxter": 3,
+        "useful": 5,
+        "info": 5
+      },
+      "by_actor": {
+        "Anthropic": 7,
+        "OpenAI": 3,
+        "Google": 1,
+        "Meta": 0,
+        "Mistral": 0,
+        "Cursor": 1,
+        "DeepSeek": 1
+      },
+      "mode": "hebdomadaire",
+      "title": "La plateforme Claude sort du beta",
+      "highlights": [
+        "Le 19 août, Anthropic sort cinq briques du beta le même jour — computer use (computer_toolset_20260801, actions en batch, zoom par défaut), Files API, Agent Skills, Skills API et les endpoints user-management de l Admin API — et lance le browser use tool (browser_toolset_20260801), qui lit l arbre d accessibilité de la page au lieu de cliquer sur des pixels, sur Fable 5, Mythos 5, Opus 5, Sonnet 5 et Opus 4.8",
+        "Claude Code enchaîne huit versions en sept jours (2.1.234 → 2.1.241) : le streaming Bedrock derrière un proxy qui supprime Content-Type doublait silencieusement les appels API facturés, la croissance mémoire non bornée des sessions longues est corrigée, et arrivent le style Concise, ANTHROPIC_DEFAULT_MODEL, notify_when_idle et /claude-api upgrade",
+        "Le SDK Python passe en v1.0 le 20 août (httpx → httpx2, Python 3.10 minimum, suppression de Text Completions et des paramètres temperature/top_p/top_k sur Messages) et les mainteneurs MCP publient le 22 une roadmap en cinq chantiers — tâches longues, transport HTTP unifié, identité d agent via DPoP, découverte progressive, ergonomie des SDK"
+      ],
+      "items": [
+        {
+          "slug": "2026-08-23-claude-platform-ga-browser-use",
+          "title": "Computer use, Files API, Agent Skills et Admin API sortent du beta — et le browser use tool arrive",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-23-claude-code-2-1-234-241",
+          "title": "Claude Code 2.1.234 → 2.1.241 — huit versions, un bug de double facturation Bedrock, une fuite mémoire",
+          "primary_url": "https://code.claude.com/docs/en/changelog",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-23-managed-agents-domaines-memoire",
+          "title": "Managed Agents — listes blanches de domaines, memory stores en sandbox auto-hébergée, session viewer redessiné",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-23-anthropic-python-sdk-v1",
+          "title": "SDK Python v1.0 — passage à httpx2, Python 3.10 minimum, suppressions cassantes",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-23-mcp-roadmap-aout-2026",
+          "title": "Roadmap MCP du 22 août — cinq chantiers, dont les tâches longues et l'identité d'agent",
+          "primary_url": "https://blog.modelcontextprotocol.io/posts/mcp-roadmap/",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-23-cowork-web-mobile-connecteurs-ecriture",
+          "title": "Cowork arrive sur web et mobile, les connecteurs Gmail et Drive passent en écriture",
+          "primary_url": "https://www.androidauthority.com/claude-gmail-google-drive-integrations-3700330/",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-23-workbench-devient-playground",
+          "title": "Le Workbench devient Playground dans la Console",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-23-openai-model-spec-u18",
+          "title": "OpenAI met à jour son Model Spec — principes U18 et section sur les limites de capacité",
+          "primary_url": "https://openai.com/index/updating-model-spec-with-teen-protections/",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-23-chatgpt-for-teens",
+          "title": "ChatGPT for Teens — expérience dédiée aux 13-17 ans",
+          "primary_url": "https://openai.com/index/chatgpt-for-teens/",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-23-openai-preparedness",
+          "title": "Équipe Preparedness — dissolution rapportée par le Financial Times, contestée par OpenAI",
+          "primary_url": "https://www.engadget.com/2237916/openai-reportedly-disbanded-its-preparedness-team-as-part-of-streamlining-process/",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-23-imagen-4-extinction",
+          "title": "Google éteint les endpoints Imagen 4 — la migration n'est pas un renommage",
+          "primary_url": "https://ai.google.dev/gemini-api/docs/changelog",
+          "tag": "info",
+          "actor": "Google DeepMind"
+        },
+        {
+          "slug": "2026-08-23-cursor-origin-cloud-agents",
+          "title": "Cursor ouvre Origin, son hébergement de code, puis muscle ses cloud agents",
+          "primary_url": "https://cursor.com/changelog/08-19-26",
+          "tag": "useful",
+          "actor": "Cursor"
+        },
+        {
+          "slug": "2026-08-23-deepseek-v4-flash-vision-exp",
+          "title": "DeepSeek V4-Flash-Vision-Exp — multimodal expérimental, 3 benchmarks sur 11 devant Opus 4.8",
+          "primary_url": "https://api-docs.deepseek.com/news/news260821/",
+          "tag": "useful",
+          "actor": "DeepSeek"
+        }
+      ]
+    },
+    {
       "date": "2026-08-16",
       "filename": "2026-08-16.html",
       "items_count": 13,

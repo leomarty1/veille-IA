@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code 2.1.234 → 2.1.241 — huit versions, un bug de double facturation Bedrock, une fuite mémoire — Veille IA Lynxter</title>
+<meta name="description" content="Huit versions de Claude Code entre le 17 et le 23 août 2026 : correctif de double facturation Bedrock, fuite mémoire des sessions longues, style Concise, ANTHROPIC_DEFAULT_MODEL, durcissement du mode auto et du sandbox macOS.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-08-23.html">2026-08-23</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Claude Code 2.1.234-241</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Anthropic</span>
+          <span class="dot-sep">·</span>
+          <span>17 au 23 août 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-lynxter">🎯 Lynxter</span>
+        </div>
+        <h1>Claude Code 2.1.234 → 2.1.241 — huit versions, un bug de double facturation Bedrock, une fuite mémoire</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-08-23.html">La plateforme Claude sort du beta — 2026-08-23</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">8<span class="unit">versions</span></div>
+            <div class="stat-label">2.1.234 → 2.1.241 en 7 jours</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">2×<span class="unit">facturé</span></div>
+            <div class="stat-label">bug streaming Bedrock derrière proxy</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">Concise<span class="unit">output style</span></div>
+            <div class="stat-label">nouveau style intégré (2.1.237)</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3<span class="unit">correctifs sécurité</span></div>
+            <div class="stat-label">sandbox macOS, headersHelper, secrets MCP</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>La cadence de la semaine — <strong>2.1.234 le 17 août, 2.1.241 le 23</strong> — tient surtout de la campagne de correction. Le défaut le plus coûteux est corrigé en <strong>2.1.239</strong> : sur Bedrock, derrière un proxy d'entreprise qui supprime le header <code>Content-Type</code> de la réponse, le streaming échouait silencieusement et Claude Code <strong>rejouait le tour entier en non-streaming</strong>. Résultat : deux appels API facturés pour un seul tour de conversation, sans message d'erreur ni ligne dans les logs. Le second, en <strong>2.1.238</strong>, concerne la mémoire : dans les sessions interactives longues, les résultats d'outils des sous-agents n'étaient jamais libérés ; ils le sont désormais dès qu'ils sortent de la fenêtre d'affichage récente. Deux défauts invisibles depuis l'interface, tous deux amplifiés par le type d'usage qui devient la norme — des sessions qui durent des heures, avec des sous-agents et un proxy devant.</p>
+        <p>Côté nouveautés, trois réglages structurent l'usage en équipe. <code>ANTHROPIC_DEFAULT_MODEL</code> (2.1.236) fixe le modèle sur lequel démarrent les nouvelles sessions, tout en laissant un choix <code>/model</code> le surcharger et persister d'un redémarrage à l'autre — contrairement à <code>ANTHROPIC_MODEL</code>, qui impose. Le style de sortie <strong>Concise</strong> (2.1.237) demande à Claude de mener par le résultat et de sauter préambule et narration, sans réduire la profondeur du travail. <code>notify_when_idle</code> sur <code>SendMessage</code> (2.1.236) permet de demander à une autre session Claude Code de la machine d'envoyer <strong>un seul</strong> avis quand elle passera en idle : de l'opt-in, en une fois, sans polling, sur macOS et Linux. S'y ajoutent <code>keybindingFlavor: "readline"</code> (2.1.238) pour aligner Ctrl+W et les touches de mot sur le comportement Bash, et le badge merge request GitLab dans le footer et la statusline (2.1.234) pour les dépôts avec un remote GitLab et un <code>glab</code> authentifié.</p>
+        <p>Le durcissement sécurité de la semaine porte sur trois surfaces distinctes. Sur macOS, les <strong>règles sandbox de refus de lecture à joker</strong> (2.1.236) — typiquement <code>**/.env</code> — priment désormais à l'intérieur des zones de lecture autorisées, couvrent le contenu des répertoires correspondants, et ne peuvent plus être contournées en renommant le fichier refusé. Les diagnostics MCP (2.1.234) cessent d'afficher des secrets résolus : les avertissements de conflit de portée montrent la forme <code>${VAR}</code> configurée, et les détails d'échec de connexion se limitent à l'origine du serveur. Enfin, <code>headersHelper</code> (2.1.238), qui permet à une marketplace de plugins de générer des en-têtes HTTP éphémères, ne s'exécute qu'à l'installation ou à la mise à jour d'un plugin, après affichage de sa commande, avec confirmation <code>[y/N]</code> — et, depuis un <code>.mcp.json</code> de projet ou un fichier d'agent, il tourne sans hériter des variables d'environnement de credentials. Comparaison utile : sur la même semaine, Cursor a musclé ses cloud agents pour qu'ils tiennent un objectif sur la durée (19 août) ; Anthropic, lui, passe l'essentiel de sa semaine à colmater les effets de bord d'un usage long — signe d'un produit qui a dépassé la phase de démonstration.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🎯 Pourquoi c'est important pour Lynxter</h2>
+        <p><strong>Audit de facture avant toute chose.</strong> Si une partie de ton usage Claude Code passe par Bedrock derrière un proxy d'entreprise, le bug corrigé en 2.1.239 a pu doubler le nombre d'appels facturés sans laisser de trace visible. <strong>Action concrète</strong> : sur juillet et août, compare le nombre d'appels facturés au nombre de tours de conversation réels sur les sessions concernées. Si le ratio approche 2, c'est ce défaut. Mets à jour vers 2.1.239 ou supérieur avant de relancer la mesure — et si l'écart est significatif, il est documenté par le changelog officiel, ce qui suffit à ouvrir une réclamation.</p>
+        <p><strong>Homogénéise les postes sans brider les usages avancés.</strong> Sur un poste d'astreinte SAV, tu veux que toute session démarre sur le même modèle ; sur un audit firmware, tu veux pouvoir monter en effort. <code>ANTHROPIC_DEFAULT_MODEL</code> fait exactement ça : il fixe le point de départ, un <code>/model</code> le surcharge et la surcharge persiste. <strong>Action concrète</strong> : pose la variable dans l'environnement des postes support, et documente en une ligne dans le CLAUDE.md interne que <code>/model</code> reste libre. Ajoute le style <strong>Concise</strong> pour les sessions de traitement de tickets : la réponse mène par le résultat, ce qui réduit le temps de lecture d'un technicien qui enchaîne les dossiers.</p>
+        <p><strong>Deux détails d'infrastructure valent d'être notés maintenant.</strong> Le self-hosted runner accepte désormais <code>--proxy-authorization-command</code> et <code>--proxy-authorization-file</code> pour les proxys d'egress qui exigent un en-tête <code>Proxy-Authorization</code> réémis à chaque connexion, plus <code>--defer-shutdown-max-min</code> qui, sur SIGTERM, continue de servir les sessions attachées pendant N minutes avant de sortir. C'est précisément ce qui manque quand une routine tourne sur une machine d'atelier redémarrée le soir. Et la règle sandbox macOS sur <code>**/.env</code> qui prime désormais dans les zones autorisées ferme un contournement réel : si tu as autorisé un répertoire de travail large, vérifie que tes règles de refus sont bien à joker plutôt qu'à chemin exact — c'est maintenant qu'elles couvrent aussi le contenu des répertoires.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">code.claude.com/docs/en/changelog</a>
+        <span class="source-meta">Anthropic · changelog Claude Code · versions 2.1.234 (17 août) à 2.1.241 (23 août 2026)</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-08-23-claude-platform-ga-browser-use.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">La plateforme Claude sort du beta et lance le browser use tool</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-08-23-anthropic-python-sdk-v1.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">SDK Python v1.0 — httpx2 et suppressions cassantes</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+          <li><a href="2026-08-23-mcp-roadmap-aout-2026.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Roadmap MCP — cinq chantiers</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="../briefs/2026-08-23.html">
+          <span class="label">← Retour au brief</span>
+          <span class="title">2026-08-23</span>
+        </a>
+        <a class="next" href="2026-08-23-managed-agents-domaines-memoire.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Managed Agents : domaines et memory stores</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-08-23</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
