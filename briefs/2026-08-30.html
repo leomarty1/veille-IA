@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic ouvre les machines aux agents — Veille IA Lynxter</title>
+<meta name="description" content="Brief IA du 23 au 30 août 2026 : Anthropic ouvre le research preview du Model Hardware Standard pour que les agents pilotent des équipements physiques en recherche et en manufacturing avancé, Claude Code corrige deux évasions de chemin en trois versions, Perplexity fait tourner tout son agent en local sur DGX Spark, OpenAI publie les premiers chiffres de sa puce Jalapeño, Salesforce met 37 skills de vente dans Claude.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/" class="active">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="./">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">2026-08-30</span>
+      </div>
+
+      <header style="margin-bottom:64px;">
+        <p class="section-label">Brief hebdomadaire · 23 août → 30 août 2026</p>
+        <h1 style="font-family:var(--font-display);font-stretch:125%;font-weight:300;font-size:clamp(36px,5.5vw,64px);text-transform:uppercase;letter-spacing:-0.005em;line-height:1.02;margin:0 0 28px;color:var(--text);">Anthropic ouvre les <em style="font-style:normal;color:var(--lx-accent);">machines</em><br>aux agents</h1>
+        <p style="font-size:18px;font-weight:300;color:var(--text-soft);max-width:720px;margin:0 0 48px;line-height:1.7;">La semaine bascule côté matériel. Le <strong>27 août</strong>, Anthropic ouvre la première phase du research preview du <strong>Model Hardware Standard</strong> (MHS) : une spécification pour que des agents découvrent, pilotent et dépannent des <strong>équipements physiques</strong> — microscopes, bras robotisés, manipulateurs de liquides — en recherche scientifique et en <strong>manufacturing avancé</strong>, model-agnostic et accessible depuis n'importe quel harness via des protocoles standards, MCP compris. Les premiers résultats sont chiffrés : stabilisation laser passée de <strong>58 % à 99,3 %</strong> sur les calculateurs quantiques de QuEra, expérience d'imagerie comprimée de plusieurs semaines à <strong>une journée</strong> chez HHMI Janelia. Claude Code enchaîne <strong>2.1.248 → 2.1.251</strong> en deux jours avec deux corrections de sécurité (évasion par lien symbolique dans les outils fichiers, traversée de chemin sur les commandes de plugin) et un drapeau <code>--restricted</code>. Le <strong>25 août</strong>, Perplexity sort <strong>Portable Computer</strong> : orchestrateur, sous-agents et harness tournent <strong>entièrement en local</strong> sur DGX Spark ou GPU NVIDIA ≥ 24 Go, sans crédit consommé. OpenAI publie à Hot Chips les premiers benchmarks de <strong>Jalapeño</strong>, sa puce d'inférence maison. Salesforce et Anthropic annoncent <strong>Claudeforce</strong>. Meta : rien de daté dans la fenêtre.</p>
+
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">13<span class="unit">items</span></div>
+            <div class="stat-label">Total semaine</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3<span class="unit">🎯</span></div>
+            <div class="stat-label">Impact Lynxter</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5<span class="unit">🛠</span></div>
+            <div class="stat-label">À connaître</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">9<span class="unit">acteurs</span></div>
+            <div class="stat-label">Sources scannées</div>
+          </div>
+        </div>
+      </header>
+
+      <p class="section-label">TL;DR</p>
+      <section class="tldr reveal" style="margin-bottom:72px;">
+        <ul>
+          <li><strong>Le 27 août, Anthropic ouvre le research preview du Model Hardware Standard.</strong> MHS est une spécification partagée pour que des agents opèrent des équipements physiques en sécurité : elle marche avec <strong>tout appareil doté d'une interface programmable</strong>, reste <strong>model-agnostic</strong> (n'importe quel harness y accède via des protocoles standards, MCP compris), rend les appareils <strong>découvrables</strong>, et laisse l'opérateur décrire en <strong>langage naturel</strong> ce qu'un manuel contient mais pas le code — masse d'un bras, limites de sécurité. L'intégration d'un instrument passe de plusieurs semaines à <strong>quelques heures ou minutes</strong>. Chiffres du preview : <strong>58 % → 99,3 %</strong> de stabilisation laser chez QuEra, <strong>semaines → un jour</strong> sur une expérience d'imagerie chez HHMI Janelia, gestion d'erreurs en temps réel sur une expérience de <em>drug discovery</em> chez Genentech. Réservé pour l'instant à un groupe restreint d'organisations en science, robotique et manufacturing ; Anthropic annonce l'intention d'ouvrir le standard en open source.</li>
+          <li><strong>Claude Code sort 2.1.248, 2.1.250 et 2.1.251 en deux jours, avec deux corrections de sécurité.</strong> La 2.1.251 corrige des <strong>outils fichiers qui suivaient les liens symboliques</strong> et pouvaient donc lire ou écrire <strong>hors des emplacements approuvés</strong>, ainsi que des commandes de plugin pointant hors du répertoire du plugin (traversée de chemin). La 2.1.248 ajoute un drapeau <code>--restricted</code> qui <strong>retire les outils intégrés</strong> (commandes, exécution de code, WebFetch), un <code>experimental.cacheTtl</code> par agent dans le frontmatter, et corrige un <strong>manque de cache de prompt survenant environ une fois par heure</strong> dans les sessions longues, causé par un re-rendu des définitions d'outils. La 2.1.251 ajoute les hooks <code>PreModelSwitch</code> / <code>PostModelSwitch</code>, une barre de plafond de dépense dans <code>/usage</code> et des métriques de cache par session dans <code>/cost</code>.</li>
+          <li><strong>L'agent local devient un produit livrable, et OpenAI montre sa puce.</strong> Le 25 août, <strong>Perplexity Portable Computer</strong> fait tourner <strong>toute</strong> la pile — LLM orchestrateur, LLM sous-agent, harness — sur la machine de l'utilisateur (NVIDIA GB10 / DGX Spark, ou x86 Ubuntu avec GPU NVIDIA ≥ 24 Go de VRAM), avec un <strong>PPLX 27B</strong> post-entraîné installé localement, <strong>zéro crédit consommé</strong> pour le travail local et une <strong>demande d'autorisation avant tout envoi</strong> d'une étape vers un modèle frontière dans le cloud. Le même jour à Hot Chips, OpenAI publie les premiers chiffres de <strong>Jalapeño</strong> : <strong>1,5 à 1,9× plus de travail par watt</strong> au débit maximal et <strong>1,7 à 3,6× moins de latence</strong> bout-en-bout que les systèmes de comparaison, jusqu'à <strong>2,1 à 4,1×</strong> sur les charges très interactives, mesurés sur GPT-OSS 120B, DeepSeek R1 et Kimi K2.5 1T.</li>
+        </ul>
+      </section>
+
+      <section class="lynxter-hero reveal">
+        <h2>🎯 Implications Lynxter</h2>
+        <div class="body">
+          <p><strong>Le Model Hardware Standard vise explicitement le « manufacturing avancé » — c'est-à-dire vous.</strong> Depuis dix-huit mois, MCP a standardisé l'accès des agents aux <em>outils logiciels</em> ; MHS rejoue le même coup sur le <em>matériel</em>. La spécification s'applique à tout appareil doté d'une interface programmable, elle est model-agnostic (le harness importe peu, l'accès passe par des protocoles standards dont MCP), elle rend l'appareil découvrable, et surtout elle demande à l'opérateur d'écrire <strong>en langage naturel ce que le code ne contient pas</strong> : la masse du bras, l'enveloppe de sécurité, les limites à ne jamais franchir. Une S300X ou une S600D, avec son firmware, sa télémétrie et son interface de pilotage, entre exactement dans cette description. Ce qu'il faut faire cette semaine, avant même d'avoir accès au preview : <strong>inventorier la surface programmable</strong> de la machine (points d'entrée de contrôle, télémétrie disponible, ce qui est lisible et ce qui est écrivable), puis <strong>rédiger l'enveloppe de sécurité en français</strong> — températures maximales, états d'où l'on ne redémarre pas une impression, opérations qui exigent une présence humaine. Ce document est la moitié du travail d'intégration MHS le jour où le standard s'ouvre, et il n'a aucun coût d'option : il sert aussi de base à la documentation SAV.</p>
+          <p><strong>Les deux correctifs de sécurité de Claude Code 2.1.251 rendent la mise à jour non négociable.</strong> Un outil fichier qui suit les liens symboliques peut lire ou écrire <strong>hors des emplacements approuvés</strong> — sur un poste de dev où le dépôt contient des liens vers des dossiers partagés, l'écart entre « l'agent travaille dans ce répertoire » et ce qu'il touche réellement n'est plus théorique. Même logique pour la traversée de chemin sur les commandes de plugin. Mettez à jour vers <strong>2.1.251</strong> et vérifiez la version sur les postes qui font tourner Claude Code sans surveillance. Dans la foulée, deux leviers concrets arrivent avec la 2.1.248 : <code>--restricted</code> <strong>retire les outils intégrés</strong> (commandes shell, exécution de code, WebFetch), ce qui donne enfin un profil serré pour un agent SAV qui doit lire de la doc et rédiger, jamais exécuter ; et <code>experimental.cacheTtl</code> permet de régler la durée de cache de prompt <strong>par agent</strong>, à combiner avec le correctif du manque de cache qui frappait environ <strong>une fois par heure</strong> les sessions longues. Sur un agent de support qui tourne la journée avec un gros prompt système, ce seul correctif se voit sur la facture.</p>
+          <p><strong>Portable Computer prouve qu'un agent complet tient sur une machine d'atelier — et pose la bonne question de souveraineté.</strong> Perplexity fait tourner <strong>l'intégralité</strong> de la pile en local : orchestrateur, sous-agents, harness, sur un DGX Spark ou un simple x86 sous Ubuntu avec un GPU NVIDIA d'au moins <strong>24 Go de VRAM</strong>, avec un <strong>PPLX 27B</strong> post-entraîné (Qwen 3.8 27B aussi disponible). Deux propriétés comptent pour Lynxter : le travail local <strong>ne consomme aucun crédit</strong>, et le système <strong>demande l'autorisation avant d'envoyer la moindre étape</strong> vers un modèle frontière dans le cloud. Traduction : un agent qui lit des plans clients, des fichiers de tranchage ou des rapports d'intervention sans qu'aucun de ces fichiers ne quitte le bâtiment par défaut — l'argument exact que réclament les RFP industriels et les clients aéronautique/médical. Comparez honnêtement : un 27B local ne joue pas dans la catégorie d'Opus 5 ou de GPT-5.6 sur du raisonnement long. Mais pour du tri de tickets, de la recherche dans la documentation machine et de la rédaction de réponses SAV, c'est largement suffisant, et le coût marginal par tâche tombe à zéro. Un test à 24 Go de VRAM coûte une carte, pas un contrat.</p>
+        </div>
+      </section>
+
+      <p class="section-label">Synthèse</p>
+      <section class="synthese reveal">
+        <p><strong>Anthropic</strong> tient l'annonce structurante de la fenêtre avec le <strong>Model Hardware Standard</strong> (27 août), un standard pour que des agents opèrent des équipements physiques en recherche et en manufacturing avancé, ouvert en research preview à un groupe restreint d'organisations et destiné à l'open source. Côté outil, <strong>Claude Code 2.1.248 → 2.1.251</strong> (27-28 août) corrige deux évasions de chemin — liens symboliques dans les outils fichiers, commandes de plugin hors répertoire — et ajoute <code>--restricted</code>, <code>experimental.cacheTtl</code> par agent et les hooks de bascule de modèle. Côté plateforme, les <strong>clés personnelles et clés de compte de service</strong> arrivent dans la Console et l'<strong>Admin API</strong> devient accessible depuis la CLI <code>ant</code> et huit SDK ; les endpoints de session de la <strong>Compliance API</strong> sortent du beta pour Cowork et Claude Code. Enfin, <strong>Claudeforce</strong> (26 août) met 37 skills de vente Salesforce dans un plugin Claude, en pilote avant une beta ouverte en septembre.</p><p><strong>OpenAI</strong> joue l'infrastructure : premiers benchmarks de <strong>Jalapeño</strong> à Hot Chips le 25 août — 1,5 à 1,9× de travail par watt et 1,7 à 3,6× de latence en moins face aux systèmes de comparaison — complétés le 26 par un billet de la directrice financière sur la pile complète, des puces aux produits. Côté outil, la commande <code>codex mcp-server</code> est dépréciée le 24 août au profit du Codex app server.</p><p><strong>Google DeepMind</strong> met <strong>Gemini Omni 1.1 Flash</strong> en preview publique le 27 août, avec extension de scène qui analyse jusqu'à 10 secondes de contexte antérieur contre 1 auparavant, et pousse le support de Gemini 3.6 et 3.7 Flash dans CodeMender sur la Gemini Enterprise Agent Platform. <strong>Mistral</strong> annonce le 24 août une collaboration avec <strong>HUMAIN</strong> chiffrée en centaines de millions d'euros sur l'infrastructure et des modèles frontière performants en arabe. <strong>Meta</strong> : rien de daté dans la fenêtre.</p><p>Côté acteurs secondaires, <strong>Perplexity</strong> sort <strong>Portable Computer</strong> le 25 août, un agent dont toute la pile tourne en local sur matériel NVIDIA, et <strong>Cursor</strong> détache ses cloud agents de tout fournisseur SCM le 27 août, avec redirection de port vers le navigateur et publication Vercel en un clic.</p>
+      </section>
+
+      <!-- ─── ANTHROPIC ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/anthropic/1b1818/f3f1ee" alt="" />Anthropic<span class="count">7 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-30-anthropic-model-hardware-standard.html">Model Hardware Standard — un standard pour que les agents pilotent des machines physiques</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-08-27</span>
+          </div>
+          <p class="item-context">Le 27 août, Anthropic ouvre la <strong>première phase du research preview</strong> du <strong>Model Hardware Standard</strong> (MHS), une spécification partagée pour que des agents IA <strong>découvrent, opèrent et dépannent des équipements physiques</strong> en recherche scientifique et en <strong>manufacturing avancé</strong>. Le principe : un <strong>pilote standardisé</strong> qui traduit entre le système d'exploitation et l'appareil avec des commandes simples de type lecture/écriture, de sorte qu'un agent n'ait plus besoin d'une intégration sur mesure par instrument — l'intégration passe de plusieurs semaines à <strong>quelques heures ou minutes</strong>. MHS fonctionne avec <strong>tout appareil doté d'une interface programmable</strong>, reste <strong>model-agnostic</strong> (n'importe quel harness d'agent y accède via des protocoles standards, <strong>MCP compris</strong>), rend les appareils <strong>découvrables</strong>, et demande à l'opérateur de décrire <strong>en langage naturel</strong> les caractéristiques que le code ne porte pas mais que le manuel contient : masse d'un bras robotisé, limites de sécurité. Les agents peuvent opérer <strong>plusieurs instruments en parallèle</strong> — microscopes, manipulateurs de liquides, bras robotisés. Trois résultats sont publiés avec le preview : stabilisation laser améliorée de <strong>58 % à 99,3 %</strong> sur les calculateurs quantiques de <strong>QuEra</strong>, expérience d'imagerie comprimée de <strong>plusieurs semaines à une journée</strong> au <strong>HHMI Janelia Research Campus</strong>, et une expérience de <em>drug discovery</em> conduite avec gestion d'erreurs en temps réel chez <strong>Genentech</strong>. L'accès est limité à un groupe restreint d'organisations en science, robotique et manufacturing ; Anthropic déclare vouloir à terme <strong>ouvrir le standard en open source</strong>.</p>
+          <p class="item-source"><a href="https://www.anthropic.com/news/model-hardware-standard-research-preview" target="_blank" rel="noopener">anthropic.com — Previewing the Model Hardware Standard (27 août 2026)</a> · <a href="https://www.cnbc.com/2026/08/27/anthropic-pushes-into-physical-world-with-new-standard-to-help-ai-agents-operate-machines.html" target="_blank" rel="noopener">CNBC — Anthropic pushes into physical world with new standard</a> · <a href="https://www.marktechpost.com/2026/08/29/anthropic-opens-a-research-preview-of-the-model-hardware-standard-mhs-a-shared-specification-for-ai-agents-to-safely-operate-physical-devices/" target="_blank" rel="noopener">MarkTechPost — Anthropic opens a research preview of MHS</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-30-claude-code-2-1-248-251.html">Claude Code 2.1.248 → 2.1.251 — deux évasions de chemin corrigées, un drapeau <code>--restricted</code></a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-08-28</span>
+          </div>
+          <p class="item-context">Trois versions en deux jours : <strong>2.1.248</strong> le 27 août, <strong>2.1.250</strong> et <strong>2.1.251</strong> le 28. Les deux correctifs qui comptent sont dans la <strong>2.1.251</strong> : les <strong>outils fichiers suivaient les liens symboliques</strong> et pouvaient donc lire ou écrire <strong>hors des emplacements approuvés</strong>, et des <strong>commandes de plugin pointaient hors du répertoire du plugin</strong> (erreur de traversée de chemin). Côté nouveautés, la <strong>2.1.248</strong> ajoute un drapeau <code>--restricted</code> qui <strong>retire les outils intégrés</strong> (commandes, exécution de code, WebFetch), un <code>experimental.cacheTtl</code> dans le frontmatter d'agent pour régler la <strong>durée de cache de prompt par agent</strong>, un <code>claude self-hosted-runner --client-label</code>, des diagnostics sur les réglages gérés côté serveur, et <code>/usage-credits</code> pour les organisations Enterprise sur AWS Marketplace ; elle corrige surtout un <strong>manque de cache de prompt survenant environ une fois par heure</strong> dans les sessions longues, causé par un re-rendu des définitions d'outils, et des sessions Claude Desktop et Cowork qui disparaissaient au bout de <strong>30 jours</strong>. La <strong>2.1.251</strong> ajoute les hooks <code>PreModelSwitch</code> et <code>PostModelSwitch</code>, le streaming en direct des appels d'outils des sous-agents de premier plan vers les clients Remote Control, une <strong>barre de plafond de dépense</strong> dans <code>/usage</code> avec le champ <code>rate_limits.spend_limit</code>, des <strong>métriques de cache de prompt par session</strong> dans <code>/cost</code>, et les commandes <code>attach</code>, <code>logs</code>, <code>stop</code>, <code>respawn</code>, <code>rm</code> dans <code>claude --help</code> ; elle corrige des conversations bloquées sur « text content blocks must be non-empty » après un tour de pure réflexion, l'échec des requêtes <strong>Opus 5</strong> en effort <code>xhigh</code>/<code>max</code> avec la réflexion désactivée, la lenteur du TUI avec beaucoup de sous-agents parallèles, et une réponse finale de coéquipier qui n'atteignait pas le chef d'équipe dans les agent teams.</p>
+          <p class="item-source"><a href="https://code.claude.com/docs/en/changelog" target="_blank" rel="noopener">code.claude.com — changelog Claude Code (27-28 août 2026)</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-30-anthropic-cles-personnelles-admin-api.html">Clés personnelles et clés de compte de service dans la Console, Admin API dans huit SDK</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-27</span>
+          </div>
+          <p class="item-context">Le <strong>27 août</strong>, la Console Claude permet de créer des <strong>clés personnelles</strong> et des <strong>clés de compte de service</strong>. Elles agissent au nom de l'utilisateur ou du compte de service, avec <strong>exactement ses permissions</strong>, et <strong>cessent de fonctionner</strong> quand le compte lié quitte l'organisation — ce qui règle d'un coup le problème des clés orphelines. Elles peuvent être limitées à un espace de travail donné, ou couvrir les endpoints d'administration et tous les espaces auxquels le compte a accès ; les clés d'espace de travail restent supportées en option héritée. Le même jour, les SDK <strong>Python 1.2.0, TypeScript 0.122.0, Go 1.68.0, Java 2.59.0, Ruby 1.67.0 et C# 12.44.0</strong> cessent d'envoyer les headers beta sur <code>client.beta.files</code> et <code>client.beta.skills</code>, qui renvoient désormais les mêmes formes que <code>client.files</code> et <code>client.skills</code> : <code>client.beta.skills.delete()</code> supprime maintenant une Skill <strong>avec toutes ses versions</strong>, et le type <code>BetaSkill</code> est renommé <code>BetaContainerSkill</code>. La veille, le <strong>26 août</strong>, l'<strong>Admin API</strong> devient accessible depuis la CLI <code>ant</code> et huit SDK sous <code>client.beta.organization</code>.</p>
+          <p class="item-source"><a href="https://platform.claude.com/docs/en/release-notes/overview" target="_blank" rel="noopener">platform.claude.com — release notes (26 et 27 août 2026)</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-30-anthropic-compliance-api-cowork.html">Compliance API — les sessions Cowork et Claude Code sortent du beta</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-26</span>
+          </div>
+          <p class="item-context">Le <strong>26 août</strong>, les endpoints de session de la <strong>Compliance API</strong> quittent le beta pour les sessions <strong>Cowork</strong> et <strong>Claude Code</strong> : récupérer les transcriptions de ces sessions devient une capacité stable, pas une expérimentation. Dans le même mouvement, les endpoints de <strong>sessions locales</strong> renvoient désormais aussi les transcriptions des sessions <strong>Claude Science</strong> (valeur <code>product_surface</code> égale à <code>claude_science</code>) et des sessions <strong>Claude pour Microsoft 365</strong> dans Excel, PowerPoint, Word et Outlook (valeurs de <code>product_surface</code> commençant par <code>office_agents</code>) — en beta, pour les organisations <strong>Claude Enterprise</strong>, avec la clé d'accès Compliance existante et la portée <code>read:compliance_user_data</code>. Aucune nouvelle authentification à mettre en place : ce sont les mêmes identifiants, avec un périmètre élargi.</p>
+          <p class="item-source"><a href="https://platform.claude.com/docs/en/release-notes/overview" target="_blank" rel="noopener">platform.claude.com — release notes (26 août 2026)</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-30-claudeforce-salesforce.html">Claudeforce — Salesforce met 37 skills de vente dans un plugin Claude</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-26</span>
+          </div>
+          <p class="item-context">Le <strong>26 août</strong>, Salesforce et Anthropic annoncent <strong>Claudeforce</strong>, une extension de partenariat en <strong>quatre volets</strong> : un plugin Salesforce qui tourne <strong>dans</strong> Claude, Claude qui tourne <strong>dans</strong> les produits Salesforce, Claude installé comme <strong>modèle par défaut à travers Slack</strong>, et un accord commercial réciproque où chaque entreprise devient un client significatif de l'autre. Le premier livrable est « Salesforce in Claude », un plugin qui embarque <strong>37 skills de vente préconstruites</strong> — préparation de rendez-vous, revue de santé d'un deal, analyse de pipeline — permettant d'interroger, de mettre à jour et d'agir sur des <strong>données CRM en direct</strong> sans jamais ouvrir Salesforce. Il est disponible pour un groupe restreint de <strong>clients pilotes</strong>, avant une <strong>beta ouverte en septembre 2026</strong> ; d'autres skills préconstruites sont annoncées pour la fin 2026.</p>
+          <p class="item-source"><a href="https://www.salesforce.com/news/press-releases/2026/08/26/salesforce-and-anthropic-announce-claudeforce/" target="_blank" rel="noopener">salesforce.com — communiqué Claudeforce (26 août 2026)</a> · <a href="https://www.cnbc.com/2026/08/26/salesforce-anthropic-partnership-claudeforce.html" target="_blank" rel="noopener">CNBC — Salesforce, Anthropic expand partnership</a> · <a href="https://venturebeat.com/orchestration/salesforce-just-put-its-entire-crm-inside-claude-and-says-youll-never-need-its-app-again" target="_blank" rel="noopener">VentureBeat — Salesforce puts its CRM inside Claude</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">10 000 sièges Claude Team ouverts aux scientifiques</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-08-27</span>
+          </div>
+          <p class="item-context">Anthropic ouvre <strong>10 000 sièges</strong> d'un plan Claude Team destiné aux scientifiques : le siège standard est <strong>gratuit</strong>, le siège premium à <strong>15 $/mois</strong> offre <strong>cinq fois</strong> les limites d'usage, et les tarifs sont figés pour <strong>un an</strong>. L'accès passe par une vérification réservée aux chercheurs principaux d'universités accréditées et d'instituts de recherche à but non lucratif, en sciences naturelles, mathématiques, informatique et ingénierie, un chercheur vérifié pouvant ensuite ajouter son laboratoire. Anthropic annonce vouloir étendre le programme <strong>au-delà des 10 000 sièges</strong> dans les mois qui viennent.</p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">5 M$ de bourses pour mesurer l'effet des modèles sur le bien-être des utilisateurs</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-08-25</span>
+          </div>
+          <p class="item-context">Le <strong>25 août</strong>, Anthropic lance un programme de bourses de <strong>5 millions de dollars</strong> destiné à financer de la recherche indépendante sur l'impact de l'IA sur le bien-être de ses utilisateurs. Les équipes retenues reçoivent un financement direct, un accès aux modèles et un support technique pour construire des <strong>évaluations open source</strong> réutilisables par n'importe quel développeur, et travaillent en pleine indépendance. Les candidatures sont ouvertes jusqu'au <strong>21 septembre</strong>, avec réponse aux candidats sélectionnés le <strong>5 octobre</strong>.</p>
+        </article>
+      </section>
+
+      <!-- ─── OPENAI ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/openai/1b1818/f3f1ee" alt="" />OpenAI<span class="count">2 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-30-openai-jalapeno-benchmarks.html">Jalapeño — OpenAI publie les premiers benchmarks de sa puce d'inférence</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-25</span>
+          </div>
+          <p class="item-context">Le <strong>25 août</strong>, à la conférence <strong>Hot Chips</strong>, OpenAI publie la première série de résultats de <strong>Jalapeño</strong>, sa puce d'inférence maison. Les chiffres, mesurés sur le benchmark <strong>InferenceX</strong> : au débit maximal, l'accélérateur délivre <strong>1,5 à 1,9× plus de travail par watt</strong> que les systèmes commerciaux de comparaison, avec <strong>1,7 à 3,6× moins de latence</strong> bout-en-bout, et jusqu'à <strong>2,1 à 4,1×</strong> de gain sur les charges très interactives. L'argument central est de tenir <strong>les deux à la fois</strong> — débit et latence — là où les architectures existantes arbitrent généralement entre l'un et l'autre. Les mesures ont été prises sur <strong>GPT-OSS 120B, DeepSeek R1 et Kimi K2.5 1T</strong>, trois modèles ouverts, ce qui rend les chiffres au moins reproductibles en principe. Le déploiement commence <strong>avant fin 2026</strong> dans l'infrastructure d'OpenAI, mais « en très petits volumes » selon l'entreprise, avec un vrai passage à l'échelle en <strong>2027</strong> ; une <strong>génération 2</strong> est annoncée bien avancée et une génération 3 en conception. Le lendemain, <strong>26 août</strong>, un billet de la directrice financière Sarah Friar replace la puce dans la pile complète — datacenters et puces, modèles frontière, plateforme développeur, produits, appareils.</p>
+          <p class="item-source"><a href="https://openai.com/index/jalapeno-first-results/" target="_blank" rel="noopener">openai.com — Jalapeño's first results (25 août 2026)</a> · <a href="https://openai.com/index/the-full-stack-behind-abundant-intelligence/" target="_blank" rel="noopener">openai.com — The full stack behind abundant intelligence (26 août 2026)</a> · <a href="https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/" target="_blank" rel="noopener">TechCrunch — OpenAI's Jalapeño chip is built for fast inference at scale</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Codex CLI — la commande <code>codex mcp-server</code> est dépréciée</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-08-24</span>
+          </div>
+          <p class="item-context">Le <strong>24 août</strong>, la commande <code>codex mcp-server</code> du Codex CLI est dépréciée, au profit du <strong>Codex app server</strong>. Elle fait suite à la version <strong>0.149.0</strong> du 20 août, qui avait ajouté un tableau de bord interactif <code>codex agents</code> pour chercher, lancer, ouvrir, renommer et arrêter des tâches, les commandes <code>/cd</code>, <code>/pwd</code> et <code>/cwd</code>, et un <code>codex queue</code> pour envoyer des messages à une session locale ou distante existante. Toute automatisation qui exposait Codex comme serveur MCP via cette commande est à migrer.</p>
+        </article>
+      </section>
+
+      <!-- ─── GOOGLE DEEPMIND ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/googlegemini/1b1818/f3f1ee" alt="" />Google DeepMind<span class="count">1 item</span></h2>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Gemini Omni 1.1 Flash en preview publique, CodeMender passe à 3.6 et 3.7 Flash</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-08-27</span>
+          </div>
+          <p class="item-context">Le <strong>27 août</strong>, <strong>Gemini Omni 1.1 Flash</strong> passe en preview publique dans Google AI Studio, l'API Gemini, Flow et l'application Gemini, avec des contrôles de génération vidéo revus : extension de scène qui analyse jusqu'à <strong>10 secondes de contexte antérieur</strong> contre une seule auparavant, interpolation entre première et dernière image, références vidéo, prototypage rapide en 360p et upscale en 4K. Le même jour, la <strong>Gemini Enterprise Agent Platform</strong> ajoute le support de <strong>Gemini 3.6 et 3.7 Flash</strong> à CodeMender, avec vérification sans restriction et corrections de bac à sable. À noter au passage : le modèle <code>gemini-robotics-er-1.6-preview</code> s'éteint le <strong>31 août</strong>.</p>
+        </article>
+      </section>
+
+      <!-- ─── META ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/meta/1b1818/f3f1ee" alt="" />Meta<span class="count">0 item</span></h2>
+
+        <p class="actor-empty">Rien de notable cette semaine — aucune annonce datée entre le 23 et le 30 août. La séquence Muse (Muse Code et Muse Spark 1.2 le 5 août, Muse Glimmer 30B sous Apache 2.0 le 10 août) a été couverte dans les briefs précédents ; la version open weights de Muse Spark 1.2, re-promise le 20 août, n'a toujours ni date, ni licence nommée, ni poids publiés.</p>
+      </section>
+
+      <!-- ─── MISTRAL ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/mistralai/1b1818/f3f1ee" alt="" />Mistral<span class="count">1 item</span></h2>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Mistral et HUMAIN s'associent sur l'IA souveraine en Arabie saoudite</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-08-24</span>
+          </div>
+          <p class="item-context">Le <strong>24 août</strong>, Mistral et <strong>HUMAIN</strong> annoncent une collaboration stratégique chiffrée en <strong>centaines de millions d'euros</strong>, couvrant l'infrastructure IA, le développement de modèles et le déploiement de solutions en Arabie saoudite et dans la région. Les premiers chantiers annoncés portent sur la <strong>cybersécurité</strong> et la <strong>voix</strong>, avec l'objectif de modèles frontière performants en <strong>arabe</strong>, et Mistral indique explorer l'usage des datacenters de HUMAIN pour absorber ses besoins de calcul locaux. L'ensemble est présenté sous l'angle de l'IA souveraine — données, calcul et opérations sous contrôle du client, modèles adaptables et détenus en poids ouverts, entraînement et inférence dans la juridiction choisie.</p>
+        </article>
+      </section>
+
+      <!-- ─── ACTEURS SECONDAIRES ─── -->
+      <section class="actor-section reveal">
+        <h2 style="font-size:18px;color:var(--text-muted);">Acteurs secondaires<span class="count">2 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-30-perplexity-portable-computer.html">Portable Computer — Perplexity fait tourner tout l'agent en local, sans crédit consommé</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-08-25</span>
+          </div>
+          <p class="item-context">Le <strong>25 août</strong>, Perplexity lance <strong>Portable Computer</strong>, une version de sa plateforme agentique <em>Computer</em> dont <strong>toute la pile d'exécution</strong> — LLM orchestrateur, LLM sous-agent, harness d'agent — tourne <strong>sur le matériel de l'utilisateur</strong>, sans dépendance au cloud. Le modèle embarqué est un <strong>PPLX 27B</strong> post-entraîné et installé localement ; <strong>Qwen 3.8 27B</strong> est également disponible, et le support de NVIDIA Nemotron 3.5 Lightning est annoncé. Côté matériel, la première version cible les plateformes <strong>NVIDIA GB10</strong> — DGX Spark, Dell Pro Max avec GB10 — ou tout PC x86 sous Ubuntu équipé d'un GPU NVIDIA d'au moins <strong>24 Go de VRAM</strong>. Deux propriétés font la différence : le travail effectué localement <strong>ne consomme aucun crédit de facturation</strong>, et chaque tâche <strong>démarre sur l'appareil par défaut</strong>, le système demandant une <strong>autorisation explicite</strong> avant d'envoyer la moindre étape vers un modèle frontière dans le cloud. L'accès est réservé aux abonnés <strong>Pro et Max</strong>, sur Linux d'abord, Windows annoncé. En parallèle, <em>Personal Computer</em> arrive sur Mac dans l'application de bureau, avec édition de fichiers locaux, contrôle de la machine, navigation locale via Comet et orchestration vocale.</p>
+          <p class="item-source"><a href="https://www.perplexity.ai/hub/blog/introducing-portable-computer-for-local-first-ai" target="_blank" rel="noopener">perplexity.ai/hub — Introducing Portable Computer for local-first AI</a> · <a href="https://venturebeat.com/infrastructure/perplexity-partners-with-nvidia-to-launch-portable-computer-a-fully-local-ai-agent-with-zero-token-costs" target="_blank" rel="noopener">VentureBeat — Perplexity partners with Nvidia to launch Portable Computer</a> · <a href="https://www.theregister.com/ai-and-ml/2026/08/26/now_perplexity_is_trying_to/" target="_blank" rel="noopener">The Register — Now Perplexity is trying to get into the local AI action</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-08-30-cursor-cloud-agents-sans-scm.html">Cursor détache ses cloud agents de tout fournisseur SCM</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-08-27</span>
+          </div>
+          <p class="item-context">Le <strong>27 août</strong>, les <strong>cloud agents</strong> de Cursor cessent d'exiger un GitHub — ou tout autre fournisseur SCM — connecté pour démarrer. On peut désormais lancer un prompt immédiatement, puis sauvegarder le travail dans un dépôt <strong>Cursor Origin</strong> en choisissant « Start from scratch » dans le sélecteur de dépôt. Deux ajouts complètent la boucle : Cursor <strong>redirige le port</strong> de l'environnement vivant du cloud agent directement vers le navigateur, ce qui permet de prévisualiser ce que l'agent construit pendant qu'il le construit, et un <strong>compte Vercel</strong> connecté permet de publier en un clic pour obtenir une URL en ligne. C'est la suite directe de Cursor Origin, l'hébergement de code lancé en beta le 17 août, et des améliorations de harness du 19 août qui visaient des agents capables de tenir un objectif sans intervention à chaque boucle.</p>
+          <p class="item-source"><a href="https://cursor.com/changelog" target="_blank" rel="noopener">cursor.com/changelog — entrée du 27 août 2026</a></p>
+        </article>
+      </section>
+
+      <section class="sources-footer">
+        <strong>Sources consultées</strong>
+        <a href="https://www.anthropic.com/news/model-hardware-standard-research-preview">anthropic.com — Model Hardware Standard</a> · <a href="https://code.claude.com/docs/en/changelog">code.claude.com/changelog</a> · <a href="https://platform.claude.com/docs/en/release-notes/overview">platform.claude.com — release notes</a> · <a href="https://www.anthropic.com/news/expanding-support-for-scientists">anthropic.com — support for scientists</a> · <a href="https://www.anthropic.com/news/wellbeing-research-grants">anthropic.com — wellbeing research grants</a> · <a href="https://www.salesforce.com/news/press-releases/2026/08/26/salesforce-and-anthropic-announce-claudeforce/">salesforce.com — Claudeforce</a> · <a href="https://openai.com/index/jalapeno-first-results/">openai.com — Jalapeño's first results</a> · <a href="https://openai.com/index/the-full-stack-behind-abundant-intelligence/">openai.com — The full stack behind abundant intelligence</a> · <a href="https://www.perplexity.ai/hub/blog/introducing-portable-computer-for-local-first-ai">perplexity.ai/hub — Portable Computer</a> · <a href="https://mistral.ai/news/mistral-x-humain/">mistral.ai — Mistral x HUMAIN</a> · <a href="https://cursor.com/changelog">cursor.com/changelog</a> · <a href="https://docs.cloud.google.com/gemini/enterprise/docs/release-notes">docs.cloud.google.com — Gemini Enterprise release notes</a>
+      </section>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-08-23.html">
+          <span class="label">← Brief précédent</span>
+          <span class="title">La plateforme Claude sort du beta</span>
+        </a>
+        <a class="next" href="./">
+          <span class="label">Voir l'archive →</span>
+          <span class="title">Tous les briefs</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Brief généré le 2026-08-30</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

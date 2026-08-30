@@ -1,6 +1,125 @@
 {
   "briefs": [
     {
+      "date": "2026-08-30",
+      "filename": "2026-08-30.html",
+      "items_count": 13,
+      "by_tag": {
+        "lynxter": 3,
+        "useful": 5,
+        "info": 5
+      },
+      "by_actor": {
+        "Anthropic": 7,
+        "OpenAI": 2,
+        "Google": 1,
+        "Mistral": 1,
+        "Perplexity": 1,
+        "Cursor": 1,
+        "Meta": 0
+      },
+      "mode": "hebdomadaire",
+      "title": "Anthropic ouvre les machines aux agents",
+      "highlights": [
+        "Le 27 août, Anthropic ouvre le research preview du Model Hardware Standard. MHS est une spécification partagée pour que des agents opèrent des équipements physiques en sécurité : elle marche avec tout appareil doté d'une interface programmable, reste model-agnostic (n'importe quel harness y accède via des protocoles standards, MCP compris), rend les appareils découvrables, et laisse l'opérateur décrire en langage naturel ce qu'un manuel contient mais pas le code — masse d'un bras, limites de sécurité. L'intégration d'un instrument passe de plusieurs semaines à quelques heures ou minutes. Chiffres du preview : 58 % → 99,3 % de stabilisation laser chez QuEra, semaines → un jour sur une expérience d'imagerie chez HHMI Janelia, gestion d'erreurs en temps réel sur une expérience de drug discovery chez Genentech. Réservé pour l'instant à un groupe restreint d'organisations en science, robotique et manufacturing ; Anthropic annonce l'intention d'ouvrir le standard en open source.",
+        "Claude Code sort 2.1.248, 2.1.250 et 2.1.251 en deux jours, avec deux corrections de sécurité. La 2.1.251 corrige des outils fichiers qui suivaient les liens symboliques et pouvaient donc lire ou écrire hors des emplacements approuvés, ainsi que des commandes de plugin pointant hors du répertoire du plugin (traversée de chemin). La 2.1.248 ajoute un drapeau --restricted qui retire les outils intégrés (commandes, exécution de code, WebFetch), un experimental.cacheTtl par agent dans le frontmatter, et corrige un manque de cache de prompt survenant environ une fois par heure dans les sessions longues, causé par un re-rendu des définitions d'outils. La 2.1.251 ajoute les hooks PreModelSwitch / PostModelSwitch, une barre de plafond de dépense dans /usage et des métriques de cache par session dans /cost.",
+        "L'agent local devient un produit livrable, et OpenAI montre sa puce. Le 25 août, Perplexity Portable Computer fait tourner toute la pile — LLM orchestrateur, LLM sous-agent, harness — sur la machine de l'utilisateur (NVIDIA GB10 / DGX Spark, ou x86 Ubuntu avec GPU NVIDIA ≥ 24 Go de VRAM), avec un PPLX 27B post-entraîné installé localement, zéro crédit consommé pour le travail local et une demande d'autorisation avant tout envoi d'une étape vers un modèle frontière dans le cloud. Le même jour à Hot Chips, OpenAI publie les premiers chiffres de Jalapeño : 1,5 à 1,9× plus de travail par watt au débit maximal et 1,7 à 3,6× moins de latence bout-en-bout que les systèmes de comparaison, jusqu'à 2,1 à 4,1× sur les charges très interactives, mesurés sur GPT-OSS 120B, DeepSeek R1 et Kimi K2.5 1T."
+      ],
+      "items": [
+        {
+          "slug": "2026-08-30-anthropic-model-hardware-standard",
+          "title": "Model Hardware Standard — un standard pour que les agents pilotent des machines physiques",
+          "primary_url": "https://www.anthropic.com/news/model-hardware-standard-research-preview",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-30-claude-code-2-1-248-251",
+          "title": "Claude Code 2.1.248 → 2.1.251 — deux évasions de chemin corrigées, un drapeau --restricted",
+          "primary_url": "https://code.claude.com/docs/en/changelog",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-30-anthropic-cles-personnelles-admin-api",
+          "title": "Clés personnelles et clés de compte de service dans la Console, Admin API dans huit SDK",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-30-anthropic-compliance-api-cowork",
+          "title": "Compliance API — les sessions Cowork et Claude Code sortent du beta",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-30-claudeforce-salesforce",
+          "title": "Claudeforce — Salesforce met 37 skills de vente dans un plugin Claude",
+          "primary_url": "https://www.salesforce.com/news/press-releases/2026/08/26/salesforce-and-anthropic-announce-claudeforce/",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-30-anthropic-sieges-scientifiques",
+          "title": "10 000 sièges Claude Team ouverts aux scientifiques",
+          "primary_url": "https://www.anthropic.com/news/expanding-support-for-scientists",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-30-anthropic-bourses-wellbeing",
+          "title": "5 M$ de bourses pour mesurer l'effet des modèles sur le bien-être des utilisateurs",
+          "primary_url": "https://www.anthropic.com/news/wellbeing-research-grants",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-08-30-openai-jalapeno-benchmarks",
+          "title": "Jalapeño — OpenAI publie les premiers benchmarks de sa puce d'inférence",
+          "primary_url": "https://openai.com/index/jalapeno-first-results/",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-30-codex-mcp-server-deprecie",
+          "title": "Codex CLI — la commande codex mcp-server est dépréciée",
+          "primary_url": "https://www.gradually.ai/en/changelogs/codex-cli/",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-08-30-gemini-omni-1-1-flash",
+          "title": "Gemini Omni 1.1 Flash en preview publique, CodeMender passe à 3.6 et 3.7 Flash",
+          "primary_url": "https://docs.cloud.google.com/gemini/enterprise/docs/release-notes",
+          "tag": "info",
+          "actor": "Google"
+        },
+        {
+          "slug": "2026-08-30-mistral-humain",
+          "title": "Mistral et HUMAIN s'associent sur l'IA souveraine en Arabie saoudite",
+          "primary_url": "https://mistral.ai/news/mistral-x-humain/",
+          "tag": "info",
+          "actor": "Mistral"
+        },
+        {
+          "slug": "2026-08-30-perplexity-portable-computer",
+          "title": "Portable Computer — Perplexity fait tourner tout l'agent en local, sans crédit consommé",
+          "primary_url": "https://www.perplexity.ai/hub/blog/introducing-portable-computer-for-local-first-ai",
+          "tag": "lynxter",
+          "actor": "Perplexity"
+        },
+        {
+          "slug": "2026-08-30-cursor-cloud-agents-sans-scm",
+          "title": "Cursor détache ses cloud agents de tout fournisseur SCM",
+          "primary_url": "https://cursor.com/changelog",
+          "tag": "useful",
+          "actor": "Cursor"
+        }
+      ]
+    },
+    {
       "date": "2026-08-23",
       "filename": "2026-08-23.html",
       "items_count": 13,
