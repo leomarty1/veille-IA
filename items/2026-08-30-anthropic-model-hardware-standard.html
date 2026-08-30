@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Hardware Standard — un standard pour que les agents pilotent des machines physiques — Veille IA Lynxter</title>
+<meta name="description" content="Le 27 août 2026, Anthropic ouvre le research preview du Model Hardware Standard, une spécification partagée pour que des agents IA opèrent des équipements physiques en recherche et en manufacturing avancé. Détails techniques et implications Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-08-30.html">2026-08-30</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Model Hardware Standard</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Anthropic</span>
+          <span class="dot-sep">·</span>
+          <span>27 août 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-lynxter">🎯 Lynxter</span>
+        </div>
+        <h1>Model Hardware Standard — un standard pour que les agents pilotent des machines physiques</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-08-30.html">Anthropic ouvre les machines aux agents — 2026-08-30</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">58 → 99,3<span class="unit">%</span></div>
+            <div class="stat-label">stabilisation laser chez QuEra</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">semaines → 1<span class="unit">jour</span></div>
+            <div class="stat-label">imagerie chez HHMI Janelia</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">semaines → heures<span class="unit"></span></div>
+            <div class="stat-label">temps d'intégration d'un instrument</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">1<span class="unit">standard</span></div>
+            <div class="stat-label">model-agnostic, accessible via MCP</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Le problème que MHS attaque n'est pas l'intelligence de l'agent, c'est la <strong>plomberie</strong>. Chaque instrument de laboratoire ou de production expose son interface à sa façon : un SDK propriétaire ici, un protocole série là, une API REST maison ailleurs. Brancher un agent sur un microscope, puis sur un manipulateur de liquides, puis sur un bras robotisé, c'est aujourd'hui trois intégrations sur mesure et trois occasions de se tromper. MHS introduit un <strong>pilote standardisé</strong> qui traduit entre le système d'exploitation et l'appareil avec des commandes simples de type <em>read</em> et <em>write</em>, plus une couche de découverte qui permet à l'agent de savoir ce qu'une machine <em>est</em> et ce qu'elle peut faire sans qu'on le lui code en dur. Anthropic annonce un temps d'intégration ramené de <strong>plusieurs semaines à quelques heures, voire quelques minutes</strong>, et la capacité pour un agent d'opérer <strong>plusieurs instruments en parallèle</strong>.</p>
+        <p>La partie la plus intéressante de la spécification n'est pas technique, elle est <strong>documentaire</strong>. MHS demande à l'opérateur d'écrire, <strong>en langage naturel</strong>, les caractéristiques de l'appareil que le code ne contient pas mais que le manuel porte : la masse d'un bras robotisé, les limites de sécurité, ce qui ne doit jamais être tenté. C'est un choix de conception qui reconnaît une évidence du terrain — le savoir critique sur une machine industrielle vit dans la tête des techniciens et dans des PDF, pas dans son firmware. Le reste est délibérément neutre : MHS fonctionne avec <strong>tout appareil doté d'une interface programmable</strong>, il est <strong>model-agnostic</strong>, et n'importe quel harness d'agent y accède via des <strong>protocoles standards, dont MCP</strong>. Anthropic ne construit pas un jardin fermé : le standard est annoncé comme destiné à être <strong>ouvert en open source</strong>.</p>
+        <p>Les chiffres publiés avec le preview sont des résultats de terrain, pas des benchmarks synthétiques. Chez <strong>QuEra</strong>, des agents ont amélioré la stabilisation laser des calculateurs quantiques de <strong>58 % à 99,3 %</strong> — un gain de 41 points sur une tâche de calibration que des humains font à la main aujourd'hui. Au <strong>HHMI Janelia Research Campus</strong>, une expérience d'imagerie qui prenait <strong>plusieurs semaines</strong> a été comprimée à <strong>une journée</strong>. Chez <strong>Genentech</strong>, une expérience de <em>drug discovery</em> a tourné avec gestion d'erreurs en temps réel — l'agent ne se contente pas d'exécuter une séquence, il réagit quand la manipulation dérape. La comparaison inter-acteurs est instructive : Google DeepMind pousse depuis un an des modèles Gemini Robotics dédiés (dont <code>gemini-robotics-er-1.6-preview</code>, qui s'éteint le 31 août), c'est-à-dire des <em>modèles</em> spécialisés en contrôle robotique. Anthropic prend l'angle inverse : pas un modèle pour le matériel, une <strong>couche d'interopérabilité</strong> que n'importe quel modèle peut emprunter. C'est exactement la stratégie qui a fait gagner MCP côté logiciel.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🎯 Pourquoi c'est important pour Lynxter</h2>
+        <p>Le périmètre annoncé — « recherche scientifique et <strong>manufacturing avancé</strong> » — décrit littéralement le marché de Lynxter. Une <strong>S300X</strong> ou une <strong>S600D</strong> est un appareil à interface programmable, avec de la télémétrie, des états, des enveloppes de sécurité et un manuel plein de savoir que le firmware ne porte pas. Si MHS s'ouvre comme annoncé, la question ne sera pas « peut-on brancher un agent sur la machine » mais « qui a déjà écrit la description ». C'est là que se joue l'avance.</p>
+        <p>Deux actions concrètes, faisables cette semaine, sans attendre l'accès au preview. <strong>Un : inventorier la surface programmable</strong> des machines — points d'entrée de contrôle, télémétrie exposée, ce qui est lisible, ce qui est écrivable, ce qui ne l'est que par l'IHM. C'est un tableau d'une page qui n'existe probablement nulle part sous cette forme. <strong>Deux : rédiger l'enveloppe de sécurité en français</strong>, exactement dans l'esprit que MHS demande : températures maximales par matériau, états depuis lesquels on ne relance pas une impression, opérations qui exigent une présence physique, ce qu'un agent ne doit jamais tenter seul. Ces deux documents sont la moitié du travail d'intégration le jour où le standard s'ouvre — et ils n'ont aucun coût d'option, puisqu'ils servent aussi de base à la documentation SAV et aux réponses RFP.</p>
+        <p>Sur le plan commercial, l'argument arrive vite. Un client industriel qui compare deux imprimantes en 2027 posera la question de l'automatisation pilotée par agent, comme il pose aujourd'hui celle de l'API et de la supervision de parc. Être en mesure de dire « notre machine est décrite dans un standard ouvert que n'importe quel agent peut lire » sera un différenciateur bon marché — la spécification étant model-agnostic et destinée à l'open source, l'adopter n'enferme pas Lynxter chez Anthropic. À surveiller sur les prochaines semaines : la publication effective du standard, la liste des organisations du preview (des fabricants d'équipement y figurent), et les premiers pilotes MHS côté fabricants de machines-outils.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://www.anthropic.com/news/model-hardware-standard-research-preview" target="_blank" rel="noopener">anthropic.com/news/model-hardware-standard-research-preview</a>
+        <span class="source-meta">Anthropic · annonce du 27 août 2026 · research preview, phase 1</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-08-30-claude-code-2-1-248-251.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code 2.1.248 → 2.1.251</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-08-30-perplexity-portable-computer.html">
+            <span class="related-actor">Perplexity</span>
+            <span class="related-title">Portable Computer — tout l'agent en local</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-08-30-claudeforce-salesforce.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claudeforce — 37 skills de vente dans Claude</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="../briefs/2026-08-30.html">
+          <span class="label">← Retour au brief</span>
+          <span class="title">2026-08-30</span>
+        </a>
+        <a class="next" href="2026-08-30-claude-code-2-1-248-251.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Claude Code 2.1.248 → 2.1.251</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-08-30</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

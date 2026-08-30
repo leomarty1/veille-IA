@@ -1,0 +1,491 @@
+{
+  "date": "2026-08-30",
+  "title": "Anthropic ouvre les machines aux agents",
+  "title_html": "Anthropic ouvre les <em style=\"font-style:normal;color:var(--lx-accent);\">machines</em><br>aux agents",
+  "description": "Brief IA du 23 au 30 août 2026 : Anthropic ouvre le research preview du Model Hardware Standard pour que les agents pilotent des équipements physiques en recherche et en manufacturing avancé, Claude Code corrige deux évasions de chemin en trois versions, Perplexity fait tourner tout son agent en local sur DGX Spark, OpenAI publie les premiers chiffres de sa puce Jalapeño, Salesforce met 37 skills de vente dans Claude.",
+  "period": "23 août → 30 août 2026",
+  "actors_scanned": 9,
+  "intro_html": "La semaine bascule côté matériel. Le <strong>27 août</strong>, Anthropic ouvre la première phase du research preview du <strong>Model Hardware Standard</strong> (MHS) : une spécification pour que des agents découvrent, pilotent et dépannent des <strong>équipements physiques</strong> — microscopes, bras robotisés, manipulateurs de liquides — en recherche scientifique et en <strong>manufacturing avancé</strong>, model-agnostic et accessible depuis n'importe quel harness via des protocoles standards, MCP compris. Les premiers résultats sont chiffrés : stabilisation laser passée de <strong>58 % à 99,3 %</strong> sur les calculateurs quantiques de QuEra, expérience d'imagerie comprimée de plusieurs semaines à <strong>une journée</strong> chez HHMI Janelia. Claude Code enchaîne <strong>2.1.248 → 2.1.251</strong> en deux jours avec deux corrections de sécurité (évasion par lien symbolique dans les outils fichiers, traversée de chemin sur les commandes de plugin) et un drapeau <code>--restricted</code>. Le <strong>25 août</strong>, Perplexity sort <strong>Portable Computer</strong> : orchestrateur, sous-agents et harness tournent <strong>entièrement en local</strong> sur DGX Spark ou GPU NVIDIA ≥ 24 Go, sans crédit consommé. OpenAI publie à Hot Chips les premiers benchmarks de <strong>Jalapeño</strong>, sa puce d'inférence maison. Salesforce et Anthropic annoncent <strong>Claudeforce</strong>. Meta : rien de daté dans la fenêtre.",
+  "tldr": [
+    "<strong>Le 27 août, Anthropic ouvre le research preview du Model Hardware Standard.</strong> MHS est une spécification partagée pour que des agents opèrent des équipements physiques en sécurité : elle marche avec <strong>tout appareil doté d'une interface programmable</strong>, reste <strong>model-agnostic</strong> (n'importe quel harness y accède via des protocoles standards, MCP compris), rend les appareils <strong>découvrables</strong>, et laisse l'opérateur décrire en <strong>langage naturel</strong> ce qu'un manuel contient mais pas le code — masse d'un bras, limites de sécurité. L'intégration d'un instrument passe de plusieurs semaines à <strong>quelques heures ou minutes</strong>. Chiffres du preview : <strong>58 % → 99,3 %</strong> de stabilisation laser chez QuEra, <strong>semaines → un jour</strong> sur une expérience d'imagerie chez HHMI Janelia, gestion d'erreurs en temps réel sur une expérience de <em>drug discovery</em> chez Genentech. Réservé pour l'instant à un groupe restreint d'organisations en science, robotique et manufacturing ; Anthropic annonce l'intention d'ouvrir le standard en open source.",
+    "<strong>Claude Code sort 2.1.248, 2.1.250 et 2.1.251 en deux jours, avec deux corrections de sécurité.</strong> La 2.1.251 corrige des <strong>outils fichiers qui suivaient les liens symboliques</strong> et pouvaient donc lire ou écrire <strong>hors des emplacements approuvés</strong>, ainsi que des commandes de plugin pointant hors du répertoire du plugin (traversée de chemin). La 2.1.248 ajoute un drapeau <code>--restricted</code> qui <strong>retire les outils intégrés</strong> (commandes, exécution de code, WebFetch), un <code>experimental.cacheTtl</code> par agent dans le frontmatter, et corrige un <strong>manque de cache de prompt survenant environ une fois par heure</strong> dans les sessions longues, causé par un re-rendu des définitions d'outils. La 2.1.251 ajoute les hooks <code>PreModelSwitch</code> / <code>PostModelSwitch</code>, une barre de plafond de dépense dans <code>/usage</code> et des métriques de cache par session dans <code>/cost</code>.",
+    "<strong>L'agent local devient un produit livrable, et OpenAI montre sa puce.</strong> Le 25 août, <strong>Perplexity Portable Computer</strong> fait tourner <strong>toute</strong> la pile — LLM orchestrateur, LLM sous-agent, harness — sur la machine de l'utilisateur (NVIDIA GB10 / DGX Spark, ou x86 Ubuntu avec GPU NVIDIA ≥ 24 Go de VRAM), avec un <strong>PPLX 27B</strong> post-entraîné installé localement, <strong>zéro crédit consommé</strong> pour le travail local et une <strong>demande d'autorisation avant tout envoi</strong> d'une étape vers un modèle frontière dans le cloud. Le même jour à Hot Chips, OpenAI publie les premiers chiffres de <strong>Jalapeño</strong> : <strong>1,5 à 1,9× plus de travail par watt</strong> au débit maximal et <strong>1,7 à 3,6× moins de latence</strong> bout-en-bout que les systèmes de comparaison, jusqu'à <strong>2,1 à 4,1×</strong> sur les charges très interactives, mesurés sur GPT-OSS 120B, DeepSeek R1 et Kimi K2.5 1T."
+  ],
+  "lynxter_hero": [
+    "<strong>Le Model Hardware Standard vise explicitement le « manufacturing avancé » — c'est-à-dire vous.</strong> Depuis dix-huit mois, MCP a standardisé l'accès des agents aux <em>outils logiciels</em> ; MHS rejoue le même coup sur le <em>matériel</em>. La spécification s'applique à tout appareil doté d'une interface programmable, elle est model-agnostic (le harness importe peu, l'accès passe par des protocoles standards dont MCP), elle rend l'appareil découvrable, et surtout elle demande à l'opérateur d'écrire <strong>en langage naturel ce que le code ne contient pas</strong> : la masse du bras, l'enveloppe de sécurité, les limites à ne jamais franchir. Une S300X ou une S600D, avec son firmware, sa télémétrie et son interface de pilotage, entre exactement dans cette description. Ce qu'il faut faire cette semaine, avant même d'avoir accès au preview : <strong>inventorier la surface programmable</strong> de la machine (points d'entrée de contrôle, télémétrie disponible, ce qui est lisible et ce qui est écrivable), puis <strong>rédiger l'enveloppe de sécurité en français</strong> — températures maximales, états d'où l'on ne redémarre pas une impression, opérations qui exigent une présence humaine. Ce document est la moitié du travail d'intégration MHS le jour où le standard s'ouvre, et il n'a aucun coût d'option : il sert aussi de base à la documentation SAV.",
+    "<strong>Les deux correctifs de sécurité de Claude Code 2.1.251 rendent la mise à jour non négociable.</strong> Un outil fichier qui suit les liens symboliques peut lire ou écrire <strong>hors des emplacements approuvés</strong> — sur un poste de dev où le dépôt contient des liens vers des dossiers partagés, l'écart entre « l'agent travaille dans ce répertoire » et ce qu'il touche réellement n'est plus théorique. Même logique pour la traversée de chemin sur les commandes de plugin. Mettez à jour vers <strong>2.1.251</strong> et vérifiez la version sur les postes qui font tourner Claude Code sans surveillance. Dans la foulée, deux leviers concrets arrivent avec la 2.1.248 : <code>--restricted</code> <strong>retire les outils intégrés</strong> (commandes shell, exécution de code, WebFetch), ce qui donne enfin un profil serré pour un agent SAV qui doit lire de la doc et rédiger, jamais exécuter ; et <code>experimental.cacheTtl</code> permet de régler la durée de cache de prompt <strong>par agent</strong>, à combiner avec le correctif du manque de cache qui frappait environ <strong>une fois par heure</strong> les sessions longues. Sur un agent de support qui tourne la journée avec un gros prompt système, ce seul correctif se voit sur la facture.",
+    "<strong>Portable Computer prouve qu'un agent complet tient sur une machine d'atelier — et pose la bonne question de souveraineté.</strong> Perplexity fait tourner <strong>l'intégralité</strong> de la pile en local : orchestrateur, sous-agents, harness, sur un DGX Spark ou un simple x86 sous Ubuntu avec un GPU NVIDIA d'au moins <strong>24 Go de VRAM</strong>, avec un <strong>PPLX 27B</strong> post-entraîné (Qwen 3.8 27B aussi disponible). Deux propriétés comptent pour Lynxter : le travail local <strong>ne consomme aucun crédit</strong>, et le système <strong>demande l'autorisation avant d'envoyer la moindre étape</strong> vers un modèle frontière dans le cloud. Traduction : un agent qui lit des plans clients, des fichiers de tranchage ou des rapports d'intervention sans qu'aucun de ces fichiers ne quitte le bâtiment par défaut — l'argument exact que réclament les RFP industriels et les clients aéronautique/médical. Comparez honnêtement : un 27B local ne joue pas dans la catégorie d'Opus 5 ou de GPT-5.6 sur du raisonnement long. Mais pour du tri de tickets, de la recherche dans la documentation machine et de la rédaction de réponses SAV, c'est largement suffisant, et le coût marginal par tâche tombe à zéro. Un test à 24 Go de VRAM coûte une carte, pas un contrat."
+  ],
+  "synthese_html": "<p><strong>Anthropic</strong> tient l'annonce structurante de la fenêtre avec le <strong>Model Hardware Standard</strong> (27 août), un standard pour que des agents opèrent des équipements physiques en recherche et en manufacturing avancé, ouvert en research preview à un groupe restreint d'organisations et destiné à l'open source. Côté outil, <strong>Claude Code 2.1.248 → 2.1.251</strong> (27-28 août) corrige deux évasions de chemin — liens symboliques dans les outils fichiers, commandes de plugin hors répertoire — et ajoute <code>--restricted</code>, <code>experimental.cacheTtl</code> par agent et les hooks de bascule de modèle. Côté plateforme, les <strong>clés personnelles et clés de compte de service</strong> arrivent dans la Console et l'<strong>Admin API</strong> devient accessible depuis la CLI <code>ant</code> et huit SDK ; les endpoints de session de la <strong>Compliance API</strong> sortent du beta pour Cowork et Claude Code. Enfin, <strong>Claudeforce</strong> (26 août) met 37 skills de vente Salesforce dans un plugin Claude, en pilote avant une beta ouverte en septembre.</p><p><strong>OpenAI</strong> joue l'infrastructure : premiers benchmarks de <strong>Jalapeño</strong> à Hot Chips le 25 août — 1,5 à 1,9× de travail par watt et 1,7 à 3,6× de latence en moins face aux systèmes de comparaison — complétés le 26 par un billet de la directrice financière sur la pile complète, des puces aux produits. Côté outil, la commande <code>codex mcp-server</code> est dépréciée le 24 août au profit du Codex app server.</p><p><strong>Google DeepMind</strong> met <strong>Gemini Omni 1.1 Flash</strong> en preview publique le 27 août, avec extension de scène qui analyse jusqu'à 10 secondes de contexte antérieur contre 1 auparavant, et pousse le support de Gemini 3.6 et 3.7 Flash dans CodeMender sur la Gemini Enterprise Agent Platform. <strong>Mistral</strong> annonce le 24 août une collaboration avec <strong>HUMAIN</strong> chiffrée en centaines de millions d'euros sur l'infrastructure et des modèles frontière performants en arabe. <strong>Meta</strong> : rien de daté dans la fenêtre.</p><p>Côté acteurs secondaires, <strong>Perplexity</strong> sort <strong>Portable Computer</strong> le 25 août, un agent dont toute la pile tourne en local sur matériel NVIDIA, et <strong>Cursor</strong> détache ses cloud agents de tout fournisseur SCM le 27 août, avec redirection de port vers le navigateur et publication Vercel en un clic.</p>",
+  "actors_order": ["Anthropic", "OpenAI", "Google DeepMind", "Meta", "Mistral"],
+  "actor_empty": {
+    "Meta": "Rien de notable cette semaine — aucune annonce datée entre le 23 et le 30 août. La séquence Muse (Muse Code et Muse Spark 1.2 le 5 août, Muse Glimmer 30B sous Apache 2.0 le 10 août) a été couverte dans les briefs précédents ; la version open weights de Muse Spark 1.2, re-promise le 20 août, n'a toujours ni date, ni licence nommée, ni poids publiés."
+  },
+  "items": [
+    {
+      "slug": "2026-08-30-anthropic-model-hardware-standard",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "date": "2026-08-27",
+      "title": "Model Hardware Standard — un standard pour que les agents pilotent des machines physiques",
+      "context_html": "Le 27 août, Anthropic ouvre la <strong>première phase du research preview</strong> du <strong>Model Hardware Standard</strong> (MHS), une spécification partagée pour que des agents IA <strong>découvrent, opèrent et dépannent des équipements physiques</strong> en recherche scientifique et en <strong>manufacturing avancé</strong>. Le principe : un <strong>pilote standardisé</strong> qui traduit entre le système d'exploitation et l'appareil avec des commandes simples de type lecture/écriture, de sorte qu'un agent n'ait plus besoin d'une intégration sur mesure par instrument — l'intégration passe de plusieurs semaines à <strong>quelques heures ou minutes</strong>. MHS fonctionne avec <strong>tout appareil doté d'une interface programmable</strong>, reste <strong>model-agnostic</strong> (n'importe quel harness d'agent y accède via des protocoles standards, <strong>MCP compris</strong>), rend les appareils <strong>découvrables</strong>, et demande à l'opérateur de décrire <strong>en langage naturel</strong> les caractéristiques que le code ne porte pas mais que le manuel contient : masse d'un bras robotisé, limites de sécurité. Les agents peuvent opérer <strong>plusieurs instruments en parallèle</strong> — microscopes, manipulateurs de liquides, bras robotisés. Trois résultats sont publiés avec le preview : stabilisation laser améliorée de <strong>58 % à 99,3 %</strong> sur les calculateurs quantiques de <strong>QuEra</strong>, expérience d'imagerie comprimée de <strong>plusieurs semaines à une journée</strong> au <strong>HHMI Janelia Research Campus</strong>, et une expérience de <em>drug discovery</em> conduite avec gestion d'erreurs en temps réel chez <strong>Genentech</strong>. L'accès est limité à un groupe restreint d'organisations en science, robotique et manufacturing ; Anthropic déclare vouloir à terme <strong>ouvrir le standard en open source</strong>.",
+      "sources": [
+        { "label": "anthropic.com — Previewing the Model Hardware Standard (27 août 2026)", "url": "https://www.anthropic.com/news/model-hardware-standard-research-preview", "primary": true },
+        { "label": "CNBC — Anthropic pushes into physical world with new standard", "url": "https://www.cnbc.com/2026/08/27/anthropic-pushes-into-physical-world-with-new-standard-to-help-ai-agents-operate-machines.html", "primary": false },
+        { "label": "MarkTechPost — Anthropic opens a research preview of MHS", "url": "https://www.marktechpost.com/2026/08/29/anthropic-opens-a-research-preview-of-the-model-hardware-standard-mhs-a-shared-specification-for-ai-agents-to-safely-operate-physical-devices/", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Model Hardware Standard",
+        "date_long": "27 août 2026",
+        "description": "Le 27 août 2026, Anthropic ouvre le research preview du Model Hardware Standard, une spécification partagée pour que des agents IA opèrent des équipements physiques en recherche et en manufacturing avancé. Détails techniques et implications Lynxter.",
+        "stats": [
+          { "num": "58 → 99,3", "unit": "%", "label": "stabilisation laser chez QuEra" },
+          { "num": "semaines → 1", "unit": "jour", "label": "imagerie chez HHMI Janelia" },
+          { "num": "semaines → heures", "unit": "", "label": "temps d'intégration d'un instrument" },
+          { "num": "1", "unit": "standard", "label": "model-agnostic, accessible via MCP" }
+        ],
+        "context_paragraphs": [
+          "Le problème que MHS attaque n'est pas l'intelligence de l'agent, c'est la <strong>plomberie</strong>. Chaque instrument de laboratoire ou de production expose son interface à sa façon : un SDK propriétaire ici, un protocole série là, une API REST maison ailleurs. Brancher un agent sur un microscope, puis sur un manipulateur de liquides, puis sur un bras robotisé, c'est aujourd'hui trois intégrations sur mesure et trois occasions de se tromper. MHS introduit un <strong>pilote standardisé</strong> qui traduit entre le système d'exploitation et l'appareil avec des commandes simples de type <em>read</em> et <em>write</em>, plus une couche de découverte qui permet à l'agent de savoir ce qu'une machine <em>est</em> et ce qu'elle peut faire sans qu'on le lui code en dur. Anthropic annonce un temps d'intégration ramené de <strong>plusieurs semaines à quelques heures, voire quelques minutes</strong>, et la capacité pour un agent d'opérer <strong>plusieurs instruments en parallèle</strong>.",
+          "La partie la plus intéressante de la spécification n'est pas technique, elle est <strong>documentaire</strong>. MHS demande à l'opérateur d'écrire, <strong>en langage naturel</strong>, les caractéristiques de l'appareil que le code ne contient pas mais que le manuel porte : la masse d'un bras robotisé, les limites de sécurité, ce qui ne doit jamais être tenté. C'est un choix de conception qui reconnaît une évidence du terrain — le savoir critique sur une machine industrielle vit dans la tête des techniciens et dans des PDF, pas dans son firmware. Le reste est délibérément neutre : MHS fonctionne avec <strong>tout appareil doté d'une interface programmable</strong>, il est <strong>model-agnostic</strong>, et n'importe quel harness d'agent y accède via des <strong>protocoles standards, dont MCP</strong>. Anthropic ne construit pas un jardin fermé : le standard est annoncé comme destiné à être <strong>ouvert en open source</strong>.",
+          "Les chiffres publiés avec le preview sont des résultats de terrain, pas des benchmarks synthétiques. Chez <strong>QuEra</strong>, des agents ont amélioré la stabilisation laser des calculateurs quantiques de <strong>58 % à 99,3 %</strong> — un gain de 41 points sur une tâche de calibration que des humains font à la main aujourd'hui. Au <strong>HHMI Janelia Research Campus</strong>, une expérience d'imagerie qui prenait <strong>plusieurs semaines</strong> a été comprimée à <strong>une journée</strong>. Chez <strong>Genentech</strong>, une expérience de <em>drug discovery</em> a tourné avec gestion d'erreurs en temps réel — l'agent ne se contente pas d'exécuter une séquence, il réagit quand la manipulation dérape. La comparaison inter-acteurs est instructive : Google DeepMind pousse depuis un an des modèles Gemini Robotics dédiés (dont <code>gemini-robotics-er-1.6-preview</code>, qui s'éteint le 31 août), c'est-à-dire des <em>modèles</em> spécialisés en contrôle robotique. Anthropic prend l'angle inverse : pas un modèle pour le matériel, une <strong>couche d'interopérabilité</strong> que n'importe quel modèle peut emprunter. C'est exactement la stratégie qui a fait gagner MCP côté logiciel."
+        ],
+        "lynxter_paragraphs": [
+          "Le périmètre annoncé — « recherche scientifique et <strong>manufacturing avancé</strong> » — décrit littéralement le marché de Lynxter. Une <strong>S300X</strong> ou une <strong>S600D</strong> est un appareil à interface programmable, avec de la télémétrie, des états, des enveloppes de sécurité et un manuel plein de savoir que le firmware ne porte pas. Si MHS s'ouvre comme annoncé, la question ne sera pas « peut-on brancher un agent sur la machine » mais « qui a déjà écrit la description ». C'est là que se joue l'avance.",
+          "Deux actions concrètes, faisables cette semaine, sans attendre l'accès au preview. <strong>Un : inventorier la surface programmable</strong> des machines — points d'entrée de contrôle, télémétrie exposée, ce qui est lisible, ce qui est écrivable, ce qui ne l'est que par l'IHM. C'est un tableau d'une page qui n'existe probablement nulle part sous cette forme. <strong>Deux : rédiger l'enveloppe de sécurité en français</strong>, exactement dans l'esprit que MHS demande : températures maximales par matériau, états depuis lesquels on ne relance pas une impression, opérations qui exigent une présence physique, ce qu'un agent ne doit jamais tenter seul. Ces deux documents sont la moitié du travail d'intégration le jour où le standard s'ouvre — et ils n'ont aucun coût d'option, puisqu'ils servent aussi de base à la documentation SAV et aux réponses RFP.",
+          "Sur le plan commercial, l'argument arrive vite. Un client industriel qui compare deux imprimantes en 2027 posera la question de l'automatisation pilotée par agent, comme il pose aujourd'hui celle de l'API et de la supervision de parc. Être en mesure de dire « notre machine est décrite dans un standard ouvert que n'importe quel agent peut lire » sera un différenciateur bon marché — la spécification étant model-agnostic et destinée à l'open source, l'adopter n'enferme pas Lynxter chez Anthropic. À surveiller sur les prochaines semaines : la publication effective du standard, la liste des organisations du preview (des fabricants d'équipement y figurent), et les premiers pilotes MHS côté fabricants de machines-outils."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://www.anthropic.com/news/model-hardware-standard-research-preview",
+          "label": "anthropic.com/news/model-hardware-standard-research-preview",
+          "meta": "Anthropic · annonce du 27 août 2026 · research preview, phase 1"
+        },
+        "related": [
+          { "slug": "2026-08-30-claude-code-2-1-248-251", "actor": "Anthropic", "title": "Claude Code 2.1.248 → 2.1.251", "tag": "🎯" },
+          { "slug": "2026-08-30-perplexity-portable-computer", "actor": "Perplexity", "title": "Portable Computer — tout l'agent en local", "tag": "🎯" },
+          { "slug": "2026-08-30-claudeforce-salesforce", "actor": "Anthropic", "title": "Claudeforce — 37 skills de vente dans Claude", "tag": "🛠" }
+        ],
+        "nav": {
+          "prev": { "href": "../briefs/2026-08-30.html", "label": "← Retour au brief", "title": "2026-08-30" },
+          "next": { "href": "2026-08-30-claude-code-2-1-248-251.html", "label": "Item suivant →", "title": "Claude Code 2.1.248 → 2.1.251" }
+        }
+      }
+    },
+    {
+      "slug": "2026-08-30-claude-code-2-1-248-251",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "date": "2026-08-28",
+      "title": "Claude Code 2.1.248 → 2.1.251 — deux évasions de chemin corrigées, un drapeau <code>--restricted</code>",
+      "context_html": "Trois versions en deux jours : <strong>2.1.248</strong> le 27 août, <strong>2.1.250</strong> et <strong>2.1.251</strong> le 28. Les deux correctifs qui comptent sont dans la <strong>2.1.251</strong> : les <strong>outils fichiers suivaient les liens symboliques</strong> et pouvaient donc lire ou écrire <strong>hors des emplacements approuvés</strong>, et des <strong>commandes de plugin pointaient hors du répertoire du plugin</strong> (erreur de traversée de chemin). Côté nouveautés, la <strong>2.1.248</strong> ajoute un drapeau <code>--restricted</code> qui <strong>retire les outils intégrés</strong> (commandes, exécution de code, WebFetch), un <code>experimental.cacheTtl</code> dans le frontmatter d'agent pour régler la <strong>durée de cache de prompt par agent</strong>, un <code>claude self-hosted-runner --client-label</code>, des diagnostics sur les réglages gérés côté serveur, et <code>/usage-credits</code> pour les organisations Enterprise sur AWS Marketplace ; elle corrige surtout un <strong>manque de cache de prompt survenant environ une fois par heure</strong> dans les sessions longues, causé par un re-rendu des définitions d'outils, et des sessions Claude Desktop et Cowork qui disparaissaient au bout de <strong>30 jours</strong>. La <strong>2.1.251</strong> ajoute les hooks <code>PreModelSwitch</code> et <code>PostModelSwitch</code>, le streaming en direct des appels d'outils des sous-agents de premier plan vers les clients Remote Control, une <strong>barre de plafond de dépense</strong> dans <code>/usage</code> avec le champ <code>rate_limits.spend_limit</code>, des <strong>métriques de cache de prompt par session</strong> dans <code>/cost</code>, et les commandes <code>attach</code>, <code>logs</code>, <code>stop</code>, <code>respawn</code>, <code>rm</code> dans <code>claude --help</code> ; elle corrige des conversations bloquées sur « text content blocks must be non-empty » après un tour de pure réflexion, l'échec des requêtes <strong>Opus 5</strong> en effort <code>xhigh</code>/<code>max</code> avec la réflexion désactivée, la lenteur du TUI avec beaucoup de sous-agents parallèles, et une réponse finale de coéquipier qui n'atteignait pas le chef d'équipe dans les agent teams.",
+      "sources": [
+        { "label": "code.claude.com — changelog Claude Code (27-28 août 2026)", "url": "https://code.claude.com/docs/en/changelog", "primary": true }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Claude Code 2.1.248 → 2.1.251",
+        "date_long": "27-28 août 2026",
+        "description": "Claude Code sort 2.1.248, 2.1.250 et 2.1.251 en deux jours : deux corrections d'évasion de chemin, un drapeau --restricted, un cacheTtl par agent et un correctif de cache de prompt horaire. Détails et implications Lynxter.",
+        "stats": [
+          { "num": "3", "unit": "versions", "label": "2.1.248, 2.1.250, 2.1.251 en 2 jours" },
+          { "num": "2", "unit": "évasions", "label": "liens symboliques et chemins de plugin" },
+          { "num": "~1", "unit": "par heure", "label": "manques de cache corrigés en session longue" },
+          { "num": "30", "unit": "jours", "label": "sessions Desktop/Cowork qui disparaissaient" }
+        ],
+        "context_paragraphs": [
+          "Les deux corrections de sécurité de la <strong>2.1.251</strong> touchent la même classe de défaut : la frontière entre ce qu'un agent est autorisé à toucher et ce qu'il touche réellement. Les <strong>outils fichiers suivaient les liens symboliques</strong>, ce qui permettait de lire ou d'écrire <strong>hors des emplacements approuvés</strong> — sur un dépôt contenant un lien vers un montage réseau ou un dossier de configuration, l'autorisation « travaille dans ce répertoire » ne tenait plus. Le second défaut est une <strong>traversée de chemin</strong> classique : des commandes de plugin pointaient hors du répertoire du plugin. Aucun des deux n'exige une manipulation exotique pour se déclencher, et tous deux concernent des postes où Claude Code tourne souvent sans surveillance rapprochée.",
+          "Le drapeau <code>--restricted</code> introduit en <strong>2.1.248</strong> est la nouveauté la plus structurante pour qui déploie des agents contraints : il <strong>retire les outils intégrés</strong> — commandes, exécution de code, WebFetch. Jusqu'ici, restreindre un agent supposait d'empiler des règles de permission ; le drapeau donne un profil serré en un seul argument. Dans la même version, <code>experimental.cacheTtl</code> passe dans le frontmatter d'agent et permet de fixer la <strong>durée de cache de prompt agent par agent</strong> — utile quand un agent tourne en rafale courte et un autre en session longue. Le correctif qui a le plus d'effet mesurable est ailleurs : un <strong>manque de cache de prompt survenant environ une fois par heure</strong> dans les sessions longues, causé par un re-rendu des définitions d'outils. Sur un agent à gros prompt système qui tourne toute la journée, un manque de cache horaire se paie en tokens d'entrée pleins tarif, plusieurs fois par jour.",
+          "Le reste des trois versions consolide l'outillage d'observation et d'orchestration. La <strong>2.1.251</strong> ajoute une <strong>barre de plafond de dépense</strong> dans <code>/usage</code> avec un champ <code>rate_limits.spend_limit</code>, et des <strong>métriques de cache de prompt par session</strong> dans <code>/cost</code> — c'est-à-dire, enfin, de quoi vérifier soi-même que le cache fait son travail plutôt que de le déduire de la facture. Les hooks <code>PreModelSwitch</code> et <code>PostModelSwitch</code> permettent de reprendre la main sur les bascules de modèle. Côté corrections, la liste est dense : conversations bloquées sur « text content blocks must be non-empty » après un tour de pure réflexion, requêtes <strong>Opus 5</strong> en effort <code>xhigh</code> ou <code>max</code> qui échouaient avec la réflexion désactivée, lenteur du TUI avec beaucoup de sous-agents parallèles, réponse finale d'un coéquipier qui n'atteignait pas le chef d'équipe dans les agent teams, et sessions Claude Desktop et Cowork qui disparaissaient au bout de <strong>30 jours</strong>."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Mettre à jour vers 2.1.251, et vérifier la version sur les postes non surveillés.</strong> Les deux évasions de chemin ne sont pas des défauts théoriques : un dépôt de travail contient très souvent des liens symboliques vers des dossiers partagés ou des configurations hors périmètre, et c'est précisément le cas que le correctif adresse. La règle pratique : sur toute machine où Claude Code tourne en tâche de fond ou en mode automatique, la version installée fait partie de la surface de sécurité au même titre que les permissions accordées.",
+          "<strong><code>--restricted</code> est le profil qui manquait pour un agent SAV.</strong> Un assistant qui lit la documentation machine, cherche dans l'historique des interventions et rédige une réponse client n'a besoin ni d'un shell, ni d'exécution de code, ni de WebFetch. Jusqu'ici, ce profil se construisait à coups de règles de permission qu'il fallait maintenir ; il tient désormais dans un drapeau. À combiner avec <code>experimental.cacheTtl</code> : un agent de support à gros prompt système gagne à garder un cache long, là où un agent de build lancé en rafale n'en a pas l'usage. Le correctif du manque de cache horaire joue dans le même sens — vérifiez l'effet directement avec les nouvelles <strong>métriques de cache par session</strong> de <code>/cost</code>, plutôt qu'en attendant la facture du mois.",
+          "Comparaison utile pour situer la cadence : Claude Code a sorti <strong>huit versions en sept jours</strong> la semaine précédente (2.1.234 → 2.1.241) et <strong>trois en deux jours</strong> cette semaine. À ce rythme, épingler une version dans un script d'installation devient un choix qui se justifie — mais avec une revue du changelog au moins hebdomadaire, sans quoi un correctif de sécurité comme celui de la 2.1.251 peut rester non appliqué pendant des semaines sur un parc."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://code.claude.com/docs/en/changelog",
+          "label": "code.claude.com/docs/en/changelog",
+          "meta": "Anthropic · changelog Claude Code · entrées des 27 et 28 août 2026"
+        },
+        "related": [
+          { "slug": "2026-08-30-anthropic-model-hardware-standard", "actor": "Anthropic", "title": "Model Hardware Standard", "tag": "🎯" },
+          { "slug": "2026-08-30-anthropic-cles-personnelles-admin-api", "actor": "Anthropic", "title": "Clés personnelles et Admin API dans les SDK", "tag": "🛠" },
+          { "slug": "2026-08-30-anthropic-compliance-api-cowork", "actor": "Anthropic", "title": "Compliance API — sessions Cowork et Claude Code en GA", "tag": "🛠" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-08-30-anthropic-model-hardware-standard.html", "label": "← Item précédent", "title": "Model Hardware Standard" },
+          "next": { "href": "2026-08-30-anthropic-cles-personnelles-admin-api.html", "label": "Item suivant →", "title": "Clés personnelles et Admin API dans les SDK" }
+        }
+      }
+    },
+    {
+      "slug": "2026-08-30-anthropic-cles-personnelles-admin-api",
+      "actor": "Anthropic",
+      "tag": "useful",
+      "date": "2026-08-27",
+      "title": "Clés personnelles et clés de compte de service dans la Console, Admin API dans huit SDK",
+      "context_html": "Le <strong>27 août</strong>, la Console Claude permet de créer des <strong>clés personnelles</strong> et des <strong>clés de compte de service</strong>. Elles agissent au nom de l'utilisateur ou du compte de service, avec <strong>exactement ses permissions</strong>, et <strong>cessent de fonctionner</strong> quand le compte lié quitte l'organisation — ce qui règle d'un coup le problème des clés orphelines. Elles peuvent être limitées à un espace de travail donné, ou couvrir les endpoints d'administration et tous les espaces auxquels le compte a accès ; les clés d'espace de travail restent supportées en option héritée. Le même jour, les SDK <strong>Python 1.2.0, TypeScript 0.122.0, Go 1.68.0, Java 2.59.0, Ruby 1.67.0 et C# 12.44.0</strong> cessent d'envoyer les headers beta sur <code>client.beta.files</code> et <code>client.beta.skills</code>, qui renvoient désormais les mêmes formes que <code>client.files</code> et <code>client.skills</code> : <code>client.beta.skills.delete()</code> supprime maintenant une Skill <strong>avec toutes ses versions</strong>, et le type <code>BetaSkill</code> est renommé <code>BetaContainerSkill</code>. La veille, le <strong>26 août</strong>, l'<strong>Admin API</strong> devient accessible depuis la CLI <code>ant</code> et huit SDK sous <code>client.beta.organization</code>.",
+      "sources": [
+        { "label": "platform.claude.com — release notes (26 et 27 août 2026)", "url": "https://platform.claude.com/docs/en/release-notes/overview", "primary": true }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Clés personnelles et Admin API",
+        "date_long": "26-27 août 2026",
+        "description": "Les 26 et 27 août 2026, Anthropic introduit les clés personnelles et de compte de service dans la Console et ouvre l'Admin API à la CLI ant et huit SDK. Détails et implications Lynxter.",
+        "stats": [
+          { "num": "2", "unit": "types de clés", "label": "personnelles et compte de service" },
+          { "num": "8", "unit": "SDK", "label": "Admin API sous client.beta.organization" },
+          { "num": "6", "unit": "SDK", "label": "abandonnent les headers beta Files et Skills" },
+          { "num": "0", "unit": "clé orpheline", "label": "la clé meurt avec le compte lié" }
+        ],
+        "context_paragraphs": [
+          "Le modèle de clés d'API par espace de travail a un défaut structurel connu : la clé survit à la personne. Quelqu'un quitte l'équipe, son compte est désactivé, et la clé qu'il avait créée continue de fonctionner — souvent sans que personne ne sache à quoi elle sert ni ce qu'elle consomme. Les <strong>clés personnelles</strong> et <strong>clés de compte de service</strong> introduites le 27 août règlent cela par construction : elles agissent au nom de l'utilisateur ou du compte de service, avec <strong>exactement ses permissions</strong>, et <strong>cessent de fonctionner quand le compte lié est retiré de l'organisation</strong>. Anthropic met en avant les deux effets recherchés : suivre la consommation par compte, et vérifier que l'usage d'une clé est légitime. La granularité reste souple — une clé peut être limitée à un espace de travail, ou porter sur les endpoints d'administration et l'ensemble des espaces auxquels le compte a accès. Les clés d'espace de travail restent supportées, en <strong>option héritée</strong>.",
+          "Le 26 août, l'<strong>Admin API</strong> sort du domaine réservé au <code>curl</code> : elle devient accessible depuis la CLI <code>ant</code> et les SDK <strong>Python, TypeScript, C#, Go, Java, PHP et Ruby</strong>, sous <code>client.beta.organization</code>. Le périmètre couvre les informations d'organisation, les membres, les invitations, les espaces de travail et leurs membres, les clés d'API, les limites de débit, les comptes de service, les émetteurs et règles de fédération d'identité de charge de travail, et les clés de chiffrement gérées par le client. Restent en <code>curl</code> uniquement : les rapports d'usage et de coût, et les endpoints de gestion d'utilisateurs et d'analytique de Claude Enterprise. L'authentification accepte une clé Admin API via <code>ANTHROPIC_API_KEY</code> ou un jeton OAuth <code>org:admin</code> via <code>ANTHROPIC_AUTH_TOKEN</code>.",
+          "Le troisième volet est une <strong>rupture de compatibilité à surveiller</strong> dans les SDK <strong>Python 1.2.0, TypeScript 0.122.0, Go 1.68.0, Java 2.59.0, Ruby 1.67.0 et C# 12.44.0</strong> : <code>client.beta.files</code> et <code>client.beta.skills</code> n'envoient plus les headers <code>files-api-2025-04-14</code> et <code>skills-2025-10-02</code> et renvoient les mêmes formes que leurs équivalents non-beta. Deux conséquences concrètes : <code>client.beta.skills.delete()</code> supprime désormais une Skill <strong>avec toutes ses versions</strong> — un comportement nettement plus destructeur qu'avant — et le type Messages <code>BetaSkill</code> (la référence de Skill de conteneur) est renommé <code>BetaContainerSkill</code>. Les requêtes qui envoient encore les headers beta continuent de recevoir les formes beta, ce qui laisse une porte de sortie le temps de migrer."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>C'est le moment de faire l'inventaire des clés.</strong> La question à poser n'est pas « combien de clés avons-nous » mais « pour chaque clé, qui l'a créée, ce qu'elle alimente, et ce qui se passe si cette personne part ». Toute clé d'espace de travail qui survit à son créateur est un point de fuite silencieux et une ligne de facture non attribuée. La migration vers des <strong>clés personnelles</strong> pour les usages humains et des <strong>clés de compte de service</strong> pour les automatisations donne un modèle où la révocation est un effet de bord de la gestion RH, pas une tâche à ne pas oublier.",
+          "<strong>Attention au piège de <code>skills.delete()</code>.</strong> Si un script d'outillage appelle <code>client.beta.skills.delete()</code> — typiquement pour faire du ménage entre deux déploiements —, son comportement a changé : il supprime maintenant la Skill <strong>et toutes ses versions</strong>. Un script écrit sous l'ancienne sémantique peut détruire un historique qu'on croyait conservé. Vérifiez avant de monter les SDK. Et si vous migrez un outillage qui envoie encore les headers beta, faites-le en une passe : les deux comportements coexistent aujourd'hui, mais dépendre de cette coexistence est une dette."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "label": "platform.claude.com/docs/en/release-notes",
+          "meta": "Anthropic · release notes de la plateforme Claude · entrées des 26 et 27 août 2026"
+        },
+        "related": [
+          { "slug": "2026-08-30-anthropic-compliance-api-cowork", "actor": "Anthropic", "title": "Compliance API — sessions Cowork et Claude Code en GA", "tag": "🛠" },
+          { "slug": "2026-08-30-claude-code-2-1-248-251", "actor": "Anthropic", "title": "Claude Code 2.1.248 → 2.1.251", "tag": "🎯" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-08-30-claude-code-2-1-248-251.html", "label": "← Item précédent", "title": "Claude Code 2.1.248 → 2.1.251" },
+          "next": { "href": "2026-08-30-anthropic-compliance-api-cowork.html", "label": "Item suivant →", "title": "Compliance API — Cowork et Claude Code" }
+        }
+      }
+    },
+    {
+      "slug": "2026-08-30-anthropic-compliance-api-cowork",
+      "actor": "Anthropic",
+      "tag": "useful",
+      "date": "2026-08-26",
+      "title": "Compliance API — les sessions Cowork et Claude Code sortent du beta",
+      "context_html": "Le <strong>26 août</strong>, les endpoints de session de la <strong>Compliance API</strong> quittent le beta pour les sessions <strong>Cowork</strong> et <strong>Claude Code</strong> : récupérer les transcriptions de ces sessions devient une capacité stable, pas une expérimentation. Dans le même mouvement, les endpoints de <strong>sessions locales</strong> renvoient désormais aussi les transcriptions des sessions <strong>Claude Science</strong> (valeur <code>product_surface</code> égale à <code>claude_science</code>) et des sessions <strong>Claude pour Microsoft 365</strong> dans Excel, PowerPoint, Word et Outlook (valeurs de <code>product_surface</code> commençant par <code>office_agents</code>) — en beta, pour les organisations <strong>Claude Enterprise</strong>, avec la clé d'accès Compliance existante et la portée <code>read:compliance_user_data</code>. Aucune nouvelle authentification à mettre en place : ce sont les mêmes identifiants, avec un périmètre élargi.",
+      "sources": [
+        { "label": "platform.claude.com — release notes (26 août 2026)", "url": "https://platform.claude.com/docs/en/release-notes/overview", "primary": true }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Compliance API en GA",
+        "date_long": "26 août 2026",
+        "description": "Le 26 août 2026, les endpoints de session de la Compliance API sortent du beta pour Cowork et Claude Code, et couvrent en beta Claude Science et Claude pour Microsoft 365. Détails et implications Lynxter.",
+        "stats": [
+          { "num": "2", "unit": "surfaces en GA", "label": "sessions Cowork et Claude Code" },
+          { "num": "4", "unit": "apps M365", "label": "Excel, PowerPoint, Word, Outlook" },
+          { "num": "1", "unit": "portée", "label": "read:compliance_user_data" },
+          { "num": "0", "unit": "nouvel identifiant", "label": "clé d'accès Compliance existante" }
+        ],
+        "context_paragraphs": [
+          "La <strong>Compliance API</strong> est la voie par laquelle une organisation récupère, pour ses propres besoins d'audit et de conservation, les transcriptions des sessions que ses utilisateurs mènent avec Claude. Tant que ses endpoints de session étaient en beta, l'intégrer dans une chaîne de conformité relevait du pari : la forme des réponses pouvait bouger. Le <strong>26 août</strong>, ces endpoints sortent du beta pour les sessions <strong>Cowork</strong> et <strong>Claude Code</strong>. Le changement est contractuel plus que fonctionnel, et c'est précisément ce qui compte quand un processus d'audit s'appuie dessus.",
+          "L'élargissement du périmètre est l'autre moitié de l'annonce. Les endpoints de <strong>sessions locales</strong> — celles qui se déroulent sur les machines des utilisateurs — renvoient désormais aussi les transcriptions des sessions <strong>Claude Science</strong>, identifiées par la valeur <code>product_surface</code> <code>claude_science</code>, et des sessions <strong>Claude pour Microsoft 365</strong> dans <strong>Excel, PowerPoint, Word et Outlook</strong>, identifiées par des valeurs de <code>product_surface</code> commençant par <code>office_agents</code>. Ce volet reste en <strong>beta</strong> et est réservé aux organisations <strong>Claude Enterprise</strong>.",
+          "Point pratique qui évite un chantier : aucune nouvelle authentification n'est requise. La <strong>clé d'accès Compliance existante</strong> et la portée <code>read:compliance_user_data</code> suffisent pour couvrir le périmètre élargi. Concrètement, une organisation qui collecte déjà les sessions Claude Code voit apparaître de nouvelles surfaces dans le même flux, distinguables par le champ <code>product_surface</code>. C'est un point à connaître avant que le volume ne surprenne une chaîne de traitement qui n'attendait qu'un type de session."
+        ],
+        "lynxter_paragraphs": [
+          "L'intérêt direct est limité tant que Lynxter n'est pas sur un plan Enterprise, mais le signal compte pour les <strong>réponses RFP</strong> : la question « pouvez-vous produire les traces des interactions IA de vos équipes » revient systématiquement dans les appels d'offres industriels, et la réponse est désormais « oui, par une API stable, pas par une expérimentation ». C'est un argument à garder en réserve dans l'argumentaire de conformité.",
+          "Le point à retenir techniquement, si un chantier de collecte existe un jour : le champ <code>product_surface</code> est la clé de tri, avec des valeurs distinctes pour <code>claude_science</code> et un préfixe <code>office_agents</code> pour les quatre applications Microsoft 365. Une chaîne de traitement qui ne filtre pas sur ce champ mélangera des sessions de nature très différente — un agent Excel et une session Claude Code n'ont ni le même volume, ni la même sensibilité."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "label": "platform.claude.com/docs/en/release-notes",
+          "meta": "Anthropic · release notes de la plateforme Claude · entrée du 26 août 2026"
+        },
+        "related": [
+          { "slug": "2026-08-30-anthropic-cles-personnelles-admin-api", "actor": "Anthropic", "title": "Clés personnelles et Admin API dans les SDK", "tag": "🛠" },
+          { "slug": "2026-08-30-claudeforce-salesforce", "actor": "Anthropic", "title": "Claudeforce — 37 skills de vente dans Claude", "tag": "🛠" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-08-30-anthropic-cles-personnelles-admin-api.html", "label": "← Item précédent", "title": "Clés personnelles et Admin API dans les SDK" },
+          "next": { "href": "2026-08-30-claudeforce-salesforce.html", "label": "Item suivant →", "title": "Claudeforce" }
+        }
+      }
+    },
+    {
+      "slug": "2026-08-30-claudeforce-salesforce",
+      "actor": "Anthropic",
+      "tag": "useful",
+      "date": "2026-08-26",
+      "title": "Claudeforce — Salesforce met 37 skills de vente dans un plugin Claude",
+      "context_html": "Le <strong>26 août</strong>, Salesforce et Anthropic annoncent <strong>Claudeforce</strong>, une extension de partenariat en <strong>quatre volets</strong> : un plugin Salesforce qui tourne <strong>dans</strong> Claude, Claude qui tourne <strong>dans</strong> les produits Salesforce, Claude installé comme <strong>modèle par défaut à travers Slack</strong>, et un accord commercial réciproque où chaque entreprise devient un client significatif de l'autre. Le premier livrable est « Salesforce in Claude », un plugin qui embarque <strong>37 skills de vente préconstruites</strong> — préparation de rendez-vous, revue de santé d'un deal, analyse de pipeline — permettant d'interroger, de mettre à jour et d'agir sur des <strong>données CRM en direct</strong> sans jamais ouvrir Salesforce. Il est disponible pour un groupe restreint de <strong>clients pilotes</strong>, avant une <strong>beta ouverte en septembre 2026</strong> ; d'autres skills préconstruites sont annoncées pour la fin 2026.",
+      "sources": [
+        { "label": "salesforce.com — communiqué Claudeforce (26 août 2026)", "url": "https://www.salesforce.com/news/press-releases/2026/08/26/salesforce-and-anthropic-announce-claudeforce/", "primary": true },
+        { "label": "CNBC — Salesforce, Anthropic expand partnership", "url": "https://www.cnbc.com/2026/08/26/salesforce-anthropic-partnership-claudeforce.html", "primary": false },
+        { "label": "VentureBeat — Salesforce puts its CRM inside Claude", "url": "https://venturebeat.com/orchestration/salesforce-just-put-its-entire-crm-inside-claude-and-says-youll-never-need-its-app-again", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Claudeforce",
+        "date_long": "26 août 2026",
+        "description": "Le 26 août 2026, Salesforce et Anthropic annoncent Claudeforce : un plugin Salesforce dans Claude avec 37 skills de vente préconstruites, en pilote avant une beta ouverte en septembre. Détails et implications Lynxter.",
+        "stats": [
+          { "num": "37", "unit": "skills", "label": "de vente préconstruites dans le plugin" },
+          { "num": "4", "unit": "volets", "label": "plugin, produits, Slack, accord commercial" },
+          { "num": "09", "unit": "/2026", "label": "beta ouverte annoncée" },
+          { "num": "0", "unit": "ouverture de Salesforce", "label": "requête et action sur le CRM depuis Claude" }
+        ],
+        "context_paragraphs": [
+          "Le motif intéressant de Claudeforce n'est pas le partenariat commercial, c'est la <strong>forme du livrable</strong>. Salesforce ne construit pas un chatbot dans son produit : il empaquette <strong>37 skills de vente préconstruites</strong> dans un plugin qui tourne <strong>à l'intérieur de Claude</strong>. Les skills couvrent des tâches nommées et bornées — préparation de rendez-vous, revue de santé d'un deal, analyse de pipeline — et permettent d'<strong>interroger, mettre à jour et agir</strong> sur des données CRM en direct <strong>sans jamais ouvrir Salesforce</strong>. C'est l'aboutissement du pari Agent Skills : un éditeur métier livre son savoir-faire sous forme de compétences chargeables plutôt que sous forme d'écrans.",
+          "Le partenariat couvre quatre chantiers distincts qu'il vaut mieux ne pas confondre : le plugin Salesforce dans Claude, Claude tournant dans les produits Salesforce, Claude installé comme <strong>modèle par défaut à travers Slack</strong>, et un <strong>accord commercial réciproque</strong> où chaque entreprise devient un client significatif de l'autre. Seul le premier est livré ; les autres sont des directions annoncées. La disponibilité suit une progression classique : <strong>clients pilotes sélectionnés</strong> aujourd'hui, <strong>beta ouverte en septembre 2026</strong>, skills supplémentaires annoncées pour la fin 2026.",
+          "Pour situer : c'est le plus gros signal à ce jour que le modèle « l'application vient à l'agent » gagne du terrain sur « l'agent vient dans l'application ». La contrepartie, relevée par la couverture presse, est une inquiétude côté éditeurs SaaS — si les données et les actions passent par un plugin dans Claude, la valeur de l'interface propre à l'éditeur se réduit. Le fait que le premier grand CRM du marché choisisse d'être présent dans Claude plutôt que de s'en défendre est le point à retenir, indépendamment du sort commercial de l'offre."
+        ],
+        "lynxter_paragraphs": [
+          "Lynxter n'est pas concerné directement par Salesforce, mais Claudeforce est un <strong>patron reproductible</strong> qui mérite d'être lu comme tel. La structure — un ensemble de skills nommées, chacune couvrant une tâche métier bornée, chargées dans Claude et opérant sur des données en direct — est exactement ce que vaudrait un paquet de skills « SAV Lynxter » : diagnostic d'un défaut d'extrusion à partir d'une photo et d'un log, préparation d'une réponse de garantie, vérification d'un historique machine. Le mérite du modèle Salesforce est de montrer la <strong>granularité qui marche</strong> : 37 skills étroites plutôt qu'un agent généraliste avec un long prompt.",
+          "Le point de méthode à emprunter : chaque skill correspond à une tâche que quelqu'un fait déjà régulièrement à la main et qu'on peut nommer en trois mots. C'est le bon critère de découpage. Une piste concrète : lister les dix opérations SAV les plus fréquentes du trimestre, et n'en retenir que celles dont on peut décrire l'entrée, la sortie et le critère de réussite en une phrase — ce sont les candidates. Les autres ne sont pas des skills, ce sont des procédures à clarifier avant d'automatiser quoi que ce soit."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://www.salesforce.com/news/press-releases/2026/08/26/salesforce-and-anthropic-announce-claudeforce/",
+          "label": "salesforce.com/news/press-releases — Claudeforce",
+          "meta": "Salesforce · communiqué conjoint avec Anthropic · 26 août 2026"
+        },
+        "related": [
+          { "slug": "2026-08-30-anthropic-model-hardware-standard", "actor": "Anthropic", "title": "Model Hardware Standard", "tag": "🎯" },
+          { "slug": "2026-08-30-anthropic-compliance-api-cowork", "actor": "Anthropic", "title": "Compliance API — sessions Cowork et Claude Code en GA", "tag": "🛠" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-08-30-anthropic-compliance-api-cowork.html", "label": "← Item précédent", "title": "Compliance API — Cowork et Claude Code" },
+          "next": { "href": "2026-08-30-openai-jalapeno-benchmarks.html", "label": "Item suivant →", "title": "Jalapeño — premiers benchmarks" }
+        }
+      }
+    },
+    {
+      "slug": "2026-08-30-anthropic-sieges-scientifiques",
+      "actor": "Anthropic",
+      "tag": "info",
+      "date": "2026-08-27",
+      "title": "10 000 sièges Claude Team ouverts aux scientifiques",
+      "context_html": "Anthropic ouvre <strong>10 000 sièges</strong> d'un plan Claude Team destiné aux scientifiques : le siège standard est <strong>gratuit</strong>, le siège premium à <strong>15 $/mois</strong> offre <strong>cinq fois</strong> les limites d'usage, et les tarifs sont figés pour <strong>un an</strong>. L'accès passe par une vérification réservée aux chercheurs principaux d'universités accréditées et d'instituts de recherche à but non lucratif, en sciences naturelles, mathématiques, informatique et ingénierie, un chercheur vérifié pouvant ensuite ajouter son laboratoire. Anthropic annonce vouloir étendre le programme <strong>au-delà des 10 000 sièges</strong> dans les mois qui viennent.",
+      "sources": [
+        { "label": "anthropic.com — Expanding our support for scientists (27 août 2026)", "url": "https://www.anthropic.com/news/expanding-support-for-scientists", "primary": true },
+        { "label": "Unite.AI — Anthropic opens 10,000 free and discounted Claude seats", "url": "https://www.unite.ai/anthropic-opens-10000-free-and-discounted-claude-seats-for-scientists/", "primary": false }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-08-30-anthropic-bourses-wellbeing",
+      "actor": "Anthropic",
+      "tag": "info",
+      "date": "2026-08-25",
+      "title": "5 M$ de bourses pour mesurer l'effet des modèles sur le bien-être des utilisateurs",
+      "context_html": "Le <strong>25 août</strong>, Anthropic lance un programme de bourses de <strong>5 millions de dollars</strong> destiné à financer de la recherche indépendante sur l'impact de l'IA sur le bien-être de ses utilisateurs. Les équipes retenues reçoivent un financement direct, un accès aux modèles et un support technique pour construire des <strong>évaluations open source</strong> réutilisables par n'importe quel développeur, et travaillent en pleine indépendance. Les candidatures sont ouvertes jusqu'au <strong>21 septembre</strong>, avec réponse aux candidats sélectionnés le <strong>5 octobre</strong>.",
+      "sources": [
+        { "label": "anthropic.com — Funding better evaluations of AI's impact on wellbeing (25 août 2026)", "url": "https://www.anthropic.com/news/wellbeing-research-grants", "primary": true },
+        { "label": "StartupHub.ai — Anthropic grants $5M for AI wellbeing research", "url": "https://www.startuphub.ai/ai-news/artificial-intelligence/2026/anthropic-grants-5m-for-ai-wellbeing-research", "primary": false }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-08-30-openai-jalapeno-benchmarks",
+      "actor": "OpenAI",
+      "tag": "useful",
+      "date": "2026-08-25",
+      "title": "Jalapeño — OpenAI publie les premiers benchmarks de sa puce d'inférence",
+      "context_html": "Le <strong>25 août</strong>, à la conférence <strong>Hot Chips</strong>, OpenAI publie la première série de résultats de <strong>Jalapeño</strong>, sa puce d'inférence maison. Les chiffres, mesurés sur le benchmark <strong>InferenceX</strong> : au débit maximal, l'accélérateur délivre <strong>1,5 à 1,9× plus de travail par watt</strong> que les systèmes commerciaux de comparaison, avec <strong>1,7 à 3,6× moins de latence</strong> bout-en-bout, et jusqu'à <strong>2,1 à 4,1×</strong> de gain sur les charges très interactives. L'argument central est de tenir <strong>les deux à la fois</strong> — débit et latence — là où les architectures existantes arbitrent généralement entre l'un et l'autre. Les mesures ont été prises sur <strong>GPT-OSS 120B, DeepSeek R1 et Kimi K2.5 1T</strong>, trois modèles ouverts, ce qui rend les chiffres au moins reproductibles en principe. Le déploiement commence <strong>avant fin 2026</strong> dans l'infrastructure d'OpenAI, mais « en très petits volumes » selon l'entreprise, avec un vrai passage à l'échelle en <strong>2027</strong> ; une <strong>génération 2</strong> est annoncée bien avancée et une génération 3 en conception. Le lendemain, <strong>26 août</strong>, un billet de la directrice financière Sarah Friar replace la puce dans la pile complète — datacenters et puces, modèles frontière, plateforme développeur, produits, appareils.",
+      "sources": [
+        { "label": "openai.com — Jalapeño's first results (25 août 2026)", "url": "https://openai.com/index/jalapeno-first-results/", "primary": true },
+        { "label": "openai.com — The full stack behind abundant intelligence (26 août 2026)", "url": "https://openai.com/index/the-full-stack-behind-abundant-intelligence/", "primary": true },
+        { "label": "TechCrunch — OpenAI's Jalapeño chip is built for fast inference at scale", "url": "https://techcrunch.com/2026/08/25/openais-jalapeno-chip-is-built-for-fast-inference-at-scale-benchmarks-show/", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Jalapeño — premiers benchmarks",
+        "date_long": "25 août 2026",
+        "description": "Le 25 août 2026 à Hot Chips, OpenAI publie les premiers benchmarks de Jalapeño, sa puce d'inférence maison : 1,5 à 1,9× de travail par watt et 1,7 à 3,6× de latence en moins. Détails et implications Lynxter.",
+        "stats": [
+          { "num": "1,5-1,9×", "unit": "perf/watt", "label": "au débit maximal vs comparaison" },
+          { "num": "1,7-3,6×", "unit": "latence", "label": "bout-en-bout, en moins" },
+          { "num": "2,1-4,1×", "unit": "gain", "label": "sur charges très interactives" },
+          { "num": "3", "unit": "modèles testés", "label": "GPT-OSS 120B, DeepSeek R1, Kimi K2.5 1T" }
+        ],
+        "context_paragraphs": [
+          "L'affirmation technique de Jalapeño tient en une phrase : délivrer <strong>plus de débit et moins de latence avec la même architecture</strong>, là où les systèmes existants arbitrent habituellement entre les deux. Les chiffres publiés le 25 août à <strong>Hot Chips</strong>, sur le benchmark <strong>InferenceX</strong> : <strong>1,5 à 1,9× plus de travail par watt</strong> au débit maximal, <strong>1,7 à 3,6× moins de latence</strong> bout-en-bout, et un gain montant à <strong>2,1 à 4,1×</strong> sur les charges très interactives — celles où l'utilisateur attend devant l'écran. Le choix des modèles de test mérite d'être noté : <strong>GPT-OSS 120B, DeepSeek R1 et Kimi K2.5 1T</strong>, trois modèles à poids ouverts. C'est une décision de communication autant que technique — un tiers peut en principe rejouer la mesure, ce qui n'est jamais le cas quand un fournisseur benchmarke sur ses propres modèles fermés.",
+          "Le calendrier est plus sobre que les chiffres. OpenAI prévoit de commencer le déploiement de Jalapeño dans sa propre infrastructure <strong>avant la fin 2026</strong>, mais « en très petits volumes » ; le vrai passage à l'échelle est annoncé pour <strong>2027</strong>. Une <strong>génération 2</strong> est décrite comme bien avancée en développement et une génération 3 comme prenant forme. Autrement dit, Jalapeño n'est pas un produit vendu sur le marché : c'est de l'intégration verticale destinée à faire baisser le coût d'inférence d'OpenAI, pas une puce que qui que ce soit d'autre achètera.",
+          "Le <strong>26 août</strong>, un billet de la directrice financière <strong>Sarah Friar</strong> replace la puce dans un récit plus large : une pile intégrée allant des datacenters et des puces aux modèles frontière, à la plateforme développeur, aux produits grand public et entreprise, et aux appareils, chaque couche renforçant la suivante. La lecture stratégique est simple — pendant que Google conçoit ses TPU depuis dix ans et qu'Amazon pousse Trainium et Inferentia, OpenAI cherche à sortir de sa dépendance à un fournisseur unique de GPU. La question qui compte pour un client d'API n'est pas la puce : c'est de savoir si le gain d'efficacité se répercute sur les prix. OpenAI a déjà montré qu'il savait couper les tarifs quand la compétition l'exige ; une baisse durable du coût d'inférence rend ces coupes structurellement soutenables."
+        ],
+        "lynxter_paragraphs": [
+          "Rien à faire cette semaine — mais une conséquence à anticiper dans les <strong>arbitrages de fournisseur à 12-18 mois</strong>. Si Jalapeño tient ses chiffres à l'échelle en 2027, le coût marginal d'inférence d'OpenAI baisse structurellement, et les baisses de prix qui suivent ne sont plus des opérations promotionnelles mais un plancher qui descend. Pour un usage Lynxter à volume modeste, l'effet direct est faible ; pour un choix d'architecture qui engage sur plusieurs années — quel fournisseur pour l'agent SAV, quel modèle par défaut dans l'outillage — c'est un paramètre à garder en tête plutôt qu'un événement à traiter.",
+          "Le contrepoint est intéressant à mettre en regard de <strong>Portable Computer</strong> de Perplexity, sorti le même jour : d'un côté, un acteur qui optimise le coût du cloud en fabriquant sa propre puce ; de l'autre, un acteur qui supprime le coût du cloud en faisant tourner l'agent sur la machine du client. Les deux réduisent le coût par tâche, mais seule la seconde approche répond à la contrainte de confidentialité des données industrielles. Pour Lynxter, c'est la seconde qui a une implication opérationnelle immédiate ; la première ne se lira que sur des factures futures."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://openai.com/index/jalapeno-first-results/",
+          "label": "openai.com/index/jalapeno-first-results",
+          "meta": "OpenAI · annonce du 25 août 2026 · résultats présentés à Hot Chips"
+        },
+        "related": [
+          { "slug": "2026-08-30-perplexity-portable-computer", "actor": "Perplexity", "title": "Portable Computer — tout l'agent en local", "tag": "🎯" },
+          { "slug": "2026-08-30-cursor-cloud-agents-sans-scm", "actor": "Cursor", "title": "Cloud agents sans fournisseur SCM", "tag": "🛠" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-08-30-claudeforce-salesforce.html", "label": "← Item précédent", "title": "Claudeforce" },
+          "next": { "href": "2026-08-30-perplexity-portable-computer.html", "label": "Item suivant →", "title": "Portable Computer" }
+        }
+      }
+    },
+    {
+      "slug": "2026-08-30-codex-mcp-server-deprecie",
+      "actor": "OpenAI",
+      "tag": "info",
+      "date": "2026-08-24",
+      "title": "Codex CLI — la commande <code>codex mcp-server</code> est dépréciée",
+      "context_html": "Le <strong>24 août</strong>, la commande <code>codex mcp-server</code> du Codex CLI est dépréciée, au profit du <strong>Codex app server</strong>. Elle fait suite à la version <strong>0.149.0</strong> du 20 août, qui avait ajouté un tableau de bord interactif <code>codex agents</code> pour chercher, lancer, ouvrir, renommer et arrêter des tâches, les commandes <code>/cd</code>, <code>/pwd</code> et <code>/cwd</code>, et un <code>codex queue</code> pour envoyer des messages à une session locale ou distante existante. Toute automatisation qui exposait Codex comme serveur MCP via cette commande est à migrer.",
+      "sources": [
+        { "label": "gradually.ai — Codex CLI changelog (août 2026)", "url": "https://www.gradually.ai/en/changelogs/codex-cli/", "primary": false },
+        { "label": "releases.sh — OpenAI Codex release notes", "url": "https://releases.sh/openai/codex", "primary": false }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-08-30-gemini-omni-1-1-flash",
+      "actor": "Google DeepMind",
+      "tag": "info",
+      "date": "2026-08-27",
+      "title": "Gemini Omni 1.1 Flash en preview publique, CodeMender passe à 3.6 et 3.7 Flash",
+      "context_html": "Le <strong>27 août</strong>, <strong>Gemini Omni 1.1 Flash</strong> passe en preview publique dans Google AI Studio, l'API Gemini, Flow et l'application Gemini, avec des contrôles de génération vidéo revus : extension de scène qui analyse jusqu'à <strong>10 secondes de contexte antérieur</strong> contre une seule auparavant, interpolation entre première et dernière image, références vidéo, prototypage rapide en 360p et upscale en 4K. Le même jour, la <strong>Gemini Enterprise Agent Platform</strong> ajoute le support de <strong>Gemini 3.6 et 3.7 Flash</strong> à CodeMender, avec vérification sans restriction et corrections de bac à sable. À noter au passage : le modèle <code>gemini-robotics-er-1.6-preview</code> s'éteint le <strong>31 août</strong>.",
+      "sources": [
+        { "label": "docs.cloud.google.com — Gemini Enterprise release notes", "url": "https://docs.cloud.google.com/gemini/enterprise/docs/release-notes", "primary": true },
+        { "label": "ai.google.dev — Gemini API changelog", "url": "https://ai.google.dev/gemini-api/docs/changelog", "primary": true }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-08-30-mistral-humain",
+      "actor": "Mistral",
+      "tag": "info",
+      "date": "2026-08-24",
+      "title": "Mistral et HUMAIN s'associent sur l'IA souveraine en Arabie saoudite",
+      "context_html": "Le <strong>24 août</strong>, Mistral et <strong>HUMAIN</strong> annoncent une collaboration stratégique chiffrée en <strong>centaines de millions d'euros</strong>, couvrant l'infrastructure IA, le développement de modèles et le déploiement de solutions en Arabie saoudite et dans la région. Les premiers chantiers annoncés portent sur la <strong>cybersécurité</strong> et la <strong>voix</strong>, avec l'objectif de modèles frontière performants en <strong>arabe</strong>, et Mistral indique explorer l'usage des datacenters de HUMAIN pour absorber ses besoins de calcul locaux. L'ensemble est présenté sous l'angle de l'IA souveraine — données, calcul et opérations sous contrôle du client, modèles adaptables et détenus en poids ouverts, entraînement et inférence dans la juridiction choisie.",
+      "sources": [
+        { "label": "mistral.ai — Mistral x HUMAIN", "url": "https://mistral.ai/news/mistral-x-humain/", "primary": true },
+        { "label": "PR Newswire — communiqué conjoint Mistral / HUMAIN (24 août 2026)", "url": "https://www.prnewswire.com/news-releases/mistral-and-humain-announce-strategic-collaboration-to-advance-sovereign-ai-in-saudi-arabia-and-regionally-302858613.html", "primary": false }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-08-30-perplexity-portable-computer",
+      "actor": "Perplexity",
+      "tag": "lynxter",
+      "date": "2026-08-25",
+      "title": "Portable Computer — Perplexity fait tourner tout l'agent en local, sans crédit consommé",
+      "context_html": "Le <strong>25 août</strong>, Perplexity lance <strong>Portable Computer</strong>, une version de sa plateforme agentique <em>Computer</em> dont <strong>toute la pile d'exécution</strong> — LLM orchestrateur, LLM sous-agent, harness d'agent — tourne <strong>sur le matériel de l'utilisateur</strong>, sans dépendance au cloud. Le modèle embarqué est un <strong>PPLX 27B</strong> post-entraîné et installé localement ; <strong>Qwen 3.8 27B</strong> est également disponible, et le support de NVIDIA Nemotron 3.5 Lightning est annoncé. Côté matériel, la première version cible les plateformes <strong>NVIDIA GB10</strong> — DGX Spark, Dell Pro Max avec GB10 — ou tout PC x86 sous Ubuntu équipé d'un GPU NVIDIA d'au moins <strong>24 Go de VRAM</strong>. Deux propriétés font la différence : le travail effectué localement <strong>ne consomme aucun crédit de facturation</strong>, et chaque tâche <strong>démarre sur l'appareil par défaut</strong>, le système demandant une <strong>autorisation explicite</strong> avant d'envoyer la moindre étape vers un modèle frontière dans le cloud. L'accès est réservé aux abonnés <strong>Pro et Max</strong>, sur Linux d'abord, Windows annoncé. En parallèle, <em>Personal Computer</em> arrive sur Mac dans l'application de bureau, avec édition de fichiers locaux, contrôle de la machine, navigation locale via Comet et orchestration vocale.",
+      "sources": [
+        { "label": "perplexity.ai/hub — Introducing Portable Computer for local-first AI", "url": "https://www.perplexity.ai/hub/blog/introducing-portable-computer-for-local-first-ai", "primary": true },
+        { "label": "VentureBeat — Perplexity partners with Nvidia to launch Portable Computer", "url": "https://venturebeat.com/infrastructure/perplexity-partners-with-nvidia-to-launch-portable-computer-a-fully-local-ai-agent-with-zero-token-costs", "primary": false },
+        { "label": "The Register — Now Perplexity is trying to get into the local AI action", "url": "https://www.theregister.com/ai-and-ml/2026/08/26/now_perplexity_is_trying_to/", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Portable Computer",
+        "date_long": "25 août 2026",
+        "description": "Le 25 août 2026, Perplexity lance Portable Computer : orchestrateur, sous-agents et harness tournent entièrement en local sur matériel NVIDIA, sans crédit consommé. Détails et implications Lynxter.",
+        "stats": [
+          { "num": "24", "unit": "Go VRAM", "label": "minimum sur x86 Ubuntu + GPU NVIDIA" },
+          { "num": "27", "unit": "B", "label": "PPLX 27B post-entraîné, installé localement" },
+          { "num": "0", "unit": "crédit", "label": "consommé pour le travail local" },
+          { "num": "100", "unit": "%", "label": "de la pile en local : orchestrateur, sous-agents, harness" }
+        ],
+        "context_paragraphs": [
+          "La plupart des offres « IA locale » font tourner un modèle en local et gardent l'orchestration dans le cloud. Perplexity annonce l'inverse complet : avec <strong>Portable Computer</strong>, <strong>toute la pile d'exécution</strong> — le LLM orchestrateur, le LLM des sous-agents et le harness d'agent lui-même — tourne sur la machine de l'utilisateur, <strong>sans dépendance au cloud</strong>. Le modèle par défaut est un <strong>PPLX 27B</strong> post-entraîné et installé localement, avec <strong>Qwen 3.8 27B</strong> disponible en alternative et le support de NVIDIA Nemotron 3.5 Lightning annoncé. Le matériel visé n'a rien d'exotique : les plateformes <strong>NVIDIA GB10</strong> (DGX Spark, Dell Pro Max avec GB10), ou un simple PC x86 sous Ubuntu avec un GPU NVIDIA d'au moins <strong>24 Go de VRAM</strong>.",
+          "Deux propriétés du produit valent plus que la fiche technique. D'abord, le travail effectué localement <strong>ne consomme aucun crédit de facturation</strong> — le coût marginal d'une tâche répétitive tombe à l'électricité. Ensuite, et c'est la partie qui compte pour un usage industriel : chaque tâche <strong>démarre sur l'appareil par défaut</strong>, et le système <strong>demande une autorisation explicite avant d'envoyer la moindre étape</strong> vers un modèle frontière dans le cloud. Ce n'est pas un réglage de confidentialité enfoui dans un menu, c'est le comportement par défaut du produit, avec une escalade opt-in et étape par étape. La disponibilité reste étroite : abonnés <strong>Pro et Max</strong>, Linux d'abord, Windows annoncé.",
+          "Il faut être honnête sur le compromis. Un modèle de <strong>27 milliards</strong> de paramètres ne joue pas dans la même catégorie qu'Opus 5, Gemini 3.7 ou GPT-5.6 sur du raisonnement long, du code complexe ou de la synthèse multi-documents difficile. Perplexity le reconnaît implicitement par le mécanisme d'escalade vers le cloud. Mais la question pertinente n'est pas « ce modèle est-il frontière », c'est « quelle proportion des tâches réelles a besoin d'un modèle frontière ». Sur du tri, de la recherche documentaire, de l'extraction et de la rédaction cadrée, un 27B bien post-entraîné suffit largement — et il est disponible hors connexion, à coût marginal nul, sans qu'aucune donnée ne sorte."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>C'est la première offre packagée qui répond à l'objection la plus fréquente en RFP industriel : « où partent nos données ».</strong> Un agent qui lit des plans clients, des fichiers de tranchage, des rapports d'intervention ou des historiques machine manipule exactement le type de données que les clients aéronautique, médical et défense refusent de voir transiter par une API tierce. Portable Computer inverse la charge de la preuve : par défaut rien ne sort, et l'envoi d'une étape vers le cloud demande une autorisation. C'est un argumentaire vendable tel quel, et un modèle de conception à copier même si l'outil retenu est un autre.",
+          "<strong>Le ticket d'entrée est une carte, pas un contrat.</strong> Le seuil annoncé — un GPU NVIDIA avec <strong>24 Go de VRAM</strong> sur un x86 sous Ubuntu — met un test à portée d'un poste d'atelier existant équipé d'une carte adaptée, sans engagement DGX Spark. La manière la plus rapide de savoir si l'approche tient : prendre les vingt derniers tickets SAV, faire tourner en local le tri et la première recherche documentaire, et mesurer le taux de réponses exploitables sans escalade. C'est ce chiffre, et pas un benchmark public, qui dit si un 27B local suffit pour l'usage réel de Lynxter.",
+          "À mettre en regard de <strong>Jalapeño</strong>, annoncé le même jour : OpenAI fait baisser le coût de l'inférence cloud en fabriquant sa puce, Perplexity le fait disparaître en déplaçant l'exécution chez le client. Les deux trajectoires réduisent le coût par tâche, mais une seule répond à la contrainte de confidentialité — et c'est celle qui a un effet dès maintenant sur ce que Lynxter peut promettre par écrit dans un appel d'offres. À surveiller : la sortie de la version Windows, qui déterminera si l'approche est déployable sur le parc de postes existant ou reste réservée à une machine Linux dédiée."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://www.perplexity.ai/hub/blog/introducing-portable-computer-for-local-first-ai",
+          "label": "perplexity.ai/hub/blog — Introducing Portable Computer",
+          "meta": "Perplexity · annonce du 25 août 2026 · partenariat NVIDIA"
+        },
+        "related": [
+          { "slug": "2026-08-30-openai-jalapeno-benchmarks", "actor": "OpenAI", "title": "Jalapeño — premiers benchmarks", "tag": "🛠" },
+          { "slug": "2026-08-30-anthropic-model-hardware-standard", "actor": "Anthropic", "title": "Model Hardware Standard", "tag": "🎯" },
+          { "slug": "2026-08-30-claude-code-2-1-248-251", "actor": "Anthropic", "title": "Claude Code 2.1.248 → 2.1.251", "tag": "🎯" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-08-30-openai-jalapeno-benchmarks.html", "label": "← Item précédent", "title": "Jalapeño — premiers benchmarks" },
+          "next": { "href": "2026-08-30-cursor-cloud-agents-sans-scm.html", "label": "Item suivant →", "title": "Cloud agents sans fournisseur SCM" }
+        }
+      }
+    },
+    {
+      "slug": "2026-08-30-cursor-cloud-agents-sans-scm",
+      "actor": "Cursor",
+      "tag": "useful",
+      "date": "2026-08-27",
+      "title": "Cursor détache ses cloud agents de tout fournisseur SCM",
+      "context_html": "Le <strong>27 août</strong>, les <strong>cloud agents</strong> de Cursor cessent d'exiger un GitHub — ou tout autre fournisseur SCM — connecté pour démarrer. On peut désormais lancer un prompt immédiatement, puis sauvegarder le travail dans un dépôt <strong>Cursor Origin</strong> en choisissant « Start from scratch » dans le sélecteur de dépôt. Deux ajouts complètent la boucle : Cursor <strong>redirige le port</strong> de l'environnement vivant du cloud agent directement vers le navigateur, ce qui permet de prévisualiser ce que l'agent construit pendant qu'il le construit, et un <strong>compte Vercel</strong> connecté permet de publier en un clic pour obtenir une URL en ligne. C'est la suite directe de Cursor Origin, l'hébergement de code lancé en beta le 17 août, et des améliorations de harness du 19 août qui visaient des agents capables de tenir un objectif sans intervention à chaque boucle.",
+      "sources": [
+        { "label": "cursor.com/changelog — entrée du 27 août 2026", "url": "https://cursor.com/changelog", "primary": true }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Cloud agents sans SCM",
+        "date_long": "27 août 2026",
+        "description": "Le 27 août 2026, Cursor détache ses cloud agents de tout fournisseur SCM, ajoute la redirection de port vers le navigateur et la publication Vercel en un clic. Détails et implications Lynxter.",
+        "stats": [
+          { "num": "0", "unit": "SCM requis", "label": "pour démarrer un cloud agent" },
+          { "num": "1", "unit": "clic", "label": "publication via un compte Vercel connecté" },
+          { "num": "1", "unit": "port redirigé", "label": "environnement vivant vers le navigateur" },
+          { "num": "10", "unit": "jours", "label": "depuis le lancement de Cursor Origin (17 août)" }
+        ],
+        "context_paragraphs": [
+          "Jusqu'ici, lancer un <strong>cloud agent</strong> Cursor supposait un dépôt et donc un fournisseur SCM connecté — GitHub le plus souvent. C'est une friction qui n'a l'air de rien mais qui tue l'usage exploratoire : pour tester une idée en dix minutes, personne ne crée un dépôt d'abord. Depuis le <strong>27 août</strong>, on peut lancer un prompt immédiatement, puis choisir « Start from scratch » dans le sélecteur de dépôt pour sauvegarder le travail dans un dépôt <strong>Cursor Origin</strong>. Cursor referme ainsi la boucle sur son propre hébergement de code, lancé en beta le <strong>17 août</strong> pour tous les plans payants.",
+          "Deux ajouts transforment l'agent en environnement de travail complet plutôt qu'en producteur de diffs. Cursor <strong>redirige le port</strong> de l'environnement vivant du cloud agent directement vers le navigateur : on prévisualise ce que l'agent construit pendant qu'il le construit, sans cloner ni lancer quoi que ce soit en local. Et un <strong>compte Vercel</strong> connecté permet de publier en un clic pour obtenir une URL en ligne. Le chemin complet — prompt, code, prévisualisation, publication — tient dans le produit.",
+          "La séquence de la quinzaine se lit d'un bloc et éclaire la direction : <strong>17 août</strong>, Cursor Origin en beta plus les Builds pour cloud agents (environnements préparés en arrière-plan, builds réussis gardés au chaud) ; <strong>19 août</strong>, améliorations du harness pour des agents toujours actifs, capables de tenir un objectif jusqu'à ce qu'il soit atteint, de réagir à des événements et de rester sur les rails en session longue — surveiller des PR, suivre un fil Slack, exécuter des tâches planifiées ; <strong>27 août</strong>, suppression de la dernière dépendance externe au démarrage. Cursor construit une boucle fermée où l'agent n'a besoin d'aucun outil tiers pour aller du prompt à l'URL en ligne."
+        ],
+        "lynxter_paragraphs": [
+          "L'intérêt pour Lynxter est de <strong>benchmark concurrentiel</strong> plutôt que d'adoption. La direction que prend Cursor — un agent qui démarre sans prérequis, prévisualise son propre travail et publie — est la même que celle de Claude Code côté Anthropic, avec un choix opposé sur l'intégration : Cursor referme la boucle sur ses propres briques (hébergement Origin, Builds, publication Vercel), Claude Code reste ancré dans l'outillage existant du dépôt et de l'organisation.",
+          "Le point à retenir concrètement : la <strong>redirection de port vers le navigateur</strong> est la fonctionnalité la plus imitable et la plus utile du lot. Voir tourner ce que l'agent construit, pendant qu'il le construit, raccourcit la boucle de correction bien plus qu'un rapport de fin de tâche. Si un outillage interne fait travailler des agents sur du code — scripts de production, outils SAV, pages internes —, exposer un aperçu vivant plutôt qu'un diff est le genre d'amélioration à faible coût qui change l'usage réel."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://cursor.com/changelog",
+          "label": "cursor.com/changelog",
+          "meta": "Cursor · changelog produit · entrée du 27 août 2026"
+        },
+        "related": [
+          { "slug": "2026-08-30-claude-code-2-1-248-251", "actor": "Anthropic", "title": "Claude Code 2.1.248 → 2.1.251", "tag": "🎯" },
+          { "slug": "2026-08-30-perplexity-portable-computer", "actor": "Perplexity", "title": "Portable Computer — tout l'agent en local", "tag": "🎯" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-08-30-perplexity-portable-computer.html", "label": "← Item précédent", "title": "Portable Computer" },
+          "next": { "href": "../briefs/2026-08-30.html", "label": "Retour au brief →", "title": "2026-08-30" }
+        }
+      }
+    }
+  ],
+  "sources_footer": [
+    { "label": "anthropic.com — Model Hardware Standard", "url": "https://www.anthropic.com/news/model-hardware-standard-research-preview" },
+    { "label": "code.claude.com/changelog", "url": "https://code.claude.com/docs/en/changelog" },
+    { "label": "platform.claude.com — release notes", "url": "https://platform.claude.com/docs/en/release-notes/overview" },
+    { "label": "anthropic.com — support for scientists", "url": "https://www.anthropic.com/news/expanding-support-for-scientists" },
+    { "label": "anthropic.com — wellbeing research grants", "url": "https://www.anthropic.com/news/wellbeing-research-grants" },
+    { "label": "salesforce.com — Claudeforce", "url": "https://www.salesforce.com/news/press-releases/2026/08/26/salesforce-and-anthropic-announce-claudeforce/" },
+    { "label": "openai.com — Jalapeño's first results", "url": "https://openai.com/index/jalapeno-first-results/" },
+    { "label": "openai.com — The full stack behind abundant intelligence", "url": "https://openai.com/index/the-full-stack-behind-abundant-intelligence/" },
+    { "label": "perplexity.ai/hub — Portable Computer", "url": "https://www.perplexity.ai/hub/blog/introducing-portable-computer-for-local-first-ai" },
+    { "label": "mistral.ai — Mistral x HUMAIN", "url": "https://mistral.ai/news/mistral-x-humain/" },
+    { "label": "cursor.com/changelog", "url": "https://cursor.com/changelog" },
+    { "label": "docs.cloud.google.com — Gemini Enterprise release notes", "url": "https://docs.cloud.google.com/gemini/enterprise/docs/release-notes" }
+  ],
+  "prev": {
+    "href": "2026-08-23.html",
+    "title": "La plateforme Claude sort du beta"
+  }
+}
