@@ -17,7 +17,13 @@
     "<strong>Les deux correctifs Claude Code de la semaine valent un audit de facture.</strong> Le bug Bedrock corrigé en 2.1.239 est le genre de défaut qu'on ne voit pas : derrière un proxy qui supprime le header <code>Content-Type</code> de la réponse, le streaming échouait et Claude Code <strong>rejouait chaque tour en non-streaming</strong> — soit deux appels API facturés pour un seul tour de conversation, sans message d'erreur. Si une partie de ton usage passe par Bedrock derrière un proxy d'entreprise, compare le nombre d'appels facturés au nombre de tours réels sur juillet et août avant de conclure. Le second correctif, la croissance mémoire non bornée des sessions interactives longues (2.1.238), concerne directement les routines qui tournent des heures avec des sous-agents : leurs résultats d'outils restaient en mémoire indéfiniment. En pratique, épingle une version : <code>ANTHROPIC_DEFAULT_MODEL</code> arrivé en 2.1.236 permet de fixer le modèle de démarrage des nouvelles sessions sans figer le choix <code>/model</code> — utile pour homogénéiser un poste d'astreinte SAV sans imposer le modèle à qui veut monter en <code>xhigh</code> sur un audit firmware. Et si tu maintiens du Python contre l'API Claude, lance <code>/claude-api upgrade</code> (2.1.239) avant que le SDK 0.x ne dérive : la v1.0 sortie la veille casse assez de surface pour qu'une migration manuelle coûte une demi-journée."
   ],
   "synthese_html": "<p><strong>Anthropic</strong> concentre l'essentiel de la fenêtre. Le 19 août, la plateforme sort du beta cinq briques d'un coup (computer use, Files API, Agent Skills, Skills API, endpoints user-management de l'Admin API) et lance le <strong>browser use tool</strong>, un contrôle de navigateur qui lit la page plutôt que l'écran. Les Managed Agents gagnent des listes blanches de domaines sur <code>web_search</code> et <code>web_fetch</code>, des memory stores en sandbox auto-hébergée, et un session viewer Console redessiné. Claude Code enchaîne <strong>2.1.234 → 2.1.241</strong> en sept jours, avec deux correctifs à impact facture et mémoire. Le 20 août, le <strong>SDK Python v1.0</strong> casse volontairement la compatibilité. Le 22 août, les mainteneurs MCP publient une <strong>roadmap en cinq chantiers</strong> centrée sur les tâches longues, le transport HTTP unifié et l'identité d'agent. Côté produit, Cowork arrive sur web et mobile pour tous les plans payants et les connecteurs Gmail/Drive passent en écriture, le Workbench devient <strong>Playground</strong>.</p><p><strong>OpenAI</strong> tient une semaine réglementaire plutôt que technique : mise à jour du <strong>Model Spec</strong> le 18 août avec des principes U18 pour les 13-17 ans et une nouvelle section « Be clear about capabilities and limits », lancement de <strong>ChatGPT for Teens</strong> le même jour, et couverture presse de la dissolution rapportée de l'équipe <strong>Preparedness</strong> — que l'entreprise conteste. <strong>Google DeepMind</strong> éteint les endpoints Imagen 4 le 17 août ; la migration vers la famille Gemini 3.x Image n'est pas un simple renommage. <strong>Meta</strong> et <strong>Mistral</strong> n'ont rien de daté dans la fenêtre. Côté secondaires, <strong>Cursor</strong> ouvre <strong>Origin</strong> en beta le 17 août (hébergement de code intégré à l'éditeur) puis muscle ses cloud agents le 19, et <strong>DeepSeek</strong> sort le 21 août un <strong>V4-Flash-Vision-Exp</strong> multimodal expérimental qui bat Opus 4.8 sur 3 benchmarks sur 11.</p>",
-  "actors_order": ["Anthropic", "OpenAI", "Google DeepMind", "Meta", "Mistral"],
+  "actors_order": [
+    "Anthropic",
+    "OpenAI",
+    "Google DeepMind",
+    "Meta",
+    "Mistral"
+  ],
   "actor_empty": {
     "Meta": "Rien de notable cette semaine — aucune annonce datée entre le 16 et le 23 août. La vague Muse (Muse Code et Spark 1.2 le 6 août, Muse Glimmer 30B sous Apache 2.0 le 10 août) a été couverte dans les deux briefs précédents ; pas de nouveau modèle, pas de publication FAIR marquante depuis.",
     "Mistral": "Rien de notable cette semaine — aucune annonce datée dans la fenêtre. Les dernières sorties (Shieldstral 3B le 5 août, endpoints régionaux et nouveaux modèles ouverts mi-août) restent les plus récentes ; le datacenter d'inférence 10 MW des Ulis est toujours annoncé pour le Q3."
@@ -31,8 +37,16 @@
       "title": "Computer use, Files API, Agent Skills et Admin API sortent du beta — et le browser use tool arrive",
       "context_html": "Le 19 août, cinq briques de la plateforme Claude quittent le beta le même jour. <strong>Computer use</strong> devient le toolset <code>computer_toolset_20260801</code> : plus de header beta, <strong>actions en batch</strong> (plusieurs actions dans un seul tour), <code>zoom</code> activé par défaut et configuration par membre via <code>configs</code> — la mise à niveau change la forme de requête, ce n'est pas un renommage. Anthropic lance en parallèle le <strong>browser use tool</strong> (<code>browser_toolset_20260801</code>), un toolset client qui pilote un navigateur hébergé par l'application : il travaille dans un viewport plutôt que sur un bureau entier, <strong>lit la page elle-même</strong> (arbre d'accessibilité, éléments, formulaires, onglets) et ajoute références d'éléments, saisie de formulaires, gestion d'onglets, report de téléchargements et upload de fichiers en opt-in par-dessus le contrôle capture-et-clic. Les deux toolsets sont disponibles sur <strong>Fable 5, Mythos 5, Opus 5, Sonnet 5 et Opus 4.8</strong>. La <strong>Files API</strong> perd le header <code>files-api-2025-04-14</code> et adopte l'expiration de fichiers (<code>expires_in_seconds</code>, <code>expires_at</code>) plus la pagination <code>page</code>/<code>next_page</code> avec filtre <code>ids[]</code>. <strong>Agent Skills et la Skills API</strong> (<code>/v1/skills</code>) perdent <code>skills-2025-10-02</code>, y compris pour les requêtes Messages qui chargent des Skills via <code>container</code>. Les endpoints user-management de l'<strong>Admin API</strong> pour les organisations Claude Enterprise (membres, invitations, groupes, rôles personnalisés) sortent aussi du beta.",
       "sources": [
-        { "label": "platform.claude.com — release notes (19 août 2026)", "url": "https://platform.claude.com/docs/en/release-notes/overview", "primary": true },
-        { "label": "browser use tool — documentation", "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/browser-use-tool", "primary": true }
+        {
+          "label": "platform.claude.com — release notes (19 août 2026)",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "primary": true
+        },
+        {
+          "label": "browser use tool — documentation",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/browser-use-tool",
+          "primary": true
+        }
       ],
       "has_primary": true,
       "detail": {
@@ -40,10 +54,26 @@
         "date_long": "19 août 2026",
         "description": "Le 19 août 2026, Anthropic sort computer use, la Files API, Agent Skills, la Skills API et l'Admin API du beta, et lance le browser use tool. Détails techniques et implications Lynxter.",
         "stats": [
-          { "num": "5", "unit": "briques", "label": "sorties du beta le même jour" },
-          { "num": "1", "unit": "toolset neuf", "label": "browser_toolset_20260801" },
-          { "num": "5", "unit": "modèles", "label": "Fable 5, Mythos 5, Opus 5, Sonnet 5, Opus 4.8" },
-          { "num": "0", "unit": "header beta", "label": "computer use, Files, Skills, Admin" }
+          {
+            "num": "5",
+            "unit": "briques",
+            "label": "sorties du beta le même jour"
+          },
+          {
+            "num": "1",
+            "unit": "toolset neuf",
+            "label": "browser_toolset_20260801"
+          },
+          {
+            "num": "5",
+            "unit": "modèles",
+            "label": "Fable 5, Mythos 5, Opus 5, Sonnet 5, Opus 4.8"
+          },
+          {
+            "num": "0",
+            "unit": "header beta",
+            "label": "computer use, Files, Skills, Admin"
+          }
         ],
         "context_paragraphs": [
           "Le passage en GA n'ajoute pas de capacité spectaculaire : il change le contrat. Une capacité en beta chez Anthropic peut voir sa forme de requête évoluer sans préavis long ; une capacité GA non. Le 19 août, <strong>computer use</strong> devient le toolset <code>computer_toolset_20260801</code> — sans header beta, avec des <strong>actions en batch</strong> qui permettent d'enchaîner plusieurs actions dans un seul tour de modèle (moins d'aller-retours, donc moins de latence et de tokens), <code>zoom</code> activé par défaut, et une configuration par membre du toolset via le tableau <code>configs</code>. Anthropic précise que migrer une intégration existante depuis <code>computer_20251124</code> <strong>change la forme de requête et la façon dont les outils sont traités</strong> : les anciennes versions beta restent disponibles, mais l'upgrade n'est pas un simple renommage de chaîne. Même logique pour la <strong>Files API</strong> : les requêtes envoyées sans le header <code>files-api-2025-04-14</code> utilisent le format de réponse courant — expiration de fichiers (<code>expires_in_seconds</code> à l'upload, <code>expires_at</code> sur l'objet) et pagination <code>page</code>/<code>next_page</code> avec un filtre <code>ids[]</code> — tandis que celles qui envoient encore le header conservent l'ancien format.",
@@ -62,13 +92,36 @@
           "meta": "Anthropic · release notes de la plateforme Claude · entrée du 19 août 2026"
         },
         "related": [
-          { "slug": "2026-08-23-managed-agents-domaines-memoire", "actor": "Anthropic", "title": "Managed Agents : listes blanches de domaines et memory stores en sandbox", "tag": "🛠" },
-          { "slug": "2026-08-23-claude-code-2-1-234-241", "actor": "Anthropic", "title": "Claude Code 2.1.234 → 2.1.241", "tag": "🎯" },
-          { "slug": "2026-08-23-anthropic-python-sdk-v1", "actor": "Anthropic", "title": "SDK Python v1.0 — httpx2 et suppressions cassantes", "tag": "🛠" }
+          {
+            "slug": "2026-08-23-managed-agents-domaines-memoire",
+            "actor": "Anthropic",
+            "title": "Managed Agents : listes blanches de domaines et memory stores en sandbox",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-08-23-claude-code-2-1-234-241",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.234 → 2.1.241",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-08-23-anthropic-python-sdk-v1",
+            "actor": "Anthropic",
+            "title": "SDK Python v1.0 — httpx2 et suppressions cassantes",
+            "tag": "🛠"
+          }
         ],
         "nav": {
-          "prev": { "href": "../briefs/2026-08-23.html", "label": "← Retour au brief", "title": "2026-08-23" },
-          "next": { "href": "2026-08-23-claude-code-2-1-234-241.html", "label": "Item suivant →", "title": "Claude Code 2.1.234 → 2.1.241" }
+          "prev": {
+            "href": "../briefs/2026-08-23.html",
+            "label": "← Retour au brief",
+            "title": "2026-08-23"
+          },
+          "next": {
+            "href": "2026-08-23-claude-code-2-1-234-241.html",
+            "label": "Item suivant →",
+            "title": "Claude Code 2.1.234 → 2.1.241"
+          }
         }
       }
     },
@@ -80,7 +133,11 @@
       "title": "Claude Code 2.1.234 → 2.1.241 — huit versions, un bug de double facturation Bedrock, une fuite mémoire",
       "context_html": "Huit versions en sept jours, du <strong>17 au 23 août</strong>. Deux correctifs comptent en production. La <strong>2.1.239</strong> répare le streaming Bedrock derrière un proxy qui supprime le header <code>Content-Type</code> de la réponse : le tour repartait en non-streaming, ce qui <strong>doublait silencieusement les appels API facturés</strong>. La <strong>2.1.238</strong> corrige une croissance mémoire non bornée dans les sessions interactives longues — les résultats d'outils des sous-agents sont désormais libérés dès qu'ils quittent la fenêtre d'affichage récente. Côté nouveautés : style de sortie intégré <strong>Concise</strong> (2.1.237), variable <code>ANTHROPIC_DEFAULT_MODEL</code> qui fixe le modèle de démarrage des nouvelles sessions sans écraser un choix <code>/model</code> (2.1.236), <code>notify_when_idle</code> sur <code>SendMessage</code> pour être prévenu une seule fois quand une autre session passe en idle (2.1.236), réglage <code>keybindingFlavor: \"readline\"</code> (2.1.238), <code>headersHelper</code> sur les marketplaces de plugins pour générer des en-têtes HTTP éphémères (2.1.238), options <code>--defer-shutdown-max-min</code> et <code>--proxy-authorization-command</code> sur le self-hosted runner (2.1.238), badge merge request GitLab dans le footer et la statusline (2.1.234), continuation automatique de session à la remise à zéro du quota claude.ai (2.1.234), et <code>/claude-api upgrade</code> pour migrer un projet Python de <code>anthropic</code> 0.x vers 1.x (2.1.239). Le mode auto gagne en rigueur : les règles d'autorisation <code>Monitor</code> sont mises de côté quand il est actif, et le contrôle de propreté du dépôt ne se laisse plus tromper par <code>status.showUntrackedFiles=no</code> (2.1.236). Sur macOS, les règles sandbox de refus de lecture à joker (par exemple <code>**/.env</code>) priment désormais à l'intérieur des zones autorisées et ne peuvent plus être contournées en renommant le fichier (2.1.236).",
       "sources": [
-        { "label": "code.claude.com/docs/en/changelog", "url": "https://code.claude.com/docs/en/changelog", "primary": true }
+        {
+          "label": "code.claude.com/docs/en/changelog",
+          "url": "https://code.claude.com/docs/en/changelog",
+          "primary": true
+        }
       ],
       "has_primary": true,
       "detail": {
@@ -88,10 +145,26 @@
         "date_long": "17 au 23 août 2026",
         "description": "Huit versions de Claude Code entre le 17 et le 23 août 2026 : correctif de double facturation Bedrock, fuite mémoire des sessions longues, style Concise, ANTHROPIC_DEFAULT_MODEL, durcissement du mode auto et du sandbox macOS.",
         "stats": [
-          { "num": "8", "unit": "versions", "label": "2.1.234 → 2.1.241 en 7 jours" },
-          { "num": "2×", "unit": "facturé", "label": "bug streaming Bedrock derrière proxy" },
-          { "num": "Concise", "unit": "output style", "label": "nouveau style intégré (2.1.237)" },
-          { "num": "3", "unit": "correctifs sécurité", "label": "sandbox macOS, headersHelper, secrets MCP" }
+          {
+            "num": "8",
+            "unit": "versions",
+            "label": "2.1.234 → 2.1.241 en 7 jours"
+          },
+          {
+            "num": "2×",
+            "unit": "facturé",
+            "label": "bug streaming Bedrock derrière proxy"
+          },
+          {
+            "num": "Concise",
+            "unit": "output style",
+            "label": "nouveau style intégré (2.1.237)"
+          },
+          {
+            "num": "3",
+            "unit": "correctifs sécurité",
+            "label": "sandbox macOS, headersHelper, secrets MCP"
+          }
         ],
         "context_paragraphs": [
           "La cadence de la semaine — <strong>2.1.234 le 17 août, 2.1.241 le 23</strong> — tient surtout de la campagne de correction. Le défaut le plus coûteux est corrigé en <strong>2.1.239</strong> : sur Bedrock, derrière un proxy d'entreprise qui supprime le header <code>Content-Type</code> de la réponse, le streaming échouait silencieusement et Claude Code <strong>rejouait le tour entier en non-streaming</strong>. Résultat : deux appels API facturés pour un seul tour de conversation, sans message d'erreur ni ligne dans les logs. Le second, en <strong>2.1.238</strong>, concerne la mémoire : dans les sessions interactives longues, les résultats d'outils des sous-agents n'étaient jamais libérés ; ils le sont désormais dès qu'ils sortent de la fenêtre d'affichage récente. Deux défauts invisibles depuis l'interface, tous deux amplifiés par le type d'usage qui devient la norme — des sessions qui durent des heures, avec des sous-agents et un proxy devant.",
@@ -110,13 +183,36 @@
           "meta": "Anthropic · changelog Claude Code · versions 2.1.234 (17 août) à 2.1.241 (23 août 2026)"
         },
         "related": [
-          { "slug": "2026-08-23-claude-platform-ga-browser-use", "actor": "Anthropic", "title": "La plateforme Claude sort du beta et lance le browser use tool", "tag": "🎯" },
-          { "slug": "2026-08-23-anthropic-python-sdk-v1", "actor": "Anthropic", "title": "SDK Python v1.0 — httpx2 et suppressions cassantes", "tag": "🛠" },
-          { "slug": "2026-08-23-mcp-roadmap-aout-2026", "actor": "Anthropic", "title": "Roadmap MCP — cinq chantiers", "tag": "🎯" }
+          {
+            "slug": "2026-08-23-claude-platform-ga-browser-use",
+            "actor": "Anthropic",
+            "title": "La plateforme Claude sort du beta et lance le browser use tool",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-08-23-anthropic-python-sdk-v1",
+            "actor": "Anthropic",
+            "title": "SDK Python v1.0 — httpx2 et suppressions cassantes",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-08-23-mcp-roadmap-aout-2026",
+            "actor": "Anthropic",
+            "title": "Roadmap MCP — cinq chantiers",
+            "tag": "🎯"
+          }
         ],
         "nav": {
-          "prev": { "href": "../briefs/2026-08-23.html", "label": "← Retour au brief", "title": "2026-08-23" },
-          "next": { "href": "2026-08-23-managed-agents-domaines-memoire.html", "label": "Item suivant →", "title": "Managed Agents : domaines et memory stores" }
+          "prev": {
+            "href": "../briefs/2026-08-23.html",
+            "label": "← Retour au brief",
+            "title": "2026-08-23"
+          },
+          "next": {
+            "href": "2026-08-23-managed-agents-domaines-memoire.html",
+            "label": "Item suivant →",
+            "title": "Managed Agents : domaines et memory stores"
+          }
         }
       }
     },
@@ -128,8 +224,16 @@
       "title": "Managed Agents — listes blanches de domaines, memory stores en sandbox auto-hébergée, session viewer redessiné",
       "context_html": "Trois changements le 19 août sur Claude Managed Agents. On peut désormais <strong>restreindre les sites</strong> que les outils <code>web_search</code> et <code>web_fetch</code> d'un agent peuvent atteindre : <code>allowed_domains</code> ou <code>blocked_domains</code> se posent sur l'entrée de l'outil dans le tableau <code>configs</code> du toolset <code>agent_toolset_20260401</code>, <code>web_fetch</code> acceptant en plus <code>max_content_tokens</code> et <code>web_search</code> un <code>user_location</code>. Chaque entrée <code>configs</code> est identifiée par son <code>name</code> et typée par un <code>type</code> facultatif ; les requêtes qui ne passent que <code>name</code>, <code>enabled</code> et <code>permission_policy</code> continuent de fonctionner. Deuxième changement : les sessions qui tournent dans une <strong>sandbox auto-hébergée</strong> peuvent attacher des <strong>memory stores</strong> — les workers des SDK Python, TypeScript et Go téléchargent chaque store attaché dans la sandbox à son <code>mount_path</code> et resynchronisent les modifications de l'agent vers le store. Troisième : le <strong>session viewer</strong> de la Console est redessiné, avec minimap chronologique, transcription groupée par requête modèle et panneau Inspector (détails et coût de session, événements bruts, statistiques par outil, ressources montées, activité par thread).",
       "sources": [
-        { "label": "platform.claude.com — release notes (19 août 2026)", "url": "https://platform.claude.com/docs/en/release-notes/overview", "primary": true },
-        { "label": "Restrict web search and web fetch domains — doc", "url": "https://platform.claude.com/docs/en/managed-agents/tools", "primary": true }
+        {
+          "label": "platform.claude.com — release notes (19 août 2026)",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "primary": true
+        },
+        {
+          "label": "Restrict web search and web fetch domains — doc",
+          "url": "https://platform.claude.com/docs/en/managed-agents/tools",
+          "primary": true
+        }
       ],
       "has_primary": true,
       "detail": {
@@ -137,10 +241,26 @@
         "date_long": "19 août 2026",
         "description": "Le 19 août 2026, Claude Managed Agents gagne des listes blanches de domaines sur web_search et web_fetch, des memory stores attachables en sandbox auto-hébergée, et un session viewer Console redessiné.",
         "stats": [
-          { "num": "2", "unit": "listes", "label": "allowed_domains / blocked_domains" },
-          { "num": "3", "unit": "SDK", "label": "workers Python, TypeScript, Go" },
-          { "num": "mount_path", "unit": "sync", "label": "memory stores en sandbox auto-hébergée" },
-          { "num": "1", "unit": "Inspector", "label": "coût, événements bruts, stats par outil" }
+          {
+            "num": "2",
+            "unit": "listes",
+            "label": "allowed_domains / blocked_domains"
+          },
+          {
+            "num": "3",
+            "unit": "SDK",
+            "label": "workers Python, TypeScript, Go"
+          },
+          {
+            "num": "mount_path",
+            "unit": "sync",
+            "label": "memory stores en sandbox auto-hébergée"
+          },
+          {
+            "num": "1",
+            "unit": "Inspector",
+            "label": "coût, événements bruts, stats par outil"
+          }
         ],
         "context_paragraphs": [
           "Le contrôle de domaines répond à l'objection qui bloque le plus souvent le déploiement d'un agent chez un client : <em>où va-t-il chercher l'information, et qu'est-ce qui garantit qu'il n'en sorte pas ?</em> Depuis le 19 août, <code>allowed_domains</code> et <code>blocked_domains</code> se posent directement sur l'entrée de l'outil dans le tableau <code>configs</code> du toolset <code>agent_toolset_20260401</code>. <code>web_fetch</code> accepte en plus <code>max_content_tokens</code> — un plafond sur le volume ramené par récupération, donc sur le coût par tour — et <code>web_search</code> un <code>user_location</code>. Détail d'implémentation qui compte pour la migration : chaque entrée <code>configs</code> est désormais identifiée par son <code>name</code> et typée par un <code>type</code> facultatif, et dans les SDK typés les entrées <code>configs</code> deviennent des types par outil ; les requêtes existantes qui ne passent que <code>name</code>, <code>enabled</code> et <code>permission_policy</code> continuent de fonctionner sans changement.",
@@ -159,12 +279,30 @@
           "meta": "Anthropic · documentation Managed Agents · restriction des domaines web_search / web_fetch · 19 août 2026"
         },
         "related": [
-          { "slug": "2026-08-23-claude-platform-ga-browser-use", "actor": "Anthropic", "title": "La plateforme Claude sort du beta et lance le browser use tool", "tag": "🎯" },
-          { "slug": "2026-08-23-mcp-roadmap-aout-2026", "actor": "Anthropic", "title": "Roadmap MCP — cinq chantiers", "tag": "🎯" }
+          {
+            "slug": "2026-08-23-claude-platform-ga-browser-use",
+            "actor": "Anthropic",
+            "title": "La plateforme Claude sort du beta et lance le browser use tool",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-08-23-mcp-roadmap-aout-2026",
+            "actor": "Anthropic",
+            "title": "Roadmap MCP — cinq chantiers",
+            "tag": "🎯"
+          }
         ],
         "nav": {
-          "prev": { "href": "../briefs/2026-08-23.html", "label": "← Retour au brief", "title": "2026-08-23" },
-          "next": { "href": "2026-08-23-anthropic-python-sdk-v1.html", "label": "Item suivant →", "title": "SDK Python v1.0" }
+          "prev": {
+            "href": "../briefs/2026-08-23.html",
+            "label": "← Retour au brief",
+            "title": "2026-08-23"
+          },
+          "next": {
+            "href": "2026-08-23-anthropic-python-sdk-v1.html",
+            "label": "Item suivant →",
+            "title": "SDK Python v1.0"
+          }
         }
       }
     },
@@ -176,8 +314,16 @@
       "title": "SDK Python v1.0 — passage à httpx2, Python 3.10 minimum, suppressions cassantes",
       "context_html": "Le 20 août, le SDK Python d'Anthropic passe en <strong>v1.0</strong>. La couche HTTP quitte <code>httpx</code> pour <strong><code>httpx2</code></strong>, un fork maintenu et compatible API : les objets <code>http_client</code>, <code>Timeout</code> et transports personnalisés se construisent désormais depuis <code>httpx2</code> (les helpers <code>DefaultHttpxClient</code> ne changent pas), et il faut appeler <code>httpx2.alias_httpx()</code> au démarrage si une bibliothèque de tracing ou de mock patche <code>httpx</code>. La v1.0 exige <strong>Python 3.10 ou supérieur</strong> et supprime la surface dépréciée de longue date : <strong>API Text Completions legacy</strong>, paramètres <code>temperature</code>, <code>top_p</code> et <code>top_k</code> sur les méthodes Messages, et <code>compaction_control</code> côté client du tool runner. Sur le client asynchrone, les résultats de <code>.with_raw_response</code> exigent maintenant <code>await response.parse()</code>, et <code>AnthropicBedrock</code> lève une erreur quand aucune région AWS n'est configurée au lieu de retomber sur <code>us-east-1</code>. Le guide de migration v1 liste chaque changement avec des extraits avant/après — et Claude Code a ajouté dès le lendemain une commande <code>/claude-api upgrade</code> qui fait la migration 0.x → 1.x sur un projet Python.",
       "sources": [
-        { "label": "platform.claude.com — release notes (20 août 2026)", "url": "https://platform.claude.com/docs/en/release-notes/overview", "primary": true },
-        { "label": "anthropic-sdk-python — guide de migration v1", "url": "https://github.com/anthropics/anthropic-sdk-python/blob/main/MIGRATION.md", "primary": true }
+        {
+          "label": "platform.claude.com — release notes (20 août 2026)",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "primary": true
+        },
+        {
+          "label": "anthropic-sdk-python — guide de migration v1",
+          "url": "https://github.com/anthropics/anthropic-sdk-python/blob/main/MIGRATION.md",
+          "primary": true
+        }
       ],
       "has_primary": true,
       "detail": {
@@ -185,10 +331,26 @@
         "date_long": "20 août 2026",
         "description": "Le SDK Python d'Anthropic passe en v1.0 le 20 août 2026 : couche HTTP httpx2, Python 3.10 minimum, suppression de Text Completions et des paramètres d'échantillonnage sur Messages, changements sur le client async et AnthropicBedrock.",
         "stats": [
-          { "num": "v1.0", "unit": "SDK Python", "label": "sorti le 20 août 2026" },
-          { "num": "3.10", "unit": "Python min.", "label": "versions antérieures non supportées" },
-          { "num": "httpx2", "unit": "couche HTTP", "label": "fork maintenu, compatible API" },
-          { "num": "3", "unit": "suppressions", "label": "Text Completions, sampling params, compaction_control" }
+          {
+            "num": "v1.0",
+            "unit": "SDK Python",
+            "label": "sorti le 20 août 2026"
+          },
+          {
+            "num": "3.10",
+            "unit": "Python min.",
+            "label": "versions antérieures non supportées"
+          },
+          {
+            "num": "httpx2",
+            "unit": "couche HTTP",
+            "label": "fork maintenu, compatible API"
+          },
+          {
+            "num": "3",
+            "unit": "suppressions",
+            "label": "Text Completions, sampling params, compaction_control"
+          }
         ],
         "context_paragraphs": [
           "Le changement structurant est le déplacement de la couche HTTP de <code>httpx</code> vers <strong><code>httpx2</code></strong>, présenté comme un fork maintenu et compatible au niveau API. En pratique, le code qui construit un <code>http_client</code>, un <code>Timeout</code> ou un transport personnalisé doit importer ces objets depuis <code>httpx2</code> — les helpers <code>DefaultHttpxClient</code>, eux, ne changent pas. Le piège n'est pas dans le code applicatif mais dans l'outillage autour : toute bibliothèque de tracing, de mock ou d'enregistrement de requêtes qui patche <code>httpx</code> cesse de voir les appels. La parade documentée est un appel à <code>httpx2.alias_httpx()</code> au démarrage du processus. Une suite de tests qui repose sur un enregistrement HTTP passera donc de verte à silencieusement vide sans cette ligne — c'est le mode de rupture le plus probable dans une CI existante.",
@@ -207,12 +369,30 @@
           "meta": "Anthropic · guide de migration officiel du SDK Python v1 · release du 20 août 2026"
         },
         "related": [
-          { "slug": "2026-08-23-claude-code-2-1-234-241", "actor": "Anthropic", "title": "Claude Code 2.1.234 → 2.1.241", "tag": "🎯" },
-          { "slug": "2026-08-23-claude-platform-ga-browser-use", "actor": "Anthropic", "title": "La plateforme Claude sort du beta et lance le browser use tool", "tag": "🎯" }
+          {
+            "slug": "2026-08-23-claude-code-2-1-234-241",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.234 → 2.1.241",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-08-23-claude-platform-ga-browser-use",
+            "actor": "Anthropic",
+            "title": "La plateforme Claude sort du beta et lance le browser use tool",
+            "tag": "🎯"
+          }
         ],
         "nav": {
-          "prev": { "href": "../briefs/2026-08-23.html", "label": "← Retour au brief", "title": "2026-08-23" },
-          "next": { "href": "2026-08-23-mcp-roadmap-aout-2026.html", "label": "Item suivant →", "title": "Roadmap MCP" }
+          "prev": {
+            "href": "../briefs/2026-08-23.html",
+            "label": "← Retour au brief",
+            "title": "2026-08-23"
+          },
+          "next": {
+            "href": "2026-08-23-mcp-roadmap-aout-2026.html",
+            "label": "Item suivant →",
+            "title": "Roadmap MCP"
+          }
         }
       }
     },
@@ -224,8 +404,16 @@
       "title": "Roadmap MCP du 22 août — cinq chantiers, dont les tâches longues et l'identité d'agent",
       "context_html": "Les Core Maintainers de MCP publient le <strong>22 août</strong> une roadmap pour la prochaine version de spécification et au-delà, élaborée avec la communauté des mainteneurs et les Working Groups. Cinq chantiers prioritaires : <strong>primitives de messagerie agentique</strong> (patterns de tâches longues via événements initiés par le serveur, composition de tâches, maturation de l'extension <em>Tasks</em>) ; <strong>unification du transport HTTP</strong> (standardisation sur des transports HTTP en local comme en distant, y compris Streamable HTTP par-dessus stdio) ; <strong>identité d'agent et sécurité entreprise</strong> (identité d'agent standardisée avec DPoP — Demonstrating Proof of Possession — et Workload Identity Federation) ; <strong>primitives améliorées</strong> (contrats de traitement des résultats d'outils, découverte progressive pour les catalogues d'outils volumineux) ; <strong>ergonomie des SDK</strong> (conformité à la spécification et documentation). Aucune date de release n'est donnée pour la prochaine version au-delà de la référence à l'actuelle <strong>2026-07-28</strong> — celle qui a rendu le cœur du protocole sans état en supprimant le handshake <code>initialize</code>/<code>initialized</code> et l'en-tête <code>Mcp-Session-Id</code>. Ordre de grandeur d'adoption cité par le projet : les SDK Tier 1 approchent le demi-milliard de téléchargements par mois, TypeScript et Python ayant franchi le milliard cumulé.",
       "sources": [
-        { "label": "blog.modelcontextprotocol.io — The New MCP Roadmap", "url": "https://blog.modelcontextprotocol.io/posts/mcp-roadmap/", "primary": true },
-        { "label": "blog.modelcontextprotocol.io — spécification 2026-07-28", "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28/", "primary": true }
+        {
+          "label": "blog.modelcontextprotocol.io — The New MCP Roadmap",
+          "url": "https://blog.modelcontextprotocol.io/posts/mcp-roadmap/",
+          "primary": true
+        },
+        {
+          "label": "blog.modelcontextprotocol.io — spécification 2026-07-28",
+          "url": "https://blog.modelcontextprotocol.io/posts/2026-07-28/",
+          "primary": true
+        }
       ],
       "has_primary": true,
       "detail": {
@@ -233,10 +421,26 @@
         "date_long": "22 août 2026",
         "description": "Le 22 août 2026, les Core Maintainers de MCP publient une roadmap en cinq chantiers : messagerie agentique et tâches longues, transport HTTP unifié, identité d'agent avec DPoP, primitives améliorées, ergonomie des SDK.",
         "stats": [
-          { "num": "5", "unit": "chantiers", "label": "priorités de la roadmap" },
-          { "num": "DPoP", "unit": "+ WIF", "label": "identité d'agent standardisée" },
-          { "num": "2026-07-28", "unit": "spec courante", "label": "cœur du protocole sans état" },
-          { "num": "~500M", "unit": "dl/mois", "label": "SDK Tier 1 cumulés" }
+          {
+            "num": "5",
+            "unit": "chantiers",
+            "label": "priorités de la roadmap"
+          },
+          {
+            "num": "DPoP",
+            "unit": "+ WIF",
+            "label": "identité d'agent standardisée"
+          },
+          {
+            "num": "2026-07-28",
+            "unit": "spec courante",
+            "label": "cœur du protocole sans état"
+          },
+          {
+            "num": "~500M",
+            "unit": "dl/mois",
+            "label": "SDK Tier 1 cumulés"
+          }
         ],
         "context_paragraphs": [
           "La roadmap publiée le 22 août par les Core Maintainers, avec la communauté des mainteneurs et les Working Groups, aligne cinq chantiers. Le premier, les <strong>primitives de messagerie agentique</strong>, est celui qui change la nature de ce qu'on peut brancher : il s'agit de faire mûrir les patterns de tâches longues via des <strong>événements initiés par le serveur</strong> et la composition de tâches, en portant l'extension <em>Tasks</em> à maturité. Aujourd'hui, un serveur MCP répond à une demande ; demain, il pourra tenir une tâche qui dure et notifier son avancement. Le deuxième, <strong>l'unification du transport HTTP</strong>, standardise sur des transports HTTP pour les déploiements locaux comme distants, jusqu'à faire passer du Streamable HTTP par-dessus stdio — la fin, à terme, de la distinction entre « serveur local » et « serveur distant » dans la façon d'écrire un serveur.",
@@ -255,12 +459,30 @@
           "meta": "Model Context Protocol · roadmap publiée par les Core Maintainers · 22 août 2026"
         },
         "related": [
-          { "slug": "2026-08-23-managed-agents-domaines-memoire", "actor": "Anthropic", "title": "Managed Agents : domaines et memory stores", "tag": "🛠" },
-          { "slug": "2026-08-23-claude-code-2-1-234-241", "actor": "Anthropic", "title": "Claude Code 2.1.234 → 2.1.241", "tag": "🎯" }
+          {
+            "slug": "2026-08-23-managed-agents-domaines-memoire",
+            "actor": "Anthropic",
+            "title": "Managed Agents : domaines et memory stores",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-08-23-claude-code-2-1-234-241",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.234 → 2.1.241",
+            "tag": "🎯"
+          }
         ],
         "nav": {
-          "prev": { "href": "../briefs/2026-08-23.html", "label": "← Retour au brief", "title": "2026-08-23" },
-          "next": { "href": "2026-08-23-openai-model-spec-u18.html", "label": "Item suivant →", "title": "Model Spec — principes U18" }
+          "prev": {
+            "href": "../briefs/2026-08-23.html",
+            "label": "← Retour au brief",
+            "title": "2026-08-23"
+          },
+          "next": {
+            "href": "2026-08-23-openai-model-spec-u18.html",
+            "label": "Item suivant →",
+            "title": "Model Spec — principes U18"
+          }
         }
       }
     },
@@ -272,8 +494,16 @@
       "title": "Cowork arrive sur web et mobile, les connecteurs Gmail et Drive passent en écriture",
       "context_html": "Claude Cowork devient disponible sur le web et les applications mobiles pour <strong>tous les plans payants</strong>, avec sessions distantes et fichiers accessibles d'un appareil à l'autre. Les connecteurs <strong>Gmail et Google Drive</strong> gagnent des actions d'écriture — rédiger, envoyer, répondre et transférer des courriels, gérer des fichiers Drive — avec <strong>approbation demandée par défaut</strong> avant toute action modifiante. Le passage de la lecture à l'écriture sur une boîte mail professionnelle mérite un réglage explicite des approbations avant tout usage en production.",
       "sources": [
-        { "label": "Android Authority — Gmail et Drive en écriture", "url": "https://www.androidauthority.com/claude-gmail-google-drive-integrations-3700330/", "primary": false },
-        { "label": "AlternativeTo — Claude adds Gmail reply and Drive management", "url": "https://alternativeto.net/news/2026/8/claude-adds-gmail-reply-and-google-drive-management-to-paid-plans/", "primary": false }
+        {
+          "label": "Android Authority — Gmail et Drive en écriture",
+          "url": "https://www.androidauthority.com/claude-gmail-google-drive-integrations-3700330/",
+          "primary": false
+        },
+        {
+          "label": "AlternativeTo — Claude adds Gmail reply and Drive management",
+          "url": "https://alternativeto.net/news/2026/8/claude-adds-gmail-reply-and-google-drive-management-to-paid-plans/",
+          "primary": false
+        }
       ],
       "has_primary": false
     },
@@ -285,7 +515,11 @@
       "title": "Le Workbench devient Playground dans la Console",
       "context_html": "Le Workbench de la Console Claude devient <strong>Playground</strong> le 18 août : il supporte tous les paramètres de l'API Messages, embarque des modèles d'exemple qui démontrent des fonctionnalités comme l'exécution de code et la recherche web, et affiche pour chaque exécution la requête SDK complète et la réponse de l'API. L'ancien Workbench et les endpoints expérimentaux de prompt tooling (<code>generate_prompt</code>, <code>improve_prompt</code>, <code>templatize_prompt</code>) ont été retirés le <strong>17 août</strong> comme annoncé un mois plus tôt. Les prompts sauvegardés, variables et évaluations de l'ancien outil ne sont pas repris — l'export devait être fait avant la coupure.",
       "sources": [
-        { "label": "platform.claude.com — release notes (18 août 2026)", "url": "https://platform.claude.com/docs/en/release-notes/overview", "primary": true }
+        {
+          "label": "platform.claude.com — release notes (18 août 2026)",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "primary": true
+        }
       ],
       "has_primary": true
     },
@@ -297,8 +531,16 @@
       "title": "OpenAI met à jour son Model Spec — principes U18 et section sur les limites de capacité",
       "context_html": "Le 18 août, OpenAI met à jour son <strong>Model Spec</strong>, le document vivant qui décrit le comportement attendu de ses modèles. L'ajout principal est un ensemble de <strong>principes U18</strong> qui s'empile sur les règles de sécurité applicables à tous les utilisateurs et précise leur application aux conversations avec des adolescents de <strong>13 à 17 ans</strong> : pas de jeu de rôle romantique immersif ni d'intimité à la première personne, refus des mises en scène violentes ou sexualisées même non graphiques, refus des activités dangereuses, du mésusage de substances et de toute tentative de dissimuler un préjudice, prudence accrue sur l'image du corps et les comportements alimentaires. Deux modifications intéressent directement la conception de prompts : une <strong>nouvelle section « Be clear about capabilities and limits »</strong>, et une clarification de la façon dont l'assistant doit traiter les <strong>prémisses fausses ou non étayées</strong> — le point de friction classique quand un utilisateur affirme un fait erroné dans sa question. La mise à jour retire par ailleurs les consignes devenues obsolètes qui visaient les modèles antérieurs au raisonnement.",
       "sources": [
-        { "label": "openai.com — Updating our Model Spec with teen protections", "url": "https://openai.com/index/updating-model-spec-with-teen-protections/", "primary": true },
-        { "label": "EdTech Innovation Hub — analyse de la mise à jour", "url": "https://www.edtechinnovationhub.com/news/openai-updates-model-rules-to-strengthen-protections-for-teens-using-chatgpt", "primary": false }
+        {
+          "label": "openai.com — Updating our Model Spec with teen protections",
+          "url": "https://openai.com/index/updating-model-spec-with-teen-protections/",
+          "primary": true
+        },
+        {
+          "label": "EdTech Innovation Hub — analyse de la mise à jour",
+          "url": "https://www.edtechinnovationhub.com/news/openai-updates-model-rules-to-strengthen-protections-for-teens-using-chatgpt",
+          "primary": false
+        }
       ],
       "has_primary": true,
       "detail": {
@@ -306,10 +548,26 @@
         "date_long": "18 août 2026",
         "description": "OpenAI met à jour son Model Spec le 18 août 2026 : principes U18 pour les 13-17 ans, nouvelle section sur les limites de capacité, traitement clarifié des prémisses non étayées.",
         "stats": [
-          { "num": "13-17", "unit": "ans", "label": "périmètre des principes U18" },
-          { "num": "1", "unit": "section neuve", "label": "« Be clear about capabilities and limits »" },
-          { "num": "18 août", "unit": "2026", "label": "même jour que ChatGPT for Teens" },
-          { "num": "0", "unit": "capacité", "label": "mise à jour de comportement, pas de modèle" }
+          {
+            "num": "13-17",
+            "unit": "ans",
+            "label": "périmètre des principes U18"
+          },
+          {
+            "num": "1",
+            "unit": "section neuve",
+            "label": "« Be clear about capabilities and limits »"
+          },
+          {
+            "num": "18 août",
+            "unit": "2026",
+            "label": "même jour que ChatGPT for Teens"
+          },
+          {
+            "num": "0",
+            "unit": "capacité",
+            "label": "mise à jour de comportement, pas de modèle"
+          }
         ],
         "context_paragraphs": [
           "Le <strong>Model Spec</strong> n'est pas un communiqué : c'est le document que les modèles d'OpenAI sont entraînés et évalués à suivre, et le référentiel auquel se réfèrent les équipes qui contestent un comportement. Sa mise à jour du 18 août ajoute des <strong>principes U18</strong> qui s'empilent sur les règles applicables à tous et précisent leur application aux 13-17 ans : refus du jeu de rôle romantique immersif et de l'intimité à la première personne, refus des mises en scène violentes ou sexualisées même non graphiques, refus des activités dangereuses, du mésusage de substances et de toute aide à dissimuler un préjudice, prudence renforcée sur l'image du corps et les comportements alimentaires. Le déclencheur est explicite dans le calendrier : le même jour, OpenAI lance <strong>ChatGPT for Teens</strong>, qui bascule automatiquement dans une expérience dédiée toute personne estimée mineure ou déclarant avoir entre 13 et 17 ans.",
@@ -328,12 +586,30 @@
           "meta": "OpenAI · annonce officielle de mise à jour du Model Spec · 18 août 2026 · page non récupérable depuis cette session (egress bloqué), recoupée par deux recherches indépendantes"
         },
         "related": [
-          { "slug": "2026-08-23-chatgpt-for-teens", "actor": "OpenAI", "title": "ChatGPT for Teens", "tag": "·" },
-          { "slug": "2026-08-23-openai-preparedness", "actor": "OpenAI", "title": "Équipe Preparedness — dissolution rapportée et contestée", "tag": "·" }
+          {
+            "slug": "2026-08-16-openai-gpt-5-6-cyber-daybreak",
+            "actor": "OpenAI",
+            "title": "GPT-5.6-Cyber et la scission de Daybreak en Blue et Red",
+            "tag": "useful"
+          },
+          {
+            "slug": "2026-08-09-openai-astra-cyber-pause",
+            "actor": "OpenAI",
+            "title": "OpenAI met des pans du développement d'Astra en pause pour capacité cyber proche",
+            "tag": "useful"
+          }
         ],
         "nav": {
-          "prev": { "href": "../briefs/2026-08-23.html", "label": "← Retour au brief", "title": "2026-08-23" },
-          "next": { "href": "2026-08-23-cursor-origin-cloud-agents.html", "label": "Item suivant →", "title": "Cursor Origin et cloud agents" }
+          "prev": {
+            "href": "../briefs/2026-08-23.html",
+            "label": "← Retour au brief",
+            "title": "2026-08-23"
+          },
+          "next": {
+            "href": "2026-08-23-cursor-origin-cloud-agents.html",
+            "label": "Item suivant →",
+            "title": "Cursor Origin et cloud agents"
+          }
         }
       }
     },
@@ -345,8 +621,16 @@
       "title": "ChatGPT for Teens — expérience dédiée aux 13-17 ans",
       "context_html": "OpenAI lance le 18 août <strong>ChatGPT for Teens</strong> : toute personne que le système estime mineure, ou qui déclare avoir entre 13 et 17 ans, bascule automatiquement dans cette expérience. Elle ajoute des restrictions de contenu autour du suicide, de l'automutilation et des échanges romantiques ou sexuels, des contrôles parentaux, un <strong>Study Mode</strong> qui pousse des questions guidées et un accompagnement pas à pas plutôt que la réponse directe, et des rappels de devoirs qui apparaissent quand l'usage ressemble à de la triche. Le lancement accompagne la mise à jour du Model Spec publiée le même jour.",
       "sources": [
-        { "label": "openai.com — Introducing ChatGPT for Teens", "url": "https://openai.com/index/chatgpt-for-teens/", "primary": true },
-        { "label": "TechCrunch — OpenAI launches a safer ChatGPT for teens", "url": "https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/", "primary": false }
+        {
+          "label": "openai.com — Introducing ChatGPT for Teens",
+          "url": "https://openai.com/index/chatgpt-for-teens/",
+          "primary": true
+        },
+        {
+          "label": "TechCrunch — OpenAI launches a safer ChatGPT for teens",
+          "url": "https://techcrunch.com/2026/08/18/openai-launches-a-safer-chatgpt-for-teens-years-after-teens-started-using-it/",
+          "primary": false
+        }
       ],
       "has_primary": true
     },
@@ -358,9 +642,21 @@
       "title": "Équipe Preparedness — dissolution rapportée par le Financial Times, contestée par OpenAI",
       "context_html": "Plusieurs médias reprennent à partir du 17 août une information du Financial Times selon laquelle OpenAI aurait dissous fin juillet son équipe <strong>Preparedness</strong>, chargée d'évaluer si ses modèles peuvent présenter des risques graves voire catastrophiques, en réaffectant ses membres seniors aux équipes cyber et bio existantes — sans licenciement. <strong>Sans annonce officielle</strong> : OpenAI conteste la dissolution et affirme que l'équipe existe toujours, et l'entreprise n'a publié aucun communiqué sur le sujet. À suivre comme signal de gouvernance plutôt que comme fait établi, dans un contexte de départs de dirigeants et de préparation d'introduction en bourse.",
       "sources": [
-        { "label": "Engadget — OpenAI reportedly disbanded its Preparedness team", "url": "https://www.engadget.com/2237916/openai-reportedly-disbanded-its-preparedness-team-as-part-of-streamlining-process/", "primary": false },
-        { "label": "The Next Web — OpenAI split up the team that assessed catastrophic model risks", "url": "https://thenextweb.com/news/openai-preparedness-team-disbanded-ipo-streamlining", "primary": false },
-        { "label": "Calcalist — OpenAI disbands team tasked with preparing for catastrophic AI risks", "url": "https://www.calcalistech.com/ctechnews/article/kxpymxav0", "primary": false }
+        {
+          "label": "Engadget — OpenAI reportedly disbanded its Preparedness team",
+          "url": "https://www.engadget.com/2237916/openai-reportedly-disbanded-its-preparedness-team-as-part-of-streamlining-process/",
+          "primary": false
+        },
+        {
+          "label": "The Next Web — OpenAI split up the team that assessed catastrophic model risks",
+          "url": "https://thenextweb.com/news/openai-preparedness-team-disbanded-ipo-streamlining",
+          "primary": false
+        },
+        {
+          "label": "Calcalist — OpenAI disbands team tasked with preparing for catastrophic AI risks",
+          "url": "https://www.calcalistech.com/ctechnews/article/kxpymxav0",
+          "primary": false
+        }
       ],
       "has_primary": false
     },
@@ -372,8 +668,16 @@
       "title": "Google éteint les endpoints Imagen 4 — la migration n'est pas un renommage",
       "context_html": "Les trois modèles <code>imagen-4.0-generate-001</code>, <code>imagen-4.0-ultra-generate-001</code> et <code>imagen-4.0-fast-generate-001</code> atteignent le <strong>17 août</strong> leur date d'extinction sur l'API Gemini, Google recommandant la bascule vers la famille <strong>Gemini 3.x Image</strong> et en particulier <code>gemini-3.1-flash-image</code>. Le remplacement change la forme d'appel et pas seulement le nom du modèle : Imagen utilisait <code>generate_images</code> et renvoyait une réponse image dédiée, la nouvelle famille passe par <code>generate_content</code> et renvoie des parties de contenu susceptibles de porter des données image. Prochaine échéance sur le même calendrier : l'extinction des modèles Gemini 2.5 en octobre 2026.",
       "sources": [
-        { "label": "ai.google.dev — Gemini API changelog et table de dépréciations", "url": "https://ai.google.dev/gemini-api/docs/changelog", "primary": true },
-        { "label": "Firebase — Migrate from Imagen to a Gemini Image model", "url": "https://firebase.google.com/docs/ai-logic/imagen-models-migration", "primary": true }
+        {
+          "label": "ai.google.dev — Gemini API changelog et table de dépréciations",
+          "url": "https://ai.google.dev/gemini-api/docs/changelog",
+          "primary": true
+        },
+        {
+          "label": "Firebase — Migrate from Imagen to a Gemini Image model",
+          "url": "https://firebase.google.com/docs/ai-logic/imagen-models-migration",
+          "primary": true
+        }
       ],
       "has_primary": true
     },
@@ -385,9 +689,21 @@
       "title": "Cursor ouvre Origin, son hébergement de code, puis muscle ses cloud agents",
       "context_html": "Deux livraisons en trois jours. Le <strong>17 août</strong>, Cursor ouvre <strong>Origin</strong> en beta anticipée sur tous les plans payants (Pro, Teams, Enterprise) : hébergement de code intégré à l'éditeur, avec dépôts, pull requests, navigation de code et <strong>synchronisation GitHub</strong>, accessible par un onglet du client desktop et par un outil en ligne de commande dédié ; les fonctionnalités pensées pour les agents sont annoncées pour plus tard, et le changelog de Cursor maintient GitHub comme source de vérité. Cursor ajoute au passage des <strong>Builds</strong> pour les cloud agents — des environnements de développement préparés en arrière-plan pour que les agents démarrent plus vite et plus sûrement, avec conservation à chaud des builds réussis et récupération après un environnement cassé. Le <strong>19 août</strong>, l'éditeur muscle ses cloud agents et son harness : ils peuvent <strong>déclencher du travail sur événement</strong>, tenir un objectif jusqu'à ce qu'il soit atteint, et rester sur les rails sur des sessions longues — surveiller des pull requests, suivre un fil Slack ou exécuter des tâches planifiées. Contexte notable : le lancement d'Origin est tombé le jour d'une panne majeure de GitHub, et c'est la première grande sortie produit depuis le rachat de Cursor par SpaceX en juin.",
       "sources": [
-        { "label": "cursor.com/changelog — Cloud Agents and Cursor Harness Improvements (19 août)", "url": "https://cursor.com/changelog/08-19-26", "primary": true },
-        { "label": "SiliconANGLE — Cursor launches Origin code hosting service", "url": "https://siliconangle.com/2026/08/17/cursor-launches-origin-code-hosting-service-to-compete-with-github/", "primary": false },
-        { "label": "The New Stack — Cursor launches Origin as GitHub goes dark", "url": "https://thenewstack.io/cursor-origin-github-alternative/", "primary": false }
+        {
+          "label": "cursor.com/changelog — Cloud Agents and Cursor Harness Improvements (19 août)",
+          "url": "https://cursor.com/changelog/08-19-26",
+          "primary": true
+        },
+        {
+          "label": "SiliconANGLE — Cursor launches Origin code hosting service",
+          "url": "https://siliconangle.com/2026/08/17/cursor-launches-origin-code-hosting-service-to-compete-with-github/",
+          "primary": false
+        },
+        {
+          "label": "The New Stack — Cursor launches Origin as GitHub goes dark",
+          "url": "https://thenewstack.io/cursor-origin-github-alternative/",
+          "primary": false
+        }
       ],
       "has_primary": true,
       "detail": {
@@ -395,10 +711,26 @@
         "date_long": "17 et 19 août 2026",
         "description": "Cursor ouvre Origin en beta le 17 août 2026 (hébergement de code intégré à l'éditeur, sync GitHub) et muscle ses cloud agents le 19 août : déclenchement sur événement, tenue d'objectif, sessions longues.",
         "stats": [
-          { "num": "4", "unit": "briques", "label": "dépôts, PR, navigation, sync GitHub" },
-          { "num": "3", "unit": "plans", "label": "Pro, Teams, Enterprise — pas en gratuit" },
-          { "num": "17 août", "unit": "2026", "label": "beta anticipée d'Origin" },
-          { "num": "19 août", "unit": "2026", "label": "cloud agents déclenchés par événement" }
+          {
+            "num": "4",
+            "unit": "briques",
+            "label": "dépôts, PR, navigation, sync GitHub"
+          },
+          {
+            "num": "3",
+            "unit": "plans",
+            "label": "Pro, Teams, Enterprise — pas en gratuit"
+          },
+          {
+            "num": "17 août",
+            "unit": "2026",
+            "label": "beta anticipée d'Origin"
+          },
+          {
+            "num": "19 août",
+            "unit": "2026",
+            "label": "cloud agents déclenchés par événement"
+          }
         ],
         "context_paragraphs": [
           "<strong>Origin</strong> est un service d'hébergement de code intégré directement à l'éditeur Cursor : créer, parcourir et gérer des dépôts Git sans quitter l'outil où tournent déjà les agents. La beta anticipée du 17 août livre quatre briques — <strong>dépôts, pull requests, navigation de code et synchronisation GitHub</strong> — accessibles par un nouvel onglet du client desktop et par un outil en ligne de commande dédié. La disponibilité est limitée aux plans payants (Pro, Teams, Enterprise), le plan gratuit en est exclu. Le cadrage « alternative à GitHub » vient largement de la presse : le changelog de Cursor, lui, garde <strong>GitHub comme source de vérité</strong> et repousse les fonctionnalités réellement pensées pour les agents à plus tard. La coïncidence de calendrier a fait le reste — Origin a ouvert le jour où GitHub traversait une panne majeure.",
@@ -417,12 +749,30 @@
           "meta": "Cursor · changelog officiel du 19 août 2026 · page non récupérable depuis cette session (egress bloqué), recoupée par deux sources secondaires indépendantes"
         },
         "related": [
-          { "slug": "2026-08-23-claude-code-2-1-234-241", "actor": "Anthropic", "title": "Claude Code 2.1.234 → 2.1.241", "tag": "🎯" },
-          { "slug": "2026-08-23-deepseek-v4-flash-vision-exp", "actor": "DeepSeek", "title": "DeepSeek V4-Flash-Vision-Exp", "tag": "🛠" }
+          {
+            "slug": "2026-08-23-claude-code-2-1-234-241",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.234 → 2.1.241",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-08-23-deepseek-v4-flash-vision-exp",
+            "actor": "DeepSeek",
+            "title": "DeepSeek V4-Flash-Vision-Exp",
+            "tag": "🛠"
+          }
         ],
         "nav": {
-          "prev": { "href": "../briefs/2026-08-23.html", "label": "← Retour au brief", "title": "2026-08-23" },
-          "next": { "href": "2026-08-23-deepseek-v4-flash-vision-exp.html", "label": "Item suivant →", "title": "DeepSeek V4-Flash-Vision-Exp" }
+          "prev": {
+            "href": "../briefs/2026-08-23.html",
+            "label": "← Retour au brief",
+            "title": "2026-08-23"
+          },
+          "next": {
+            "href": "2026-08-23-deepseek-v4-flash-vision-exp.html",
+            "label": "Item suivant →",
+            "title": "DeepSeek V4-Flash-Vision-Exp"
+          }
         }
       }
     },
@@ -434,9 +784,21 @@
       "title": "DeepSeek V4-Flash-Vision-Exp — multimodal expérimental, 3 benchmarks sur 11 devant Opus 4.8",
       "context_html": "DeepSeek publie le <strong>21 août</strong> <strong>DeepSeek-V4-Flash-Vision-Exp</strong>, version expérimentale de son modèle V4 Flash jusque-là uniquement textuel, qui accepte désormais des entrées visuelles — images et captures d'écran — et peut agir dessus. Architecture MoE creuse à <strong>13 milliards de paramètres actifs sur 284 milliards au total</strong>. DeepSeek annonce des performances proches de <strong>Claude Opus 4.8</strong> sur les benchmarks agentiques multimodaux ; dans le détail, le modèle <strong>dépasse Opus 4.8 sur 3 benchmarks sur 11</strong> — DeepSWE de 1.3 point, Agents' Last Exam de 1.6 et ZeroBench de 1.0 — et reste derrière sur les huit autres. Disponible via l'API DeepSeek. La sortie intervient alors que l'entreprise prépare une introduction en bourse en Chine continentale, avec un dépôt visé en 2026 pour une cotation possible en 2027.",
       "sources": [
-        { "label": "api-docs.deepseek.com — DeepSeek-V4-Flash-Vision-Exp Release", "url": "https://api-docs.deepseek.com/news/news260821/", "primary": true },
-        { "label": "The Next Web — DeepSeek launches an experimental multimodal model to rival Anthropic", "url": "https://thenextweb.com/news/deepseek-v4-flash-vision-exp-opus-benchmarks", "primary": false },
-        { "label": "Dataconomy — DeepSeek unveils vision model challenging Anthropic's Opus", "url": "https://dataconomy.com/2026/08/21/deepseek-unveils-vision-model-challenging-anthropics-opus/", "primary": false }
+        {
+          "label": "api-docs.deepseek.com — DeepSeek-V4-Flash-Vision-Exp Release",
+          "url": "https://api-docs.deepseek.com/news/news260821/",
+          "primary": true
+        },
+        {
+          "label": "The Next Web — DeepSeek launches an experimental multimodal model to rival Anthropic",
+          "url": "https://thenextweb.com/news/deepseek-v4-flash-vision-exp-opus-benchmarks",
+          "primary": false
+        },
+        {
+          "label": "Dataconomy — DeepSeek unveils vision model challenging Anthropic's Opus",
+          "url": "https://dataconomy.com/2026/08/21/deepseek-unveils-vision-model-challenging-anthropics-opus/",
+          "primary": false
+        }
       ],
       "has_primary": true,
       "detail": {
@@ -444,10 +806,26 @@
         "date_long": "21 août 2026",
         "description": "DeepSeek publie le 21 août 2026 V4-Flash-Vision-Exp, un modèle multimodal expérimental à 13B paramètres actifs sur 284B, qui dépasse Claude Opus 4.8 sur 3 benchmarks agentiques sur 11.",
         "stats": [
-          { "num": "13B", "unit": "actifs / 284B", "label": "MoE creuse" },
-          { "num": "3/11", "unit": "benchmarks", "label": "devant Opus 4.8" },
-          { "num": "+1.6", "unit": "pts", "label": "Agents' Last Exam, meilleur écart" },
-          { "num": "Exp", "unit": "statut", "label": "expérimental, API uniquement" }
+          {
+            "num": "13B",
+            "unit": "actifs / 284B",
+            "label": "MoE creuse"
+          },
+          {
+            "num": "3/11",
+            "unit": "benchmarks",
+            "label": "devant Opus 4.8"
+          },
+          {
+            "num": "+1.6",
+            "unit": "pts",
+            "label": "Agents' Last Exam, meilleur écart"
+          },
+          {
+            "num": "Exp",
+            "unit": "statut",
+            "label": "expérimental, API uniquement"
+          }
         ],
         "context_paragraphs": [
           "<strong>DeepSeek-V4-Flash-Vision-Exp</strong> ajoute la vision au modèle V4 Flash, jusque-là purement textuel : il analyse des images et des captures d'écran et agit dessus. L'architecture est une <strong>MoE creuse à 13 milliards de paramètres actifs par token sur 284 milliards au total</strong>, soit un ratio d'activation d'environ 4,6 % — un profil qui vise le coût d'inférence plutôt que le plafond de capacité, cohérent avec la ligne tarifaire agressive tenue par DeepSeek depuis le printemps. Le modèle est diffusé via l'API DeepSeek, avec le statut explicite d'expérimental, ce qui exclut de le mettre en production sans plan de repli.",
@@ -466,26 +844,74 @@
           "meta": "DeepSeek · note de release officielle du 21 août 2026 · page non récupérable depuis cette session (egress bloqué), recoupée par deux sources secondaires indépendantes"
         },
         "related": [
-          { "slug": "2026-08-23-cursor-origin-cloud-agents", "actor": "Cursor", "title": "Cursor Origin et cloud agents", "tag": "🛠" },
-          { "slug": "2026-08-23-claude-platform-ga-browser-use", "actor": "Anthropic", "title": "La plateforme Claude sort du beta", "tag": "🎯" }
+          {
+            "slug": "2026-08-23-cursor-origin-cloud-agents",
+            "actor": "Cursor",
+            "title": "Cursor Origin et cloud agents",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-08-23-claude-platform-ga-browser-use",
+            "actor": "Anthropic",
+            "title": "La plateforme Claude sort du beta",
+            "tag": "🎯"
+          }
         ],
         "nav": {
-          "prev": { "href": "../briefs/2026-08-23.html", "label": "← Retour au brief", "title": "2026-08-23" },
-          "next": { "href": "../briefs/index.html", "label": "Archive →", "title": "Tous les briefs" }
+          "prev": {
+            "href": "../briefs/2026-08-23.html",
+            "label": "← Retour au brief",
+            "title": "2026-08-23"
+          },
+          "next": {
+            "href": "../briefs/index.html",
+            "label": "Archive →",
+            "title": "Tous les briefs"
+          }
         }
       }
     }
   ],
   "sources_footer": [
-    { "label": "platform.claude.com — release notes", "url": "https://platform.claude.com/docs/en/release-notes/overview" },
-    { "label": "code.claude.com/changelog", "url": "https://code.claude.com/docs/en/changelog" },
-    { "label": "anthropic-sdk-python — MIGRATION.md", "url": "https://github.com/anthropics/anthropic-sdk-python/blob/main/MIGRATION.md" },
-    { "label": "blog.modelcontextprotocol.io — roadmap", "url": "https://blog.modelcontextprotocol.io/posts/mcp-roadmap/" },
-    { "label": "openai.com — Model Spec teen protections", "url": "https://openai.com/index/updating-model-spec-with-teen-protections/" },
-    { "label": "openai.com — ChatGPT for Teens", "url": "https://openai.com/index/chatgpt-for-teens/" },
-    { "label": "ai.google.dev — Gemini API changelog", "url": "https://ai.google.dev/gemini-api/docs/changelog" },
-    { "label": "cursor.com/changelog — 19 août 2026", "url": "https://cursor.com/changelog/08-19-26" },
-    { "label": "api-docs.deepseek.com — V4-Flash-Vision-Exp", "url": "https://api-docs.deepseek.com/news/news260821/" }
+    {
+      "label": "platform.claude.com — release notes",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview"
+    },
+    {
+      "label": "code.claude.com/changelog",
+      "url": "https://code.claude.com/docs/en/changelog"
+    },
+    {
+      "label": "anthropic-sdk-python — MIGRATION.md",
+      "url": "https://github.com/anthropics/anthropic-sdk-python/blob/main/MIGRATION.md"
+    },
+    {
+      "label": "blog.modelcontextprotocol.io — roadmap",
+      "url": "https://blog.modelcontextprotocol.io/posts/mcp-roadmap/"
+    },
+    {
+      "label": "openai.com — Model Spec teen protections",
+      "url": "https://openai.com/index/updating-model-spec-with-teen-protections/"
+    },
+    {
+      "label": "openai.com — ChatGPT for Teens",
+      "url": "https://openai.com/index/chatgpt-for-teens/"
+    },
+    {
+      "label": "ai.google.dev — Gemini API changelog",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog"
+    },
+    {
+      "label": "cursor.com/changelog — 19 août 2026",
+      "url": "https://cursor.com/changelog/08-19-26"
+    },
+    {
+      "label": "api-docs.deepseek.com — V4-Flash-Vision-Exp",
+      "url": "https://api-docs.deepseek.com/news/news260821/"
+    }
   ],
-  "prev": { "href": "2026-08-16.html", "title": "Claude Code arrête de demander" }
+  "prev": {
+    "href": "2026-08-16.html",
+    "title": "Claude Code arrête de demander"
+  }
 }

@@ -40,6 +40,17 @@ Léo Marty (Lynxter) et la communauté de passionnés IA qui suit le brief : **d
 - **🛠 useful** : 3-5 phrases de contexte dans le brief + page détail de **2-3 paragraphes**. Au moins 1 chiffre concret.
 - **· info** : **1 à 3 phrases compactes maximum** (règle dure, vérifiée en QA — compter les phrases du `.item-context` ; si > 3, raccourcir ou re-tagger 🛠). Pas de page détail. Reste factuel.
 
+### Checklist par item, avant la QA (ce que `qa.js` bloquera sinon)
+
+- **Titre = fait + chiffre.** « Fable 5.1 — cache reads à $0.25/M tokens (−75 %) », pas « Anthropic annonce Fable 5.1 ».
+- **Comparaison inter-acteurs sur chaque 🎯**, y compris les items Claude Code : situer face à Codex CLI, Cursor ou Antigravity (fonction équivalente ? absente ? prix ?). Les items changelog hebdomadaires sont ceux qui manquent le plus souvent cette comparaison (7 sur 9 dans l'archive).
+- **« Pourquoi Lynxter » = une action, pas un constat.** Chaque paragraphe se termine par quelque chose à faire, vérifier, chiffrer ou préparer — avec l'objet précis (Routine Cowork, prompt de support, argumentaire RFP, benchmark sur tickets réels). Une réserve honnête (« pas contractualisable avant l'automne ») vaut mieux qu'une promesse.
+- **Tuiles `stats` : 4, dont ≥ 2 chiffres officiels.** Une date ou un statut (« Automne 2026 », « gated Fairwind ») peut occuper une tuile ; un chiffre tiers jamais sans « ~ » ou « estim. ».
+- **Sources : la page datée, pas le hub.** Le changelog Claude Code a une ancre par version : citer `code.claude.com/docs/en/changelog#2-1-259` (format `#2-1-259`, vérifié le 2026-09-07), la QA ne signale plus l'URL. Pour un item qui couvre plusieurs versions, ancrer la première et nommer les autres dans le contexte. Cursor : page datée `cursor.com/changelog/<mm-dd-yy>`.
+- **`related` : uniquement des items 🎯/🛠** (ceux qui ont une page), de ce brief ou des précédents. Un `related` vers un `·` est un lien mort. `nav.next` du dernier item = retour au brief.
+- **Dates : dans la fenêtre**, strictement après le brief précédent. Une annonce du jour du brief précédent lui appartenait.
+- **Zéro superlatif**, zéro « pour comprendre… », zéro sigle courant expliqué.
+
 ---
 
 ## Workflow complet
@@ -100,14 +111,26 @@ Pour chaque acteur : 3 à 4 recherches distinctes.
 | **Meta** | `site:ai.meta.com blog [mois] [année]` · `Meta AI Llama release [mois] [année]` |
 | **Mistral** | `site:mistral.ai news [mois] [année]` · `Mistral model release [mois] [année]` |
 
-**Sources primaires officielles :**
-- https://www.anthropic.com/news
-- https://code.claude.com/docs/en/changelog
-- https://openai.com/news/
-- https://blog.google/technology/ai/
-- https://deepmind.google/discover/blog/
-- https://ai.meta.com/blog/
-- https://mistral.ai/news/
+**Sources primaires officielles — dans l'ordre où elles produisent réellement des items (audit des 13 briefs sourcés, 2026-09-07).** Les pages *datées* d'abord ; les hubs (`/news`, `/blog`, `/changelog`) servent à trouver la page datée, pas à être citées — la QA signale une URL hub en source primaire.
+
+| Acteur | Page datée à citer | Flux à ouvrir chaque semaine (ce qui a produit des items) |
+|---|---|---|
+| Anthropic | `anthropic.com/news/<slug>`, `claude.com/blog/<slug>` | `platform.claude.com/docs/en/release-notes/overview` (API, Cowork, Managed Agents, SDK — 1 à 3 items/semaine), `code.claude.com/docs/en/changelog` (Claude Code — 1 item/semaine, toujours 🎯) |
+| OpenAI | `openai.com/index/<slug>` | `developers.openai.com/codex/changelog`, `help.openai.com/en/articles/9624314-model-release-notes`, `help.openai.com/en/articles/6825453-chatgpt-release-notes` |
+| Google DeepMind | `blog.google/technology/ai/<slug>`, `deepmind.google/models/model-cards/<modèle>/` | `ai.google.dev/gemini-api/docs/changelog`, `docs.cloud.google.com/gemini/enterprise/docs/release-notes` |
+| Meta | `research.meta.ai/blog/<slug>` (ligne Muse), `ai.meta.com/blog/<slug>` | — (Meta n'a pas de changelog : silence = actor-empty, fréquent) |
+| Mistral | `mistral.ai/news/<slug>` | `docs.mistral.ai/resources/changelogs` |
+| Perplexity | `perplexity.ai/hub/blog/<slug>` | `docs.perplexity.ai/changelog/changelog` |
+| xAI | `x.ai/news/<slug>` | — |
+| Cursor | `cursor.com/changelog/<mm-dd-yy>` | `cursor.com/changelog` |
+| DeepSeek | `api-docs.deepseek.com/news/news<AAMMJJ>` | `api-docs.deepseek.com/quick_start/pricing` (changements de prix) |
+| MCP | `blog.modelcontextprotocol.io/posts/<slug>` | — |
+
+**Fiabilité des chiffres — règle dure.** Un score cité sans qualificatif est un score **publié par l'éditeur**. Un score de leaderboard tiers (Artificial Analysis, Vellum, LLM-Stats, benchlm…) s'écrit « estimation tierce » ou « selon <source> », jamais dans une tuile `stats` sans cette mention. Quand l'éditeur ne publie pas un benchmark de référence (ex. Fable 5.1 et GPT-6 Astra sans SWE-bench Verified, 2026-09-06), **le dire explicitement** : l'absence est une information. Deux modèles ne se comparent que sur un benchmark où les deux ont un score officiel.
+
+**Niveau de confiance par annonce.** `confirmed` = page officielle datée (fetchée, ou confirmée par ≥ 2 résultats de recherche indépendants si l'egress est bloqué) · `single-source` = une seule secondaire → creuser ou passer en `·` avec « rapporté par <source> » · `rumor` = date de sortie annoncée, taille supposée, leak → pas un item, sauf en `·` avec « annonce non matérialisée ».
+
+**En mode egress bloqué** (WebFetch → `EGRESS_BLOCKED`, deux runs sur deux) : le résultat de recherche n'est pas la page. Deux résultats de domaines différents qui rapportent le même fait avec les mêmes chiffres valent confirmation ; un seul résultat, ou plusieurs qui recopient visiblement le même communiqué, ne valent pas. Garder l'URL officielle en `primary` si elle apparaît dans les résultats, et reporter `Sources primaires fetchées : n/N`.
 
 #### Acteurs secondaires (couvrir si annonce notable dans la fenêtre)
 
