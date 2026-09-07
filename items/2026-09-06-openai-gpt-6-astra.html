@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GPT-6 Astra — 1.05M de contexte, $10/$50, surtaxe ×2 au-delà de 272K tokens — Veille IA Lynxter</title>
+<meta name="description" content="Analyse de GPT-6 Astra (3 septembre 2026) : 1.05M de contexte, $10/$50 par M tokens, surtaxe ×2 au-delà de 272K, DeepSWE 74.1 %, aucun SWE-bench Verified publié.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-09-06.html">2026-09-06</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">GPT-6 Astra</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">OpenAI</span>
+          <span class="dot-sep">·</span>
+          <span>3 septembre 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-useful">🛠 Utile</span>
+        </div>
+        <h1>GPT-6 Astra — 1.05M de contexte, $10/$50, surtaxe ×2 au-delà de 272K tokens</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-09-06.html">Quatre modèles frontière en 72 heures — 2026-09-06</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">1.05M<span class="unit">tokens</span></div>
+            <div class="stat-label">Contexte · 128K de sortie max</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">$10/$50<span class="unit">M tok</span></div>
+            <div class="stat-label">Même grille que Fable 5.1</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">272K<span class="unit">tokens</span></div>
+            <div class="stat-label">Seuil de surtaxe ×2 input</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">74.1<span class="unit">%</span></div>
+            <div class="stat-label">DeepSWE v1.1 · pas de SWE-bench Verified</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>OpenAI ouvre <strong>GPT-6 Astra</strong> le 3 septembre 2026 en preview limitée à des partenaires de confiance, puis aux utilisateurs payants le 4, <strong>dans une version restreinte qui rejette certains prompts, en particulier en cybersécurité</strong>. Le déroulé fait suite à l'incident Hugging Face de juillet 2026, après lequel OpenAI avait décalé la sortie de son modèle suivant pour ajouter des garde-fous ; la communication d'annonce consacre une place inhabituelle à la sûreté, en assumant à la fois le potentiel de nuisance du modèle et les dispositifs censés le contenir.</p>
+        <p>Les caractéristiques techniques placent Astra en vis-à-vis direct de Fable 5.1, sorti deux jours plus tôt : <strong>contexte de 1 050 000 tokens</strong>, sortie maximale de 128K, entrées texte et image, et une grille <strong>$10 en input / $50 en output par M tokens</strong> — identique au tarif d'Anthropic. La différence se joue sur une clause de facturation qu'il faut lire attentivement : <strong>dès qu'une requête dépasse 272 000 tokens d'input, l'intégralité de la requête est facturée ×2 sur l'input et sur le cache, et ×1.5 sur l'output</strong>. Ce n'est pas un palier appliqué au dépassement, mais un basculement rétroactif sur la totalité — un contexte de 1M utilisé pleinement coûte donc nettement plus que la lecture naïve de la grille ne le suggère.</p>
+        <p>Sur les benchmarks, OpenAI choisit ses instruments. La maison met en avant <strong>DeepSWE v1.1 à 74.1 %</strong> — un benchmark 2026 de 113 tâches d'ingénierie long-horizon vérifiées à la main sur cinq langages —, <strong>FrontierMath Tier 4 à 97.6 %</strong>, et une rétention long-contexte solide sur MRCR v2 8-needle (100 % entre 256K et 512K, <strong>96.3 % entre 512K et 1M</strong>). Le point méthodologique compte : <strong>OpenAI ne publie pas de score SWE-bench Verified</strong> pour Astra. Il n'existe donc pas de comparaison à périmètre égal avec GPT-5.6 au lancement, ni avec les modèles concurrents mesurés sur ce benchmark — et à titre de repère, Meta annonce la même semaine <strong>75.4 % sur DeepSWE 1.1</strong> pour Muse Spark 1.3, soit 1.3 pt au-dessus d'Astra sur le seul terrain où les deux se rencontrent.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🛠 Pourquoi c'est utile à savoir pour Lynxter</h2>
+        <p><strong>Le seuil de 272K est le seul chiffre à retenir si tu évalues Astra.</strong> Un agent qui charge une documentation machine complète en contexte franchit ce seuil sans effort, et la facturation bascule alors sur la requête entière, pas sur le dépassement. Sur un usage support où le contexte est gros et stable, cette clause annule une partie de l'intérêt du contexte long — et se compare mal à la baisse du cache read de Fable 5.1 la même semaine, qui joue exactement dans l'autre sens.</p>
+        <p><strong>Pour un benchmark client, exige du comparable.</strong> Ni Astra ni Fable 5.1 ne publient de SWE-bench Verified ; Astra communique sur DeepSWE, Anthropic sur Terminal-Bench et SWE-bench Pro. Aucune comparaison propre n'est disponible entre les deux à partir des chiffres d'annonce. La seule mesure qui vaille pour arbitrer est un jeu de tickets Lynxter réels passé sur les deux modèles — quelques dizaines de cas suffisent à trancher, et c'est moins coûteux que de se fier à des barres de couleur choisies par les éditeurs.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://help.openai.com/en/articles/9624314-model-release-notes" target="_blank" rel="noopener">help.openai.com — model release notes</a>
+        <span class="source-meta">OpenAI · notes de version officielles · GPT-6 Astra, 3 septembre 2026</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-09-06-claude-fable-5-1-mythos-5-1.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Fable 5.1 — même grille $10/$50, cache 4× moins cher</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-09-06-meta-muse-spark-1-3.html">
+            <span class="related-actor">Meta</span>
+            <span class="related-title">Muse Spark 1.3 — 75.4 % DeepSWE 1.1</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+          <li><a href="2026-09-06-gemini-3-8-flash-cyber.html">
+            <span class="related-actor">Google DeepMind</span>
+            <span class="related-title">Gemini 3.8 Flash — $0.75/$3.75</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-09-06-anthropic-enterprise-frontier-safeguards.html">
+          <span class="label">← Item précédent</span>
+          <span class="title">Enterprise Frontier Safeguards</span>
+        </a>
+        <a class="next" href="2026-09-06-gemini-3-8-flash-cyber.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Gemini 3.8 Flash et Flash Cyber</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-09-06</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
