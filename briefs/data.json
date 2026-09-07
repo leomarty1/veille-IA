@@ -22,9 +22,9 @@
       "mode": "hebdomadaire",
       "title": "Quatre modèles frontière en 72 heures",
       "highlights": [
-        "Claude Fable 5.1 + Mythos 5.1 (1er sept) — le prix du cache s'effondre, pas celui des tokens. Pricing standard inchangé ($10/$50 par M tokens), mais les cache reads passent de $1 à $0.25 par M tokens, −75 %. Terminal-Bench 4.0 à 55.8 % contre 42.0 % pour Fable 5 ; Terminal-Bench-Science à 52.6 %, plus du double de Fable 5 (24.7 %) et loin devant Opus 5 (29.0 %). Anthropic publie SWE-bench Pro 81.2 et ne publie aucun score SWE-bench Verified — les 95 % qui circulent viennent de leaderboards tiers. Mythos 5.1 est le même modèle avec des garde-fous cyber et biologie desserrés, sur invitation via CVP/LSVP.",
-        "Trois frontières en réponse en 48 h. Gemini 3.8 Flash (2 sept) : $0.75/$3.75 par M tokens — mais doublement programmé au 1er janvier 2027 —, 1 048 576 tokens de contexte, et une variante Flash Cyber qui trouve et patche des vulnérabilités, gated derrière le programme Fairwind. Muse Spark 1.3 (2 sept) : 75.4 % DeepSWE 1.1, 88.8 % Terminal-Bench 2.1, ~20 % d'appels d'outils en moins que 1.2 — mais le scorecard compare le mode max de 1.3 au xhigh de 1.2. GPT-6 Astra (3 sept) : 1.05M de contexte, $10/$50, et une surtaxe ×2 en input dès 272K tokens sur la totalité de la requête.",
-        "Claude Code : sept releases, deux leviers de gouvernance. managedMcpServers (2.1.259) permet à une organisation de pousser des serveurs MCP HTTP/SSE à tous ses postes ; --permission-prompts none refuse automatiquement tout ce qui demanderait une approbation, pour les hôtes headless non surveillés. S'ajoutent le panneau de diff /diff (2.1.260), /skill-doctor qui chiffre le coût en contexte des skills inutilisées, et bashOutputMaxChars/taskOutputMaxChars jusqu'à 128K caractères (2.1.261)."
+        "Claude Fable 5.1 et Mythos 5.1 le 1er septembre : pricing inchangé à $10/$50, mais cache reads à $0.25/M tokens (−75 %) ; Terminal-Bench 4.0 à 55.8 %, SWE-bench Pro 81.2, aucun score SWE-bench Verified officiel",
+        "Claude Code 2.1.257 → 2.1.263 : Fable 5.1 par défaut, managedMcpServers pour pousser des serveurs MCP à toute une organisation, --permission-prompts none pour les hôtes headless, panneau de diff et /skill-doctor",
+        "Gemini 3.8 Flash et sa variante Cyber gated Fairwind, Muse Spark 1.3 à 75.4 % DeepSWE, GPT-6 Astra à 1.05M de contexte — et Enterprise Frontier Safeguards, qui garde la zero data retention en déplaçant la détection d'abus chez le client"
       ],
       "items": [
         {

@@ -46,29 +46,27 @@ Léo Marty (Lynxter) et la communauté de passionnés IA qui suit le brief : **d
 
 ### 0. Pre-flight — vérifier les credentials AVANT de lancer la recherche
 
-**Règle d'or :** ne JAMAIS faire 30 WebSearch + 20 WebFetch + 12 fichiers générés pour découvrir à la fin que le push échoue. Tester les credentials d'abord, échouer vite.
+**Règle d'or :** ne JAMAIS faire 30 WebSearch + 20 WebFetch + 12 fichiers générés pour découvrir à la fin que le push échoue. Tester les credentials d'abord, échouer vite — **sans rien écrire dans le dépôt**.
 
-1. Tester l'écriture via MCP GitHub :
+1. Tester l'écriture git via le remote déjà configuré (c'est lui qui publie, cf. étape 6) — un push à blanc fait la poignée de main `receive-pack`, donc authentifie, sans créer de commit :
+   ```bash
+   git fetch origin main && git push --dry-run origin HEAD
    ```
-   mcp__github__create_or_update_file(owner: "leomarty1", repo: "veille-IA", branch: "main",
-     path: ".keepalive", content: "ok", message: "preflight: check write perms")
+   Succès (`Everything up-to-date`, `[new branch]` ou `..` sans erreur d'auth) → `WRITE_PATH = git-cli`. Erreur `403`/`401`/`could not read Username` → écriture impossible.
+2. Tester l'egress, pour savoir tout de suite si le gate « source primaire fetchée » (étape 2) sera tenable :
+   ```bash
+   for u in https://www.anthropic.com/news https://openai.com/news/ https://code.claude.com/docs/en/changelog; do printf '%s ' "$u"; curl -s -o /dev/null -w '%{http_code}\n' --max-time 15 "$u"; done
    ```
-   Si succès : MCP est la voie principale, marquer `WRITE_PATH = "mcp"`.
-2. Sinon, tester le PAT fourni dans le prompt :
-   ```
-   curl -sS -o /dev/null -w "%{http_code}" -H "Authorization: token <PAT>" https://api.github.com/repos/leomarty1/veille-IA
-   ```
-   Si HTTP 200 : marquer `WRITE_PATH = "pat"`.
-3. Si les deux échouent : **arrêter immédiatement**, ne pas faire la recherche. Reporter à l'utilisateur que le PAT a expiré ET que MCP est en read-only, en demandant l'une des deux corrections (rotation PAT ou élévation des droits MCP).
+   Des `403`/`000` sur les domaines éditeurs = egress restreint → repli « ≥ 2 WebSearch indépendants par item » et le dire dans le rapport (`Egress : bloqué (…)`).
+3. Si l'écriture échoue : **arrêter immédiatement**, ne pas faire la recherche, notifier (remote sans droit d'écriture — vérifier l'installation de l'App GitHub Claude sur le repo, cf. Maintenance).
 
-**Voie d'écriture réelle (WRITE_PATH) — à clarifier et logger.** En environnement observé, les outils `mcp__github__*` ne sont PAS toujours attachés : si le pre-flight 0.1 échoue, c'est le PAT (fallback git CLI) qui écrit à *chaque* run — la « voie principale MCP » devient alors fictive. Conséquences obligatoires :
-- Logger `WRITE_PATH = mcp | pat` dans le rapport final (transparence sur ce qui a réellement poussé).
-- Le PAT ne doit JAMAIS vivre en clair dans le corps du prompt routine : le stocker en variable secrète de routine. S'il a déjà été exposé en clair, le considérer comme compromis → rotation.
-- Ne révoquer le PAT (cf. Maintenance) qu'après avoir prouvé que MCP write fonctionne deux runs de suite.
+**Ce que le pre-flight ne fait plus.** L'ancienne méthode écrivait `.keepalive` sur `origin/main` via MCP à chaque run : 9 commits de bruit, et la cause directe du push non-fast-forward du 2026-08-09. Les outils `mcp__github__*` se déconnectent d'ailleurs en cours de session (observé le 2026-09-06) : ils ne sont ni la voie d'écriture ni un test fiable. Le PAT du prompt routine est mort et compromis (cf. Maintenance) : ne pas le tester, ne pas l'utiliser.
+
+Logger `WRITE_PATH` dans le rapport final.
 
 ### 1. Déterminer la fenêtre
 
-Lire `briefs/data.json` via `mcp__github__get_file_contents` (owner: leomarty1, repo: veille-IA, path: briefs/data.json) pour trouver la date du dernier brief.
+Lire `briefs/data.json` (le dépôt est cloné localement : `Read`, pas MCP) pour trouver la date du dernier brief.
 
 - Fenêtre = date dernier brief → aujourd'hui
 - `ITEMS_PRECEDENTS` = somme des `items_count` de tous les briefs existants
@@ -143,14 +141,21 @@ Ne garder que les annonces **dans la fenêtre temporelle**. Éliminer : repackag
 
 ### 4. Lire les fichiers existants à modifier
 
-Avant de générer, lire via `mcp__github__get_file_contents` (owner: leomarty1, repo: veille-IA) :
-- `index.html` — compteurs actuels (briefs, items, acteurs)
-- `briefs/index.html` — archive à mettre à jour
-- `briefs/data.json` — déjà lu à l'étape 1
+Le dépôt est cloné localement : lire avec `Read`, pas via MCP. Depuis `build/sync.js`, **`index.html`, `briefs/index.html` et `briefs/data.json` ne se modifient plus à la main** — ils sont dérivés du JSON du brief (étape 5). Reste à lire :
+- `briefs/data.json` — déjà lu à l'étape 1 (fenêtre, ledger, titre du brief précédent pour `prev`)
+- `modeles/index.html` et `modeles/models-data.json` — seuls fichiers encore édités manuellement (étapes F et G)
 
 ### 5. Fichiers à générer
 
-**Voie recommandée — single-source (Track A).** Écrire la source unique du brief `briefs/<date>.json` (schéma ET niveau de richesse de référence : `build/example-brief.json` — un brief complet à égaler en profondeur, pas plus court), puis `node build/gen.js <date>` génère le brief + les pages détail des items 🎯/🛠 (chrome partagé via `build/lib.js`, plus de double saisie brief↔item). Ensuite mettre à jour `data.json` / `index.html` / `briefs/index.html` / `modeles/` comme ci-dessous, puis QA (`node build/qa.js`). La méthode manuelle ci-dessous reste valable pour les sections pas encore générées.
+**Voie unique — single-source.** Écrire la source unique du brief `briefs/<date>.json` (schéma ET niveau de richesse de référence : `build/example-brief.json` — un brief complet à égaler en profondeur, pas plus court ; y ajouter `highlights[]` : 3 phrases HTML courtes pour la home et l'archive), puis :
+
+```bash
+node build/gen.js  <date>   # A + B : brief + pages détail 🎯/🛠
+node build/sync.js <date>   # C + D + E : data.json, home (compteurs, prochaine édition, dernier brief, archive), archive briefs/ — idempotent
+node build/qa.js            # 5.5 : gate bloquant
+```
+
+`sync.js` normalise les acteurs pour les filtres (`Google DeepMind` → `Google`), ferme le `<a>` du bloc « Dernier brief », calcule la prochaine édition (lundi qui suit la publication) et remplace l'entrée d'un brief déjà présent au lieu de la dupliquer : relancer ne change rien. **Ne plus éditer C, D, E à la main** — les spécifications ci-dessous documentent ce que `sync.js` émet. Seuls F et G (`modeles/`) restent manuels.
 
 
 #### A. `briefs/YYYY-MM-DD.html` — brief hebdomadaire
@@ -246,7 +251,7 @@ Ajouter en tête de `<ul class="archive-list">` :
 
 #### F. `modeles/index.html` — classement hebdomadaire
 
-Lire `modeles/index.html` via `mcp__github__get_file_contents`. Remplacer le bloc compris entre `<!-- CLASSEMENT-START -->` et `<!-- CLASSEMENT-END -->` par le classement mis à jour.
+Lire `modeles/index.html` (`Read`). Remplacer le bloc compris entre `<!-- CLASSEMENT-START -->` et `<!-- CLASSEMENT-END -->` par le classement mis à jour.
 
 **Données à mettre à jour :**
 - Attribut `data-classement-date` → date du brief (YYYY-MM-DD)
@@ -259,11 +264,11 @@ Lire `modeles/index.html` via `mcp__github__get_file_contents`. Remplacer le blo
 
 **Tableau comparatif (optionnel) :** si un nouveau modèle est annoncé dans la fenêtre avec benchmarks confirmés, ajouter une ligne au `<table class="compare-table">` avec ses specs (SWE-bench Verified, SWE-bench Pro, contexte, pricing, open weights). Mettre en évidence les nouvelles entrées avec `style="outline:1px solid var(--lx-primary);outline-offset:-1px;"` sur le `<tr>` et le badge `🆕 JJ mois` en span sur le nom. Ne pas modifier les lignes existantes sauf correction de score officielle.
 
-Inclure `modeles/index.html` dans le push_files final.
+`modeles/index.html` part dans le commit du brief (`publish.sh` fait `git add -A`).
 
 #### G. `modeles/models-data.json` — nouveau modèle détecté
 
-Lire `modeles/models-data.json` via `mcp__github__get_file_contents`. Si un nouveau modèle avec score SWE-bench Verified confirmé ou estimable est sorti dans la fenêtre temporelle, ajouter un objet au tableau `models[]` :
+Lire `modeles/models-data.json` (`Read`). Si un nouveau modèle avec score SWE-bench Verified confirmé ou estimable est sorti dans la fenêtre temporelle, ajouter un objet au tableau `models[]` :
 
 ```json
 {
@@ -291,7 +296,7 @@ Mettre à jour `meta.last_updated` à la date du brief.
 
 **Si aucun nouveau modèle avec score SWE-bench dans la fenêtre :** ne pas modifier ce fichier.
 
-Inclure `modeles/models-data.json` dans le push_files final.
+`modeles/models-data.json` part dans le commit du brief s'il a été modifié.
 
 ### 5.5 Auto-QA bloquante — AVANT le push (ne pas pousser si un check est rouge)
 
@@ -306,8 +311,14 @@ Inclure `modeles/models-data.json` dans le push_files final.
 7. **Compteurs home** : les counts de `index.html actors-grid` == Σ `by_actor` sur l'ensemble des briefs ; `data-actors` de l'archive inclut tous les acteurs ayant une section (même à 0 item).
 8. **Règles éditoriales** (depuis la source unique `briefs/<date>.json`) : `·` info ≤ 3 phrases ; gate source primaire (≥ 1 primaire OU marqueur « sans annonce officielle » + ≥ 2 secondaires) ; jamais `kind:"primaire"` sur une page dont l'item n'a pas de source primaire ; bloc `detail` présent sur chaque 🎯/🛠 (sans lui, `gen.js` ne génère pas la page → lien mort) ; tag des items connexes résolvable.
 9. **Aucun `undefined` rendu** dans le HTML de chaque brief et de ses pages détail.
+10. **Domaine de la source primaire** (ajouté 2026-09-07) : une source `primary:true` doit être sur un domaine d'éditeur (allowlist dans `qa.js` : anthropic.com, claude.com, openai.com, blog.google, deepmind.google, ai.google.dev, meta.ai, mistral.ai, x.ai, cursor.com, perplexity.ai, deepseek.com, github.com, huggingface.co, press rooms partenaires…). Un domaine de presse ou d'agrégateur (VentureBeat, TechCrunch, MarkTechPost, Releasebot, The Decoder…) étiqueté primaire **bloque**. Un domaine inconnu → `⚠ à qualifier` : l'ajouter à la liste plutôt que de juger à l'œil. Une URL hub (`/news`, `/changelog`, `/blog`) → `⚠` : préférer l'entrée datée. Audit du 2026-09-07 : 32 items 🎯/🛠 publiés entre juin et septembre avaient une secondaire en « primaire ».
+11. **Fenêtre temporelle** : chaque `items[].date` ∈ (date du brief précédent, date du brief]. Un item hors fenêtre bloque.
+12. **Ledger anti-doublon** : aucun slug (sans préfixe date) ni URL primaire (hors hub) déjà présent dans les 4 briefs précédents.
+13. **Liens internes des pages détail** : chaque `related[].slug` et chaque `nav.prev/next` pointe vers un fichier existant (un `related` vers un `· info` = lien mort).
+14. **Style** : zéro superlatif marketing (révolutionnaire, game-changer, incroyable, disruptif…) dans le chapeau et les items ; un 🎯 cite ≥ 2 chiffres, un 🛠 ≥ 1 ; un 🎯 sans comparaison inter-acteurs → `⚠`.
+15. **Home et archive** : le bloc « Dernier brief » pointe vers le brief le plus récent et son `<a>` est fermé ; `data-actors` de l'archive utilise les clés de filtre (`Google`, pas `Google DeepMind`) et inclut les 5 principaux.
 
-**Bloquant vs warning.** Les checks 8 et 9 sont **bloquants sur le brief le plus récent** (celui qu'on publie) et **warnings sur les briefs déjà en ligne** — le gate protège ce qu'on s'apprête à publier, il ne réécrit pas de l'éditorial publié. Des `⚠` au vert sont donc normaux ; seul un `✗` bloque.
+**Bloquant vs warning.** Les checks 8 à 14 sont **bloquants sur le brief le plus récent** (celui qu'on publie) et **warnings sur les briefs déjà en ligne** — le gate protège ce qu'on s'apprête à publier, il ne réécrit pas de l'éditorial publié. Des `⚠` au vert sont donc normaux ; seul un `✗` bloque. Corriger un `✗` se fait **dans `briefs/<date>.json`** puis `gen.js` + `sync.js`, jamais en éditant le HTML généré ni en assouplissant `qa.js`.
 
 **Ne pas re-vérifier ces règles à la main** : elles sont couvertes par `qa.js`. Si une règle nouvelle apparaît, l'ajouter au script plutôt que de la contrôler à l'œil — une règle non exécutable n'est pas appliquée.
 
@@ -380,7 +391,7 @@ git remote set-url origin https://github.com/leomarty1/veille-IA.git
 2. Vérifier que le HTML servi contient bien la date du nouveau brief (la home doit refléter le dernier brief).
 3. Reporter `Déploiement : ✅ 200 + date OK` ou `❌` dans le rapport final.
 
-**Rollback** si un brief erroné est publié : `git revert <sha>` (un brief = un commit atomique grâce à `push_files`) puis re-push ; GitHub Pages régénère. Ne pas réécrire l'historique de `main`.
+**Rollback** si un brief erroné est publié : `git revert -m 1 <sha du merge>` sur `main` (un brief = un commit sur la branche de travail + un merge par `publish.sh`) puis re-push ; GitHub Pages régénère. Ne pas réécrire l'historique de `main`.
 
 ## Structure du repo
 
@@ -411,6 +422,21 @@ git remote set-url origin https://github.com/leomarty1/veille-IA.git
 
 ## Maintenance — rotation PAT et permissions MCP
 
+### État courant (2026-09-07) — fait foi sur les notes datées qui suivent
+
+| Sujet | État | Action |
+|---|---|---|
+| **Voie d'écriture** | `WRITE_PATH = git-cli` : `build/publish.sh` pousse via le remote configuré par l'environnement (App GitHub Claude, `Contents: write`). C'est la seule voie qui a publié depuis le 2026-08-03. | Aucune. Pre-flight = `git push --dry-run` (étape 0). |
+| **MCP GitHub** | Attaché par intermittence, **se déconnecte en cours de session** (observé 2026-09-06). Ne voit pas la branche de travail. | Lecture d'appoint uniquement. Ne jamais en faire dépendre la publication ni le pre-flight. |
+| **PAT inline du prompt routine** | Présent **en clair** dans le prompt de la routine claude.ai (`github_pat_11B2…`), jamais utilisé depuis août, **donc compromis par exposition**. | **Léo :** (1) le révoquer sur https://github.com/settings/personal-access-tokens ; (2) le retirer du prompt routine et remplacer le bloc « Fallback git+PAT » par `bash build/publish.sh` ; (3) ne pas en recréer — l'App GitHub suffit. |
+| **Prompt routine** | Dit « tu tournes en Claude Opus 4.7 » et décrit le pre-flight `.keepalive` via MCP. | **Léo :** recoller `.claude/routine-prompt.md` (mis à jour 2026-09-07) dans https://claude.ai/code/routines. |
+| **Workflow `veille` (sous-agents)** | Le 2026-09-06, les 10 sous-agents sont morts avant le premier appel d'outil (bug harness : `updatedInput` du permission handler vidait les champs typés ; `StructuredOutput` mangé pareil). Aucun hook côté repo n'est en cause. | Le script échoue désormais vite (`< 3 scans principaux`) avec le repli indiqué : dérouler les étapes 1-5 dans la session principale, où WebSearch/WebFetch fonctionnent. Re-tester le workflow au prochain run. |
+| **Egress** | Restreint deux runs sur deux (2026-08-09, 2026-09-06) : seul `code.claude.com` et `github.com` répondent en WebFetch. | Repli documenté (étape 0.2 et étape 2). Rapporter `Egress` et `Sources primaires fetchées : n/N`. |
+| **`.keepalive`** | Supprimé du dépôt le 2026-09-07. | — |
+
+<details>
+<summary>Notes datées (historique, remplacées par le tableau ci-dessus)</summary>
+
 Le PAT GitHub a une durée de vie limitée (max 1 an pour fine-grained PATs). Quand l'étape 0 (pre-flight) signale qu'il est expiré (HTTP 401), il faut le faire tourner :
 
 1. **Régénérer un PAT fine-grained** sur https://github.com/settings/personal-access-tokens/new
@@ -431,6 +457,8 @@ Le PAT GitHub a une durée de vie limitée (max 1 an pour fine-grained PATs). Qu
 
 **Mise à jour 2026-06-05 (audit).** En environnement observé, `mcp__github__*` n'est pas garanti attaché → le PAT (fallback) peut rester la voie d'écriture réelle. Tant que c'est le cas : (1) NE PAS laisser le PAT en clair dans le corps du prompt routine — le passer en variable secrète ; (2) un PAT déjà exposé en clair est à considérer comme compromis → le régénérer ; (3) ne le révoquer définitivement qu'après 2 runs prouvant `WRITE_PATH=mcp`. Logger `WRITE_PATH` à chaque run.
 
+</details>
+
 ## Rapport final (à afficher en fin de routine)
 
 ```
@@ -439,10 +467,14 @@ Fenêtre : DD mois → DD mois YYYY
 Items : N total (N 🎯 · N 🛠 · N ·)
 Acteurs principaux actifs : Anthropic (N), OpenAI (N), ...
 Acteurs secondaires actifs : Perplexity (N), xAI (N), ...
-QA : ✅ (liens, compteurs, JSON, sources primaires) / ❌ <check en cause>
-WRITE_PATH : mcp | pat
+Écartés : N (doublons ledger N · hors fenêtre N · rumeurs N · sans source N)
+Egress : ok / bloqué (domaines)
+Sources primaires fetchées : n/N items 🎯/🛠 (le reste recoupé par ≥ 2 recherches)
+QA : ✅ (N ⚠ non bloquants) / ❌ <check en cause>
+WRITE_PATH : git-cli (publish.sh)
 Push : ✅ SHA → main  /  ⚠️ Push échoué — voir fichiers générés
-Déploiement : ✅ 200 + date OK / ❌
-Coût : ~N tokens in / N out · modèle réel claude-opus-4-x
+Déploiement : ✅ 200 + date OK / non vérifiable (egress) / ❌
+Workflow : ok / échoué (cause) → repli manuel
+Coût : ~N tokens · modèle réel <id>
 Site : https://leomarty1.github.io/veille-IA/
 ```

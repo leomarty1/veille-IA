@@ -2,7 +2,9 @@
 
 **Repo :** `leomarty1/veille-IA`
 **Schedule :** Weekly · Monday · 01:00 · Europe/Paris
-**Network :** accès sortant HTTPS requis (WebSearch/WebFetch)
+**Network :** accès sortant HTTPS requis (WebSearch/WebFetch) — l'egress est souvent restreint, le repli est documenté dans CLAUDE.md
+**Secrets :** AUCUN. Pas de PAT dans ce prompt (le précédent, exposé en clair, est à révoquer). L'écriture passe par le remote git de l'environnement (App GitHub Claude).
+**Modèle :** dernier Claude disponible — ne pas figer la version ici, logger le modèle réel dans le rapport.
 
 ---
 
@@ -12,42 +14,40 @@ Le repo `leomarty1/veille-IA` est cloné dans ton workspace.
 
 ## ÉTAPE ZÉRO — IMPÉRATIF
 Lis `CLAUDE.md` à la racine du repo AVANT TOUTE AUTRE ACTION. C'est ton manuel complet :
-ton éditorial, profondeur par tag (🎯/🛠/·), recherche approfondie, scoring, structure HTML,
-stratégie de push, QA bloquante, rapport final. Ne déroule rien sans l'avoir lu en entier.
+ton éditorial, profondeur par tag (🎯/🛠/·), recherche, scoring, source unique JSON, QA
+bloquante, publication, rapport final. Ne déroule rien sans l'avoir lu en entier.
 
-## FENÊTRE TEMPORELLE
-Exécute `date -u +%Y-%m-%d` pour ancrer la date. Lis `briefs/data.json` : la fenêtre va de la
-date du dernier brief → aujourd'hui. Charge les `items[]` des 3-4 derniers briefs comme ledger
-anti-doublon. `ITEMS_PRECEDENTS` = somme des `items_count` de tous les briefs.
+## PRE-FLIGHT (CLAUDE.md étape 0) — sans rien écrire dans le dépôt
+`date -u +%Y-%m-%d` pour ancrer la date. Puis `git fetch origin main && git push --dry-run origin HEAD`
+(prouve le droit d'écriture sans commit) et le test d'egress. Si l'écriture échoue : STOP + notification.
+
+## FENÊTRE ET LEDGER
+Lis `briefs/data.json` : fenêtre = date du dernier brief (exclue) → aujourd'hui (inclus).
+Ledger anti-doublon = `items[]` (slug | primary_url) des 4 derniers briefs.
 
 ## PRODUCTION
-Lance le workflow `veille` (fan-out par acteur → consolidation/dedup/scoring → rédaction →
-QA bloquante) en lui passant `{ date, since, ledger }`. Sinon, déroule les étapes 1-5 de
-CLAUDE.md à la main. La QA `node build/qa.js` est BLOQUANTE : ne pousse jamais si elle est rouge.
+Lance `Workflow({ name: "veille", args: { date, since, ledger } })`. Le workflow échoue vite si
+les sous-agents sont inopérants (< 3 scans principaux) : dans ce cas, déroule toi-même les
+étapes 1-5 de CLAUDE.md dans la session principale (WebSearch/WebFetch y fonctionnent), en
+respectant le budget (~30 WebSearch, ~20 WebFetch).
 
-Cas semaine calme (< 3 items sur les 5 acteurs principaux) : brief minimal honnête, pas de
-padding. Zéro hallucination : tout item 🎯/🛠 s'appuie sur ≥ 1 source primaire fetchée.
+Source unique : `briefs/<date>.json` (schéma = `build/example-brief.json`, + `highlights[]`).
+Puis `node build/gen.js <date>` → `node build/sync.js <date>` → `node build/qa.js`.
+Un ✗ se corrige dans le JSON, jamais dans le HTML généré ni en assouplissant `qa.js`.
 
-## PUBLICATION — pousser sur `main` (le site se déploie depuis main)
-1. **Pré-vol :** teste l'écriture via `mcp__github__create_or_update_file` sur `.keepalive`
-   (branch `main`). Si OK → MCP est la voie d'écriture.
-2. **Voie principale :** `mcp__github__push_files` (owner `leomarty1`, repo `veille-IA`,
-   branch `main`) en un seul commit atomique avec TOUS les fichiers générés/modifiés :
-   `briefs/<date>.html`, `briefs/<date>.json`, les `items/<date>-*.html` (🎯/🛠),
-   `briefs/data.json`, `briefs/index.html`, `index.html`, et `modeles/*` si nouveau modèle
-   avec score officiel.
-3. **Fallback :** si `push_files` renvoie 403, `create_or_update_file` fichier par fichier
-   (récupère le SHA des fichiers existants). Si MCP est totalement absent, tente le push git
-   via le remote authentifié de l'environnement.
-4. **Échoue bruyamment** si rien n'a pu être poussé — ne JAMAIS terminer en succès silencieux
-   sans brief publié. Ne jamais écrire de secret/PAT dans un fichier du repo.
+Règles dures : zéro hallucination ; une source `primary:true` est sur le domaine officiel de
+l'acteur (la QA bloque le contraire) ; si l'egress bloque le fetch, recouper chaque item par
+≥ 2 recherches indépendantes et le dire dans le rapport ; semaine calme (< 3 items sur les 5
+principaux) = brief minimal honnête ; un modèle sans score SWE-bench Verified officiel n'entre
+pas dans `models-data.json` en `approximate:false`.
 
-## VÉRIFICATION POST-DÉPLOIEMENT
-Attends ~90 s, puis `curl -s -o /dev/null -w "%{http_code}"` sur
-https://leomarty1.github.io/veille-IA/ → attends `200`, et vérifie que le HTML servi contient
-la date du nouveau brief. Reporte `Déploiement : ✅ 200 + date OK` ou `❌`.
+## PUBLICATION — `bash build/publish.sh <date>`
+QA bloquante → commit → push de la branche → fast-forward et push de `main` (la branche servie
+par GitHub Pages) → vérification HTTP best-effort. **Commiter n'est pas publier** : tant que
+`git log origin/main -1` ne montre pas le commit du brief, le rapport dit `NON PUBLIÉ`.
+Ne jamais écrire de secret dans un fichier du repo.
 
-## RAPPORT FINAL
-Format défini dans CLAUDE.md (section « Rapport final ») : fenêtre, items (N 🎯/🛠/·),
-acteurs actifs, QA ✅/❌, WRITE_PATH, Push ✅ SHA → main, Déploiement, coût, site.
-Modèle : dernier Claude Opus disponible — logge le modèle réel, ne fige pas la version.
+## RAPPORT FINAL + NOTIFICATION
+Format CLAUDE.md « Rapport final » (fenêtre, items, écartés, egress, sources fetchées, QA,
+WRITE_PATH, push, déploiement, workflow ok/échoué, coût, modèle réel). Envoie la notification
+avec le résumé — y compris, et surtout, si quelque chose a échoué.
