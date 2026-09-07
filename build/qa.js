@@ -49,6 +49,7 @@ const OFFICIAL = [
   /(^|\.)mistral\.ai$/,
   /(^|\.)perplexity\.ai$/, /(^|\.)x\.ai$/, /(^|\.)cursor\.com$/, /(^|\.)deepseek\.com$/,
   /(^|\.)modelcontextprotocol\.io$/, /(^|\.)cohere\.com$/, /(^|\.)stability\.ai$/, /(^|\.)z\.ai$/,
+  /(^|\.)longcatai\.org$/, /(^|\.)lbl\.gov$/, // Meituan LongCat ; press room Berkeley Lab (annonceur Genesis Mission)
   /(^|\.)github\.com$/, /(^|\.)huggingface\.co$/,
   /(^|\.)microsoft\.com$/, /(^|\.)salesforce\.com$/, /(^|\.)broadcom\.com$/, /(^|\.)nvidia\.com$/,
   /(^|\.)aboutamazon\.com$/, /(^|\.)apple\.com$/,
