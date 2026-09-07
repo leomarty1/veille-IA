@@ -143,8 +143,8 @@
    "context_html": "Sept releases en six jours. <strong>2.1.257</strong> (1<sup>er</sup> sept) bascule <strong>Claude Fable 5.1 en modèle Fable par défaut</strong> (1M de contexte, $10/$50, cache reads $0.25) et ajoute les réglages <code>timeFormat</code>/<code>timeZone</code>, la règle Containment Escape en auto mode, <code>CLAUDE_CODE_SUBAGENT_MODEL_FORCE</code> pour propager un override de modèle à tous les sous-agents, et le flag <code>s</code> de <code>/effort</code> pour un changement limité à la session. <strong>2.1.259</strong> (2 sept) ajoute <strong><code>managedMcpServers</code></strong> — une organisation pousse des serveurs MCP HTTP/SSE à tous ses utilisateurs, les entrées nommant une commande locale étant ignorées — et <strong><code>--permission-prompts none</code></strong> pour les hôtes headless non surveillés : tout ce qui demanderait une approbation est refusé automatiquement, le mode de permission actif continuant de décider du reste. <strong>2.1.260</strong> (3 sept) ouvre un <strong>panneau de diff</strong> latéral (<code>/diff</code>) sur les modifications non commitées, et affiche la <strong>cause probable d'un cache miss</strong> dans <code>/cost</code>. <strong>2.1.261</strong> (4 sept) ajoute <code>/skill-doctor</code> (quelles skills chargées ne servent pas, et ce qu'elles coûtent en contexte), <code>bashOutputMaxChars</code>/<code>taskOutputMaxChars</code> jusqu'à <strong>128K caractères</strong>, et <code>--append-subagent-system-prompt-file</code>. <strong>2.1.263</strong> (6 sept) : correctifs.",
    "sources": [
     {
-     "label": "code.claude.com/docs/en/changelog",
-     "url": "https://code.claude.com/docs/en/changelog",
+     "label": "code.claude.com/docs/en/changelog#2-1-257",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-257",
      "primary": true
     }
    ],
@@ -187,8 +187,8 @@
     ],
     "source": {
      "kind": "primaire",
-     "url": "https://code.claude.com/docs/en/changelog",
-     "label": "code.claude.com/docs/en/changelog",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-257",
+     "label": "code.claude.com/docs/en/changelog#2-1-257",
      "meta": "Anthropic · changelog officiel Claude Code · versions 2.1.257 à 2.1.263"
     },
     "related": [

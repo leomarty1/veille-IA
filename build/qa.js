@@ -83,7 +83,9 @@ function classify(url) {
 }
 function isHub(url) {
   try {
-    const segs = new URL(url).pathname.split('/').filter(Boolean);
+    const u = new URL(url);
+    if (u.hash && u.hash.length > 1) return false; // ancre vers une entrée précise (ex. changelog#2-1-259)
+    const segs = u.pathname.split('/').filter(Boolean);
     const last = segs.length ? segs[segs.length - 1].toLowerCase() : '';
     // page cumulative (changelog, release notes) = hub, même avec un id devant
     return HUB_LAST.has(last) || /changelog|release-?notes/.test(last);
