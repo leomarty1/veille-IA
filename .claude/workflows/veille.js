@@ -22,6 +22,22 @@ if (!args || !args.date || !args.since) {
 const A = { date: args.date, since: args.since, ledger: Array.isArray(args.ledger) ? args.ledger : [] }
 const MIN_SCANS_PRINCIPAUX = 3 // en dessous, l'outillage est en panne : on s'arrete au lieu de generer a partir de rien
 
+// Base de faits verifiee en amont par `node build/scout.js <since> <date> --json` (args.scout, optionnel) :
+// entrees DATEES lues deterministiquement sur les sources officielles joignables. Injectee dans les scans
+// de l'acteur concerne et dans la consolidation — ce sont des faits, pas des resultats de recherche.
+const SCOUT = args.scout && Array.isArray(args.scout.sources) ? args.scout : null
+function scoutFor(actor) {
+  if (!SCOUT) return []
+  return SCOUT.sources.filter((s) => s.ok && s.actor === actor && s.entries.length).flatMap((s) =>
+    s.entries.map((e) => ({ date: e.date, title: e.title, url: e.url, bullets: e.bullets.slice(0, 15) })))
+}
+function scoutBlock(actor) {
+  const entries = scoutFor(actor)
+  if (!entries.length) return ""
+  return `\nENTREES VERIFIEES PAR build/scout.js (dates et contenus lus sur la page officielle — a couvrir EN PRIORITE, ne pas les re-chercher, les enrichir et les contextualiser ; l'URL donnee est la source primaire a citer, ancre comprise) :\n${JSON.stringify(entries, null, 1)}\n`
+}
+const SCOUT_UNREACHABLE = SCOUT ? SCOUT.sources.filter((s) => !s.ok).map((s) => `${s.label} (${s.error})`) : []
+
 const PRINCIPAUX = [
   { actor: "Anthropic", sources: ["https://www.anthropic.com/news", "https://code.claude.com/docs/en/changelog", "https://platform.claude.com/docs/en/release-notes/overview"] },
   { actor: "OpenAI", sources: ["https://openai.com/news/", "https://developers.openai.com/codex/changelog", "https://help.openai.com/en/articles/9624314-model-release-notes"] },
@@ -114,7 +130,7 @@ REGLES DURES
 - Ne pas re-rapporter ce qui est deja couvert par les briefs precedents (slug | url) : ${LEDGER_TXT}
 - Si rien de notable dans la fenetre : actor_empty=true, items=[] — c'est une reponse valide et frequente, ne pas remplir.
 - Jamais d'agregateur (releasebot, gradually.ai, chatforest, aireleasetracker, llmgateway) en source.
-${TON}
+${scoutBlock(a.actor)}${TON}
 Renvoie via la sortie structuree.`
 }
 
@@ -123,7 +139,11 @@ function consolidatePrompt(scans) {
 
 RESULTATS DE SCAN PAR ACTEUR (bruts, a croiser) :
 ${JSON.stringify(scans, null, 2)}
-
+${SCOUT ? `
+FAITS VERIFIES PAR build/scout.js (lus sur les pages officielles, dates certaines — priment sur les scans en cas de contradiction ; leurs URL ancrees sont les sources primaires a citer) :
+${JSON.stringify(SCOUT.sources.filter((s) => s.ok && s.entries.length).map((s) => ({ source: s.label, actor: s.actor, entries: s.entries.map((e) => ({ date: e.date, title: e.title, url: e.url, bullets: e.bullets.slice(0, 15) })) })), null, 1)}
+Sources officielles NON lisibles ce run (a couvrir uniquement par les scans ci-dessus) : ${SCOUT_UNREACHABLE.join(" · ") || "aucune"}
+` : ""}
 TA TACHE
 1. DEDUP intra-fenetre (une meme annonce vue par deux scans = un item) ET inter-briefs : ecarte tout ce qui recoupe le ledger ${LEDGER_TXT}. Ecarte aussi : hors fenetre, confidence="rumor" (sauf mention explicite « annonce non materialisee » en · info), repackagings marketing, partenariats sans substance technique.
 2. SCORING : 🎯 lynxter = impact direct workflow Lynxter (Claude Code, agents, MCP, automation, support S300X/S600D) · 🛠 useful = a connaitre / anticiper / benchmarker · · info = culture IA. Un · info fait 1 a 3 phrases MAXIMUM.
@@ -206,6 +226,8 @@ return {
   scans_failed: missing,
   egress_blocked: egressBlocked,
   primary_fetched_ratio: `${fetched}/${rawItems}`,
+  scout_entries: SCOUT ? SCOUT.sources.reduce((n, s) => n + (s.ok ? s.entries.length : 0), 0) : null,
+  scout_unreachable: SCOUT_UNREACHABLE,
   dropped: c.dropped,
   qa_passed: qa.passed,
   qa_issues: qa.blocking_issues,

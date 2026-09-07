@@ -3,14 +3,14 @@
     {
       "date": "2026-09-06",
       "filename": "2026-09-06.html",
-      "items_count": 9,
+      "items_count": 11,
       "by_tag": {
         "lynxter": 3,
-        "useful": 4,
+        "useful": 6,
         "info": 2
       },
       "by_actor": {
-        "Anthropic": 3,
+        "Anthropic": 5,
         "OpenAI": 1,
         "Google": 1,
         "Meta": 1,
@@ -39,6 +39,20 @@
           "title": "Claude Code 2.1.257 → 2.1.263 — Fable 5.1 par défaut, managedMcpServers, --permission-prompts none",
           "primary_url": "https://code.claude.com/docs/en/changelog#2-1-257",
           "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-06-fable-5-1-api-tool-choice-retention",
+          "title": "Fable 5.1 côté API — tool_choice any/tool refusés (400), thinking lié à l'historique, rétention 30 jours obligatoire",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview#september-1-2026",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-06-ant-apply-managed-agents-as-code",
+          "title": "ant apply (CLI 1.30.0) — agents, environnements, skills et mémoires Managed Agents déclarés en fichiers, avec lockfile",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview#september-3-2026",
+          "tag": "useful",
           "actor": "Anthropic"
         },
         {
