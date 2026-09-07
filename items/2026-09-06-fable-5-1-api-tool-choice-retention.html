@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fable 5.1 côté API — tool_choice any/tool refusés (400), thinking lié à l'historique, rétention 30 jours obligatoire — Veille IA Lynxter</title>
+<meta name="description" content="Ce que les release notes plateforme du 1er septembre 2026 ajoutent à l'annonce de Fable 5.1 : tool_choice any/tool refusés, thinking lié à l'historique, trois betas, watermark, rétention 30 jours obligatoire.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-09-06.html">2026-09-06</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Fable 5.1 côté API</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Anthropic</span>
+          <span class="dot-sep">·</span>
+          <span>1er septembre 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-useful">🛠 Utile</span>
+        </div>
+        <h1>Fable 5.1 côté API — tool_choice any/tool refusés (400), thinking lié à l'historique, rétention 30 jours obligatoire</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-09-06.html">Quatre modèles frontière en 72 heures — 2026-09-06</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">400<span class="unit">erreur</span></div>
+            <div class="stat-label">tool_choice any / tool refusés</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">30<span class="unit">jours</span></div>
+            <div class="stat-label">Rétention minimale · pas de ZDR sans accord</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">128K<span class="unit">sortie max</span></div>
+            <div class="stat-label">1M de contexte par défaut</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3<span class="unit">betas</span></div>
+            <div class="stat-label">Effort par message · system par tour · thinking updates</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>L'annonce du 1<sup>er</sup> septembre parle de benchmarks et de prix. Les release notes de la plateforme, publiées le même jour, parlent de ce qui casse. Premier point, le plus concret pour un code existant : sur Fable 5.1 et Mythos 5.1, <code>tool_choice</code> en mode <code>any</code> (forcer un appel d'outil) ou <code>tool</code> (forcer un outil précis) <strong>renvoie une erreur 400</strong>. Seuls <code>auto</code> et <code>none</code> subsistent. La voie indiquée pour obtenir un input strictement conforme au schéma est le strict tool use ou les structured outputs — un changement de contrat, pas un réglage.</p>
+        <p>Deuxième point, plus subtil : le <strong>thinking devient lié à l'historique</strong>. Un bloc de thinking produit par Fable 5.1 n'est lisible que par Fable 5.1 ou un modèle plus récent (l'inverse reste vrai : 5.1 accepte les blocs d'Opus 5, Fable 5, Mythos 5 et antérieurs). Surtout, pour les comptes créés à partir du 31 août 2026, l'API vérifie que rien n'a changé avant un bloc rejoué — system prompt, outils, message antérieur — et renvoie 400 sinon. Le header beta <code>thinking-binding-controls-2026-08-01</code> permet de choisir entre rejet et abandon silencieux, avec un champ <code>input_transformations</code> qui liste ce qui a été retiré. Trois betas accompagnent le modèle : l'effort modifiable par message via <code>output_config.effort</code> dans un message <code>system</code> en cours de conversation (cache préservé), les messages système à portée d'un tour (<code>clear_at: "next_user_message"</code>, sans coût de tokens ensuite, sans invalider le cache), et <code>thinking.display: "updates"</code> qui renvoie les courts points d'avancement entre appels d'outils comme texte.</p>
+        <p>Troisième point, celui qui compte en RFP : <strong>les deux modèles exigent 30 jours de rétention</strong> et ne sont pas disponibles sous zero data retention sans autorisation expresse d'Anthropic — même règle que Fable 5, reconduite. S'y ajoutent le watermark textuel sur toute sortie et des Content Credentials C2PA sur les fichiers image, vidéo et audio produits via code execution et récupérés par la Files API, sans changement de requête. Enfin, les guides des endpoints Enterprise (Admin API, Analytics, Compliance) affichent désormais le header <code>anthropic-version</code>, à envoyer sur chaque appel. À titre de comparaison, GPT-6 Astra, sorti deux jours plus tard, documente un contexte de 1.05M sans clause de rétention par modèle publiée dans ses notes de version.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🛠 Pourquoi c'est utile à savoir pour Lynxter</h2>
+        <p><strong>Deux vérifications à faire avant de basculer un agent sur Fable 5.1.</strong> D'abord chercher tout <code>tool_choice</code> en <code>any</code> ou <code>tool</code> dans les prompts de support et les Routines Cowork : chacun devient une erreur 400 au premier appel. Le remplacement est le strict tool use, qui garantit la conformité au schéma sans forcer l'appel. Ensuite, si une session rejoue des blocs de thinking après avoir modifié la liste d'outils (un serveur MCP ajouté en cours de route, typiquement), le comportement change pour les comptes récents : tester avec le header beta plutôt que de découvrir le 400 en production.</p>
+        <p><strong>La rétention de 30 jours corrige l'argumentaire EFS de ce brief.</strong> Enterprise Frontier Safeguards déplace la détection d'abus chez le client tout en gardant la ZDR — mais Fable 5.1 et Mythos 5.1 ne sont pas éligibles à la ZDR sans accord exprès d'Anthropic. Pour un client industriel qui exige zéro rétention, la réponse honnête est donc : soit un modèle éligible ZDR (Opus 5, Sonnet 5), soit une autorisation Anthropic à obtenir avant contractualisation. À inscrire tel quel dans le paragraphe type de réponse à appel d'offres.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://platform.claude.com/docs/en/release-notes/overview#september-1-2026" target="_blank" rel="noopener">platform.claude.com/docs/en/release-notes/overview#september-1-2026</a>
+        <span class="source-meta">Anthropic · release notes officielles de la plateforme Claude · 1er septembre 2026 · page fetchée</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-09-06-claude-fable-5-1-mythos-5-1.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Fable 5.1 et Mythos 5.1 — cache reads −75 %</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-09-06-anthropic-enterprise-frontier-safeguards.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Enterprise Frontier Safeguards — ZDR et détection d'abus chez le client</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-09-06-claude-code-2-1-257-263.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code 2.1.257 → 2.1.263 — Fable 5.1 par défaut</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-09-06-claude-code-2-1-257-263.html">
+          <span class="label">← Item précédent</span>
+          <span class="title">Claude Code 2.1.257 → 2.1.263</span>
+        </a>
+        <a class="next" href="2026-09-06-ant-apply-managed-agents-as-code.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">ant apply — Managed Agents en fichiers</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-09-06</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

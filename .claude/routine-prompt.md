@@ -24,9 +24,12 @@ bloquante, publication, rapport final. Ne déroule rien sans l'avoir lu en entie
 ## FENÊTRE ET LEDGER
 Lis `briefs/data.json` : fenêtre = date du dernier brief (exclue) → aujourd'hui (inclus).
 Ledger anti-doublon = `items[]` (slug | primary_url) des 4 derniers briefs.
+Puis `node build/scout.js <since> <date> --json` : base de faits vérifiés (changelog Claude Code
+ancré par version, release notes plateforme, SDK) lue sur les pages officielles — dates certaines,
+à couvrir en priorité avec l'URL du scout en source primaire.
 
 ## PRODUCTION
-Lance `Workflow({ name: "veille", args: { date, since, ledger } })`. Le workflow échoue vite si
+Lance `Workflow({ name: "veille", args: { date, since, ledger, scout } })`. Le workflow échoue vite si
 les sous-agents sont inopérants (< 3 scans principaux) : dans ce cas, déroule toi-même les
 étapes 1-5 de CLAUDE.md dans la session principale (WebSearch/WebFetch y fonctionnent), en
 respectant le budget (~30 WebSearch, ~20 WebFetch).

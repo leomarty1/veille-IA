@@ -82,6 +82,15 @@ Lire `briefs/data.json` (le dépôt est cloné localement : `Read`, pas MCP) pou
 - Fenêtre = date dernier brief → aujourd'hui
 - `ITEMS_PRECEDENTS` = somme des `items_count` de tous les briefs existants
 
+**Puis, avant toute recherche web, la base de faits vérifiés :**
+
+```bash
+node build/scout.js <since> <date>          # lisible
+node build/scout.js <since> <date> --json   # → args.scout du workflow
+```
+
+`scout.js` lit de façon déterministe les sources officielles qui répondent même en egress restreint — changelog Claude Code (ancre par version), release notes de la plateforme Claude (API, SDK, Cowork, Managed Agents), CHANGELOG du SDK Python — et sort les entrées **datées dans la fenêtre**, avec leur URL ancrée. Ce qui en sort n'est pas un résultat de recherche : c'est ce que la page dit. Ces entrées se couvrent en priorité, avec l'URL du scout en source primaire ; les sources marquées `✗` (Codex, Gemini API, Mistral, Cursor — injoignables au 2026-09-07) restent à couvrir par WebSearch. Passer le JSON au workflow (`args.scout`) ou le garder sous les yeux en mode manuel.
+
 ### 2. Recherche approfondie — tous les acteurs
 
 **Règle d'or :** chaque item du brief doit s'appuyer sur **au moins 1 source primaire fetched** (annonce officielle, release notes, blog éditeur) + idéalement 1 source secondaire qui confirme/contextualise. Pas de seconde main seule, pas de rumeur Twitter sans confirmation.

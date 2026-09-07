@@ -5,11 +5,25 @@ Outils Node **zéro-dépendance** (aucun `npm install`) pour fiabiliser la routi
 ## Chaîne de production d'un brief
 
 ```bash
+node build/scout.js 2026-08-30 2026-09-06   # base de faits vérifiés (avant toute recherche web)
 node build/gen.js  2026-09-06   # briefs/<date>.json → brief HTML + pages détail 🎯/🛠
 node build/sync.js 2026-09-06   # → data.json, index.html, briefs/index.html (idempotent)
 node build/qa.js                # gate bloquant
 bash build/publish.sh 2026-09-06
 ```
+
+## `node build/scout.js <since> <until>` — base de faits vérifiés
+
+Lit de façon déterministe les sources officielles qui répondent même en egress restreint, et sort les entrées **datées dans la fenêtre** (since exclu → until inclus) avec leur URL ancrée. Zéro modèle entre la page et la sortie : ce qui en sort est ce que la page dit. `--json` produit `args.scout` pour le workflow (injecté dans les scans de l'acteur et dans la consolidation, où ces faits priment sur les résultats de recherche) ; `--all` montre tous les bullets.
+
+| Source | Ce qui est lu | Ancre citée |
+|---|---|---|
+| Claude Code | `code.claude.com/docs/en/changelog.md` — blocs `<Update label description>` | `changelog#2-1-259` |
+| Claude Platform | `platform.claude.com/docs/en/release-notes/overview.md` — titres `### September 3, 2026` | `overview#september-3-2026` |
+| SDK Python Anthropic | `raw.githubusercontent.com/…/CHANGELOG.md` — `## 1.4.0 (2026-09-04)` | `releases/tag/v1.4.0` |
+| Codex CLI, Gemini API, Mistral, Cursor | déclarés mais **injoignables** (403 proxy au 2026-09-07) — signalés `✗`, à couvrir par WebSearch | — |
+
+Premier run (fenêtre 2026-08-30 → 09-06) : 11 entrées, dont deux release notes plateforme et deux versions du SDK que le brief manuel n'avait pas relevées. Réseau via `curl` (honore `HTTPS_PROXY` et le bundle CA, contrairement au `fetch()` de Node). Ajouter une source = un objet dans `SOURCES` avec un parseur ; les releases GitHub (`api.github.com`, `releases.atom`) sont bloquées, `raw.githubusercontent.com` ne l'est pas.
 
 ## `node build/sync.js <date>` — satellites dérivés de la source unique
 
