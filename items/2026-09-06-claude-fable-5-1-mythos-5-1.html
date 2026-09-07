@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Fable 5.1 et Mythos 5.1 — cache reads à $0.25/M tokens (−75 %), Terminal-Bench 4.0 à 55.8 % — Veille IA Lynxter</title>
+<meta name="description" content="Analyse de Claude Fable 5.1 et Mythos 5.1 (1er septembre 2026) : cache reads à $0.25/M tokens, Terminal-Bench 4.0 à 55.8 %, SWE-bench Pro 81.2, accès restreint Mythos. Implications Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-09-06.html">2026-09-06</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Claude Fable 5.1</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Anthropic</span>
+          <span class="dot-sep">·</span>
+          <span>1er septembre 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-lynxter">🎯 Lynxter</span>
+        </div>
+        <h1>Claude Fable 5.1 et Mythos 5.1 — cache reads à $0.25/M tokens (−75 %), Terminal-Bench 4.0 à 55.8 %</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-09-06.html">Quatre modèles frontière en 72 heures — 2026-09-06</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">$0.25<span class="unit">/M tok</span></div>
+            <div class="stat-label">Cache reads · −75 % vs $1</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">55.8<span class="unit">%</span></div>
+            <div class="stat-label">Terminal-Bench 4.0 · 42.0 % pour Fable 5</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">52.6<span class="unit">%</span></div>
+            <div class="stat-label">Terminal-Bench-Science · Opus 5 à 29.0 %</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">81.2<span class="unit">SWE-bench Pro</span></div>
+            <div class="stat-label">Aucun score Verified publié</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Anthropic ship <strong>Claude Fable 5.1</strong> le 1<sup>er</sup> septembre 2026, trois mois après Fable 5. La grille tarifaire de tête ne bouge pas — <strong>$10 en input, $50 en output par M tokens</strong> — et c'est précisément ce qui rend le vrai changement facile à manquer : le <strong>cache read tombe de $1 à $0.25 par M tokens</strong>. Sur un workload agentique classique, où un contexte stable et volumineux est rejoué à chaque tour d'une boucle, le cache read constitue l'essentiel du volume d'input facturé. Une division par quatre à cet endroit déplace davantage l'économie d'un déploiement qu'une baisse de 10 % sur le prix nominal des tokens.</p>
+        <p>Sur les benchmarks, Anthropic met délibérément l'accent sur le long-horizon plutôt que sur le code pur. <strong>Terminal-Bench 4.0 passe à 55.8 %</strong> contre 42.0 % pour Fable 5, et <strong>Terminal-Bench-Science 0.1 à 52.6 %</strong> — plus du double de Fable 5 (24.7 %), et surtout très au-dessus d'<strong>Opus 5 à 29.0 %</strong> sur le même test. Anthropic revendique un doublement sur la recherche scientifique agentique et un quasi-doublement sur les workflows métier. Côté logiciel, la maison publie <strong>SWE-bench Pro à 81.2</strong> et <strong>CursorBench 3.2.0 à 73.4 %</strong>. Point de vigilance méthodologique : <strong>Anthropic ne publie aucun score SWE-bench Verified pour Fable 5.1</strong>. Les « 95 % » relayés ici et là proviennent de leaderboards tiers, pas de l'éditeur — les traiter comme un chiffre officiel serait une erreur, et c'est la raison pour laquelle ce modèle n'entre pas dans le graphe SWE-bench Verified de ce site avec un point « officiel ».</p>
+        <p><strong>Mythos 5.1</strong> mérite d'être compris pour ce qu'il est : non pas un modèle plus puissant, mais <em>le même modèle sous-jacent</em> livré avec des garde-fous desserrés sur la cybersécurité et la biologie. L'accès passe par invitation, via le <strong>Cyber Verification Program</strong> (défenseurs en sécurité offensive/défensive) et le <strong>Life Sciences Verification Program</strong> (recherche et développement en sciences du vivant), au <strong>même tarif de $10/$50</strong>. C'est la formalisation d'une stratégie que la concurrence adopte la même semaine — Google gate sa variante Gemini 3.8 Flash Cyber derrière le programme Fairwind, OpenAI ouvre GPT-6 Astra aux payants dans une version qui refuse les prompts cyber. Trois acteurs, trois façons de séparer capacité brute et population autorisée, à quarante-huit heures d'intervalle.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🎯 Pourquoi c'est important pour Lynxter</h2>
+        <p><strong>La baisse du cache read est directement monnayable sur ton usage support.</strong> Un agent de support S300X/S600D fonctionne avec un préambule lourd et stable — documentation machine, arbres de panne, procédures de calibration, historiques de tickets — rejoué à chaque question. C'est le profil exact que le prompt caching couvre, et donc le profil exact où une division par quatre du cache read se voit sur la facture. L'action concrète : reprendre les Routines Cowork et les agents Claude Code, vérifier que les blocs stables sont bien placés en tête de prompt (le cache est un préfixe : tout ce qui varie doit venir après), puis mesurer avant/après plutôt que supposer.</p>
+        <p><strong>L'outil de mesure est arrivé la même semaine.</strong> Claude Code 2.1.260 ajoute au <code>/cost</code> et au status line la <strong>cause probable d'un cache miss</strong> — définitions d'outils modifiées, system prompt changé, TTL dépassé. Sans ça, un cache read bon marché reste théorique : il suffit d'un outil MCP ajouté en cours de session pour invalider le préfixe et repayer plein tarif sans s'en apercevoir. Avec ça, l'audit devient une opération de dix minutes.</p>
+        <p><strong>Sur le choix de modèle, rester factuel.</strong> Fable 5.1 progresse fortement sur le long-horizon agentique, pas sur le code court. Si ton usage dominant est le diagnostic multi-étapes — lire un log, croiser une doc, proposer une procédure — le gain Terminal-Bench est pertinent. S'il s'agit de générer des patchs courts, l'absence de SWE-bench Verified officiel interdit toute comparaison propre avec la génération précédente : benchmarke sur tes propres tickets plutôt que sur les chiffres d'annonce.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://www.anthropic.com/claude-fable-and-mythos-5-1" target="_blank" rel="noopener">anthropic.com/claude-fable-and-mythos-5-1</a>
+        <span class="source-meta">Anthropic · annonce officielle Claude Fable 5.1 et Mythos 5.1 · 1er septembre 2026</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-09-06-claude-code-2-1-257-263.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code 2.1.257 → 2.1.263 — Fable 5.1 par défaut, managedMcpServers</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-09-06-openai-gpt-6-astra.html">
+            <span class="related-actor">OpenAI</span>
+            <span class="related-title">GPT-6 Astra — 1.05M de contexte, surtaxe au-delà de 272K</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+          <li><a href="2026-09-06-gemini-3-8-flash-cyber.html">
+            <span class="related-actor">Google DeepMind</span>
+            <span class="related-title">Gemini 3.8 Flash et Flash Cyber</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="../briefs/2026-09-06.html">
+          <span class="label">← Retour au brief</span>
+          <span class="title">2026-09-06</span>
+        </a>
+        <a class="next" href="2026-09-06-claude-code-2-1-257-263.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Claude Code 2.1.257 → 2.1.263</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-09-06</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+{
+ "date": "2026-09-06",
+ "title": "Quatre modèles frontière en 72 heures",
+ "title_html": "Quatre modèles<br>frontière en<br><em style=\"font-style:normal;color:var(--lx-accent);\">72 heures</em>",
+ "description": "Brief IA du 31 août au 6 septembre 2026 : Claude Fable 5.1 et Mythos 5.1 (cache reads −75 %), Gemini 3.8 Flash et sa variante Cyber, Meta Muse Spark 1.3, GPT-6 Astra à 1.05M de contexte, Enterprise Frontier Safeguards, et sept releases Claude Code dont managedMcpServers.",
+ "period": "31 août → 6 septembre 2026",
+ "actors_scanned": 9,
+ "intro_html": "Semaine la plus dense de l'année sur la frontière : <strong>quatre modèles majeurs en 72 heures</strong>. Le 1<sup>er</sup> septembre, Anthropic sort <strong>Claude Fable 5.1</strong> et son jumeau à garde-fous desserrés <strong>Mythos 5.1</strong> — pricing inchangé à $10/$50 par M tokens, mais <strong>cache reads divisés par 4</strong> ($1 → $0.25). Le 2, Google livre <strong>Gemini 3.8 Flash</strong> (troisième Flash en six semaines) plus une variante <strong>Flash Cyber</strong> réservée aux États et opérateurs d'infrastructure critique, et Meta répond avec <strong>Muse Spark 1.3</strong>, propriétaire, 6<sup>e</sup> de l'Intelligence Index. Le 3, OpenAI ouvre <strong>GPT-6 Astra</strong> en preview partenaires, puis aux payants le 4 dans une version qui refuse les prompts cyber. Côté outillage, Claude Code enchaîne <strong>sept releases (2.1.257 → 2.1.263)</strong> : Fable 5.1 par défaut, <code>managedMcpServers</code>, <code>--permission-prompts none</code>, panneau de diff, <code>/skill-doctor</code>. Mistral, silence complet sur la fenêtre.",
+ "tldr": [
+  "<strong>Claude Fable 5.1 + Mythos 5.1 (1<sup>er</sup> sept) — le prix du cache s'effondre, pas celui des tokens.</strong> Pricing standard inchangé ($10/$50 par M tokens), mais les <strong>cache reads passent de $1 à $0.25 par M tokens, −75 %</strong>. Terminal-Bench 4.0 à <strong>55.8 %</strong> contre 42.0 % pour Fable 5 ; Terminal-Bench-Science à <strong>52.6 %</strong>, plus du double de Fable 5 (24.7 %) et loin devant Opus 5 (29.0 %). Anthropic publie <strong>SWE-bench Pro 81.2</strong> et ne publie <em>aucun</em> score SWE-bench Verified — les 95 % qui circulent viennent de leaderboards tiers. Mythos 5.1 est le même modèle avec des garde-fous cyber et biologie desserrés, sur invitation via CVP/LSVP.",
+  "<strong>Trois frontières en réponse en 48 h.</strong> <strong>Gemini 3.8 Flash</strong> (2 sept) : $0.75/$3.75 par M tokens — mais <strong>doublement programmé au 1<sup>er</sup> janvier 2027</strong> —, 1 048 576 tokens de contexte, et une variante <strong>Flash Cyber</strong> qui trouve et patche des vulnérabilités, gated derrière le programme Fairwind. <strong>Muse Spark 1.3</strong> (2 sept) : 75.4 % DeepSWE 1.1, 88.8 % Terminal-Bench 2.1, ~20 % d'appels d'outils en moins que 1.2 — mais le scorecard compare le mode <em>max</em> de 1.3 au <em>xhigh</em> de 1.2. <strong>GPT-6 Astra</strong> (3 sept) : 1.05M de contexte, $10/$50, et une <strong>surtaxe ×2 en input dès 272K tokens</strong> sur la totalité de la requête.",
+  "<strong>Claude Code : sept releases, deux leviers de gouvernance.</strong> <code>managedMcpServers</code> (2.1.259) permet à une organisation de pousser des serveurs MCP HTTP/SSE à tous ses postes ; <code>--permission-prompts none</code> refuse automatiquement tout ce qui demanderait une approbation, pour les hôtes headless non surveillés. S'ajoutent le panneau de diff <code>/diff</code> (2.1.260), <code>/skill-doctor</code> qui chiffre le coût en contexte des skills inutilisées, et <code>bashOutputMaxChars</code>/<code>taskOutputMaxChars</code> jusqu'à 128K caractères (2.1.261)."
+ ],
+ "lynxter_hero": [
+  "<strong>La baisse du cache read est le seul changement de prix qui compte cette semaine — et il te concerne directement.</strong> Fable 5.1 garde $10/$50 par M tokens, mais les cache reads tombent de $1 à <strong>$0.25 par M tokens</strong>. Or ton usage support est précisément la forme que cette baisse récompense : un préambule stable et volumineux — documentation S300X/S600D, arbres de panne, historiques de tickets, procédures de calibration — rejoué à chaque requête sur des questions courtes. Sur ce profil, le cache représente l'essentiel du volume d'input facturé, et il vient d'être divisé par quatre. Concrètement : reprends tes Routines Cowork et tes agents Claude Code, vérifie que les blocs stables sont bien en tête de prompt et marqués pour le prompt caching, et mesure. Le <code>/cost</code> de Claude Code 2.1.260 affiche désormais la <strong>cause probable d'un cache miss</strong> (définitions d'outils modifiées, system prompt changé, TTL dépassé) — c'est l'outil d'audit qui manquait pour transformer cette baisse en économie réelle plutôt qu'en promesse.",
+  "<strong><code>managedMcpServers</code> et <code>--permission-prompts none</code> sont les deux briques qui rendent un déploiement agent multi-postes gouvernable.</strong> Jusqu'ici, faire tourner Claude Code sur plusieurs postes de support impliquait de répliquer un <code>.mcp.json</code> à la main sur chaque machine, avec la dérive de configuration que ça implique. <code>managedMcpServers</code> (2.1.259) pousse des serveurs MCP HTTP/SSE depuis un réglage managé, à tous les utilisateurs — même forme d'entrée que <code>.mcp.json</code>, à ceci près que les entrées nommant une commande locale à exécuter sont ignorées, ce qui interdit par construction l'injection d'un binaire arbitraire par la configuration. Côté automatisation, <code>--permission-prompts none</code> ferme le trou des hôtes headless : tout ce qui aurait demandé une approbation est refusé automatiquement, au lieu de bloquer un run nocturne ou de s'exécuter sans regard. Si tu envisages un agent de tri de tickets qui tourne sans surveillance, c'est le drapeau qui rend la chose défendable devant un audit.",
+  "<strong>Enterprise Frontier Safeguards change l'argumentaire face à un client industriel qui refuse le cloud.</strong> Le blocage classique en RFP n'est pas le modèle, c'est la rétention : un donneur d'ordre aéronautique ou médical refuse que des prompts contenant des géométries de pièces ou des paramètres de procédé transitent et soient conservés chez un tiers. EFS répond en gardant la <strong>zero data retention</strong> tout en déplaçant les données d'activité nécessaires à la détection d'abus dans <strong>l'infrastructure cloud du client</strong>, avec une surveillance automatisée sans revue humaine côté Anthropic. C'est gratuit, et ça fonctionne aussi bien en accès direct que via un cloud provider. Deux réserves à porter dans un argumentaire honnête : le déploiement est <strong>progressif à partir de l'automne</strong>, donc rien de contractualisable aujourd'hui, et le dispositif a été co-conçu avec des grands comptes financiers — la question de ce que « cloud contrôlé par le client » signifie pour une PME industrielle sans équipe sécurité dédiée reste entière. À suivre pour la prochaine campagne d'appels d'offres, pas à promettre maintenant."
+ ],
+ "synthese_html": "<p><strong>Anthropic</strong> signe la semaine la plus chargée : Fable 5.1 et Mythos 5.1 le 1<sup>er</sup> septembre, Enterprise Frontier Safeguards dans la foulée, et sept releases Claude Code (2.1.257 → 2.1.263) qui basculent le modèle par défaut et ajoutent deux leviers de gouvernance d'entreprise.</p><p><strong>OpenAI</strong> sort GPT-6 Astra le 3 septembre en preview partenaires, généralisé aux payants le 4 dans une version bridée qui refuse les prompts cyber — et communique sur DeepSWE plutôt que sur SWE-bench Verified, ce qui empêche toute comparaison directe avec la génération précédente.</p><p><strong>Google DeepMind</strong> livre Gemini 3.8 Flash le 2 septembre, troisième Flash en six semaines, avec une variante Cyber réservée aux États, opérateurs d'infrastructure critique et mainteneurs validés par le programme Fairwind.</p><p><strong>Meta</strong> répond le même jour avec Muse Spark 1.3, propriétaire et 6<sup>e</sup> sur 636 modèles de l'Artificial Analysis Intelligence Index — la bascule hors des poids ouverts, entamée avec la ligne Muse, est désormais actée.</p><p><strong>Mistral</strong> : rien dans la fenêtre. Agentic Search (20 août) et OCR 4.1 (13 août) tombent avant le 31.</p><p>Côté secondaires, <strong>Cursor</strong> ouvre les machines auto-hébergées, <strong>Perplexity</strong> pousse du calcul hybride local sur Mac, <strong>xAI</strong> lance Grok Bot pour les entreprises et annonce Grok 4.7 pour le 12 septembre.</p>",
+ "actors_order": ["Anthropic", "OpenAI", "Google DeepMind", "Meta", "Mistral"],
+ "actor_empty": {
+  "Mistral": "Rien de notable dans la fenêtre. Les deux annonces récentes — Agentic Search (20 août) et la GA d'OCR 4.1 (13 août) — tombent avant le 31 août et relèvent du brief précédent. Pas de nouveau modèle, pas de release plateforme entre le 31 août et le 6 septembre."
+ },
+ "items": [
+  {
+   "slug": "2026-09-06-claude-fable-5-1-mythos-5-1",
+   "actor": "Anthropic",
+   "tag": "lynxter",
+   "date": "2026-09-01",
+   "title": "Claude Fable 5.1 et Mythos 5.1 — cache reads à $0.25/M tokens (−75 %), Terminal-Bench 4.0 à 55.8 %",
+   "context_html": "Anthropic livre <strong>Fable 5.1</strong> trois mois après Fable 5, avec un <strong>pricing standard inchangé à $10/$50 par M tokens</strong> — le vrai mouvement est ailleurs : les <strong>cache reads passent de $1 à $0.25 par M tokens, soit −75 %</strong>. Sur les benchmarks agentiques, le saut est net : <strong>Terminal-Bench 4.0 à 55.8 %</strong> contre 42.0 % pour Fable 5, et <strong>Terminal-Bench-Science 0.1 à 52.6 %</strong>, plus du double de Fable 5 (24.7 %) et bien au-dessus d'Opus 5 (29.0 %). Sur le code, Anthropic publie <strong>SWE-bench Pro 81.2</strong> et <strong>CursorBench 3.2.0 à 73.4 %</strong> — mais <strong>aucun score SWE-bench Verified officiel</strong> : les 95 % qui circulent proviennent de leaderboards tiers et ne sont pas une donnée Anthropic. Le modèle est GA sur l'API Claude, AWS, Google Cloud et Azure, sous l'identifiant <code>claude-fable-5-1</code>, avec 1M de contexte. <strong>Mythos 5.1</strong> est le <em>même modèle sous-jacent</em>, distribué sur invitation avec des garde-fous cyber et biologie desserrés, via le Cyber Verification Program et le Life Sciences Verification Program, au même prix.",
+   "sources": [
+    { "label": "anthropic.com/claude-fable-and-mythos-5-1", "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1", "primary": true },
+    { "label": "marktechpost.com", "url": "https://www.marktechpost.com/2026/09/01/anthropic-releases-claude-fable-5-1-and-claude-mythos-5-1-52-6-on-terminal-bench-science-and-75-cheaper-cache-reads/", "primary": false },
+    { "label": "venturebeat.com", "url": "https://venturebeat.com/technology/anthropics-claude-fable-5-1-and-mythos-5-1-arrive-with-a-75-cost-reduction-for-fable-cache-reads", "primary": false }
+   ],
+   "has_primary": true,
+   "detail": {
+    "short": "Claude Fable 5.1",
+    "date_long": "1er septembre 2026",
+    "description": "Analyse de Claude Fable 5.1 et Mythos 5.1 (1er septembre 2026) : cache reads à $0.25/M tokens, Terminal-Bench 4.0 à 55.8 %, SWE-bench Pro 81.2, accès restreint Mythos. Implications Lynxter.",
+    "stats": [
+     { "num": "$0.25", "unit": "/M tok", "label": "Cache reads · −75 % vs $1" },
+     { "num": "55.8", "unit": "%", "label": "Terminal-Bench 4.0 · 42.0 % pour Fable 5" },
+     { "num": "52.6", "unit": "%", "label": "Terminal-Bench-Science · Opus 5 à 29.0 %" },
+     { "num": "81.2", "unit": "SWE-bench Pro", "label": "Aucun score Verified publié" }
+    ],
+    "context_paragraphs": [
+     "Anthropic ship <strong>Claude Fable 5.1</strong> le 1<sup>er</sup> septembre 2026, trois mois après Fable 5. La grille tarifaire de tête ne bouge pas — <strong>$10 en input, $50 en output par M tokens</strong> — et c'est précisément ce qui rend le vrai changement facile à manquer : le <strong>cache read tombe de $1 à $0.25 par M tokens</strong>. Sur un workload agentique classique, où un contexte stable et volumineux est rejoué à chaque tour d'une boucle, le cache read constitue l'essentiel du volume d'input facturé. Une division par quatre à cet endroit déplace davantage l'économie d'un déploiement qu'une baisse de 10 % sur le prix nominal des tokens.",
+     "Sur les benchmarks, Anthropic met délibérément l'accent sur le long-horizon plutôt que sur le code pur. <strong>Terminal-Bench 4.0 passe à 55.8 %</strong> contre 42.0 % pour Fable 5, et <strong>Terminal-Bench-Science 0.1 à 52.6 %</strong> — plus du double de Fable 5 (24.7 %), et surtout très au-dessus d'<strong>Opus 5 à 29.0 %</strong> sur le même test. Anthropic revendique un doublement sur la recherche scientifique agentique et un quasi-doublement sur les workflows métier. Côté logiciel, la maison publie <strong>SWE-bench Pro à 81.2</strong> et <strong>CursorBench 3.2.0 à 73.4 %</strong>. Point de vigilance méthodologique : <strong>Anthropic ne publie aucun score SWE-bench Verified pour Fable 5.1</strong>. Les « 95 % » relayés ici et là proviennent de leaderboards tiers, pas de l'éditeur — les traiter comme un chiffre officiel serait une erreur, et c'est la raison pour laquelle ce modèle n'entre pas dans le graphe SWE-bench Verified de ce site avec un point « officiel ».",
+     "<strong>Mythos 5.1</strong> mérite d'être compris pour ce qu'il est : non pas un modèle plus puissant, mais <em>le même modèle sous-jacent</em> livré avec des garde-fous desserrés sur la cybersécurité et la biologie. L'accès passe par invitation, via le <strong>Cyber Verification Program</strong> (défenseurs en sécurité offensive/défensive) et le <strong>Life Sciences Verification Program</strong> (recherche et développement en sciences du vivant), au <strong>même tarif de $10/$50</strong>. C'est la formalisation d'une stratégie que la concurrence adopte la même semaine — Google gate sa variante Gemini 3.8 Flash Cyber derrière le programme Fairwind, OpenAI ouvre GPT-6 Astra aux payants dans une version qui refuse les prompts cyber. Trois acteurs, trois façons de séparer capacité brute et population autorisée, à quarante-huit heures d'intervalle."
+    ],
+    "lynxter_paragraphs": [
+     "<strong>La baisse du cache read est directement monnayable sur ton usage support.</strong> Un agent de support S300X/S600D fonctionne avec un préambule lourd et stable — documentation machine, arbres de panne, procédures de calibration, historiques de tickets — rejoué à chaque question. C'est le profil exact que le prompt caching couvre, et donc le profil exact où une division par quatre du cache read se voit sur la facture. L'action concrète : reprendre les Routines Cowork et les agents Claude Code, vérifier que les blocs stables sont bien placés en tête de prompt (le cache est un préfixe : tout ce qui varie doit venir après), puis mesurer avant/après plutôt que supposer.",
+     "<strong>L'outil de mesure est arrivé la même semaine.</strong> Claude Code 2.1.260 ajoute au <code>/cost</code> et au status line la <strong>cause probable d'un cache miss</strong> — définitions d'outils modifiées, system prompt changé, TTL dépassé. Sans ça, un cache read bon marché reste théorique : il suffit d'un outil MCP ajouté en cours de session pour invalider le préfixe et repayer plein tarif sans s'en apercevoir. Avec ça, l'audit devient une opération de dix minutes.",
+     "<strong>Sur le choix de modèle, rester factuel.</strong> Fable 5.1 progresse fortement sur le long-horizon agentique, pas sur le code court. Si ton usage dominant est le diagnostic multi-étapes — lire un log, croiser une doc, proposer une procédure — le gain Terminal-Bench est pertinent. S'il s'agit de générer des patchs courts, l'absence de SWE-bench Verified officiel interdit toute comparaison propre avec la génération précédente : benchmarke sur tes propres tickets plutôt que sur les chiffres d'annonce."
+    ],
+    "source": {
+     "kind": "primaire",
+     "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "label": "anthropic.com/claude-fable-and-mythos-5-1",
+     "meta": "Anthropic · annonce officielle Claude Fable 5.1 et Mythos 5.1 · 1er septembre 2026"
+    },
+    "related": [
+     { "slug": "2026-09-06-claude-code-2-1-257-263", "actor": "Anthropic", "title": "Claude Code 2.1.257 → 2.1.263 — Fable 5.1 par défaut, managedMcpServers", "tag": "🎯" },
+     { "slug": "2026-09-06-openai-gpt-6-astra", "actor": "OpenAI", "title": "GPT-6 Astra — 1.05M de contexte, surtaxe au-delà de 272K", "tag": "🛠" },
+     { "slug": "2026-09-06-gemini-3-8-flash-cyber", "actor": "Google DeepMind", "title": "Gemini 3.8 Flash et Flash Cyber", "tag": "🛠" }
+    ],
+    "nav": {
+     "prev": { "href": "../briefs/2026-09-06.html", "label": "← Retour au brief", "title": "2026-09-06" },
+     "next": { "href": "2026-09-06-claude-code-2-1-257-263.html", "label": "Item suivant →", "title": "Claude Code 2.1.257 → 2.1.263" }
+    }
+   }
+  },
+  {
+   "slug": "2026-09-06-claude-code-2-1-257-263",
+   "actor": "Anthropic",
+   "tag": "lynxter",
+   "date": "2026-09-06",
+   "title": "Claude Code 2.1.257 → 2.1.263 — Fable 5.1 par défaut, managedMcpServers, --permission-prompts none",
+   "context_html": "Sept releases en six jours. <strong>2.1.257</strong> (1<sup>er</sup> sept) bascule <strong>Claude Fable 5.1 en modèle Fable par défaut</strong> (1M de contexte, $10/$50, cache reads $0.25) et ajoute les réglages <code>timeFormat</code>/<code>timeZone</code>, la règle Containment Escape en auto mode, <code>CLAUDE_CODE_SUBAGENT_MODEL_FORCE</code> pour propager un override de modèle à tous les sous-agents, et le flag <code>s</code> de <code>/effort</code> pour un changement limité à la session. <strong>2.1.259</strong> (2 sept) ajoute <strong><code>managedMcpServers</code></strong> — une organisation pousse des serveurs MCP HTTP/SSE à tous ses utilisateurs, les entrées nommant une commande locale étant ignorées — et <strong><code>--permission-prompts none</code></strong> pour les hôtes headless non surveillés : tout ce qui demanderait une approbation est refusé automatiquement, le mode de permission actif continuant de décider du reste. <strong>2.1.260</strong> (3 sept) ouvre un <strong>panneau de diff</strong> latéral (<code>/diff</code>) sur les modifications non commitées, et affiche la <strong>cause probable d'un cache miss</strong> dans <code>/cost</code>. <strong>2.1.261</strong> (4 sept) ajoute <code>/skill-doctor</code> (quelles skills chargées ne servent pas, et ce qu'elles coûtent en contexte), <code>bashOutputMaxChars</code>/<code>taskOutputMaxChars</code> jusqu'à <strong>128K caractères</strong>, et <code>--append-subagent-system-prompt-file</code>. <strong>2.1.263</strong> (6 sept) : correctifs.",
+   "sources": [
+    { "label": "code.claude.com/docs/en/changelog", "url": "https://code.claude.com/docs/en/changelog", "primary": true }
+   ],
+   "has_primary": true,
+   "detail": {
+    "short": "Claude Code 2.1.257 → 2.1.263",
+    "date_long": "1er au 6 septembre 2026",
+    "description": "Analyse des releases Claude Code 2.1.257 à 2.1.263 (1er-6 septembre 2026) : Fable 5.1 par défaut, managedMcpServers, --permission-prompts none, panneau de diff, /skill-doctor. Implications Lynxter.",
+    "stats": [
+     { "num": "7", "unit": "releases", "label": "2.1.257 → 2.1.263 en 6 jours" },
+     { "num": "128K", "unit": "caractères", "label": "bashOutputMaxChars / taskOutputMaxChars" },
+     { "num": "1M", "unit": "contexte", "label": "Fable 5.1 devient le défaut" },
+     { "num": "MCP", "unit": "managé", "label": "managedMcpServers, HTTP/SSE only" }
+    ],
+    "context_paragraphs": [
+     "La cadence de la semaine — <strong>sept versions du 1<sup>er</sup> au 6 septembre</strong> — suit mécaniquement la sortie de Fable 5.1 : <strong>2.1.257</strong> bascule le modèle Fable par défaut sur <code>claude-fable-5-1</code>, avec 1M de contexte et le nouveau tarif de cache read à $0.25 par M tokens, et <strong>2.1.260</strong> revient corriger des problèmes de prompt cache spécifiques à ce modèle. Entre les deux, <strong>2.1.258</strong> répare une régression de lancement sur macOS 12 (Monterey) introduite en 2.1.255, et un échec des sessions distantes et planifiées après réémission d'une approbation de permission.",
+     "Le cœur de la semaine est ailleurs, dans deux ajouts de <strong>2.1.259</strong> qui visent explicitement le déploiement d'entreprise. <strong><code>managedMcpServers</code></strong> est un réglage managé par lequel une organisation fournit des serveurs MCP <strong>HTTP/SSE</strong> à tous ses utilisateurs, avec la même forme d'entrée qu'un <code>.mcp.json</code> — à une restriction près, structurante : <strong>les entrées qui nomment une commande à exécuter localement sont ignorées</strong>. Le canal de configuration centralisé ne peut donc pas servir à faire exécuter un binaire arbitraire sur les postes, ce qui est la bonne décision de conception pour un réglage poussé par l'organisation. <strong><code>--permission-prompts none</code></strong> traite le cas symétrique côté exécution : sur un hôte headless sans personne devant l'écran, tout ce qui aurait ouvert une invite est <strong>refusé automatiquement</strong>, tandis que le mode de permission actif — auto mode inclus — continue d'arbitrer le reste. La même version reconnaît les merge requests GitLab (<code>glab mr create/merge/close/…</code>) et ajoute <code>--json</code> à <code>claude plugin validate</code>.",
+     "<strong>2.1.260</strong> et <strong>2.1.261</strong> travaillent la lisibilité et le coût. Le <strong>panneau de diff</strong> (<code>/diff</code>) affiche les modifications non commitées à côté de la conversation, en plein écran, au fil des éditions. Le <code>/cost</code> et le status line indiquent désormais la <strong>cause probable d'un cache miss</strong> — définitions d'outils modifiées, system prompt changé, inactivité au-delà du TTL. <code>/skill-doctor</code> liste les skills chargées qui ne servent pas et <strong>chiffre ce qu'elles coûtent en contexte</strong>, ce qui en fait un outil d'élagage et non un simple diagnostic. Enfin <code>bashOutputMaxChars</code> et <code>taskOutputMaxChars</code> relèvent jusqu'à <strong>128K caractères</strong> le volume de sortie de commande et de tâche de fond que Claude reçoit en ligne avant bascule vers un fichier, et <code>--append-subagent-system-prompt-file</code> permet de charger un system prompt de sous-agent trop volumineux pour tenir sur la ligne de commande."
+    ],
+    "lynxter_paragraphs": [
+     "<strong>Les deux réglages de 2.1.259 sont ce qui manquait pour passer d'un usage individuel à un déploiement support multi-postes.</strong> Aujourd'hui, faire tourner Claude Code sur plusieurs postes suppose de répliquer un <code>.mcp.json</code> à la main, avec la dérive de configuration qui s'ensuit — un poste qui pointe vers une ancienne base documentaire, un autre vers un connecteur retiré. <code>managedMcpServers</code> centralise ça, et la restriction HTTP/SSE t'oblige au passage à exposer tes sources internes derrière un service plutôt que par des scripts locaux — ce qui est de toute façon la bonne architecture si tu veux tracer les accès.",
+     "<strong><code>--permission-prompts none</code> est le prérequis d'un agent de tri de tickets non surveillé.</strong> Sans lui, un run nocturne se bloque sur une invite que personne ne voit, ou s'exécute dans un mode trop permissif pour être défendable. Avec lui, le comportement par défaut sur l'imprévu est le refus, ce qui est la posture tenable devant un audit. À combiner avec <code>/skill-doctor</code> : sur un agent qui tourne en boucle, chaque skill chargée et jamais utilisée est un coût de contexte payé à chaque itération.",
+     "<strong>Un point d'attention opérationnel : <code>bashOutputMaxChars</code> à 128K est une arme à double tranchant.</strong> Relever le plafond évite qu'une sortie de commande longue — un log firmware, un dump de diagnostic machine — parte en fichier et échappe au raisonnement de l'agent. Mais 128K caractères injectés en ligne, c'est aussi une invalidation garantie du bénéfice du cache sur la suite de la session, et un coût d'input immédiat. Règle simple : relever ce plafond sur les sessions de diagnostic où la sortie <em>est</em> l'objet du travail, le laisser bas sur les agents en boucle."
+    ],
+    "source": {
+     "kind": "primaire",
+     "url": "https://code.claude.com/docs/en/changelog",
+     "label": "code.claude.com/docs/en/changelog",
+     "meta": "Anthropic · changelog officiel Claude Code · versions 2.1.257 à 2.1.263"
+    },
+    "related": [
+     { "slug": "2026-09-06-claude-fable-5-1-mythos-5-1", "actor": "Anthropic", "title": "Claude Fable 5.1 et Mythos 5.1 — cache reads −75 %", "tag": "🎯" },
+     { "slug": "2026-09-06-anthropic-enterprise-frontier-safeguards", "actor": "Anthropic", "title": "Enterprise Frontier Safeguards — ZDR + détection d'abus chez le client", "tag": "🎯" },
+     { "slug": "2026-09-06-cursor-self-hosted-machines", "actor": "Cursor", "title": "Cursor — machines auto-hébergées, le code ne sort pas du réseau", "tag": "🛠" }
+    ],
+    "nav": {
+     "prev": { "href": "2026-09-06-claude-fable-5-1-mythos-5-1.html", "label": "← Item précédent", "title": "Claude Fable 5.1 et Mythos 5.1" },
+     "next": { "href": "2026-09-06-anthropic-enterprise-frontier-safeguards.html", "label": "Item suivant →", "title": "Enterprise Frontier Safeguards" }
+    }
+   }
+  },
+  {
+   "slug": "2026-09-06-anthropic-enterprise-frontier-safeguards",
+   "actor": "Anthropic",
+   "tag": "lynxter",
+   "date": "2026-09-01",
+   "title": "Enterprise Frontier Safeguards — zero data retention et détection d'abus dans le cloud du client",
+   "context_html": "Anthropic remplace la politique de rétention qui bloquait ses clients régulés par <strong>Enterprise Frontier Safeguards (EFS)</strong>, annoncé le 1<sup>er</sup> septembre. Le principe : conserver la <strong>zero data retention</strong> tout en stockant les données d'activité nécessaires à la détection d'abus <strong>dans l'infrastructure cloud contrôlée par le client</strong>, et non chez Anthropic. Le client pilote la façon dont ses données sont revues, stockées et gérées, et la <strong>surveillance de sécurité est automatisée — sans revue humaine côté Anthropic</strong>. Le dispositif a été construit avec <strong>plus de 100 clients</strong> (services financiers, santé, industrie, télécoms, droit, retail, secteur public) et avec l'Analysis and Resilience Center for Systemic Risk, dont les membres incluent les RSSI de Goldman Sachs, Morgan Stanley, Citi, Bank of America et Wells Fargo, ainsi que Comcast, KPMG, Mastercard, Salesforce, Stripe et Visa. <strong>EFS est gratuit</strong> et fonctionne aussi bien en accès direct que via un cloud provider. Déploiement <strong>par phases à partir de l'automne 2026</strong>.",
+   "sources": [
+    { "label": "anthropic.com/news/enterprise-frontier-safeguards", "url": "https://www.anthropic.com/news/enterprise-frontier-safeguards", "primary": true },
+    { "label": "cnbc.com", "url": "https://www.cnbc.com/2026/09/01/anthropic-data-retention.html", "primary": false },
+    { "label": "unite.ai", "url": "https://www.unite.ai/anthropic-announces-enterprise-frontier-safeguards-customer-held-data/", "primary": false }
+   ],
+   "has_primary": true,
+   "detail": {
+    "short": "Enterprise Frontier Safeguards",
+    "date_long": "1er septembre 2026",
+    "description": "Analyse d'Enterprise Frontier Safeguards (1er septembre 2026) : zero data retention conservée, données d'activité chez le client, surveillance automatisée, gratuit, déploiement progressif à l'automne. Implications Lynxter.",
+    "stats": [
+     { "num": "100+", "unit": "clients", "label": "Co-conception, 7 secteurs régulés" },
+     { "num": "0", "unit": "rétention", "label": "ZDR conservée côté Anthropic" },
+     { "num": "$0", "unit": "surcoût", "label": "EFS annoncé gratuit" },
+     { "num": "Automne", "unit": "2026", "label": "Déploiement par phases" }
+    ],
+    "context_paragraphs": [
+     "Le problème qu'EFS règle est ancien et très concret. Pour détecter les usages abusifs de ses modèles, Anthropic avait besoin de conserver des données d'activité — ce qui entrait en collision frontale avec la <strong>zero data retention</strong> réclamée par les clients en secteur régulé. Pendant des mois, l'arbitrage a été binaire : soit la ZDR et pas de détection d'abus, soit la détection et une rétention inacceptable pour un service juridique. Plusieurs grands comptes l'ont fait savoir, et la presse économique a couvert l'annonce du 1<sup>er</sup> septembre comme un <strong>revirement sous pression client</strong> plutôt que comme une feuille de route planifiée.",
+     "La solution retenue déplace le lieu de stockage plutôt que la nature du contrôle : les données d'activité nécessaires aux garde-fous vivent <strong>dans l'infrastructure cloud du client</strong>, qui décide comment elles sont revues, conservées et gérées. La surveillance reste réelle mais devient <strong>automatisée, sans revue humaine côté Anthropic</strong> — c'est ce point qui débloque les dossiers où la confidentialité contractuelle interdit qu'un tiers lise le contenu des prompts. Anthropic précise qu'EFS <strong>ne sera pas facturé</strong> et que les contrôles fonctionnent que l'accès se fasse en direct ou via un cloud provider, ce qui évite de recréer une dépendance à un chemin d'accès particulier.",
+     "La co-conception est inhabituellement documentée : <strong>plus de 100 clients</strong> sur sept secteurs, et l'Analysis and Resilience Center for Systemic Risk, qui réunit les RSSI de <strong>Goldman Sachs, Morgan Stanley, Citi, Bank of America et Wells Fargo</strong>, aux côtés de Comcast, KPMG, Mastercard, Salesforce, Stripe et Visa. Cette liste dit à la fois la force et la limite du dispositif : il est taillé pour des organisations qui disposent déjà d'un cloud maîtrisé et d'une équipe sécurité capable d'exploiter ces données. Le <strong>déploiement est progressif à partir de l'automne 2026</strong> — rien n'est disponible aujourd'hui."
+    ],
+    "lynxter_paragraphs": [
+     "<strong>C'est un argument de RFP, pas une fonctionnalité à activer.</strong> Le point de blocage récurrent face à un donneur d'ordre aéronautique, médical ou défense n'est presque jamais la qualité du modèle : c'est la question « où vont nos données et combien de temps y restent-elles ». Quand les prompts contiennent des géométries de pièces, des paramètres de procédé ou des non-conformités client, la réponse « rétention zéro sauf pour la détection d'abus » ne passait pas. EFS permet de répondre : rétention zéro <em>et</em> détection d'abus, les données d'activité restant dans un cloud que le client contrôle.",
+     "<strong>Deux réserves à porter toi-même, avant qu'un acheteur ne les trouve.</strong> D'abord le calendrier : déploiement <strong>par phases à partir de l'automne</strong>, donc rien de contractualisable à ce stade — l'annoncer comme disponible serait se mettre en défaut au moment de la contractualisation. Ensuite le dimensionnement : « infrastructure cloud contrôlée par le client » suppose un client qui a une infrastructure cloud et quelqu'un pour la surveiller. Pour une PME industrielle sans équipe sécurité dédiée, il faudra vérifier ce que le dispositif implique concrètement — la question n'est pas tranchée par l'annonce.",
+     "<strong>Action utile maintenant :</strong> préparer un paragraphe type pour les réponses à appel d'offres, formulé au futur (« Anthropic déploie à partir de l'automne 2026 un dispositif de… »), et lister les deux ou trois clients de ton portefeuille chez qui la rétention a déjà été soulevée. Ce sont eux qu'il faudra recontacter quand EFS sera réellement ouvert, et il vaut mieux avoir la liste faite que la reconstituer dans six mois."
+    ],
+    "source": {
+     "kind": "primaire",
+     "url": "https://www.anthropic.com/news/enterprise-frontier-safeguards",
+     "label": "anthropic.com/news/enterprise-frontier-safeguards",
+     "meta": "Anthropic · annonce officielle Enterprise Frontier Safeguards · 1er septembre 2026"
+    },
+    "related": [
+     { "slug": "2026-09-06-claude-fable-5-1-mythos-5-1", "actor": "Anthropic", "title": "Claude Fable 5.1 et Mythos 5.1 — accès restreint via CVP/LSVP", "tag": "🎯" },
+     { "slug": "2026-09-06-cursor-self-hosted-machines", "actor": "Cursor", "title": "Cursor — machines auto-hébergées", "tag": "🛠" },
+     { "slug": "2026-09-06-gemini-3-8-flash-cyber", "actor": "Google DeepMind", "title": "Gemini 3.8 Flash Cyber — accès gated Fairwind", "tag": "🛠" }
+    ],
+    "nav": {
+     "prev": { "href": "2026-09-06-claude-code-2-1-257-263.html", "label": "← Item précédent", "title": "Claude Code 2.1.257 → 2.1.263" },
+     "next": { "href": "2026-09-06-openai-gpt-6-astra.html", "label": "Item suivant →", "title": "GPT-6 Astra" }
+    }
+   }
+  },
+  {
+   "slug": "2026-09-06-openai-gpt-6-astra",
+   "actor": "OpenAI",
+   "tag": "useful",
+   "date": "2026-09-03",
+   "title": "GPT-6 Astra — 1.05M de contexte, $10/$50, surtaxe ×2 au-delà de 272K tokens",
+   "context_html": "OpenAI sort <strong>GPT-6 Astra</strong> le 3 septembre en preview limitée pour partenaires de confiance, puis l'ouvre aux utilisateurs payants le lendemain <strong>dans une version restreinte qui refuse certains prompts, notamment en cybersécurité</strong>. Specs documentées : identifiant <code>gpt-6-astra</code>, <strong>contexte de 1 050 000 tokens</strong>, sortie maximale de 128K, entrées texte et image, <strong>$10 / $50 par M tokens</strong> — soit exactement la grille de Claude Fable 5.1 sortie deux jours plus tôt. Le piège tarifaire est ailleurs : <strong>au-delà de 272 000 tokens d'input, la requête entière bascule à ×2 sur l'input et le cache et ×1.5 sur l'output</strong>. Côté benchmarks, OpenAI communique sur <strong>DeepSWE v1.1 à 74.1 %</strong> (113 tâches d'ingénierie long-horizon vérifiées à la main, cinq langages), <strong>FrontierMath Tier 4 à 97.6 %</strong> et un MRCR v2 8-needle à 100 % sur 256–512K, encore 96.3 % entre 512K et 1M. <strong>Aucun score SWE-bench Verified n'est publié</strong>, ce qui interdit toute comparaison directe avec GPT-5.6 comme avec la concurrence.",
+   "sources": [
+    { "label": "help.openai.com — model release notes", "url": "https://help.openai.com/en/articles/9624314-model-release-notes", "primary": true },
+    { "label": "aljazeera.com", "url": "https://www.aljazeera.com/economy/2026/9/4/openai-unveils-gpt-6-astra-amid-rising-scrutiny-and-safety", "primary": false },
+    { "label": "vellum.ai — benchmarks", "url": "https://www.vellum.ai/blog/gpt-6-astra-benchmarks-explained", "primary": false }
+   ],
+   "has_primary": true,
+   "detail": {
+    "short": "GPT-6 Astra",
+    "date_long": "3 septembre 2026",
+    "description": "Analyse de GPT-6 Astra (3 septembre 2026) : 1.05M de contexte, $10/$50 par M tokens, surtaxe ×2 au-delà de 272K, DeepSWE 74.1 %, aucun SWE-bench Verified publié.",
+    "stats": [
+     { "num": "1.05M", "unit": "tokens", "label": "Contexte · 128K de sortie max" },
+     { "num": "$10/$50", "unit": "M tok", "label": "Même grille que Fable 5.1" },
+     { "num": "272K", "unit": "tokens", "label": "Seuil de surtaxe ×2 input" },
+     { "num": "74.1", "unit": "%", "label": "DeepSWE v1.1 · pas de SWE-bench Verified" }
+    ],
+    "context_paragraphs": [
+     "OpenAI ouvre <strong>GPT-6 Astra</strong> le 3 septembre 2026 en preview limitée à des partenaires de confiance, puis aux utilisateurs payants le 4, <strong>dans une version restreinte qui rejette certains prompts, en particulier en cybersécurité</strong>. Le déroulé fait suite à l'incident Hugging Face de juillet 2026, après lequel OpenAI avait décalé la sortie de son modèle suivant pour ajouter des garde-fous ; la communication d'annonce consacre une place inhabituelle à la sûreté, en assumant à la fois le potentiel de nuisance du modèle et les dispositifs censés le contenir.",
+     "Les caractéristiques techniques placent Astra en vis-à-vis direct de Fable 5.1, sorti deux jours plus tôt : <strong>contexte de 1 050 000 tokens</strong>, sortie maximale de 128K, entrées texte et image, et une grille <strong>$10 en input / $50 en output par M tokens</strong> — identique au tarif d'Anthropic. La différence se joue sur une clause de facturation qu'il faut lire attentivement : <strong>dès qu'une requête dépasse 272 000 tokens d'input, l'intégralité de la requête est facturée ×2 sur l'input et sur le cache, et ×1.5 sur l'output</strong>. Ce n'est pas un palier appliqué au dépassement, mais un basculement rétroactif sur la totalité — un contexte de 1M utilisé pleinement coûte donc nettement plus que la lecture naïve de la grille ne le suggère.",
+     "Sur les benchmarks, OpenAI choisit ses instruments. La maison met en avant <strong>DeepSWE v1.1 à 74.1 %</strong> — un benchmark 2026 de 113 tâches d'ingénierie long-horizon vérifiées à la main sur cinq langages —, <strong>FrontierMath Tier 4 à 97.6 %</strong>, et une rétention long-contexte solide sur MRCR v2 8-needle (100 % entre 256K et 512K, <strong>96.3 % entre 512K et 1M</strong>). Le point méthodologique compte : <strong>OpenAI ne publie pas de score SWE-bench Verified</strong> pour Astra. Il n'existe donc pas de comparaison à périmètre égal avec GPT-5.6 au lancement, ni avec les modèles concurrents mesurés sur ce benchmark — et à titre de repère, Meta annonce la même semaine <strong>75.4 % sur DeepSWE 1.1</strong> pour Muse Spark 1.3, soit 1.3 pt au-dessus d'Astra sur le seul terrain où les deux se rencontrent."
+    ],
+    "lynxter_paragraphs": [
+     "<strong>Le seuil de 272K est le seul chiffre à retenir si tu évalues Astra.</strong> Un agent qui charge une documentation machine complète en contexte franchit ce seuil sans effort, et la facturation bascule alors sur la requête entière, pas sur le dépassement. Sur un usage support où le contexte est gros et stable, cette clause annule une partie de l'intérêt du contexte long — et se compare mal à la baisse du cache read de Fable 5.1 la même semaine, qui joue exactement dans l'autre sens.",
+     "<strong>Pour un benchmark client, exige du comparable.</strong> Ni Astra ni Fable 5.1 ne publient de SWE-bench Verified ; Astra communique sur DeepSWE, Anthropic sur Terminal-Bench et SWE-bench Pro. Aucune comparaison propre n'est disponible entre les deux à partir des chiffres d'annonce. La seule mesure qui vaille pour arbitrer est un jeu de tickets Lynxter réels passé sur les deux modèles — quelques dizaines de cas suffisent à trancher, et c'est moins coûteux que de se fier à des barres de couleur choisies par les éditeurs."
+    ],
+    "source": {
+     "kind": "primaire",
+     "url": "https://help.openai.com/en/articles/9624314-model-release-notes",
+     "label": "help.openai.com — model release notes",
+     "meta": "OpenAI · notes de version officielles · GPT-6 Astra, 3 septembre 2026"
+    },
+    "related": [
+     { "slug": "2026-09-06-claude-fable-5-1-mythos-5-1", "actor": "Anthropic", "title": "Claude Fable 5.1 — même grille $10/$50, cache 4× moins cher", "tag": "🎯" },
+     { "slug": "2026-09-06-meta-muse-spark-1-3", "actor": "Meta", "title": "Muse Spark 1.3 — 75.4 % DeepSWE 1.1", "tag": "🛠" },
+     { "slug": "2026-09-06-gemini-3-8-flash-cyber", "actor": "Google DeepMind", "title": "Gemini 3.8 Flash — $0.75/$3.75", "tag": "🛠" }
+    ],
+    "nav": {
+     "prev": { "href": "2026-09-06-anthropic-enterprise-frontier-safeguards.html", "label": "← Item précédent", "title": "Enterprise Frontier Safeguards" },
+     "next": { "href": "2026-09-06-gemini-3-8-flash-cyber.html", "label": "Item suivant →", "title": "Gemini 3.8 Flash et Flash Cyber" }
+    }
+   }
+  },
+  {
+   "slug": "2026-09-06-gemini-3-8-flash-cyber",
+   "actor": "Google DeepMind",
+   "tag": "useful",
+   "date": "2026-09-02",
+   "title": "Gemini 3.8 Flash et Flash Cyber — $0.75/$3.75, doublement programmé au 1er janvier 2027",
+   "context_html": "Google livre <strong>Gemini 3.8 Flash</strong> le 2 septembre, <strong>troisième modèle Flash en six semaines</strong>. Identifiant stable <code>gemini-3.8-flash</code>, <strong>1 048 576 tokens</strong> en entrée, 65 536 en sortie, entrées multimodales et niveaux de <em>thinking</em> configurables (low, medium, high). Tarif <strong>$0.75 / $3.75 par M tokens</strong>, identique à 3.7 Flash — mais Google annonce d'emblée que <strong>les deux prix doublent le 1<sup>er</sup> janvier 2027</strong>, à $1.50 / $7.50. Le modèle bat 3.7 Flash sur tous les benchmarks publiés par Google, et Claude Opus 5 sur trois d'entre eux. En parallèle, <strong>Gemini 3.8 Flash Cyber</strong> : même cœur, enveloppe d'accès différente — une variante spécialisée dans la détection de vulnérabilités logicielles et l'écriture autonome de correctifs, <strong>réservée aux États, opérateurs d'infrastructure critique et mainteneurs logiciels validés par le programme Fairwind</strong>. Demis Hassabis, première prise de parole publique depuis la réorganisation de DeepMind qui l'a fait passer de CEO à chairman de l'unité, a présenté au G20 Innovation une vision où Gemini sert de couche généraliste coordonnant des modèles spécialisés moins chers.",
+   "sources": [
+    { "label": "ai.google.dev — Gemini API changelog", "url": "https://ai.google.dev/gemini-api/docs/changelog", "primary": true },
+    { "label": "marktechpost.com", "url": "https://www.marktechpost.com/2026/09/02/google-deepmind-releases-gemini-3-8-flash-and-gemini-3-8-flash-cyber-one-core-model-two-access-envelopes/", "primary": false },
+    { "label": "datacamp.com", "url": "https://www.datacamp.com/blog/gemini-3-8-flash-cyber", "primary": false }
+   ],
+   "has_primary": true,
+   "detail": {
+    "short": "Gemini 3.8 Flash",
+    "date_long": "2 septembre 2026",
+    "description": "Analyse de Gemini 3.8 Flash et Flash Cyber (2 septembre 2026) : $0.75/$3.75 par M tokens avec doublement au 1er janvier 2027, 1M de contexte, variante Cyber gated Fairwind.",
+    "stats": [
+     { "num": "$0.75", "unit": "/M tok input", "label": "$3.75 en output · ×2 au 01/01/2027" },
+     { "num": "1 048 576", "unit": "tokens", "label": "Contexte · 65 536 en sortie" },
+     { "num": "3", "unit": "Flash / 6 sem.", "label": "Cadence de release Google" },
+     { "num": "Fairwind", "unit": "gated", "label": "Accès Flash Cyber restreint" }
+    ],
+    "context_paragraphs": [
+     "Google ship <strong>Gemini 3.8 Flash</strong> le 2 septembre 2026 — <strong>troisième modèle de la ligne Flash en six semaines</strong>, cadence qui dit beaucoup de la stratégie : occuper le segment coût/latence en continu plutôt que d'attendre un grand cycle annuel. Les specs sont celles d'un modèle de production : identifiant stable <code>gemini-3.8-flash</code>, <strong>1 048 576 tokens</strong> d'entrée, 65 536 de sortie, entrées multimodales, et un budget de raisonnement réglable sur trois niveaux (low, medium, high). Google indique que 3.8 Flash bat 3.7 Flash sur <em>tous</em> les benchmarks publiés, et dépasse Claude Opus 5 sur trois d'entre eux — une comparaison qu'il faut lire pour ce qu'elle est : un modèle de classe Flash mesuré contre un modèle de classe Opus sur un sous-ensemble choisi.",
+     "Le point tarifaire est le plus actionnable, et le plus inhabituel. Le prix d'entrée reste à <strong>$0.75 / $3.75 par M tokens</strong>, exactement celui de 3.7 Flash — mais Google annonce simultanément que <strong>ces deux prix doublent le 1<sup>er</sup> janvier 2027</strong>, pour atteindre $1.50 / $7.50. Annoncer une hausse quatre mois à l'avance est une pratique rare, et elle a une conséquence pratique immédiate : tout calcul de coût sur un déploiement Gemini Flash doit être fait sur la grille 2027, pas sur celle d'aujourd'hui, sauf à devoir refaire l'arbitrage en janvier.",
+     "<strong>Gemini 3.8 Flash Cyber</strong> est la même architecture livrée sous une enveloppe d'accès distincte : une variante conçue pour <strong>trouver des vulnérabilités logicielles et écrire les correctifs de façon autonome</strong>, à performance dite de frontière mais bien plus rapide et moins chère que les gros modèles, et <strong>réservée aux gouvernements, opérateurs d'infrastructure critique et mainteneurs logiciels approuvés via le programme Fairwind</strong>. C'est le troisième acteur en deux jours à séparer capacité brute et population autorisée — après Mythos 5.1 d'Anthropic (invitation via CVP/LSVP) et la version bridée de GPT-6 Astra qui refuse les prompts cyber. Le schéma « un cœur, deux enveloppes » s'installe comme réponse commune de l'industrie aux capacités cyber offensives."
+    ],
+    "lynxter_paragraphs": [
+     "<strong>Si un calcul de coût Gemini Flash traîne dans un dossier, il est déjà périmé.</strong> Le doublement au 1<sup>er</sup> janvier 2027 est annoncé, pas hypothétique : un modèle économique bâti sur $0.75/$3.75 pour un déploiement qui vivra au-delà de décembre repose sur un prix qui n'existera plus. Refaire le chiffrage sur $1.50/$7.50 est l'affaire de dix minutes et évite une mauvaise surprise en pleine campagne budgétaire.",
+     "<strong>Sur le fond, Flash reste le bon candidat pour la classification à haut volume, pas pour le raisonnement.</strong> Même à la grille 2027, $1.50 en input reste très en dessous des $10 de Fable 5.1 ou d'Astra. Le découpage qui tient pour un support outillé : un modèle Flash pour trier, router et étiqueter les tickets entrants en masse, un modèle frontière pour le diagnostic qui demande de croiser une doc machine et un historique. Ce qui a changé cette semaine, c'est que les deux extrémités de ce découpage ont bougé le même jour."
+    ],
+    "source": {
+     "kind": "primaire",
+     "url": "https://ai.google.dev/gemini-api/docs/changelog",
+     "label": "ai.google.dev/gemini-api/docs/changelog",
+     "meta": "Google · changelog officiel Gemini API · Gemini 3.8 Flash, 2 septembre 2026"
+    },
+    "related": [
+     { "slug": "2026-09-06-openai-gpt-6-astra", "actor": "OpenAI", "title": "GPT-6 Astra — version bridée sur les prompts cyber", "tag": "🛠" },
+     { "slug": "2026-09-06-claude-fable-5-1-mythos-5-1", "actor": "Anthropic", "title": "Mythos 5.1 — garde-fous desserrés sur invitation", "tag": "🎯" },
+     { "slug": "2026-09-06-meta-muse-spark-1-3", "actor": "Meta", "title": "Muse Spark 1.3 — sorti le même jour", "tag": "🛠" }
+    ],
+    "nav": {
+     "prev": { "href": "2026-09-06-openai-gpt-6-astra.html", "label": "← Item précédent", "title": "GPT-6 Astra" },
+     "next": { "href": "2026-09-06-meta-muse-spark-1-3.html", "label": "Item suivant →", "title": "Meta Muse Spark 1.3" }
+    }
+   }
+  },
+  {
+   "slug": "2026-09-06-meta-muse-spark-1-3",
+   "actor": "Meta",
+   "tag": "useful",
+   "date": "2026-09-02",
+   "title": "Meta Muse Spark 1.3 — 75.4 % DeepSWE 1.1, 6e de l'Intelligence Index, et un scorecard à lire de près",
+   "context_html": "Meta sort <strong>Muse Spark 1.3</strong> le 2 septembre, quelques heures après Gemini 3.8 Flash. Le modèle se place <strong>6<sup>e</sup> sur 636</strong> à l'Artificial Analysis Intelligence Index, avec <strong>1M de contexte</strong> et des entrées texte, image et vidéo. Chiffres annoncés : <strong>75.4 % sur DeepSWE 1.1</strong> (ingénierie logicielle agentique de bout en bout), <strong>88.8 % sur Terminal-Bench 2.1</strong>, 59.4 % sur SWEAtlas CodeBase QnA et <strong>98.5 % en récupération long-contexte</strong>. Les ingénieurs de Meta mesurent environ <strong>20 % d'appels d'outils en moins et 25 % de tokens en moins</strong> que Muse Spark 1.2 à travail équivalent. Deux réserves : sur les benchmarks d'agent purs, <strong>Opus 5 (max) reste devant sur quatre lignes sur six</strong> ; et surtout le scorecard de Meta <strong>compare le mode <em>max</em> de la 1.3 — encore derrière tests de sûreté au lancement — au mode <em>xhigh</em> de la 1.2</strong>, si bien qu'une partie de l'écart tient à un changement de palier de raisonnement et non à un saut générationnel. Muse Spark reste <strong>propriétaire</strong> : la bascule hors des poids ouverts amorcée avec l'abandon de la ligne Llama est désormais actée.",
+   "sources": [
+    { "label": "research.meta.ai — Muse Spark 1.3", "url": "https://research.meta.ai/blog/introducing-muse-spark-1-3", "primary": true },
+    { "label": "artificialanalysis.ai", "url": "https://artificialanalysis.ai/articles/muse-spark-1-3", "primary": false },
+    { "label": "eesel.ai", "url": "https://www.eesel.ai/blog/muse-spark-1-3", "primary": false }
+   ],
+   "has_primary": true,
+   "detail": {
+    "short": "Meta Muse Spark 1.3",
+    "date_long": "2 septembre 2026",
+    "description": "Analyse de Meta Muse Spark 1.3 (2 septembre 2026) : 75.4 % DeepSWE 1.1, 88.8 % Terminal-Bench 2.1, 6e de l'Intelligence Index, et le biais de comparaison max vs xhigh du scorecard Meta.",
+    "stats": [
+     { "num": "75.4", "unit": "%", "label": "DeepSWE 1.1 · Astra à 74.1 %" },
+     { "num": "88.8", "unit": "%", "label": "Terminal-Bench 2.1" },
+     { "num": "6e", "unit": "/ 636", "label": "Artificial Analysis Intelligence Index" },
+     { "num": "−20 / −25", "unit": "%", "label": "Appels d'outils / tokens vs 1.2" }
+    ],
+    "context_paragraphs": [
+     "Meta livre <strong>Muse Spark 1.3</strong> le 2 septembre 2026, le même jour que Gemini 3.8 Flash. Le positionnement revendiqué est celui de la frontière : <strong>6<sup>e</sup> place sur 636 modèles</strong> à l'Artificial Analysis Intelligence Index, <strong>1M de contexte</strong>, entrées texte, image et vidéo. Sur les chiffres de code, le modèle annonce <strong>75.4 % sur DeepSWE 1.1</strong> pour l'ingénierie logicielle agentique de bout en bout — soit <strong>1.3 point au-dessus des 74.1 % de GPT-6 Astra</strong>, sorti le lendemain, ce qui constitue l'une des rares comparaisons à périmètre égal disponibles cette semaine —, <strong>88.8 % sur Terminal-Bench 2.1</strong>, 59.4 % sur SWEAtlas CodeBase QnA, et une récupération long-contexte quasi parfaite (98.5 % et 98.1 %).",
+     "Le gain le plus intéressant n'est pas un score mais une mesure d'efficacité : les équipes de Meta relèvent qu'à travail de code équivalent, 1.3 termine avec environ <strong>20 % d'appels d'outils en moins et 25 % de tokens en moins</strong> que Muse Spark 1.2. Sur une boucle agentique facturée au token et limitée par la latence de chaque appel d'outil, ce type de gain se traduit plus directement en coût et en temps de réponse qu'un point de benchmark supplémentaire.",
+     "Deux nuances méritent d'être portées telles quelles. D'abord, sur les benchmarks d'agent purs, <strong>Claude Opus 5 en mode max conserve l'avantage sur quatre lignes sur six</strong> du comparatif. Ensuite, et c'est le point de méthode : <strong>le scorecard publié par Meta oppose le mode <em>max</em> de la 1.3 — encore derrière des tests de sûreté au moment du lancement — au mode <em>xhigh</em> de la 1.2</strong>. Une partie de l'écart affiché mesure donc un changement de palier de raisonnement plutôt qu'un progrès du modèle lui-même. Enfin, Muse Spark 1.3 est <strong>propriétaire</strong> : la ligne Muse, née chez Meta Superintelligence Labs, acte la sortie de Meta du terrain des poids ouverts sur lequel Llama l'avait installé."
+    ],
+    "lynxter_paragraphs": [
+     "<strong>La leçon transférable ici est la lecture critique des scorecards, plus que le modèle lui-même.</strong> Comparer le mode <em>max</em> d'une nouvelle version au mode <em>xhigh</em> de l'ancienne est parfaitement légal et parfaitement trompeur : l'écart annoncé mélange progrès réel et changement de palier de raisonnement. La même vigilance s'applique à toute annonce fournisseur — y compris les nôtres face à un client : un gain de cycle mesuré en configuration optimale n'est pas un gain de cycle en production.",
+     "<strong>Sur l'efficacité, le chiffre à retenir est −20 % d'appels d'outils.</strong> C'est la métrique qui compte pour un agent de support outillé, où chaque appel d'outil ajoute de la latence perçue par l'utilisateur en plus du coût. Meta n'est pas un fournisseur candidat pour ton stack aujourd'hui — modèle propriétaire, écosystème agents encore jeune, pas d'intégration MCP comparable —, mais la métrique est la bonne à suivre chez tous les éditeurs, et elle est encore rarement publiée."
+    ],
+    "source": {
+     "kind": "primaire",
+     "url": "https://research.meta.ai/blog/introducing-muse-spark-1-3",
+     "label": "research.meta.ai/blog/introducing-muse-spark-1-3",
+     "meta": "Meta · annonce officielle Muse Spark 1.3 · 2 septembre 2026"
+    },
+    "related": [
+     { "slug": "2026-09-06-openai-gpt-6-astra", "actor": "OpenAI", "title": "GPT-6 Astra — 74.1 % DeepSWE 1.1", "tag": "🛠" },
+     { "slug": "2026-09-06-gemini-3-8-flash-cyber", "actor": "Google DeepMind", "title": "Gemini 3.8 Flash — sorti le même jour", "tag": "🛠" },
+     { "slug": "2026-09-06-claude-fable-5-1-mythos-5-1", "actor": "Anthropic", "title": "Claude Fable 5.1 — Terminal-Bench 4.0 à 55.8 %", "tag": "🎯" }
+    ],
+    "nav": {
+     "prev": { "href": "2026-09-06-gemini-3-8-flash-cyber.html", "label": "← Item précédent", "title": "Gemini 3.8 Flash et Flash Cyber" },
+     "next": { "href": "2026-09-06-cursor-self-hosted-machines.html", "label": "Item suivant →", "title": "Cursor — machines auto-hébergées" }
+    }
+   }
+  },
+  {
+   "slug": "2026-09-06-cursor-self-hosted-machines",
+   "actor": "Cursor",
+   "tag": "useful",
+   "date": "2026-09-02",
+   "title": "Cursor — machines auto-hébergées : le code, les builds et les secrets ne sortent plus du réseau",
+   "context_html": "Cursor ajoute le <strong>2 septembre</strong> le support des <strong>machines auto-hébergées</strong> : l'exécution des outils reste entièrement dans le réseau du client, <strong>codebase, sorties de build et secrets restant sur des machines internes</strong>, tandis que l'agent pilote les appels d'outils à distance. Deux formes : <strong>My Machines</strong> connecte un portable ou une VM unique à un compte pour un usage individuel ; <strong>Team pools</strong> définit des files nommées de workers pour une équipe ou une organisation. En parallèle, les cloud agents peuvent désormais s'exécuter sur des infrastructures déjà en place — <strong>AWS Lambda, Coder, Cloudflare, Daytona, Modal, Namespace, Vercel et E2B</strong> — et le <em>computer use</em> arrive sur Linux et Mac pour le pilotage de navigateur et de bureau.",
+   "sources": [
+    { "label": "cursor.com/changelog", "url": "https://cursor.com/changelog", "primary": true },
+    { "label": "releasebot.io — Cursor", "url": "https://releasebot.io/updates/cursor", "primary": false }
+   ],
+   "has_primary": true,
+   "detail": {
+    "short": "Cursor — machines auto-hébergées",
+    "date_long": "2 septembre 2026",
+    "description": "Analyse des machines auto-hébergées Cursor (2 septembre 2026) : exécution des outils dans le réseau du client, My Machines et Team pools, cloud agents sur AWS Lambda, Cloudflare, Vercel, E2B.",
+    "stats": [
+     { "num": "0", "unit": "sortie réseau", "label": "Code, builds et secrets restent internes" },
+     { "num": "2", "unit": "modes", "label": "My Machines · Team pools" },
+     { "num": "8", "unit": "infras", "label": "Lambda, Coder, Cloudflare, Vercel, E2B…" },
+     { "num": "Linux/Mac", "unit": "computer use", "label": "Navigateur et bureau" }
+    ],
+    "context_paragraphs": [
+     "Cursor ouvre le 2 septembre 2026 les <strong>machines auto-hébergées</strong>, qui déplacent la frontière d'exécution : l'agent continue de raisonner à distance, mais <strong>les appels d'outils s'exécutent sur des machines du réseau du client</strong>. Conséquence directe, et c'est l'argument central : <strong>la codebase, les sorties de build et les secrets ne quittent pas l'infrastructure interne</strong>. Deux granularités sont proposées — <strong>My Machines</strong>, qui rattache un portable ou une VM unique à un compte pour un usage personnel, et <strong>Team pools</strong>, des files nommées de workers partagées à l'échelle d'une équipe ou d'une organisation.",
+     "La même livraison élargit le terrain d'exécution des cloud agents à des infrastructures que les équipes opèrent déjà : <strong>AWS Lambda, Coder, Cloudflare, Daytona, Modal, Namespace, Vercel et E2B</strong>. La logique est cohérente avec les machines auto-hébergées — plutôt que d'imposer un environnement d'exécution propriétaire, Cursor se branche sur celui du client. S'y ajoute le <em>computer use</em> sur <strong>Linux et Mac</strong>, pour le pilotage de navigateur et de bureau.",
+     "Replacé dans la semaine, ce mouvement est le pendant côté outillage de ce qu'Anthropic annonce avec Enterprise Frontier Safeguards : deux réponses différentes à la même objection client. Anthropic déplace les <em>données d'activité de surveillance</em> dans le cloud du client tout en gardant la zero data retention ; Cursor déplace l'<em>exécution des outils</em> dans le réseau du client. Dans les deux cas, le raisonnement du modèle reste distant — ce n'est pas de l'inférence locale — mais le périmètre de ce qui sort de chez le client se réduit nettement."
+    ],
+    "lynxter_paragraphs": [
+     "<strong>C'est la réponse type à l'objection « notre code ne sort pas ».</strong> Sur les développements firmware et les scripts de calibration machine, l'obstacle à l'adoption d'un agent de code n'est presque jamais la qualité des suggestions : c'est le refus, souvent contractuel côté client, que le code source transite chez un tiers. Les machines auto-hébergées répondent précisément à ça, et <strong>Team pools</strong> est la forme qui convient à un atelier — une file de workers partagée, pas une machine par développeur.",
+     "<strong>À cadrer honnêtement en interne : ce n'est pas de l'inférence locale.</strong> Le raisonnement du modèle reste distant, seuls les appels d'outils s'exécutent chez toi. Les prompts — qui peuvent contenir des extraits de code, des logs, des messages d'erreur — continuent de partir vers le fournisseur. Présenter ce dispositif comme « tout reste chez nous » serait inexact et se retournerait au premier audit sérieux ; la formulation juste est « le dépôt, les artefacts de build et les secrets ne sortent pas »."
+    ],
+    "source": {
+     "kind": "primaire",
+     "url": "https://cursor.com/changelog",
+     "label": "cursor.com/changelog",
+     "meta": "Cursor · changelog officiel · machines auto-hébergées, 2 septembre 2026"
+    },
+    "related": [
+     { "slug": "2026-09-06-anthropic-enterprise-frontier-safeguards", "actor": "Anthropic", "title": "Enterprise Frontier Safeguards — données d'activité chez le client", "tag": "🎯" },
+     { "slug": "2026-09-06-claude-code-2-1-257-263", "actor": "Anthropic", "title": "Claude Code — managedMcpServers, HTTP/SSE only", "tag": "🎯" }
+    ],
+    "nav": {
+     "prev": { "href": "2026-09-06-meta-muse-spark-1-3.html", "label": "← Item précédent", "title": "Meta Muse Spark 1.3" },
+     "next": { "href": "../briefs/2026-09-06.html", "label": "Retour au brief →", "title": "2026-09-06" }
+    }
+   }
+  },
+  {
+   "slug": "2026-09-06-perplexity-hybrid-compute-mac",
+   "actor": "Perplexity",
+   "tag": "info",
+   "date": "2026-09-01",
+   "title": "Perplexity — calcul hybride sur Mac, routage local des données personnelles",
+   "context_html": "Perplexity généralise le <strong>1<sup>er</sup> septembre</strong> le calcul hybride à tous les utilisateurs de son app Mac : les étapes d'agent qui touchent des fichiers sensibles (analyses médicales, déclarations fiscales, pièces de contentieux) sont orchestrées sur des <strong>modèles locaux tournant sur Apple Silicon</strong>, le cloud ne traitant que ce qui est marqué comme transmissible. Le classificateur de données personnelles qui prend la décision de routage est <strong>publié en open source</strong>, accompagné de la recherche <strong>PII-TRACE</strong> — un benchmark de détection de données personnelles sur 13 langues et un détecteur compact de 0.6B conçu pour tourner localement.",
+   "sources": [
+    { "label": "perplexity.ai/hub/blog", "url": "https://www.perplexity.ai/hub/blog", "primary": true },
+    { "label": "explainx.ai", "url": "https://www.explainx.ai/blog/perplexity-mac-hybrid-compute-local-pii-september-2026", "primary": false }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-09-06-xai-grok-bot-entreprises",
+   "actor": "xAI",
+   "tag": "info",
+   "date": "2026-09-02",
+   "title": "xAI — Grok Bot pour les entreprises, et Grok 4.7 annoncé pour le 12 septembre",
+   "context_html": "xAI lance <strong>Grok Bot</strong> pour les entreprises : des travailleurs autonomes dotés de contrôles d'accès, de réseau et d'audit, avec deux semaines d'accès gratuit pour les clients Grok et Cursor Enterprise et la possibilité d'ouvrir l'essai à toute l'organisation. L'intégration à X se resserre — liaison de compte, crédits API, outils de publication, de timeline et de mentions. Elon Musk a par ailleurs annoncé le 2 septembre que <strong>Grok 4.7 sortirait « dans 10 jours »</strong>, soit autour du 12 septembre, à 2,1 trillions de paramètres et entraîné sur les données d'ingénierie de SpaceX — <strong>annonce non encore matérialisée à la clôture de cette fenêtre</strong>, à traiter comme telle.",
+   "sources": [
+    { "label": "x.ai/news", "url": "https://x.ai/news", "primary": true },
+    { "label": "releasebot.io — xAI", "url": "https://releasebot.io/updates/xai", "primary": false }
+   ],
+   "has_primary": true
+  }
+ ],
+ "sources_footer": [
+  { "label": "anthropic.com/news", "url": "https://www.anthropic.com/news" },
+  { "label": "anthropic.com/claude-fable-and-mythos-5-1", "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1" },
+  { "label": "code.claude.com/changelog", "url": "https://code.claude.com/docs/en/changelog" },
+  { "label": "help.openai.com — model release notes", "url": "https://help.openai.com/en/articles/9624314-model-release-notes" },
+  { "label": "openai.com/news", "url": "https://openai.com/news/" },
+  { "label": "ai.google.dev/gemini-api/changelog", "url": "https://ai.google.dev/gemini-api/docs/changelog" },
+  { "label": "deepmind.google/discover/blog", "url": "https://deepmind.google/discover/blog/" },
+  { "label": "research.meta.ai/blog", "url": "https://research.meta.ai/blog/introducing-muse-spark-1-3" },
+  { "label": "mistral.ai/news", "url": "https://mistral.ai/news/" },
+  { "label": "cursor.com/changelog", "url": "https://cursor.com/changelog" },
+  { "label": "perplexity.ai/hub/blog", "url": "https://www.perplexity.ai/hub/blog" },
+  { "label": "x.ai/news", "url": "https://x.ai/news" }
+ ],
+ "prev": { "href": "2026-08-30.html", "title": "Anthropic ouvre les machines aux agents" }
+}
