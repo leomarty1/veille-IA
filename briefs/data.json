@@ -1,6 +1,104 @@
 {
   "briefs": [
     {
+      "date": "2026-09-13",
+      "filename": "2026-09-13.html",
+      "items_count": 10,
+      "by_tag": {
+        "lynxter": 4,
+        "useful": 4,
+        "info": 2
+      },
+      "by_actor": {
+        "Anthropic": 5,
+        "OpenAI": 2,
+        "Meta": 1,
+        "Cursor": 1,
+        "DeepSeek": 1,
+        "Google": 0,
+        "Mistral": 0
+      },
+      "mode": "hebdomadaire",
+      "title": "Trois orchestrateurs d'agents le même jour",
+      "highlights": [
+        "Anthropic, OpenAI et Cursor sortent le même jour (10 septembre) leur couche d'orchestration d'agents gérée",
+        "Claude Code enchaîne six versions en cinq jours : plugin eval, maxEffortLevel, fan-out Workflow jusqu'à 256 agents",
+        "Meta lance Muse sur VM dédiée ; DeepSeek-V4.1-Flash en poids MIT à $0.30/$1.20 par M tokens"
+      ],
+      "items": [
+        {
+          "slug": "2026-09-13-claude-code-2-1-265-270",
+          "title": "Claude Code 2.1.265 → 2.1.270 — <code>plugin eval</code>, <code>maxEffortLevel</code> et fan-out Workflow jusqu'à 256 agents",
+          "primary_url": "https://code.claude.com/docs/en/changelog#2-1-265",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-13-managed-agents-auto-permissions",
+          "title": "Managed Agents — permission <code>auto</code> évaluée côté serveur, et <code>ant beta:sessions connect</code>",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview#september-10-2026",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-13-anthropic-sdk-python-1-5-0",
+          "title": "SDK Python 1.5.0 — permissions <code>auto</code>, dépôts GitHub publics sans jeton, credentials refusés si lisibles par le groupe",
+          "primary_url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.5.0",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-13-anthropic-rapport-contre-abus",
+          "title": "Rapport de contre-abus — <strong>7</strong> domaines de nuisance, et aucun cas impliquant Fable ou Mythos",
+          "primary_url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-13-mythos-acces-enisa",
+          "title": "L'agence européenne de cybersécurité obtient Mythos 5 — mais pas la 5.1",
+          "primary_url": "https://www.bloomberg.com/news/articles/2026-09-10/anthropic-gives-eu-access-to-mythos-months-after-model-s-release",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-13-openai-agents-api-beta",
+          "title": "OpenAI Agents API en beta publique — harness Codex géré, <strong>0</strong> frais de plateforme, résidence US seulement",
+          "primary_url": "https://openai.com/index/introducing-the-agents-api/",
+          "tag": "lynxter",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-09-13-openai-data-plugin-ga",
+          "title": "Data plugin en disponibilité générale dans ChatGPT Work et Codex",
+          "primary_url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-09-13-meta-muse-agent-personnel",
+          "title": "Meta Muse — agent personnel sur VM dédiée, États-Unis seulement, paliers rapportés à $20 et $100/mois",
+          "primary_url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+          "tag": "useful",
+          "actor": "Meta"
+        },
+        {
+          "slug": "2026-09-13-cursor-projects-coordinateur",
+          "title": "Cursor Projects — un agent coordinateur qui ne code pas et délègue à des milliers de sous-agents",
+          "primary_url": "https://cursor.com/changelog/projects",
+          "tag": "lynxter",
+          "actor": "Cursor"
+        },
+        {
+          "slug": "2026-09-13-deepseek-v4-1-flash",
+          "title": "DeepSeek-V4.1-Flash — MoE <strong>552</strong> B en poids MIT à $0.30/$1.20 par M tokens, sans SWE-bench Verified publié",
+          "primary_url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+          "tag": "useful",
+          "actor": "DeepSeek"
+        }
+      ]
+    },
+    {
       "date": "2026-09-06",
       "filename": "2026-09-06.html",
       "items_count": 11,

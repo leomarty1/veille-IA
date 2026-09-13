@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trois orchestrateurs d'agents le même jour — Veille IA Lynxter</title>
+<meta name="description" content="Brief IA du 7 au 13 septembre 2026 : le 10 septembre, Anthropic, OpenAI et Cursor sortent chacun leur couche d'orchestration d'agents gérée — permission auto des Managed Agents, Agents API en beta publique sur le harness Codex, Projects et son agent coordinateur. Claude Code enchaîne six versions en cinq jours, Meta lance Muse, DeepSeek sort V4.1-Flash.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/" class="active">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="./">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">2026-09-13</span>
+      </div>
+
+      <header style="margin-bottom:64px;">
+        <p class="section-label">Brief hebdomadaire · 7 → 13 septembre 2026</p>
+        <h1 style="font-family:var(--font-display);font-stretch:125%;font-weight:300;font-size:clamp(36px,5.5vw,64px);text-transform:uppercase;letter-spacing:-0.005em;line-height:1.02;margin:0 0 28px;color:var(--text);">Trois orchestrateurs<br>d'agents<br><em style="font-style:normal;color:var(--lx-accent);">le même jour</em></h1>
+        <p style="font-size:18px;font-weight:300;color:var(--text-soft);max-width:720px;margin:0 0 48px;line-height:1.7;">Le 10 septembre 2026, trois éditeurs publient le même jour une couche d'orchestration d'agents gérée côté serveur : Anthropic ajoute la politique de permission <code>auto</code> aux Managed Agents (le serveur évalue chaque appel d'outil, l'exécute, le refuse ou met en pause pour approbation) ; OpenAI ouvre son <strong>Agents API</strong> en beta publique, qui expose le harness Codex en service géré, sans frais additionnels au-delà des tokens ; Cursor sort <strong>Projects</strong>, un agent coordinateur qui ne code pas et délègue à des milliers de sous-agents depuis une machine cloud. Côté Claude Code, six versions en cinq jours (2.1.265 → 2.1.270) apportent <code>claude plugin eval</code>, le réglage <code>maxEffortLevel</code> et un plafond de fan-out Workflow relevable jusqu'à 256 agents concurrents. Meta lance <strong>Muse</strong> le 8 septembre, agent personnel logé dans une VM dédiée. Anthropic publie son rapport de contre-abus du 11 septembre sur sept domaines de nuisance. Google DeepMind et Mistral : rien de daté dans la fenêtre.</p>
+
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">10<span class="unit">items</span></div>
+            <div class="stat-label">Total semaine</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">4<span class="unit">🎯</span></div>
+            <div class="stat-label">Impact Lynxter</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">4<span class="unit">🛠</span></div>
+            <div class="stat-label">À connaître</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">10<span class="unit">acteurs</span></div>
+            <div class="stat-label">Sources scannées</div>
+          </div>
+        </div>
+      </header>
+
+      <p class="section-label">TL;DR</p>
+      <section class="tldr reveal" style="margin-bottom:72px;">
+        <ul>
+          <li><strong>Le 10 septembre, la gestion déléguée d'agents devient un produit chez trois éditeurs à la fois.</strong> Anthropic ajoute <code>auto</code> aux politiques de permission des Managed Agents : le serveur évalue chaque appel d'outil ou d'outil MCP et l'exécute, le refuse ou le met en pause, avec le verdict reporté dans un champ <code>evaluation</code> des événements <code>agent.tool_use</code> et <code>agent.mcp_tool_use</code>. OpenAI ouvre l'Agents API en beta publique — harness Codex géré, sessions durables, sous-agents, compaction de contexte, aucun frais au-delà des tokens et des outils, mais résidence des données limitée aux États-Unis et Zero Data Retention non supporté. Cursor sort Projects, coordinateur cloud qui délègue à des milliers de sous-agents et survit à la fermeture du laptop.</li>
+          <li><strong>Claude Code enchaîne six versions en cinq jours (2.1.265 le 8 → 2.1.270 le 12).</strong> Arrivent <code>claude plugin eval</code> (suite d'évals scorée et reproductible, rapport JSON + HTML), <code>maxEffortLevel</code> qui plafonne le niveau d'effort sur tous les fournisseurs Bedrock, Vertex et Foundry, <code>CLAUDE_CODE_WORKFLOW_MAX_CONCURRENT_AGENTS</code> (1 à 256) pour élargir le fan-out du Workflow, <code>/output-style</code> utilisable en session headless, un plafond de 1 Go sur les résultats d'outils écrits sur disque et un délai d'expiration de 300 s sur WebFetch. Plusieurs correctifs visent explicitement la réutilisation du cache de prompt sur les reprises de session et les sous-agents.</li>
+          <li><strong>Meta met un agent personnel dans une VM dédiée, DeepSeek casse encore le prix de l'agentique open weights.</strong> Muse (8 septembre, États-Unis seulement) tourne sur Muse Secure VM, machine dédiée avec son propre navigateur, accessible en app iOS/Android, web et WhatsApp ; gratuit pour la plupart des usages avec des paliers rapportés à $20 et $100/mois. DeepSeek-V4.1-Flash (10 septembre) est un MoE 552 B paramètres totaux pour ~8 B actifs en entrée et 16 B en sortie, poids sous licence MIT, à $0.30/$1.20 par M tokens en heures pleines et $0.15/$0.60 hors pointe — DeepSeek ne publie pas de SWE-bench Verified pour cette variante.</li>
+        </ul>
+      </section>
+
+      <section class="lynxter-hero reveal">
+        <h2>🎯 Implications Lynxter</h2>
+        <div class="body">
+          <p><strong>La convergence du 10 septembre tranche une question d'architecture que tu avais laissée ouverte : où vit la politique de permission d'un agent.</strong> Jusqu'ici, faire tourner un agent Lynxter sans surveillance humaine imposait un choix binaire — tout autoriser d'avance (et assumer qu'un appel d'outil mal formé touche une base de production) ou tout faire approuver (et perdre l'intérêt de l'autonomie). La permission <code>auto</code> des Managed Agents déplace l'arbitrage côté serveur Anthropic : chaque appel est évalué individuellement, et seuls les cas ambigus remontent en approbation. Le champ <code>evaluation</code> ajouté aux événements <code>agent.tool_use</code> et <code>agent.mcp_tool_use</code> est la partie qui compte pour toi : c'est une trace auditables de <em>pourquoi</em> un appel est passé, pas seulement du fait qu'il soit passé. <strong>À faire cette semaine</strong> : reprends la routine de veille de tickets support S300X/S600D, passe-la en Managed Agents avec <code>auto</code>, et logge un mois d'événements <code>evaluation</code> avant d'élargir le périmètre d'outils. Sans ce mois de données, tu ne sauras pas quel taux de mise en pause attendre, donc pas dimensionner l'astreinte humaine.</p>
+          <p><strong><code>claude plugin eval</code> est l'outil qui manquait pour rendre tes prompts de support mesurables au lieu d'être jugés à l'œil.</strong> Toutes les routines Lynxter écrites depuis le printemps — classification de tickets, extraction de paramètres d'impression, rédaction de réponses de premier niveau — ont été validées par lecture manuelle d'une poignée de sorties. Ça ne détecte pas une régression de 5 points, et ça ne dit pas si un changement de modèle améliore ou dégrade. La commande livrée en 2.1.269 fait tourner une suite d'évals contre Claude Code et rend un résultat scoré et reproductible en JSON et en rapport HTML — donc comparable d'une semaine à l'autre et d'un modèle à l'autre. Couplé à <code>maxEffortLevel</code> (2.1.267), qui plafonne le niveau d'effort par modèle, tu peux enfin chiffrer la question « est-ce que l'effort supérieur vaut son coût sur mes tickets réels ? » plutôt que la trancher au ressenti. <strong>Action concrète</strong> : construis une suite de 30 tickets support réels annotés avec la bonne réponse, fais-la tourner à deux niveaux d'effort, et garde le niveau bas si l'écart de score reste sous 5 points.</p>
+          <p><strong>Trois offres d'orchestration gérée le même jour, c'est le moment de vérifier que ton pari Claude ne coûte pas plus cher qu'il ne rapporte — et pour une fois, les contraintes des concurrents jouent en ta faveur.</strong> L'Agents API d'OpenAI ne facture aucun frais de plateforme au-delà des tokens et des outils, ce qui est agressif ; mais en beta publique la résidence des données est limitée aux États-Unis et le Zero Data Retention n'est pas supporté, quel que soit le bac à sable choisi. Pour une PME industrielle française qui manipule des plans clients et des paramètres de procédé, ces deux points sont rédhibitoires à court terme, et c'est un argument défendable en RFP face à un DSI qui pousse OpenAI sur le seul critère du prix. Cursor Projects, de son côté, adresse un besoin que tu n'as pas : coordonner des milliers d'agents sur une migration de codebase multi-mois. <strong>À préparer</strong> : une page d'argumentaire d'une demi-page comparant résidence des données, rétention et traçabilité des trois offres, à sortir quand la question tombera. Réserve honnête : ces limites d'OpenAI sont explicitement étiquetées « pendant la beta publique », donc l'argument a une date de péremption — ne le construis pas comme un avantage structurel.</p>
+        </div>
+      </section>
+
+      <p class="section-label">Synthèse</p>
+      <section class="synthese reveal">
+        Semaine dominée par une convergence de calendrier : le <strong>10 septembre</strong>, <strong>Anthropic</strong>, <strong>OpenAI</strong> et <strong>Cursor</strong> publient chacun une couche d'orchestration d'agents gérée. Côté Anthropic, les <strong>Managed Agents</strong> gagnent la politique de permission <code>auto</code> — le serveur évalue chaque appel d'outil ou d'outil MCP et l'exécute, le refuse ou le met en pause pour approbation, avec le verdict exposé dans un champ <code>evaluation</code> — et le CLI <code>ant</code> gagne <code>ant beta:sessions connect</code> pour attacher un terminal à une session en cours, la suivre en direct et arbitrer les appels en attente (<code>--web</code> sert localement le visualiseur de la Console). <strong>Claude Code</strong> enchaîne six versions du 8 au 12 septembre (2.1.265 → 2.1.270) : <code>claude plugin eval</code>, <code>maxEffortLevel</code>, <code>CLAUDE_CODE_WORKFLOW_MAX_CONCURRENT_AGENTS</code> jusqu'à 256, <code>/output-style</code> en headless, plafond de 1 Go sur les résultats d'outils sauvés sur disque, délai de 300 s sur WebFetch, et une série de correctifs sur la réutilisation du cache de prompt. Le <strong>SDK Python 1.5.0</strong> (10 septembre) suit l'API avec les permissions <code>auto</code>, le montage de dépôts GitHub publics sans jeton, <code>Message.to_param()</code> et un refus des fichiers de credentials lisibles par le groupe. Le <strong>rapport de contre-abus</strong> du 11 septembre couvre sept domaines de nuisance sur des opérations perturbées de décembre 2025 à août 2026 — dont une opération liée à l'Iran ciblant des forces navales américaines et un acteur chinois travaillant sur un système anti-torpille — en précisant qu'aucun cas n'impliquait Fable ni Mythos. <strong>OpenAI</strong> ouvre l'<strong>Agents API</strong> en beta publique (harness Codex géré, sessions durables, sous-agents, bacs à sable hébergés ou chez neuf partenaires dont Cloudflare, Vercel, E2B et Modal ; aucun frais de plateforme, mais résidence US et pas de Zero Data Retention). <strong>Meta</strong> lance <strong>Muse</strong> le 8 septembre, agent personnel sur VM dédiée, États-Unis seulement. <strong>Google DeepMind</strong> et <strong>Mistral</strong> n'ont rien de daté dans la fenêtre. Côté secondaires, <strong>Cursor Projects</strong> installe un agent coordinateur qui ne code pas et délègue à des milliers de sous-agents, et <strong>DeepSeek-V4.1-Flash</strong> sort en poids MIT à $0.30/$1.20 par M tokens.
+      </section>
+
+      <!-- ─── ANTHROPIC ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/anthropic/1b1818/f3f1ee" alt="" />Anthropic<span class="count">5 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-09-13-claude-code-2-1-265-270.html">Claude Code 2.1.265 → 2.1.270 — <code>plugin eval</code>, <code>maxEffortLevel</code> et fan-out Workflow jusqu'à 256 agents</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-09-08</span>
+          </div>
+          <p class="item-context">Six versions en cinq jours, du <strong>8 au 12 septembre</strong>. La 2.1.269 livre <code>claude plugin eval</code> : une suite d'évals qui tourne contre Claude Code et rend un résultat <strong>scoré et reproductible</strong>, en JSON et en rapport HTML — de quoi mesurer une régression de prompt au lieu de la deviner. La 2.1.267 ajoute <code>maxEffortLevel</code> (racine ou par modèle sous <code>modelSettings</code>), qui plafonne le niveau d'effort sur <strong>tous</strong> les fournisseurs, Bedrock, Vertex et Foundry compris, l'utilisateur restant libre de descendre plus bas. La 2.1.269 ajoute aussi <code>CLAUDE_CODE_WORKFLOW_MAX_CONCURRENT_AGENTS</code>, réglable de <strong>1 à 256</strong>, pour relever le plafond d'agents concurrents d'un run Workflow sur les fan-out limités par l'inférence, et <code>/output-style</code> utilisable en session cloud ou headless et via Remote Control. La 2.1.265 plafonne à <strong>1 Go</strong> les résultats d'outils écrits sur disque et accepte de pointer <code>--plugin-dir</code> vers un dossier de plugins. La 2.1.268 donne à WebFetch un délai d'expiration de <strong>300 s</strong> (réglable par <code>CLAUDE_CODE_WEBFETCH_DEADLINE_MS</code>), corrige une régression qui faisait échouer chaque tour en HTTP 400 sur les endpoints tiers compatibles Anthropic depuis la 2.1.265, et met fin à une boucle qui saturait un cœur CPU sur les sessions inactives longues. La 2.1.270, le 12, se limite à corriger une régression de la 2.1.269 sur les commandes git en lecture seule qui redemandaient une permission. Face à la concurrence de la semaine, c'est un positionnement différent : Cursor Projects vend la coordination de milliers de sous-agents et l'Agents API d'OpenAI vend le harness Codex en service géré, quand Claude Code reste un outil local dont on élargit les plafonds et qu'on rend mesurable.</p>
+          <p class="item-source"><a href="https://code.claude.com/docs/en/changelog#2-1-265" target="_blank" rel="noopener">code.claude.com/docs/en/changelog#2-1-265</a> · <a href="https://code.claude.com/docs/en/changelog#2-1-269" target="_blank" rel="noopener">code.claude.com/docs/en/changelog#2-1-269</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-09-13-managed-agents-auto-permissions.html">Managed Agents — permission <code>auto</code> évaluée côté serveur, et <code>ant beta:sessions connect</code></a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-09-10</span>
+          </div>
+          <p class="item-context">Les politiques de permission des <strong>Claude Managed Agents</strong> gagnent une <strong>3<sup>e</sup></strong> option, <code>auto</code> : au lieu d'autoriser ou refuser d'avance une catégorie d'outils, le serveur évalue <strong>chaque</strong> appel d'agent ou d'outil MCP et rend l'une de <strong>3</strong> issues — l'exécuter, le refuser, ou le mettre en pause pour approbation. Le verdict n'est pas opaque — les <strong>2</strong> événements <code>agent.tool_use</code> et <code>agent.mcp_tool_use</code> rapportent désormais comment chaque appel a été évalué, dans un champ <code>evaluation</code> placé à côté de <code>evaluated_permission</code>. Le CLI <code>ant</code> ajoute en parallèle <code>ant beta:sessions connect</code>, qui attache un terminal à une session Managed Agents en cours : on suit la session en direct, on envoie des messages et on autorise ou refuse les appels d'outils en attente d'approbation ; l'option <code>--web</code> sert localement le visualiseur de sessions de la Console et ouvre la session dedans. L'annonce tombe le <strong>10 septembre</strong>, le jour même où OpenAI ouvre son Agents API en beta publique et où Cursor sort Projects — mais là où OpenAI vend un harness géré complet, Anthropic livre ici la brique de gouvernance qui manquait à une exécution déjà en place.</p>
+          <p class="item-source"><a href="https://platform.claude.com/docs/en/release-notes/overview#september-10-2026" target="_blank" rel="noopener">platform.claude.com — release notes du 10 septembre 2026</a> · <a href="https://platform.claude.com/docs/en/managed-agents/permission-policies" target="_blank" rel="noopener">platform.claude.com — permission policies</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-09-13-anthropic-sdk-python-1-5-0.html">SDK Python 1.5.0 — permissions <code>auto</code>, dépôts GitHub publics sans jeton, credentials refusés si lisibles par le groupe</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-09-10</span>
+          </div>
+          <p class="item-context">Le SDK Python d'Anthropic passe en <strong>1.5.0</strong> le 10 septembre, le même jour que les release notes de la plateforme, et suit l'API de près. Côté fonctionnalités : les permissions d'outils en mode <code>auto</code> pour les Managed Agents, le montage de dépôts GitHub <strong>publics sans jeton d'autorisation</strong> dans une session Managed Agents, un nouveau code d'erreur <code>content_too_large</code> pour l'outil <code>web_fetch</code>, la valeur beta <code>user-profiles-2026-09-04</code> avec <code>external_user_details</code>, et l'acceptation d'objets outils directement dans <code>messages.create</code>, <code>parse</code>, <code>stream</code> et <code>count_tokens</code>. <code>Message.to_param()</code> et <code>BetaMessage.to_param()</code> arrivent côté client. Deux correctifs comptent plus que leur formulation ne le laisse croire : le SDK <strong>refuse désormais un fichier de credentials accessible au groupe ou à tous</strong>, et le JSON partiel d'entrée d'outil ne fuit plus sur les blocs de contenu en streaming.</p>
+          <p class="item-source"><a href="https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.5.0" target="_blank" rel="noopener">github.com/anthropics/anthropic-sdk-python — release v1.5.0</a> · <a href="https://platform.claude.com/docs/en/release-notes/overview#september-10-2026" target="_blank" rel="noopener">platform.claude.com — release notes du 10 septembre 2026</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-09-13-anthropic-rapport-contre-abus.html">Rapport de contre-abus — <strong>7</strong> domaines de nuisance, et aucun cas impliquant Fable ou Mythos</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-09-11</span>
+          </div>
+          <p class="item-context">Anthropic publie « Detecting and countering misuse of AI: September 2026 », couvrant <strong>9</strong> mois d'opérations perturbées, de <strong>décembre 2025 à août 2026</strong>, sur <strong>7</strong> domaines de nuisance : opérations cyber, opérations d'influence, surveillance, arnaques et fraude, mésusage biologique, développement d'armes conventionnelles et distillation illicite. Les cas nommés incluent une opération liée à l'Iran qui construisait des manuels de ciblage sur les forces navales américaines (positions de navires, identifiants d'aéronefs et de bâtiments, imagerie satellite), une équipe yéménite utilisant Claude comme ingénieur sur des missiles, et un acteur basé en Chine travaillant sur un système anti-torpille destiné à la marine de l'Armée populaire de libération. Le point technique à retenir pour un intégrateur : <strong>aucun de ces cas n'impliquait Fable ni Mythos</strong>, les modèles les plus avancés d'Anthropic. Le volet « distillation illicite » recoupe l'affaire, rapportée la même semaine, d'un fournisseur tiers routant secrètement des requêtes utilisateurs vers Claude.</p>
+          <p class="item-source"><a href="https://www.anthropic.com/threat-intelligence-report-september-2026" target="_blank" rel="noopener">anthropic.com — rapport de contre-abus, septembre 2026</a> · <a href="https://www.axios.com/2026/09/12/anthropic-ai-threat-report-russia-iran-china" target="_blank" rel="noopener">axios.com — 5 ways Claude was exploited</a> · <a href="https://www.bloomberg.com/news/articles/2026-09-11/anthropic-says-us-adversaries-aimed-claude-at-weapons-research" target="_blank" rel="noopener">bloomberg.com — Anthropic says Iran, Russia used Claude for weapons research</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">L'agence européenne de cybersécurité obtient Mythos 5 — mais pas la 5.1</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-09-10</span>
+          </div>
+          <p class="item-context">L'ENISA, agence de cybersécurité de l'Union européenne, a obtenu un accès à <strong>Mythos 5</strong> et a commencé à le tester, plus de trois mois après qu'Anthropic eut signalé son intention d'ouvrir l'accès au bloc. L'accès exclut la dernière itération, <strong>Mythos 5.1</strong>, et fait suite aux restrictions imposées en juin par le gouvernement américain, qui avait ordonné de suspendre l'accès à Mythos 5 et Fable 5 pour les ressortissants étrangers au titre de ses prérogatives de sécurité nationale. Aucune annonce officielle d'Anthropic ne couvre cet accès à la date du brief — information rapportée par Bloomberg puis reprise par plusieurs titres européens.</p>
+        </article>
+      </section>
+
+      <!-- ─── OPENAI ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/openai/1b1818/f3f1ee" alt="" />OpenAI<span class="count">2 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-09-13-openai-agents-api-beta.html">OpenAI Agents API en beta publique — harness Codex géré, <strong>0</strong> frais de plateforme, résidence US seulement</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-09-10</span>
+          </div>
+          <p class="item-context">OpenAI ouvre le <strong>10 septembre</strong> son <strong>Agents API</strong> en beta publique : le harness qui fait tourner Codex devient un service géré accessible par API. OpenAI prend en charge l'orchestration de session, la compaction de contexte et la reprise ; les sessions sont durables, les agents poursuivent leur travail d'un tour à l'autre avec diffusion de la progression, et les sous-agents, outils personnalisés et serveurs MCP sont pris en charge. Le développeur choisit où l'agent s'exécute : bacs à sable hébergés par OpenAI, infrastructure propre, ou l'un des <strong>neuf</strong> partenaires annoncés — Blaxel, Cloudflare, Daytona, DigitalOcean, E2B, Modal, Oracle, Runloop et Vercel. Tarification : <strong>aucun frais additionnel</strong> au-delà des tokens et des outils consommés, les bacs à sable hébergés par OpenAI étant facturés séparément au tarif conteneur standard. Deux limites explicites pendant la beta publique : la <strong>résidence des données est limitée aux États-Unis</strong> et le <strong>Zero Data Retention n'est pas supporté</strong>, quel que soit le bac à sable retenu. Publié le jour même où Anthropic ajoute la permission <code>auto</code> à ses Managed Agents et où Cursor sort Projects.</p>
+          <p class="item-source"><a href="https://openai.com/index/introducing-the-agents-api/" target="_blank" rel="noopener">openai.com/index/introducing-the-agents-api</a> · <a href="https://www.marktechpost.com/2026/09/10/openai-launches-the-agents-api-in-public-beta-putting-the-codex-harness-behind-one-api-call/" target="_blank" rel="noopener">marktechpost.com — OpenAI launches the Agents API in public beta</a></p>
+        </article>
+
+        <article class="item item-compact">
+          <div class="item-head">
+            <h3 class="item-title">Data plugin en disponibilité générale dans ChatGPT Work et Codex</h3>
+            <span class="tag tag-info">· Info</span>
+            <span class="item-date">2026-09-10</span>
+          </div>
+          <p class="item-context">Le <strong>Data plugin</strong> passe en disponibilité générale le 10 septembre : il analyse les données métier connectées depuis ChatGPT Work et Codex, permet de poser des questions sur l'activité, d'investiguer une variation, de produire des tableaux de bord ou rapports interactifs et d'affiner l'analyse par questions de suivi. La gestion des clés d'API gagne en parallèle des dates d'expiration à la création d'une clé de projet, avec une durée de vie maximale imposable par les administrateurs au niveau organisation ou projet. Information issue des notes de version publiées par OpenAI, sans page d'annonce dédiée à la date du brief.</p>
+        </article>
+      </section>
+
+      <!-- ─── GOOGLE DEEPMIND ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/googlegemini/1b1818/f3f1ee" alt="" />Google DeepMind<span class="count">0 item</span></h2>
+
+        <p class="actor-empty">Rien de notable dans la fenêtre. Les annonces récentes — Gemini 3.8 Flash et le modèle cybersécurité du 2 septembre — appartiennent au brief précédent. Le changelog de l'API Gemini reste injoignable depuis cette session (egress bloqué), et aucune page datée entre le 7 et le 13 septembre n'est ressortie des recherches.</p>
+      </section>
+
+      <!-- ─── META ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/meta/1b1818/f3f1ee" alt="" />Meta<span class="count">1 item</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-09-13-meta-muse-agent-personnel.html">Meta Muse — agent personnel sur VM dédiée, États-Unis seulement, paliers rapportés à $20 et $100/mois</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-09-08</span>
+          </div>
+          <p class="item-context">Meta lance <strong>Muse</strong> le <strong>8 septembre</strong>, agent personnel qui exécute des tâches — envoyer des courriels, réserver un voyage, remplir des formulaires, effectuer des achats — plutôt que de répondre à des questions. Le point d'architecture est la <strong>Muse Secure VM</strong> : une machine virtuelle dédiée dans le cloud de Meta, qui héberge l'agent, ses données personnelles et son propre navigateur. Accès par application iOS et Android, par le web et via WhatsApp. Disponibilité limitée aux <strong>États-Unis</strong> au lancement, sans date annoncée pour l'international. Gratuit pour la plupart des usages, avec des paliers payants rapportés à <strong>$20 et $100 par mois</strong> — chiffres repris de la couverture presse, Meta ne détaillant pas publiquement la grille. À rapprocher des approches concurrentes : là où l'Agents API d'OpenAI et les Managed Agents d'Anthropic vendent l'exécution d'agents à des développeurs, Meta livre un agent fini au grand public et assume l'isolation par une VM par utilisateur.</p>
+          <p class="item-source"><a href="https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/" target="_blank" rel="noopener">about.fb.com — Introducing Muse</a> · <a href="https://www.axios.com/2026/09/08/meta-debuts-muse-personal-ai-agent" target="_blank" rel="noopener">axios.com — Meta debuts Muse, its long-planned personal AI agent</a> · <a href="https://qz.com/meta-muse-ai-agent-email-travel-purchases-090926" target="_blank" rel="noopener">qz.com — Meta launches Muse AI agent</a></p>
+        </article>
+      </section>
+
+      <!-- ─── MISTRAL ─── -->
+      <section class="actor-section reveal">
+        <h2><img class="actor-logo" src="https://cdn.simpleicons.org/mistralai/1b1818/f3f1ee" alt="" />Mistral<span class="count">0 item</span></h2>
+
+        <p class="actor-empty">Rien de notable dans la fenêtre. Agentic Search (20 août) et la disponibilité générale d'OCR 4.1 (31 août) sont antérieurs au brief précédent. Pas de release de modèle ni d'entrée de changelog datée entre le 7 et le 13 septembre.</p>
+      </section>
+
+      <!-- ─── ACTEURS SECONDAIRES ─── -->
+      <section class="actor-section reveal">
+        <h2 style="font-size:18px;color:var(--text-muted);">Acteurs secondaires<span class="count">2 items</span></h2>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-09-13-cursor-projects-coordinateur.html">Cursor Projects — un agent coordinateur qui ne code pas et délègue à des milliers de sous-agents</a></h3>
+            <span class="tag tag-lynxter">🎯 Lynxter</span>
+            <span class="item-date">2026-09-10</span>
+          </div>
+          <p class="item-context">Cursor sort <strong>Projects</strong> en beta le <strong>10 septembre</strong>, pour des chantiers plus larges qu'une tâche : une fonctionnalité, une migration, une application entière. Le principe est un <strong>agent coordinateur qui n'écrit pas de code</strong> — il planifie, délègue à des agents qui implémentent, conserve le contexte partagé et surveille les pull requests. Il crée et gère lui-même les agents nécessaires, jusqu'à des <strong>milliers</strong> de sous-agents, et en exécute autant en parallèle que le travail le demande. Un Projet tourne sur sa propre machine dans le cloud : fermer le laptop ne l'arrête pas, ce qui découple le débit d'agents de la disponibilité humaine. Au lieu d'ouvrir une conversation par tâche, on parle à un unique coordinateur dans un fil qui reste ouvert aussi longtemps que dure le chantier. Cursor cite <strong>3</strong> familles d'usage : développement de fonctionnalité, migrations incrémentales, et travail d'entretien — qualité de code, surveillance de régressions. Un Projet peut poser des rappels, exécuter des tâches planifiées, suivre des pull requests pour corriger l'intégration continue, ou surveiller Slack pour y relever des rapports de bugs. Publié le même jour que la permission <code>auto</code> des Managed Agents d'Anthropic et que l'Agents API d'OpenAI.</p>
+          <p class="item-source"><a href="https://cursor.com/changelog/projects" target="_blank" rel="noopener">cursor.com/changelog/projects</a> · <a href="https://www.testingcatalog.com/icymi-cursor-announced-projects-for-agent-coordination/" target="_blank" rel="noopener">testingcatalog.com — Cursor Projects coordinates thousands of coding agents</a></p>
+        </article>
+
+        <article class="item">
+          <div class="item-head">
+            <h3 class="item-title"><a href="../items/2026-09-13-deepseek-v4-1-flash.html">DeepSeek-V4.1-Flash — MoE <strong>552</strong> B en poids MIT à $0.30/$1.20 par M tokens, sans SWE-bench Verified publié</a></h3>
+            <span class="tag tag-useful">🛠 Utile</span>
+            <span class="item-date">2026-09-10</span>
+          </div>
+          <p class="item-context">DeepSeek met <strong>V4.1-Flash</strong> en ligne sur son API le <strong>10 septembre</strong>. Architecture MoE de <strong>552 milliards</strong> de paramètres totaux pour environ <strong>8</strong> milliards actifs en entrée et <strong>16</strong> en sortie, poids publiés sous licence <strong>MIT</strong>. Tarification : <strong>$0.30 / $1.20</strong> par million de tokens entrée/sortie en heures pleines, <strong>$0.15 / $0.60</strong> hors pointe, et <strong>$0.006</strong> par million sur les lectures de cache en heures pleines — les heures pleines couvrant 01:00-04:00 et 06:00-10:00 UTC en semaine. Sur sa propre carte de modèle, DeepSeek annonce devancer GPT-5.6 Sol et Claude Opus 5.0 sur quatre des cinq benchmarks agentiques les plus durs qu'il retient : DeepSWE v1.1 (74.2 contre 73.0 pour Sol), AutomationBench (54.8 contre 45.8), Agent's Last Exam (31.8 contre 26.7) et CyberGym (88.1 contre 84.5). Réserve importante : <strong>DeepSeek ne publie pas de score SWE-bench Verified pour cette variante</strong>, ce qui interdit toute comparaison directe avec le classement de référence — l'absence est en soi une information.</p>
+          <p class="item-source"><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash" target="_blank" rel="noopener">huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash</a> · <a href="https://officechai.com/ai/deepseek-v4-1-flash-benchmarks-pricing/" target="_blank" rel="noopener">officechai.com — DeepSeek V4.1 Flash benchmarks & pricing</a></p>
+        </article>
+      </section>
+
+      <section class="sources-footer">
+        <strong>Sources consultées</strong>
+        <a href="https://code.claude.com/docs/en/changelog">code.claude.com/changelog</a> · <a href="https://platform.claude.com/docs/en/release-notes/overview">platform.claude.com/release-notes</a> · <a href="https://www.anthropic.com/news">anthropic.com/news</a> · <a href="https://github.com/anthropics/anthropic-sdk-python/releases">github.com/anthropics/anthropic-sdk-python</a> · <a href="https://openai.com/news/">openai.com/index</a> · <a href="https://developers.openai.com/codex/changelog">developers.openai.com/codex/changelog</a> · <a href="https://ai.google.dev/gemini-api/docs/changelog">ai.google.dev/gemini-api/changelog</a> · <a href="https://about.fb.com/news/">about.fb.com/news</a> · <a href="https://mistral.ai/news/">mistral.ai/news</a> · <a href="https://cursor.com/changelog">cursor.com/changelog</a> · <a href="https://huggingface.co/deepseek-ai">huggingface.co/deepseek-ai</a>
+      </section>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-09-06.html">
+          <span class="label">← Brief précédent</span>
+          <span class="title">Quatre modèles frontière en 72 heures</span>
+        </a>
+        <a class="next" href="./">
+          <span class="label">Voir l'archive →</span>
+          <span class="title">Tous les briefs</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Brief généré le 2026-09-13</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
