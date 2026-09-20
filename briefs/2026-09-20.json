@@ -1,0 +1,866 @@
+{
+  "date": "2026-09-20",
+  "title": "Anthropic referme ses trois surfaces en une",
+  "title_html": "Anthropic referme<br>ses trois surfaces<br><em style=\"font-style:normal;color:var(--lx-accent);\">en une</em>",
+  "description": "Brief IA du 14 au 20 septembre 2026 : Cowork fusionne dans Claude avec Docs et Slides, huit versions de Claude Code dont AGENTS.md et le classifieur auto mode côté serveur non facturé, Gemini 3.8 Live parle en raisonnant, Anthropic chiffre à 26 % la part de sa R&D pilotée par Claude.",
+  "period": "14 → 20 septembre 2026",
+  "actors_scanned": 11,
+  "intro_html": "Semaine de consolidation plutôt que de modèles. Le 16 septembre, Anthropic supprime Cowork en tant que produit séparé et le replie dans Claude, avec <strong>Claude Docs</strong> et <strong>Claude Slides</strong> en beta : trois modes deviennent deux (Claude et Claude Code). Côté outillage, huit versions de Claude Code sortent en six jours (2.1.271 → 2.1.278), dont deux changements structurants : la lecture d'<code>AGENTS.md</code> à défaut de <code>CLAUDE.md</code>, et le passage du classifieur auto mode côté serveur — <strong>l'overhead de classification n'est plus facturé</strong>. Google réplique le 15 sur un autre terrain : <strong>Gemini 3.8 Live</strong> et sa variante Extended Thinking raisonnent et parlent en même temps, sur 97 langues détectées à la volée. Anthropic publie aussi une mesure interne de sa propre automatisation — Claude « pilote » 26 % du travail de R&D modèle. Mistral : rien dans la fenêtre.",
+  "tldr": [
+    "<strong>Cowork disparaît comme produit, Claude Docs et Claude Slides arrivent (16 septembre).</strong> Anthropic replie Cowork et Design dans la conversation Claude : le routage est automatique, plus de choix d'onglet en amont d'une tâche. La surface passe de trois modes à deux — Claude et Claude Code. Docs (documents collaboratifs) et Slides (présentations) sortent en beta sur les plans payants, Design — disponible depuis avril — devient accessible depuis n'importe quelle conversation. Déploiement sur Pro et Max d'abord, Team et Free ensuite, Enterprise après un préavis d'au moins 30 jours aux administrateurs.",
+    "<strong>Claude Code 2.1.271 → 2.1.278 : AGENTS.md, et le classifieur auto mode ne coûte plus de tokens.</strong> Huit versions entre le 14 et le 19 septembre. La 2.1.278 bascule l'auto mode des comptes API et Enterprise (ainsi que Bedrock, Vertex, Foundry et gateways) sur un classifieur exécuté côté serveur, qui ne facture pas son propre overhead ; <code>/status</code> gagne une ligne <em>Auto mode server</em>. La 2.1.277 lit <code>AGENTS.md</code> dans un projet sans <code>CLAUDE.md</code>. À noter aussi : <code>allowed_domains</code> par commande en sandbox, <code>omitClaudeMd</code> sur les sous-agents, synchronisation des skills et plugins claude.ai vers le terminal. La 2.1.276 corrige en 24 h une régression de la 2.1.275 qui cassait toute requête derrière un gateway.",
+    "<strong>Gemini 3.8 Live — la voix qui raisonne pendant qu'elle parle (15 septembre).</strong> Deux modèles temps réel : <strong>3.8 Live</strong> pour le volume et le coût, <strong>3.8 Live Extended Thinking</strong> pour les tâches multi-étapes, qui verbalise sa progression au lieu de laisser un silence pendant le raisonnement. Détection et bascule automatique entre 97 langues en cours de conversation, exécution d'outils en arrière-plan sans couper le dialogue. Artificial Analysis le place premier de son Speech to Speech Quality Index à 82.6 (estimation tierce) ; Google publie 68.6 % sur τ-Voice et 35.1 % sur τ-Voice-banking."
+  ],
+  "lynxter_hero": [
+    "<strong>La fusion Cowork → Claude touche directement tes Routines, et le calendrier Enterprise est la seule variable à surveiller.</strong> Toute la veille Lynxter — ce brief compris — tourne sur des Routines Cowork. Anthropic annonce un routage automatique plutôt qu'une migration : ce qui existait dans Cowork reste accessible, mais depuis la conversation Claude. Le risque n'est pas la perte de fonction, c'est le déplacement silencieux des points d'entrée (où se lance une Routine, où se retrouvent ses sorties, quels connecteurs et skills sont visibles depuis quel contexte). Le déploiement démarre sur Pro et Max, arrive « bientôt » sur Team et Free, et sur Enterprise seulement après <strong>30 jours de préavis aux administrateurs</strong>. Action concrète cette semaine : identifie sur quel plan tourne le compte qui exécute les Routines, et si c'est Pro ou Max, ouvre une session de contrôle dès que la bascule est visible — relance la Routine veille-IA à blanc, vérifie que les connecteurs GitHub et les skills projet remontent, et note tout changement de chemin dans <code>CLAUDE.md</code>. Si c'est un plan Enterprise, tu as le préavis pour faire ce test en amont plutôt qu'en réaction.",
+    "<strong>Deux lignes du changelog Claude Code changent l'économie et la portabilité de ton outillage.</strong> D'abord le coût : jusqu'ici, l'auto mode faisait tourner un classifieur de permissions dont les tokens étaient facturés au client sur les comptes API, Enterprise, Bedrock, Vertex et Foundry. La 2.1.278 le déplace côté serveur et <strong>cesse de facturer cet overhead</strong>, avec un avertissement explicite quand la session retombe sur le chemin facturé. Sur une routine hebdomadaire qui enchaîne des dizaines d'appels d'outils en auto mode, c'est une ligne de coût qui disparaît sans rien changer au code — vérifie-la : lance <code>/status</code> et confirme que la ligne <em>Auto mode server</em> indique bien le serveur. Ensuite la portabilité : la 2.1.277 lit <code>AGENTS.md</code> quand un projet n'a pas de <code>CLAUDE.md</code>. Le format de consigne projet cesse d'être un lock-in Anthropic — Codex CLI et Cursor lisent déjà <code>AGENTS.md</code>. Pour Lynxter, ça vaut surtout comme assurance : le jour où tu veux faire tourner un agent concurrent sur le repo veille-IA ou sur une base firmware, les consignes ne sont plus à réécrire. Ne convertis rien maintenant — <code>CLAUDE.md</code> reste prioritaire quand les deux existent, et le support n'est pas encore là sur Bedrock, Vertex et Foundry. Note simplement la contrainte avant d'écrire le prochain fichier de consignes d'un nouveau dépôt.",
+    "<strong>La voix qui raisonne en parlant est la première brique crédible pour un support téléphonique S300X/S600D, et elle n'est pas chez Anthropic.</strong> Le blocage d'un agent vocal en support technique n'a jamais été la reconnaissance vocale : c'est le silence. Dès qu'un diagnostic demande de croiser un code d'erreur, un historique machine et une doc de profil matériau, le modèle se tait plusieurs secondes et l'appelant raccroche ou répète. Gemini 3.8 Live Extended Thinking attaque exactement ça — verbalisation de la progression pendant le raisonnement, exécution d'outils en arrière-plan sans couper le dialogue, bascule entre 97 langues en cours d'appel (utile sur un parc client européen). Anthropic n'a pas d'équivalent temps réel exposé ; OpenAI a GPT-Live-1 en full-duplex depuis début septembre, sans mode de raisonnement long annoncé. Ce n'est pas contractualisable tout de suite : les chiffres de tenue de tâche restent bas en absolu (<strong>68.6 % sur τ-Voice, 35.1 % sur le sous-ensemble banking</strong>), et aucun de ces benchmarks ne ressemble à un diagnostic d'imprimante. L'action utile est donc un chiffrage, pas un déploiement : prends vingt transcriptions d'appels support réels, isole les dix qui demandent un aller-retour dans la doc, et rejoue-les en API Gemini Live pour mesurer deux choses seulement — le temps avant première réponse utile, et le taux de diagnostic correct. Sans ce chiffre maison, les 68.6 % ne disent rien de ton métier."
+  ],
+  "synthese_html": "<strong>Anthropic</strong> domine la fenêtre avec six annonces. La principale est produit : le 16 septembre, <strong>Cowork et Design sont repliés dans la conversation Claude</strong>, et <strong>Claude Docs</strong> et <strong>Claude Slides</strong> sortent en beta — la surface passe de trois modes à deux. Côté outillage, <strong>huit versions de Claude Code</strong> (2.1.271 → 2.1.278) en six jours, dont le classifieur auto mode déplacé côté serveur sans facturation de son overhead, la lecture d'<code>AGENTS.md</code> à défaut de <code>CLAUDE.md</code>, <code>allowed_domains</code> par commande en sandbox et la synchronisation des skills claude.ai vers le terminal. Sur l'API, la <strong>compaction à la demande</strong> arrive en beta (en-tête <code>compact-2026-09-04</code>) : le serveur renvoie un bloc signé qui résume les messages envoyés, à replacer tel quel dans les requêtes suivantes. Le SDK Python suit en <strong>1.6.0 puis 1.7.0</strong> (permissions d'outils auto mode pour les Managed Agents, <code>compact_before_next_turn()</code> dans le tool runner). Anthropic publie enfin une <strong>mesure de sa propre automatisation</strong> : sur un échantillon de juillet, environ 15 000 tâches classées en 542 catégories, avec une échelle AL0–AL5 — Claude « pilote » 26 % du travail de R&D modèle, et plus de 90 % du travail est au moins au niveau « collabore ». <strong>OpenAI</strong> est en phase de ménage : le retrait des <strong>custom GPTs</strong> se précise (migration Enterprise le 17 septembre, fin des créations le 25, retrait le 11 décembre — les actions personnalisées ne migrent pas), et GPT-5.3-Codex-Spark est déprécié le 14. <strong>Google DeepMind</strong> sort le 15 septembre <strong>Gemini 3.8 Live</strong> et <strong>3.8 Live Extended Thinking</strong>, deux modèles vocaux temps réel qui parlent en raisonnant, sur 97 langues. <strong>Meta</strong> ne publie rien côté modèles : la seule information de la semaine est matérielle et rapportée par la presse — le <strong>MTIA 450 « Arke »</strong> visé en datacenter au premier semestre 2027. <strong>Mistral</strong> : rien dans la fenêtre. Côté secondaires, <strong>xAI</strong> ajoute une <strong>mémoire inter-sessions à Grok Build</strong>, son agent de code en terminal, sous forme de notes markdown relues automatiquement.",
+  "actors_order": [
+    "Anthropic",
+    "OpenAI",
+    "Google DeepMind",
+    "Meta",
+    "Mistral"
+  ],
+  "actor_empty": {
+    "Mistral": "Rien de notable cette semaine. Les annonces récentes — Agentic Search (20 août), la disponibilité générale d'OCR 4.1 et l'entrée de Samsung au capital — sont toutes antérieures à la fenêtre. Pas de release modèle, pas d'entrée datée au changelog docs.mistral.ai sur la période."
+  },
+  "prev": {
+    "href": "2026-09-13.html",
+    "title": "Trois orchestrateurs d'agents le même jour"
+  },
+  "sources_footer": [
+    {
+      "label": "code.claude.com/changelog",
+      "url": "https://code.claude.com/docs/en/changelog"
+    },
+    {
+      "label": "platform.claude.com/release-notes",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview"
+    },
+    {
+      "label": "claude.com/blog",
+      "url": "https://claude.com/blog"
+    },
+    {
+      "label": "anthropic.com/institute",
+      "url": "https://www.anthropic.com/institute"
+    },
+    {
+      "label": "github.com/anthropics/anthropic-sdk-python",
+      "url": "https://github.com/anthropics/anthropic-sdk-python/releases"
+    },
+    {
+      "label": "help.openai.com — release notes",
+      "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
+    },
+    {
+      "label": "developers.openai.com/codex/changelog",
+      "url": "https://developers.openai.com/codex/changelog"
+    },
+    {
+      "label": "blog.google — Gemini models",
+      "url": "https://blog.google/technology/ai/"
+    },
+    {
+      "label": "ai.google.dev/gemini-api/changelog",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog"
+    },
+    {
+      "label": "ai.meta.com/blog",
+      "url": "https://ai.meta.com/blog/"
+    },
+    {
+      "label": "mistral.ai/news",
+      "url": "https://mistral.ai/news"
+    },
+    {
+      "label": "x.ai/news",
+      "url": "https://x.ai/news"
+    },
+    {
+      "label": "cursor.com/changelog",
+      "url": "https://cursor.com/changelog"
+    }
+  ],
+  "highlights": [
+    "Cowork replié dans Claude : Docs et Slides en beta, trois modes ramenés à deux",
+    "Claude Code 2.1.271 → 2.1.278 : AGENTS.md lu par défaut, classifieur auto mode côté serveur non facturé",
+    "Gemini 3.8 Live raisonne en parlant sur 97 langues ; Anthropic chiffre à 26 % la R&D pilotée par Claude"
+  ],
+  "items": [
+    {
+      "slug": "2026-09-20-cowork-devient-claude",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "date": "2026-09-16",
+      "title": "Cowork fusionne dans Claude — Docs et Slides en beta, trois modes ramenés à deux",
+      "context_html": "Le <strong>16 septembre</strong>, Anthropic supprime Cowork comme produit séparé et le replie dans la conversation Claude, avec Design — sorti en avril — qui devient lui aussi accessible depuis n'importe quel fil. La surface passe de <strong>trois modes à deux</strong> : Claude et Claude Code. Anthropic justifie le regroupement par un retour utilisateur précis : les gens se servaient des deux outils, et le point pénible était de décider en amont où une tâche appartenait, sans que les projets soient transférables de l'un à l'autre. Claude route désormais la demande lui-même, avec le contexte, les skills et les connecteurs déjà en place. Deux produits sortent en <strong>beta sur les plans payants</strong> : <strong>Claude Docs</strong> (documents collaboratifs éditables) et <strong>Claude Slides</strong> (présentations). Déploiement sur <strong>Pro et Max</strong> sur les semaines qui viennent, Team et Free ensuite, Enterprise après un préavis d'au moins <strong>30 jours</strong> aux administrateurs.",
+      "sources": [
+        {
+          "label": "claude.com/blog/cowork-is-now-claude",
+          "url": "https://claude.com/blog/cowork-is-now-claude",
+          "primary": true
+        },
+        {
+          "label": "techcrunch.com — 16 septembre 2026",
+          "url": "https://techcrunch.com/2026/09/16/anthropic-merges-claude-chat-and-cowork-in-one-interface/",
+          "primary": false
+        },
+        {
+          "label": "engadget.com",
+          "url": "https://www.engadget.com/2259938/anthropics-claude-can-now-create-editable-documents-for-you-cowork-chat-together/",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Cowork devient Claude",
+        "date_long": "16 septembre 2026",
+        "description": "Anthropic replie Cowork et Design dans la conversation Claude et lance Claude Docs et Claude Slides en beta (16 septembre 2026). Conséquences pour les Routines Cowork de Lynxter.",
+        "stats": [
+          {
+            "num": "3 → 2",
+            "unit": "modes",
+            "label": "Claude et Claude Code"
+          },
+          {
+            "num": "2",
+            "unit": "produits",
+            "label": "Docs et Slides, en beta"
+          },
+          {
+            "num": "Pro/Max",
+            "unit": "d'abord",
+            "label": "Team, Free, puis Enterprise"
+          },
+          {
+            "num": "30",
+            "unit": "jours",
+            "label": "Préavis minimum Enterprise"
+          }
+        ],
+        "context_paragraphs": [
+          "Anthropic a lancé <strong>Cowork</strong> comme espace distinct pour les travaux longs, et <strong>Design</strong> en avril pour le travail visuel (sites, prototypes). Le 16 septembre 2026, les deux rentrent dans la conversation Claude. La formulation d'Anthropic est explicitement un constat d'échec ergonomique : « Nous avons construit Cowork comme un endroit séparé pour les travaux plus lourds, et Design pour le visuel. Les gens utilisaient les deux, et nous ont dit que la partie pénible était de décider où une tâche appartenait. » S'y ajoutait un défaut concret : les projets ne se transféraient pas d'un outil à l'autre. Le nouveau comportement est un routage : Claude détermine ce que la tâche demande, et ce que Cowork et Design savaient faire est disponible depuis n'importe quelle conversation, avec le contexte, les skills et les connecteurs déjà attachés.",
+          "Deux produits nouveaux accompagnent le regroupement, tous deux en <strong>beta sur les plans payants</strong>. <strong>Claude Docs</strong> produit des documents éditables et collaboratifs plutôt que du texte figé dans un fil de conversation. <strong>Claude Slides</strong> rédige les planches d'une présentation. Les deux répondent au même besoin : sortir un livrable d'une conversation sous une forme que quelqu'un d'autre peut ouvrir, commenter et modifier. C'est le terrain que Google occupe depuis longtemps avec Gemini dans Workspace et qu'OpenAI aborde par ChatGPT Work et ses connecteurs d'entreprise ; la différence de posture est qu'Anthropic ne branche pas Claude sur une suite bureautique existante mais produit le document dans sa propre surface.",
+          "Le calendrier de déploiement est progressif et n'est pas le même selon le plan. <strong>Pro et Max</strong> reçoivent le changement « sur les prochaines semaines ». <strong>Team et Free</strong> suivent « bientôt », sans date. <strong>Enterprise</strong> ne bascule qu'après notification des administrateurs <strong>au moins 30 jours à l'avance</strong> — ce délai est la seule garantie formelle du communiqué, et c'est celle qui compte pour une organisation dont des automatisations dépendent des points d'entrée actuels. Rien dans l'annonce ne parle de suppression de fonction : c'est un déplacement d'interface, pas une dépréciation d'API."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Les Routines Lynxter tournent sur Cowork — ce brief le premier — donc la bascule est à tester, pas à subir.</strong> Anthropic annonce un routage automatique et non une migration, ce qui veut dire qu'aucune Routine ne devrait casser ; mais les points d'entrée bougent, et c'est là que les automatisations se cassent en silence. Première action : détermine sur quel plan tourne le compte qui exécute les Routines. Si c'est Pro ou Max, la bascule peut arriver n'importe quelle semaine sans préavis, donc surveille l'interface et, au premier signe de changement, relance la Routine veille-IA à blanc pour vérifier trois choses — que les connecteurs (GitHub en tête) remontent bien, que les skills projet sont visibles depuis la nouvelle surface, et que les sorties atterrissent où le workflow les attend.",
+          "<strong>Si le compte est Enterprise, les 30 jours de préavis sont un actif : utilise-les pour tester avant plutôt que corriger après.</strong> Dès la notification administrateur reçue, ouvre un compte Pro de contrôle déjà basculé et rejoue-y la Routine, ce qui donne un diff réel entre ancien et nouveau comportement avant que la production ne bouge. Note dans <code>CLAUDE.md</code> tout chemin d'accès qui change, puisque le fichier documente déjà la chaîne de publication et sert de référence à la routine elle-même. Et profite du test pour trancher une question ouverte : <strong>Claude Docs</strong> pourrait remplacer une partie de ce que le site veille-IA produit en HTML statique pour les documents de travail internes — à chiffrer sur un cas, pas à décider en principe."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://claude.com/blog/cowork-is-now-claude",
+          "label": "claude.com/blog/cowork-is-now-claude",
+          "meta": "Anthropic · annonce officielle « Claude Cowork and chat are now one Claude » · 16 septembre 2026 · non fetchée (egress bloqué), recoupée par TechCrunch et Engadget"
+        },
+        "related": [
+          {
+            "slug": "2026-09-20-claude-code-2-1-271-278",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.271 → 2.1.278",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-09-13-managed-agents-auto-permissions",
+            "actor": "Anthropic",
+            "title": "Managed Agents — permissions auto mode",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-09-20.html",
+            "label": "← Retour au brief",
+            "title": "2026-09-20"
+          },
+          "next": {
+            "href": "2026-09-20-claude-code-2-1-271-278.html",
+            "label": "Item suivant →",
+            "title": "Claude Code 2.1.271 → 278"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-09-20-claude-code-2-1-271-278",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "date": "2026-09-19",
+      "title": "Claude Code 2.1.271 → 2.1.278 — classifieur auto mode côté serveur non facturé, AGENTS.md lu par défaut",
+      "context_html": "<strong>Huit versions</strong> entre le 14 et le 19 septembre. Deux comptent. La <strong>2.1.278</strong> (19/09) bascule l'auto mode des comptes API et Enterprise — ainsi que Bedrock, Vertex, Foundry et gateways — sur un classifieur exécuté <strong>côté serveur, qui ne facture pas son propre overhead</strong> ; <code>CLAUDE_CODE_AUTO_MODE_SERVER=0</code> permet d'en sortir hors comptes directs, et Claude Code avertit quand la session retombe sur le chemin facturé. <code>/status</code> gagne une ligne <em>Auto mode server</em>. La <strong>2.1.277</strong> (18/09) lit <code>AGENTS.md</code> dans un projet dépourvu de <code>CLAUDE.md</code> — pas encore sur Bedrock, Vertex ni Foundry. Ailleurs dans la série : <code>allowed_domains</code> par commande pour Bash, PowerShell et Monitor en sandbox (les hôtes sont ouverts à une commande seule), <code>omitClaudeMd</code> en frontmatter d'agent, synchronisation des skills et plugins claude.ai vers le terminal, mode <em>fast</em> dans les sessions Remote. La <strong>2.1.276</strong> corrige en 24 h une régression de la 2.1.275 qui faisait échouer toute requête derrière un proxy ou un gateway.",
+      "sources": [
+        {
+          "label": "code.claude.com/docs/en/changelog#2-1-271",
+          "url": "https://code.claude.com/docs/en/changelog#2-1-271",
+          "primary": true
+        },
+        {
+          "label": "code.claude.com/docs/en/changelog#2-1-278",
+          "url": "https://code.claude.com/docs/en/changelog#2-1-278",
+          "primary": true
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Claude Code 2.1.271 → 278",
+        "date_long": "14 → 19 septembre 2026",
+        "description": "Huit versions de Claude Code entre le 14 et le 19 septembre 2026 : classifieur auto mode côté serveur sans facturation d'overhead, support AGENTS.md, allowed_domains par commande, omitClaudeMd. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "8",
+            "unit": "versions",
+            "label": "2.1.271 → 2.1.278 en 6 jours"
+          },
+          {
+            "num": "0",
+            "unit": "token facturé",
+            "label": "Overhead classifieur auto mode"
+          },
+          {
+            "num": "AGENTS.md",
+            "unit": "2.1.277",
+            "label": "Lu si pas de CLAUDE.md"
+          },
+          {
+            "num": "24",
+            "unit": "h",
+            "label": "Correctif 2.1.276 après régression gateway"
+          }
+        ],
+        "context_paragraphs": [
+          "La série va de la <strong>2.1.271</strong> (14 septembre) à la <strong>2.1.278</strong> (19 septembre), soit huit versions en six jours — un rythme conforme aux semaines précédentes, mais avec deux entrées qui ne sont pas de la maintenance. La première est un changement de facturation. L'auto mode s'appuie sur un classifieur qui décide, à chaque appel d'outil, si l'action peut passer sans approbation. Jusqu'à la 2.1.278, ce classifieur tournait à la charge du client sur les comptes API et Enterprise, sur Bedrock, Vertex, Foundry et les gateways : ses tokens étaient facturés. La 2.1.278 en fait, par défaut, un service <strong>côté serveur qui ne facture pas cet overhead</strong>. La sortie reste possible via <code>CLAUDE_CODE_AUTO_MODE_SERVER=0</code> sur Bedrock, Vertex, Foundry et gateways, et Claude Code émet un avertissement quand la session retombe sur un chemin facturé. Une ligne <em>Auto mode server</em> apparaît dans <code>/status</code> pour vérifier où tourne le classifieur de la session en cours.",
+          "La seconde entrée structurante est la <strong>2.1.277</strong> (18 septembre) : dans un projet sans <code>CLAUDE.md</code>, Claude Code lit désormais <code>AGENTS.md</code>. Le réglage se change sous « Project instructions » dans <code>/config</code>, et le support n'est pas encore là sur Bedrock, Vertex et Foundry. <code>AGENTS.md</code> est la convention que lisent déjà <strong>Codex CLI</strong> et <strong>Cursor</strong> ; l'adopter en repli signifie qu'un dépôt n'a plus besoin d'un fichier de consignes par agent. La précédence reste à <code>CLAUDE.md</code> quand les deux existent, donc rien ne bouge sur un dépôt déjà équipé — c'est une convergence d'écosystème, pas une migration.",
+          "Le reste de la série est plus dispersé mais touche la sécurité et l'ergonomie des agents. La 2.1.271 introduit des <code>allowed_domains</code> <strong>par commande</strong> pour Bash, PowerShell et Monitor en auto mode avec sandbox : les hôtes dont une commande a besoin sont examinés avec elle et ouverts pour elle seule, les autres sont refusés — un grain plus fin que l'allowlist globale. La même version ajoute <code>omitClaudeMd</code> en frontmatter d'agent, qui laisse un sous-agent tourner sans les <code>CLAUDE.md</code> utilisateur, projet et local (les fichiers de politique managée restent chargés). La 2.1.275 synchronise vers le terminal les skills et plugins activés sur le compte claude.ai, avec <code>syncClaudeAiSkills: false</code> et <code>syncClaudeAiPlugins: false</code> pour s'en abstraire. Enfin, la <strong>2.1.276</strong> illustre le coût du rythme : une régression introduite la veille par la 2.1.275 faisait échouer <em>toutes</em> les requêtes derrière un <code>ANTHROPIC_BASE_URL</code> pointant un proxy ou un gateway, corrigée en 24 h par une version dédiée."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>La facturation du classifieur est la ligne à vérifier, pas à lire.</strong> Cette routine de veille enchaîne des dizaines d'appels d'outils en auto mode chaque lundi, et l'overhead de classification était jusqu'ici une ligne de coût invisible parce que noyée dans le total. Lance <code>/status</code> dans une session Claude Code à jour et lis la ligne <em>Auto mode server</em> : si elle indique le serveur, l'overhead a disparu sans que tu aies rien changé. Si elle indique un chemin facturé, cherche un <code>CLAUDE_CODE_AUTO_MODE_SERVER=0</code> traînant dans un environnement ou une configuration managée. Le gain n'est pas chiffrable de l'extérieur — Anthropic ne publie pas le volume de tokens du classifieur — donc la mesure utile est un avant/après sur la facture d'un run complet de la routine.",
+          "<strong><code>AGENTS.md</code> est une assurance de portabilité à noter, pas une conversion à faire.</strong> Le dépôt veille-IA a un <code>CLAUDE.md</code> qui reste prioritaire : ne touche à rien. La conséquence est pour la suite — le jour où tu veux comparer Claude Code à Codex CLI ou Cursor sur une base firmware S300X/S600D, les consignes projet n'ont plus à être réécrites dans trois formats. Concrètement, sur le prochain dépôt que tu équipes, écris <code>AGENTS.md</code> plutôt que <code>CLAUDE.md</code> si tu veux garder la porte ouverte, en gardant la réserve que le support manque encore sur Bedrock, Vertex et Foundry.",
+          "<strong><code>allowed_domains</code> par commande mérite un essai sur la routine elle-même.</strong> Le pre-flight de cette routine teste l'egress et se heurte régulièrement à un proxy restrictif ; une allowlist par commande permet d'accorder <code>code.claude.com</code> et <code>platform.claude.com</code> à la commande <code>scout.js</code> seule, sans ouvrir ces hôtes à tout le reste de la session. À tester au prochain run en sandbox, en mesurant une seule chose : est-ce que le scout passe toujours, et est-ce que les autres commandes se voient bien refuser les hôtes non déclarés. Et garde en tête l'enseignement de la 2.1.276 — à huit versions par semaine, une régression peut casser toute session derrière un gateway pendant 24 h, ce qui est un argument pour ne pas mettre à jour Claude Code le matin d'un run de publication."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://code.claude.com/docs/en/changelog#2-1-271",
+          "label": "code.claude.com/docs/en/changelog#2-1-271",
+          "meta": "Anthropic · changelog officiel Claude Code, entrées 2.1.271 à 2.1.278 · fetché le 20 septembre 2026 via build/scout.js"
+        },
+        "related": [
+          {
+            "slug": "2026-09-20-cowork-devient-claude",
+            "actor": "Anthropic",
+            "title": "Cowork fusionne dans Claude",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-09-13-claude-code-2-1-265-270",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.265 → 2.1.270",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-09-20-cowork-devient-claude.html",
+            "label": "← Item précédent",
+            "title": "Cowork devient Claude"
+          },
+          "next": {
+            "href": "2026-09-20-messages-api-compaction-a-la-demande.html",
+            "label": "Item suivant →",
+            "title": "Compaction à la demande"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-09-20-messages-api-compaction-a-la-demande",
+      "actor": "Anthropic",
+      "tag": "useful",
+      "date": "2026-09-14",
+      "title": "Messages API — compaction à la demande en beta, bloc signé réinjectable (14 septembre)",
+      "context_html": "Le <strong>14 septembre</strong>, l'API Messages gagne la <strong>compaction à la demande</strong> sur l'API Claude, en beta derrière l'en-tête <code>compact-2026-09-04</code>. Le principe : on envoie le paramètre <code>compaction</code> au niveau racine, et l'API renvoie un <strong>bloc <code>compaction</code> signé</strong> qui résume les messages transmis ; sur les requêtes suivantes, ce bloc est envoyé en premier, à la place de ces messages. Trois propriétés distinguent ce mécanisme d'un résumé fait maison : c'est l'appelant qui <strong>choisit le moment</strong> de la compaction, la requête peut tourner <strong>en arrière-plan</strong>, et on peut <strong>conserver mot pour mot les derniers tours</strong> après le résumé. Sur les modèles à raisonnement préservé, le thinking de ces tours conservés reste valide.",
+      "sources": [
+        {
+          "label": "platform.claude.com — release notes du 14 septembre 2026",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#september-14-2026",
+          "primary": true
+        },
+        {
+          "label": "platform.claude.com — documentation compaction",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/compaction#compact-on-demand-with-the-compaction-parameter",
+          "primary": true
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Compaction à la demande",
+        "date_long": "14 septembre 2026",
+        "description": "L'API Messages d'Anthropic expose la compaction à la demande en beta (14 septembre 2026) : bloc signé réinjectable, choix du moment, exécution en arrière-plan, derniers tours préservés. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "compact-2026-09-04",
+            "unit": "beta",
+            "label": "En-tête à envoyer"
+          },
+          {
+            "num": "14 sept.",
+            "unit": "2026",
+            "label": "Date des release notes"
+          },
+          {
+            "num": "1",
+            "unit": "bloc signé",
+            "label": "Remplace N messages"
+          },
+          {
+            "num": "API Claude",
+            "unit": "seule",
+            "label": "Portée annoncée"
+          }
+        ],
+        "context_paragraphs": [
+          "Compacter une conversation longue est le problème central de tout agent qui tourne plus de quelques minutes : la fenêtre de contexte se remplit de résultats d'outils, et la qualité décroche avant même la limite dure. Jusqu'ici, la réponse était à la charge de l'appelant — résumer soi-même, ou laisser un harnais comme Claude Code le faire. Le <strong>14 septembre 2026</strong>, Anthropic déplace la primitive dans l'API Messages, en beta derrière l'en-tête <code>compact-2026-09-04</code>. On envoie le paramètre <code>compaction</code> au niveau racine de la requête ; l'API répond avec un <strong>bloc <code>compaction</code> signé</strong> qui résume les messages envoyés. Sur les requêtes suivantes, ce bloc est placé en tête, à la place des messages qu'il résume.",
+          "La signature est ce qui distingue le mécanisme d'un résumé maison. Un bloc produit par le serveur et signé par lui peut être réinjecté sans que le modèle ait à le traiter comme du texte utilisateur potentiellement manipulé, ce qui permet aussi de préserver la validité du raisonnement : sur les modèles à thinking préservé, <strong>le thinking des tours gardés mot pour mot après le résumé reste valide</strong>. Trois choix restent à l'appelant : <strong>quand</strong> compacter (ce n'est pas déclenché automatiquement par un seuil), la possibilité de faire tourner la requête de compaction <strong>en arrière-plan</strong> plutôt que de bloquer le tour en cours, et le nombre de <strong>tours récents conservés à l'identique</strong> derrière le résumé.",
+          "Le calendrier situe l'annonce dans une séquence concurrentielle serrée. Quatre jours plus tôt, le <strong>10 septembre</strong>, OpenAI ouvrait son <strong>Agents API</strong> en beta publique, dont l'argument central est précisément de gérer la compaction du contexte sur les tâches longues — mais comme service managé qui tient la session entière. Anthropic prend l'angle inverse : pas de session managée, une primitive exposée dans l'API Messages que l'appelant orchestre lui-même. Le SDK Python suit dès le 15 septembre avec le paramètre en 1.6.0, puis <code>compact_before_next_turn()</code> dans le tool runner en 1.7.0 le 18."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>L'intérêt direct est pour les sessions d'agent longues, pas pour les Routines courtes.</strong> Une Routine Cowork qui tourne dix minutes ne sature pas sa fenêtre ; un agent de support qui suit un diagnostic S300X sur plusieurs allers-retours avec logs machine et extraits de doc, si. Sur ce type de session, la compaction à la demande permet de couper le contexte à un moment choisi — typiquement après qu'un diagnostic est établi et avant d'attaquer la remédiation — en gardant les derniers échanges intacts. Action utile : repère dans tes cas de support le point de bascule naturel d'une conversation, et teste un appel <code>compaction</code> à cet endroit précis plutôt que d'attendre une saturation.",
+          "<strong>La réserve est le statut beta et la portée.</strong> L'annonce ne mentionne que l'API Claude, pas Bedrock ni Vertex, et l'en-tête <code>compact-2026-09-04</code> signale une interface qui peut encore bouger — ne construis rien de contractuel dessus avant une sortie de beta. La bonne façon de l'aborder cette semaine est un essai chiffré sur un cas réel : prends une conversation de support archivée assez longue pour avoir posé problème, rejoue-la avec et sans compaction, et compare deux chiffres — le total de tokens facturés et la qualité du diagnostic final. Si l'écart de tokens est significatif sans perte de qualité, tu as un argument pour l'intégrer au prochain prototype d'agent support."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#september-14-2026",
+          "label": "platform.claude.com — release notes, 14 septembre 2026",
+          "meta": "Anthropic · release notes officielles de la plateforme Claude · fetché le 20 septembre 2026 via build/scout.js"
+        },
+        "related": [
+          {
+            "slug": "2026-09-20-anthropic-sdk-python-1-6-1-7",
+            "actor": "Anthropic",
+            "title": "SDK Python 1.6.0 et 1.7.0",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-09-13-openai-agents-api-beta",
+            "actor": "OpenAI",
+            "title": "Agents API en beta publique",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-09-20-claude-code-2-1-271-278.html",
+            "label": "← Item précédent",
+            "title": "Claude Code 2.1.271 → 278"
+          },
+          "next": {
+            "href": "2026-09-20-anthropic-sdk-python-1-6-1-7.html",
+            "label": "Item suivant →",
+            "title": "SDK Python 1.6.0 et 1.7.0"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-09-20-anthropic-sdk-python-1-6-1-7",
+      "actor": "Anthropic",
+      "tag": "useful",
+      "date": "2026-09-18",
+      "title": "SDK Python 1.6.0 puis 1.7.0 — permissions auto mode pour Managed Agents, compact_before_next_turn()",
+      "context_html": "Deux versions mineures en trois jours. La <strong>1.6.0</strong> (15 septembre) ajoute les <strong>permissions d'outils auto mode pour les Managed Agents</strong>, le paramètre <code>compaction</code> et les blocs signés en beta, <code>url_sources</code> sur l'outil web fetch, le paramètre <code>workspace_id</code> sur les méthodes de profil, des types énumérés pour les champs de résidence de données d'un workspace, et le support de fournisseurs de jetons asynchrones. Côté fiabilité, elle honore les <code>Retry-After</code> au-delà de 60 secondes, ignore les valeurs invalides et rejoue les erreurs de connexion dans le client asynchrone sans bloquer la boucle de retry. La <strong>1.7.0</strong> (18 septembre) ajoute <code>compact_before_next_turn()</code> au tool runner — la compaction serveur du 14 septembre devient une méthode de la boucle agentique — et un <code>display_name</code> sur les groupes de rate limits, en dépréciant <code>group_type</code>.",
+      "sources": [
+        {
+          "label": "github.com — anthropic-sdk-python v1.7.0",
+          "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.7.0",
+          "primary": true
+        },
+        {
+          "label": "github.com — anthropic-sdk-python v1.6.0",
+          "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.6.0",
+          "primary": true
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "SDK Python 1.6.0 / 1.7.0",
+        "date_long": "15 et 18 septembre 2026",
+        "description": "Le SDK Python d'Anthropic passe en 1.6.0 (15 septembre) puis 1.7.0 (18 septembre 2026) : permissions auto mode pour Managed Agents, paramètre compaction, compact_before_next_turn() dans le tool runner. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "1.6.0",
+            "unit": "15 sept.",
+            "label": "Auto mode Managed Agents, compaction"
+          },
+          {
+            "num": "1.7.0",
+            "unit": "18 sept.",
+            "label": "compact_before_next_turn()"
+          },
+          {
+            "num": "3",
+            "unit": "jours",
+            "label": "Entre les deux versions"
+          },
+          {
+            "num": "60",
+            "unit": "s",
+            "label": "Retry-After désormais honoré au-delà"
+          }
+        ],
+        "context_paragraphs": [
+          "Le SDK Python d'Anthropic suit la plateforme à quelques jours près, et les deux versions de la semaine sont surtout la traduction en code de ce qui a été annoncé côté API. La <strong>1.6.0</strong> (15 septembre) apporte les <strong>permissions d'outils auto mode pour les Managed Agents</strong> — le pendant SDK de ce que la plateforme avait exposé le 10 septembre — ainsi que le paramètre <code>compaction</code> et les blocs signés en beta, annoncés le 14. S'y ajoutent <code>url_sources</code> sur l'outil web fetch, un <code>workspace_id</code> sur les méthodes de profil utilisateur, des types énumérés pour les champs géographiques de résidence de données d'un workspace, et le support de fournisseurs de jetons d'identification asynchrones.",
+          "Le lot de correctifs de la 1.6.0 mérite d'être lu pour lui-même, parce qu'il touche le comportement sous charge. Le client honore désormais les valeurs de <code>Retry-After</code> <strong>supérieures à 60 secondes</strong> au lieu de les plafonner, ignore les valeurs invalides plutôt que de s'y fier, valide <code>maxRetries</code>, et — le plus important pour un agent long — rejoue les erreurs de connexion dans le <strong>client asynchrone</strong> sans bloquer la boucle de retry dans la coroutine. Un agent qui tourne longtemps derrière un réseau instable perdait des runs sur ce défaut.",
+          "La <strong>1.7.0</strong> (18 septembre) est plus courte mais referme la boucle de la compaction : <code>compact_before_next_turn()</code> entre dans le <strong>tool runner</strong>, la primitive qui exécute une boucle agentique sur des outils fournis par l'appelant. La compaction serveur annoncée le 14 cesse d'être un appel à orchestrer soi-même pour devenir une méthode de la boucle. Le reste est de l'hygiène d'API — un <code>display_name</code> sur les groupes de rate limits avec dépréciation de <code>group_type</code>, une erreur d'API levée sur les trames d'exception eventstream côté Bedrock, et l'acceptation des types union <code>X | Y</code> au parsing sans lever de <code>TypeError</code> sur des données inconnues."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Le correctif de retry asynchrone est la raison de mettre à jour, pas les nouveautés.</strong> Les runs de cette routine tournent derrière un proxy d'egress qui coupe des connexions, et un client qui ne rejoue pas une erreur de connexion en asynchrone perd le run entier. Si un outil Lynxter utilise le SDK Python directement — script de scan de tickets, prototype d'agent support — passe en 1.7.0 et vérifie sur un run réel que les coupures réseau sont bien absorbées plutôt que fatales. C'est un gain de fiabilité mesurable : compte le nombre de runs interrompus avant et après sur deux semaines.",
+          "<strong><code>compact_before_next_turn()</code> est ce qui rend la compaction testable sans écrire de plomberie.</strong> L'item précédent décrit la primitive serveur ; ici elle devient une ligne dans une boucle d'outils. Si tu veux chiffrer l'intérêt de la compaction sur une conversation de support longue, c'est par là qu'il faut passer plutôt que par des appels manuels à l'API. Réserve honnête : le paramètre est en beta et la 1.7.0 a trois jours — ne l'intègre pas dans un chemin de production avant d'avoir un run de test propre, et garde <code>group_type</code> à l'œil si un monitoring de rate limits existe, puisqu'il est désormais déprécié."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.7.0",
+          "label": "github.com/anthropics/anthropic-sdk-python — release v1.7.0",
+          "meta": "Anthropic · CHANGELOG officiel du SDK Python (release-please) · fetché le 20 septembre 2026 via build/scout.js"
+        },
+        "related": [
+          {
+            "slug": "2026-09-20-messages-api-compaction-a-la-demande",
+            "actor": "Anthropic",
+            "title": "Compaction à la demande dans l'API Messages",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-09-13-anthropic-sdk-python-1-5-0",
+            "actor": "Anthropic",
+            "title": "SDK Python 1.5.0",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-09-20-messages-api-compaction-a-la-demande.html",
+            "label": "← Item précédent",
+            "title": "Compaction à la demande"
+          },
+          "next": {
+            "href": "2026-09-20-anthropic-indice-automatisation-rd.html",
+            "label": "Item suivant →",
+            "title": "Indice d'automatisation R&D"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-09-20-anthropic-indice-automatisation-rd",
+      "actor": "Anthropic",
+      "tag": "useful",
+      "date": "2026-09-17",
+      "title": "Anthropic mesure sa propre automatisation — Claude « pilote » 26 % de sa R&D modèle, échelle AL0–AL5",
+      "context_html": "Le <strong>17 septembre</strong>, Anthropic publie une mesure prototype de la part d'IA dans son propre travail de R&D modèle. Méthode : pour chaque semaine de juillet, un échantillon de <strong>20 % des employés</strong> des départements concernés ; Claude relit les traces internes (Slack, documentation) pour reconstituer le travail effectué, ce qui produit environ <strong>15 000 tâches</strong>, réorganisées — encore par Claude — en une hiérarchie de <strong>542 catégories</strong>. Chaque catégorie reçoit un niveau sur une échelle <strong>AL0 à AL5</strong>, d'aucune implication de l'IA (AL0) à l'autonomie complète sans humain dans la boucle (AL5), en passant par « collabore » (AL3, gros blocs de travail sous direction humaine serrée) et « pilote » (AL4, tâche menée de bout en bout depuis une consigne de haut niveau, l'humain supervisant). Résultat d'août 2026 : Claude <strong>pilote 26 %</strong> du travail, <strong>plus de 90 %</strong> est au moins au niveau « collabore », et <strong>aucun sous-ensemble</strong> mesuré n'atteint l'autonomie complète.",
+      "sources": [
+        {
+          "label": "anthropic.com/institute/measuring-pace-of-ai-development",
+          "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+          "primary": true
+        },
+        {
+          "label": "mpost.io — lecture des trois indices publiés",
+          "url": "https://mpost.io/frontier-lab-transparency-anthropic-discloses-automation-agent-oversight-and-safety-compute-metrics/",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Indice d'automatisation R&D",
+        "date_long": "17 septembre 2026",
+        "description": "Anthropic publie une mesure de la part d'IA dans sa propre R&D modèle (17 septembre 2026) : échelle AL0–AL5, ~15 000 tâches en 542 catégories, Claude pilote 26 % du travail. Lecture Lynxter.",
+        "stats": [
+          {
+            "num": "26",
+            "unit": "%",
+            "label": "Travail R&D où Claude « pilote » (AL4)"
+          },
+          {
+            "num": "> 90",
+            "unit": "%",
+            "label": "Au moins au niveau « collabore »"
+          },
+          {
+            "num": "15 000",
+            "unit": "tâches",
+            "label": "Échantillon, réparti en 542 catégories"
+          },
+          {
+            "num": "AL0–AL5",
+            "unit": "échelle",
+            "label": "AL5 (autonomie totale) jamais atteint"
+          }
+        ],
+        "context_paragraphs": [
+          "Le 17 septembre 2026, Anthropic publie ce qu'il présente comme une mesure prototype — pas un standard — de la vitesse à laquelle l'IA s'installe dans le travail d'un laboratoire frontière, en prenant le sien comme objet. La méthode est explicitée et vaut autant que le résultat. Pour chaque semaine de juillet, <strong>20 % des employés</strong> des départements impliqués dans la R&D modèle sont échantillonnés. Claude relit ensuite les traces internes — messages Slack, documentation — pour reconstituer ce que ces personnes ont réellement fait, ce qui produit environ <strong>15 000 tâches individuelles</strong>. Claude est réutilisé pour organiser ces tâches en une hiérarchie de <strong>542 catégories</strong>, puis la contribution de l'IA est évaluée catégorie par catégorie.",
+          "L'échelle <strong>AL0–AL5</strong> est le cœur de l'exercice, parce qu'elle remplace un débat binaire (« l'IA remplace-t-elle ce métier ? ») par une gradation. AL0 signifie aucune implication de l'IA. <strong>AL3, « collabore »</strong>, décrit une IA qui abat de gros blocs de travail sous direction humaine serrée. <strong>AL4, « pilote »</strong>, décrit une IA qui mène l'essentiel d'une tâche de bout en bout depuis une consigne de haut niveau, l'humain supervisant le résultat. AL5 est l'autonomie complète, sans humain dans la boucle. Les chiffres d'août 2026 : Claude <strong>pilote 26 %</strong> du travail de R&D modèle, <strong>plus de 90 %</strong> du travail se situe au moins au niveau « collabore », et <strong>aucun sous-ensemble mesuré n'atteint AL5</strong>.",
+          "La limite du chiffre est structurelle et Anthropic la porte : c'est une auto-mesure, réalisée par Claude, sur Anthropic, avec une définition de « pilote » posée par Anthropic. Aucun autre laboratoire frontière ne publie l'équivalent — ni OpenAI, ni Google DeepMind, ni Meta — donc il n'existe aucun point de comparaison qui permettrait de savoir si 26 % est élevé ou banal dans l'industrie. L'intérêt n'est pas le nombre isolé mais la méthode rendue reproductible : une organisation qui veut chiffrer sa propre automatisation dispose désormais d'un protocole publié — échantillonner, reconstituer les tâches depuis les traces, catégoriser, noter sur AL0–AL5 — plutôt que d'un sondage déclaratif."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Le protocole est transposable au support Lynxter, et c'est là qu'est la valeur, pas dans les 26 %.</strong> La question « combien de notre support technique est déjà assisté par l'IA ? » se traite aujourd'hui à l'intuition. Le protocole d'Anthropic donne une façon de la chiffrer sans instrumenter quoi que ce soit : échantillonner une semaine de tickets S300X/S600D, reconstituer les tâches réellement effectuées depuis les traces existantes (tickets, échanges, notes d'intervention), les catégoriser, puis noter chaque catégorie sur une échelle à la AL0–AL5. Fais-le sur une semaine avant la fin du trimestre : le résultat est le point de départ chiffré qui manque pour décider où mettre le prochain effort d'automatisation.",
+          "<strong>L'échelle elle-même est un outil d'argumentaire à récupérer.</strong> Dans une réponse à appel d'offres ou face à un client industriel inquiet, « l'IA nous assiste » ne veut rien dire, et « l'IA traite vos tickets » en dit trop. Une échelle graduée permet de dire précisément où l'on se situe — par exemple « le tri et la qualification sont en AL4, le diagnostic en AL3, la décision d'intervention reste en AL0 » — et surtout de dire ce qui n'est <em>pas</em> automatisé, ce qui est souvent l'information rassurante. Réserve : reprendre une échelle publiée par un fournisseur de modèles pour décrire sa propre organisation demande de la citer comme telle, et de poser tes propres définitions de AL3 et AL4 par écrit avant de noter quoi que ce soit, sans quoi la note dérive d'un évaluateur à l'autre."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+          "label": "anthropic.com/institute/measuring-pace-of-ai-development",
+          "meta": "Anthropic · publication de l'Anthropic Institute · 17 septembre 2026 · non fetchée (egress bloqué), recoupée par deux sources indépendantes"
+        },
+        "related": [
+          {
+            "slug": "2026-09-13-anthropic-rapport-contre-abus",
+            "actor": "Anthropic",
+            "title": "Rapport de renseignement sur les abus",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-09-20-cowork-devient-claude",
+            "actor": "Anthropic",
+            "title": "Cowork fusionne dans Claude",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-09-20-anthropic-sdk-python-1-6-1-7.html",
+            "label": "← Item précédent",
+            "title": "SDK Python 1.6.0 et 1.7.0"
+          },
+          "next": {
+            "href": "2026-09-20-openai-retrait-custom-gpts.html",
+            "label": "Item suivant →",
+            "title": "Retrait des custom GPTs"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-09-20-compliance-api-claude-in-chrome",
+      "actor": "Anthropic",
+      "tag": "info",
+      "date": "2026-09-18",
+      "title": "Compliance API — les transcriptions Claude in Chrome deviennent récupérables (18 septembre)",
+      "context_html": "Depuis le <strong>18 septembre</strong>, les endpoints de sessions locales de la <strong>Compliance API</strong> renvoient aussi les transcriptions des sessions Claude in Chrome, sous la valeur <code>claude_in_chrome</code> du champ <code>product_surface</code>. La fonction est en beta pour les organisations Claude Enterprise, avec la clé d'accès Compliance existante et le scope <code>read:compliance_user_data</code>.",
+      "sources": [
+        {
+          "label": "platform.claude.com — release notes du 18 septembre 2026",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#september-18-2026",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-09-20-openai-retrait-custom-gpts",
+      "actor": "OpenAI",
+      "tag": "useful",
+      "date": "2026-09-17",
+      "title": "OpenAI retire les custom GPTs — migration Enterprise le 17 septembre, retrait définitif le 11 décembre",
+      "context_html": "OpenAI acte la fin des <strong>custom GPTs</strong> et publie le calendrier de migration vers les <strong>plugins</strong>. Pour les espaces Enterprise concernés : notification aux administrateurs le <strong>11 septembre</strong>, ouverture de la migration le <strong>17 septembre</strong>, fin de la création de nouveaux GPTs le <strong>25 septembre</strong>, <strong>retrait le 11 décembre 2026</strong>. Les GPTs existants restent utilisables jusqu'à leur date de retrait, sous réserve des permissions. La conversion n'est pas neutre : les <strong>instructions d'un GPT deviennent une skill</strong> à l'intérieur d'un nouveau plugin et ses applications connectées y sont rattachées, mais les <strong>actions personnalisées ne migrent pas</strong> — c'est la perte à inventorier. La migration est déclenchée par le créateur du GPT ou par un administrateur du workspace, une fois les plugins activés.",
+      "sources": [
+        {
+          "label": "help.openai.com — FAQ retrait et migration des custom GPTs",
+          "url": "https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq",
+          "primary": true
+        },
+        {
+          "label": "mixed-news.com — ce qui est repris et ce qui est perdu",
+          "url": "https://mixed-news.com/en/openai-retiring-custom-gpts-what-carries-over-to-plugins/",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Retrait des custom GPTs",
+        "date_long": "17 septembre 2026",
+        "description": "OpenAI retire les custom GPTs au profit des plugins : migration Enterprise ouverte le 17 septembre 2026, fin des créations le 25, retrait le 11 décembre. Les actions personnalisées ne migrent pas. Lecture Lynxter.",
+        "stats": [
+          {
+            "num": "17 sept.",
+            "unit": "2026",
+            "label": "Ouverture de la migration Enterprise"
+          },
+          {
+            "num": "25 sept.",
+            "unit": "2026",
+            "label": "Fin de création de nouveaux GPTs"
+          },
+          {
+            "num": "11 déc.",
+            "unit": "2026",
+            "label": "Retrait définitif"
+          },
+          {
+            "num": "0",
+            "unit": "action reprise",
+            "label": "Les actions personnalisées ne migrent pas"
+          }
+        ],
+        "context_paragraphs": [
+          "Les <strong>custom GPTs</strong>, ouverts fin 2023, étaient la façon dont un utilisateur ChatGPT empaquetait un assistant spécialisé : des instructions réutilisables, des fichiers, et des <strong>actions personnalisées</strong> appelant des API externes. OpenAI les remplace par les <strong>plugins</strong>, qui combinent des instructions réutilisables et des applications connectées. Le calendrier publié pour les espaces Enterprise concernés est serré : notification aux administrateurs le <strong>11 septembre</strong>, ouverture de la migration le <strong>17 septembre</strong>, fin de la création de nouveaux GPTs le <strong>25 septembre</strong>, et <strong>retrait le 11 décembre 2026</strong>. Les GPTs existants restent utilisables jusqu'à cette dernière date, sous réserve des permissions du workspace.",
+          "Ce qui est repris et ce qui ne l'est pas est la seule chose à retenir pour qui a construit dessus. Les <strong>instructions d'un GPT deviennent une skill</strong> à l'intérieur d'un plugin nouvellement créé, et les applications connectées au GPT sont rattachées au plugin en tant qu'apps. En revanche, les <strong>actions personnalisées ne sont pas reprises</strong>. C'est exactement la partie qui portait l'intégration métier — l'appel à une API interne, à un ERP, à une base de tickets — et donc la partie à réimplémenter, dans un autre modèle d'extension, avant le 11 décembre. La migration est déclenchée par le créateur du GPT ou par un administrateur, une fois les plugins activés sur l'espace.",
+          "Le mouvement a une lecture d'écosystème. OpenAI converge vers un format d'extension unique, aligné sur la logique d'apps connectées, au moment où Anthropic va dans le sens inverse en <strong>réduisant ses surfaces</strong> (Cowork replié dans Claude le 16 septembre) plutôt que ses formats d'extension — les skills et les serveurs MCP restent la voie d'extension côté Claude, et MCP est précisément un standard ouvert que plusieurs acteurs implémentent. Un assistant empaqueté en custom GPT est donc à réécrire ; un assistant empaqueté derrière un serveur MCP ne l'est pas, quel que soit le client qui l'appelle."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>La question à trancher tout de suite est un inventaire, pas une migration.</strong> Si un custom GPT a été créé chez Lynxter — assistant de qualification de tickets, aide au choix de profil matériau, réponse type à un client — liste ses <strong>actions personnalisées</strong> avant le 25 septembre, date après laquelle plus rien de neuf ne se crée du côté GPT. Ce sont elles qui ne survivront pas. Les instructions, elles, se transposent. Concrètement : ouvre chaque GPT, note les endpoints appelés, et estime la charge de réimplémentation ; sans cet inventaire, l'échéance du 11 décembre arrive sans visibilité sur ce qui casse.",
+          "<strong>L'enseignement de fond est un critère d'architecture pour les prochains assistants.</strong> Un assistant dont la logique métier vit dans une action propriétaire à un fournisseur meurt avec le format du fournisseur — c'est exactement ce qui se produit ici, sur un format vieux de moins de trois ans. Un assistant dont la logique vit derrière un <strong>serveur MCP</strong> survit au changement de client. Pour Lynxter, la règle à poser par écrit est simple : toute intégration à un système interne (base de tickets, référentiel machines, doc produit) s'expose une fois comme serveur MCP, et les assistants — Claude, ChatGPT ou autre — s'y branchent. Réserve honnête : ça coûte plus cher au premier assistant, et ne se justifie qu'à partir du deuxième client ou de la deuxième intégration."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq",
+          "label": "help.openai.com — Custom GPT retirement and migration FAQ",
+          "meta": "OpenAI · FAQ officielle de retrait et migration · non fetchée (egress bloqué), recoupée par deux sources indépendantes"
+        },
+        "related": [
+          {
+            "slug": "2026-09-13-openai-agents-api-beta",
+            "actor": "OpenAI",
+            "title": "Agents API en beta publique",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-08-23-mcp-roadmap-aout-2026",
+            "actor": "MCP",
+            "title": "Feuille de route MCP",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-09-20-anthropic-indice-automatisation-rd.html",
+            "label": "← Item précédent",
+            "title": "Indice d'automatisation R&D"
+          },
+          "next": {
+            "href": "2026-09-20-gemini-3-8-live-extended-thinking.html",
+            "label": "Item suivant →",
+            "title": "Gemini 3.8 Live"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-09-20-codex-spark-deprecie",
+      "actor": "OpenAI",
+      "tag": "info",
+      "date": "2026-09-14",
+      "title": "GPT-5.3-Codex-Spark déprécié le 14 septembre, research preview close",
+      "context_html": "OpenAI a déprécié <strong>GPT-5.3-Codex-Spark</strong> le <strong>14 septembre 2026</strong> : la research preview n'est plus disponible dans l'application ChatGPT desktop, dans Codex CLI ni dans l'extension IDE. Le changelog de la même période ajoute des contrôles de raisonnement plus fins, le support d'<code>ExternalMessage</code> sur les appels de run et de tour synchrones comme asynchrones, et des options de reprise et d'historique pour la sélection de tour.",
+      "sources": [
+        {
+          "label": "developers.openai.com/codex/changelog",
+          "url": "https://developers.openai.com/codex/changelog",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-09-20-gemini-3-8-live-extended-thinking",
+      "actor": "Google DeepMind",
+      "tag": "lynxter",
+      "date": "2026-09-15",
+      "title": "Gemini 3.8 Live — la voix qui raisonne en parlant, 97 langues, 68.6 % sur τ-Voice",
+      "context_html": "Le <strong>15 septembre</strong>, Google sort <strong>deux modèles vocaux temps réel</strong> : <strong>Gemini 3.8 Live</strong>, positionné sur le volume et le coût, avec intelligence conversationnelle et ancrage visuel ; et <strong>Gemini 3.8 Live Extended Thinking</strong>, pour les tâches complexes à raisonnement multi-étapes. La singularité du second est de <strong>raisonner et parler simultanément</strong> : signaux verbaux précoces pour accuser réception, puis narration de la progression pendant qu'une tâche multi-étapes avance en arrière-plan — le silence pendant le raisonnement, qui casse les agents vocaux, disparaît. Les deux détectent et basculent entre <strong>97 langues</strong> en cours de conversation, et exécutent outils et appels d'API en arrière-plan sans interrompre le dialogue. Google publie <strong>68.6 % sur τ-Voice</strong> et <strong>35.1 % sur τ-Voice-banking</strong> (Sierra) ; Artificial Analysis place Extended Thinking premier de son Speech to Speech Quality Index à <strong>82.6 (estimation tierce)</strong>. Déploiement sur l'API Gemini, AI Studio, Gemini Enterprise, Search Live, Gemini Live et Workspace.",
+      "sources": [
+        {
+          "label": "blog.google — Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+          "primary": true
+        },
+        {
+          "label": "testingcatalog.com — déploiement observé",
+          "url": "https://www.testingcatalog.com/google-rolled-out-gemini-3-8-live-and-extended-thinking/",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Gemini 3.8 Live",
+        "date_long": "15 septembre 2026",
+        "description": "Google lance Gemini 3.8 Live et 3.8 Live Extended Thinking (15 septembre 2026) : raisonnement pendant la parole, 97 langues, 68.6 % sur τ-Voice. Ce que ça change pour un support téléphonique Lynxter.",
+        "stats": [
+          {
+            "num": "97",
+            "unit": "langues",
+            "label": "Détection et bascule en cours d'appel"
+          },
+          {
+            "num": "68.6",
+            "unit": "%",
+            "label": "τ-Voice, tenue de tâche agentique"
+          },
+          {
+            "num": "35.1",
+            "unit": "%",
+            "label": "τ-Voice-banking (Sierra)"
+          },
+          {
+            "num": "82.6",
+            "unit": "estim. tierce",
+            "label": "Speech to Speech Index, Artificial Analysis"
+          }
+        ],
+        "context_paragraphs": [
+          "Google publie le 15 septembre 2026 <strong>deux modèles vocaux temps réel</strong> plutôt qu'un, et la séparation dit le compromis. <strong>Gemini 3.8 Live</strong> vise l'échelle et le coût : intelligence conversationnelle et ancrage visuel, pour les volumes. <strong>Gemini 3.8 Live Extended Thinking</strong> vise les tâches à forte complexité demandant un raisonnement multi-étapes. Le déploiement couvre l'API Gemini, Google AI Studio, Gemini Enterprise, Search Live, Gemini Live et Google Workspace — donc à la fois la surface développeur et les produits finaux.",
+          "Le point technique qui compte est la levée d'un défaut structurel des agents vocaux. Un modèle qui raisonne avant de répondre produit un silence, et un silence de plusieurs secondes au téléphone est interprété par l'interlocuteur comme une coupure : il répète, se reprend, ou raccroche. Extended Thinking <strong>raisonne et parle en même temps</strong> — des signaux verbaux précoces accusent réception de la demande, puis une narration en direct décrit l'avancement d'une tâche multi-étapes pendant qu'elle progresse en arrière-plan, sans casser le fil conversationnel. S'y ajoutent l'exécution d'outils et d'appels d'API <strong>en arrière-plan pendant que la conversation continue</strong>, et la détection automatique avec bascule entre <strong>97 langues</strong> en cours d'échange.",
+          "Sur les chiffres, il faut distinguer ce que publie Google de ce que mesure un tiers. Google publie <strong>68.6 % sur τ-Voice</strong> (tenue de tâche agentique en vocal) et <strong>35.1 % sur τ-Voice-banking</strong>, le sous-ensemble bancaire de Sierra — des scores à lire en absolu avant de les lire en relatif : un tiers de réussite sur le sous-ensemble le plus exigeant n'est pas un agent autonome. Le <strong>82.6</strong> qui place Extended Thinking premier du Speech to Speech Quality Index vient d'<strong>Artificial Analysis</strong> et relève de l'estimation tierce. Face à la concurrence, OpenAI a exposé <strong>GPT-Live-1</strong> en full-duplex sur l'API début septembre — écoute et parole simultanées, gestion des interruptions, fonctionnement sur ligne téléphonique — mais sans mode de raisonnement long annoncé ; Anthropic n'a pas de modèle vocal temps réel exposé, ce qui fait de ce terrain le seul de la semaine où Claude n'est pas une option."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>C'est la première brique crédible pour un premier niveau de support téléphonique S300X/S600D, et il faut la chiffrer sur tes appels avant d'y croire.</strong> Le blocage n'a jamais été la reconnaissance vocale mais le silence pendant qu'un diagnostic se construit — croiser un code d'erreur, un historique machine et une fiche de profil matériau prend plusieurs secondes, et ces secondes tuent l'appel. La narration de progression pendant le raisonnement attaque précisément ce point. Action cette semaine : prends vingt transcriptions d'appels support réels, isole les dix qui exigent un aller-retour dans la documentation, et rejoue-les via l'API Gemini Live en ne mesurant que deux choses — le délai avant première réponse utile, et le taux de diagnostic correct. Les 68.6 % de Google ne disent rien de ton métier tant que tu n'as pas ce chiffre maison.",
+          "<strong>La bascule multilingue est l'argument RFP, la tenue de tâche est la réserve à écrire noir sur blanc.</strong> Sur un parc client européen, un agent qui détecte et change de langue en cours d'appel sans transfert supprime un motif d'escalade fréquent — c'est concret et défendable dans un argumentaire. Mais avec <strong>35.1 % sur le sous-ensemble le plus exigeant</strong>, aucun engagement de résolution autonome n'est tenable : le design à viser est un agent qui qualifie, documente et transfère, pas un agent qui clôt. Prépare l'argumentaire dans ces termes, avec l'escalade humaine comme fonction annoncée et non comme rattrapage. Et note la contrainte d'architecture : cette brique est chez Google, donc un support vocal implique un second fournisseur à côté de Claude — à budgéter, et à isoler derrière une interface interne pour ne pas mélanger les deux stacks."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+          "label": "blog.google — Introducing Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking",
+          "meta": "Google · annonce officielle datée du 15 septembre 2026 · non fetchée (egress bloqué), recoupée par plusieurs sources indépendantes"
+        },
+        "related": [
+          {
+            "slug": "2026-09-06-gemini-3-8-flash-cyber",
+            "actor": "Google DeepMind",
+            "title": "Gemini 3.8 Flash et Flash Cyber",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-09-13-openai-agents-api-beta",
+            "actor": "OpenAI",
+            "title": "Agents API en beta publique",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-09-20-openai-retrait-custom-gpts.html",
+            "label": "← Item précédent",
+            "title": "Retrait des custom GPTs"
+          },
+          "next": {
+            "href": "2026-09-20-xai-grok-build-memoire.html",
+            "label": "Item suivant →",
+            "title": "Mémoire dans Grok Build"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-09-20-meta-mtia-450-arke",
+      "actor": "Meta",
+      "tag": "info",
+      "date": "2026-09-15",
+      "title": "Meta vise son MTIA 450 « Arke » en datacenter au premier semestre 2027",
+      "context_html": "Rien côté modèles chez Meta cette semaine : la seule information datée est matérielle, et rapportée par la presse plutôt qu'annoncée sur un blog officiel. Selon Bloomberg le <strong>15 septembre</strong>, Meta vise le déploiement en datacenter de son processeur d'inférence maison <strong>MTIA 450 « Arke »</strong> au premier semestre 2027, après réception de 12 puces de TSMC le 1<sup>er</sup> septembre dont les performances tombent à 2–3 % des simulations de pré-production. Meta annonce plus d'<strong>1 GW</strong> de puces maison déployées sur douze mois, situe le MTIA 500 « Astrid » fin 2027, et a annulé une puce mixte entraînement-inférence baptisée Olympus.",
+      "sources": [
+        {
+          "label": "bloomberg.com — 15 septembre 2026",
+          "url": "https://www.bloomberg.com/news/articles/2026-09-15/meta-touts-the-cost-saving-benefits-of-latest-in-house-ai-chips",
+          "primary": false
+        },
+        {
+          "label": "techrepublic.com",
+          "url": "https://www.techrepublic.com/article/news-meta-mtia-450-arke-ai-chip-inference/",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-09-20-xai-grok-build-memoire",
+      "actor": "xAI",
+      "tag": "useful",
+      "date": "2026-09-16",
+      "title": "Grok Build gagne une mémoire inter-sessions — notes markdown écrites et relues automatiquement",
+      "context_html": "Le <strong>16 septembre</strong>, xAI ajoute une <strong>mémoire inter-sessions</strong> à <strong>Grok Build</strong>, son agent de code en terminal. Le mécanisme est volontairement lisible : l'agent enregistre en arrière-plan des <strong>notes markdown</strong> — conventions d'écriture et de revue de code, décisions prises et leur raisonnement, faits durables du projet comme l'emplacement d'un sous-système ou la commande qui lance les tests — et les relit dans les sessions suivantes. L'extraction se fait automatiquement après chaque tour de conversation, sans interrompre le travail. <strong>Quatre commandes</strong> pilotent l'ensemble : <code>/memory</code> (alias <code>/mem</code>) pour parcourir et gérer, <code>/remember</code> pour écrire une note directement, <code>/dream</code> pour consolider, <code>/flush</code> pour écrire immédiatement sur disque. Disponible dès maintenant, sur les nouvelles sessions.",
+      "sources": [
+        {
+          "label": "x.ai/news/grok-build-memory",
+          "url": "https://x.ai/news/grok-build-memory",
+          "primary": true
+        },
+        {
+          "label": "unite.ai — analyse du mécanisme",
+          "url": "https://www.unite.ai/xai-adds-cross-session-memory-to-grok-build-coding-agent/",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Mémoire dans Grok Build",
+        "date_long": "16 septembre 2026",
+        "description": "xAI ajoute une mémoire inter-sessions à Grok Build (16 septembre 2026) : notes markdown extraites automatiquement, quatre commandes de gestion. Comparaison avec CLAUDE.md et lecture Lynxter.",
+        "stats": [
+          {
+            "num": "4",
+            "unit": "commandes",
+            "label": "/memory, /remember, /dream, /flush"
+          },
+          {
+            "num": "16 sept.",
+            "unit": "2026",
+            "label": "Disponible sur les nouvelles sessions"
+          },
+          {
+            "num": "markdown",
+            "unit": "format",
+            "label": "Notes lisibles et versionnables"
+          },
+          {
+            "num": "1",
+            "unit": "tour",
+            "label": "Extraction après chaque tour"
+          }
+        ],
+        "context_paragraphs": [
+          "<strong>Grok Build</strong> est l'agent de code en terminal de xAI, entré sur un marché déjà tenu par Claude Code, Codex CLI et Cursor. Le 16 septembre 2026, il gagne une <strong>mémoire inter-sessions</strong>. Le contenu visé est explicite : la façon dont l'équipe écrit et relit son code, les décisions prises et le raisonnement derrière, et les faits durables d'un projet — où vit un sous-système, quelle commande lance la suite de tests. Autrement dit, ce qu'un développeur réexplique à chaque nouvelle session d'agent.",
+          "Le mécanisme est un fichier, pas une base vectorielle : l'agent écrit des <strong>notes markdown</strong> en arrière-plan et les relit plus tard. L'extraction est automatique — après chaque tour de conversation, Grok Build passe en revue l'échange et en tire ce qui mérite d'être retenu, sans interrompre le travail en cours. <strong>Quatre commandes</strong> donnent la main : <code>/memory</code> (alias <code>/mem</code>) pour parcourir, consulter et gérer les mémoires, <code>/remember</code> suivi d'une note pour en écrire une directement, <code>/dream</code> pour lancer une consolidation, et <code>/flush</code> pour écrire immédiatement la mémoire de conversation sur disque. La fonction est disponible et s'applique aux nouvelles sessions.",
+          "La comparaison avec la concurrence éclaire le choix de conception. Chez Claude Code, l'équivalent est <code>CLAUDE.md</code> — un fichier que l'humain écrit et versionne, que l'agent lit : explicite, revu en <em>pull request</em>, mais qui ne se met à jour que si quelqu'un y pense. Chez xAI, l'écriture est automatique : la mémoire se remplit seule, au prix d'un contenu que personne n'a validé. Les deux approches convergent sur le format — du markdown lisible plutôt qu'un index opaque — ce qui rend la mémoire auditable dans les deux cas. À noter que Claude Code a pris le chemin inverse la même semaine en élargissant la <em>lecture</em> des consignes projet à <code>AGENTS.md</code>, sans automatiser leur écriture."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>L'intérêt immédiat n'est pas d'adopter Grok Build mais de combler le trou que sa fonction révèle.</strong> Le <code>CLAUDE.md</code> du dépôt veille-IA est riche parce qu'il a été écrit et corrigé run après run ; sur un dépôt firmware S300X/S600D, ce fichier n'existe probablement pas, et chaque session d'agent recommence à zéro sur les mêmes faits — où sont les profils, quelle commande compile, quelle convention de nommage. Action concrète : sur le prochain dépôt technique que tu ouvres à un agent, ouvre un fichier de consignes dès la première session et note-y au fil de l'eau les trois catégories que xAI a identifiées (conventions, décisions et leur raison, faits durables). C'est le même bénéfice, en manuel, sans changer d'outil.",
+          "<strong>La réserve à garder est que l'écriture automatique n'est pas gratuite.</strong> Une mémoire que personne ne relit accumule des faits périmés — un chemin qui a bougé, une décision annulée — et un agent qui les relit avec confiance produit des erreurs difficiles à tracer, parce que la cause est dans un fichier que personne n'a ouvert depuis des semaines. Si tu testes Grok Build sur un cas réel, impose-toi une relecture de <code>/memory</code> en fin de test et compte les entrées fausses : c'est le seul chiffre qui dit si l'automatisation vaut le coût de la revue. Tant que tu ne l'as pas, le fichier écrit à la main reste le choix par défaut sur les dépôts qui comptent."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://x.ai/news/grok-build-memory",
+          "label": "x.ai/news/grok-build-memory",
+          "meta": "xAI · annonce officielle « Memory in Grok Build » · 16 septembre 2026 · non fetchée (egress bloqué), recoupée par une source indépendante"
+        },
+        "related": [
+          {
+            "slug": "2026-09-20-claude-code-2-1-271-278",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.271 → 2.1.278",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-09-13-cursor-projects-coordinateur",
+            "actor": "Cursor",
+            "title": "Cursor Projects — agent coordinateur",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-09-20-gemini-3-8-live-extended-thinking.html",
+            "label": "← Item précédent",
+            "title": "Gemini 3.8 Live"
+          },
+          "next": {
+            "href": "../briefs/2026-09-20.html",
+            "label": "Retour au brief →",
+            "title": "2026-09-20"
+          }
+        }
+      }
+    }
+  ]
+}

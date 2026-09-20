@@ -1,6 +1,110 @@
 {
   "briefs": [
     {
+      "date": "2026-09-20",
+      "filename": "2026-09-20.html",
+      "items_count": 11,
+      "by_tag": {
+        "lynxter": 3,
+        "useful": 5,
+        "info": 3
+      },
+      "by_actor": {
+        "Anthropic": 6,
+        "OpenAI": 2,
+        "Google": 1,
+        "Meta": 1,
+        "xAI": 1,
+        "Mistral": 0
+      },
+      "mode": "hebdomadaire",
+      "title": "Anthropic referme ses trois surfaces en une",
+      "highlights": [
+        "Cowork replié dans Claude : Docs et Slides en beta, trois modes ramenés à deux",
+        "Claude Code 2.1.271 → 2.1.278 : AGENTS.md lu par défaut, classifieur auto mode côté serveur non facturé",
+        "Gemini 3.8 Live raisonne en parlant sur 97 langues ; Anthropic chiffre à 26 % la R&D pilotée par Claude"
+      ],
+      "items": [
+        {
+          "slug": "2026-09-20-cowork-devient-claude",
+          "title": "Cowork fusionne dans Claude — Docs et Slides en beta, trois modes ramenés à deux",
+          "primary_url": "https://claude.com/blog/cowork-is-now-claude",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-20-claude-code-2-1-271-278",
+          "title": "Claude Code 2.1.271 → 2.1.278 — classifieur auto mode côté serveur non facturé, AGENTS.md lu par défaut",
+          "primary_url": "https://code.claude.com/docs/en/changelog#2-1-271",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-20-messages-api-compaction-a-la-demande",
+          "title": "Messages API — compaction à la demande en beta, bloc signé réinjectable (14 septembre)",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview#september-14-2026",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-20-anthropic-sdk-python-1-6-1-7",
+          "title": "SDK Python 1.6.0 puis 1.7.0 — permissions auto mode pour Managed Agents, compact_before_next_turn()",
+          "primary_url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.7.0",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-20-anthropic-indice-automatisation-rd",
+          "title": "Anthropic mesure sa propre automatisation — Claude « pilote » 26 % de sa R&D modèle, échelle AL0–AL5",
+          "primary_url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-20-compliance-api-claude-in-chrome",
+          "title": "Compliance API — les transcriptions Claude in Chrome deviennent récupérables (18 septembre)",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview#september-18-2026",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-20-openai-retrait-custom-gpts",
+          "title": "OpenAI retire les custom GPTs — migration Enterprise le 17 septembre, retrait définitif le 11 décembre",
+          "primary_url": "https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-09-20-codex-spark-deprecie",
+          "title": "GPT-5.3-Codex-Spark déprécié le 14 septembre, research preview close",
+          "primary_url": "https://developers.openai.com/codex/changelog",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-09-20-gemini-3-8-live-extended-thinking",
+          "title": "Gemini 3.8 Live — la voix qui raisonne en parlant, 97 langues, 68.6 % sur τ-Voice",
+          "primary_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+          "tag": "lynxter",
+          "actor": "Google DeepMind"
+        },
+        {
+          "slug": "2026-09-20-meta-mtia-450-arke",
+          "title": "Meta vise son MTIA 450 « Arke » en datacenter au premier semestre 2027",
+          "primary_url": "https://www.bloomberg.com/news/articles/2026-09-15/meta-touts-the-cost-saving-benefits-of-latest-in-house-ai-chips",
+          "tag": "info",
+          "actor": "Meta"
+        },
+        {
+          "slug": "2026-09-20-xai-grok-build-memoire",
+          "title": "Grok Build gagne une mémoire inter-sessions — notes markdown écrites et relues automatiquement",
+          "primary_url": "https://x.ai/news/grok-build-memory",
+          "tag": "useful",
+          "actor": "xAI"
+        }
+      ]
+    },
+    {
       "date": "2026-09-13",
       "filename": "2026-09-13.html",
       "items_count": 10,

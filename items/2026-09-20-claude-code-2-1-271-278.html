@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code 2.1.271 → 2.1.278 — classifieur auto mode côté serveur non facturé, AGENTS.md lu par défaut — Veille IA Lynxter</title>
+<meta name="description" content="Huit versions de Claude Code entre le 14 et le 19 septembre 2026 : classifieur auto mode côté serveur sans facturation d'overhead, support AGENTS.md, allowed_domains par commande, omitClaudeMd. Implications Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-09-20.html">2026-09-20</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Claude Code 2.1.271 → 278</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Anthropic</span>
+          <span class="dot-sep">·</span>
+          <span>14 → 19 septembre 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-lynxter">🎯 Lynxter</span>
+        </div>
+        <h1>Claude Code 2.1.271 → 2.1.278 — classifieur auto mode côté serveur non facturé, AGENTS.md lu par défaut</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-09-20.html">Anthropic referme ses trois surfaces en une — 2026-09-20</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">8<span class="unit">versions</span></div>
+            <div class="stat-label">2.1.271 → 2.1.278 en 6 jours</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">0<span class="unit">token facturé</span></div>
+            <div class="stat-label">Overhead classifieur auto mode</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">AGENTS.md<span class="unit">2.1.277</span></div>
+            <div class="stat-label">Lu si pas de CLAUDE.md</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">24<span class="unit">h</span></div>
+            <div class="stat-label">Correctif 2.1.276 après régression gateway</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>La série va de la <strong>2.1.271</strong> (14 septembre) à la <strong>2.1.278</strong> (19 septembre), soit huit versions en six jours — un rythme conforme aux semaines précédentes, mais avec deux entrées qui ne sont pas de la maintenance. La première est un changement de facturation. L'auto mode s'appuie sur un classifieur qui décide, à chaque appel d'outil, si l'action peut passer sans approbation. Jusqu'à la 2.1.278, ce classifieur tournait à la charge du client sur les comptes API et Enterprise, sur Bedrock, Vertex, Foundry et les gateways : ses tokens étaient facturés. La 2.1.278 en fait, par défaut, un service <strong>côté serveur qui ne facture pas cet overhead</strong>. La sortie reste possible via <code>CLAUDE_CODE_AUTO_MODE_SERVER=0</code> sur Bedrock, Vertex, Foundry et gateways, et Claude Code émet un avertissement quand la session retombe sur un chemin facturé. Une ligne <em>Auto mode server</em> apparaît dans <code>/status</code> pour vérifier où tourne le classifieur de la session en cours.</p>
+        <p>La seconde entrée structurante est la <strong>2.1.277</strong> (18 septembre) : dans un projet sans <code>CLAUDE.md</code>, Claude Code lit désormais <code>AGENTS.md</code>. Le réglage se change sous « Project instructions » dans <code>/config</code>, et le support n'est pas encore là sur Bedrock, Vertex et Foundry. <code>AGENTS.md</code> est la convention que lisent déjà <strong>Codex CLI</strong> et <strong>Cursor</strong> ; l'adopter en repli signifie qu'un dépôt n'a plus besoin d'un fichier de consignes par agent. La précédence reste à <code>CLAUDE.md</code> quand les deux existent, donc rien ne bouge sur un dépôt déjà équipé — c'est une convergence d'écosystème, pas une migration.</p>
+        <p>Le reste de la série est plus dispersé mais touche la sécurité et l'ergonomie des agents. La 2.1.271 introduit des <code>allowed_domains</code> <strong>par commande</strong> pour Bash, PowerShell et Monitor en auto mode avec sandbox : les hôtes dont une commande a besoin sont examinés avec elle et ouverts pour elle seule, les autres sont refusés — un grain plus fin que l'allowlist globale. La même version ajoute <code>omitClaudeMd</code> en frontmatter d'agent, qui laisse un sous-agent tourner sans les <code>CLAUDE.md</code> utilisateur, projet et local (les fichiers de politique managée restent chargés). La 2.1.275 synchronise vers le terminal les skills et plugins activés sur le compte claude.ai, avec <code>syncClaudeAiSkills: false</code> et <code>syncClaudeAiPlugins: false</code> pour s'en abstraire. Enfin, la <strong>2.1.276</strong> illustre le coût du rythme : une régression introduite la veille par la 2.1.275 faisait échouer <em>toutes</em> les requêtes derrière un <code>ANTHROPIC_BASE_URL</code> pointant un proxy ou un gateway, corrigée en 24 h par une version dédiée.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🎯 Pourquoi c'est important pour Lynxter</h2>
+        <p><strong>La facturation du classifieur est la ligne à vérifier, pas à lire.</strong> Cette routine de veille enchaîne des dizaines d'appels d'outils en auto mode chaque lundi, et l'overhead de classification était jusqu'ici une ligne de coût invisible parce que noyée dans le total. Lance <code>/status</code> dans une session Claude Code à jour et lis la ligne <em>Auto mode server</em> : si elle indique le serveur, l'overhead a disparu sans que tu aies rien changé. Si elle indique un chemin facturé, cherche un <code>CLAUDE_CODE_AUTO_MODE_SERVER=0</code> traînant dans un environnement ou une configuration managée. Le gain n'est pas chiffrable de l'extérieur — Anthropic ne publie pas le volume de tokens du classifieur — donc la mesure utile est un avant/après sur la facture d'un run complet de la routine.</p>
+        <p><strong><code>AGENTS.md</code> est une assurance de portabilité à noter, pas une conversion à faire.</strong> Le dépôt veille-IA a un <code>CLAUDE.md</code> qui reste prioritaire : ne touche à rien. La conséquence est pour la suite — le jour où tu veux comparer Claude Code à Codex CLI ou Cursor sur une base firmware S300X/S600D, les consignes projet n'ont plus à être réécrites dans trois formats. Concrètement, sur le prochain dépôt que tu équipes, écris <code>AGENTS.md</code> plutôt que <code>CLAUDE.md</code> si tu veux garder la porte ouverte, en gardant la réserve que le support manque encore sur Bedrock, Vertex et Foundry.</p>
+        <p><strong><code>allowed_domains</code> par commande mérite un essai sur la routine elle-même.</strong> Le pre-flight de cette routine teste l'egress et se heurte régulièrement à un proxy restrictif ; une allowlist par commande permet d'accorder <code>code.claude.com</code> et <code>platform.claude.com</code> à la commande <code>scout.js</code> seule, sans ouvrir ces hôtes à tout le reste de la session. À tester au prochain run en sandbox, en mesurant une seule chose : est-ce que le scout passe toujours, et est-ce que les autres commandes se voient bien refuser les hôtes non déclarés. Et garde en tête l'enseignement de la 2.1.276 — à huit versions par semaine, une régression peut casser toute session derrière un gateway pendant 24 h, ce qui est un argument pour ne pas mettre à jour Claude Code le matin d'un run de publication.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://code.claude.com/docs/en/changelog#2-1-271" target="_blank" rel="noopener">code.claude.com/docs/en/changelog#2-1-271</a>
+        <span class="source-meta">Anthropic · changelog officiel Claude Code, entrées 2.1.271 à 2.1.278 · fetché le 20 septembre 2026 via build/scout.js</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-09-20-cowork-devient-claude.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Cowork fusionne dans Claude</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-09-13-claude-code-2-1-265-270.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code 2.1.265 → 2.1.270</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-09-20-cowork-devient-claude.html">
+          <span class="label">← Item précédent</span>
+          <span class="title">Cowork devient Claude</span>
+        </a>
+        <a class="next" href="2026-09-20-messages-api-compaction-a-la-demande.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Compaction à la demande</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-09-20</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
