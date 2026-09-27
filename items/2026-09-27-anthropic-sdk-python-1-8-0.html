@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>anthropic-sdk-python 1.8.0 — Opus 5.5, outils en ligne, add_tools() immédiat — Veille IA Lynxter</title>
+<meta name="description" content="anthropic-sdk-python 1.8.0 (22 septembre 2026) : support Opus 5.5, définitions d'outils en ligne, épinglage MCP, add_tools() immédiat, correctif Python 3.13. Implications Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-09-27.html">2026-09-27</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">SDK Python 1.8.0</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Anthropic</span>
+          <span class="dot-sep">·</span>
+          <span>22 septembre 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-useful">🛠 Utile</span>
+        </div>
+        <h1>anthropic-sdk-python 1.8.0 — Opus 5.5, outils en ligne, add_tools() immédiat</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-09-27.html">La frontière baisse ses prix en 48 heures — 2026-09-27</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">1.8.0<span class="unit">version</span></div>
+            <div class="stat-label">Publiée le 22 septembre · jour d'Opus 5.5</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">#874<span class="unit">issue</span></div>
+            <div class="stat-label">add_tools() prend effet immédiatement</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3.13<span class="unit">Python</span></div>
+            <div class="stat-label">Plantage à la sortie sur flux ouvert corrigé</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">MCP<span class="unit">pinning</span></div>
+            <div class="stat-label">Épinglage de liste d'outils (bêta)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Le SDK Python d'Anthropic passe en <strong>1.8.0</strong> le 22 septembre, synchronisé avec la sortie d'Opus 5.5. Côté fonctionnalités, la version ajoute le support de <code>claude-opus-5-5</code>, les <strong>définitions d'outils en ligne</strong> et l'<strong>épinglage de liste d'outils MCP</strong> en bêta — c'est-à-dire l'exposition, côté client typé, des deux nouveautés d'API du même jour. La progression est rapide : 1.5.0 le 13 septembre, 1.6 et 1.7 la semaine suivante, 1.8.0 le 22.</p>
+        <p>Les correctifs sont plus intéressants que les ajouts pour qui fait tourner des agents. <code>add_tools()</code> <strong>prend désormais effet immédiatement</strong> (issue #874) au lieu de n'être visible qu'au tour suivant — un décalage qui, dans une boucle agentique, se traduisait par un tour perdu à chaque fois qu'un outil était ajouté dynamiquement. Le tool runner laisse maintenant de côté les paramètres réservés aux réponses dans sa requête de compaction (#871), ce qui corrige des échecs de compaction en milieu de tâche longue. Enfin, un plantage à la sortie de l'interpréteur sous <strong>Python 3.13</strong>, déclenché quand un flux de streaming restait ouvert, est corrigé : il touchait typiquement les scripts qui sortent sur exception sans fermer proprement leur stream.</p>
+        <p>Le reste est de la consolidation : un même énuméré <code>evaluated_permission</code> partagé par tous les événements Managed Agents plutôt qu'un par événement, et une série de mises à jour de documentation sur les références API Dreams, User Profiles et les memory stores des Managed Agents.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🛠 Pourquoi c'est utile à savoir pour Lynxter</h2>
+        <p><strong>Le correctif <code>add_tools()</code> est celui qui change quelque chose dans une boucle d'agent.</strong> Si le pipeline de support ajoute des outils en cours de traitement — ce que les définitions d'outils en ligne du 22 septembre rendent justement pertinent — la version antérieure perdait un aller-retour complet avec le modèle à chaque ajout. À $4/M en entrée sur Opus 5.5, un tour perdu sur un prompt de support chargé n'est pas gratuit. Action : épingle <code>anthropic>=1.8.0</code> dans les dépendances du pipeline avant de commencer à ajouter des outils dynamiquement.</p>
+        <p><strong>Le plantage Python 3.13 mérite une vérification de version d'interpréteur.</strong> Le symptôme — un plantage à la sortie quand un flux de streaming n'a pas été fermé — est du genre à passer pour un problème de code applicatif et à coûter une demi-journée de recherche. Action : si des scripts de la chaîne de veille ou du pipeline support tournent sous Python 3.13 avec du streaming, monte le SDK plutôt que de chercher la fuite ailleurs.</p>
+        <p><strong>Réserve.</strong> Les deux nouveautés exposées (outils en ligne, épinglage MCP) sont en bêta côté API et le restent côté SDK : disposer du support typé ne les rend pas contractualisables. Action : traite 1.8.0 comme une mise à jour de maintenance à faire maintenant, et les fonctions bêta comme un sujet de prototype séparé.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.8.0" target="_blank" rel="noopener">github.com/anthropics/anthropic-sdk-python/releases/tag/v1.8.0</a>
+        <span class="source-meta">Anthropic · release GitHub anthropic-sdk-python v1.8.0 · 22 septembre 2026</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-09-27-api-inline-tool-definitions.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Définitions d'outils en cours de conversation</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+          <li><a href="2026-09-20-anthropic-sdk-python-1-6-1-7.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">anthropic-sdk-python 1.6 et 1.7</span>
+            <span class="tag tag-useful">🛠</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-09-27-api-inline-tool-definitions.html">
+          <span class="label">← Item précédent</span>
+          <span class="title">Définitions d'outils en cours de conversation</span>
+        </a>
+        <a class="next" href="2026-09-27-compliance-api-facturation-refus.html">
+          <span class="label">Item suivant →</span>
+          <span class="title">Facturation des refus et Activity Feed</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-09-27</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

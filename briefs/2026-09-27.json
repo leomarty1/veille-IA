@@ -1,0 +1,956 @@
+{
+  "date": "2026-09-27",
+  "title": "La frontière baisse ses prix en 48 heures",
+  "title_html": "La frontière<br>baisse ses prix<br><em style=\"font-style:normal;color:var(--lx-accent);\">en 48 heures</em>",
+  "description": "Brief IA du 21 au 27 septembre 2026 : Claude Opus 5.5 à $4/$20 (−20 %) et Terminal-Bench 4.0 à 66.4 %, GPT-6 Sol et Luna à −50 %, Grok 4.7 à prix constant, Claude Code 2.1.280→283, définitions d'outils en cours de conversation.",
+  "period": "21 → 27 septembre 2026",
+  "actors_scanned": 7,
+  "intro_html": "Trois modèles frontière en 48 heures, et tous les trois jouent le prix. Le 21, <strong>Grok 4.7</strong> arrive sur une base plus large à tarif inchangé ($2/$6 par M tokens). Le 22, <strong>Claude Opus 5.5</strong> passe à <strong>$4/$20</strong> — 20 % sous Opus 5 — avec 1M de contexte par défaut, <strong>66.4 % sur Terminal-Bench 4.0</strong> (vs 55.8 % pour Fable 5.1 et 57.9 % pour GPT-6 Astra) et 40 % de coût d'exécution en moins ; le même jour, OpenAI sort <strong>GPT-6 Sol et Luna</strong> en coupant ses prix API de moitié, Luna tombant à <strong>$0.10/$0.50</strong>. Côté outillage, Claude Code enchaîne quatre versions (2.1.280 → 283) dont un correctif de sécurité sur les écritures via symlink en mode auto et un <code>/doctor prompt-audit</code>, l'API Claude ouvre les <strong>définitions d'outils en cours de conversation</strong> sans invalider le cache de prompt, et Cursor livre deux bots CI. Meta consacre Connect 2026 à Muse. Mistral reste silencieux.",
+  "tldr": [
+    "<strong>Opus 5.5 est un upgrade à faire tout de suite : moins cher et meilleur.</strong> $4/$20 par M tokens contre $5/$25 pour Opus 5, cache reads à $0.20/M, 1M de contexte par défaut, 128k de sortie max, 40 % de coût d'exécution en moins et plus de 30 % de débit en plus. Terminal-Bench 4.0 à 66.4 % (Fable 5.1 : 55.8 %, GPT-6 Astra : 57.9 %), GDPval-AA v2.1 à 1846 (Astra : 1542). Anthropic ne publie pas de SWE-bench Verified pour ce modèle — l'absence est en soi une information.",
+    "<strong>OpenAI riposte sur le coût, pas sur le haut de gamme.</strong> GPT-6 Sol ($2/$10) et Luna ($0.10/$0.50) sortent le même jour qu'Opus 5.5 avec des prix divisés par deux face aux GPT-5.6 qu'ils remplacent. Sur AutomationBench, Sol en effort xhigh fait 33.2 % à $0.27 la tâche contre 26.9 % pour Opus 5 en max à 11.1× le coût. Luna à $0.10/M redéfinit le plancher de coût pour du tri de tickets à volume.",
+    "<strong>Claude Code corrige un trou de sécurité du mode auto et ajoute un audit de prompts.</strong> En 2.1.280, une écriture passant par un symlink n'est plus jugée sur son orthographe dans l'arbre : <code>acceptEdits</code>, les règles d'autorisation et le mode auto n'approuvent plus une écriture qui atterrit en dehors. En 2.1.283, <code>/doctor prompt-audit</code> relit CLAUDE.md, skills, agents et commandes pour repérer les tournures écrites pour des modèles plus anciens, et <code>deniedModels</code> permet de bloquer un modèle nommément."
+  ],
+  "lynxter_hero": [
+    "<strong>Bascule Opus 5.5 cette semaine, puis rechiffre le coût par ticket.</strong> C'est le cas rare où l'arbitrage ne se discute pas : $4/$20 contre $5/$25, 40 % de coût d'exécution en moins, plus de 30 % de débit en plus, et un gain net sur les benchmarks agentiques (Terminal-Bench 4.0 : 52.3 % pour Opus 5 → 66.4 % pour la 5.5). Claude Code 2.1.280 en fait déjà son modèle Opus par défaut, donc la mise à jour du CLI suffit pour le poste de travail ; côté Routines Cowork et appels API du pipeline support, il faut repasser les identifiants de modèle à la main. Deux réserves à traiter avant de généraliser : la pensée ne se désactive plus (<code>thinking: {\"type\": \"disabled\"}</code> renvoie une 400) et <code>tool_choice</code> en <code>any</code> ou <code>tool</code> renvoie aussi une 400 — tout code du pipeline qui force un outil doit passer en <code>auto</code> avec strict tool use. Concrètement : rejoue le jeu de tickets S300X/S600D de référence sur 5.5, compare le coût par ticket et la latence à Fable 5.1, et tranche modèle par étape plutôt que globalement.",
+    "<strong>Le million de tokens de contexte par défaut change ce que tu peux mettre dans un prompt de support.</strong> Opus 5.5 arrive avec 1M de fenêtre sans en-tête de bêta et 128k de sortie maximum : la documentation S300X et S600D, les fiches matières et un historique de tickets tiennent désormais dans un seul appel, sans l'étage de RAG qu'on maintenait pour les contourner. Avant de démonter quoi que ce soit, mesure : un prompt d'un million de tokens à $4/M coûte $4 en entrée à chaque appel non caché, contre quelques centimes pour une récupération ciblée — le cache reads à $0.20/M rend l'approche tenable seulement si le préfixe est stable d'un ticket à l'autre. L'action concrète : construis un prompt-socle figé (docs + procédures) et laisse la partie variable en fin de prompt, puis chiffre sur une semaine de tickets réels le delta de coût entre ce montage et le RAG actuel.",
+    "<strong>Le correctif symlink de Claude Code 2.1.280 est à traiter comme un correctif de sécurité, pas comme une amélioration de confort.</strong> Jusqu'à cette version, une écriture dont le chemin traversait un lien symbolique était évaluée sur son orthographe dans l'arbre de travail, pas sur sa destination réelle — le mode auto, <code>acceptEdits</code> et les règles d'autorisation pouvaient donc approuver une écriture atterrissant hors du répertoire de travail. Si des sessions Claude Code tournent en mode auto sur des postes ou des runners qui contiennent des liens symboliques vers des dossiers partagés, la mise à jour vers 2.1.280 ou plus est la seule réponse. Dans la foulée, passe <code>/doctor prompt-audit</code> (2.1.283) sur le CLAUDE.md de la veille et sur les skills de support : il signale les tournures écrites pour des modèles plus anciens, et c'est exactement le genre de dette qu'on accumule sans s'en rendre compte quand on empile six mois de consignes."
+  ],
+  "synthese_html": "Semaine dominée par <strong>Anthropic</strong>, qui sort <strong>Claude Opus 5.5</strong> le 22 septembre ($4/$20 par M tokens, 1M de contexte par défaut, 128k de sortie, cache reads à $0.20/M, Terminal-Bench 4.0 à 66.4 %, 40 % de coût d'exécution en moins qu'Opus 5) et enchaîne quatre versions de <strong>Claude Code</strong> (2.1.280 → 283) en quatre jours : Opus 5.5 par défaut, correctif des écritures via symlink en mode auto, <code>/doctor prompt-audit</code>, <code>deniedModels</code> et <code>availableModelsMatch</code> pour la gouvernance des modèles. Côté plateforme, les <strong>définitions d'outils en cours de conversation</strong> passent en bêta (header <code>inline-tools-2026-09-15</code>) : on peut ajouter un outil ou changer son schéma sans réécrire <code>tools</code> ni invalider le cache de prompt, y compris pour une boîte à outils MCP. Le <strong>SDK Python 1.8.0</strong> suit le jour même, les <strong>cache diagnostics</strong> sortent de bêta, et Anthropic reprend la facturation des refus sans sortie sur trois catégories tandis que l'Activity Feed de la Compliance API cesse de renvoyer les noms de fichiers. <strong>OpenAI</strong> répond sur le prix : <strong>GPT-6 Sol</strong> ($2/$10) et <strong>GPT-6 Luna</strong> ($0.10/$0.50) sortent le même 22 septembre à −50 % face aux GPT-5.6, et Codex CLI les intègre dans la foulée. <strong>Google DeepMind</strong> ne livre rien : Koray Kavukcuoglu indique seulement que Gemini 4 est en début de post-training. <strong>Meta</strong> consacre Connect 2026 à <strong>Muse</strong> (3,4 millions de téléchargements, computer use sur Mac, visio avec l'avatar, adresse e-mail dédiée). <strong>Mistral</strong> n'annonce rien dans la fenêtre. Côté secondaires, <strong>xAI</strong> sort <strong>Grok 4.7</strong> le 21 à prix inchangé ($2/$6) avec un bond sur Terminal-Bench 4.0 (20.3 → 38.0 %) et EEBench (53.0 → 64.0 %), et <strong>Cursor</strong> livre deux bots CI, Rollouts et Security Review.",
+  "actors_order": [
+    "Anthropic",
+    "OpenAI",
+    "Google DeepMind",
+    "Meta",
+    "Mistral"
+  ],
+  "actor_empty": {
+    "Mistral": "Rien de notable cette semaine. Les deux mouvements de septembre — le partenariat Mozilla du 16 et Leanstral 1.5 — sont hors fenêtre, et l'acquisition d'Emmi (Physics AI pour l'ingénierie industrielle) remonte à mai. Pas de release modèle, pas d'entrée au changelog docs.mistral.ai dans la fenêtre."
+  },
+  "sources_footer": [
+    {
+      "label": "anthropic.com/claude-opus-5-5",
+      "url": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    {
+      "label": "platform.claude.com/release-notes",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview"
+    },
+    {
+      "label": "code.claude.com/changelog",
+      "url": "https://code.claude.com/docs/en/changelog"
+    },
+    {
+      "label": "openai.com/index",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+    },
+    {
+      "label": "developers.openai.com/codex/changelog",
+      "url": "https://developers.openai.com/codex/changelog"
+    },
+    {
+      "label": "x.ai/news/grok-4-7",
+      "url": "https://x.ai/news/grok-4-7"
+    },
+    {
+      "label": "meta.com/blog/meta-connect-2026",
+      "url": "https://www.meta.com/blog/meta-connect-2026-everything-we-announced/"
+    },
+    {
+      "label": "cursor.com/changelog",
+      "url": "https://cursor.com/changelog"
+    }
+  ],
+  "prev": {
+    "href": "2026-09-20.html",
+    "title": "Anthropic referme ses trois surfaces en une"
+  },
+  "highlights": [
+    "Claude Opus 5.5 à $4/$20 par M tokens (−20 % vs Opus 5), 1M de contexte par défaut, Terminal-Bench 4.0 à 66.4 %",
+    "GPT-6 Sol et Luna sortent le même jour à −50 % : Luna descend à $0.10/$0.50 par M tokens",
+    "Claude Code 2.1.280→283 : correctif des écritures via symlink en mode auto, <code>/doctor prompt-audit</code>, <code>deniedModels</code>"
+  ],
+  "items": [
+    {
+      "slug": "2026-09-27-claude-opus-5-5",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "date": "2026-09-22",
+      "title": "Claude Opus 5.5 — $4/$20 par M tokens (−20 %), Terminal-Bench 4.0 à 66.4 %, 1M de contexte par défaut",
+      "context_html": "Anthropic sort <strong>Opus 5.5</strong> le 22 septembre et en fait son modèle Opus par défaut. Le pricing descend à <strong>$4/$20 par M tokens</strong> contre $5/$25 pour Opus 5, avec cache reads à <strong>$0.20/M</strong> et cache writes à $5/M ; le fast mode est à $8/$40. La fenêtre passe à <strong>1M de tokens par défaut</strong> avec 128k de sortie maximum, et la pensée adaptative est permanente. Sur la table publiée par Anthropic, <strong>Terminal-Bench 4.0 à 66.4 %</strong> (Opus 5 : 52.3 %, Fable 5.1 : 55.8 %, GPT-6 Astra : 57.9 %, GPT-5.6 Sol : 37.3 %), <strong>CursorBench 4.0 à 57.8 %</strong> (Opus 5 : 46.6 %), <strong>GDPval-AA v2.1 à 1846</strong> (Astra : 1542) et <strong>Humanity's Last Exam à 67.7 %</strong> (Astra : 57.2 %). GPT-6 Astra garde l'avantage sur AutomationBench (41.4 % contre 40.0 %) et Terminal-Bench-Science 0.1 (64.6 % contre 58.7 %). Anthropic annonce <strong>40 % de coût d'exécution en moins</strong> qu'Opus 5 et plus de 30 % de débit en plus, et ne publie aucun score SWE-bench Verified pour ce modèle.",
+      "sources": [
+        {
+          "label": "anthropic.com/claude-opus-5-5",
+          "url": "https://www.anthropic.com/claude-opus-5-5",
+          "primary": true
+        },
+        {
+          "label": "platform.claude.com — release notes 22 sept.",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#september-22-2026",
+          "primary": true
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Claude Opus 5.5",
+        "date_long": "22 septembre 2026",
+        "description": "Analyse de Claude Opus 5.5 (22 septembre 2026) : $4/$20 par M tokens, 1M de contexte par défaut, Terminal-Bench 4.0 à 66.4 %, pensée non désactivable. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "$4/$20",
+            "unit": "M tok",
+            "label": "Pricing officiel · −20 % vs Opus 5"
+          },
+          {
+            "num": "66.4",
+            "unit": "%",
+            "label": "Terminal-Bench 4.0 · Fable 5.1 à 55.8 %"
+          },
+          {
+            "num": "1M",
+            "unit": "tokens",
+            "label": "Contexte par défaut · 128k en sortie"
+          },
+          {
+            "num": "−40",
+            "unit": "%",
+            "label": "Coût d'exécution annoncé vs Opus 5"
+          }
+        ],
+        "context_paragraphs": [
+          "Anthropic publie <strong>Claude Opus 5.5</strong> le 22 septembre 2026, trois semaines après Fable 5.1 et Mythos 5.1, et en fait immédiatement le modèle Opus par défaut sur l'API Claude, Amazon Bedrock, Claude Platform on AWS, Google Cloud et Microsoft Foundry. Le prix baisse : <strong>$4 en entrée et $20 en sortie par million de tokens</strong>, contre $5/$25 pour Opus 5, avec des <strong>cache reads à $0.20/M</strong> et des cache writes à $5/M. Le fast mode, en research preview sur ce modèle, est facturé $8/$40. La fenêtre de contexte passe à <strong>1M de tokens par défaut</strong> — sans en-tête de bêta — avec 128k de tokens de sortie maximum.",
+          "Sur la table de benchmarks publiée par Anthropic, le gain le plus net est agentique : <strong>Terminal-Bench 4.0 à 66.4 %</strong>, contre 52.3 % pour Opus 5, 55.8 % pour Fable 5.1 et <strong>57.9 % pour GPT-6 Astra</strong>. <strong>CursorBench 4.0 monte à 57.8 %</strong> (46.6 % pour Opus 5), FrontierCode v1.1 à 54.4 % (53.3 % pour Astra), <strong>GDPval-AA v2.1 à 1846</strong> contre 1542 pour Astra et 1735 pour Fable 5.1, Humanity's Last Exam à 67.7 % contre 57.2 % pour Astra, OSWorld 2.0 à 81.8 % (80.7 % pour Fable 5.1) et Chartography à 89.0 %. La comparaison n'est pas à sens unique : <strong>GPT-6 Astra reste devant sur AutomationBench</strong> (41.4 % contre 40.0 %) et nettement devant sur Terminal-Bench-Science 0.1 (64.6 % contre 58.7 %). Anthropic annonce par ailleurs 40 % de coût d'exécution en moins qu'Opus 5, plus de 30 % de débit en sortie, et cite un client ayant bouclé une migration de 680 000 lignes en moins d'une journée.",
+          "Deux absences et deux ruptures d'API méritent d'être notées. <strong>Anthropic ne publie pas de score SWE-bench Verified pour Opus 5.5</strong> — ni dans l'annonce ni dans la table — ce qui rend toute comparaison sur ce benchmark impossible avec un chiffre officiel ; le 89.9 % de SWE-bench Pro qui circule vient du classement tiers BenchLM, pas d'Anthropic, et doit être traité comme une estimation. Côté API, la pensée ne peut plus être désactivée : <code>thinking: {\"type\": \"disabled\"}</code> comme <code>thinking: {\"type\": \"enabled\", ...}</code> renvoient une 400, et la profondeur se règle par le paramètre <code>effort</code>. De même, <code>tool_choice</code> en <code>any</code> ou <code>tool</code> renvoie une 400 — comme sur Fable 5.1 — et il faut passer en <code>auto</code> avec strict tool use. Sur l'API Claude et Google Cloud, le computer use exige le toolset <code>computer_toolset_20260801</code>, l'ancien <code>computer_20251124</code> renvoyant une 400 ; sur Amazon Bedrock il continue de fonctionner.",
+          "Le modèle embarque aussi des garde-fous renforcés sur la cybersécurité, la biologie et la distillation, avec une pensée préservée (mesure anti-distillation), le tatouage numérique exigé par l'EU AI Act, et l'accès via les programmes de vérification Life Sciences et Cyber."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>C'est la mise à jour la plus simple à arbitrer depuis longtemps : moins cher et meilleur sur les tâches agentiques.</strong> Le passage d'Opus 5 à Opus 5.5 coûte 20 % de moins au tarif liste et rend 14 points de plus sur Terminal-Bench 4.0 (52.3 → 66.4 %), qui est le benchmark le plus proche de ce que fait un agent de support : enchaîner des commandes dans un terminal jusqu'à ce que la tâche aboutisse. Claude Code 2.1.280 a déjà basculé son modèle Opus par défaut, donc une mise à jour du CLI suffit côté poste de travail. Ce qui ne bascule pas tout seul : les identifiants de modèle en dur dans les Routines Cowork et dans les appels API du pipeline support. Action : liste ces identifiants et passe-les à <code>claude-opus-5-5</code> cette semaine.",
+          "<strong>Avant de généraliser, teste les deux ruptures d'API qui cassent du code existant.</strong> Tout appel qui envoie <code>thinking: {\"type\": \"disabled\"}</code> pour économiser des tokens sur une tâche simple renverra désormais une 400, et tout appel qui force un outil via <code>tool_choice: {\"type\": \"tool\"}</code> aussi — deux motifs courants dans un pipeline de classification de tickets, où on veut une sortie structurée sans laisser le modèle réfléchir. La migration passe par <code>tool_choice: \"auto\"</code> combiné au strict tool use, et par le paramètre <code>effort</code> pour brider la profondeur de raisonnement. Action : grep les appels API du pipeline sur <code>tool_choice</code> et <code>thinking</code>, corrige-les en préproduction, et ne bascule la production qu'après.",
+          "<strong>Le million de tokens par défaut vaut un chiffrage, pas un enthousiasme.</strong> À $4/M en entrée, un prompt qui embarque toute la documentation S300X/S600D coûte plusieurs dollars par appel s'il n'est pas caché, contre quelques centimes pour une récupération ciblée ; les cache reads à $0.20/M ramènent ce coût à un vingtième, mais seulement si le préfixe du prompt est strictement stable d'un ticket à l'autre. C'est donc une décision d'architecture : socle figé en tête de prompt, partie variable en queue. Action : monte un prototype à prompt-socle caché, fais-le tourner sur une semaine de tickets réels, et compare coût par ticket et qualité de réponse au montage RAG actuel avant de décider quoi que ce soit.",
+          "<strong>Réserve honnête sur les benchmarks.</strong> L'absence de SWE-bench Verified officiel signifie qu'on ne peut pas comparer Opus 5.5 à la génération précédente sur le seul benchmark de code que tout le monde cite depuis deux ans — y compris dans un argumentaire RFP où un client demanderait « le score SWE-bench ». La réponse à préparer est factuelle : Anthropic ne le publie plus sur ce modèle, les chiffres Terminal-Bench 4.0 et CursorBench 4.0 sont ceux qu'il faut citer, et tout score SWE-bench Pro avancé par un tiers doit être annoncé comme tel."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://www.anthropic.com/claude-opus-5-5",
+          "label": "anthropic.com/claude-opus-5-5",
+          "meta": "Anthropic · annonce officielle Claude Opus 5.5 · 22 septembre 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-09-27-api-inline-tool-definitions",
+            "actor": "Anthropic",
+            "title": "Définitions d'outils en cours de conversation",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-09-27-gpt-6-sol-luna",
+            "actor": "OpenAI",
+            "title": "GPT-6 Sol et Luna — prix API divisés par deux",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-09-06-claude-fable-5-1-mythos-5-1",
+            "actor": "Anthropic",
+            "title": "Claude Fable 5.1 et Mythos 5.1",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "../briefs/2026-09-27.html",
+            "label": "← Retour au brief",
+            "title": "2026-09-27"
+          },
+          "next": {
+            "href": "2026-09-27-claude-code-2-1-280-283.html",
+            "label": "Item suivant →",
+            "title": "Claude Code 2.1.280 → 283"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-09-27-claude-code-2-1-280-283",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "date": "2026-09-25",
+      "title": "Claude Code 2.1.280 → 283 — écritures via symlink corrigées en mode auto, /doctor prompt-audit, deniedModels",
+      "context_html": "Quatre versions en quatre jours, du 22 au 25 septembre. <strong>2.1.280</strong> ajoute Opus 5.5 comme modèle Opus par défaut et corrige un défaut de sécurité du mode auto : une écriture passant par un <strong>lien symbolique</strong> était jugée sur son orthographe dans l'arbre, si bien que <code>acceptEdits</code>, les règles d'autorisation et le mode auto pouvaient approuver une écriture atterrissant hors du répertoire de travail ; le prompt nomme désormais la destination réelle. La même version fait reculer les boucles du mode auto — une action refusée par un contrôle de sûreté est refusée une fois, et dix refus consécutifs arrêtent le tour. <strong>2.1.281</strong> ajoute <code>\"attribution\": false</code> dans <code>settings.json</code>, l'<code>assume_role</code> et les guardrails Bedrock sur la passerelle Claude apps, et des vérifications MCP dans <code>claude plugin validate</code>. <strong>2.1.282</strong> apporte <code>maxProseWidth</code> et corrige plusieurs pertes de raisonnement sur sessions reprises. <strong>2.1.283</strong> livre <code>/doctor prompt-audit</code>, qui relit CLAUDE.md, skills, agents et commandes pour repérer les tournures écrites pour des modèles plus anciens, plus <code>deniedModels</code> et <code>availableModelsMatch: \"exact\"</code> pour la gouvernance des modèles.",
+      "sources": [
+        {
+          "label": "code.claude.com/changelog#2-1-280",
+          "url": "https://code.claude.com/docs/en/changelog#2-1-280",
+          "primary": true
+        },
+        {
+          "label": "code.claude.com/changelog#2-1-283",
+          "url": "https://code.claude.com/docs/en/changelog#2-1-283",
+          "primary": true
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Claude Code 2.1.280 → 283",
+        "date_long": "22 → 25 septembre 2026",
+        "description": "Claude Code 2.1.280 à 283 (22-25 septembre 2026) : correctif des écritures via symlink en mode auto, /doctor prompt-audit, deniedModels, Opus 5.5 par défaut. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "4",
+            "unit": "versions",
+            "label": "2.1.280 → 283 · 22 au 25 septembre"
+          },
+          {
+            "num": "10",
+            "unit": "refus",
+            "label": "Seuil d'arrêt du tour en mode auto"
+          },
+          {
+            "num": "2 048",
+            "unit": "caractères",
+            "label": "Plafond MCP désormais réglable"
+          },
+          {
+            "num": "Opus 5.5",
+            "unit": "par défaut",
+            "label": "Modèle Opus du CLI depuis 2.1.280"
+          }
+        ],
+        "context_paragraphs": [
+          "La séquence 2.1.280 → 283 couvre quatre jours, du 22 au 25 septembre, et se lit en deux blocs : la sûreté du mode auto d'un côté, la gouvernance d'entreprise de l'autre. <strong>2.1.280</strong> (22 septembre) fait d'Opus 5.5 le modèle Opus par défaut du CLI et corrige trois comportements du mode auto. Le plus sérieux concerne les <strong>liens symboliques</strong> : une écriture dont le chemin traversait un symlink était évaluée sur son orthographe dans l'arbre de travail plutôt que sur sa destination, de sorte que <code>acceptEdits</code>, les règles d'autorisation et le mode auto pouvaient approuver une écriture atterrissant en dehors du répertoire de travail ; le prompt nomme maintenant l'endroit où l'écriture atterrit réellement. Les deux autres corrigent des boucles : une action qu'un contrôle de sûreté refuse d'examiner est désormais refusée une seule fois avec la mention que réessayer ne servira à rien, et quand le contrôle ne répond pas, les tentatives ralentissent puis le tour s'arrête après dix refus consécutifs. La version ajoute aussi <code>CLAUDE_CODE_MAX_MCP_DESCRIPTION_LENGTH</code> pour déplacer le plafond de 2 048 caractères sur les descriptions d'outils MCP.",
+          "<strong>2.1.281</strong> (23 septembre) est la version entreprise : sur la passerelle Claude apps, les upstreams Bedrock acceptent un <code>assume_role</code> via STS — y compris vers un autre compte AWS et avec une session par développeur — et un <code>guardrail: {id, version}</code> appliqué à toutes les requêtes. Elle ajoute <code>telemetry.resource_attributes</code> pour étiqueter la télémétrie, l'élicitation MCP en mode URL sur les connexions au protocole 2026-07-28, des vérifications MCP dans <code>claude plugin validate</code> (entrées <code>.mcp.json</code> silencieusement ignorées, références <code>${user_config.*}</code> non déclarées, URL non sécurisées), et une recommandation de mode auto dans <code>/insights</code> qui estime combien de demandes d'autorisation il aurait pu absorber. Le réglage <code>\"attribution\": false</code> dans <code>settings.json</code> masque toute attribution sur les commits et les PR. <strong>2.1.282</strong> (24 septembre) ajoute <code>maxProseWidth</code> et corrige une série de pertes de raisonnement sur sessions reprises ou continuées, ainsi que l'échec de compaction quand la requête de résumé est refusée — elle repart maintenant sur un modèle de repli.",
+          "<strong>2.1.283</strong> (25 septembre) apporte les deux nouveautés les plus directement exploitables. <code>/doctor prompt-audit</code> (aussi <code>/checkup prompt-audit</code>) relit les fichiers CLAUDE.md, les skills, les agents et les commandes d'un dépôt pour signaler les tournures de prompt écrites pour des modèles plus anciens. Côté gouvernance, <code>deniedModels</code> bloque des modèles nommément même quand <code>availableModels</code> les autorise, et <code>availableModelsMatch: \"exact\"</code> fait qu'une entrée d'<code>availableModels</code> n'autorise que la version exacte nommée — les nouvelles sorties restent bloquées tant qu'elles ne sont pas listées. S'y ajoutent <code>x-claude-code-prompt-id</code> pour regrouper côté passerelle les requêtes servant un même prompt, et les sorties d'outils MCP, WebFetch et WebSearch dans l'événement OpenTelemetry <code>tool.output</code> sous <code>OTEL_LOG_TOOL_CONTENT=1</code>.",
+          "Face à la concurrence, la semaine est symétrique mais pas équivalente. Codex CLI a ajouté GPT-6 Sol et Luna au sélecteur de modèles avec support Bedrock et passé les transcriptions en plein écran par défaut ; Cursor a livré deux bots CI (Rollouts et Security Review). Aucun des deux n'expose d'équivalent à <code>/doctor prompt-audit</code> ni à la paire <code>deniedModels</code> / <code>availableModelsMatch</code> : sur la gouvernance fine des modèles autorisés dans une organisation, Claude Code prend une avance nette cette semaine, là où Cursor investit plutôt la chaîne de livraison."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Le correctif symlink se traite comme un correctif de sécurité, avec une date.</strong> La question à se poser est concrète : existe-t-il, sur les postes ou les runners où Claude Code tourne en mode auto ou avec <code>acceptEdits</code>, des liens symboliques pointant vers des dossiers partagés, des montages réseau ou la racine d'un autre dépôt ? Si oui, toute version antérieure à 2.1.280 pouvait approuver une écriture atterrissant hors du répertoire de travail sans que le prompt le signale. Action : vérifie la version installée sur chaque poste et chaque runner, et impose 2.1.280 au minimum — c'est un correctif, pas une option de confort.",
+          "<strong>Passe <code>/doctor prompt-audit</code> sur le dépôt de veille et sur les skills de support.</strong> Le CLAUDE.md de la veille accumule des consignes depuis des mois, écrites pour des modèles successifs, et le passage à Opus 5.5 change la donne : la pensée est permanente et se règle par <code>effort</code>, donc toutes les tournures qui demandaient au modèle de « réfléchir étape par étape » ou de simuler un raisonnement sont au mieux inutiles. Action : lance <code>/doctor prompt-audit</code> sur ce dépôt et sur les skills de support, et traite ce qu'il remonte comme une liste de dette à purger, pas comme un avis.",
+          "<strong><code>deniedModels</code> et <code>availableModelsMatch</code> donnent enfin de quoi figer les modèles d'un poste de support.</strong> Jusqu'ici, autoriser une famille de modèles laissait passer les nouvelles versions dès leur sortie — pratique en veille, problématique sur un poste où les réponses client doivent rester reproductibles d'une semaine sur l'autre. Avec <code>availableModelsMatch: \"exact\"</code>, une nouvelle version reste bloquée tant qu'elle n'est pas explicitement listée, et <code>deniedModels</code> permet d'exclure un modèle précis. Action : si un poste de support tourne sur une configuration validée, passe-le en mode exact et fais de l'ajout d'un modèle une décision datée plutôt qu'un effet de bord.",
+          "<strong>Réserve.</strong> <code>\"attribution\": false</code> est tentant pour des commits internes, mais le changelog précise que les versions plus anciennes du CLI ignorent entièrement un fichier de réglages qui le contient — à ne poser que sous forme d'objet dans un fichier partagé entre versions, sous peine de désactiver silencieusement tous les autres réglages du fichier sur les postes en retard."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://code.claude.com/docs/en/changelog#2-1-280",
+          "label": "code.claude.com/docs/en/changelog#2-1-280",
+          "meta": "Anthropic · changelog Claude Code, versions 2.1.280 à 2.1.283 · 22 au 25 septembre 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-09-27-claude-opus-5-5",
+            "actor": "Anthropic",
+            "title": "Claude Opus 5.5 — $4/$20, 1M de contexte",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-09-27-cursor-bots-rollouts-security",
+            "actor": "Cursor",
+            "title": "Cursor — bots Rollouts et Security Review",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-09-20-claude-code-2-1-271-278",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.271 → 278",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-09-27-claude-opus-5-5.html",
+            "label": "← Item précédent",
+            "title": "Claude Opus 5.5"
+          },
+          "next": {
+            "href": "2026-09-27-api-inline-tool-definitions.html",
+            "label": "Item suivant →",
+            "title": "Définitions d'outils en cours de conversation"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-09-27-api-inline-tool-definitions",
+      "actor": "Anthropic",
+      "tag": "useful",
+      "date": "2026-09-22",
+      "title": "API Claude — définir un outil en cours de conversation sans invalider le cache de prompt (bêta)",
+      "context_html": "Nouveauté bêta du 22 septembre, sous le header <code>inline-tools-2026-09-15</code> : un outil peut désormais être défini à l'intérieur d'un <strong>message système en cours de conversation</strong>. Un bloc <code>tool_addition</code> porte la définition complète de l'outil (<code>tool: {\"type\": \"tool_definition\", \"definition\": {...}}</code>), ce qui permet d'<strong>ajouter un outil, changer son schéma ou passer un outil serveur à une version plus récente sans toucher au tableau <code>tools</code> ni invalider le cache de prompt</strong>. Le même header couvre l'ajout et le retrait d'outils par référence. Combiné au header <code>mcp-client-2026-09-15</code> du connecteur MCP, la définition peut être une boîte à outils MCP entière, et la réponse enregistre la liste d'outils récupérée auprès de chaque serveur dans un bloc <code>mcp_tool_listing</code> — le renvoyer épingle cette liste pour la suite de la conversation.",
+      "sources": [
+        {
+          "label": "platform.claude.com — release notes 22 sept.",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#september-22-2026",
+          "primary": true
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Outils définis en cours de conversation",
+        "date_long": "22 septembre 2026",
+        "description": "API Claude, 22 septembre 2026 : définitions d'outils dans un message système en cours de conversation, sans invalider le cache de prompt, boîtes à outils MCP incluses. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "0",
+            "unit": "invalidation",
+            "label": "Cache de prompt préservé à l'ajout d'outil"
+          },
+          {
+            "num": "inline-tools",
+            "unit": "2026-09-15",
+            "label": "Header de bêta requis"
+          },
+          {
+            "num": "MCP",
+            "unit": "toolset",
+            "label": "Boîte à outils entière définissable en ligne"
+          },
+          {
+            "num": "$0.20",
+            "unit": "/M tok",
+            "label": "Cache reads Opus 5.5 · ce qu'on préserve"
+          }
+        ],
+        "context_paragraphs": [
+          "Jusqu'ici, la liste d'outils d'une conversation Claude était figée au début de la requête : tout ajout, tout changement de schéma imposait de réécrire le tableau <code>tools</code>, donc de modifier le préfixe du prompt, donc d'<strong>invalider le cache</strong> et de repayer l'intégralité du contexte en écriture. Depuis le 22 septembre, sous le header de bêta <code>inline-tools-2026-09-15</code>, un outil peut être défini dans un <strong>message système placé en cours de conversation</strong> : un bloc <code>tool_addition</code> porte la définition complète via <code>tool: {\"type\": \"tool_definition\", \"definition\": {...}}</code>. Le même header couvre aussi l'ajout et le retrait d'outils par simple référence, sans redonner la définition.",
+          "Le second volet concerne MCP. Avec le header <code>mcp-client-2026-09-15</code> du connecteur MCP en plus, la définition passée en ligne peut être une <strong>boîte à outils MCP entière</strong> plutôt qu'un outil isolé. La réponse enregistre alors, dans un bloc <code>mcp_tool_listing</code>, la liste d'outils que Claude a effectivement récupérée auprès de chaque serveur ; renvoyer ce bloc dans la requête suivante <strong>épingle cette liste</strong>. C'est la réponse à un problème concret des serveurs MCP en production : un serveur qui gagne ou perd un outil en cours de session modifiait jusqu'ici le comportement du modèle sans que l'appelant puisse le figer.",
+          "Le gain se chiffre en cache. Sur Opus 5.5, les cache writes sont à $5/M et les cache reads à $0.20/M : un préfixe de prompt volumineux — documentation produit, procédures, historique — coûte vingt-cinq fois plus cher à réécrire qu'à relire. Toute mécanique qui évitait jusqu'ici de modifier la liste d'outils pour ne pas casser le cache devient inutile, et l'ajout d'un outil en milieu de tâche cesse d'être une décision économique."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>C'est la fonctionnalité qui débloque un serveur MCP de support à outillage variable.</strong> Si le pipeline expose des outils différents selon la machine concernée — un jeu pour la S300X, un autre pour la S600D, un troisième pour les diagnostics d'extrusion — la seule option propre jusqu'ici était de tout charger au départ, ce qui gonfle le prompt, ou de recommencer la conversation, ce qui repaie le cache. Désormais on démarre avec le socle commun et on injecte la boîte à outils machine au moment où le ticket révèle de quel modèle il s'agit. Action : identifie dans le serveur MCP de support les outils qui ne servent que dans une minorité de tickets, et sors-les du chargement initial pour les définir en ligne.",
+          "<strong>L'épinglage par <code>mcp_tool_listing</code> est la partie à mettre en place en premier, même sans toucher au reste.</strong> Un serveur MCP qui évolue pendant qu'une session tourne fait varier le comportement du modèle en cours de traitement de ticket — c'est exactement le genre de non-reproductibilité qui rend un incident impossible à rejouer. Renvoyer le bloc <code>mcp_tool_listing</code> fige la liste pour toute la conversation. Action : ajoute la conservation et le renvoi de ce bloc dans le client MCP du pipeline, et vérifie sur un ticket rejoué que la liste d'outils est bien identique d'un bout à l'autre.",
+          "<strong>Réserve : c'est une bêta, avec deux headers à poser.</strong> <code>inline-tools-2026-09-15</code> seul couvre les outils isolés ; la version MCP exige en plus <code>mcp-client-2026-09-15</code>. Tant que ces headers sont requis, l'API peut changer de forme sans préavis — à ne pas mettre sur le chemin critique d'un client. Action : prototype-le sur l'environnement de veille et sur les tickets internes, et garde le chargement statique en production jusqu'à la sortie de bêta."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#september-22-2026",
+          "label": "platform.claude.com/docs/en/release-notes/overview#september-22-2026",
+          "meta": "Anthropic · release notes plateforme Claude · 22 septembre 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-09-27-claude-opus-5-5",
+            "actor": "Anthropic",
+            "title": "Claude Opus 5.5 — $4/$20, 1M de contexte",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-09-27-anthropic-sdk-python-1-8-0",
+            "actor": "Anthropic",
+            "title": "SDK Python 1.8.0",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-09-27-claude-code-2-1-280-283.html",
+            "label": "← Item précédent",
+            "title": "Claude Code 2.1.280 → 283"
+          },
+          "next": {
+            "href": "2026-09-27-anthropic-sdk-python-1-8-0.html",
+            "label": "Item suivant →",
+            "title": "SDK Python 1.8.0"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-09-27-anthropic-sdk-python-1-8-0",
+      "actor": "Anthropic",
+      "tag": "useful",
+      "date": "2026-09-22",
+      "title": "anthropic-sdk-python 1.8.0 — Opus 5.5, outils en ligne, add_tools() immédiat",
+      "context_html": "Publiée le 22 septembre, le jour même d'Opus 5.5. La version ajoute le support de <code>claude-opus-5-5</code>, des <strong>définitions d'outils en ligne</strong> et de l'<strong>épinglage de liste d'outils MCP</strong> (bêta). Trois correctifs comptent pour qui écrit des agents : <code>add_tools()</code> prend effet immédiatement au lieu d'attendre le tour suivant (issue #874), le tool runner cesse d'envoyer des paramètres réservés aux réponses dans sa requête de compaction (#871), et un plantage à la sortie sous Python 3.13 quand un flux reste ouvert est corrigé. Un même énuméré <code>evaluated_permission</code> est désormais partagé par tous les événements Managed Agents.",
+      "sources": [
+        {
+          "label": "github.com/anthropics/anthropic-sdk-python v1.8.0",
+          "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.8.0",
+          "primary": true
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "SDK Python 1.8.0",
+        "date_long": "22 septembre 2026",
+        "description": "anthropic-sdk-python 1.8.0 (22 septembre 2026) : support Opus 5.5, définitions d'outils en ligne, épinglage MCP, add_tools() immédiat, correctif Python 3.13. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "1.8.0",
+            "unit": "version",
+            "label": "Publiée le 22 septembre · jour d'Opus 5.5"
+          },
+          {
+            "num": "#874",
+            "unit": "issue",
+            "label": "add_tools() prend effet immédiatement"
+          },
+          {
+            "num": "3.13",
+            "unit": "Python",
+            "label": "Plantage à la sortie sur flux ouvert corrigé"
+          },
+          {
+            "num": "MCP",
+            "unit": "pinning",
+            "label": "Épinglage de liste d'outils (bêta)"
+          }
+        ],
+        "context_paragraphs": [
+          "Le SDK Python d'Anthropic passe en <strong>1.8.0</strong> le 22 septembre, synchronisé avec la sortie d'Opus 5.5. Côté fonctionnalités, la version ajoute le support de <code>claude-opus-5-5</code>, les <strong>définitions d'outils en ligne</strong> et l'<strong>épinglage de liste d'outils MCP</strong> en bêta — c'est-à-dire l'exposition, côté client typé, des deux nouveautés d'API du même jour. La progression est rapide : 1.5.0 le 13 septembre, 1.6 et 1.7 la semaine suivante, 1.8.0 le 22.",
+          "Les correctifs sont plus intéressants que les ajouts pour qui fait tourner des agents. <code>add_tools()</code> <strong>prend désormais effet immédiatement</strong> (issue #874) au lieu de n'être visible qu'au tour suivant — un décalage qui, dans une boucle agentique, se traduisait par un tour perdu à chaque fois qu'un outil était ajouté dynamiquement. Le tool runner laisse maintenant de côté les paramètres réservés aux réponses dans sa requête de compaction (#871), ce qui corrige des échecs de compaction en milieu de tâche longue. Enfin, un plantage à la sortie de l'interpréteur sous <strong>Python 3.13</strong>, déclenché quand un flux de streaming restait ouvert, est corrigé : il touchait typiquement les scripts qui sortent sur exception sans fermer proprement leur stream.",
+          "Le reste est de la consolidation : un même énuméré <code>evaluated_permission</code> partagé par tous les événements Managed Agents plutôt qu'un par événement, et une série de mises à jour de documentation sur les références API Dreams, User Profiles et les memory stores des Managed Agents."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Le correctif <code>add_tools()</code> est celui qui change quelque chose dans une boucle d'agent.</strong> Si le pipeline de support ajoute des outils en cours de traitement — ce que les définitions d'outils en ligne du 22 septembre rendent justement pertinent — la version antérieure perdait un aller-retour complet avec le modèle à chaque ajout. À $4/M en entrée sur Opus 5.5, un tour perdu sur un prompt de support chargé n'est pas gratuit. Action : épingle <code>anthropic>=1.8.0</code> dans les dépendances du pipeline avant de commencer à ajouter des outils dynamiquement.",
+          "<strong>Le plantage Python 3.13 mérite une vérification de version d'interpréteur.</strong> Le symptôme — un plantage à la sortie quand un flux de streaming n'a pas été fermé — est du genre à passer pour un problème de code applicatif et à coûter une demi-journée de recherche. Action : si des scripts de la chaîne de veille ou du pipeline support tournent sous Python 3.13 avec du streaming, monte le SDK plutôt que de chercher la fuite ailleurs.",
+          "<strong>Réserve.</strong> Les deux nouveautés exposées (outils en ligne, épinglage MCP) sont en bêta côté API et le restent côté SDK : disposer du support typé ne les rend pas contractualisables. Action : traite 1.8.0 comme une mise à jour de maintenance à faire maintenant, et les fonctions bêta comme un sujet de prototype séparé."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.8.0",
+          "label": "github.com/anthropics/anthropic-sdk-python/releases/tag/v1.8.0",
+          "meta": "Anthropic · release GitHub anthropic-sdk-python v1.8.0 · 22 septembre 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-09-27-api-inline-tool-definitions",
+            "actor": "Anthropic",
+            "title": "Définitions d'outils en cours de conversation",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-09-20-anthropic-sdk-python-1-6-1-7",
+            "actor": "Anthropic",
+            "title": "anthropic-sdk-python 1.6 et 1.7",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-09-27-api-inline-tool-definitions.html",
+            "label": "← Item précédent",
+            "title": "Définitions d'outils en cours de conversation"
+          },
+          "next": {
+            "href": "2026-09-27-compliance-api-facturation-refus.html",
+            "label": "Item suivant →",
+            "title": "Facturation des refus et Activity Feed"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-09-27-compliance-api-facturation-refus",
+      "actor": "Anthropic",
+      "tag": "useful",
+      "date": "2026-09-24",
+      "title": "Anthropic refacture les refus sur trois catégories et retire les noms de fichiers de l'Activity Feed",
+      "context_html": "Deux changements du 24 septembre, l'un sur la facture, l'autre sur l'audit. Anthropic <strong>reprend la facturation des refus survenant avant toute sortie</strong> quand <code>stop_details.category</code> vaut <code>\"bio\"</code>, <code>\"frontier_llm\"</code> ou <code>\"reasoning_extraction\"</code> — les trois catégories où les faux positifs sont mesurés à faible volume ; ces refus sont facturés au tarif du modèle qui a tourné, les refus en cours de flux l'étaient déjà, et les autres catégories restent non facturées. Par ailleurs, l'<strong>Activity Feed de la Compliance API ne renvoie plus les noms de fichiers, de documents de projet ni les titres d'artifacts</strong> : les champs <code>filename</code> et <code>title</code> sont désormais vides ou absents, <strong>y compris sur les activités enregistrées avant ce changement</strong>, et il faut une clé d'accès Compliance avec le scope <code>read:compliance_user_data</code> pour retrouver un nom à partir de son identifiant. Dans le même lot, les endpoints de sessions locales sortent de bêta pour Claude for Microsoft 365 (Excel, PowerPoint, Word, Outlook).",
+      "sources": [
+        {
+          "label": "platform.claude.com — release notes 24 sept.",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#september-24-2026",
+          "primary": true
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Refus facturés et Activity Feed",
+        "date_long": "24 septembre 2026",
+        "description": "Anthropic, 24 septembre 2026 : reprise de la facturation des refus sur trois catégories, retrait rétroactif des noms de fichiers de l'Activity Feed, sessions locales GA sur Microsoft 365. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "3",
+            "unit": "catégories",
+            "label": "bio · frontier_llm · reasoning_extraction"
+          },
+          {
+            "num": "rétroactif",
+            "unit": "Activity Feed",
+            "label": "Noms retirés aussi sur l'historique"
+          },
+          {
+            "num": "GA",
+            "unit": "M365",
+            "label": "Sessions locales hors bêta · Office"
+          },
+          {
+            "num": "read:compliance_user_data",
+            "unit": "scope",
+            "label": "Requis pour résoudre un nom"
+          }
+        ],
+        "context_paragraphs": [
+          "Le premier changement est une ligne de facture. Anthropic <strong>reprend la facturation des refus qui surviennent avant toute sortie</strong> lorsque <code>stop_details.category</code> vaut <code>\"bio\"</code>, <code>\"frontier_llm\"</code> ou <code>\"reasoning_extraction\"</code>, en justifiant le choix par le faible volume de faux positifs mesuré sur ces trois catégories. Ces requêtes sont facturées comme n'importe quelle autre, au tarif du modèle qui les a traitées. Les refus intervenant en cours de flux étaient déjà facturés, les refus avant sortie dans les autres catégories restent gratuits, et le crédit de repli est inchangé. Le changement s'applique sur toutes les plateformes.",
+          "Le second touche l'audit. L'<strong>Activity Feed de la Compliance API cesse de renvoyer les noms de fichiers, les noms de documents de projet et les titres d'artifacts</strong> : les champs <code>filename</code> et <code>title</code> des activités correspondantes sont désormais toujours vides ou omis. Le point important est la portée : le retrait s'applique <strong>aussi aux activités enregistrées avant ce changement</strong>, donc à l'historique déjà collecté. Pour retrouver un nom ou un titre à partir de l'identifiant porté par l'activité, il faut passer par une clé d'accès Compliance dotée du scope <code>read:compliance_user_data</code>.",
+          "Dans le même lot, les endpoints de sessions locales de la Compliance API sortent de bêta pour les sessions Claude for Microsoft 365 dans Excel, PowerPoint, Word et Outlook — les valeurs de <code>product_surface</code> commençant par <code>office_agents</code>."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Le retrait rétroactif des noms de fichiers est le point à traiter en priorité, parce qu'il casse des choses déjà en place.</strong> Tout tableau de bord, export ou procédure de conformité qui affichait un nom de fichier depuis l'Activity Feed affiche désormais du vide, y compris sur des données historiques déjà ingérées. Action : vérifie si quelque chose côté Lynxter consomme l'Activity Feed, et si oui, décide soit de demander une clé avec le scope <code>read:compliance_user_data</code>, soit d'assumer de ne plus afficher que des identifiants — mais ne laisse pas un champ se vider sans que personne ne s'en aperçoive.",
+          "<strong>La facturation des refus est une ligne à surveiller, pas une ligne à craindre.</strong> Sur un usage de support technique en impression 3D, les catégories concernées — biologie, modèles frontière, extraction de raisonnement — ne devraient pratiquement jamais se déclencher ; le risque réel est un faux positif isolé sur un prompt mal tourné, désormais facturé au tarif Opus 5.5. Action : ajoute un compteur des réponses portant un <code>stop_details.category</code> dans la télémétrie du pipeline, et regarde le chiffre dans un mois plutôt que de spéculer maintenant.",
+          "<strong>La GA des sessions locales sur Microsoft 365 est à noter pour plus tard.</strong> Si des postes Lynxter utilisent Claude dans Excel, Word ou Outlook, les sessions correspondantes deviennent auditables via un endpoint stable — c'est la condition pour pouvoir répondre à une question de conformité sur l'usage de l'IA en interne. Action : pas d'urgence, mais range l'information avec l'argumentaire RFP sur la conformité, où la question « pouvez-vous auditer l'usage de l'IA par vos équipes ? » revient régulièrement."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#september-24-2026",
+          "label": "platform.claude.com/docs/en/release-notes/overview#september-24-2026",
+          "meta": "Anthropic · release notes plateforme Claude · 24 septembre 2026"
+        },
+        "related": [
+          {
+            "slug": "2026-09-27-claude-opus-5-5",
+            "actor": "Anthropic",
+            "title": "Claude Opus 5.5 — $4/$20, 1M de contexte",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-09-20-cowork-devient-claude",
+            "actor": "Anthropic",
+            "title": "Cowork devient Claude",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-09-27-anthropic-sdk-python-1-8-0.html",
+            "label": "← Item précédent",
+            "title": "SDK Python 1.8.0"
+          },
+          "next": {
+            "href": "2026-09-27-gpt-6-sol-luna.html",
+            "label": "Item suivant →",
+            "title": "GPT-6 Sol et Luna"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-09-27-cache-diagnostics-ga",
+      "actor": "Anthropic",
+      "tag": "info",
+      "date": "2026-09-23",
+      "title": "Les cache diagnostics sortent de bêta sur l'API Claude",
+      "context_html": "Depuis le 23 septembre, les cache diagnostics ne demandent plus le header <code>cache-diagnosis-2026-04-07</code> : il suffit d'inclure l'objet <code>diagnostics</code> dans une requête Messages pour les activer, et les requêtes qui envoient encore le header continuent de fonctionner. Les réponses de <code>POST /v1/messages</code> portent désormais toujours le champ <code>diagnostics</code>, à <code>null</code> quand la requête ne l'a pas demandé.",
+      "sources": [
+        {
+          "label": "platform.claude.com — release notes 23 sept.",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#september-23-2026",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-09-27-claude-decouvre-arts",
+      "actor": "Anthropic",
+      "tag": "info",
+      "date": "2026-09-23",
+      "title": "Claude identifie un système enzymatique inédit à répétitions de type CRISPR",
+      "context_html": "Anthropic publie le 23 septembre la découverte par Claude d'une famille d'enzymes non caractérisée, les <strong>array-associated reverse transcriptases (ARTs)</strong> : une transcriptase inverse, une protéine accessoire de fonction inconnue et des réseaux de répétitions d'ADN proches des motifs CRISPR, trouvés chez des bactériophages. Le chiffrage de la campagne est publié — environ <strong>950 agents sur 21 heures</strong>, 210 millions de tokens consommés, plus de 200 000 transcriptases inverses collectées, 3 500 systèmes candidats et 20 finalistes analysés. Feng Zhang (MIT, Broad Institute) a relu le pré-print sans être co-auteur.",
+      "sources": [
+        {
+          "label": "anthropic.com/news/claude-discovers-novel-enzyme-system",
+          "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-09-27-gpt-6-sol-luna",
+      "actor": "OpenAI",
+      "tag": "lynxter",
+      "date": "2026-09-22",
+      "title": "GPT-6 Sol et Luna — $2/$10 et $0.10/$0.50 par M tokens, prix API divisés par deux",
+      "context_html": "OpenAI sort <strong>GPT-6 Sol</strong> et <strong>GPT-6 Luna</strong> le 22 septembre, le jour même d'Opus 5.5, en coupant ses prix API de <strong>50 %</strong> face aux GPT-5.6 qu'ils remplacent : <strong>$2/$10 par M tokens pour Sol</strong>, <strong>$0.10/$0.50 pour Luna</strong>. Les deux sont entraînés avec les mêmes méthodes que GPT-6 Astra et se placent sous lui — Sol comme option intermédiaire pour le travail exigeant du quotidien, Luna pour le volume. Sur <strong>AutomationBench</strong>, Sol en effort xhigh atteint <strong>33.2 % à $0.27 la tâche</strong>, contre 26.9 % pour Claude Opus 5 en max à 11.1× le coût et 30.3 % pour GPT-6 Astra en low à 3.9× le coût ; sur OSWorld 2.0 hors ligne, Sol en xhigh fait 60.5 % contre 60.3 % pour Opus 5 en medium, avec un coût par tâche inférieur d'environ 80 %. OpenAI annonce moitié moins d'erreurs qu'en 5.6 sur les tests de factualité. Déploiement dans ChatGPT Work et Codex pour Plus, Pro, Business, Enterprise et Edu ; Luna arrive aux comptes Free et Go dans l'application de bureau.",
+      "sources": [
+        {
+          "label": "openai.com/index/introducing-gpt-6-sol-and-luna",
+          "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+          "primary": true
+        },
+        {
+          "label": "techcrunch.com — 22 septembre 2026",
+          "url": "https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/",
+          "primary": false
+        },
+        {
+          "label": "venturebeat.com — 22 septembre 2026",
+          "url": "https://venturebeat.com/technology/openai-releases-gpt-6-sol-and-luna-models-slashing-api-costs-50-or-more",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "GPT-6 Sol et Luna",
+        "date_long": "22 septembre 2026",
+        "description": "GPT-6 Sol et Luna (22 septembre 2026) : $2/$10 et $0.10/$0.50 par M tokens, −50 % face aux GPT-5.6, AutomationBench à 33.2 % pour $0.27 la tâche. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "$2/$10",
+            "unit": "M tok",
+            "label": "GPT-6 Sol · officiel"
+          },
+          {
+            "num": "$0.10/$0.50",
+            "unit": "M tok",
+            "label": "GPT-6 Luna · officiel"
+          },
+          {
+            "num": "33.2",
+            "unit": "%",
+            "label": "AutomationBench Sol xhigh · $0.27/tâche"
+          },
+          {
+            "num": "−50",
+            "unit": "%",
+            "label": "Prix API vs GPT-5.6 remplacés"
+          }
+        ],
+        "context_paragraphs": [
+          "OpenAI publie <strong>GPT-6 Sol</strong> et <strong>GPT-6 Luna</strong> le 22 septembre 2026 — le jour même où Anthropic sort Opus 5.5 — et complète ainsi la gamme GPT-6 sous GPT-6 Astra, arrivé le 3 septembre. Sol est positionné comme l'option intermédiaire pour le travail exigeant du quotidien, Luna comme l'option à volume. Les deux sont entraînés avec les mêmes méthodes qu'Astra, OpenAI revendiquant des progrès sur le travail professionnel, la factualité, le code, le computer use et l'alignement. Le geste central est tarifaire : <strong>$2 en entrée et $10 en sortie par million de tokens pour Sol</strong>, <strong>$0.10 et $0.50 pour Luna</strong>, soit environ <strong>la moitié du prix promotionnel des GPT-5.6</strong> qu'ils remplacent.",
+          "Les chiffres publiés sont construits pour argumenter sur le rapport performance/prix plutôt que sur le score brut. Sur <strong>AutomationBench</strong>, Sol en effort xhigh atteint <strong>33.2 % pour $0.27 par tâche</strong> : au-dessus de Claude Opus 5 en effort max (26.9 %, 11.1 fois le coût) et au-dessus de GPT-6 Astra en low (30.3 %, 3.9 fois le coût). Sur <strong>OSWorld 2.0 hors ligne</strong>, Sol en xhigh fait 60.5 % contre 60.3 % pour Opus 5 en medium, avec un coût par tâche inférieur d'environ 80 %. OpenAI annonce enfin moitié moins d'erreurs que la génération 5.6 sur les tests de factualité. La comparaison choisie est instructive : les points de référence sont Opus 5, pas Opus 5.5 ni Fable 5.1, et aucun des deux modèles ne prétend approcher Astra.",
+          "Le contraste avec la sortie d'Anthropic le même jour est net et structurant. Anthropic baisse de 20 % ($5/$25 → $4/$20) tout en déplaçant le haut de gamme — Terminal-Bench 4.0 passe de 52.3 % à 66.4 %. OpenAI baisse de 50 % sur le milieu et le bas de gamme sans toucher au sommet, Astra restant son modèle frontière. Les deux acteurs répondent donc à la même pression sur des segments différents : Anthropic défend la couche agentique haute, OpenAI attaque le coût par tâche. Le déploiement suit cette logique : Sol et Luna arrivent dans ChatGPT Work et Codex pour les offres Plus, Pro, Business, Enterprise et Edu, et Luna descend jusqu'aux comptes Free et Go dans l'application de bureau."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Luna à $0.10/$0.50 redéfinit le plancher de coût des étages non critiques du pipeline support.</strong> Tout ce qui, dans la chaîne de traitement d'un ticket, ne demande pas de raisonnement — classification par machine concernée, détection de langue, extraction du numéro de série, routage vers la bonne file — tourne aujourd'hui sur un modèle bien plus cher que nécessaire. À $0.10 le million de tokens en entrée, l'étage de tri devient une ligne budgétaire négligeable. Action : isole les étapes purement mécaniques du pipeline, fais tourner une semaine de tickets en double sur Luna et sur le modèle actuel, et compare le taux de classification correcte avant de basculer — la bascule ne vaut que si la qualité tient.",
+          "<strong>Sol est le vrai point de comparaison pour l'étage de rédaction, et il faut le mesurer sur tes tickets, pas sur AutomationBench.</strong> Les chiffres publiés positionnent Sol face à Opus 5 en medium et max, pas face à Opus 5.5 ni à Fable 5.1 — la comparaison qui t'intéresse n'existe donc pas dans les tables officielles, et personne ne la produira à ta place. Ce que tu peux affirmer : Sol coûte $2/$10 contre $4/$20 pour Opus 5.5, soit la moitié. Action : monte un banc sur une trentaine de tickets S300X/S600D réels avec réponse validée, passe-les sur Sol et sur Opus 5.5, et chiffre l'écart de qualité en face de l'écart de prix — c'est la seule donnée qui permettra de trancher.",
+          "<strong>Réserve sur la dépendance et sur l'argumentaire.</strong> Deux baisses de prix simultanées sur deux fournisseurs, le même jour, signalent une guerre tarifaire qui n'est pas finie : geler une architecture sur un modèle précis maintenant, c'est risquer de repayer la migration dans trois mois. Garde les identifiants de modèle en configuration, pas en dur. Et pour l'argumentaire RFP, note la ligne utile : le coût par tâche du support assisté a été divisé par deux en une semaine chez les deux principaux fournisseurs — c'est un argument de tenue des prix dans le temps, à condition de ne pas promettre un tarif contractuel sur un marché qui bouge à ce rythme."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+          "label": "openai.com/index/introducing-gpt-6-sol-and-luna/",
+          "meta": "OpenAI · annonce officielle GPT-6 Sol et Luna · 22 septembre 2026 · page non fetchée (egress bloqué sur openai.com), recoupée par TechCrunch et VentureBeat"
+        },
+        "related": [
+          {
+            "slug": "2026-09-27-claude-opus-5-5",
+            "actor": "Anthropic",
+            "title": "Claude Opus 5.5 — $4/$20, 1M de contexte",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-09-06-openai-gpt-6-astra",
+            "actor": "OpenAI",
+            "title": "GPT-6 Astra",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-09-27-grok-4-7",
+            "actor": "xAI",
+            "title": "Grok 4.7 — prix inchangé, base plus large",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-09-27-compliance-api-facturation-refus.html",
+            "label": "← Item précédent",
+            "title": "Facturation des refus et Activity Feed"
+          },
+          "next": {
+            "href": "2026-09-27-meta-connect-muse.html",
+            "label": "Item suivant →",
+            "title": "Meta Connect 2026 — Muse"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-09-27-codex-gpt-6-sol-luna",
+      "actor": "OpenAI",
+      "tag": "info",
+      "date": "2026-09-22",
+      "title": "Codex CLI ajoute GPT-6 Sol et Luna avec support Bedrock et passe les transcriptions en plein écran",
+      "context_html": "Dans la foulée de la sortie du 22 septembre, Codex CLI ajoute <strong>GPT-6 Sol et Luna</strong> au sélecteur de modèles, avec support Amazon Bedrock et une invite de limite de débit qui recommande Luna. Les transcriptions plein écran deviennent le comportement par défaut, avec recherche dans la transcription, sélection à la souris et copie au clic droit, et le démarrage automatique du serveur en arrière-plan est activé pour les sessions interactives éligibles.",
+      "sources": [
+        {
+          "label": "developers.openai.com/codex/changelog",
+          "url": "https://developers.openai.com/codex/changelog",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-09-27-gemini-4-post-training",
+      "actor": "Google DeepMind",
+      "tag": "info",
+      "date": "2026-09-23",
+      "title": "Gemini 4 en début de post-training — annonce non matérialisée",
+      "context_html": "Koray Kavukcuoglu, SVP de Google DeepMind depuis le 12 août, indique lors de l'AI Agenda Live Summit de The Information (23-24 septembre) que <strong>Gemini 4 est entré en début de post-training</strong> et sortira « bien avant la fin de l'année ». Aucune date, aucun chiffre, aucune page officielle : rien n'est sorti du côté du changelog de l'API Gemini dans la fenêtre. À retenir comme calendrier probable, pas comme annonce — rapporté par Yahoo Finance d'après le sommet.",
+      "sources": [
+        {
+          "label": "finance.yahoo.com — compte rendu du sommet",
+          "url": "https://finance.yahoo.com/technology/ai/articles/google-gemini-4-enters-post-122454510.html",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-09-27-meta-connect-muse",
+      "actor": "Meta",
+      "tag": "useful",
+      "date": "2026-09-23",
+      "title": "Meta Connect 2026 — Muse passe à 3,4 millions de téléchargements et gagne le computer use sur Mac",
+      "context_html": "Meta consacre sa conférence Connect, ouverte le 23 septembre à Menlo Park, à son agent <strong>Muse</strong>, lancé début septembre et déjà à <strong>plus de 3,4 millions de téléchargements</strong>. Les capacités annoncées : <strong>computer use sur Mac</strong>, visio avec l'avatar de l'agent (baptisé Jolly), <strong>adresse e-mail dédiée</strong> pour l'agent, nouveaux partenaires et connecteurs, intégration aux lunettes connectées, et un mode vocal où Muse continue de travailler en arrière-plan pendant la conversation. Muse s'appuie sur Muse Spark, le modèle multimodal agentique de Meta. Le reste du keynote est matériel : Meta VR Glasses à 1 299,99 $ au printemps 2027, Ray-Ban Meta Audio à 349 $, Ray-Ban Meta Gen 3 à 449 $.",
+      "sources": [
+        {
+          "label": "meta.com/blog/meta-connect-2026-everything-we-announced",
+          "url": "https://www.meta.com/blog/meta-connect-2026-everything-we-announced/",
+          "primary": true
+        },
+        {
+          "label": "techcrunch.com — 23 septembre 2026",
+          "url": "https://techcrunch.com/2026/09/23/everything-new-coming-to-metas-ai-agent-muse/",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Meta Connect 2026 — Muse",
+        "date_long": "23 septembre 2026",
+        "description": "Meta Connect 2026 (23 septembre) : Muse à 3,4 millions de téléchargements, computer use sur Mac, visio avec avatar, adresse e-mail dédiée. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "3,4 M",
+            "unit": "téléchargements",
+            "label": "Muse depuis début septembre · officiel"
+          },
+          {
+            "num": "Mac",
+            "unit": "computer use",
+            "label": "Annoncé, pas encore livré"
+          },
+          {
+            "num": "1 299,99",
+            "unit": "$",
+            "label": "Meta VR Glasses · printemps 2027"
+          },
+          {
+            "num": "23 sept.",
+            "unit": "2026",
+            "label": "Ouverture de Connect · Menlo Park"
+          }
+        ],
+        "context_paragraphs": [
+          "Mark Zuckerberg ouvre Meta Connect 2026 le 23 septembre à Menlo Park avec un keynote centré sur <strong>Muse</strong>, l'agent personnel lancé début septembre. Le chiffre mis en avant est l'adoption : <strong>plus de 3,4 millions de téléchargements</strong> en trois semaines, avec une position de tête dans les classements de téléchargement américains. Muse s'appuie sur <strong>Muse Spark</strong>, le modèle multimodal agentique que Meta a sorti début septembre — le premier modèle propriétaire depuis la formation de Superintelligence Labs, et le signal d'un décrochage assumé de la ligne Llama en open weights.",
+          "Les capacités annoncées visent l'ancrage dans le quotidien plutôt que la performance brute : <strong>computer use sur Mac</strong>, visio avec l'avatar de l'agent (nommé Jolly), <strong>adresse e-mail dédiée</strong> permettant de s'adresser à l'agent comme à un correspondant, nouveaux partenaires et connecteurs vers les applications et services de l'utilisateur, intégration aux lunettes connectées, et un mode vocal où l'agent poursuit le travail en arrière-plan pendant que la conversation continue. Aucun benchmark n'accompagne ces annonces, et aucune date de disponibilité précise n'est donnée pour le computer use sur Mac.",
+          "Le reste du keynote est matériel et sans rapport direct avec la couche agent : Meta VR Glasses — le Project Phoenix suivi depuis des mois — à environ 100 grammes, avec un boîtier de calcul relié par fibre optique, à <strong>1 299,99 $ au printemps 2027</strong> ; Ray-Ban Meta Audio, premières lunettes Meta sans caméra, à 349 $ ; Ray-Ban Meta Gen 3 à 449 $ ; et le déploiement de Ray-Ban Display au Canada, au Royaume-Uni, en France, en Italie et en Allemagne."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Rien à déployer, mais un point de comparaison à tenir sur les agents desktop.</strong> Le computer use sur Mac annoncé par Meta rejoint une liste où figurent déjà Claude (avec le toolset <code>computer_toolset_20260801</code> imposé par Opus 5.5) et GPT-6 via Codex : trois acteurs qui pilotent une machine de bureau, avec des maturités très différentes. Meta est le seul des trois à viser le grand public plutôt que le développeur, et c'est précisément ce qui rend l'échéance intéressante pour le support : le jour où un client pilote son poste avec un agent grand public, les procédures d'assistance à distance changent de forme. Action : note la date de disponibilité effective du computer use Mac de Muse quand elle sortira, et garde-la dans le suivi des agents desktop à côté de Claude et Codex.",
+          "<strong>L'adresse e-mail dédiée à l'agent est le détail qui mérite une décision, pas une observation.</strong> Si un agent personnel peut recevoir et envoyer des e-mails pour le compte d'un utilisateur, une partie des demandes de support arrivera tôt ou tard d'un agent et non d'un humain — avec un ton et une structure différents, et sans la patience d'un client. Action : vérifie si les procédures de support actuelles supposent quelque part un interlocuteur humain (relances, questions ouvertes, demandes de photo), et repère celles qui échoueraient face à un correspondant automatique.",
+          "<strong>Réserve.</strong> Tout ce qui précède est annoncé en keynote, sans date ni benchmark, et Meta a un historique de fonctionnalités présentées à Connect qui arrivent plusieurs trimestres plus tard ou pas du tout. Le seul chiffre solide de cet item est l'adoption (3,4 millions de téléchargements) ; le reste est un calendrier d'intentions. Action : ne rien inscrire dans une feuille de route Lynxter sur cette base, et réévaluer à la première livraison effective."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://www.meta.com/blog/meta-connect-2026-everything-we-announced/",
+          "label": "meta.com/blog/meta-connect-2026-everything-we-announced/",
+          "meta": "Meta · récapitulatif officiel Meta Connect 2026 · 23 septembre 2026 · page non fetchée (egress bloqué sur meta.com), recoupée par TechCrunch et Engadget"
+        },
+        "related": [
+          {
+            "slug": "2026-09-13-meta-muse-agent-personnel",
+            "actor": "Meta",
+            "title": "Muse — agent personnel de Meta",
+            "tag": "🛠"
+          },
+          {
+            "slug": "2026-09-27-claude-opus-5-5",
+            "actor": "Anthropic",
+            "title": "Claude Opus 5.5 — $4/$20, 1M de contexte",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-09-27-gpt-6-sol-luna.html",
+            "label": "← Item précédent",
+            "title": "GPT-6 Sol et Luna"
+          },
+          "next": {
+            "href": "2026-09-27-grok-4-7.html",
+            "label": "Item suivant →",
+            "title": "Grok 4.7"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-09-27-grok-4-7",
+      "actor": "xAI",
+      "tag": "useful",
+      "date": "2026-09-21",
+      "title": "Grok 4.7 — prix inchangé à $2/$6, Terminal-Bench 4.0 de 20.3 à 38.0 %, EEBench à 64.0 %",
+      "context_html": "xAI sort <strong>Grok 4.7</strong> le 21 septembre sur une base plus large que la 4.6, avec un entraînement par renforcement plus long sur des tâches de plusieurs heures, une auto-vérification renforcée et le harnais Grok Bot natif. Le <strong>prix ne bouge pas</strong> : $2 en entrée et $6 en sortie par M tokens, $0.50 pour l'entrée en cache, avec un palier à $4/$1/$12 au-delà de 200k tokens de prompt. Contexte de <strong>500k tokens</strong>. Les gains sont nets sur les tâches longues — <strong>Terminal-Bench 4.0 de 20.3 à 38.0 %</strong>, DeepSWE v1.1 de 65.2 à 71.0 % en effort high, CursorBench 4.0 de 40.4 à 46.3 % — mais restent loin d'Opus 5.5 (66.4 % sur Terminal-Bench 4.0, 57.8 % sur CursorBench 4.0). L'exception est <strong>EEBench, l'ingénierie électrique, où Grok 4.7 passe de 53.0 à 64.0 % et devance tous les modèles de la comparaison, Fable 5.1 compris</strong>.",
+      "sources": [
+        {
+          "label": "x.ai/news/grok-4-7",
+          "url": "https://x.ai/news/grok-4-7",
+          "primary": true
+        },
+        {
+          "label": "marktechpost.com — 21 septembre 2026",
+          "url": "https://www.marktechpost.com/2026/09/21/spacexai-releases-grok-4-7/",
+          "primary": false
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Grok 4.7",
+        "date_long": "21 septembre 2026",
+        "description": "Grok 4.7 (21 septembre 2026) : prix inchangé à $2/$6, Terminal-Bench 4.0 de 20.3 à 38.0 %, EEBench à 64.0 % en tête du comparatif. Implications Lynxter.",
+        "stats": [
+          {
+            "num": "$2/$6",
+            "unit": "M tok",
+            "label": "Inchangé vs Grok 4.6 · officiel"
+          },
+          {
+            "num": "64.0",
+            "unit": "%",
+            "label": "EEBench · 53.0 % en 4.6 · en tête"
+          },
+          {
+            "num": "38.0",
+            "unit": "%",
+            "label": "Terminal-Bench 4.0 · 20.3 % en 4.6"
+          },
+          {
+            "num": "500k",
+            "unit": "tokens",
+            "label": "Fenêtre de contexte"
+          }
+        ],
+        "context_paragraphs": [
+          "xAI publie <strong>Grok 4.7</strong> le 21 septembre 2026, ouvrant la séquence de trois sorties frontière de la semaine. Le modèle repose sur une base pré-entraînée plus large que celle de Grok 4.6, avec un entraînement par renforcement plus long sur un mélange de tâches plus difficiles, pondéré vers les problèmes demandant plusieurs heures, une auto-vérification renforcée et le harnais Grok Bot en natif. Le <strong>tarif ne bouge pas</strong> : $2 en entrée, $6 en sortie et $0.50 pour l'entrée en cache par million de tokens, avec un palier — au-delà de 200 000 tokens de prompt, la requête entière bascule à $4/$1/$12. La fenêtre est de <strong>500 000 tokens</strong>, l'entrée est multimodale (texte et images), et la coupure de pré-entraînement est à juin 2026 avec des données complémentaires jusqu'en août.",
+          "Les progrès portent là où xAI a concentré son entraînement, les tâches longues. <strong>Terminal-Bench 4.0 passe de 20.3 % à 38.0 %</strong>, DeepSWE v1.1 de 65.2 % à 71.0 % en effort high, CursorBench 4.0 de 40.4 % à 46.3 %. Sur la table publiée par xAI, Grok 4.7 bat Grok 4.6 sur les sept benchmarks retenus et GPT-5.6 Sol Max sur quatre. Mais la mise en perspective avec la sortie d'Anthropic le lendemain est sévère : Opus 5.5 affiche <strong>66.4 % sur Terminal-Bench 4.0</strong> et <strong>57.8 % sur CursorBench 4.0</strong>, soit 28 et 11 points au-dessus. Fable 5.1 Max devance aussi Grok 4.7 sur CursorBench, Terminal-Bench, GDPval et HealthBench.",
+          "L'exception est notable et ne relève pas du code. Sur <strong>EEBench</strong>, le benchmark d'ingénierie électrique, Grok 4.7 monte de <strong>53.0 % à 64.0 % et devance tous les modèles du comparatif, Fable 5.1 inclus</strong>. C'est le seul domaine où xAI prend la tête, et le seul argument technique qui distingue réellement ce modèle dans un paysage où il est ailleurs distancé — à un tiers du prix d'Opus 5.5 en sortie."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Le score EEBench est le seul élément de cette sortie qui mérite un test chez Lynxter.</strong> Le diagnostic d'une S300X ou d'une S600D touche régulièrement à l'électronique — cartes de commande, câblage, capteurs, alimentations, lecture de schémas — et c'est précisément ce que mesure EEBench, où Grok 4.7 passe devant tout le monde à 64.0 %. À $2/$6 contre $4/$20 pour Opus 5.5, un étage spécialisé sur les tickets électroniques coûterait un tiers du prix en sortie. Action : constitue un lot d'une vingtaine de tickets à composante électronique avec diagnostic validé, passe-les sur Grok 4.7 et sur Opus 5.5, et regarde si l'avance EEBench se traduit sur des cas réels ou reste un effet de benchmark.",
+          "<strong>Sur tout le reste, il n'y a pas de raison de bouger.</strong> L'écart de 28 points sur Terminal-Bench 4.0 face à Opus 5.5 disqualifie Grok 4.7 pour la partie agentique du pipeline, et le palier tarifaire au-delà de 200 000 tokens de prompt — la requête entière repassant à $4/$1/$12 — le rend imprévisible sur les prompts de support chargés, là où Opus 5.5 offre 1M de contexte à tarif linéaire. Action : si un test EEBench est concluant, cantonne Grok 4.7 à un appel court et ciblé sur le diagnostic électronique, et surtout pas à l'étage qui porte le contexte produit.",
+          "<strong>Réserve sur la source des chiffres.</strong> Les comparaisons EEBench et les gains annoncés viennent de la table publiée par xAI, qui choisit ses points de référence — GPT-5.6 Sol Max et Fable 5.1, pas Opus 5.5 sorti le lendemain. Aucun tiers n'a encore reproduit le score EEBench. Action : traite le 64.0 % comme une hypothèse à vérifier sur tes propres cas, pas comme un acquis à citer dans un argumentaire."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://x.ai/news/grok-4-7",
+          "label": "x.ai/news/grok-4-7",
+          "meta": "xAI · annonce officielle Grok 4.7 · 21 septembre 2026 · page non fetchée (egress bloqué sur x.ai), recoupée par MarkTechPost et Crowdfund Insider"
+        },
+        "related": [
+          {
+            "slug": "2026-09-27-gpt-6-sol-luna",
+            "actor": "OpenAI",
+            "title": "GPT-6 Sol et Luna",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-09-20-xai-grok-build-memoire",
+            "actor": "xAI",
+            "title": "Grok Build et mémoire",
+            "tag": "🛠"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-09-27-meta-connect-muse.html",
+            "label": "← Item précédent",
+            "title": "Meta Connect 2026 — Muse"
+          },
+          "next": {
+            "href": "2026-09-27-cursor-bots-rollouts-security.html",
+            "label": "Item suivant →",
+            "title": "Cursor — bots Rollouts et Security Review"
+          }
+        }
+      }
+    },
+    {
+      "slug": "2026-09-27-cursor-bots-rollouts-security",
+      "actor": "Cursor",
+      "tag": "useful",
+      "date": "2026-09-23",
+      "title": "Cursor livre deux bots CI — Rollouts suit la santé des déploiements, Security Review audite chaque PR",
+      "context_html": "Cursor sort le 23 septembre deux bots qui couvrent le dernier kilomètre de la livraison. <strong>Rollouts</strong> surveille chaque changement pendant son déploiement et remonte son état de santé <strong>par environnement</strong>. <strong>Security Review</strong> signale les bugs exploitables sur chaque pull request. C'est le prolongement direct de Projects, sorti le 10 septembre, qui avait introduit l'agent coordinateur et les agents cloud déclenchés par événement : Cursor complète sa chaîne en aval du code, là où Claude Code a passé la semaine sur la sûreté du mode auto et la gouvernance des modèles.",
+      "sources": [
+        {
+          "label": "cursor.com/changelog",
+          "url": "https://cursor.com/changelog",
+          "primary": true
+        }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Cursor — Rollouts et Security Review",
+        "date_long": "23 septembre 2026",
+        "description": "Cursor, 23 septembre 2026 : bots Rollouts (santé des déploiements par environnement) et Security Review (bugs exploitables par PR). Implications Lynxter.",
+        "stats": [
+          {
+            "num": "2",
+            "unit": "bots",
+            "label": "Rollouts et Security Review · 23 septembre"
+          },
+          {
+            "num": "par PR",
+            "unit": "audit",
+            "label": "Security Review · bugs exploitables"
+          },
+          {
+            "num": "par env.",
+            "unit": "santé",
+            "label": "Rollouts · suivi de déploiement"
+          },
+          {
+            "num": "10 sept.",
+            "unit": "Projects",
+            "label": "Brique amont livrée deux semaines avant"
+          }
+        ],
+        "context_paragraphs": [
+          "Cursor publie le 23 septembre deux bots qui étendent son périmètre au-delà de l'écriture de code. <strong>Rollouts</strong> observe chaque changement pendant qu'il se déploie et rapporte son état de santé <strong>environnement par environnement</strong> — une fonction de suivi de déploiement, pas de génération. <strong>Security Review</strong> se déclenche sur chaque pull request et signale les bugs exploitables. Les deux fonctionnent comme des bots attachés au dépôt plutôt que comme des commandes lancées depuis l'éditeur.",
+          "La séquence est cohérente avec Projects, sorti le 10 septembre, qui avait introduit l'agent coordinateur — un agent qui n'écrit pas de code mais planifie, délègue à des agents d'implémentation et ramène le travail fini — et des agents cloud capables de se déclencher sur événement, de surveiller des PR ou des fils Slack, et de tenir un objectif sur la durée. Rollouts et Security Review ferment la chaîne en aval : après avoir automatisé l'écriture puis la coordination, Cursor automatise la vérification et le suivi de mise en production.",
+          "La comparaison avec la semaine d'Anthropic est parlante. Claude Code, sur la même période, a livré un correctif de sûreté du mode auto, <code>/doctor prompt-audit</code> et la gouvernance fine des modèles (<code>deniedModels</code>, <code>availableModelsMatch</code>) — des fonctions tournées vers le contrôle de l'agent lui-même. Cursor investit l'autre bout : ce que l'agent produit une fois qu'il a fini. Claude Code dispose bien d'une revue de code automatisée via son intégration GitHub, mais pas d'équivalent à Rollouts sur le suivi de déploiement par environnement ; Codex CLI n'offre ni l'un ni l'autre."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Security Review est le seul des deux qui se compare à quelque chose d'existant chez Lynxter.</strong> Si les dépôts utilisent déjà une revue automatisée sur PR, la question n'est pas d'ajouter un bot de plus mais de savoir si celui-ci trouve ce que l'autre rate. Action : sur un dépôt représentatif, prends les cinq dernières PR ayant introduit un défaut réel, et vérifie combien la revue actuelle avait signalées — c'est le chiffre qui dira si un second outil se justifie, et il ne coûte rien à produire.",
+          "<strong>Rollouts n'a de sens que s'il y a plusieurs environnements à suivre.</strong> Le suivi de santé par environnement suppose une chaîne de déploiement segmentée ; sur une chaîne d'outillage interne avec un seul environnement, la fonction se réduit à un indicateur redondant avec le CI existant. Action : ne l'évalue que si la chaîne compte réellement un étage de préproduction distinct, sinon range-le comme non applicable et n'y reviens pas.",
+          "<strong>Réserve.</strong> L'entrée de changelog ne donne ni tarification, ni conditions d'accès, ni périmètre de langages pour Security Review, et Cursor n'a pas publié de mesure du taux de détection. Action : avant tout essai, demande à Cursor sur quel périmètre Security Review est effectif et à quel palier d'abonnement il est inclus — sans cela, la comparaison avec la revue actuelle ne sera pas concluante."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://cursor.com/changelog",
+          "label": "cursor.com/changelog",
+          "meta": "Cursor · changelog officiel, entrée du 23 septembre 2026 · page non fetchée (egress bloqué sur cursor.com), entrée recoupée par deux résultats de recherche indépendants"
+        },
+        "related": [
+          {
+            "slug": "2026-09-13-cursor-projects-coordinateur",
+            "actor": "Cursor",
+            "title": "Cursor Projects — agent coordinateur",
+            "tag": "🎯"
+          },
+          {
+            "slug": "2026-09-27-claude-code-2-1-280-283",
+            "actor": "Anthropic",
+            "title": "Claude Code 2.1.280 → 283",
+            "tag": "🎯"
+          }
+        ],
+        "nav": {
+          "prev": {
+            "href": "2026-09-27-grok-4-7.html",
+            "label": "← Item précédent",
+            "title": "Grok 4.7"
+          },
+          "next": {
+            "href": "../briefs/2026-09-27.html",
+            "label": "Retour au brief →",
+            "title": "2026-09-27"
+          }
+        }
+      }
+    }
+  ]
+}

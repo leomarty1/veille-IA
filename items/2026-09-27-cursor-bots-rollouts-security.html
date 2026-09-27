@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cursor livre deux bots CI — Rollouts suit la santé des déploiements, Security Review audite chaque PR — Veille IA Lynxter</title>
+<meta name="description" content="Cursor, 23 septembre 2026 : bots Rollouts (santé des déploiements par environnement) et Security Review (bugs exploitables par PR). Implications Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/">Briefs</a>
+      <a href="../acteurs/">Acteurs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../methodo/">Méthodo</a>
+      <a href="../futur/">Futur</a>
+      <a href="../graphe/">Graphe</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section-sm">
+    <div class="container-narrow">
+
+      <div class="breadcrumb">
+        <a href="../">Accueil</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/">Briefs</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="../briefs/2026-09-27.html">2026-09-27</a>
+        <span class="breadcrumb-sep">/</span>
+        <span class="current">Cursor — Rollouts et Security Review</span>
+      </div>
+
+      <div class="item-detail-hero">
+        <div class="item-detail-meta-top">
+          <span class="actor-name">Cursor</span>
+          <span class="dot-sep">·</span>
+          <span>23 septembre 2026</span>
+          <span class="dot-sep">·</span>
+          <span class="tag tag-useful">🛠 Utile</span>
+        </div>
+        <h1>Cursor livre deux bots CI — Rollouts suit la santé des déploiements, Security Review audite chaque PR</h1>
+        <p class="item-detail-from">Extrait du brief <a href="../briefs/2026-09-27.html">La frontière baisse ses prix en 48 heures — 2026-09-27</a></p>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Chiffres clés</p>
+        <div class="stat-strip">
+          <div class="stat">
+            <div class="stat-num">2<span class="unit">bots</span></div>
+            <div class="stat-label">Rollouts et Security Review · 23 septembre</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">par PR<span class="unit">audit</span></div>
+            <div class="stat-label">Security Review · bugs exploitables</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">par env.<span class="unit">santé</span></div>
+            <div class="stat-label">Rollouts · suivi de déploiement</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">10 sept.<span class="unit">Projects</span></div>
+            <div class="stat-label">Brique amont livrée deux semaines avant</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <p class="detail-block-label">Contexte étendu</p>
+        <p>Cursor publie le 23 septembre deux bots qui étendent son périmètre au-delà de l'écriture de code. <strong>Rollouts</strong> observe chaque changement pendant qu'il se déploie et rapporte son état de santé <strong>environnement par environnement</strong> — une fonction de suivi de déploiement, pas de génération. <strong>Security Review</strong> se déclenche sur chaque pull request et signale les bugs exploitables. Les deux fonctionnent comme des bots attachés au dépôt plutôt que comme des commandes lancées depuis l'éditeur.</p>
+        <p>La séquence est cohérente avec Projects, sorti le 10 septembre, qui avait introduit l'agent coordinateur — un agent qui n'écrit pas de code mais planifie, délègue à des agents d'implémentation et ramène le travail fini — et des agents cloud capables de se déclencher sur événement, de surveiller des PR ou des fils Slack, et de tenir un objectif sur la durée. Rollouts et Security Review ferment la chaîne en aval : après avoir automatisé l'écriture puis la coordination, Cursor automatise la vérification et le suivi de mise en production.</p>
+        <p>La comparaison avec la semaine d'Anthropic est parlante. Claude Code, sur la même période, a livré un correctif de sûreté du mode auto, <code>/doctor prompt-audit</code> et la gouvernance fine des modèles (<code>deniedModels</code>, <code>availableModelsMatch</code>) — des fonctions tournées vers le contrôle de l'agent lui-même. Cursor investit l'autre bout : ce que l'agent produit une fois qu'il a fini. Claude Code dispose bien d'une revue de code automatisée via son intégration GitHub, mais pas d'équivalent à Rollouts sur le suivi de déploiement par environnement ; Codex CLI n'offre ni l'un ni l'autre.</p>
+      </div>
+
+      <section class="detail-lynxter">
+        <h2>🛠 Pourquoi c'est utile à savoir pour Lynxter</h2>
+        <p><strong>Security Review est le seul des deux qui se compare à quelque chose d'existant chez Lynxter.</strong> Si les dépôts utilisent déjà une revue automatisée sur PR, la question n'est pas d'ajouter un bot de plus mais de savoir si celui-ci trouve ce que l'autre rate. Action : sur un dépôt représentatif, prends les cinq dernières PR ayant introduit un défaut réel, et vérifie combien la revue actuelle avait signalées — c'est le chiffre qui dira si un second outil se justifie, et il ne coûte rien à produire.</p>
+        <p><strong>Rollouts n'a de sens que s'il y a plusieurs environnements à suivre.</strong> Le suivi de santé par environnement suppose une chaîne de déploiement segmentée ; sur une chaîne d'outillage interne avec un seul environnement, la fonction se réduit à un indicateur redondant avec le CI existant. Action : ne l'évalue que si la chaîne compte réellement un étage de préproduction distinct, sinon range-le comme non applicable et n'y reviens pas.</p>
+        <p><strong>Réserve.</strong> L'entrée de changelog ne donne ni tarification, ni conditions d'accès, ni périmètre de langages pour Security Review, et Cursor n'a pas publié de mesure du taux de détection. Action : avant tout essai, demande à Cursor sur quel périmètre Security Review est effectif et à quel palier d'abonnement il est inclus — sans cela, la comparaison avec la revue actuelle ne sera pas concluante.</p>
+      </section>
+
+      <div class="source-block" style="margin-top:48px;">
+        <strong>Source primaire</strong>
+        <a class="source-url" href="https://cursor.com/changelog" target="_blank" rel="noopener">cursor.com/changelog</a>
+        <span class="source-meta">Cursor · changelog officiel, entrée du 23 septembre 2026 · page non fetchée (egress bloqué sur cursor.com), entrée recoupée par deux résultats de recherche indépendants</span>
+      </div>
+
+      <div class="related-items">
+        <h3>Items connexes</h3>
+        <ul class="related-list">
+          <li><a href="2026-09-13-cursor-projects-coordinateur.html">
+            <span class="related-actor">Cursor</span>
+            <span class="related-title">Cursor Projects — agent coordinateur</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+          <li><a href="2026-09-27-claude-code-2-1-280-283.html">
+            <span class="related-actor">Anthropic</span>
+            <span class="related-title">Claude Code 2.1.280 → 283</span>
+            <span class="tag tag-lynxter">🎯</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <nav class="brief-nav">
+        <a class="prev" href="2026-09-27-grok-4-7.html">
+          <span class="label">← Item précédent</span>
+          <span class="title">Grok 4.7</span>
+        </a>
+        <a class="next" href="../briefs/2026-09-27.html">
+          <span class="label">Retour au brief →</span>
+          <span class="title">2026-09-27</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Item · brief 2026-09-27</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../futur/">Prospective</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

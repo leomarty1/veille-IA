@@ -1,6 +1,125 @@
 {
   "briefs": [
     {
+      "date": "2026-09-27",
+      "filename": "2026-09-27.html",
+      "items_count": 13,
+      "by_tag": {
+        "lynxter": 3,
+        "useful": 6,
+        "info": 4
+      },
+      "by_actor": {
+        "Anthropic": 7,
+        "OpenAI": 2,
+        "Google": 1,
+        "Meta": 1,
+        "xAI": 1,
+        "Cursor": 1,
+        "Mistral": 0
+      },
+      "mode": "hebdomadaire",
+      "title": "La frontière baisse ses prix en 48 heures",
+      "highlights": [
+        "Claude Opus 5.5 à $4/$20 par M tokens (−20 % vs Opus 5), 1M de contexte par défaut, Terminal-Bench 4.0 à 66.4 %",
+        "GPT-6 Sol et Luna sortent le même jour à −50 % : Luna descend à $0.10/$0.50 par M tokens",
+        "Claude Code 2.1.280→283 : correctif des écritures via symlink en mode auto, /doctor prompt-audit, deniedModels"
+      ],
+      "items": [
+        {
+          "slug": "2026-09-27-claude-opus-5-5",
+          "title": "Claude Opus 5.5 — $4/$20 par M tokens (−20 %), Terminal-Bench 4.0 à 66.4 %, 1M de contexte par défaut",
+          "primary_url": "https://www.anthropic.com/claude-opus-5-5",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-27-claude-code-2-1-280-283",
+          "title": "Claude Code 2.1.280 → 283 — écritures via symlink corrigées en mode auto, /doctor prompt-audit, deniedModels",
+          "primary_url": "https://code.claude.com/docs/en/changelog#2-1-280",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-27-api-inline-tool-definitions",
+          "title": "API Claude — définir un outil en cours de conversation sans invalider le cache de prompt (bêta)",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview#september-22-2026",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-27-anthropic-sdk-python-1-8-0",
+          "title": "anthropic-sdk-python 1.8.0 — Opus 5.5, outils en ligne, add_tools() immédiat",
+          "primary_url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.8.0",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-27-compliance-api-facturation-refus",
+          "title": "Anthropic refacture les refus sur trois catégories et retire les noms de fichiers de l'Activity Feed",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview#september-24-2026",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-27-cache-diagnostics-ga",
+          "title": "Les cache diagnostics sortent de bêta sur l'API Claude",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview#september-23-2026",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-27-claude-decouvre-arts",
+          "title": "Claude identifie un système enzymatique inédit à répétitions de type CRISPR",
+          "primary_url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-09-27-gpt-6-sol-luna",
+          "title": "GPT-6 Sol et Luna — $2/$10 et $0.10/$0.50 par M tokens, prix API divisés par deux",
+          "primary_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+          "tag": "lynxter",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-09-27-codex-gpt-6-sol-luna",
+          "title": "Codex CLI ajoute GPT-6 Sol et Luna avec support Bedrock et passe les transcriptions en plein écran",
+          "primary_url": "https://developers.openai.com/codex/changelog",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-09-27-gemini-4-post-training",
+          "title": "Gemini 4 en début de post-training — annonce non matérialisée",
+          "primary_url": "https://finance.yahoo.com/technology/ai/articles/google-gemini-4-enters-post-122454510.html",
+          "tag": "info",
+          "actor": "Google DeepMind"
+        },
+        {
+          "slug": "2026-09-27-meta-connect-muse",
+          "title": "Meta Connect 2026 — Muse passe à 3,4 millions de téléchargements et gagne le computer use sur Mac",
+          "primary_url": "https://www.meta.com/blog/meta-connect-2026-everything-we-announced/",
+          "tag": "useful",
+          "actor": "Meta"
+        },
+        {
+          "slug": "2026-09-27-grok-4-7",
+          "title": "Grok 4.7 — prix inchangé à $2/$6, Terminal-Bench 4.0 de 20.3 à 38.0 %, EEBench à 64.0 %",
+          "primary_url": "https://x.ai/news/grok-4-7",
+          "tag": "useful",
+          "actor": "xAI"
+        },
+        {
+          "slug": "2026-09-27-cursor-bots-rollouts-security",
+          "title": "Cursor livre deux bots CI — Rollouts suit la santé des déploiements, Security Review audite chaque PR",
+          "primary_url": "https://cursor.com/changelog",
+          "tag": "useful",
+          "actor": "Cursor"
+        }
+      ]
+    },
+    {
       "date": "2026-09-20",
       "filename": "2026-09-20.html",
       "items_count": 11,
