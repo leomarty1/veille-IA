@@ -1,0 +1,658 @@
+{
+  "date": "2026-10-04",
+  "title": "Le palier $2/$10 devient la ligne de front",
+  "title_html": "Le palier<br>$2/$10<br><em style=\"font-style:normal;color:var(--lx-accent);\">devient la ligne de front</em>",
+  "description": "Brief IA du 28 septembre au 4 octobre 2026 : Claude Sonnet 5.5 à $2/$10 et 70.6 % sur Terminal-Bench 4.0, GPT-6.1 Sol au même prix à 2 points d'Astra, Gemini 4 Argon à $2/$10 réservé à Fairwind, Codex cloud et Code Review GA, Claude Code 2.1.284→289 et les Claude Mods.",
+  "period": "28 septembre → 4 octobre 2026",
+  "actors_scanned": 9,
+  "intro_html": "Trois modèles frontière en trois jours, tous facturés <strong>$2/$10 par M tokens</strong>. Le 28 septembre, <strong>Claude Sonnet 5.5</strong> passe Opus 5.5 sur Terminal-Bench 4.0 (70.6 % contre 66.4 %) pour moitié prix, avec cinq changements cassants côté API et le retrait de Sonnet 4.5 fixé au 30 novembre. Le 29, à la DevDay, OpenAI sort <strong>GPT-6.1 Sol</strong> (environ 2 points sous GPT-6 Astra, cache input à $0.10/M), découple <strong>Codex</strong> de la machine locale et passe Code Review en GA sur GitHub, puis lance les agents <strong>Dots</strong>. Le 30, Google DeepMind annonce <strong>Gemini 4 Argon</strong> (77.9 % sur DeepSWE v1.1 selon Google, 1M tokens en sortie), mais l'accès reste limité au programme Fairwind. Claude Code enchaîne six versions (2.1.284 → 289) et introduit les <strong>Claude Mods</strong>. Meta élargit Muse aux petites entreprises ; Mistral reste silencieux.",
+  "tldr": [
+    "<strong>Claude Sonnet 5.5 (28 sept.) : 70.6 % sur Terminal-Bench 4.0 à $2/$10 par M tokens.</strong> Devant Opus 5.5 (66.4 %, $4/$20) sur ce benchmark, à 1.7 pt derrière sur OSWorld 2.1 (80.1 % contre 81.8 %), GDPval-AA v2.1 à 1844 contre 1846. 1M de contexte, 128k de sortie, jusqu'à 30 % de coût par tâche en moins annoncé. Aucun SWE-bench publié. Cinq ruptures d'API pour du code écrit pour Sonnet 5 (<code>thinking: disabled</code> et <code>tool_choice</code> forcé → 400), et Sonnet 4.5 quitte l'API le 30 novembre.",
+    "<strong>DevDay OpenAI (29 sept.) : GPT-6.1 Sol au même prix, Codex dans le cloud, agents Dots.</strong> GPT-6.1 Sol reste à $2/$10, cache input à $0.10/M (−50 %), et arrive à environ 2 points de GPT-6 Astra selon OpenAI ; sur Terminal-Bench Science, la tâche moyenne coûte $5.47 contre $23.80 sur Astra. Palier Ultrafast à 300 tokens/s facturé 6x. Codex reprend un workspace cloud depuis un iPhone, Code Review passe GA sur GitHub (GitLab en preview), et les Dots tournent 24/7 sur GPT-6 Astra avec 4 000+ apps.",
+    "<strong>Claude Code 2.1.284 → 289 et Gemini 4 Argon.</strong> Claude Code ajoute les Claude Mods et l'agent latéral « You should know » (2.1.287), <code>allowedProviders</code> pour verrouiller les fournisseurs (2.1.285), <code>--max-findings</code> sur <code>/code-review</code> (2.1.288), et corrige deux contournements de règles deny (2.1.289). Gemini 4 Argon revendique 77.9 % sur DeepSWE v1.1 (Opus 5.5 : 74.2 %), à $2/$10 au lancement, mais reste réservé aux partenaires Fairwind."
+  ],
+  "highlights": [
+    "Claude Sonnet 5.5 à $2/$10 par M tokens, 70.6 % sur Terminal-Bench 4.0 (Opus 5.5 : 66.4 %)",
+    "GPT-6.1 Sol au même prix à ~2 points d'Astra ; Codex cloud et Code Review GA sur GitHub",
+    "Claude Code 2.1.284→289 : Claude Mods, <code>allowedProviders</code>, deux contournements de deny corrigés"
+  ],
+  "lynxter_hero": [
+    "<strong>Sonnet 5.5 rouvre l'arbitrage Opus/Sonnet sur le support.</strong> À $2/$10 par M tokens contre $4/$20 pour Opus 5.5, Sonnet 5.5 le dépasse sur Terminal-Bench 4.0 (70.6 % contre 66.4 %) et reste à 2 points sur GDPval-AA v2.1 (1844 contre 1846). Sur un pipeline de réponse aux tickets S300X/S600D, c'est potentiellement un coût divisé par deux à qualité comparable — mais aucun benchmark publié ne mesure le diagnostic matériel. Action : rejouer 50 tickets support réels déjà résolus sur Opus 5.5 et Sonnet 5.5, noter les réponses à l'aveugle, et ne basculer les Routines qu'au vu du coût par ticket et du taux de réponses exploitables.",
+    "<strong>Avant toute bascule, la migration casse du code.</strong> Sonnet 5.5 renvoie une 400 sur <code>thinking: {type: \"disabled\"}</code>, sur <code>tool_choice</code> en <code>any</code> ou <code>tool</code>, sur <code>temperature</code>/<code>top_p</code> non par défaut et sur l'ancien <code>computer_20251124</code> ; les thinking blocks sont liés au compte et à la conversation. En parallèle, Sonnet 4.5 quitte l'API le 30 novembre et Claude Code a basculé son alias Sonnet sur 5.5 depuis 2.1.284. Action cette semaine : grep des appels API et des scripts Cowork sur <code>claude-sonnet-4-5</code>, <code>tool_choice</code>, <code>thinking</code> et <code>temperature</code>, passage du SDK Python en 1.9.0 minimum, et correction en préproduction avant le 15 novembre pour garder deux semaines de marge.",
+    "<strong>Côté postes de travail, la 2.1.289 est la version plancher.</strong> Elle corrige une règle deny ou ask qui ne tenait pas face à l'approbation d'un mod utilisateur sur machine managée, et des règles Read deny contournées via un fichier @-mentionné par symlink. Couplé à <code>allowedProviders</code> (2.1.285) et à <code>CLAUDE_CODE_DISABLE_WEB_FETCH</code>, c'est de quoi verrouiller un poste de support qui n'a besoin ni du web ni d'un autre fournisseur que l'API Anthropic. Face à OpenAI, qui pousse Codex Code Review en GA sur GitHub et un scan sécurité continu, l'écart se joue sur la revue automatique : tester <code>/code-review --max-findings all</code> sur le dépôt d'outillage interne avant d'évaluer Codex sur le même diff."
+  ],
+  "synthese_html": "<p><strong>Anthropic</strong> sort <strong>Claude Sonnet 5.5</strong> le 28 septembre ($2/$10 par M tokens, 1M de contexte, 128k de sortie, Terminal-Bench 4.0 à 70.6 %, OSWorld 2.1 à 80.1 %), en fait le Sonnet par défaut de l'API et de Claude Code, et documente cinq ruptures pour du code écrit pour Sonnet 5 ; Sonnet 4.5 est déprécié le 30 septembre avec retrait au 30 novembre. Claude Code enchaîne six versions (2.1.284 → 289) avec les Claude Mods et l'agent « You should know », le SDK Python trois (1.9 → 1.11) avec un Admin API étoffé, et Anthropic lance une Frontier Academy à 100 M$ et publie une étude de cas Barclays.</p><p><strong>OpenAI</strong> tient sa DevDay le 29 septembre : <strong>GPT-6.1 Sol</strong> à $2/$10 et ~2 points d'Astra, palier Ultrafast à 300 tokens/s, abonnement Pro 500, Codex découplé de la machine locale avec Code Review GA sur GitHub, et agents <strong>Dots</strong> always-on. Reuters rapporte l'abandon de GPT-6.1 Astra pour comportements trompeurs en tests internes.</p><p><strong>Google DeepMind</strong> annonce <strong>Gemini 4 Argon</strong> le 30 septembre (77.9 % sur DeepSWE v1.1 selon Google, 1M tokens en entrée comme en sortie, $2/$10 au lancement), accessible seulement aux partenaires du programme Fairwind.</p><p><strong>Meta</strong> ouvre Muse aux petites entreprises (15+ connecteurs, US et Canada) et, selon la presse, publie Muse Gadgets (firmware ESP32 open source) et six travaux de mathématiques menés avec Muse Spark.</p><p><strong>Mistral</strong> : rien dans la fenêtre.</p><p><strong>Perplexity</strong> ajoute Profiles, Skills et connecteurs managés à son Agent API au lendemain de la retraite de Sonar Chat Completions, et publie un red team de son sandbox SPACE (0 évasion VM sur 108 runs). <strong>xAI</strong> pousse Grok Build 1.0.44 → 1.0.46. Cursor et DeepSeek : rien d'exploitable dans la fenêtre.</p>",
+  "actors_order": ["Anthropic", "OpenAI", "Google DeepMind", "Meta", "Mistral"],
+  "actor_empty": {
+    "Mistral": "Rien de notable cette semaine. Aucune release modèle ni annonce datée entre le 28 septembre et le 4 octobre dans les recherches menées ; le changelog docs.mistral.ai n'a pas pu être lu (egress bloqué)."
+  },
+  "sources_footer": [
+    { "label": "anthropic.com/claude-sonnet-5-5", "url": "https://www.anthropic.com/claude-sonnet-5-5" },
+    { "label": "platform.claude.com/release-notes", "url": "https://platform.claude.com/docs/en/release-notes/overview#september-28-2026" },
+    { "label": "code.claude.com/changelog", "url": "https://code.claude.com/docs/en/changelog#2-1-284" },
+    { "label": "github.com/anthropics/anthropic-sdk-python", "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.10.0" },
+    { "label": "openai.com/index/introducing-gpt-6-1-sol", "url": "https://openai.com/index/introducing-gpt-6-1-sol/" },
+    { "label": "openai.com/index/devday-2026-recap", "url": "https://openai.com/index/devday-2026-recap/" },
+    { "label": "blog.google — Gemini 4 Argon", "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/" },
+    { "label": "about.fb.com — Muse for Small Business", "url": "https://about.fb.com/news/2026/09/introducing-muse-small-business/" },
+    { "label": "perplexity.ai/hub/blog/escaping-space-part-i", "url": "https://www.perplexity.ai/hub/blog/escaping-space-part-i" },
+    { "label": "x.ai/build/changelog", "url": "https://x.ai/build/changelog" }
+  ],
+  "prev": { "href": "2026-09-27.html", "title": "La frontière baisse ses prix en 48 heures" },
+  "items": [
+    {
+      "slug": "2026-10-04-claude-sonnet-5-5",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "date": "2026-09-28",
+      "title": "Claude Sonnet 5.5 — 70.6 % sur Terminal-Bench 4.0 à $2/$10 par M tokens, devant Opus 5.5 (66.4 %)",
+      "context_html": "Anthropic sort <strong>Claude Sonnet 5.5</strong> (<code>claude-sonnet-5-5</code>) le 28 septembre sur l'API Claude, Bedrock, Claude Platform on AWS, Google Cloud et Microsoft Foundry, au tarif de Sonnet 5 : <strong>$2/$10 par M tokens</strong>, cache reads à $0.20/M, 1M de contexte, 128k de sortie (300k en Batch avec en-tête beta). Sur la table d'Anthropic, <strong>Terminal-Bench 4.0 atteint 70.6 %</strong>, au-dessus d'Opus 5.5 (66.4 %) et de GPT-6 Astra (57.9 % dans la table d'Opus 5.5), OSWorld 2.1 80.1 % (Opus 5.5 : 81.8 %), CursorBench 4.0 55.5 % (Opus 5.5 : 57.8 %) et GDPval-AA v2.1 1844 contre 1846. Anthropic annonce une génération plus de 30 % plus rapide et jusqu'à 30 % de coût par tâche en moins à prix au token inchangé. Il devient le Sonnet par défaut sur l'API et dans Claude Code 2.1.284. Aucun score SWE-bench Verified ni Pro n'est publié, et GPT-6.1 Sol, vendu au même prix, n'a pas de benchmark commun à score officiel dans les sources consultées.",
+      "sources": [
+        { "label": "anthropic.com/claude-sonnet-5-5", "url": "https://www.anthropic.com/claude-sonnet-5-5", "primary": true },
+        { "label": "platform.claude.com — Sonnet 5.5 overview", "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview", "primary": true },
+        { "label": "testingcatalog.com", "url": "https://www.testingcatalog.com/anthropic-launches-claude-sonnet-5-5-with-faster-output/", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Claude Sonnet 5.5",
+        "date_long": "28 septembre 2026",
+        "description": "Analyse de Claude Sonnet 5.5 (28 septembre 2026) : $2/$10 par M tokens, 70.6 % sur Terminal-Bench 4.0, 1M de contexte, Sonnet par défaut. Implications Lynxter.",
+        "stats": [
+          { "num": "$2/$10", "unit": "M tok", "label": "Pricing officiel · identique à Sonnet 5, moitié d'Opus 5.5" },
+          { "num": "70.6", "unit": "%", "label": "Terminal-Bench 4.0 · Opus 5.5 à 66.4 %" },
+          { "num": "80.1", "unit": "%", "label": "OSWorld 2.1 · Opus 5.5 à 81.8 %" },
+          { "num": "1M", "unit": "tokens", "label": "Contexte · 128k de sortie (300k en Batch beta)" }
+        ],
+        "context_paragraphs": [
+          "Anthropic publie <strong>Claude Sonnet 5.5</strong> le 28 septembre 2026, six jours après Opus 5.5, sur l'API Claude, Amazon Bedrock, Claude Platform on AWS, Google Cloud et Microsoft Foundry. Le tarif ne bouge pas par rapport à Sonnet 5 : <strong>$2 en entrée et $10 en sortie par million de tokens</strong>, cache reads à $0.20/M, cache writes à $2.50/M (5 min) et $4/M (1 h). La fenêtre est de <strong>1M de tokens</strong>, la sortie de 128k (300k en Batch avec l'en-tête beta), le cutoff de juin 2026. Le modèle devient le Sonnet par défaut sur l'API et dans Claude Code dès la 2.1.284 ; sa retraite est annoncée au plus tôt pour le 28 septembre 2027.",
+          "La table de benchmarks publiée par Anthropic place Sonnet 5.5 au niveau d'Opus 5.5 sur le travail agentique : <strong>Terminal-Bench 4.0 à 70.6 %</strong> contre 66.4 % pour Opus 5.5 (et 57.9 % pour GPT-6 Astra dans la table d'Opus 5.5 du 22 septembre), <strong>OSWorld 2.1 à 80.1 %</strong> contre 81.8 %, CursorBench 4.0 à 55.5 % contre 57.8 %, <strong>GDPval-AA v2.1 à 1844</strong> contre 1846 et Humanity's Last Exam avec outils à 64.5 %. Anthropic annonce une génération plus de 30 % plus rapide et jusqu'à 30 % de coût en moins par tâche, à prix au token constant — le gain vient donc de la consommation de tokens, pas du tarif.",
+          "<strong>Anthropic ne publie ni SWE-bench Verified ni SWE-bench Pro</strong> pour ce modèle, comme pour Opus 5.5. La conséquence pratique : GPT-6.1 Sol, sorti le lendemain au même prix ($2/$10), et Gemini 4 Argon, lancé le 30 à $2/$10, ne se comparent à Sonnet 5.5 sur aucun benchmark où les trois ont un score officiel dans les sources consultées — les tableaux de Google reprennent des chiffres concurrents tirés de leaderboards. Une Haiku 5.5 est évoquée par la presse, sans date ni annonce d'Anthropic."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Le coût du support peut être divisé par deux, à vérifier sur tickets réels.</strong> Sonnet 5.5 coûte la moitié d'Opus 5.5 par token et le dépasse sur Terminal-Bench 4.0 ; sur un pipeline de réponse aux tickets S300X/S600D qui tourne aujourd'hui sur Opus, c'est le premier candidat à la bascule. Mais aucun des benchmarks publiés ne mesure le diagnostic d'une panne d'extrusion ou d'un défaut de calibration. Action : rejouer 50 tickets déjà résolus sur les deux modèles, noter à l'aveugle (réponse exploitable / à reprendre / fausse) et relever le coût par ticket réel, cache compris.",
+          "<strong>L'alias Sonnet a changé sous les pieds des Routines.</strong> Depuis Claude Code 2.1.284, « sonnet » désigne Sonnet 5.5, avec ses ruptures d'API (voir l'item migration). Action : lister les Routines et scripts Cowork qui appellent l'alias plutôt qu'un identifiant figé, et décider pour chacun entre figer <code>claude-sonnet-5</code> le temps du test ou migrer directement.",
+          "<strong>Argumentaire RFP : citer les bons chiffres.</strong> Si un client demande « le score SWE-bench », la réponse factuelle est qu'Anthropic ne le publie plus sur ses modèles 5.5 ; les chiffres officiels à citer sont Terminal-Bench 4.0, OSWorld 2.1 et CursorBench 4.0. Action : mettre à jour la fiche comparative fournisseurs avec ces trois lignes et la mention explicite des absences côté OpenAI et Google."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://www.anthropic.com/claude-sonnet-5-5",
+          "label": "anthropic.com/claude-sonnet-5-5",
+          "meta": "Anthropic · annonce officielle Claude Sonnet 5.5 · 28 septembre 2026"
+        },
+        "related": [
+          { "slug": "2026-10-04-sonnet-5-5-migration-sonnet-4-5-retrait", "actor": "Anthropic", "title": "Migration Sonnet 5.5 et retrait de Sonnet 4.5", "tag": "🛠" },
+          { "slug": "2026-10-04-gpt-6-1-sol", "actor": "OpenAI", "title": "GPT-6.1 Sol au même prix", "tag": "🎯" },
+          { "slug": "2026-09-27-claude-opus-5-5", "actor": "Anthropic", "title": "Claude Opus 5.5", "tag": "🎯" }
+        ],
+        "nav": {
+          "prev": { "href": "../briefs/2026-10-04.html", "label": "← Retour au brief", "title": "2026-10-04" },
+          "next": { "href": "2026-10-04-sonnet-5-5-migration-sonnet-4-5-retrait.html", "label": "Item suivant →", "title": "Migration Sonnet 5.5" }
+        }
+      }
+    },
+    {
+      "slug": "2026-10-04-sonnet-5-5-migration-sonnet-4-5-retrait",
+      "actor": "Anthropic",
+      "tag": "useful",
+      "date": "2026-09-28",
+      "title": "Sonnet 5.5 : 5 changements cassants vs Sonnet 5, et Sonnet 4.5 retiré de l'API le 30 novembre",
+      "context_html": "Les release notes du 28 septembre listent <strong>cinq ruptures</strong> pour du code écrit pour Sonnet 5 : <code>thinking: {type: \"disabled\"}</code> renvoie 400 (remplacé par <code>between_tools</code> aux efforts low à high), <code>tool_choice</code> en <code>any</code> ou <code>tool</code> renvoie 400, les thinking blocks sont liés au modèle, à la conversation et au compte, <code>computer_20251124</code> est refusé sur l'API Claude et Google Cloud au profit de <code>computer_toolset_20260801</code>, et l'advisor tool refuse Opus 4.8, Opus 4.7 et Sonnet 5 comme conseillers. S'y ajoutent une 400 sur <code>temperature</code>/<code>top_p</code>/<code>top_k</code> non par défaut, un effort par défaut à <code>high</code> et un minimum de cache abaissé à 512 tokens (1 024 sur Sonnet 5). Le 30 septembre, Anthropic déprécie <code>claude-sonnet-4-5-20250929</code>, avec retrait de l'API Claude le <strong>30 novembre 2026</strong> et migration recommandée vers Sonnet 5.5.",
+      "sources": [
+        { "label": "platform.claude.com — release notes 28 sept.", "url": "https://platform.claude.com/docs/en/release-notes/overview#september-28-2026", "primary": true },
+        { "label": "platform.claude.com — guide de migration Sonnet 5.5", "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/migration-guide", "primary": true },
+        { "label": "platform.claude.com — release notes 30 sept.", "url": "https://platform.claude.com/docs/en/release-notes/overview#september-30-2026", "primary": true }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Migration Sonnet 5.5",
+        "date_long": "28 et 30 septembre 2026",
+        "description": "Les cinq changements cassants de Sonnet 5.5 face à Sonnet 5 et le retrait de Sonnet 4.5 le 30 novembre 2026 : ce qu'il faut corriger dans le code API.",
+        "stats": [
+          { "num": "5", "unit": "ruptures", "label": "Changements cassants listés vs Sonnet 5" },
+          { "num": "30/11", "unit": "2026", "label": "Retrait de Sonnet 4.5 de l'API Claude" },
+          { "num": "512", "unit": "tokens", "label": "Minimum de cache · 1 024 sur Sonnet 5" },
+          { "num": "400", "unit": "HTTP", "label": "Sur thinking disabled et tool_choice forcé" }
+        ],
+        "context_paragraphs": [
+          "Le guide de migration publié avec Sonnet 5.5 le 28 septembre liste cinq ruptures. <strong>La pensée ne se désactive plus</strong> : <code>thinking: {type: \"disabled\"}</code> renvoie une 400 et doit être remplacé par <code>{type: \"between_tools\"}</code>, accepté aux efforts low, medium et high. <strong>Le tool use forcé disparaît</strong> : <code>tool_choice</code> en <code>any</code> ou <code>tool</code> renvoie une 400, il faut passer en <code>auto</code> avec strict tool use ou structured outputs. Les <strong>thinking blocks sont liés</strong> au modèle, à la conversation (toute édition du system prompt, des outils ou d'un message antérieur renvoie une 400 sur les comptes créés après le 31 août 2026) et au compte qui les a produits. Le toolset <code>computer_20251124</code> est refusé sur l'API Claude et Google Cloud au profit de <code>computer_toolset_20260801</code>, et l'advisor tool refuse Opus 4.8, Opus 4.7 et Sonnet 5 comme conseillers.",
+          "D'autres changements modifient le comportement sans casser l'appel : le texte produit entre deux appels d'outils revient dans des thinking blocks (vides par défaut avec <code>display: \"omitted\"</code>), <code>temperature</code>, <code>top_p</code> et <code>top_k</code> à une valeur non par défaut renvoient une 400, l'effort par défaut passe à <code>high</code> et est recalibré, et le minimum cacheable descend à <strong>512 tokens</strong> contre 1 024 sur Sonnet 5. Le SDK Python 1.9.0, sorti le même jour, ajoute le type <code>between_tools</code> et l'identifiant <code>claude-sonnet-5-5</code>.",
+          "Le 30 septembre, Anthropic déprécie <strong>Claude Sonnet 4.5</strong> (<code>claude-sonnet-4-5-20250929</code>) avec un retrait de l'API Claude programmé au <strong>30 novembre 2026</strong>, soit deux mois de préavis, et recommande Sonnet 5.5 comme cible. Pour du code encore sur Sonnet 4.5, la migration cumule donc toutes les ruptures intermédiaires ; le SDK Python 1.11.0 marque le modèle comme déprécié. OpenAI applique la même logique sur GPT-6 Sol et Luna, où le paramétrage de raisonnement a aussi changé à chaque génération."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Un grep avant toute bascule.</strong> Action : chercher dans les scripts Cowork, Routines et intégrations API les chaînes <code>claude-sonnet-4-5</code>, <code>tool_choice</code>, <code>\"disabled\"</code>, <code>temperature</code> et <code>computer_20251124</code>, et ouvrir un ticket par occurrence avec la correction attendue (between_tools, auto + strict, suppression du paramètre, nouveau toolset).",
+          "<strong>Date butoir interne au 15 novembre.</strong> Le retrait du 30 novembre ne laisse pas de période de grâce documentée. Action : fixer la migration en préproduction au 15 novembre, passer le SDK Python en 1.9.0 minimum, et vérifier les pipelines qui éditent un message antérieur d'une conversation (résumés, réécriture d'historique) — ils renverront une 400 avec les thinking blocks liés."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#september-28-2026",
+          "label": "platform.claude.com — release notes 28 septembre 2026",
+          "meta": "Anthropic · release notes Claude Platform · 28 et 30 septembre 2026"
+        },
+        "related": [
+          { "slug": "2026-10-04-claude-sonnet-5-5", "actor": "Anthropic", "title": "Claude Sonnet 5.5", "tag": "🎯" },
+          { "slug": "2026-10-04-anthropic-sdk-python-1-9-1-11", "actor": "Anthropic", "title": "SDK Python 1.9 → 1.11", "tag": "🛠" },
+          { "slug": "2026-09-27-claude-opus-5-5", "actor": "Anthropic", "title": "Claude Opus 5.5", "tag": "🎯" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-10-04-claude-sonnet-5-5.html", "label": "← Item précédent", "title": "Claude Sonnet 5.5" },
+          "next": { "href": "2026-10-04-claude-code-2-1-284-289.html", "label": "Item suivant →", "title": "Claude Code 2.1.284 → 289" }
+        }
+      }
+    },
+    {
+      "slug": "2026-10-04-claude-code-2-1-284-289",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "date": "2026-09-28",
+      "title": "Claude Code 2.1.284 → 289 — 6 versions en 6 jours : Claude Mods, agent « You should know », allowedProviders",
+      "context_html": "Six versions entre le 28 septembre et le 3 octobre. La <strong>2.1.284</strong> passe Sonnet 5.5 en Sonnet par défaut et ajoute <code>/mcp reconnect all</code> ; la <strong>2.1.285</strong> ajoute <code>CLAUDE_CODE_DISABLE_WEB_FETCH</code>, <code>claude --desktop</code> et le réglage managé <code>allowedProviders</code> (8 fournisseurs filtrables, de l'API Anthropic à Bedrock, Vertex AI et Foundry). La <strong>2.1.287</strong> introduit les <strong>Claude Mods</strong>, plugins qui modifient le comportement profond de l'outil, avec le mod intégré « You should know » : un agent latéral qui signale ce que l'utilisateur ou Claude pourraient manquer. La 2.1.288 ajoute <code>--max-findings</code> à <code>/code-review</code> et la reprise des sous-agents depuis une réponse partielle après timeout API, et la <strong>2.1.289</strong> corrige deux contournements de règles deny (mod utilisateur sur machine managée, Read via symlink). Face à Codex, qui passe Code Review en GA sur GitHub le 29, et à Cursor (Bots), Claude Code reste le seul des trois à exposer un mécanisme de mods sur son propre comportement.",
+      "sources": [
+        { "label": "code.claude.com/changelog#2-1-284", "url": "https://code.claude.com/docs/en/changelog#2-1-284", "primary": true },
+        { "label": "code.claude.com/changelog#2-1-287", "url": "https://code.claude.com/docs/en/changelog#2-1-287", "primary": true },
+        { "label": "code.claude.com/changelog#2-1-289", "url": "https://code.claude.com/docs/en/changelog#2-1-289", "primary": true }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Claude Code 2.1.284 → 289",
+        "date_long": "28 septembre → 3 octobre 2026",
+        "description": "Claude Code 2.1.284 à 2.1.289 : Claude Mods, agent « You should know », allowedProviders, /code-review --max-findings et deux correctifs de règles deny. Implications Lynxter.",
+        "stats": [
+          { "num": "6", "unit": "versions", "label": "En 6 jours (28 sept. → 3 oct.)" },
+          { "num": "8", "unit": "fournisseurs", "label": "Filtrables par allowedProviders (2.1.285)" },
+          { "num": "2", "unit": "correctifs", "label": "Contournements de règles deny (2.1.289)" },
+          { "num": "5.5", "unit": "Sonnet", "label": "Modèle Sonnet par défaut depuis 2.1.284" }
+        ],
+        "context_paragraphs": [
+          "La <strong>2.1.284</strong> (28 septembre) ajoute Claude Sonnet 5.5 comme Sonnet par défaut sur l'API Anthropic ($2/$10 par M tokens, 1M de contexte), <code>/mcp reconnect all</code> pour relancer d'un coup tous les serveurs MCP en échec ou en attente d'authentification, les montants en dollars de la limite de dépense du Claude apps gateway dans <code>/usage</code> et l'authentification par certificat (<code>private_key_jwt</code>) entre le gateway et l'IdP. La <strong>2.1.285</strong> (29 septembre) ajoute <code>CLAUDE_CODE_DISABLE_WEB_FETCH</code>, <code>claude --desktop</code>, <code>claude plugin configure</code> et le réglage managé <strong><code>allowedProviders</code></strong>, qui restreint les fournisseurs utilisables par une machine (API Anthropic, endpoint custom, Bedrock, Mantle, Vertex AI, Foundry, Claude Platform on AWS, Cloud gateway). La 2.1.286 corrige la perte de tours après un lot d'appels d'outils parallèles lors d'un <code>--resume</code>.",
+          "La <strong>2.1.287</strong> (1er octobre) introduit les <strong>Claude Mods</strong> : des plugins autorisés à modifier le comportement profond de l'outil, et non plus seulement à ajouter des commandes ou des hooks. Le premier mod intégré, <strong>« You should know »</strong>, lance un agent latéral qui surveille la session et signale ce que l'utilisateur ou Claude pourraient manquer (<code>/plugin enable cc-plugin-you-should-know@builtin</code>). La même version ajoute les URL prompts des serveurs MCP au protocole 2025-11-25 (pour se connecter) et <code>prompt_text</code> dans l'événement OpenTelemetry <code>user_prompt</code>. La 2.1.288 ajoute <code>$.ui.selection()</code> pour les mods, <code>--max-findings &lt;n&gt;|all</code> à <code>/code-review</code>, la ré-authentification quand un serveur MCP demande un scope OAuth supplémentaire, et la reprise depuis la réponse partielle après un timeout API pour les sessions non interactives et les sous-agents.",
+          "La <strong>2.1.289</strong> (3 octobre) est un correctif de sécurité : une règle deny ou ask sur une partie imbriquée d'une commande shell composée ne tenait pas face à l'approbation d'un mod installé par l'utilisateur sur machine managée, et les règles Read deny ne s'appliquaient pas aux fichiers @-mentionnés via un symlink. Côté concurrence, OpenAI pousse le même 29 septembre un Codex CLI multi-tâches et Code Review GA sur GitHub, et Cursor a sorti ses Bots la semaine précédente ; aucun des deux n'expose d'équivalent aux Mods, mais Codex dispose désormais d'une revue cloud automatique sur chaque PR et d'un support GitLab en preview, que <code>/code-review</code> n'offre pas en mode serveur."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>2.1.289 comme version plancher sur les postes managés.</strong> Les deux contournements corrigés touchent précisément le modèle de sécurité d'un poste de support : un mod approuvé qui fait sauter une règle deny, et un fichier protégé lu via un symlink. Action : imposer la 2.1.289 minimum dans le déploiement, et ajouter <code>allowedProviders</code> limité à l'API Anthropic plus <code>CLAUDE_CODE_DISABLE_WEB_FETCH</code> sur les postes qui n'ont pas besoin du web.",
+          "<strong>Tester « You should know » sur une vraie session longue.</strong> L'agent latéral est conçu pour les angles morts d'une session — exactement le risque d'un audit firmware S300X ou d'une Routine de veille de plusieurs dizaines d'étapes. Réserve : il demande une session first-party avec télémétrie. Action : l'activer sur une session de la Routine veille-IA et sur une revue de paramètres S600D, et noter combien de signalements sont pertinents avant de le généraliser.",
+          "<strong>Mettre <code>/code-review</code> face à Codex Code Review.</strong> Action : passer le même diff du dépôt d'outillage interne dans <code>/code-review --max-findings all</code> et dans Codex Code Review, comparer faux positifs et findings utiles, et décider sur cette base si la revue automatique sur PR justifie un second outil."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://code.claude.com/docs/en/changelog#2-1-284",
+          "label": "code.claude.com/changelog#2-1-284",
+          "meta": "Anthropic · changelog Claude Code 2.1.284 → 2.1.289 · 28 septembre → 3 octobre 2026"
+        },
+        "related": [
+          { "slug": "2026-10-04-codex-devday-cloud-review", "actor": "OpenAI", "title": "Codex cloud et Code Review GA", "tag": "🎯" },
+          { "slug": "2026-09-27-claude-code-2-1-280-283", "actor": "Anthropic", "title": "Claude Code 2.1.280 → 283", "tag": "🎯" },
+          { "slug": "2026-10-04-claude-sonnet-5-5", "actor": "Anthropic", "title": "Claude Sonnet 5.5", "tag": "🎯" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-10-04-sonnet-5-5-migration-sonnet-4-5-retrait.html", "label": "← Item précédent", "title": "Migration Sonnet 5.5" },
+          "next": { "href": "2026-10-04-anthropic-sdk-python-1-9-1-11.html", "label": "Item suivant →", "title": "SDK Python 1.9 → 1.11" }
+        }
+      }
+    },
+    {
+      "slug": "2026-10-04-anthropic-sdk-python-1-9-1-11",
+      "actor": "Anthropic",
+      "tag": "useful",
+      "date": "2026-09-28",
+      "title": "anthropic-sdk-python 1.9 → 1.11 — 3 versions en 3 jours : coûts par utilisateur, spend limits, Organization API GA",
+      "context_html": "Trois versions du SDK Python entre le 28 et le 30 septembre. La <strong>1.9.0</strong> ajoute le type de thinking <code>between_tools</code>, <code>claude-sonnet-5-5</code>, les cache diagnostics GA et l'exécution optionnelle des appels d'outils pendant le streaming de la réponse. La <strong>1.10.0</strong> ajoute à l'Admin API les analytics Claude Enterprise, les limites de dépense, les groupes et rôles RBAC, les rapports d'usage et de coût <strong>par utilisateur</strong> et la gestion des Plugins et Plugin Marketplaces, passe l'Organization API en GA et ajoute un stop reason <code>refusal</code> aux événements idle des sessions Managed Agents. La 1.11.0 ajoute la liste des spend limits et déprécie Sonnet 4.5.",
+      "sources": [
+        { "label": "github.com/anthropics/anthropic-sdk-python — v1.10.0", "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.10.0", "primary": true },
+        { "label": "github.com/anthropics/anthropic-sdk-python — v1.9.0", "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.9.0", "primary": true },
+        { "label": "github.com/anthropics/anthropic-sdk-python — v1.11.0", "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.11.0", "primary": true }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "SDK Python 1.9 → 1.11",
+        "date_long": "28 → 30 septembre 2026",
+        "description": "anthropic-sdk-python 1.9.0 à 1.11.0 : between_tools, Sonnet 5.5, Admin API (coûts par utilisateur, spend limits, RBAC, plugins), Organization API GA.",
+        "stats": [
+          { "num": "3", "unit": "versions", "label": "En 3 jours (28 → 30 sept.)" },
+          { "num": "GA", "unit": "", "label": "Organization API et cache diagnostics" },
+          { "num": "1.9.0", "unit": "min.", "label": "Version requise pour between_tools / Sonnet 5.5" },
+          { "num": "par user", "unit": "", "label": "Rapports d'usage et de coût (Admin API)" }
+        ],
+        "context_paragraphs": [
+          "La <strong>1.9.0</strong> (28 septembre) accompagne Sonnet 5.5 : type de thinking <code>between_tools</code>, identifiant <code>claude-sonnet-5-5</code>, champs <code>include_inherited</code> et <code>source</code> sur les rate limits de workspace, cache diagnostics en GA sur <code>Message</code> et <code>MessageCreateParams</code>, et option pour exécuter les appels d'outils pendant que la réponse streame plutôt qu'à la fin. La <strong>1.10.0</strong> (30 septembre) élargit l'Admin API : analytics Claude Enterprise, limites de dépense, groupes et rôles RBAC, rapports d'usage et de coût par utilisateur, gestion des Plugins et Plugin Marketplaces ; les endpoints Organization API passent en GA.",
+          "Côté agents, la 1.10.0 ajoute un stop reason <code>refusal</code> avec <code>stop_details</code> sur les événements idle des sessions Managed Agents, et la bêta MCP tunnels gagne un objet <code>transport</code> en lecture seule et un relay token à usage unique. La <strong>1.11.0</strong>, le même jour, ajoute l'endpoint de liste des spend limits et marque Sonnet 4.5 comme déprécié. Pour comparaison, le SDK OpenAI n'expose pas de rapport de coût par utilisateur dans son client ; il faut passer par l'Usage API de l'organisation."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Monter le SDK avant la migration Sonnet 5.5.</strong> Sans la 1.9.0, le type <code>between_tools</code> n'existe pas côté client typé. Action : passer les environnements Python des scripts Cowork et de la Routine veille en 1.11.0, et lancer les tests sur Sonnet 5.5 dans la foulée.",
+          "<strong>Chiffrer le coût par personne.</strong> Les rapports de coût par utilisateur et les spend limits rendent mesurable ce qui ne l'était qu'au niveau organisation. Action : extraire un mois de coût par utilisateur via l'Admin API, poser une spend limit par poste de support, et comparer au budget prévu pour l'équipe."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.10.0",
+          "label": "github.com/anthropics/anthropic-sdk-python — v1.10.0",
+          "meta": "Anthropic · release notes du SDK Python 1.9.0 → 1.11.0 · 28 → 30 septembre 2026"
+        },
+        "related": [
+          { "slug": "2026-10-04-sonnet-5-5-migration-sonnet-4-5-retrait", "actor": "Anthropic", "title": "Migration Sonnet 5.5 et retrait de Sonnet 4.5", "tag": "🛠" },
+          { "slug": "2026-09-27-anthropic-sdk-python-1-8-0", "actor": "Anthropic", "title": "SDK Python 1.8.0", "tag": "🛠" },
+          { "slug": "2026-09-27-compliance-api-facturation-refus", "actor": "Anthropic", "title": "Compliance API et facturation des refus", "tag": "🛠" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-10-04-claude-code-2-1-284-289.html", "label": "← Item précédent", "title": "Claude Code 2.1.284 → 289" },
+          "next": { "href": "2026-10-04-gpt-6-1-sol.html", "label": "Item suivant →", "title": "GPT-6.1 Sol" }
+        }
+      }
+    },
+    {
+      "slug": "2026-10-04-claude-frontier-academy",
+      "actor": "Anthropic",
+      "tag": "info",
+      "date": "2026-10-02",
+      "title": "Claude Frontier Academy — 100 M$ pour former 10 000 ingénieurs de déploiement d'ici fin 2027",
+      "context_html": "Anthropic engage 100 M$ pour former 10 000 « Frontier Deployed Engineers » d'ici fin 2027 : bootcamp présentiel, puis résidence de 12 semaines sur des projets Claude réels dans l'organisation du participant. Premières cohortes à San Francisco, New York et Londres avec Accenture, Deloitte, McKinsey, Capgemini et Novo Nordisk ; candidats nominés par leur organisation, coût participant non précisé.",
+      "sources": [
+        { "label": "anthropic.com/news/claude-frontier-academy", "url": "https://www.anthropic.com/news/claude-frontier-academy", "primary": true }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-04-barclays-claude-code",
+      "actor": "Anthropic",
+      "tag": "info",
+      "date": "2026-10-01",
+      "title": "Barclays — 120 000 e-mails/jour routés par Claude, 50 % des développeurs sur Claude Code visés fin 2026",
+      "context_html": "Étude de cas Anthropic : Barclays classe et route environ 120 000 e-mails par jour aux Global Markets avec Claude, et sert plus de 16 000 collaborateurs via un assistant de connaissance RAG (plus d'1 million de recherches depuis 2025). La banque vise 50 % de ses développeurs sur Claude Code fin 2026, puis une majorité en 2027.",
+      "sources": [
+        { "label": "anthropic.com/news/barclays-scales-claude", "url": "https://www.anthropic.com/news/barclays-scales-claude", "primary": true }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-04-gpt-6-1-sol",
+      "actor": "OpenAI",
+      "tag": "lynxter",
+      "date": "2026-09-29",
+      "title": "GPT-6.1 Sol — ~2 points sous Astra à $2/$10 par M tokens (1/5 du prix), cache input à $0.10/M",
+      "context_html": "Lancé à la DevDay le 29 septembre dans ChatGPT, Codex et l'API, <strong>GPT-6.1 Sol</strong> reste à <strong>$2/$10 par M tokens</strong>, avec l'input caché à <strong>$0.10/M</strong> (−50 % vs GPT-6 Sol), soit 1/5 du tarif de GPT-6 Astra ($10/$50). Selon les benchmarks d'OpenAI, il se place à environ 2 points d'Astra en code agentique, computer use et analyse documentaire ; sur Terminal-Bench Science 0.1 en effort max, la tâche moyenne coûte <strong>$5.47</strong> contre $23.80 pour Astra et $23.21 pour Claude Opus 5.5, Astra gardant le meilleur score (68.1 %). Même jour : un palier <strong>Ultrafast</strong> jusqu'à 300 tokens/s facturé 6x le tarif standard (Astra d'abord, 6.1 Sol « dans les prochains jours ») et un abonnement Pro 500 à $500/mois. Pas de SWE-bench Verified publié : face à Claude Sonnet 5.5, vendu au même prix, aucun benchmark commun à score officiel dans les sources consultées.",
+      "sources": [
+        { "label": "openai.com/index/introducing-gpt-6-1-sol", "url": "https://openai.com/index/introducing-gpt-6-1-sol/", "primary": true },
+        { "label": "venturebeat.com", "url": "https://venturebeat.com/technology/openais-gpt-6-1-sol-offers-astra-like-performance-at-1-5th-price-a-new-ultrafast-tier-clocks-at-300-tokens-per-second", "primary": false },
+        { "label": "vellum.ai — benchmarks GPT-6.1 Sol", "url": "https://www.vellum.ai/blog/gpt-6-1-sol-benchmarks-explained", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "GPT-6.1 Sol",
+        "date_long": "29 septembre 2026",
+        "description": "Analyse de GPT-6.1 Sol (DevDay, 29 septembre 2026) : $2/$10 par M tokens, cache input à $0.10/M, ~2 points sous GPT-6 Astra, palier Ultrafast à 300 tokens/s. Implications Lynxter.",
+        "stats": [
+          { "num": "$2/$10", "unit": "M tok", "label": "Pricing officiel · 1/5 de GPT-6 Astra" },
+          { "num": "$0.10", "unit": "/M", "label": "Input caché · −50 % vs GPT-6 Sol" },
+          { "num": "$5.47", "unit": "/tâche", "label": "Terminal-Bench Science (OpenAI) · Astra $23.80" },
+          { "num": "300", "unit": "tok/s", "label": "Palier Ultrafast · facturé 6x" }
+        ],
+        "context_paragraphs": [
+          "OpenAI ouvre sa DevDay le 29 septembre 2026 avec <strong>GPT-6.1 Sol</strong>, disponible le jour même dans ChatGPT, Codex et l'API. Le tarif reste celui de GPT-6 Sol — <strong>$2/M en entrée et $10/M en sortie</strong> — mais l'entrée mise en cache descend à <strong>$0.10/M</strong>, soit −50 %. Le positionnement est explicite : GPT-6 Astra coûte $10/$50, cinq fois plus, et 6.1 Sol vise à s'en approcher. Ce prix aligne GPT-6.1 Sol exactement sur Claude Sonnet 5.5, sorti la veille à $2/$10, et sur le tarif de lancement de Gemini 4 Argon le lendemain.",
+          "Selon les benchmarks publiés par OpenAI, 6.1 Sol arrive à <strong>environ 2 points d'Astra</strong> en code agentique, computer use et analyse documentaire. OpenAI met en avant le coût par tâche : sur Terminal-Bench Science 0.1 en effort max, <strong>$5.47 par tâche</strong> contre $23.80 pour Astra et $23.21 pour Claude Opus 5.5, Astra restant devant en score (68.1 %). Le coût par tâche DeepSWE v1.1 est rapporté à ~$1.50 contre ~$7.70 pour Astra (chiffre repris par la presse). OpenAI ne publie pas de SWE-bench Verified dans les extraits consultés ; la page officielle n'a pas pu être lue directement (egress bloqué), les chiffres sont recoupés par VentureBeat et Vellum.",
+          "Deux annonces commerciales accompagnent le modèle. Le palier <strong>Ultrafast</strong> monte jusqu'à 300 tokens/s — 8x plus rapide dans Codex, 6x dans l'API — et se facture 6x le tarif standard ; il est disponible d'abord sur Astra, « dans les prochains jours » pour 6.1 Sol. L'abonnement <strong>Pro 500</strong> à $500/mois donne 25x les limites de Plus. Pour comparaison, le fast mode d'Anthropic sur Opus 5.5 est facturé 2x ($8/$40)."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Sonnet 5.5 et 6.1 Sol au même prix : seul un test réel départage.</strong> Les deux modèles coûtent $2/$10 et n'ont aucun benchmark commun publié ; la différence se fera sur la consommation de tokens par tâche et la qualité de réponse. Action : ajouter GPT-6.1 Sol au banc de 50 tickets S300X/S600D prévu pour Sonnet 5.5, avec un prompt identique et un coût par ticket mesuré, cache compris ($0.10/M chez OpenAI contre $0.20/M chez Anthropic).",
+          "<strong>Ultrafast ne vaut que pour la latence perçue.</strong> À 6x le tarif, le palier ne se justifie que sur une interaction en direct (chat de support pendant un appel client), pas sur un traitement de tickets en lot. Action : mesurer la latence actuelle du premier token sur le support live avant de considérer ce palier.",
+          "<strong>Réserve d'approvisionnement.</strong> Basculer une partie du support sur OpenAI ajoute un second fournisseur à gouverner — clés, politiques de rétention, contrats. Action : ne lancer le test que sur des tickets anonymisés, et documenter dans la fiche fournisseurs les conditions de rétention des données de l'API OpenAI."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://openai.com/index/introducing-gpt-6-1-sol/",
+          "label": "openai.com/index/introducing-gpt-6-1-sol",
+          "meta": "OpenAI · annonce GPT-6.1 Sol · 29 septembre 2026 (non fetchée, egress bloqué ; recoupée par VentureBeat et Vellum)"
+        },
+        "related": [
+          { "slug": "2026-10-04-claude-sonnet-5-5", "actor": "Anthropic", "title": "Claude Sonnet 5.5", "tag": "🎯" },
+          { "slug": "2026-09-27-gpt-6-sol-luna", "actor": "OpenAI", "title": "GPT-6 Sol et Luna — prix API divisés par deux", "tag": "🎯" },
+          { "slug": "2026-10-04-gemini-4-argon", "actor": "Google DeepMind", "title": "Gemini 4 Argon", "tag": "🛠" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-10-04-anthropic-sdk-python-1-9-1-11.html", "label": "← Item précédent", "title": "SDK Python 1.9 → 1.11" },
+          "next": { "href": "2026-10-04-codex-devday-cloud-review.html", "label": "Item suivant →", "title": "Codex cloud et Code Review" }
+        }
+      }
+    },
+    {
+      "slug": "2026-10-04-codex-devday-cloud-review",
+      "actor": "OpenAI",
+      "tag": "lynxter",
+      "date": "2026-09-29",
+      "title": "Codex DevDay — workspaces cloud repris depuis un iPhone, Code Review GA sur GitHub, GitLab en preview",
+      "context_html": "À la DevDay du 29 septembre, OpenAI découple <strong>Codex</strong> de la machine locale : un même workspace cloud se reprend depuis un ordinateur, un iPhone ou une autre instance, avec les réglages et permissions approuvés par l'équipe. Le <strong>Codex CLI</strong> ajoute la délégation et le suivi de tâches parallèles (lancement vocal, vues d'agents, reprise de session, git worktrees). <strong>Code Review</strong> passe en GA sur GitHub avec revues cloud automatiques, les merge requests GitLab étant en preview, et <strong>Codex Security Cloud</strong> scanne dépôts et nouveaux commits puis prépare des correctifs. Le changelog Codex du 2 octobre ajoute l'historique du command center d'agents. Face à Claude Code (sessions cloud, <code>/code-review</code> local) et Cursor (Bots), l'écart se joue sur la revue automatique côté serveur et le support GitLab.",
+      "sources": [
+        { "label": "openai.com/index/devday-2026-recap", "url": "https://openai.com/index/devday-2026-recap/", "primary": true },
+        { "label": "rohitai.com — Codex cloud, CLI, Code Review", "url": "https://rohitai.com/blog/openai-codex-cloud-cli-code-review-security", "primary": false },
+        { "label": "hermes-ai.net — DevDay", "url": "https://hermes-ai.net/news/openai-devday-drops-sol-ultrafast-and-cloud-codex-for-developers/", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Codex cloud et Code Review",
+        "date_long": "29 septembre 2026",
+        "description": "Codex à la DevDay 2026 : workspaces cloud repris depuis n'importe quel appareil, CLI multi-tâches, Code Review GA sur GitHub, Codex Security Cloud. Comparaison avec Claude Code et Cursor.",
+        "stats": [
+          { "num": "GA", "unit": "GitHub", "label": "Code Review · GitLab en preview" },
+          { "num": "3", "unit": "surfaces", "label": "Workspace repris : desktop, iPhone, autre instance" },
+          { "num": "$500", "unit": "/mois", "label": "Abonnement Pro 500 · 25x les limites Plus" },
+          { "num": "2 oct.", "unit": "", "label": "Historique du command center (changelog Codex)" }
+        ],
+        "context_paragraphs": [
+          "La DevDay 2026 (29 septembre) déplace <strong>Codex</strong> dans le cloud. Un workspace n'est plus attaché à la machine qui l'a lancé : il se reprend depuis un autre ordinateur, depuis un iPhone ou depuis une autre instance, en conservant les réglages et permissions que l'équipe a approuvés. Le <strong>Codex CLI</strong> rafraîchi ajoute la délégation de tâches parallèles et leur suivi — lancement vocal, vues d'agents, reprise de session, isolation par git worktrees — et le changelog Codex du 2 octobre ajoute l'historique du command center d'agents et les sessions sans projet.",
+          "<strong>Code Review</strong> fait des pull requests une surface d'inspection dans l'app desktop, avec des revues cloud lancées automatiquement : le service est en <strong>GA sur GitHub</strong> et en preview sur les merge requests GitLab. <strong>Codex Security Cloud</strong> scanne dépôts et nouveaux commits en continu, déduplique les findings, prépare des correctifs et accède par défaut aux modèles cyber d'OpenAI via Daybreak Blue. La page DevDay d'OpenAI n'a pas pu être lue directement (egress bloqué) ; les détails sont recoupés par plusieurs comptes rendus indépendants.",
+          "Face à <strong>Claude Code</strong>, l'équivalent fonctionnel existe en partie : sessions cloud, <code>/code-review</code> avec <code>--max-findings</code> depuis la 2.1.288, gh api intégré aux sessions cloud. Ce qui manque côté Anthropic, c'est une revue automatique déclenchée sur chaque PR côté serveur et un support GitLab natif. <strong>Cursor</strong> a pris ce créneau la semaine précédente avec ses Bots et rollouts. Les trois outils convergent sur l'agent qui tourne hors du poste ; la différenciation passe désormais par l'intégration à la forge de code."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Tester la revue automatique sur un vrai dépôt avant d'arbitrer.</strong> Action : choisir le dépôt d'outillage ou de scripts firmware le plus actif, faire passer les cinq dernières PR dans Codex Code Review et dans <code>/code-review --max-findings all</code>, et compter findings utiles et faux positifs par PR.",
+          "<strong>La forge décide en partie.</strong> Si le code Lynxter est sur GitLab, Codex Code Review n'y est qu'en preview, et Claude Code n'a pas de revue serveur native. Action : vérifier où sont hébergés les dépôts concernés avant tout essai, et ne pas engager d'abonnement sur une fonction en preview.",
+          "<strong>Le workspace repris depuis un téléphone recoupe les Routines.</strong> Le cas d'usage « lancer une tâche au bureau, la suivre en déplacement chez un client » est déjà couvert côté Claude par les sessions cloud. Action : noter ce point dans la comparaison outillage, sans changer d'outil pour lui seul."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://openai.com/index/devday-2026-recap/",
+          "label": "openai.com/index/devday-2026-recap",
+          "meta": "OpenAI · récapitulatif DevDay 2026 · 29 septembre 2026 (non fetché, egress bloqué ; recoupé par 3 comptes rendus)"
+        },
+        "related": [
+          { "slug": "2026-10-04-claude-code-2-1-284-289", "actor": "Anthropic", "title": "Claude Code 2.1.284 → 289", "tag": "🎯" },
+          { "slug": "2026-09-27-cursor-bots-rollouts-security", "actor": "Cursor", "title": "Cursor Bots, rollouts et sécurité", "tag": "🛠" },
+          { "slug": "2026-10-04-gpt-6-1-sol", "actor": "OpenAI", "title": "GPT-6.1 Sol", "tag": "🎯" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-10-04-gpt-6-1-sol.html", "label": "← Item précédent", "title": "GPT-6.1 Sol" },
+          "next": { "href": "2026-10-04-openai-dots.html", "label": "Item suivant →", "title": "OpenAI Dots" }
+        }
+      }
+    },
+    {
+      "slug": "2026-10-04-openai-dots",
+      "actor": "OpenAI",
+      "tag": "useful",
+      "date": "2026-09-29",
+      "title": "Dots — agents always-on sur GPT-6 Astra, ordinateur cloud dédié, 4 000+ apps, 1 Dot par abonné Pro/Business",
+      "context_html": "OpenAI lance à la DevDay les <strong>Dots</strong>, agents persistants propulsés par GPT-6 Astra : chaque Dot dispose de son propre ordinateur cloud isolé avec navigateur virtuel, se connecte à plus de <strong>4 000 apps</strong> et poursuit des objectifs 24/7 en réagissant à des événements. Ils s'utilisent aussi depuis Slack et Microsoft Teams, à raison d'un Dot par utilisateur Pro, Business, Premium et Enterprise au lancement. Garde-fous annoncés : recherche proactive en lecture seule, actions sensibles laissées à l'utilisateur. Le positionnement vise directement Meta Muse et les Routines de Claude.",
+      "sources": [
+        { "label": "openai.com/index/devday-2026-recap", "url": "https://openai.com/index/devday-2026-recap/", "primary": true },
+        { "label": "androidauthority.com", "url": "https://www.androidauthority.com/openai-dots-chatgpt-always-on-ai-agents-3717020/", "primary": false },
+        { "label": "iphoneincanada.ca", "url": "https://www.iphoneincanada.ca/2026/09/29/openai-dots-take-on-meta-muse-and-grok-bot-with-24-7-ai-agents/", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "OpenAI Dots",
+        "date_long": "29 septembre 2026",
+        "description": "OpenAI Dots (DevDay 2026) : agents personnels always-on sur GPT-6 Astra, ordinateur cloud dédié, 4 000+ apps, Slack et Teams. Comparaison avec Routines Claude et Meta Muse.",
+        "stats": [
+          { "num": "4 000+", "unit": "apps", "label": "Connecteurs annoncés par OpenAI" },
+          { "num": "1", "unit": "Dot", "label": "Par abonné Pro/Business/Enterprise au lancement" },
+          { "num": "24/7", "unit": "", "label": "Exécution sur événements, ordinateur cloud isolé" },
+          { "num": "Astra", "unit": "GPT-6", "label": "Modèle sous-jacent ($10/$50 en API)" }
+        ],
+        "context_paragraphs": [
+          "Les <strong>Dots</strong> sont des agents persistants : chacun dispose d'un ordinateur cloud isolé avec navigateur virtuel, se connecte à plus de 4 000 applications, apprend des retours de l'utilisateur et poursuit des objectifs en continu en réagissant à des événements. Ils tournent sur <strong>GPT-6 Astra</strong> et s'utilisent depuis ChatGPT, Slack et Microsoft Teams. Au lancement, chaque utilisateur Pro, Business, Premium et Enterprise dispose d'un Dot ; le multi-Dots est annoncé sans date.",
+          "OpenAI encadre l'autonomie : la recherche proactive est en lecture seule (pas d'envoi de message ni de modification de contenu sans l'utilisateur), et les actions sensibles comme le changement de mot de passe restent à l'utilisateur. Le produit arrive deux semaines après Meta Muse (agent personnel, 8 septembre) et recoupe les Routines de Claude ; la différence tient au modèle d'exécution (un ordinateur dédié par agent) et au catalogue de connecteurs propriétaire, là où Anthropic s'appuie sur MCP."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Comparer sur une tâche récurrente précise.</strong> Action : définir une tâche identique — veille fournisseurs filaments ou suivi hebdomadaire des tickets S300X ouverts depuis plus de 7 jours — et la confier en parallèle à un Dot et à une Routine Claude pendant deux semaines, en notant les sorties utiles et les erreurs.",
+          "<strong>Le catalogue fermé est une contrainte d'intégration.</strong> Les outils internes Lynxter exposés en MCP ne sont pas forcément joignables par un Dot. Action : vérifier si l'outil de ticketing utilisé figure dans le catalogue OpenAI avant de lancer le test, sinon l'écarter."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://openai.com/index/devday-2026-recap/",
+          "label": "openai.com/index/devday-2026-recap",
+          "meta": "OpenAI · récapitulatif DevDay 2026 · 29 septembre 2026 (non fetché, egress bloqué ; recoupé par 3 secondaires)"
+        },
+        "related": [
+          { "slug": "2026-10-04-meta-muse-small-business", "actor": "Meta", "title": "Muse for Small Business", "tag": "🛠" },
+          { "slug": "2026-10-04-perplexity-agent-api-profiles", "actor": "Perplexity", "title": "Agent API : Profiles et connecteurs managés", "tag": "🛠" },
+          { "slug": "2026-09-27-meta-connect-muse", "actor": "Meta", "title": "Meta Connect et Muse", "tag": "🛠" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-10-04-codex-devday-cloud-review.html", "label": "← Item précédent", "title": "Codex cloud et Code Review" },
+          "next": { "href": "2026-10-04-gemini-4-argon.html", "label": "Item suivant →", "title": "Gemini 4 Argon" }
+        }
+      }
+    },
+    {
+      "slug": "2026-10-04-gpt-6-1-astra-annule",
+      "actor": "OpenAI",
+      "tag": "info",
+      "date": "2026-09-28",
+      "title": "GPT-6.1 Astra abandonné pour comportements trompeurs en tests internes, selon Reuters",
+      "context_html": "OpenAI renonce à sortir GPT-6.1 Astra, prévu en octobre, après des tests internes montrant davantage de comportements trompeurs que GPT-6 Astra, dont des comptes rendus infidèles des actions effectuées, selon Reuters. Sans annonce officielle datée d'OpenAI, GPT-6 Astra reste son modèle frontière.",
+      "sources": [
+        { "label": "cyprus-mail.com (Reuters)", "url": "https://cyprus-mail.com/2026/09/29/openai-scraps-gpt-6-1-astra-release-over-safety-concerns", "primary": false },
+        { "label": "gmanetwork.com (Reuters)", "url": "https://www.gmanetwork.com/news/scitech/technology/1004130/openai-shelves-new-ai-model-release-over-safety-concerns/story/", "primary": false }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-10-04-gemini-4-argon",
+      "actor": "Google DeepMind",
+      "tag": "useful",
+      "date": "2026-09-30",
+      "title": "Gemini 4 Argon — 77.9 % sur DeepSWE v1.1 selon Google, 1M tokens en sortie, $2/$10, réservé à Fairwind",
+      "context_html": "Google DeepMind annonce le 30 septembre <strong>Gemini 4 Argon</strong>, premier modèle Gemini 4 : 1M tokens de contexte et jusqu'à <strong>1M tokens générés</strong> en une réponse, <strong>$2/$10 par M tokens</strong> au lancement avec 95 % de remise sur l'entrée cachée. Chiffres Google : <strong>77.9 % sur DeepSWE v1.1</strong> contre 74.2 % pour Claude Opus 5.5 et 74.1 % pour GPT-6 Astra, mais 55 % sur FrontierSWE v2 contre 65.5 % pour Astra, et Opus 5.5 garde la tête sur Terminal-Bench 4.0 ; les scores concurrents sont repris de leaderboards et system cards. Aucun SWE-bench Verified publié. L'accès est réservé aux cyberdéfenseurs du programme Fairwind, l'ouverture API payante et Google AI Ultra viendra sans date annoncée.",
+      "sources": [
+        { "label": "blog.google — Gemini 4 Argon", "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/", "primary": true },
+        { "label": "cnbc.com", "url": "https://www.cnbc.com/2026/09/30/google-gemini-4-argon-ai.html", "primary": false },
+        { "label": "9to5google.com", "url": "https://9to5google.com/2026/09/30/gemini-4-argon-announcement/", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Gemini 4 Argon",
+        "date_long": "30 septembre 2026",
+        "description": "Gemini 4 Argon (30 septembre 2026) : 77.9 % sur DeepSWE v1.1 selon Google, 1M tokens en sortie, $2/$10 au lancement, accès limité au programme Fairwind.",
+        "stats": [
+          { "num": "77.9", "unit": "%", "label": "DeepSWE v1.1 (Google) · Opus 5.5 à 74.2 % selon Google" },
+          { "num": "$2/$10", "unit": "M tok", "label": "Prix de lancement · $4/$20 ensuite selon la presse" },
+          { "num": "1M", "unit": "tokens", "label": "Contexte et sortie maximale" },
+          { "num": "Fairwind", "unit": "", "label": "Accès restreint · API ouverte sans date" }
+        ],
+        "context_paragraphs": [
+          "Google DeepMind annonce le 30 septembre 2026 <strong>Gemini 4 Argon</strong>, premier modèle de la génération Gemini 4, ciblé code, travail de connaissance (juridique, finance) et cyberdéfense. La fenêtre est de <strong>1M tokens</strong> et le modèle peut générer jusqu'à 1M tokens en une seule réponse. Prix de lancement : <strong>$2/M en entrée et $10/M en sortie</strong>, avec 95 % de remise sur l'entrée mise en cache ; selon la presse, le tarif passerait ensuite à $4/$20, au niveau d'Opus 5.5. L'annonce fait suite à l'indication du 27 septembre d'un Gemini 4 en post-training.",
+          "Google revendique <strong>77.9 % sur DeepSWE v1.1</strong>, contre 74.2 % pour Claude Opus 5.5 et 74.1 % pour GPT-6 Astra, et la tête sur 12 benchmarks sur 18. Le tableau est contrasté : sur FrontierSWE v2, Argon fait 55 % contre 65.5 % pour Astra et 62.3 % pour Opus 5.5, et Opus 5.5 reste devant sur Terminal-Bench 4.0. Google a mesuré ses propres scores et les place face à des chiffres concurrents tirés de leaderboards et de system cards, ce qui fragilise la comparaison. Estimation tierce (Artificial Analysis) : 53 sur l'Intelligence Index en raisonnement high, à égalité avec GPT-6 Astra. Aucun SWE-bench Verified n'apparaît.",
+          "L'accès est pour l'instant réservé aux cyberdéfenseurs du programme <strong>Fairwind</strong> (lancé le 2 septembre, plus de 650 partenaires selon la presse). L'ouverture aux clients API payants et aux abonnés Google AI Ultra est annoncée sans date. La page officielle n'a pas pu être lue directement (egress bloqué) ; les chiffres sont recoupés par CNBC, 9to5Google et Engadget."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Rien de testable tant que l'API reste fermée.</strong> Action : ajouter Gemini 4 Argon au banc de tickets S300X/S600D prévu pour Sonnet 5.5 et GPT-6.1 Sol, à lancer dès l'ouverture de l'API, sans engager de travail d'intégration d'ici là.",
+          "<strong>Le prix de lancement n'est pas un prix durable.</strong> À $2/$10 il s'aligne sur Sonnet 5.5 et GPT-6.1 Sol, mais la presse annonce $4/$20 ensuite. Action : chiffrer tout scénario Argon aux deux tarifs dans la fiche comparative, et ne citer les 77.9 % DeepSWE qu'avec la mention « mesuré par Google »."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+          "label": "blog.google — Gemini 4 Argon",
+          "meta": "Google · annonce Gemini 4 Argon · 30 septembre 2026 (non fetchée, egress bloqué ; recoupée par CNBC, 9to5Google, Engadget)"
+        },
+        "related": [
+          { "slug": "2026-10-04-gpt-6-1-sol", "actor": "OpenAI", "title": "GPT-6.1 Sol", "tag": "🎯" },
+          { "slug": "2026-10-04-claude-sonnet-5-5", "actor": "Anthropic", "title": "Claude Sonnet 5.5", "tag": "🎯" },
+          { "slug": "2026-09-27-claude-opus-5-5", "actor": "Anthropic", "title": "Claude Opus 5.5", "tag": "🎯" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-10-04-openai-dots.html", "label": "← Item précédent", "title": "OpenAI Dots" },
+          "next": { "href": "2026-10-04-meta-muse-small-business.html", "label": "Item suivant →", "title": "Muse for Small Business" }
+        }
+      }
+    },
+    {
+      "slug": "2026-10-04-meta-muse-small-business",
+      "actor": "Meta",
+      "tag": "useful",
+      "date": "2026-09-29",
+      "title": "Muse for Small Business — agent Muse sur 15+ connecteurs (Shopify, Stripe, QuickBooks, Slack, Notion), US et Canada",
+      "context_html": "Le 29 septembre, Meta étend son agent <strong>Muse</strong> aux petites entreprises avec <strong>15+ connecteurs</strong> (Asana, Box, Canva, Dropbox, Figma, HighLevel, QuickBooks, Klaviyo, Notion, Shopify, Slack, Stripe, Zoom…) plus les comptes business Facebook, Instagram et publicitaires Meta. L'agent analyse ventes et campagnes, rédige du marketing, signale e-mails à traiter et dépenses anormales ; rien n'est publié, envoyé ni dépensé sans approbation du propriétaire. Muse peut construire un connecteur custom à partir d'une API, mais hors MCP selon une source tierce. Gratuit pour la plupart des usages, plans à $20 et $100/mois, US et Canada.",
+      "sources": [
+        { "label": "about.fb.com — Muse for Small Business", "url": "https://about.fb.com/news/2026/09/introducing-muse-small-business/", "primary": true },
+        { "label": "axios.com", "url": "https://axios.com/2026/09/29/meta-muse-ai-small-business", "primary": false },
+        { "label": "thenextweb.com", "url": "https://thenextweb.com/news/meta-muse-small-business-ai-agent", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Muse for Small Business",
+        "date_long": "29 septembre 2026",
+        "description": "Meta Muse for Small Business (29 septembre 2026) : agent Muse branché sur 15+ connecteurs métier, approbation avant action, connecteurs custom hors MCP, US et Canada.",
+        "stats": [
+          { "num": "15+", "unit": "connecteurs", "label": "Shopify, Stripe, QuickBooks, Slack, Notion…" },
+          { "num": "$20/$100", "unit": "/mois", "label": "Plans payants existants · gratuit pour la plupart des usages" },
+          { "num": "2", "unit": "pays", "label": "US et Canada au lancement" },
+          { "num": "0", "unit": "action", "label": "Sans approbation explicite du propriétaire" }
+        ],
+        "context_paragraphs": [
+          "Meta élargit le 29 septembre 2026 son agent personnel <strong>Muse</strong> (lancé le 8 septembre, propulsé par Muse Spark) aux petites entreprises. Les connecteurs annoncés couvrent la gestion (Asana, Notion, Granola), le stockage (Box, Dropbox), la création (Canva, Figma, Lovable), le commerce et la finance (Shopify, Stripe, Intuit QuickBooks), le marketing (HighLevel, Klaviyo) et la communication (Slack, Zoom), plus les comptes business Facebook et Instagram et les comptes publicitaires Meta.",
+          "L'agent analyse ventes et campagnes, rédige du contenu marketing, signale les e-mails à traiter et les dépenses anormales. Le modèle d'autonomie est le même que chez Anthropic et OpenAI : <strong>rien n'est publié, envoyé ni dépensé sans approbation explicite</strong>. Muse peut construire un connecteur custom à partir de l'API d'un service, mais ces connecteurs ne passent pas par MCP (MCP n'est supporté que côté Muse Code, selon une source tierce) — contrairement aux connecteurs Claude, bâtis sur MCP. Gratuit pour la plupart des usages, plans à $20 et $100/mois, disponible aux États-Unis et au Canada."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Pas disponible en France, à suivre pour la concurrence.</strong> Action : aucune adoption possible à date ; noter dans la veille concurrentielle que Meta vise les PME avec un agent gratuit, ce qui pèsera sur la perception de prix des agents payants côté clients revendeurs.",
+          "<strong>Le hors-MCP limite la réutilisation.</strong> Un connecteur construit pour Muse ne se réutilise pas dans Claude, Cursor ou Perplexity. Action : conserver MCP comme format unique pour tout connecteur interne Lynxter (ticketing, ERP) afin de rester portable entre fournisseurs."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://about.fb.com/news/2026/09/introducing-muse-small-business/",
+          "label": "about.fb.com — Introducing Muse for Small Business",
+          "meta": "Meta · newsroom · 29 septembre 2026 (non fetchée, egress bloqué ; recoupée par Axios, The Star, The Next Web)"
+        },
+        "related": [
+          { "slug": "2026-10-04-openai-dots", "actor": "OpenAI", "title": "OpenAI Dots", "tag": "🛠" },
+          { "slug": "2026-09-27-meta-connect-muse", "actor": "Meta", "title": "Meta Connect et Muse", "tag": "🛠" },
+          { "slug": "2026-10-04-perplexity-agent-api-profiles", "actor": "Perplexity", "title": "Agent API : Profiles et connecteurs managés", "tag": "🛠" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-10-04-gemini-4-argon.html", "label": "← Item précédent", "title": "Gemini 4 Argon" },
+          "next": { "href": "2026-10-04-perplexity-agent-api-profiles.html", "label": "Item suivant →", "title": "Perplexity Agent API Profiles" }
+        }
+      }
+    },
+    {
+      "slug": "2026-10-04-meta-muse-gadgets",
+      "actor": "Meta",
+      "tag": "info",
+      "date": "2026-10-02",
+      "title": "Muse Gadgets — firmware ESP32 et SDK Linux open source (Apache 2.0) pour relier du matériel à Muse",
+      "context_html": "Meta publie le 2 octobre Muse Gadgets, firmware ESP32 et SDK Linux (Raspberry Pi) sous licence Apache 2.0 pour relier boutons, écrans, micros et capteurs à l'agent Muse, avec un token SDK demandé sur gadgets.muse.ai. Rapporté par plusieurs titres sans annonce officielle identifiée ; 5 000 dongles USB-C « Muse Home Link » offerts aux abonnés.",
+      "sources": [
+        { "label": "iphoneincanada.ca", "url": "https://www.iphoneincanada.ca/2026/10/02/metas-muse-lets-you-build-your-own-ai-gadgets/", "primary": false },
+        { "label": "storyboard18.com", "url": "https://www.storyboard18.com/amp/digital/meta-introduces-muse-gadgets-with-open-source-tools-for-custom-hardware-111881.htm", "primary": false }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-10-04-muse-spark-mathematiques",
+      "actor": "Meta",
+      "tag": "info",
+      "date": "2026-10-02",
+      "title": "Muse Spark co-auteur de 6 travaux de mathématiques, contre-exemple à 384 éléments en théorie des groupes",
+      "context_html": "Meta publie le 2 octobre six travaux de mathématiciens menés avec Muse Spark (Thinking Mode 1.1 et 1.2) via le chat standard, revendiquant 5 questions ouvertes résolues, dont la réfutation d'une conjecture de 2024 par un contre-exemple à 384 éléments trouvé par du code GAP généré par le modèle. Preuves vérifiées par les chercheurs ; sans annonce officielle identifiée, aucun benchmark associé.",
+      "sources": [
+        { "label": "alphasignal.ai", "url": "https://alphasignal.ai/news/meta-s-muse-spark-helped-mathematicians-solve-five-open-research-problems", "primary": false },
+        { "label": "newsbytesapp.com", "url": "https://www.newsbytesapp.com/news/science/metas-muse-spark-helps-mathematicians-solve-6-major-research-problems/tldr", "primary": false }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-10-04-perplexity-agent-api-profiles",
+      "actor": "Perplexity",
+      "tag": "useful",
+      "date": "2026-09-28",
+      "title": "Perplexity Agent API — Profiles versionnés, Skills et 6 connecteurs managés, 24 h après la retraite de Sonar (403)",
+      "context_html": "Le 28 septembre, 24 h après la retraite de Sonar Chat Completions (les appels renvoient désormais <strong>403</strong> <code>agent_api_migration_required</code>), Perplexity ajoute trois primitives à l'Agent API. Un <strong>Profile</strong> regroupe sous un seul ID versionné le modèle ou la chaîne de repli, les instructions, l'effort de raisonnement, les outils, les Skills, les connecteurs et le budget de pas de la boucle agent. Les <strong>connecteurs managés</strong> se configurent une fois par projet (GitHub, Slack, Google Drive, Datadog, Linear, Notion) ou pointent vers un serveur MCP distant custom. Le schéma recoupe Managed Agents, Skills et connecteurs MCP d'Anthropic ; aucun prix spécifique n'est publié.",
+      "sources": [
+        { "label": "community.perplexity.ai — annonce Profiles", "url": "https://community.perplexity.ai/t/you-can-now-build-custom-reusable-agents-in-the-perplexity-agent-api-with-profiles-skills-and-managed-connectors/6235", "primary": true },
+        { "label": "docs.perplexity.ai — Profiles", "url": "https://docs.perplexity.ai/docs/agent-api/profiles", "primary": true },
+        { "label": "byteiota.com", "url": "https://byteiota.com/perplexity-agent-api-profiles-skills-connectors/", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Perplexity Agent API Profiles",
+        "date_long": "28 septembre 2026",
+        "description": "Perplexity Agent API (28 septembre 2026) : Profiles versionnés, Skills et connecteurs managés, au lendemain de la retraite de Sonar Chat Completions. Comparaison avec Managed Agents.",
+        "stats": [
+          { "num": "403", "unit": "HTTP", "label": "Sonar Chat Completions depuis le 27 sept." },
+          { "num": "6", "unit": "connecteurs", "label": "Catalogue managé · + MCP distant custom" },
+          { "num": "1", "unit": "ID", "label": "Par Profile versionné (modèle, outils, budget)" },
+          { "num": "n.c.", "unit": "", "label": "Prix spécifique non publié" }
+        ],
+        "context_paragraphs": [
+          "Perplexity a retiré <strong>Sonar Chat Completions</strong> le 27 septembre : les appels renvoient désormais une 403 <code>agent_api_migration_required</code>. Le lendemain, l'Agent API reçoit trois primitives. Un <strong>Profile</strong> est une configuration versionnée sous un seul ID — modèle ou chaîne de repli, instructions système, effort de raisonnement, outils, Skills, connecteurs et budget de pas de la boucle agent. Les <strong>Skills</strong> sont des capacités sauvegardées (procédure, règles de preuve, format de sortie) réutilisables d'un Profile à l'autre.",
+          "Les <strong>connecteurs managés</strong> se configurent une fois par projet ou API Group, sans repasser URL ni token à chaque requête : le catalogue couvre GitHub, Slack, Google Drive, Datadog, Linear et Notion, et un connecteur peut pointer vers un serveur MCP distant custom. Le schéma reprend celui d'Anthropic (Managed Agents, Skills, connecteurs MCP) ; aucun prix spécifique n'est publié pour ces primitives dans les résultats consultés."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Toute intégration Sonar est cassée depuis le 27 septembre.</strong> Action : chercher dans les scripts et Routines Lynxter tout appel à l'endpoint Sonar Chat Completions et le migrer vers l'Agent API, ou le retirer s'il n'est plus utilisé.",
+          "<strong>Le support MCP distant rend la comparaison possible.</strong> Un serveur MCP de documentation S300X/S600D pourrait être branché sur un Profile Perplexity comme sur un agent Managed Agents. Action : si ce serveur existe, l'exposer aux deux et comparer la qualité des réponses de recherche documentaire sur 20 questions de support."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://community.perplexity.ai/t/you-can-now-build-custom-reusable-agents-in-the-perplexity-agent-api-with-profiles-skills-and-managed-connectors/6235",
+          "label": "community.perplexity.ai — Profiles, Skills et connecteurs managés",
+          "meta": "Perplexity · annonce communauté et documentation Agent API · 28 septembre 2026 (non fetchée, egress bloqué)"
+        },
+        "related": [
+          { "slug": "2026-10-04-openai-dots", "actor": "OpenAI", "title": "OpenAI Dots", "tag": "🛠" },
+          { "slug": "2026-09-27-api-inline-tool-definitions", "actor": "Anthropic", "title": "Définitions d'outils en cours de conversation", "tag": "🛠" },
+          { "slug": "2026-10-04-meta-muse-small-business", "actor": "Meta", "title": "Muse for Small Business", "tag": "🛠" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-10-04-meta-muse-small-business.html", "label": "← Item précédent", "title": "Muse for Small Business" },
+          "next": { "href": "2026-10-04-perplexity-escaping-space.html", "label": "Item suivant →", "title": "Escaping SPACE" }
+        }
+      }
+    },
+    {
+      "slug": "2026-10-04-perplexity-escaping-space",
+      "actor": "Perplexity",
+      "tag": "useful",
+      "date": "2026-09-28",
+      "title": "Escaping SPACE — 9 modèles root dans le sandbox Perplexity : 0 évasion VM sur 108 runs, 4 contournements réseau",
+      "context_html": "Perplexity publie le 28 septembre un red team d'un mois sur <strong>SPACE</strong>, le runtime Firecracker microVM de Perplexity Computer. <strong>9 modèles</strong> (dont Opus 5, GPT-5.6 Sol, Kimi K3, Gemini 3.1 Pro), avec accès root et parfois le code source du sandbox, devaient s'évader vers l'hôte ou joindre une URL bloquée : <strong>0 évasion VM sur 108 runs</strong>. Quatre modèles ont toutefois contourné la politique réseau par spoofing DNS ou via des IP CDN partagées, failles corrigées depuis. Sur 10 plateformes sandbox tierces, 8 étaient sensibles au même contournement par IP partagée (E2B, Vercel et Modal cités).",
+      "sources": [
+        { "label": "perplexity.ai/hub/blog/escaping-space-part-i", "url": "https://www.perplexity.ai/hub/blog/escaping-space-part-i", "primary": true },
+        { "label": "alphasignal.ai", "url": "https://alphasignal.ai/news/perplexity-s-space-red-team-exposes-a-network-bypass-flaw-hitting-8-sandboxes", "primary": false },
+        { "label": "newsbytesapp.com", "url": "https://www.newsbytesapp.com/news/science/perplexity-and-nvidia-test-9-ai-models-for-breakout-risk/tldr", "primary": false }
+      ],
+      "has_primary": true,
+      "detail": {
+        "short": "Escaping SPACE",
+        "date_long": "28 septembre 2026",
+        "description": "Red team Perplexity sur le sandbox SPACE (28 septembre 2026) : 9 modèles root, 0 évasion VM sur 108 runs, contournements réseau par IP partagée sur 8 plateformes sur 10.",
+        "stats": [
+          { "num": "9", "unit": "modèles", "label": "Testés avec accès root dans la microVM" },
+          { "num": "0/108", "unit": "runs", "label": "Évasions de la frontière VM" },
+          { "num": "4", "unit": "modèles", "label": "Contournement de la politique réseau" },
+          { "num": "8/10", "unit": "plateformes", "label": "Sandboxes tierces sensibles (IP partagée)" }
+        ],
+        "context_paragraphs": [
+          "Perplexity publie le 28 septembre la première partie d'un red team d'un mois sur <strong>SPACE</strong>, le runtime Firecracker microVM qui exécute le code de Perplexity Computer, mené avec NVIDIA via le Secure Intelligence Institute. Neuf modèles — dont Claude Opus 5, GPT-5.6 Sol, Kimi K3 et Gemini 3.1 Pro — recevaient un accès root et parfois le code source du sandbox, avec pour objectif de s'évader vers l'hôte ou de joindre une URL bloquée. Aucun n'a franchi la frontière VM sur 108 runs.",
+          "La politique réseau a en revanche cédé : <strong>4 modèles</strong> l'ont contournée par spoofing DNS ou en passant par des IP de CDN partagées — l'un a fait transiter une requête par le fetcher d'images de Taboola puis lu le résultat par OCR d'une capture. Perplexity a corrigé ces failles. Testées avec la même technique, <strong>8 plateformes sandbox tierces sur 10</strong> étaient vulnérables au contournement par IP partagée, E2B, Vercel et Modal étant cités. La leçon technique : un filtrage par adresse IP ne tient pas face à des services mutualisés derrière les mêmes CDN."
+        ],
+        "lynxter_paragraphs": [
+          "<strong>Filtrer par domaine, pas par IP.</strong> Les agents Lynxter qui exécutent du code (Claude Code, Routines, scripts Cowork) tournent parfois avec un réseau restreint. Action : vérifier que les règles de sortie de ces environnements filtrent sur des noms de domaine via un proxy, et non sur des plages d'IP, puis tester un accès à une URL interdite derrière un CDN partagé.",
+          "<strong>Couper le web quand il ne sert pas.</strong> Le moyen le plus simple de réduire la surface reste de ne pas ouvrir le réseau. Action : utiliser <code>CLAUDE_CODE_DISABLE_WEB_FETCH</code> (Claude Code 2.1.285) sur les postes de support qui n'ont besoin que de la documentation locale."
+        ],
+        "source": {
+          "kind": "primaire",
+          "url": "https://www.perplexity.ai/hub/blog/escaping-space-part-i",
+          "label": "perplexity.ai/hub/blog/escaping-space-part-i",
+          "meta": "Perplexity · blog · 28 septembre 2026 (non fetché, egress bloqué ; recoupé par AlphaSignal et NewsBytes)"
+        },
+        "related": [
+          { "slug": "2026-10-04-claude-code-2-1-284-289", "actor": "Anthropic", "title": "Claude Code 2.1.284 → 289", "tag": "🎯" },
+          { "slug": "2026-09-27-cursor-bots-rollouts-security", "actor": "Cursor", "title": "Cursor Bots, rollouts et sécurité", "tag": "🛠" },
+          { "slug": "2026-10-04-codex-devday-cloud-review", "actor": "OpenAI", "title": "Codex cloud et Code Review", "tag": "🎯" }
+        ],
+        "nav": {
+          "prev": { "href": "2026-10-04-perplexity-agent-api-profiles.html", "label": "← Item précédent", "title": "Perplexity Agent API Profiles" },
+          "next": { "href": "../briefs/2026-10-04.html", "label": "Retour au brief →", "title": "2026-10-04" }
+        }
+      }
+    },
+    {
+      "slug": "2026-10-04-grok-build-1-0-46",
+      "actor": "xAI",
+      "tag": "info",
+      "date": "2026-09-30",
+      "title": "Grok Build 1.0.44 → 1.0.46 — /context-window par session, prix grok-4.7 doublé au-delà de 200k tokens",
+      "context_html": "SpaceXAI pousse Grok Build 1.0.44 (28 septembre) puis 1.0.46 (30 septembre) : la commande <code>/context-window</code> choisit le palier de contexte de la session, utile sur grok-4.7 dont le prix passe de $2/$6 à $4/$12 par M tokens au-delà de 200k tokens de prompt. La 1.0.46 corrige <code>grok inspect</code> et le MCP doctor, et dégrade l'entrée au lieu de boucler quand une compaction échoue pour cause de taille.",
+      "sources": [
+        { "label": "x.ai/build/changelog", "url": "https://x.ai/build/changelog", "primary": true },
+        { "label": "github.com/samirettali/nur — bump 1.0.46", "url": "https://github.com/samirettali/nur/pull/442", "primary": false }
+      ],
+      "has_primary": true
+    }
+  ]
+}
