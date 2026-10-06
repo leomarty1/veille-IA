@@ -305,6 +305,8 @@ html.dark {
   .b2-30s { padding: 18px 16px; }
   .b2-model, .viz-card, .cmp-card { padding: 16px; }
   .b2-head, .cmp-hero { padding-top: 32px; }
+  .b2-kicker { font-size: 11px; letter-spacing: 0.1em; align-items: flex-start; }
+  .b2-kicker::before { flex: none; margin-top: 7px; }
   .db-row { grid-template-columns: 1fr; gap: 0; }
   .db-label { text-align: left; }
   .cmp-grid[style] { grid-template-columns: 1fr !important; }
