@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code pouvait parfois lire des fichiers interdits : passer en 2.1.291 — Veille IA Lynxter</title>
+<meta name="description" content="Veille IA des 5 et 6 octobre 2026 : Claude Code 2.1.290 et 2.1.291, filigrane d'OpenAI sur le texte de ChatGPT en Europe, Beam, le modèle ouvert de Reflection AI. Ce que ça change pour Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/v2.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/" class="active">Briefs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../lexique/">Lexique</a>
+      <a href="../methodo/">Méthodo</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="b2">
+  <div class="breadcrumb" style="margin-top:32px">
+    <a href="../">Accueil</a><span class="breadcrumb-sep">/</span><a href="./">Briefs</a><span class="breadcrumb-sep">/</span><span class="current">2026-10-06</span>
+  </div>
+
+  <header class="b2-head">
+    <p class="b2-kicker">Veille IA · 5 → 6 octobre 2026</p>
+    <h1 class="b2-title">Claude Code pouvait parfois lire des fichiers interdits : passer en 2.1.291</h1>
+    <p class="b2-lead">Brief court, deux jours après le précédent. L'essentiel pour nous : une mise à jour de sécurité de <span class="term" tabindex="0" data-def="Assistant d'Anthropic qui travaille dans un terminal ou un éditeur : code, fichiers, automatisations.">Claude Code</span>, à installer. À suivre aussi, deux modèles : Beam, un modèle ouvert, et un nouveau Mistral encore sans détails. OpenAI annonce un <span class="term" tabindex="0" data-def="Marque invisible glissée dans un texte ou une image produits par une IA, qu'un outil de détection peut ensuite repérer.">filigrane</span> invisible sur ses textes en Europe, sans effet pour nous.</p>
+    <ul class="b2-meta"><li>9 annonces retenues</li><li>9 éditeurs suivis</li><li>Lecture : ~4 min</li><li><a href="../modeles/">Comparateur de modèles</a></li></ul>
+  </header>
+
+  <section class="b2-section" id="en-30-secondes">
+    <h2 class="b2-h2">En 30 secondes</h2>
+    <div class="b2-30s"><ol>
+      <li><strong>Claude Code</strong> passe en 2.1.290 puis en 2.1.291, les 5 et 6 octobre. La 2.1.290 bouche plusieurs failles par lesquelles Claude Code pouvait lire des fichiers interdits. La 2.1.291 corrige deux bugs récents. Chaque poste doit passer en 2.1.291.</li>
+      <li><strong>OpenAI</strong> va marquer d'un filigrane invisible le texte de ChatGPT et de <span class="term" tabindex="0" data-def="L'assistant de programmation d'OpenAI, concurrent de Claude Code.">Codex</span> en Europe, pour répondre à l'<span class="term" tabindex="0" data-def="Règlement européen sur l'intelligence artificielle. Ses obligations arrivent par étapes : la transparence sur les contenus générés par IA s'applique depuis le 2 août 2026.">AI Act</span>. Il testera aussi aux États-Unis des publicités affichées pendant la génération d'une image. Rien à changer pour nous.</li>
+      <li>Deux modèles à suivre : Beam, modèle ouvert de Reflection AI (501 <span class="term" tabindex="0" data-def="Taille d'un modèle, en milliards (« 30B »). Plus il y en a, plus il faut de matériel pour le faire tourner.">milliards de paramètres</span>), téléchargeable d'ici fin octobre, et un nouveau modèle <strong>Mistral</strong> annoncé le 6 octobre, sans nom ni détails pour l'instant.</li>
+    </ol></div>
+  </section>
+
+  <section class="b2-section" id="pour-lynxter">
+    <h2 class="b2-h2">Pour Lynxter cette semaine</h2>
+    <p class="b2-sub">Ce que ces annonces changent pour nous. Propositions à valider : rien n'est engagé sans feu vert.</p>
+    <ul class="b2-lx">
+<li class="b2-lx-row">
+    <span class="verdict v-faire">À faire</span>
+    <div>
+      <h3>Passer Claude Code en version 2.1.291</h3>
+      <p>La 2.1.290 bouche plusieurs failles par lesquelles Claude Code pouvait lire des fichiers interdits, comme ceux qui contiennent des mots de passe. La 2.1.291 évite en plus de perdre les derniers messages à la fermeture. Pour vérifier, taper <code>claude --version</code> dans un terminal. Nos <span class="term" tabindex="0" data-def="Tâche Claude planifiée qui tourne seule dans le cloud, sans PC allumé (ce brief en est une).">routines</span> tournent dans le cloud d'Anthropic : a priori rien à faire pour elles.</p>
+      <div class="b2-lx-foot"><span><b>Qui :</b> Chaque utilisateur de Claude Code</span><span><a href="#2026-10-06-claude-code-2-1-290-291">Voir l'annonce ↓</a></span></div>
+    </div>
+  </li>
+<li class="b2-lx-row">
+    <span class="verdict v-surveiller">À surveiller</span>
+    <div>
+      <h3>Beam, modèle ouvert américain : attendre qu'il soit téléchargeable pour le juger</h3>
+      <p>Reflection AI promet de rendre Beam téléchargeable d'ici fin octobre, sous <span class="term" tabindex="0" data-def="Licence libre permissive : elle autorise l'usage, la modification et l'usage commercial, à condition de conserver les mentions de l'auteur et de la licence.">licence Apache 2.0</span>, qui autorise l'usage commercial. Il est très gros : 501 milliards de paramètres. Il faudra sans doute un serveur à plusieurs cartes graphiques (estimation) ; sa fiche technique dira le matériel exact. D'ici là, sa <span class="term" tabindex="0" data-def="Fonction encore en test : elle peut changer ou disparaître. À éviter pour un usage critique.">préversion</span> en ligne est hors cadre : données publiques seulement.</p>
+      <div class="b2-lx-foot"><span><b>Qui :</b> Léo</span><span><span class="charte ch-local" title="Modèle ouvert : candidat pour la future infrastructure locale Lynxter (seule voie prévue pour les données sensibles)">Infra locale ?</span></span><span><a href="#2026-10-06-reflection-beam">Voir l'annonce ↓</a></span></div>
+    </div>
+  </li>
+<li class="b2-lx-row">
+    <span class="verdict v-surveiller">À surveiller</span>
+    <div>
+      <h3>Nouveau modèle Mistral : attendre sa fiche officielle</h3>
+      <p>Son PDG l'a annoncé le 6 octobre sans nom, ni score, ni date. Mistral est l'un des deux éditeurs autorisés par notre <span class="term" tabindex="0" data-def="Nos règles internes d'usage de l'IA : quelles données, dans quels outils.">charte</span> : quand la fiche sortira, regarder le prix et s'il sera téléchargeable pour une installation locale.</p>
+      <div class="b2-lx-foot"><span><b>Qui :</b> Léo</span><span><span class="charte ch-ok" title="Autorisé par la charte : données publiques et données internes anonymisées">Autorisé</span></span><span><a href="#2026-10-06-mistral-nouveau-modele-ai-everything">Voir l'annonce ↓</a></span></div>
+    </div>
+  </li>
+<li class="b2-lx-row">
+    <span class="verdict v-rien">Rien à faire</span>
+    <div>
+      <h3>Filigrane, publicités, Codex : rien à changer côté OpenAI</h3>
+      <p>En Europe, ChatGPT et Codex marqueront bientôt leurs textes d'un filigrane, notre compte partagé compris. Anthropic a annoncé en août que ses futurs modèles Claude marqueraient aussi leur texte. Le filigrane n'identifie pas l'utilisateur et le détecteur n'est pas public. Les publicités en images ne sont testées qu'aux États-Unis. Codex n'est pas dans nos outils.</p>
+      <div class="b2-lx-foot"><span><span class="charte ch-vert" title="Via le compte ChatGPT partagé : données publiques uniquement">Données publiques seulement</span></span><span><a href="#2026-10-06-openai-textgrain-filigrane-ue">Voir l'annonce ↓</a></span></div>
+    </div>
+  </li>
+    </ul>
+  </section>
+
+  <section class="b2-section" id="modeles">
+    <h2 class="b2-h2">Les modèles de la semaine</h2>
+    <p class="b2-sub">Chaque nouveau modèle face à celui qu'il remplace, sur les tests publiés par son éditeur. Prix en dollars pour un million de <span class="term" tabindex="0" data-def="Morceau de mot (environ ¾ d'un mot). C'est l'unité que les IA lisent, écrivent et facturent.">tokens</span>. <a href="../modeles/">Tous les modèles →</a></p>
+    <div class="b2-models">
+<article class="b2-model" id="2026-10-06-reflection-beam">
+  <div class="b2-model-head">
+    <h3><span class="b2-actor a-other"><i></i></span>Beam</h3>
+    <span class="replaces">nouvelle gamme · sorti le 5 oct. 2026</span>
+  </div>
+  <p class="plain">Premier modèle de Reflection AI, orienté code et tâches d'agent. Reflection le dit proche de <span class="term" tabindex="0" data-def="Famille de modèles d'IA de l'éditeur chinois Z.ai, dont plusieurs versions sont des modèles ouverts, téléchargeables librement.">GLM</span>-5.2, un modèle ouvert chinois, en demandant bien moins de puissance de calcul. Pour l'instant : préversion sur liste d'attente, ni prix, ni téléchargement. Ses scores, non vérifiés, ne sont pas repris ici.</p>
+  <ul class="b2-facts"><li><span class="k">Prix (lecture / écriture)</span><span class="v">non publié</span></li><li><span class="k">Mémoire de travail</span><span class="v">non communiqué</span></li><li><span class="k">Disponibilité</span><span class="v">Préversion</span></li><li><span class="k">Chez Lynxter</span><span class="v"><span class="charte ch-non" title="Hors du cadre officiel de la charte : données publiques uniquement">Hors cadre</span></span></li></ul>
+  <p class="b2-quiet">Aucun score officiel publié pour ce modèle.</p>
+  <div class="b2-forus"><span class="verdict v-surveiller">À surveiller</span><p>Sa préversion en ligne est hors cadre : données publiques seulement. Une fois téléchargeable, il sera candidat pour notre future <span class="term" tabindex="0" data-def="Serveurs Lynxter (prévus) où faire tourner des modèles ouverts : la seule voie prévue pour les données sensibles.">infrastructure locale</span>, mais il est très gros (501 milliards de paramètres) : attendre sa fiche technique pour connaître le matériel nécessaire.</p></div>
+  <details><summary>Les chiffres</summary><ul><li>Architecture : <span class="term" tabindex="0" data-def="Architecture où seule une partie du modèle travaille à chaque mot : plus rapide et moins cher à faire tourner.">Mixture of Experts</span>, texte seul ; 501 milliards de paramètres, dont 23 milliards actifs par token (titre de la page de Reflection, repris par TechCrunch et MarkTechPost) ; pré-entraînement sur 23 800 milliards de tokens</li><li>Accès : interface de programmation (<span class="term" tabindex="0" data-def="Accès direct au modèle depuis un logiciel ou un script, facturé à l'usage (au token).">API</span>) en bêta, compatible avec celle d'OpenAI, sur liste d'attente et sans prix publié</li><li>Téléchargement promis « plus tard en octobre » sous licence Apache 2.0, avec un rapport technique, une fiche du modèle et les outils pour le faire tourner</li><li>Revendication de Reflection : des résultats comparables à GLM-5.2 (Z.ai) en raisonnement, et proches en code et en tâches d'agent, pour 3 à 4 fois moins de calcul d'inférence. Non vérifié de façon indépendante. Repère : GLM-5.2 (environ 750 milliards de paramètres) tourne sur un serveur à 8 cartes graphiques H100 (fiche Hugging Face) ; le matériel exact de Beam reste inconnu</li><li>Selon Help Net Security (6 octobre), Beam reste derrière les meilleurs <span class="term" tabindex="0" data-def="Modèle téléchargeable : on peut le faire tourner sur ses propres serveurs, sans envoyer de données à l'éditeur.">modèles ouverts</span> chinois sur les tests de code</li><li>Mémoire de travail (1 million de tokens annoncé après extension, 256 000 pendant l'entraînement selon les reprises) et scores : versions divergentes dans la presse, à relire sur la fiche du modèle</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://reflection.ai/blog/introducing-beam" target="_blank" rel="noopener">reflection.ai — Introducing Beam</a> · <a href="https://techcrunch.com/2026/10/05/reflection-debuts-beam-a-open-weight-ai-model-to-rival-chinese-models-at-lower-compute-cost/" target="_blank" rel="noopener">techcrunch.com</a> <span class="est">(presse)</span> · <a href="https://www.helpnetsecurity.com/2026/10/06/reflections-beam-trails-top-open-models-on-coding-tests-but-claims-lower-inference-compute/" target="_blank" rel="noopener">helpnetsecurity.com</a> <span class="est">(presse)</span> · <a href="https://www.marktechpost.com/2026/10/05/reflection-ai-introduces-beam-a-501b-open-weight-moe-model-with-23b-active-parameters-for-coding-and-agentic-workloads/" target="_blank" rel="noopener">marktechpost.com</a> <span class="est">(presse)</span></p>
+</article>
+    </div>
+  </section>
+
+  <section class="b2-section" id="annonces">
+    <h2 class="b2-h2">Les annonces</h2>
+<div class="b2-theme"><h3>Modèles</h3>
+<article class="b2-item" id="2026-10-06-mistral-nouveau-modele-ai-everything">
+  <div class="b2-item-top"><span class="b2-actor a-other"><i></i>Mistral</span><span>6 oct. 2026</span></div>
+  <h4>Mistral annonce un nouveau modèle, sans nom ni détails pour l'instant</h4>
+  <p>Le 6 octobre à Abu Dhabi, Arthur Mensch, PDG de Mistral, présente un nouveau modèle qu'il dit « au-dessus des modèles chinois sur certains aspects, dont la cyber ». Il n'a donné ni nom, ni score, ni date de disponibilité. Aucune page officielle de Mistral ne le décrit encore.</p>
+  <div class="b2-forus"><span class="verdict v-surveiller">À surveiller</span><p>Mistral fait partie des deux éditeurs autorisés par notre charte. Attendre sa fiche officielle : nom, prix, et surtout s'il sera téléchargeable pour une installation locale.</p></div><details><summary>Les chiffres</summary><ul><li>Déclaration faite à la conférence Ai Everything d'Abu Dhabi, le mardi 6 octobre, rapportée par une dépêche reprise par au moins six sites</li><li>Aucun test, score ni modèle concurrent nommé : la supériorité sur les modèles chinois est une affirmation du PDG</li><li>Le modèle devait être présenté « plus tard dans la journée » : aucune page mistral.ai ne le décrit à la date du brief</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://1027wbow.com/2026/10/06/mistral-ceo-says-new-ai-model-beats-chinese-ones-in-some-areas/" target="_blank" rel="noopener">1027wbow.com — dépêche du 6 octobre</a> <span class="est">(presse)</span> · <a href="https://www.globalbankingandfinance.com/mistral-ceo-new-ai-model-beats-chinese-ones-areas/" target="_blank" rel="noopener">globalbankingandfinance.com</a> <span class="est">(presse)</span> · <a href="https://www.analyticsinsight.net/news/mistral-ceo-claims-new-ai-model-beats-chinese-rivals-in-cybersecurity" target="_blank" rel="noopener">analyticsinsight.net</a> <span class="est">(presse)</span> · <em>sans annonce officielle</em></p>
+</article>
+</div>
+<div class="b2-theme"><h3>Outils et assistants</h3>
+<article class="b2-item" id="2026-10-06-claude-code-2-1-290-291">
+  <div class="b2-item-top"><span class="b2-actor a-anthropic"><i></i>Anthropic</span><span>5 oct. 2026</span><span class="b2-imp i-lynxter">Important pour nous</span></div>
+  <h4>Claude Code 2.1.290 et 2.1.291 : des failles d'accès aux fichiers interdits corrigées</h4>
+  <p>La 2.1.290 du 5 octobre est une grosse mise à jour : 190 changements, environ deux fois plus qu'une version habituelle. Elle bouche plusieurs failles par lesquelles Claude Code pouvait lire des fichiers interdits, et fiabilise les rappels et tâches répétées lancés dans une session. La 2.1.291 du 6 octobre corrige deux bugs récents, dont la perte des derniers messages à la fermeture.</p>
+  <div class="b2-forus"><span class="verdict v-faire">À faire</span><p>Vérifier que chaque poste est en 2.1.291 (<code>claude --version</code> dans un terminal) : elle corrige aussi la perte des derniers messages à la fermeture. Nos routines tournent dans le cloud d'Anthropic : a priori rien à faire.</p></div><details><summary>Les chiffres</summary><ul><li>Contournements fermés : un lien échangé pendant la lecture d'une image (macOS et Windows) ou d'un @-mention pouvait faire lire un fichier interdit ; les règles <code>Read</code> deny ne s'appliquaient pas aux images collées ou glissées ; une variable placée devant <code>declare</code>, <code>typeset</code>, <code>export</code> ou <code>readonly</code> contournait une <span class="term" tabindex="0" data-def="Réglage qui empêche Claude Code de lire certains fichiers ou de lancer certaines commandes.">règle deny</span> ou ask</li><li>En <span class="term" tabindex="0" data-def="Mode de Claude Code où il prépare un plan d'action sans rien modifier, puis attend votre accord avant d'agir.">plan mode</span>, le classifieur du <span class="term" tabindex="0" data-def="Mode de Claude Code où un filtre automatique accepte seul les actions jugées sans risque, au lieu de vous demander à chaque fois.">mode auto</span> pouvait approuver des outils de <span class="term" tabindex="0" data-def="Lien entre l'IA et un autre logiciel (messagerie, agenda, documents) qui lui permet d'y lire des informations ou d'y agir.">connecteur</span> capables de modifier des données, alors que le serveur exigeait une confirmation ; un mod installé par l'utilisateur pouvait lever un garde-fou fixé par l'organisation</li><li>Les règles d'URL <code>disableClaudeAiConnectors</code> et <code>allowedMcpServers</code> s'appliquent maintenant à toutes les entrées <span class="term" tabindex="0" data-def="Standard ouvert pour brancher une IA sur un outil ou une base de données (un « connecteur »).">MCP</span> déclarées dans <code>.mcp.json</code>, dans des <span class="term" tabindex="0" data-def="Extension qui ajoute des compétences ou change le comportement d'un outil.">plugins</span> ou dans des <span class="term" tabindex="0" data-def="IA qui enchaîne seule plusieurs actions (chercher, lire, écrire, exécuter) pour atteindre un objectif.">agents</span> (certaines y échappaient)</li><li>Automatisation : <code>/loop</code> et les rappels reprennent après une <span class="term" tabindex="0" data-def="Résumé automatique d'une longue conversation, pour libérer de la place dans la mémoire de travail de l'IA.">compaction</span> (faite à partir de la 2.1.290) ; une tâche planifiée au premier plan se déclenche après son passage en arrière-plan ; une tâche récurrente ne tourne plus une fois de trop à chaque reprise ; en <span class="term" tabindex="0" data-def="Claude Code lancé sans conversation à l'écran, par un script ou une tâche automatique, qui renvoie directement son résultat.">mode headless</span>, <code>--json-schema</code> ne sort plus en erreur si la connexion tombe après la livraison du résultat</li><li>Nouveautés : <code>claude attach &lt;nom&gt;</code> et <code>claude logs &lt;nom&gt;</code> ; <code>/claude-api managed-agents-onboard</code> prépare des fichiers <code>ant apply</code> depuis une page ou un modèle de la Console (ex. deep-researcher) ; <span class="term" tabindex="0" data-def="Outil de Claude Code qui télécharge et lit une page web à la demande.">WebFetch</span> signale le texte non lu au-delà de 100 000 caractères et accepte un <code>offset</code> ; les <span class="term" tabindex="0" data-def="Point d'accroche où un plugin réagit à un événement de Claude Code, par exemple juste avant l'utilisation d'un outil.">hooks</span> de mods reçoivent <code>agentId</code>, <code>ceiling</code> et <code>serverToolUses</code></li><li><span class="term" tabindex="0" data-def="Application de bureau d'Anthropic où Claude travaille sur des dossiers et des outils connectés.">Cowork</span> : en session cloud, une réponse pouvait ne jamais se terminer si le conteneur redémarrait juste après l'envoi d'un message ou d'un fichier. Corrigé dans la 2.1.290 ; ces sessions tournent chez Anthropic, a priori sans action de notre part</li><li>2.1.291 : réponses aux demandes d'autorisation perdues en session cloud (bug apparu en 2.1.290) ; derniers messages d'une session perdus à la fermeture (bug apparu en 2.1.288)</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://code.claude.com/docs/en/changelog#2-1-290" target="_blank" rel="noopener">code.claude.com/changelog#2-1-290</a> · <a href="https://code.claude.com/docs/en/changelog#2-1-291" target="_blank" rel="noopener">code.claude.com/changelog#2-1-291</a> · <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.290" target="_blank" rel="noopener">github.com/anthropics/claude-code — v2.1.290</a></p>
+</article>
+</div>
+<div class="b2-theme"><h3>Entreprises, sécurité et règles</h3>
+<article class="b2-item" id="2026-10-06-openai-textgrain-filigrane-ue">
+  <div class="b2-item-top"><span class="b2-actor a-openai"><i></i>OpenAI</span><span>5 oct. 2026</span></div>
+  <h4>Le texte de ChatGPT et de Codex portera un filigrane invisible en Europe</h4>
+  <p>OpenAI présente textGrain : l'IA oriente légèrement le choix de ses mots, et seul un détecteur muni d'une clé secrète repère cette signature. En Europe, il sera appliqué d'office au texte de ChatGPT et de Codex dans les semaines qui viennent, pour répondre à l'AI Act. Le détecteur n'est pas public : il est réservé à des chercheurs et organismes approuvés.</p>
+  <div class="b2-forus"><span class="verdict v-rien">Rien à faire</span><p>Notre compte ChatGPT partagé est concerné : ses textes porteront ce filigrane. Rien à changer : le filigrane n'identifie pas l'utilisateur et le détecteur n'est pas public.</p></div><details><summary>Les chiffres</summary><ul><li>Détection, selon OpenAI : environ 80 % des passages de 200 tokens (environ 150 mots) et 95 % des passages de 400 tokens (environ 300 mots), pour 1 % de <span class="term" tabindex="0" data-def="Erreur d'un détecteur qui signale à tort quelque chose : par exemple, un texte écrit par un humain jugé produit par une IA.">faux positifs</span>, en conditions favorables</li><li>Plus fragile sur les maths, les textes courts et les traductions. Sur des passages de 400 tokens (environ 300 mots) en anglais, remplacer 10 % des mots par des synonymes fait passer la détection d'environ 92 % à 66 % ; à 25 %, elle tombe à 17 %</li><li>Interface de programmation (API) : option ouverte dans le monde entier depuis le 5 octobre sur certains modèles, à activer dans les réglages, désactivée par défaut</li><li>Le filigrane survit au copier-coller et n'identifie pas l'utilisateur</li><li>AI Act, article 50 : marquage des contenus générés lisible par une machine, applicable depuis le 2 août 2026</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://openai.com/index/eu-text-provenance/" target="_blank" rel="noopener">openai.com — Our approach to EU text provenance rules</a> · <a href="https://cdn.openai.com/pdf/e9508624-d767-41b6-a26d-e34ca798ada6/textgrain-entropy-calibrated-watermarking-for-language-model-text.pdf" target="_blank" rel="noopener">openai.com — article technique textGrain (PDF)</a> · <a href="https://techcrunch.com/2026/10/05/openai-will-start-watermarking-chatgpts-text-in-the-eu/" target="_blank" rel="noopener">techcrunch.com</a> <span class="est">(presse)</span> · <a href="https://thenewstack.io/openai-api-text-watermarking/" target="_blank" rel="noopener">thenewstack.io — filigrane désactivé par défaut dans l'API</a> <span class="est">(presse)</span></p>
+</article>
+</div>
+
+
+  </section>
+<section class="b2-section" id="en-bref">
+  <h2 class="b2-h2">En bref</h2>
+  <ul class="b2-brief-list"><li id="2026-10-06-cresta-claude-agent-sdk"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong>Cresta et le <span class="term" tabindex="0" data-def="Kit d'Anthropic pour construire ses propres agents, avec le moteur qui fait tourner Claude Code.">Claude Agent SDK</span>.</strong> Cresta bâtit sur le Claude Agent <span class="term" tabindex="0" data-def="Bibliothèque de code fournie par l'éditeur pour appeler son API depuis un programme.">SDK</span> un outil qui crée des agents de relation client à partir d'une description. Selon Cresta, il divise environ par deux le temps de première mise en service. <span class="b2-src" style="display:inline"><a href="https://claude.com/blog/how-cresta-turned-cx-expertise-into-an-agent-builder-on-the-claude-agent-sdk" target="_blank" rel="noopener">claude.com/blog — Cresta</a></span></li><li id="2026-10-06-chatgpt-publicites-images"><span class="b2-actor a-openai"><i></i>OpenAI</span> — <strong>Publicités dans ChatGPT.</strong> OpenAI testera aux États-Unis, plus tard en octobre, des publicités en images affichées pendant la génération d'une image. Elles seront signalées comme publicité et séparées de l'image produite. <span class="b2-src" style="display:inline"><a href="https://openai.com/index/new-chatgpt-ads-format-and-measurement/" target="_blank" rel="noopener">openai.com — new ChatGPT ads format</a></span></li><li id="2026-10-06-codex-gpt-6-plus-rapide"><span class="b2-actor a-openai"><i></i>OpenAI</span> — <strong>Codex plus rapide.</strong> Selon Thibault Sottiaux (OpenAI), GPT-6 Astra et GPT-6.1 Sol répondent environ 50 % plus vite par défaut pour les abonnés ChatGPT, Codex compris. Première d'une série d'améliorations annoncées jour après jour ; gain non vérifié. <span class="b2-src" style="display:inline"><a href="https://x.com/thsottiaux/status/2107158998495748264" target="_blank" rel="noopener">x.com — message de Thibault Sottiaux (5 oct.)</a> · <em>sans annonce officielle</em></span></li><li id="2026-10-06-codex-auto-review-gratuit"><span class="b2-actor a-openai"><i></i>OpenAI</span> — <strong>Codex : vérification automatique gratuite.</strong> Pour les abonnés ChatGPT, l'agent qui approuve ou bloque les actions risquées de Codex (Auto-review) ne compte plus dans le quota du forfait. <span class="b2-src" style="display:inline"><a href="https://community.openai.com/t/free-auto-review-day-2-of-28-days-of-quality-of-life-improvements-or-a-full-reset/1403525" target="_blank" rel="noopener">community.openai.com — annonce du 6 octobre</a></span></li><li id="2026-10-06-cohere-north-2"><span class="b2-actor a-other"><i></i>Cohere</span> — <strong>Cohere North 2.</strong> Nouvelle version de la plateforme d'agents de Cohere pour les entreprises : mémoire entre les sessions, plafonds de dépense par utilisateur, installation possible sur site. <span class="b2-src" style="display:inline"><a href="https://cohere.com/blog/introducing-north-2" target="_blank" rel="noopener">cohere.com — North 2</a></span></li></ul>
+</section>
+  <p class="b2-quiet" style="margin-top:28px">Rien de notable cette semaine chez : Google, Meta.</p>
+
+  <section class="b2-section" id="mots" data-noterm>
+    <h2 class="b2-h2">Les mots du brief</h2>
+    <p class="b2-sub">Survolez ou touchez un mot souligné en pointillés pour sa définition. <a href="../lexique/">Lexique complet →</a></p>
+    <dl class="b2-lexique"><div><dt>Claude Code</dt><dd>Assistant d'Anthropic qui travaille dans un terminal ou un éditeur : code, fichiers, automatisations.</dd></div><div><dt>Filigrane (watermark)</dt><dd>Marque invisible glissée dans un texte ou une image produits par une IA, qu'un outil de détection peut ensuite repérer.</dd></div><div><dt>Codex</dt><dd>L'assistant de programmation d'OpenAI, concurrent de Claude Code.</dd></div><div><dt>AI Act</dt><dd>Règlement européen sur l'intelligence artificielle. Ses obligations arrivent par étapes : la transparence sur les contenus générés par IA s'applique depuis le 2 août 2026.</dd></div><div><dt>Paramètres (taille d'un modèle)</dt><dd>Taille d'un modèle, en milliards (« 30B »). Plus il y en a, plus il faut de matériel pour le faire tourner.</dd></div><div><dt>Routine</dt><dd>Tâche Claude planifiée qui tourne seule dans le cloud, sans PC allumé (ce brief en est une).</dd></div><div><dt>Licence Apache 2.0</dt><dd>Licence libre permissive : elle autorise l'usage, la modification et l'usage commercial, à condition de conserver les mentions de l'auteur et de la licence.</dd></div><div><dt>Préversion (preview, bêta)</dt><dd>Fonction encore en test : elle peut changer ou disparaître. À éviter pour un usage critique.</dd></div><div><dt>Charte IA Lynxter</dt><dd>Nos règles internes d'usage de l'IA : quelles données, dans quels outils.</dd></div><div><dt>Token</dt><dd>Morceau de mot (environ ¾ d'un mot). C'est l'unité que les IA lisent, écrivent et facturent.</dd></div><div><dt>GLM</dt><dd>Famille de modèles d'IA de l'éditeur chinois Z.ai, dont plusieurs versions sont des modèles ouverts, téléchargeables librement.</dd></div><div><dt>Infrastructure locale</dt><dd>Serveurs Lynxter (prévus) où faire tourner des modèles ouverts : la seule voie prévue pour les données sensibles.</dd></div><div><dt>Mixture of Experts (MoE)</dt><dd>Architecture où seule une partie du modèle travaille à chaque mot : plus rapide et moins cher à faire tourner.</dd></div><div><dt>API</dt><dd>Accès direct au modèle depuis un logiciel ou un script, facturé à l'usage (au token).</dd></div><div><dt>Modèle ouvert (open weights)</dt><dd>Modèle téléchargeable : on peut le faire tourner sur ses propres serveurs, sans envoyer de données à l'éditeur.</dd></div><div><dt>Règle d'interdiction (deny)</dt><dd>Réglage qui empêche Claude Code de lire certains fichiers ou de lancer certaines commandes.</dd></div><div><dt>Plan mode</dt><dd>Mode de Claude Code où il prépare un plan d'action sans rien modifier, puis attend votre accord avant d'agir.</dd></div><div><dt>Mode auto</dt><dd>Mode de Claude Code où un filtre automatique accepte seul les actions jugées sans risque, au lieu de vous demander à chaque fois.</dd></div><div><dt>Connecteur</dt><dd>Lien entre l'IA et un autre logiciel (messagerie, agenda, documents) qui lui permet d'y lire des informations ou d'y agir.</dd></div><div><dt>MCP</dt><dd>Standard ouvert pour brancher une IA sur un outil ou une base de données (un « connecteur »).</dd></div><div><dt>Plugin / mod</dt><dd>Extension qui ajoute des compétences ou change le comportement d'un outil.</dd></div><div><dt>Agent</dt><dd>IA qui enchaîne seule plusieurs actions (chercher, lire, écrire, exécuter) pour atteindre un objectif.</dd></div><div><dt>Compaction</dt><dd>Résumé automatique d'une longue conversation, pour libérer de la place dans la mémoire de travail de l'IA.</dd></div><div><dt>Mode headless</dt><dd>Claude Code lancé sans conversation à l'écran, par un script ou une tâche automatique, qui renvoie directement son résultat.</dd></div><div><dt>WebFetch</dt><dd>Outil de Claude Code qui télécharge et lit une page web à la demande.</dd></div><div><dt>Hook</dt><dd>Point d'accroche où un plugin réagit à un événement de Claude Code, par exemple juste avant l'utilisation d'un outil.</dd></div><div><dt>Cowork</dt><dd>Application de bureau d'Anthropic où Claude travaille sur des dossiers et des outils connectés.</dd></div><div><dt>Faux positif</dt><dd>Erreur d'un détecteur qui signale à tort quelque chose : par exemple, un texte écrit par un humain jugé produit par une IA.</dd></div><div><dt>Claude Agent SDK</dt><dd>Kit d'Anthropic pour construire ses propres agents, avec le moteur qui fait tourner Claude Code.</dd></div><div><dt>SDK</dt><dd>Bibliothèque de code fournie par l'éditeur pour appeler son API depuis un programme.</dd></div></dl>
+  </section>
+
+  <section class="sources-footer" style="margin-top:48px">
+    <strong>Sources consultées</strong>
+    <a href="https://code.claude.com/docs/en/changelog#2-1-290">code.claude.com/changelog</a> · <a href="https://claude.com/blog/how-cresta-turned-cx-expertise-into-an-agent-builder-on-the-claude-agent-sdk">claude.com/blog — Cresta</a> · <a href="https://openai.com/index/eu-text-provenance/">openai.com/index/eu-text-provenance</a> · <a href="https://openai.com/index/new-chatgpt-ads-format-and-measurement/">openai.com/index/new-chatgpt-ads-format-and-measurement</a> · <a href="https://reflection.ai/blog/introducing-beam">reflection.ai/blog/introducing-beam</a> · <a href="https://x.com/thsottiaux/status/2107158998495748264">x.com/thsottiaux</a>
+  </section>
+
+  <nav class="brief-nav">
+    <a class="prev" href="2026-10-04.html"><span class="label">← Brief précédent</span><span class="title">Sonnet 5.5 : presque le niveau d'Opus, pour deux fois moins cher</span></a>
+    <a class="next" href="./"><span class="label">Voir l'archive →</span><span class="title">Tous les briefs</span></a>
+  </nav>
+</div>
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Brief du 2026-10-06 · format 2</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Comparateur de modèles</a></li>
+        <li><a href="../lexique/">Lexique</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../acteurs/">Acteurs suivis</a></li>
+        <li><a href="../futur/">Prospective (mai 2026)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+<script src="../assets/v2.js" defer></script>
+</body>
+</html>

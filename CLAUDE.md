@@ -184,6 +184,7 @@ QA → commit → push de la branche → fast-forward et push de `main` → vér
 | **Voie d'écriture** | `WRITE_PATH = git-cli` : `build/publish.sh` pousse via le remote configuré par l'environnement (App GitHub Claude). | — |
 | **Workflow `veille` (sous-agents)** | Échoue vite si moins de 3 scans principaux aboutissent ; repli : dérouler les étapes 1 à 5 dans la session principale. | Re-tester au prochain run. |
 | **Egress** | Souvent restreint (seuls `code.claude.com` et `github.com` répondent en WebFetch). | Repli documenté étape 0 et 2. |
+| **Quota de recherches web** | Environ 200 WebSearch par tour, **partagés entre tous les sous-agents**. Au-delà, les recherches échouent sans bruit. Observé le 2026-10-06 : un run avec double vérification par annonce a épuisé le quota et trois annonces vraies (dont une de Mistral) ont été écartées comme « non confirmées ». | Viser ~50 recherches au total. Une annonce qu'on n'a pas pu vérifier faute de quota est **indéterminée, pas fausse** : la signaler dans le rapport et la reprendre au brief suivant, jamais la classer comme réfutée. |
 | **Dépôt public sur compte personnel** | Écart avec la charte IA Lynxter (actifs IA sur serveurs Lynxter, pas d'hébergement personnel, pas d'exposition sans validation IT). Arbitrage direction en attente. | Ne rien publier ici qui ne soit public par ailleurs. Suivre l'arbitrage. |
 
 ---

@@ -105,8 +105,8 @@ function linkTerms(html, terms = load()) {
 
 /** Sigles (≥ 2 majuscules) présents dans le texte et absents du lexique comme de la liste blanche. */
 const ACRONYM_OK = new Set([
-  'IA', 'AI', 'US', 'UE', 'EU', 'USA', 'UK', 'PU', 'PDF', 'HTML', 'JSON', 'CSV', 'URL', 'PC', 'IT', 'RH', 'RGPD', 'CNIL',
-  'GPT', 'GPU', 'CPU', 'SAV', 'PME', 'ETI', 'R&D', 'TTC', 'HT', 'TB', 'GB', 'MB', 'OK', 'NB', 'FAQ', 'BBC', 'CEO', 'CTO',
+  'IA', 'AI', 'US', 'UE', 'PDG', 'DG', 'PME', 'ETI', 'EU', 'USA', 'UK', 'PU', 'PDF', 'HTML', 'JSON', 'CSV', 'URL', 'PC', 'IT', 'RH', 'RGPD', 'CNIL',
+  'GPT', 'GPU', 'CPU', 'SAV', 'R&D', 'TTC', 'HT', 'TB', 'GB', 'MB', 'OK', 'NB', 'FAQ', 'BBC', 'CEO', 'CTO',
   'AWS', 'GCP', 'IBM', 'NASA', 'SDK', 'API', 'CLI', 'MCP', 'GA', 'RAG', 'LLM', 'ZDR', 'MOE', 'PR', 'DM', 'VM', 'IP', 'DNS',
   'CAO', 'CAD', 'FDM', 'MEX', 'LIQ', 'S300X', 'S600D', 'ESP32', 'USB', 'IOS', 'MIT', 'OCR', 'TTS', 'XAI', 'SA', 'SAS',
 ]);

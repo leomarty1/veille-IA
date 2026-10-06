@@ -41,10 +41,11 @@
   <header class="b2-head">
     <p class="b2-kicker">Lexique</p>
     <h1 class="b2-title">Les mots de la veille, en clair</h1>
-    <p class="b2-lead">53 termes. Dans chaque brief, les mots soulignés en pointillés affichent leur définition au survol ou au toucher.</p>
+    <p class="b2-lead">66 termes. Dans chaque brief, les mots soulignés en pointillés affichent leur définition au survol ou au toucher.</p>
   </header>
   <dl class="b2-lexique" style="grid-template-columns:1fr">
     <div id="agent"><dt>Agent</dt><dd>IA qui enchaîne seule plusieurs actions (chercher, lire, écrire, exécuter) pour atteindre un objectif.</dd></div>
+    <div id="ai-act"><dt>AI Act</dt><dd>Règlement européen sur l'intelligence artificielle. Ses obligations arrivent par étapes : la transparence sur les contenus générés par IA s'applique depuis le 2 août 2026.</dd></div>
     <div id="api"><dt>API</dt><dd>Accès direct au modèle depuis un logiciel ou un script, facturé à l'usage (au token).</dd></div>
     <div id="arc-agi"><dt>ARC-AGI</dt><dd>Énigmes visuelles inédites qui mesurent la capacité à raisonner sur un problème jamais vu.</dd></div>
     <div id="sandbox"><dt>Bac à sable (sandbox)</dt><dd>Environnement isolé où l'IA exécute du code sans pouvoir toucher au reste du système.</dd></div>
@@ -52,27 +53,37 @@
     <div id="benchmark"><dt>Benchmark</dt><dd>Test standardisé pour comparer les modèles. Chaque éditeur choisit les siens : un score ne se compare qu'au même test.</dd></div>
     <div id="cache"><dt>Cache</dt><dd>Remise quand on renvoie un texte déjà lu par le modèle (instructions, documents) : ce texte est facturé bien moins cher.</dd></div>
     <div id="charte"><dt>Charte IA Lynxter</dt><dd>Nos règles internes d'usage de l'IA : quelles données, dans quels outils.</dd></div>
+    <div id="agent-sdk"><dt>Claude Agent SDK</dt><dd>Kit d'Anthropic pour construire ses propres agents, avec le moteur qui fait tourner Claude Code.</dd></div>
     <div id="claude-code"><dt>Claude Code</dt><dd>Assistant d'Anthropic qui travaille dans un terminal ou un éditeur : code, fichiers, automatisations.</dd></div>
     <div id="cli"><dt>CLI</dt><dd>Outil qui s'utilise en ligne de commande, dans un terminal.</dd></div>
     <div id="codex"><dt>Codex</dt><dd>L'assistant de programmation d'OpenAI, concurrent de Claude Code.</dd></div>
+    <div id="compaction"><dt>Compaction</dt><dd>Résumé automatique d'une longue conversation, pour libérer de la place dans la mémoire de travail de l'IA.</dd></div>
     <div id="computer-use"><dt>Computer use</dt><dd>L'IA prend la main sur un ordinateur (souris, clavier, écran) pour accomplir une tâche.</dd></div>
+    <div id="connecteur"><dt>Connecteur</dt><dd>Lien entre l'IA et un autre logiciel (messagerie, agenda, documents) qui lui permet d'y lire des informations ou d'y agir.</dd></div>
     <div id="cowork"><dt>Cowork</dt><dd>Application de bureau d'Anthropic où Claude travaille sur des dossiers et des outils connectés.</dd></div>
     <div id="cursor"><dt>Cursor</dt><dd>Éditeur de code avec IA intégrée, concurrent de Claude Code.</dd></div>
     <div id="cursorbench"><dt>CursorBench</dt><dd>Test de programmation publié par l'éditeur Cursor, sur des tâches tirées de son logiciel.</dd></div>
     <div id="deepswe"><dt>DeepSWE</dt><dd>Test de programmation sur des tâches de développement longues, cité par Google pour Gemini.</dd></div>
     <div id="retrait"><dt>Dépréciation / retrait</dt><dd>Un modèle déprécié marche encore mais sa date de fin est annoncée. Après le retrait, les appels échouent.</dd></div>
     <div id="ga"><dt>Disponibilité générale (GA)</dt><dd>Version finale ouverte à tous, par opposition à une préversion.</dd></div>
+    <div id="faux-positif"><dt>Faux positif</dt><dd>Erreur d'un détecteur qui signale à tort quelque chose : par exemple, un texte écrit par un humain jugé produit par une IA.</dd></div>
     <div id="contexte"><dt>Fenêtre de contexte</dt><dd>Quantité de texte que le modèle garde en tête d'un coup. 1 million de tokens ≈ 1 500 pages.</dd></div>
+    <div id="filigrane"><dt>Filigrane (watermark)</dt><dd>Marque invisible glissée dans un texte ou une image produits par une IA, qu'un outil de détection peut ensuite repérer.</dd></div>
     <div id="fine-tuning"><dt>Fine-tuning</dt><dd>Ré-entraîner un modèle sur ses propres données pour le spécialiser.</dd></div>
     <div id="gdpval"><dt>GDPval</dt><dd>Test sur des tâches de travail réelles de nombreux métiers (rapports, tableaux), comparées au travail d'experts. Score en points de classement.</dd></div>
+    <div id="glm"><dt>GLM</dt><dd>Famille de modèles d'IA de l'éditeur chinois Z.ai, dont plusieurs versions sont des modèles ouverts, téléchargeables librement.</dd></div>
     <div id="gpqa"><dt>GPQA Diamond</dt><dd>Questions de sciences de niveau doctorat, conçues pour ne pas se trouver par une simple recherche.</dd></div>
     <div id="hallucination"><dt>Hallucination</dt><dd>Réponse fausse donnée avec assurance : fait, chiffre ou source inventés.</dd></div>
+    <div id="hook"><dt>Hook</dt><dd>Point d'accroche où un plugin réagit à un événement de Claude Code, par exemple juste avant l'utilisation d'un outil.</dd></div>
     <div id="hle"><dt>Humanity's Last Exam</dt><dd>Questions d'experts très difficiles, dans des dizaines de disciplines.</dd></div>
     <div id="infra-locale"><dt>Infrastructure locale</dt><dd>Serveurs Lynxter (prévus) où faire tourner des modèles ouverts : la seule voie prévue pour les données sensibles.</dd></div>
     <div id="latence"><dt>Latence</dt><dd>Délai avant que la réponse commence à s'afficher.</dd></div>
+    <div id="apache"><dt>Licence Apache 2.0</dt><dd>Licence libre permissive : elle autorise l'usage, la modification et l'usage commercial, à condition de conserver les mentions de l'auteur et de la licence.</dd></div>
     <div id="llm"><dt>LLM</dt><dd>Grand modèle de langage : le moteur derrière Claude, ChatGPT, Gemini, Mistral…</dd></div>
     <div id="mcp"><dt>MCP</dt><dd>Standard ouvert pour brancher une IA sur un outil ou une base de données (un « connecteur »).</dd></div>
     <div id="moe"><dt>Mixture of Experts (MoE)</dt><dd>Architecture où seule une partie du modèle travaille à chaque mot : plus rapide et moins cher à faire tourner.</dd></div>
+    <div id="mode-auto"><dt>Mode auto</dt><dd>Mode de Claude Code où un filtre automatique accepte seul les actions jugées sans risque, au lieu de vous demander à chaque fois.</dd></div>
+    <div id="headless"><dt>Mode headless</dt><dd>Claude Code lancé sans conversation à l'écran, par un script ou une tâche automatique, qui renvoie directement son résultat.</dd></div>
     <div id="raisonnement"><dt>Mode raisonnement</dt><dd>Le modèle « réfléchit » avant de répondre : meilleur sur les problèmes difficiles, plus lent et plus cher.</dd></div>
     <div id="frontiere"><dt>Modèle frontière</dt><dd>Les modèles les plus puissants du moment, chez les grands éditeurs.</dd></div>
     <div id="open-weights"><dt>Modèle ouvert (open weights)</dt><dd>Modèle téléchargeable : on peut le faire tourner sur ses propres serveurs, sans envoyer de données à l'éditeur.</dd></div>
@@ -80,6 +91,7 @@
     <div id="effort"><dt>Niveau d'effort</dt><dd>Réglage qui dit au modèle combien réfléchir : bas = rapide et économique, haut = plus soigné.</dd></div>
     <div id="osworld"><dt>OSWorld</dt><dd>Test où l'IA pilote un vrai ordinateur (clics, fenêtres, logiciels) pour réaliser une tâche de bureau.</dd></div>
     <div id="parametres"><dt>Paramètres (taille d'un modèle)</dt><dd>Taille d'un modèle, en milliards (« 30B »). Plus il y en a, plus il faut de matériel pour le faire tourner.</dd></div>
+    <div id="plan-mode"><dt>Plan mode</dt><dd>Mode de Claude Code où il prépare un plan d'action sans rien modifier, puis attend votre accord avant d'agir.</dd></div>
     <div id="plugin"><dt>Plugin / mod</dt><dd>Extension qui ajoute des compétences ou change le comportement d'un outil.</dd></div>
     <div id="preview"><dt>Préversion (preview, bêta)</dt><dd>Fonction encore en test : elle peut changer ou disparaître. À éviter pour un usage critique.</dd></div>
     <div id="prix-m-tokens"><dt>Prix « $2/$10 »</dt><dd>Prix pour un million de tokens (≈ 750 000 mots) : le 1er chiffre pour ce que le modèle lit, le 2e pour ce qu'il écrit.</dd></div>
@@ -96,6 +108,7 @@
     <div id="terminal-bench"><dt>Terminal-Bench</dt><dd>Test où l'IA accomplit seule des tâches techniques complètes en ligne de commande : installer, configurer, déboguer.</dd></div>
     <div id="token"><dt>Token</dt><dd>Morceau de mot (environ ¾ d'un mot). C'est l'unité que les IA lisent, écrivent et facturent.</dd></div>
     <div id="tokens-s"><dt>Tokens par seconde</dt><dd>Vitesse d'écriture du modèle. 300 tokens/s ≈ une demi-page par seconde.</dd></div>
+    <div id="webfetch"><dt>WebFetch</dt><dd>Outil de Claude Code qui télécharge et lit une page web à la demande.</dd></div>
     <div id="zdr"><dt>Zéro rétention (ZDR)</dt><dd>Option où l'éditeur ne conserve pas les données envoyées au modèle.</dd></div>
   </dl>
 </div>

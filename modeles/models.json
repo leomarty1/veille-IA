@@ -218,6 +218,11 @@
    "name": "GPT Codex",
    "actor": "OpenAI",
    "tier": "special"
+  },
+  "reflection-beam": {
+   "name": "Beam",
+   "actor": "Reflection AI",
+   "tier": "ouvert"
   }
  },
  "benchmarks": {
@@ -4958,6 +4963,40 @@
    ],
    "confidence": "verified",
    "notes": "Réservé aux cyberdéfenseurs du programme Fairwind ; ouverture à l'API payante et à Google AI Ultra sans date. Opus 5.5 reste devant sur Terminal-Bench 4.0 (chiffre non donné dans les sources). Pas de SWE-bench Verified. Indice Artificial Analysis 53 (tiers), à égalité avec GPT-6 Astra. « replaces » pointe vers Gemini 3.1 Pro, haut de gamme précédent de Google : il n'existe pas d'Argon antérieur."
+  },
+  {
+   "id": "reflection-beam",
+   "name": "Beam",
+   "actor": "Reflection AI",
+   "family": "reflection-beam",
+   "replaces": null,
+   "date": "2026-10-05",
+   "status": "preview",
+   "price_in": null,
+   "price_out": null,
+   "context_k": null,
+   "output_k": null,
+   "open_weights": false,
+   "scores": {},
+   "claims": [
+    {
+     "text": "résultats comparables à GLM-5.2 en raisonnement, proches en code et tâches agentiques, pour 3 à 4 fois moins de calcul d'inférence (revendication de l'éditeur, non vérifiée de façon indépendante)",
+     "source": "https://reflection.ai/blog/introducing-beam"
+    },
+    {
+     "text": "reste derrière les meilleurs modèles ouverts chinois sur les tests de code",
+     "source": "https://www.helpnetsecurity.com/2026/10/06/reflections-beam-trails-top-open-models-on-coding-tests-but-claims-lower-inference-compute/"
+    }
+   ],
+   "en_clair": "Premier modèle de Reflection AI, start-up américaine : 501 milliards de paramètres, orienté code et tâches d'agent, téléchargement promis sous licence Apache 2.0. Préversion sur liste d'attente, sans prix ni fiche technique.",
+   "sources": [
+    "https://reflection.ai/blog/introducing-beam",
+    "https://techcrunch.com/2026/10/05/reflection-debuts-beam-a-open-weight-ai-model-to-rival-chinese-models-at-lower-compute-cost/",
+    "https://www.helpnetsecurity.com/2026/10/06/reflections-beam-trails-top-open-models-on-coding-tests-but-claims-lower-inference-compute/",
+    "https://www.marktechpost.com/2026/10/05/reflection-ai-introduces-beam-a-501b-open-weight-moe-model-with-23b-active-parameters-for-coding-and-agentic-workloads/"
+   ],
+   "confidence": "uncertain",
+   "notes": "Annonce du 5 oct. 2026 (page de l'éditeur non lue : egress bloqué). MoE texte seul. API bêta compatible OpenAI sur liste d'attente, sans prix publié. Poids promis « plus tard en octobre » sous Apache 2.0, avec rapport technique, model card et stack de service : passer open_weights à true et compléter contexte, matériel requis et scores à leur publication. Taille : 501B paramètres, dont 23B actifs par token (titre de reflection.ai/blog/introducing-beam ; TechCrunch, MarkTechPost, Unite.AI). Pré-entraînement : 23,8T tokens (TechCrunch, Unite.AI). Contexte annoncé à 1M tokens après midtraining mais 256K en RL : context_k laissé null. Scores non repris (chiffres divergents entre reprises presse). Premier modèle de l'éditeur (replaces null)."
   }
  ]
 }

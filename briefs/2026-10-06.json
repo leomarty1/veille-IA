@@ -1,0 +1,397 @@
+{
+  "schema": 2,
+  "date": "2026-10-06",
+  "period": "5 → 6 octobre 2026",
+  "title": "Claude Code pouvait parfois lire des fichiers interdits : passer en 2.1.291",
+  "description": "Veille IA des 5 et 6 octobre 2026 : Claude Code 2.1.290 et 2.1.291, filigrane d'OpenAI sur le texte de ChatGPT en Europe, Beam, le modèle ouvert de Reflection AI. Ce que ça change pour Lynxter.",
+  "lead": "Brief court, deux jours après le précédent. L'essentiel pour nous : une mise à jour de sécurité de Claude Code, à installer. À suivre aussi, deux modèles : Beam, un modèle ouvert, et un nouveau Mistral encore sans détails. OpenAI annonce un filigrane invisible sur ses textes en Europe, sans effet pour nous.",
+  "actors_scanned": 9,
+  "en_30s": [
+    "<strong>Claude Code</strong> passe en 2.1.290 puis en 2.1.291, les 5 et 6 octobre. La 2.1.290 bouche plusieurs failles par lesquelles Claude Code pouvait lire des fichiers interdits. La 2.1.291 corrige deux bugs récents. Chaque poste doit passer en 2.1.291.",
+    "<strong>OpenAI</strong> va marquer d'un filigrane invisible le texte de ChatGPT et de Codex en Europe, pour répondre à l'AI Act. Il testera aussi aux États-Unis des publicités affichées pendant la génération d'une image. Rien à changer pour nous.",
+    "Deux modèles à suivre : Beam, modèle ouvert de Reflection AI (501 milliards de paramètres), téléchargeable d'ici fin octobre, et un nouveau modèle <strong>Mistral</strong> annoncé le 6 octobre, sans nom ni détails pour l'instant."
+  ],
+  "highlights": [
+    "Claude Code 2.1.291 : failles d'accès aux fichiers corrigées, mise à jour à faire",
+    "OpenAI marque d'un filigrane invisible le texte de ChatGPT et de Codex en Europe",
+    "Deux modèles à suivre : Beam (ouvert, Reflection AI) et un nouveau Mistral annoncé sans détails"
+  ],
+  "pour_lynxter": [
+    {
+      "verdict": "a-faire",
+      "titre": "Passer Claude Code en version 2.1.291",
+      "pourquoi": "La 2.1.290 bouche plusieurs failles par lesquelles Claude Code pouvait lire des fichiers interdits, comme ceux qui contiennent des mots de passe. La 2.1.291 évite en plus de perdre les derniers messages à la fermeture. Pour vérifier, taper <code>claude --version</code> dans un terminal. Nos routines tournent dans le cloud d'Anthropic : a priori rien à faire pour elles.",
+      "qui": "Chaque utilisateur de Claude Code",
+      "charte": null,
+      "items": [
+        "2026-10-06-claude-code-2-1-290-291"
+      ]
+    },
+    {
+      "verdict": "a-surveiller",
+      "titre": "Beam, modèle ouvert américain : attendre qu'il soit téléchargeable pour le juger",
+      "pourquoi": "Reflection AI promet de rendre Beam téléchargeable d'ici fin octobre, sous licence Apache 2.0, qui autorise l'usage commercial. Il est très gros : 501 milliards de paramètres. Il faudra sans doute un serveur à plusieurs cartes graphiques (estimation) ; sa fiche technique dira le matériel exact. D'ici là, sa préversion en ligne est hors cadre : données publiques seulement.",
+      "qui": "Léo",
+      "charte": "local",
+      "items": [
+        "2026-10-06-reflection-beam"
+      ]
+    },
+    {
+      "verdict": "a-surveiller",
+      "titre": "Nouveau modèle Mistral : attendre sa fiche officielle",
+      "pourquoi": "Son PDG l'a annoncé le 6 octobre sans nom, ni score, ni date. Mistral est l'un des deux éditeurs autorisés par notre charte : quand la fiche sortira, regarder le prix et s'il sera téléchargeable pour une installation locale.",
+      "qui": "Léo",
+      "charte": "ok",
+      "items": [
+        "2026-10-06-mistral-nouveau-modele-ai-everything"
+      ]
+    },
+    {
+      "verdict": "rien",
+      "titre": "Filigrane, publicités, Codex : rien à changer côté OpenAI",
+      "pourquoi": "En Europe, ChatGPT et Codex marqueront bientôt leurs textes d'un filigrane, notre compte partagé compris. Anthropic a annoncé en août que ses futurs modèles Claude marqueraient aussi leur texte. Le filigrane n'identifie pas l'utilisateur et le détecteur n'est pas public. Les publicités en images ne sont testées qu'aux États-Unis. Codex n'est pas dans nos outils.",
+      "qui": null,
+      "charte": "vert",
+      "items": [
+        "2026-10-06-openai-textgrain-filigrane-ue",
+        "2026-10-06-chatgpt-publicites-images",
+        "2026-10-06-codex-gpt-6-plus-rapide",
+        "2026-10-06-codex-auto-review-gratuit"
+      ]
+    }
+  ],
+  "modeles": [
+    {
+      "id": "reflection-beam",
+      "item": "2026-10-06-reflection-beam",
+      "en_clair": "Premier modèle de Reflection AI, orienté code et tâches d'agent. Reflection le dit proche de GLM-5.2, un modèle ouvert chinois, en demandant bien moins de puissance de calcul. Pour l'instant : préversion sur liste d'attente, ni prix, ni téléchargement. Ses scores, non vérifiés, ne sont pas repris ici.",
+      "verdict": "a-surveiller",
+      "pour_nous": "Sa préversion en ligne est hors cadre : données publiques seulement. Une fois téléchargeable, il sera candidat pour notre future infrastructure locale, mais il est très gros (501 milliards de paramètres) : attendre sa fiche technique pour connaître le matériel nécessaire."
+    }
+  ],
+  "items": [
+    {
+      "slug": "2026-10-06-claude-code-2-1-290-291",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "theme": "outils",
+      "date": "2026-10-05",
+      "title": "Claude Code 2.1.290 et 2.1.291 : des failles d'accès aux fichiers interdits corrigées",
+      "resume": "La 2.1.290 du 5 octobre est une grosse mise à jour : 190 changements, environ deux fois plus qu'une version habituelle. Elle bouche plusieurs failles par lesquelles Claude Code pouvait lire des fichiers interdits, et fiabilise les rappels et tâches répétées lancés dans une session. La 2.1.291 du 6 octobre corrige deux bugs récents, dont la perte des derniers messages à la fermeture.",
+      "pour_nous": {
+        "verdict": "a-faire",
+        "texte": "Vérifier que chaque poste est en 2.1.291 (<code>claude --version</code> dans un terminal) : elle corrige aussi la perte des derniers messages à la fermeture. Nos routines tournent dans le cloud d'Anthropic : a priori rien à faire."
+      },
+      "chiffres": [
+        "Contournements fermés : un lien échangé pendant la lecture d'une image (macOS et Windows) ou d'un @-mention pouvait faire lire un fichier interdit ; les règles <code>Read</code> deny ne s'appliquaient pas aux images collées ou glissées ; une variable placée devant <code>declare</code>, <code>typeset</code>, <code>export</code> ou <code>readonly</code> contournait une règle deny ou ask",
+        "En plan mode, le classifieur du mode auto pouvait approuver des outils de connecteur capables de modifier des données, alors que le serveur exigeait une confirmation ; un mod installé par l'utilisateur pouvait lever un garde-fou fixé par l'organisation",
+        "Les règles d'URL <code>disableClaudeAiConnectors</code> et <code>allowedMcpServers</code> s'appliquent maintenant à toutes les entrées MCP déclarées dans <code>.mcp.json</code>, dans des plugins ou dans des agents (certaines y échappaient)",
+        "Automatisation : <code>/loop</code> et les rappels reprennent après une compaction (faite à partir de la 2.1.290) ; une tâche planifiée au premier plan se déclenche après son passage en arrière-plan ; une tâche récurrente ne tourne plus une fois de trop à chaque reprise ; en mode headless, <code>--json-schema</code> ne sort plus en erreur si la connexion tombe après la livraison du résultat",
+        "Nouveautés : <code>claude attach &lt;nom&gt;</code> et <code>claude logs &lt;nom&gt;</code> ; <code>/claude-api managed-agents-onboard</code> prépare des fichiers <code>ant apply</code> depuis une page ou un modèle de la Console (ex. deep-researcher) ; WebFetch signale le texte non lu au-delà de 100 000 caractères et accepte un <code>offset</code> ; les hooks de mods reçoivent <code>agentId</code>, <code>ceiling</code> et <code>serverToolUses</code>",
+        "Cowork : en session cloud, une réponse pouvait ne jamais se terminer si le conteneur redémarrait juste après l'envoi d'un message ou d'un fichier. Corrigé dans la 2.1.290 ; ces sessions tournent chez Anthropic, a priori sans action de notre part",
+        "2.1.291 : réponses aux demandes d'autorisation perdues en session cloud (bug apparu en 2.1.290) ; derniers messages d'une session perdus à la fermeture (bug apparu en 2.1.288)"
+      ],
+      "sources": [
+        {
+          "label": "code.claude.com/changelog#2-1-290",
+          "url": "https://code.claude.com/docs/en/changelog#2-1-290",
+          "primary": true
+        },
+        {
+          "label": "code.claude.com/changelog#2-1-291",
+          "url": "https://code.claude.com/docs/en/changelog#2-1-291",
+          "primary": true
+        },
+        {
+          "label": "github.com/anthropics/claude-code — v2.1.290",
+          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.290",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-06-reflection-beam",
+      "actor": "Reflection AI",
+      "tag": "useful",
+      "theme": "ouvert",
+      "date": "2026-10-05",
+      "title": "Beam, modèle ouvert de Reflection AI : téléchargeable d'ici fin octobre, selon l'éditeur",
+      "resume": "Reflection AI, start-up américaine soutenue par Nvidia, présente Beam, son premier modèle ouvert : 501 milliards de paramètres, orienté code et tâches d'agent. Une préversion est accessible sur liste d'attente ; le modèle sera téléchargeable plus tard en octobre, sous licence Apache 2.0. Selon Reflection, il égale en raisonnement GLM-5.2, un modèle ouvert chinois, avec 3 à 4 fois moins de puissance de calcul : non vérifié.",
+      "pour_nous": {
+        "verdict": "a-surveiller",
+        "texte": "Sa préversion en ligne est hors cadre : données publiques seulement. Une fois téléchargeable, candidat pour notre future infrastructure locale, mais très gros (501 milliards de paramètres) : attendre sa fiche technique pour le matériel."
+      },
+      "chiffres": [
+        "Architecture : Mixture of Experts, texte seul ; 501 milliards de paramètres, dont 23 milliards actifs par token (titre de la page de Reflection, repris par TechCrunch et MarkTechPost) ; pré-entraînement sur 23 800 milliards de tokens",
+        "Accès : interface de programmation (API) en bêta, compatible avec celle d'OpenAI, sur liste d'attente et sans prix publié",
+        "Téléchargement promis « plus tard en octobre » sous licence Apache 2.0, avec un rapport technique, une fiche du modèle et les outils pour le faire tourner",
+        "Revendication de Reflection : des résultats comparables à GLM-5.2 (Z.ai) en raisonnement, et proches en code et en tâches d'agent, pour 3 à 4 fois moins de calcul d'inférence. Non vérifié de façon indépendante. Repère : GLM-5.2 (environ 750 milliards de paramètres) tourne sur un serveur à 8 cartes graphiques H100 (fiche Hugging Face) ; le matériel exact de Beam reste inconnu",
+        "Selon Help Net Security (6 octobre), Beam reste derrière les meilleurs modèles ouverts chinois sur les tests de code",
+        "Mémoire de travail (1 million de tokens annoncé après extension, 256 000 pendant l'entraînement selon les reprises) et scores : versions divergentes dans la presse, à relire sur la fiche du modèle"
+      ],
+      "sources": [
+        {
+          "label": "reflection.ai — Introducing Beam",
+          "url": "https://reflection.ai/blog/introducing-beam",
+          "primary": true
+        },
+        {
+          "label": "techcrunch.com",
+          "url": "https://techcrunch.com/2026/10/05/reflection-debuts-beam-a-open-weight-ai-model-to-rival-chinese-models-at-lower-compute-cost/",
+          "primary": false
+        },
+        {
+          "label": "helpnetsecurity.com",
+          "url": "https://www.helpnetsecurity.com/2026/10/06/reflections-beam-trails-top-open-models-on-coding-tests-but-claims-lower-inference-compute/",
+          "primary": false
+        },
+        {
+          "label": "marktechpost.com",
+          "url": "https://www.marktechpost.com/2026/10/05/reflection-ai-introduces-beam-a-501b-open-weight-moe-model-with-23b-active-parameters-for-coding-and-agentic-workloads/",
+          "primary": false
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-06-mistral-nouveau-modele-ai-everything",
+      "actor": "Mistral",
+      "tag": "useful",
+      "theme": "modeles",
+      "date": "2026-10-06",
+      "title": "Mistral annonce un nouveau modèle, sans nom ni détails pour l'instant",
+      "resume": "Le 6 octobre à Abu Dhabi, Arthur Mensch, PDG de Mistral, présente un nouveau modèle qu'il dit « au-dessus des modèles chinois sur certains aspects, dont la cyber ». Il n'a donné ni nom, ni score, ni date de disponibilité. Aucune page officielle de Mistral ne le décrit encore.",
+      "pour_nous": {
+        "verdict": "a-surveiller",
+        "texte": "Mistral fait partie des deux éditeurs autorisés par notre charte. Attendre sa fiche officielle : nom, prix, et surtout s'il sera téléchargeable pour une installation locale."
+      },
+      "chiffres": [
+        "Déclaration faite à la conférence Ai Everything d'Abu Dhabi, le mardi 6 octobre, rapportée par une dépêche reprise par au moins six sites",
+        "Aucun test, score ni modèle concurrent nommé : la supériorité sur les modèles chinois est une affirmation du PDG",
+        "Le modèle devait être présenté « plus tard dans la journée » : aucune page mistral.ai ne le décrit à la date du brief"
+      ],
+      "sources": [
+        {
+          "label": "1027wbow.com — dépêche du 6 octobre",
+          "url": "https://1027wbow.com/2026/10/06/mistral-ceo-says-new-ai-model-beats-chinese-ones-in-some-areas/",
+          "primary": false
+        },
+        {
+          "label": "globalbankingandfinance.com",
+          "url": "https://www.globalbankingandfinance.com/mistral-ceo-new-ai-model-beats-chinese-ones-areas/",
+          "primary": false
+        },
+        {
+          "label": "analyticsinsight.net",
+          "url": "https://www.analyticsinsight.net/news/mistral-ceo-claims-new-ai-model-beats-chinese-rivals-in-cybersecurity",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-10-06-openai-textgrain-filigrane-ue",
+      "actor": "OpenAI",
+      "tag": "useful",
+      "theme": "entreprise",
+      "date": "2026-10-05",
+      "title": "Le texte de ChatGPT et de Codex portera un filigrane invisible en Europe",
+      "resume": "OpenAI présente textGrain : l'IA oriente légèrement le choix de ses mots, et seul un détecteur muni d'une clé secrète repère cette signature. En Europe, il sera appliqué d'office au texte de ChatGPT et de Codex dans les semaines qui viennent, pour répondre à l'AI Act. Le détecteur n'est pas public : il est réservé à des chercheurs et organismes approuvés.",
+      "pour_nous": {
+        "verdict": "rien",
+        "texte": "Notre compte ChatGPT partagé est concerné : ses textes porteront ce filigrane. Rien à changer : le filigrane n'identifie pas l'utilisateur et le détecteur n'est pas public."
+      },
+      "chiffres": [
+        "Détection, selon OpenAI : environ 80 % des passages de 200 tokens (environ 150 mots) et 95 % des passages de 400 tokens (environ 300 mots), pour 1 % de faux positifs, en conditions favorables",
+        "Plus fragile sur les maths, les textes courts et les traductions. Sur des passages de 400 tokens (environ 300 mots) en anglais, remplacer 10 % des mots par des synonymes fait passer la détection d'environ 92 % à 66 % ; à 25 %, elle tombe à 17 %",
+        "Interface de programmation (API) : option ouverte dans le monde entier depuis le 5 octobre sur certains modèles, à activer dans les réglages, désactivée par défaut",
+        "Le filigrane survit au copier-coller et n'identifie pas l'utilisateur",
+        "AI Act, article 50 : marquage des contenus générés lisible par une machine, applicable depuis le 2 août 2026"
+      ],
+      "sources": [
+        {
+          "label": "openai.com — Our approach to EU text provenance rules",
+          "url": "https://openai.com/index/eu-text-provenance/",
+          "primary": true
+        },
+        {
+          "label": "openai.com — article technique textGrain (PDF)",
+          "url": "https://cdn.openai.com/pdf/e9508624-d767-41b6-a26d-e34ca798ada6/textgrain-entropy-calibrated-watermarking-for-language-model-text.pdf",
+          "primary": true
+        },
+        {
+          "label": "techcrunch.com",
+          "url": "https://techcrunch.com/2026/10/05/openai-will-start-watermarking-chatgpts-text-in-the-eu/",
+          "primary": false
+        },
+        {
+          "label": "thenewstack.io — filigrane désactivé par défaut dans l'API",
+          "url": "https://thenewstack.io/openai-api-text-watermarking/",
+          "primary": false
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-06-cresta-claude-agent-sdk",
+      "actor": "Anthropic",
+      "tag": "info",
+      "theme": "entreprise",
+      "date": "2026-10-05",
+      "title": "Cresta et le Claude Agent SDK.",
+      "resume": "Cresta bâtit sur le Claude Agent SDK un outil qui crée des agents de relation client à partir d'une description. Selon Cresta, il divise environ par deux le temps de première mise en service.",
+      "sources": [
+        {
+          "label": "claude.com/blog — Cresta",
+          "url": "https://claude.com/blog/how-cresta-turned-cx-expertise-into-an-agent-builder-on-the-claude-agent-sdk",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-06-chatgpt-publicites-images",
+      "actor": "OpenAI",
+      "tag": "info",
+      "theme": "entreprise",
+      "date": "2026-10-05",
+      "title": "Publicités dans ChatGPT.",
+      "resume": "OpenAI testera aux États-Unis, plus tard en octobre, des publicités en images affichées pendant la génération d'une image. Elles seront signalées comme publicité et séparées de l'image produite.",
+      "sources": [
+        {
+          "label": "openai.com — new ChatGPT ads format",
+          "url": "https://openai.com/index/new-chatgpt-ads-format-and-measurement/",
+          "primary": true
+        },
+        {
+          "label": "techcrunch.com",
+          "url": "https://techcrunch.com/2026/10/05/openai-launches-visual-ads-that-appear-alongside-image-generation-results/",
+          "primary": false
+        },
+        {
+          "label": "bleepingcomputer.com",
+          "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/openai-will-show-visual-ads-in-chatgpt-while-you-generate-images/",
+          "primary": false
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-06-codex-gpt-6-plus-rapide",
+      "actor": "OpenAI",
+      "tag": "info",
+      "theme": "outils",
+      "date": "2026-10-05",
+      "title": "Codex plus rapide.",
+      "resume": "Selon Thibault Sottiaux (OpenAI), GPT-6 Astra et GPT-6.1 Sol répondent environ 50 % plus vite par défaut pour les abonnés ChatGPT, Codex compris. Première d'une série d'améliorations annoncées jour après jour ; gain non vérifié.",
+      "sources": [
+        {
+          "label": "x.com — message de Thibault Sottiaux (5 oct.)",
+          "url": "https://x.com/thsottiaux/status/2107158998495748264",
+          "primary": false
+        },
+        {
+          "label": "runtimewire.com",
+          "url": "https://runtimewire.com/article/openai-gpt-6-models-speed-optimization-tibo-sottiaux",
+          "primary": false
+        },
+        {
+          "label": "byteiota.com",
+          "url": "https://byteiota.com/openai-codex-28-day-sprint/",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-10-06-codex-auto-review-gratuit",
+      "actor": "OpenAI",
+      "tag": "info",
+      "theme": "outils",
+      "date": "2026-10-06",
+      "title": "Codex : vérification automatique gratuite.",
+      "resume": "Pour les abonnés ChatGPT, l'agent qui approuve ou bloque les actions risquées de Codex (Auto-review) ne compte plus dans le quota du forfait.",
+      "sources": [
+        {
+          "label": "community.openai.com — annonce du 6 octobre",
+          "url": "https://community.openai.com/t/free-auto-review-day-2-of-28-days-of-quality-of-life-improvements-or-a-full-reset/1403525",
+          "primary": true
+        },
+        {
+          "label": "nerdschalk.com",
+          "url": "https://nerdschalk.com/codex-auto-review-is-now-free-for-chatgpt-sign-ins",
+          "primary": false
+        },
+        {
+          "label": "pasqualepillitteri.it",
+          "url": "https://pasqualepillitteri.it/en/news/21158/codex-auto-review-free-chatgpt-account",
+          "primary": false
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-06-cohere-north-2",
+      "actor": "Cohere",
+      "tag": "info",
+      "theme": "entreprise",
+      "date": "2026-10-05",
+      "title": "Cohere North 2.",
+      "resume": "Nouvelle version de la plateforme d'agents de Cohere pour les entreprises : mémoire entre les sessions, plafonds de dépense par utilisateur, installation possible sur site.",
+      "sources": [
+        {
+          "label": "cohere.com — North 2",
+          "url": "https://cohere.com/blog/introducing-north-2",
+          "primary": true
+        },
+        {
+          "label": "siliconangle.com",
+          "url": "https://siliconangle.com/2026/10/05/cohere-unveils-north-2-ai-agent-platform-with-rebuilt-orchestration-and-token-spending-caps/",
+          "primary": false
+        },
+        {
+          "label": "mobilesyrup.com",
+          "url": "https://mobilesyrup.com/2026/10/05/cohere-rolls-out-enterprise-ai-platform-north-2/",
+          "primary": false
+        }
+      ],
+      "has_primary": true
+    }
+  ],
+  "rien_de_notable": [
+    "Google",
+    "Meta"
+  ],
+  "sources_footer": [
+    {
+      "label": "code.claude.com/changelog",
+      "url": "https://code.claude.com/docs/en/changelog#2-1-290"
+    },
+    {
+      "label": "claude.com/blog — Cresta",
+      "url": "https://claude.com/blog/how-cresta-turned-cx-expertise-into-an-agent-builder-on-the-claude-agent-sdk"
+    },
+    {
+      "label": "openai.com/index/eu-text-provenance",
+      "url": "https://openai.com/index/eu-text-provenance/"
+    },
+    {
+      "label": "openai.com/index/new-chatgpt-ads-format-and-measurement",
+      "url": "https://openai.com/index/new-chatgpt-ads-format-and-measurement/"
+    },
+    {
+      "label": "reflection.ai/blog/introducing-beam",
+      "url": "https://reflection.ai/blog/introducing-beam"
+    },
+    {
+      "label": "x.com/thsottiaux",
+      "url": "https://x.com/thsottiaux/status/2107158998495748264"
+    }
+  ],
+  "prev": {
+    "href": "2026-10-04.html",
+    "title": "Sonnet 5.5 : presque le niveau d'Opus, pour deux fois moins cher"
+  }
+}

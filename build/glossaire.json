@@ -488,6 +488,121 @@
         "computer use"
       ],
       "def": "L'IA prend la main sur un ordinateur (souris, clavier, écran) pour accomplir une tâche."
+    },
+    {
+      "id": "filigrane",
+      "label": "Filigrane (watermark)",
+      "match": [
+        "filigranes",
+        "filigrane",
+        "watermark"
+      ],
+      "def": "Marque invisible glissée dans un texte ou une image produits par une IA, qu'un outil de détection peut ensuite repérer."
+    },
+    {
+      "id": "ai-act",
+      "label": "AI Act",
+      "match": [
+        "AI Act"
+      ],
+      "def": "Règlement européen sur l'intelligence artificielle. Ses obligations arrivent par étapes : la transparence sur les contenus générés par IA s'applique depuis le 2 août 2026."
+    },
+    {
+      "id": "apache",
+      "label": "Licence Apache 2.0",
+      "match": [
+        "licence Apache 2.0",
+        "Apache 2.0"
+      ],
+      "def": "Licence libre permissive : elle autorise l'usage, la modification et l'usage commercial, à condition de conserver les mentions de l'auteur et de la licence."
+    },
+    {
+      "id": "glm",
+      "label": "GLM",
+      "match": [
+        "GLM"
+      ],
+      "cs": true,
+      "def": "Famille de modèles d'IA de l'éditeur chinois Z.ai, dont plusieurs versions sont des modèles ouverts, téléchargeables librement."
+    },
+    {
+      "id": "agent-sdk",
+      "label": "Claude Agent SDK",
+      "match": [
+        "Claude Agent SDK",
+        "Agent SDK"
+      ],
+      "def": "Kit d'Anthropic pour construire ses propres agents, avec le moteur qui fait tourner Claude Code."
+    },
+    {
+      "id": "headless",
+      "label": "Mode headless",
+      "match": [
+        "mode headless",
+        "headless"
+      ],
+      "def": "Claude Code lancé sans conversation à l'écran, par un script ou une tâche automatique, qui renvoie directement son résultat."
+    },
+    {
+      "id": "plan-mode",
+      "label": "Plan mode",
+      "match": [
+        "plan mode"
+      ],
+      "def": "Mode de Claude Code où il prépare un plan d'action sans rien modifier, puis attend votre accord avant d'agir."
+    },
+    {
+      "id": "mode-auto",
+      "label": "Mode auto",
+      "match": [
+        "mode auto"
+      ],
+      "def": "Mode de Claude Code où un filtre automatique accepte seul les actions jugées sans risque, au lieu de vous demander à chaque fois."
+    },
+    {
+      "id": "compaction",
+      "label": "Compaction",
+      "match": [
+        "compactions",
+        "compaction"
+      ],
+      "def": "Résumé automatique d'une longue conversation, pour libérer de la place dans la mémoire de travail de l'IA."
+    },
+    {
+      "id": "faux-positif",
+      "label": "Faux positif",
+      "match": [
+        "faux positifs",
+        "faux positif"
+      ],
+      "def": "Erreur d'un détecteur qui signale à tort quelque chose : par exemple, un texte écrit par un humain jugé produit par une IA."
+    },
+    {
+      "id": "connecteur",
+      "label": "Connecteur",
+      "match": [
+        "connecteurs",
+        "connecteur"
+      ],
+      "def": "Lien entre l'IA et un autre logiciel (messagerie, agenda, documents) qui lui permet d'y lire des informations ou d'y agir."
+    },
+    {
+      "id": "hook",
+      "label": "Hook",
+      "match": [
+        "hooks",
+        "hook"
+      ],
+      "def": "Point d'accroche où un plugin réagit à un événement de Claude Code, par exemple juste avant l'utilisation d'un outil."
+    },
+    {
+      "id": "webfetch",
+      "label": "WebFetch",
+      "match": [
+        "WebFetch"
+      ],
+      "cs": true,
+      "def": "Outil de Claude Code qui télécharge et lit une page web à la demande."
     }
   ]
 }
