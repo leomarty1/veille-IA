@@ -5,9 +5,9 @@
       "filename": "2026-10-04.html",
       "items_count": 17,
       "by_tag": {
-        "lynxter": 4,
-        "useful": 7,
-        "info": 6
+        "lynxter": 2,
+        "useful": 5,
+        "info": 10
       },
       "by_actor": {
         "Anthropic": 6,
@@ -19,128 +19,128 @@
         "Mistral": 0
       },
       "mode": "hebdomadaire",
-      "title": "Le palier $2/$10 devient la ligne de front",
+      "title": "Sonnet 5.5 : presque le niveau d'Opus, pour deux fois moins cher",
       "highlights": [
-        "Claude Sonnet 5.5 à $2/$10 par M tokens, 70.6 % sur Terminal-Bench 4.0 (Opus 5.5 : 66.4 %)",
-        "GPT-6.1 Sol au même prix à ~2 points d'Astra ; Codex cloud et Code Review GA sur GitHub",
-        "Claude Code 2.1.284→289 : Claude Mods, allowedProviders, deux contournements de deny corrigés"
+        "Claude Sonnet 5.5 : presque le niveau d'Opus 5.5, pour deux fois moins cher",
+        "GPT-6.1 Sol et Gemini 4 Argon arrivent au même prix, $2/$10 par million de tokens",
+        "Claude Code 2.1.289 corrige deux failles : mise à jour à vérifier sur chaque poste"
       ],
       "items": [
         {
           "slug": "2026-10-04-claude-sonnet-5-5",
-          "title": "Claude Sonnet 5.5 — 70.6 % sur Terminal-Bench 4.0 à $2/$10 par M tokens, devant Opus 5.5 (66.4 %)",
+          "title": "Claude Sonnet 5.5 : presque le niveau d'Opus 5.5, pour deux fois moins cher",
           "primary_url": "https://www.anthropic.com/claude-sonnet-5-5",
           "tag": "lynxter",
           "actor": "Anthropic"
         },
         {
           "slug": "2026-10-04-sonnet-5-5-migration-sonnet-4-5-retrait",
-          "title": "Sonnet 5.5 : 5 changements cassants vs Sonnet 5, et Sonnet 4.5 retiré de l'API le 30 novembre",
+          "title": "Claude Sonnet 4.5 sera coupé le 30 novembre",
           "primary_url": "https://platform.claude.com/docs/en/release-notes/overview#september-28-2026",
           "tag": "useful",
           "actor": "Anthropic"
         },
         {
           "slug": "2026-10-04-claude-code-2-1-284-289",
-          "title": "Claude Code 2.1.284 → 289 — 6 versions en 6 jours : Claude Mods, agent « You should know », allowedProviders",
+          "title": "Claude Code : six mises à jour, dont deux corrections de sécurité",
           "primary_url": "https://code.claude.com/docs/en/changelog#2-1-284",
           "tag": "lynxter",
           "actor": "Anthropic"
         },
         {
-          "slug": "2026-10-04-anthropic-sdk-python-1-9-1-11",
-          "title": "anthropic-sdk-python 1.9 → 1.11 — 3 versions en 3 jours : coûts par utilisateur, spend limits, Organization API GA",
-          "primary_url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.10.0",
+          "slug": "2026-10-04-gpt-6-1-sol",
+          "title": "GPT-6.1 Sol : presque le haut de gamme d'OpenAI, pour cinq fois moins cher",
+          "primary_url": "https://openai.com/index/introducing-gpt-6-1-sol/",
           "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-10-04-codex-devday-cloud-review",
+          "title": "Codex, l'assistant de code d'OpenAI, se pilote depuis un téléphone",
+          "primary_url": "https://openai.com/index/devday-2026-recap/",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-10-04-openai-dots",
+          "title": "OpenAI lance les Dots, des agents qui travaillent en continu",
+          "primary_url": "https://openai.com/index/devday-2026-recap/",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-10-04-gemini-4-argon",
+          "title": "Gemini 4 Argon : Google annonce sa nouvelle génération, encore fermée au public",
+          "primary_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+          "tag": "useful",
+          "actor": "Google DeepMind"
+        },
+        {
+          "slug": "2026-10-04-anthropic-sdk-python-1-9-1-11",
+          "title": "Kit Python d'Anthropic, versions 1.9 à 1.11.",
+          "primary_url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.10.0",
+          "tag": "info",
           "actor": "Anthropic"
         },
         {
           "slug": "2026-10-04-claude-frontier-academy",
-          "title": "Claude Frontier Academy — 100 M$ pour former 10 000 ingénieurs de déploiement d'ici fin 2027",
+          "title": "Claude Frontier Academy.",
           "primary_url": "https://www.anthropic.com/news/claude-frontier-academy",
           "tag": "info",
           "actor": "Anthropic"
         },
         {
           "slug": "2026-10-04-barclays-claude-code",
-          "title": "Barclays — 120 000 e-mails/jour routés par Claude, 50 % des développeurs sur Claude Code visés fin 2026",
+          "title": "Barclays.",
           "primary_url": "https://www.anthropic.com/news/barclays-scales-claude",
           "tag": "info",
           "actor": "Anthropic"
         },
         {
-          "slug": "2026-10-04-gpt-6-1-sol",
-          "title": "GPT-6.1 Sol — ~2 points sous Astra à $2/$10 par M tokens (1/5 du prix), cache input à $0.10/M",
-          "primary_url": "https://openai.com/index/introducing-gpt-6-1-sol/",
-          "tag": "lynxter",
-          "actor": "OpenAI"
-        },
-        {
-          "slug": "2026-10-04-codex-devday-cloud-review",
-          "title": "Codex DevDay — workspaces cloud repris depuis un iPhone, Code Review GA sur GitHub, GitLab en preview",
-          "primary_url": "https://openai.com/index/devday-2026-recap/",
-          "tag": "lynxter",
-          "actor": "OpenAI"
-        },
-        {
-          "slug": "2026-10-04-openai-dots",
-          "title": "Dots — agents always-on sur GPT-6 Astra, ordinateur cloud dédié, 4 000+ apps, 1 Dot par abonné Pro/Business",
-          "primary_url": "https://openai.com/index/devday-2026-recap/",
-          "tag": "useful",
-          "actor": "OpenAI"
-        },
-        {
           "slug": "2026-10-04-gpt-6-1-astra-annule",
-          "title": "GPT-6.1 Astra abandonné pour comportements trompeurs en tests internes, selon Reuters",
+          "title": "GPT-6.1 Astra abandonné.",
           "primary_url": "https://cyprus-mail.com/2026/09/29/openai-scraps-gpt-6-1-astra-release-over-safety-concerns",
           "tag": "info",
           "actor": "OpenAI"
         },
         {
-          "slug": "2026-10-04-gemini-4-argon",
-          "title": "Gemini 4 Argon — 77.9 % sur DeepSWE v1.1 selon Google, 1M tokens en sortie, $2/$10, réservé à Fairwind",
-          "primary_url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
-          "tag": "useful",
-          "actor": "Google DeepMind"
-        },
-        {
           "slug": "2026-10-04-meta-muse-small-business",
-          "title": "Muse for Small Business — agent Muse sur 15+ connecteurs (Shopify, Stripe, QuickBooks, Slack, Notion), US et Canada",
+          "title": "Muse pour les petites entreprises.",
           "primary_url": "https://about.fb.com/news/2026/09/introducing-muse-small-business/",
-          "tag": "useful",
+          "tag": "info",
           "actor": "Meta"
         },
         {
           "slug": "2026-10-04-meta-muse-gadgets",
-          "title": "Muse Gadgets — firmware ESP32 et SDK Linux open source (Apache 2.0) pour relier du matériel à Muse",
+          "title": "Muse Gadgets.",
           "primary_url": "https://www.iphoneincanada.ca/2026/10/02/metas-muse-lets-you-build-your-own-ai-gadgets/",
           "tag": "info",
           "actor": "Meta"
         },
         {
           "slug": "2026-10-04-muse-spark-mathematiques",
-          "title": "Muse Spark co-auteur de 6 travaux de mathématiques, contre-exemple à 384 éléments en théorie des groupes",
+          "title": "Muse Spark et les mathématiques.",
           "primary_url": "https://alphasignal.ai/news/meta-s-muse-spark-helped-mathematicians-solve-five-open-research-problems",
           "tag": "info",
           "actor": "Meta"
         },
         {
           "slug": "2026-10-04-perplexity-agent-api-profiles",
-          "title": "Perplexity Agent API — Profiles versionnés, Skills et 6 connecteurs managés, 24 h après la retraite de Sonar (403)",
+          "title": "Perplexity Agent API.",
           "primary_url": "https://community.perplexity.ai/t/you-can-now-build-custom-reusable-agents-in-the-perplexity-agent-api-with-profiles-skills-and-managed-connectors/6235",
-          "tag": "useful",
+          "tag": "info",
           "actor": "Perplexity"
         },
         {
           "slug": "2026-10-04-perplexity-escaping-space",
-          "title": "Escaping SPACE — 9 modèles root dans le sandbox Perplexity : 0 évasion VM sur 108 runs, 4 contournements réseau",
+          "title": "Test d'évasion chez Perplexity.",
           "primary_url": "https://www.perplexity.ai/hub/blog/escaping-space-part-i",
-          "tag": "useful",
+          "tag": "info",
           "actor": "Perplexity"
         },
         {
           "slug": "2026-10-04-grok-build-1-0-46",
-          "title": "Grok Build 1.0.44 → 1.0.46 — /context-window par session, prix grok-4.7 doublé au-delà de 200k tokens",
+          "title": "Grok Build 1.0.46.",
           "primary_url": "https://x.ai/build/changelog",
           "tag": "info",
           "actor": "xAI"

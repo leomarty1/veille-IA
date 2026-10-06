@@ -4,8 +4,8 @@ export const meta = {
   whenToUse: "Routine hebdomadaire (lundi 01:00 Europe/Paris) ou run manuel pour produire le brief veille IA.",
   phases: [
     { title: "Recherche", detail: "1 sous-agent par acteur, en parallele (search + fetch primaire, repli search-only si egress bloque)" },
-    { title: "Consolidation", detail: "cross-check, dedup inter-briefs, scoring 🎯/🛠/· → ecrit briefs/<date>.json" },
-    { title: "Redaction", detail: "node build/gen.js + node build/sync.js (brief, pages detail, data.json, home, archive)" },
+    { title: "Consolidation", detail: "cross-check, dedup inter-briefs, verdicts Lynxter → ecrit briefs/<date>.json (format 2) + modeles/models.json" },
+    { title: "Redaction", detail: "node build/gen.js + build/site.js + build/sync.js (brief, comparateur, lexique, data.json, home, archive)" },
     { title: "QA", detail: "node build/qa.js — bloquant" },
   ],
 }
@@ -110,7 +110,7 @@ const QA_SCHEMA = {
   required: ["passed", "output_tail", "blocking_issues", "fixed"],
 }
 
-const TON = `Ton editorial (CLAUDE.md) : lecteur technique (dev / ingenieur / support avance), zero vulgarisation, zero superlatif marketing (revolutionnaire, game-changer, incroyable, disruptif...). Phrases denses et comparatives, chiffres concrets systematiques (scores benchmarks, pricing par M tokens, contexte en tokens, dates, tailles de modele), comparaison inter-acteurs des que possible. Angle Lynxter (imprimante 3D industrielle S300X/S600D, support technique, workflows agents Claude Code / Cowork / MCP) ACTIONNABLE : des choses a faire ou a savoir precisement.`
+const TON = `Ton editorial (CLAUDE.md §1 et CONTEXTE_LYNXTER.md) : lecteur = equipe Lynxter (support, commerce, dev, direction), PAS specialiste de l'IA, lecture en 5 minutes. Phrases courtes (20 mots en moyenne), mots courants, tout terme technique soit remplace soit present dans build/glossaire.json. Pas de code ni de nom de parametre dans les resumes (ils vont dans chiffres[]). Un ou deux chiffres utiles par annonce avec leur point de comparaison. Zero superlatif. Pour Lynxter : uniquement a partir de ce que CONTEXTE_LYNXTER.md dit qu'on utilise, jamais d'outil ou de processus interne invente ; « rien a faire » est une reponse normale.`
 
 const LEDGER_TXT = A.ledger.length ? JSON.stringify(A.ledger.slice(0, 60)) : "[]"
 
@@ -146,25 +146,28 @@ Sources officielles NON lisibles ce run (a couvrir uniquement par les scans ci-d
 ` : ""}
 TA TACHE
 1. DEDUP intra-fenetre (une meme annonce vue par deux scans = un item) ET inter-briefs : ecarte tout ce qui recoupe le ledger ${LEDGER_TXT}. Ecarte aussi : hors fenetre, confidence="rumor" (sauf mention explicite « annonce non materialisee » en · info), repackagings marketing, partenariats sans substance technique.
-2. SCORING : 🎯 lynxter = impact direct workflow Lynxter (Claude Code, agents, MCP, automation, support S300X/S600D) · 🛠 useful = a connaitre / anticiper / benchmarker · · info = culture IA. Un · info fait 1 a 3 phrases MAXIMUM.
+2. SCORING (lis d'abord CONTEXTE_LYNXTER.md) : tag lynxter = « Important pour nous » (touche un outil qu'on utilise ou une decision proche), useful = « Bon a savoir », info = « En bref » (2 phrases, 35 mots max). theme = modeles | outils | entreprise | ouvert | autre.
 3. GATE source primaire : un 🎯/🛠 a >= 1 source sur le domaine OFFICIEL de l'acteur (has_primary=true, sources[].primary=true sur cette URL) ; sinon has_primary=false + >= 2 secondaires independantes, et le brief affichera « sans annonce officielle ». Ne JAMAIS poser primary=true sur un domaine de presse ou d'agregateur — build/qa.js le bloque.
 4. Semaine calme (< 3 items sur Anthropic/OpenAI/Google DeepMind/Meta/Mistral) : brief minimal honnete, titre type « Semaine calme cote frontiere », pas de padding, sections en actor_empty.
-5. ECRIS le fichier briefs/${A.date}.json avec l'outil Write. Schema et niveau de richesse de reference : LIS d'abord build/example-brief.json (Read) et le dernier brief reel briefs/${A.since}.json — ton JSON doit avoir EXACTEMENT les memes cles :
-   date, title, title_html, description, period, actors_scanned (nombre), intro_html, tldr[] (3 bullets HTML denses), highlights[] (3 phrases HTML courtes pour la home et l'archive), lynxter_hero[] (3 paragraphes HTML actionnables), synthese_html (un <p> par acteur actif), actors_order = ["Anthropic","OpenAI","Google DeepMind","Meta","Mistral"], actor_empty{} (message par acteur principal sans item), items[], sources_footer[], prev = { href: "${A.since}.html", title: <titre du brief ${A.since}, lu dans briefs/data.json> }.
-   Chaque item : slug = "${A.date}-<kebab>", actor (nom de section : "Google DeepMind", pas "Google"), tag, date (YYYY-MM-DD dans la fenetre), title (avec chiffre cle), context_html (3-6 phrases pour 🎯, 3-5 pour 🛠, 1-3 pour ·), sources[] ({label,url,primary}), has_primary, et pour CHAQUE 🎯/🛠 un bloc detail{} : short, date_long, description, stats[4] {num,unit,label}, context_paragraphs (>= 3 pour 🎯, >= 2 pour 🛠), lynxter_paragraphs (>= 2), source {kind:"primaire"|"secondaire", url, label, meta}, related[] ({slug,actor,title,tag} — uniquement des slugs 🎯/🛠 qui auront une page : ceux de ce brief ou des briefs precedents), nav {prev,next} chainant les pages detail dans l'ordre des items (premier prev = ../briefs/${A.date}.html, dernier next = retour au brief).
-   Un 🎯 cite >= 2 chiffres concrets et >= 1 comparaison inter-acteurs ; un 🛠 >= 1 chiffre.
-6. Ne modifie AUCUN autre fichier. Renvoie via la sortie structuree le resume (path, title, compteurs, actors_actifs, calm_week, dropped avec la raison de chaque exclusion).
+5. ECRIS le fichier briefs/${A.date}.json avec l'outil Write, au FORMAT 2. Reference : LIS d'abord briefs/2026-10-04.json et la section 4 de CLAUDE.md. Cles :
+   schema: 2, date, period, title (<= 90 car., le fait + ce qu'il change), description, lead (<= 60 mots), actors_scanned (nombre),
+   en_30s[1-3] (<= 45 mots chacun), highlights[3] (phrases courtes pour la home),
+   pour_lynxter[<= 4] { verdict: a-faire|a-tester|a-surveiller|rien, titre, pourquoi (<= 60 mots), qui, charte: ok|vert|hors-cadre|local|null, items[slugs] },
+   modeles[] { id (modele de modeles/models.json), item (slug), en_clair (<= 50 mots), verdict, pour_nous } pour chaque nouveau modele de la fenetre,
+   items[] { slug "${A.date}-<kebab>", actor ("Google DeepMind" pour Google), tag, theme, date (dans la fenetre), title, resume (<= 3 phrases, <= 75 mots, sans code),
+             pour_nous? { verdict, texte <= 40 mots }, chiffres?[] (details, code autorise), sources[] ({label,url,primary}), has_primary },
+   rien_de_notable[] (acteurs suivis sans annonce), sources_footer[], prev = { href: "${A.since}.html", title: <titre du brief ${A.since}, lu dans briefs/data.json> }.
+   Pour chaque nouveau modele : ajoute-le AUSSI a modeles/models.json (CLAUDE.md etape 5.B : prix, contexte, statut, replaces, scores officiels du nouveau ET de l'ancien modele quand l'annonce les donne, chacun avec sa source ; meta.updated = ${A.date}). Tout nouveau sigle ou terme technique : ajoute-le a build/glossaire.json.
+6. Ne modifie AUCUN autre fichier que briefs/${A.date}.json, modeles/models.json et build/glossaire.json. Renvoie via la sortie structuree le resume (path, title, compteurs, actors_actifs, calm_week, dropped avec la raison de chaque exclusion).
 ${TON}`
 }
 
 function writerPrompt(c) {
-  return `Le brief ${A.date} est ecrit dans ${c.path} (${c.items_count} items : ${c.by_tag.lynxter} 🎯, ${c.by_tag.useful} 🛠, ${c.by_tag.info} ·).
-Genere tout le reste depuis cette source unique, dans cet ordre (Bash) :
-1. node build/gen.js ${A.date}      → briefs/${A.date}.html + items/${A.date}-*.html (une page par 🎯/🛠)
-2. node build/sync.js ${A.date}     → briefs/data.json, index.html (compteurs, prochaine edition, dernier brief, archive), briefs/index.html
-3. modeles/index.html : entre <!-- CLASSEMENT-START --> et <!-- CLASSEMENT-END -->, mets a jour data-classement-date="${A.date}" et le <h2> « Top 5 modeles — semaine du <JJ mois> » ; ne change les positions QUE si un modele de la fenetre publie un score SWE-bench Verified OFFICIEL. Sinon une ligne de contexte explique pourquoi le classement ne bouge pas.
-4. modeles/models-data.json : ajoute un modele UNIQUEMENT s'il a un score SWE-bench Verified officiel (approximate:false) ou estimable (approximate:true + notes citant la source). Sinon ne touche pas au fichier.
-Si gen.js ou sync.js echoue, corrige la CAUSE dans ${c.path} (jamais dans les scripts) et relance.
+  return `Le brief ${A.date} est ecrit dans ${c.path} (${c.items_count} annonces). Genere tout le reste depuis les sources uniques, dans cet ordre (Bash) :
+1. node build/gen.js ${A.date}   → briefs/${A.date}.html (format 2 : page unique, cartes modeles lues dans modeles/models.json)
+2. node build/site.js            → modeles/index.html (comparateur), lexique/index.html, redirection graphe/
+3. node build/sync.js ${A.date}  → briefs/data.json, index.html, briefs/index.html
+Si un script echoue, corrige la CAUSE dans ${c.path}, modeles/models.json ou build/glossaire.json (jamais dans les scripts ni dans le HTML genere) et relance.
 Renvoie la liste des fichiers ecrits/modifies et toute anomalie rencontree.`
 }
 
@@ -206,12 +209,12 @@ const c = await agent(consolidatePrompt(scans), { schema: CONSOLIDATED_SCHEMA, p
 log(`Brief ${c.calm_week ? "(semaine calme) " : ""}« ${c.title} » : ${c.items_count} items (${c.by_tag.lynxter} 🎯 · ${c.by_tag.useful} 🛠 · ${c.by_tag.info} ·) · ${c.dropped.length} ecartes`)
 
 phase("Redaction")
-const written = await agent(writerPrompt(c), { phase: "Redaction", label: "gen+sync+modeles" })
+const written = await agent(writerPrompt(c), { phase: "Redaction", label: "gen+site+sync" })
 
 phase("QA")
 const qa = await agent(
   `Lance la QA bloquante : Bash 'node build/qa.js'. Seuls les ✗ bloquent ; les ⚠ sur des briefs deja publies sont normaux.
-Si exit != 0 : corrige la cause dans briefs/${A.date}.json (jamais en editant le HTML genere, jamais en assouplissant qa.js), relance 'node build/gen.js ${A.date}' puis 'node build/sync.js ${A.date}', puis re-teste — jusqu'a 3 fois. Liste ce que tu as corrige dans fixed[].
+Si exit != 0 : corrige la cause dans briefs/${A.date}.json, modeles/models.json ou build/glossaire.json (jamais en editant le HTML genere, jamais en assouplissant qa.js), relance 'node build/gen.js ${A.date}', 'node build/site.js' puis 'node build/sync.js ${A.date}', puis re-teste — jusqu'a 3 fois. Liste ce que tu as corrige dans fixed[].
 Si un ✗ ne peut pas etre corrige sans inventer une source : passed=false et explique dans blocking_issues. NE PAS pousser.`,
   { schema: QA_SCHEMA, phase: "QA", label: "qa-gate" }
 )

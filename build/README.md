@@ -5,12 +5,25 @@ Outils Node **zéro-dépendance** (aucun `npm install`) pour fiabiliser la routi
 ## Chaîne de production d'un brief
 
 ```bash
-node build/scout.js 2026-08-30 2026-09-06   # base de faits vérifiés (avant toute recherche web)
-node build/gen.js  2026-09-06   # briefs/<date>.json → brief HTML + pages détail 🎯/🛠
-node build/sync.js 2026-09-06   # → data.json, index.html, briefs/index.html (idempotent)
+node build/scout.js 2026-09-27 2026-10-04   # base de faits vérifiés (avant toute recherche web)
+node build/gen.js  2026-10-04   # briefs/<date>.json → brief HTML (format 2 : page unique ; format 1 : + pages détail)
+node build/site.js              # modeles/models.json → comparateur ; glossaire.json → lexique ; graphe/ → redirection
+node build/sync.js 2026-10-04   # → data.json, index.html, briefs/index.html (idempotent)
 node build/qa.js                # gate bloquant
-bash build/publish.sh 2026-09-06
+bash build/publish.sh 2026-10-04
 ```
+
+## Format 2 (depuis le 2026-10-06)
+
+| Fichier | Rôle |
+|---|---|
+| `templates/brief-v2.js` | Brief en page unique : En 30 secondes, Pour Lynxter (verdicts), cartes modèles, annonces par thème, En bref, lexique automatique |
+| `site.js` | Comparateur (`modeles/index.html`) : modèles en service par éditeur, « nouveau contre ancien », prix dans le temps, SWE-bench historique, tableau filtrable ; lexique ; redirection de l'ancien graphe |
+| `charts.js` | Graphes générés au build, sans CDN : avant/après en HTML (lisible sur mobile), courbes en SVG ; infobulles (`assets/v2.js`) et tableau « Voir les données » pour chacun |
+| `glossary.js` + `glossaire.json` | Lexique : infobulle sur la 1re occurrence de chaque terme, section « Les mots du brief », détection des sigles non définis (QA) |
+| `charte.js` | Statut de chaque éditeur/modèle au regard de la charte IA Lynxter (une seule table) |
+
+Couleurs des graphes : bleu Lynxter (Anthropic), orange (OpenAI), aqua (Google), gris (autres) — palette validée daltonisme en clair et en sombre. La QA du format 2 vérifie en plus : longueur des phrases, nombre de lignes « Pour Lynxter », verdicts et thèmes connus, absence de code dans le texte courant, cartes modèles présentes dans `models.json`, et que chaque score de `models.json` a sa source.
 
 ## `node build/scout.js <since> <until>` — base de faits vérifiés
 

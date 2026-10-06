@@ -1,56 +1,40 @@
 # Prompt de routine — Veille IA hebdomadaire (à coller dans claude.ai/code/routines)
 
 **Repo :** `leomarty1/veille-IA`
-**Schedule :** Weekly · Monday · 01:00 · Europe/Paris
-**Network :** accès sortant HTTPS requis (WebSearch/WebFetch) — l'egress est souvent restreint, le repli est documenté dans CLAUDE.md
-**Secrets :** AUCUN. Pas de PAT dans ce prompt (le précédent, exposé en clair, est à révoquer). L'écriture passe par le remote git de l'environnement (App GitHub Claude).
-**Modèle :** dernier Claude disponible — ne pas figer la version ici, logger le modèle réel dans le rapport.
+**Schedule :** chaque lundi · 01:00 · Europe/Paris
+**Network :** accès sortant HTTPS (WebSearch/WebFetch). L'egress est souvent restreint : le repli est documenté dans CLAUDE.md.
+**Secrets :** AUCUN. Pas de jeton dans ce prompt. L'écriture passe par le remote git de l'environnement (App GitHub Claude).
+**Modèle :** le dernier Claude Opus. Ne pas figer la version ici ; le rapport note le modèle réel.
 
 ---
 
-Tu es un agent autonome qui produit ET PUBLIE le brief hebdomadaire de veille IA pour le
-dashboard de Léo Marty (Lynxter, support technique impression 3D industrielle S300X/S600D).
+Tu produis ET publies le brief hebdomadaire de veille IA pour l'équipe Lynxter (imprimantes 3D industrielles, Bayonne).
 Le repo `leomarty1/veille-IA` est cloné dans ton workspace.
 
-## ÉTAPE ZÉRO — IMPÉRATIF
-Lis `CLAUDE.md` à la racine du repo AVANT TOUTE AUTRE ACTION. C'est ton manuel complet :
-ton éditorial, profondeur par tag (🎯/🛠/·), recherche, scoring, source unique JSON, QA
-bloquante, publication, rapport final. Ne déroule rien sans l'avoir lu en entier.
+## Avant tout
+Lis en entier `CLAUDE.md` puis `CONTEXTE_LYNXTER.md` à la racine du repo. CLAUDE.md est ton manuel : public visé,
+règles d'écriture, format 2 du brief, base modèles, QA, publication, rapport. CONTEXTE_LYNXTER.md dit ce que Lynxter
+utilise vraiment : c'est la seule base autorisée pour la section « Pour Lynxter ».
 
-## PRE-FLIGHT (CLAUDE.md étape 0) — sans rien écrire dans le dépôt
-`date -u +%Y-%m-%d` pour ancrer la date. Puis `git fetch origin main && git push --dry-run origin HEAD`
-(prouve le droit d'écriture sans commit) et le test d'egress. Si l'écriture échoue : STOP + notification.
+## Déroulé
+1. Pre-flight (CLAUDE.md §3 étape 0) : `date -u +%Y-%m-%d`, `git fetch origin main && git push --dry-run origin HEAD`,
+   test d'egress. Écriture impossible → STOP + notification.
+2. Fenêtre et ledger depuis `briefs/data.json`, puis `node build/scout.js <since> <date> --json`.
+3. `Workflow({ name: "veille", args: { date, since, ledger, scout } })`. S'il échoue vite (sous-agents inopérants),
+   déroule toi-même les étapes 1 à 5 de CLAUDE.md (~30 WebSearch, ~20 WebFetch).
+4. Source unique `briefs/<date>.json` au format 2 (référence : `briefs/2026-10-04.json`), nouveaux modèles dans
+   `modeles/models.json`, nouveaux termes dans `build/glossaire.json`.
+5. `node build/gen.js <date>` → `node build/site.js` → `node build/sync.js <date>` → `node build/qa.js`.
+   Un ✗ se corrige dans les JSON, jamais dans le HTML généré ni en assouplissant `qa.js`.
+6. `bash build/publish.sh <date>`. Commiter n'est pas publier : tant que `git log origin/main -1` ne montre pas
+   le commit du brief, le rapport dit `NON PUBLIÉ`.
 
-## FENÊTRE ET LEDGER
-Lis `briefs/data.json` : fenêtre = date du dernier brief (exclue) → aujourd'hui (inclus).
-Ledger anti-doublon = `items[]` (slug | primary_url) des 4 derniers briefs.
-Puis `node build/scout.js <since> <date> --json` : base de faits vérifiés (changelog Claude Code
-ancré par version, release notes plateforme, SDK) lue sur les pages officielles — dates certaines,
-à couvrir en priorité avec l'URL du scout en source primaire.
+## Règles dures
+- Zéro invention : chaque annonce a une source primaire (ou le marqueur « sans annonce officielle » + 2 secondaires
+  indépendantes) ; chaque chiffre de `models.json` a sa source.
+- « Pour Lynxter » : 4 lignes max, uniquement à partir de CONTEXTE_LYNXTER.md, « rien à faire » est une réponse normale.
+- Écrire pour toute l'équipe : phrases courtes, mots courants, jargon au lexique.
+- Aucun secret dans le dépôt, le brief ou le rapport.
 
-## PRODUCTION
-Lance `Workflow({ name: "veille", args: { date, since, ledger, scout } })`. Le workflow échoue vite si
-les sous-agents sont inopérants (< 3 scans principaux) : dans ce cas, déroule toi-même les
-étapes 1-5 de CLAUDE.md dans la session principale (WebSearch/WebFetch y fonctionnent), en
-respectant le budget (~30 WebSearch, ~20 WebFetch).
-
-Source unique : `briefs/<date>.json` (schéma = `build/example-brief.json`, + `highlights[]`).
-Puis `node build/gen.js <date>` → `node build/sync.js <date>` → `node build/qa.js`.
-Un ✗ se corrige dans le JSON, jamais dans le HTML généré ni en assouplissant `qa.js`.
-
-Règles dures : zéro hallucination ; une source `primary:true` est sur le domaine officiel de
-l'acteur (la QA bloque le contraire) ; si l'egress bloque le fetch, recouper chaque item par
-≥ 2 recherches indépendantes et le dire dans le rapport ; semaine calme (< 3 items sur les 5
-principaux) = brief minimal honnête ; un modèle sans score SWE-bench Verified officiel n'entre
-pas dans `models-data.json` en `approximate:false`.
-
-## PUBLICATION — `bash build/publish.sh <date>`
-QA bloquante → commit → push de la branche → fast-forward et push de `main` (la branche servie
-par GitHub Pages) → vérification HTTP best-effort. **Commiter n'est pas publier** : tant que
-`git log origin/main -1` ne montre pas le commit du brief, le rapport dit `NON PUBLIÉ`.
-Ne jamais écrire de secret dans un fichier du repo.
-
-## RAPPORT FINAL + NOTIFICATION
-Format CLAUDE.md « Rapport final » (fenêtre, items, écartés, egress, sources fetchées, QA,
-WRITE_PATH, push, déploiement, workflow ok/échoué, coût, modèle réel). Envoie la notification
-avec le résumé — y compris, et surtout, si quelque chose a échoué.
+## Fin
+Rapport au format CLAUDE.md §6, et notification avec le résumé — y compris, et surtout, si quelque chose a échoué.

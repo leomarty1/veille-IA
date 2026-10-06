@@ -1,0 +1,493 @@
+{
+  "_doc": "Lexique de la veille IA. Chaque terme repéré dans un brief v2 reçoit une infobulle à sa première occurrence et apparaît dans la section « Les mots du brief ». match = formes reconnues (insensible à la casse sauf cs:true). def = 25 mots max, français courant, sans autre jargon. Ajouter un terme ici plutôt que de l'expliquer dans le texte du brief.",
+  "terms": [
+    {
+      "id": "token",
+      "label": "Token",
+      "match": [
+        "tokens",
+        "token"
+      ],
+      "def": "Morceau de mot (environ ¾ d'un mot). C'est l'unité que les IA lisent, écrivent et facturent."
+    },
+    {
+      "id": "prix-m-tokens",
+      "label": "Prix « $2/$10 »",
+      "match": [
+        "par M tokens",
+        "par million de tokens",
+        "/M tokens",
+        "$/M"
+      ],
+      "def": "Prix pour un million de tokens (≈ 750 000 mots) : le 1er chiffre pour ce que le modèle lit, le 2e pour ce qu'il écrit."
+    },
+    {
+      "id": "contexte",
+      "label": "Fenêtre de contexte",
+      "match": [
+        "fenêtre de contexte",
+        "re:\\d+(?:[.,]\\d+)?\\s?[kKM](?:\\s+(?:de\\s+)?tokens)?\\s+de contexte"
+      ],
+      "def": "Quantité de texte que le modèle garde en tête d'un coup. 1 million de tokens ≈ 1 500 pages."
+    },
+    {
+      "id": "sortie-max",
+      "label": "Sortie maximale",
+      "match": [
+        "sortie maximale",
+        "sortie max",
+        "re:\\d+(?:[.,]\\d+)?\\s?[kKM](?:\\s+(?:de\\s+)?tokens)?\\s+(?:de|en) sortie"
+      ],
+      "def": "Longueur maximale d'une seule réponse du modèle."
+    },
+    {
+      "id": "benchmark",
+      "label": "Benchmark",
+      "match": [
+        "benchmarks",
+        "benchmark"
+      ],
+      "def": "Test standardisé pour comparer les modèles. Chaque éditeur choisit les siens : un score ne se compare qu'au même test."
+    },
+    {
+      "id": "swe-bench",
+      "label": "SWE-bench Verified",
+      "match": [
+        "SWE-bench Verified",
+        "SWE-bench Pro",
+        "SWE-bench"
+      ],
+      "def": "Test de programmation : corriger de vrais bugs de projets open source. Saturé en 2026, les éditeurs ne le publient plus."
+    },
+    {
+      "id": "terminal-bench",
+      "label": "Terminal-Bench",
+      "match": [
+        "Terminal-Bench"
+      ],
+      "def": "Test où l'IA accomplit seule des tâches techniques complètes en ligne de commande : installer, configurer, déboguer."
+    },
+    {
+      "id": "osworld",
+      "label": "OSWorld",
+      "match": [
+        "OSWorld"
+      ],
+      "def": "Test où l'IA pilote un vrai ordinateur (clics, fenêtres, logiciels) pour réaliser une tâche de bureau."
+    },
+    {
+      "id": "gdpval",
+      "label": "GDPval",
+      "match": [
+        "GDPval-AA",
+        "GDPval"
+      ],
+      "def": "Test sur des tâches de travail réelles de nombreux métiers (rapports, tableaux), comparées au travail d'experts. Score en points de classement."
+    },
+    {
+      "id": "hle",
+      "label": "Humanity's Last Exam",
+      "match": [
+        "Humanity's Last Exam",
+        "Humanity’s Last Exam"
+      ],
+      "def": "Questions d'experts très difficiles, dans des dizaines de disciplines."
+    },
+    {
+      "id": "gpqa",
+      "label": "GPQA Diamond",
+      "match": [
+        "GPQA Diamond",
+        "GPQA"
+      ],
+      "def": "Questions de sciences de niveau doctorat, conçues pour ne pas se trouver par une simple recherche."
+    },
+    {
+      "id": "arc-agi",
+      "label": "ARC-AGI",
+      "match": [
+        "ARC-AGI-2",
+        "ARC-AGI"
+      ],
+      "def": "Énigmes visuelles inédites qui mesurent la capacité à raisonner sur un problème jamais vu."
+    },
+    {
+      "id": "deepswe",
+      "label": "DeepSWE",
+      "match": [
+        "DeepSWE"
+      ],
+      "def": "Test de programmation sur des tâches de développement longues, cité par Google pour Gemini."
+    },
+    {
+      "id": "cursorbench",
+      "label": "CursorBench",
+      "match": [
+        "CursorBench"
+      ],
+      "def": "Test de programmation publié par l'éditeur Cursor, sur des tâches tirées de son logiciel."
+    },
+    {
+      "id": "open-weights",
+      "label": "Modèle ouvert (open weights)",
+      "match": [
+        "open weights",
+        "open-weights",
+        "poids ouverts",
+        "modèle ouvert",
+        "modèles ouverts"
+      ],
+      "def": "Modèle téléchargeable : on peut le faire tourner sur ses propres serveurs, sans envoyer de données à l'éditeur."
+    },
+    {
+      "id": "api",
+      "label": "API",
+      "match": [
+        "API"
+      ],
+      "cs": true,
+      "def": "Accès direct au modèle depuis un logiciel ou un script, facturé à l'usage (au token)."
+    },
+    {
+      "id": "agent",
+      "label": "Agent",
+      "match": [
+        "agents",
+        "agent"
+      ],
+      "def": "IA qui enchaîne seule plusieurs actions (chercher, lire, écrire, exécuter) pour atteindre un objectif."
+    },
+    {
+      "id": "mcp",
+      "label": "MCP",
+      "match": [
+        "MCP"
+      ],
+      "cs": true,
+      "def": "Standard ouvert pour brancher une IA sur un outil ou une base de données (un « connecteur »)."
+    },
+    {
+      "id": "claude-code",
+      "label": "Claude Code",
+      "match": [
+        "Claude Code"
+      ],
+      "cs": true,
+      "def": "Assistant d'Anthropic qui travaille dans un terminal ou un éditeur : code, fichiers, automatisations."
+    },
+    {
+      "id": "cowork",
+      "label": "Cowork",
+      "match": [
+        "Cowork"
+      ],
+      "cs": true,
+      "def": "Application de bureau d'Anthropic où Claude travaille sur des dossiers et des outils connectés."
+    },
+    {
+      "id": "routine",
+      "label": "Routine",
+      "match": [
+        "routines",
+        "routine"
+      ],
+      "def": "Tâche Claude planifiée qui tourne seule dans le cloud, sans PC allumé (ce brief en est une)."
+    },
+    {
+      "id": "codex",
+      "label": "Codex",
+      "match": [
+        "Codex"
+      ],
+      "cs": true,
+      "def": "L'assistant de programmation d'OpenAI, concurrent de Claude Code."
+    },
+    {
+      "id": "cursor",
+      "label": "Cursor",
+      "match": [
+        "Cursor"
+      ],
+      "cs": true,
+      "def": "Éditeur de code avec IA intégrée, concurrent de Claude Code."
+    },
+    {
+      "id": "cache",
+      "label": "Cache",
+      "match": [
+        "prompt caching",
+        "en cache",
+        "cache"
+      ],
+      "def": "Remise quand on renvoie un texte déjà lu par le modèle (instructions, documents) : ce texte est facturé bien moins cher."
+    },
+    {
+      "id": "batch",
+      "label": "Batch",
+      "match": [
+        "Batch"
+      ],
+      "cs": true,
+      "def": "Traitement en lot, non urgent (résultat sous 24 h), facturé environ moitié prix."
+    },
+    {
+      "id": "latence",
+      "label": "Latence",
+      "match": [
+        "latence"
+      ],
+      "def": "Délai avant que la réponse commence à s'afficher."
+    },
+    {
+      "id": "tokens-s",
+      "label": "Tokens par seconde",
+      "match": [
+        "tokens/s"
+      ],
+      "def": "Vitesse d'écriture du modèle. 300 tokens/s ≈ une demi-page par seconde."
+    },
+    {
+      "id": "raisonnement",
+      "label": "Mode raisonnement",
+      "match": [
+        "mode raisonnement",
+        "re:\\bthinking\\b"
+      ],
+      "def": "Le modèle « réfléchit » avant de répondre : meilleur sur les problèmes difficiles, plus lent et plus cher."
+    },
+    {
+      "id": "effort",
+      "label": "Niveau d'effort",
+      "match": [
+        "niveau d'effort",
+        "re:effort (?:max|maximal|élevé|bas|faible|moyen|high|low|medium|xhigh)"
+      ],
+      "def": "Réglage qui dit au modèle combien réfléchir : bas = rapide et économique, haut = plus soigné."
+    },
+    {
+      "id": "ga",
+      "label": "Disponibilité générale (GA)",
+      "match": [
+        "GA"
+      ],
+      "cs": true,
+      "def": "Version finale ouverte à tous, par opposition à une préversion."
+    },
+    {
+      "id": "preview",
+      "label": "Préversion (preview, bêta)",
+      "match": [
+        "preview",
+        "préversion",
+        "bêta"
+      ],
+      "def": "Fonction encore en test : elle peut changer ou disparaître. À éviter pour un usage critique."
+    },
+    {
+      "id": "retrait",
+      "label": "Dépréciation / retrait",
+      "match": [
+        "déprécié",
+        "dépréciation",
+        "retiré",
+        "retrait"
+      ],
+      "def": "Un modèle déprécié marche encore mais sa date de fin est annoncée. Après le retrait, les appels échouent."
+    },
+    {
+      "id": "sdk",
+      "label": "SDK",
+      "match": [
+        "SDK"
+      ],
+      "cs": true,
+      "def": "Bibliothèque de code fournie par l'éditeur pour appeler son API depuis un programme."
+    },
+    {
+      "id": "cli",
+      "label": "CLI",
+      "match": [
+        "CLI"
+      ],
+      "cs": true,
+      "def": "Outil qui s'utilise en ligne de commande, dans un terminal."
+    },
+    {
+      "id": "sandbox",
+      "label": "Bac à sable (sandbox)",
+      "match": [
+        "sandbox",
+        "bac à sable"
+      ],
+      "def": "Environnement isolé où l'IA exécute du code sans pouvoir toucher au reste du système."
+    },
+    {
+      "id": "hallucination",
+      "label": "Hallucination",
+      "match": [
+        "hallucinations",
+        "hallucination"
+      ],
+      "def": "Réponse fausse donnée avec assurance : fait, chiffre ou source inventés."
+    },
+    {
+      "id": "llm",
+      "label": "LLM",
+      "match": [
+        "LLM"
+      ],
+      "cs": true,
+      "def": "Grand modèle de langage : le moteur derrière Claude, ChatGPT, Gemini, Mistral…"
+    },
+    {
+      "id": "frontiere",
+      "label": "Modèle frontière",
+      "match": [
+        "modèles frontière",
+        "modèle frontière"
+      ],
+      "def": "Les modèles les plus puissants du moment, chez les grands éditeurs."
+    },
+    {
+      "id": "multimodal",
+      "label": "Multimodal",
+      "match": [
+        "multimodal",
+        "multimodale"
+      ],
+      "def": "Capable de traiter du texte et aussi des images, voire du son ou de la vidéo."
+    },
+    {
+      "id": "fine-tuning",
+      "label": "Fine-tuning",
+      "match": [
+        "fine-tuning",
+        "fine-tuné"
+      ],
+      "def": "Ré-entraîner un modèle sur ses propres données pour le spécialiser."
+    },
+    {
+      "id": "rag",
+      "label": "RAG",
+      "match": [
+        "RAG"
+      ],
+      "cs": true,
+      "def": "L'IA va chercher les bons passages dans une base documentaire avant de répondre."
+    },
+    {
+      "id": "zdr",
+      "label": "Zéro rétention (ZDR)",
+      "match": [
+        "zéro rétention",
+        "ZDR"
+      ],
+      "def": "Option où l'éditeur ne conserve pas les données envoyées au modèle."
+    },
+    {
+      "id": "red-team",
+      "label": "Red team",
+      "match": [
+        "red team",
+        "red-team"
+      ],
+      "def": "Équipe qui attaque un système pour en trouver les failles avant de vrais attaquants."
+    },
+    {
+      "id": "code-review",
+      "label": "Revue de code automatique",
+      "match": [
+        "Code Review",
+        "revue de code",
+        "/code-review"
+      ],
+      "def": "L'IA relit une modification de code avant son intégration et signale bugs et risques."
+    },
+    {
+      "id": "pull-request",
+      "label": "Pull request (PR)",
+      "match": [
+        "pull request",
+        "pull requests",
+        "merge requests",
+        "merge request"
+      ],
+      "def": "Proposition de modification de code soumise à relecture avant d'être intégrée."
+    },
+    {
+      "id": "deny",
+      "label": "Règle d'interdiction (deny)",
+      "match": [
+        "règles deny",
+        "règle deny",
+        "deny"
+      ],
+      "def": "Réglage qui empêche Claude Code de lire certains fichiers ou de lancer certaines commandes."
+    },
+    {
+      "id": "plugin",
+      "label": "Plugin / mod",
+      "match": [
+        "plugins",
+        "plugin",
+        "Claude Mods",
+        "mods"
+      ],
+      "def": "Extension qui ajoute des compétences ou change le comportement d'un outil."
+    },
+    {
+      "id": "skills",
+      "label": "Skills",
+      "match": [
+        "Skills"
+      ],
+      "cs": true,
+      "def": "Fiches d'instructions qu'un agent charge à la demande pour une tâche précise."
+    },
+    {
+      "id": "moe",
+      "label": "Mixture of Experts (MoE)",
+      "match": [
+        "Mixture of Experts",
+        "MoE"
+      ],
+      "def": "Architecture où seule une partie du modèle travaille à chaque mot : plus rapide et moins cher à faire tourner."
+    },
+    {
+      "id": "parametres",
+      "label": "Paramètres (taille d'un modèle)",
+      "match": [
+        "milliards de paramètres",
+        "paramètres actifs",
+        "paramètres"
+      ],
+      "def": "Taille d'un modèle, en milliards (« 30B »). Plus il y en a, plus il faut de matériel pour le faire tourner."
+    },
+    {
+      "id": "infra-locale",
+      "label": "Infrastructure locale",
+      "match": [
+        "infra locale",
+        "infrastructure locale"
+      ],
+      "def": "Serveurs Lynxter (prévus) où faire tourner des modèles ouverts : la seule voie prévue pour les données sensibles."
+    },
+    {
+      "id": "charte",
+      "label": "Charte IA Lynxter",
+      "match": [
+        "charte IA",
+        "charte"
+      ],
+      "def": "Nos règles internes d'usage de l'IA : quelles données, dans quels outils."
+    },
+    {
+      "id": "computer-use",
+      "label": "Computer use",
+      "match": [
+        "computer use"
+      ],
+      "def": "L'IA prend la main sur un ordinateur (souris, clavier, écran) pour accomplir une tâche."
+    }
+  ]
+}

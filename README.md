@@ -1,6 +1,6 @@
 # Veille IA
 
-Dashboard hebdomadaire des nouveautés IA (Anthropic, OpenAI, Google DeepMind, Meta, Mistral) avec angle Lynxter.
+Brief hebdomadaire des nouveautés IA écrit pour toute l'équipe Lynxter (ce qui change, ce que ça change pour nous, quoi faire), et comparateur de modèles dont chaque chiffre est sourcé.
 
 **Live :** https://leomarty1.github.io/veille-IA/
 
@@ -8,11 +8,11 @@ Dashboard hebdomadaire des nouveautés IA (Anthropic, OpenAI, Google DeepMind, M
 
 Une routine Claude Code distante tourne chaque **lundi à 01:00 Europe/Paris** dans le cloud Anthropic. Elle :
 
-1. Scanne les sources primaires de chaque acteur sur les 7 derniers jours
-2. Filtre le bruit (marketing, repackagings, doublons)
-3. Score la pertinence pour Lynxter (🎯 / 🛠 / ·)
-4. Régénère `index.html` (dernier brief) + ajoute `briefs/YYYY-MM-DD.html` à l'archive
-5. Commit + push → GitHub Pages redéploie automatiquement
+1. Lit `CLAUDE.md` (manuel) et `CONTEXTE_LYNXTER.md` (nos outils, la charte, nos priorités)
+2. Scanne les annonces officielles des éditeurs sur les 7 derniers jours, vérifie chaque chiffre à sa source
+3. Écrit le brief au format 2 (`briefs/<date>.json`) : En 30 secondes, Pour Lynxter (verdicts), modèles de la semaine, annonces, lexique
+4. Met à jour la base modèles (`modeles/models.json`) et le lexique (`build/glossaire.json`)
+5. Génère les pages (`build/gen.js`, `build/site.js`, `build/sync.js`), passe la QA (`build/qa.js`), publie (`build/publish.sh`)
 
 Aucune dépendance machine locale. La routine tourne même si le PC est éteint.
 
@@ -20,32 +20,24 @@ Aucune dépendance machine locale. La routine tourne même si le PC est éteint.
 
 ```
 /
-├── index.html              # toujours = dernier brief + stats globales
-├── assets/
-│   ├── style.css           # styles partagés
-│   └── app.js              # JS archive/filtre + dark mode
-├── briefs/
-│   ├── index.html          # archive (liste + filtres)
-│   ├── data.json           # métadonnées machine-readable (date, mode, items_count, by_tag, by_actor, items[])
-│   └── YYYY-MM-DD.html     # un fichier par brief
-├── items/
-│   └── YYYY-MM-DD-SLUG.html # pages détail des items 🎯 et 🛠
-├── modeles/
-│   ├── index.html          # classement hebdo
-│   └── models-data.json    # données SWE-bench (graphe D3)
-├── acteurs/index.html
-├── methodo/index.html
-├── futur/index.html
-├── graphe/index.html       # graphe D3 interactif
-├── CLAUDE.md               # instructions de la routine
-└── README.md
+├── CLAUDE.md / CONTEXTE_LYNXTER.md   # manuel de la routine / contexte Lynxter (tenu par Léo)
+├── index.html                        # accueil (dernier brief, compteurs)
+├── briefs/<date>.json → .html        # un brief par semaine (source unique → page)
+├── briefs/data.json, index.html      # registre et archive
+├── modeles/models.json → index.html  # base modèles sourcée → comparateur et graphes
+├── lexique/index.html                # lexique (depuis build/glossaire.json)
+├── items/                            # pages détail des briefs format 1 (archives)
+├── assets/                           # style.css + app.js (socle), v2.css + v2.js (format 2)
+└── build/                            # gen, site, sync, qa, scout, publish, templates, glossaire, charte
 ```
 
 ## Conventions de tagging
 
-- **🎯 `lynxter`** — impact direct workflow Lynxter (support, automation, agents, génération de docs)
-- **🛠 `useful`** — changement notable, à connaître pour anticiper questions client ou évolutions produit
-- **· `info`** — culture IA, pas d'impact pratique immédiat
+- **`lynxter` — « Important pour nous »** : touche un outil qu'on utilise ou une décision proche
+- **`useful` — « Bon à savoir »** : changement notable à connaître
+- **`info` — « En bref »** : culture IA, une ligne
+
+Chaque brief propose aussi des **verdicts** pour Lynxter : à faire, à tester, à surveiller, rien à faire (voir `CONTEXTE_LYNXTER.md`).
 
 ## Acteurs surveillés (ordre fixe)
 

@@ -14,8 +14,9 @@ const ICONS = `        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" st
 
 const GH_PATH = `<path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/>`;
 
-/** <head> + ouverture body. `active` = clé de nav active ('briefs' pour les briefs). */
-function head(title, description, active) {
+/** <head> + ouverture body. `active` = clé de nav active ('briefs' pour les briefs).
+ *  opts.v2 : charge les composants v2 (assets/v2.css) — briefs v2, comparateur, lexique. */
+function head(title, description, active, opts = {}) {
   const link = (key, href, label) =>
     `      <a href="${href}"${active === key ? ' class="active"' : ''}>${label}</a>`;
   return `<!DOCTYPE html>
@@ -25,7 +26,7 @@ function head(title, description, active) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${title} — Veille IA Lynxter</title>
 <meta name="description" content="${description}">
-<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/style.css">${opts.v2 ? '\n<link rel="stylesheet" href="../assets/v2.css">' : ''}
 ${THEME_INIT}
 </head>
 <body>
@@ -38,11 +39,9 @@ ${THEME_INIT}
     <nav class="nav-primary">
 ${link('accueil', '../', 'Accueil')}
 ${link('briefs', '../briefs/', 'Briefs')}
-${link('acteurs', '../acteurs/', 'Acteurs')}
 ${link('modeles', '../modeles/', 'Modèles')}
+${link('lexique', '../lexique/', 'Lexique')}
 ${link('methodo', '../methodo/', 'Méthodo')}
-${link('futur', '../futur/', 'Futur')}
-${link('graphe', '../graphe/', 'Graphe')}
     </nav>
     <div class="nav-actions">
       <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
@@ -58,7 +57,7 @@ ${ICONS}
 }
 
 /** baseline + footer + scripts + fermeture. `signature` = texte de la baseline-band. */
-function footer(signature) {
+function footer(signature, opts = {}) {
   return `
 <aside class="baseline-band">
   <div class="container">
@@ -75,9 +74,11 @@ function footer(signature) {
         <li><a href="../">Accueil</a></li>
         <li><a href="../briefs/">Tous les briefs</a></li>
         <li><a href="../acteurs/">Acteurs</a></li>
-        <li><a href="../modeles/">Modèles</a></li>
+        <li><a href="../modeles/">Comparateur de modèles</a></li>
+        <li><a href="../lexique/">Lexique</a></li>
         <li><a href="../methodo/">Méthodologie</a></li>
-        <li><a href="../futur/">Prospective</a></li>
+        <li><a href="../acteurs/">Acteurs suivis</a></li>
+        <li><a href="../futur/">Prospective (mai 2026)</a></li>
       </ul>
     </div>
     <div>
@@ -107,7 +108,7 @@ function footer(signature) {
   </div>
 </footer>
 
-<script src="../assets/app.js" defer></script>
+<script src="../assets/app.js" defer></script>${opts.v2 ? '\n<script src="../assets/v2.js" defer></script>' : ''}
 </body>
 </html>
 `;
@@ -117,10 +118,22 @@ const LOGOS = {
   Anthropic: 'anthropic', OpenAI: 'openai', 'Google DeepMind': 'googlegemini',
   Google: 'googlegemini', Meta: 'meta', Mistral: 'mistralai',
 };
+/** Libellés v2 (le tag technique reste lynxter/useful/info dans les données). */
+const IMPORTANCE = {
+  lynxter: { label: 'Important pour nous', cls: 'i-lynxter' },
+  useful: { label: 'Bon à savoir', cls: 'i-useful' },
+  info: { label: 'En bref', cls: 'i-info' },
+};
+const VERDICTS = {
+  'a-faire': { label: 'À faire', cls: 'v-faire' },
+  'a-tester': { label: 'À tester', cls: 'v-tester' },
+  'a-surveiller': { label: 'À surveiller', cls: 'v-surveiller' },
+  'rien': { label: 'Rien à faire', cls: 'v-rien' },
+};
 const TAGS = {
   lynxter: '<span class="tag tag-lynxter">🎯 Lynxter</span>',
   useful: '<span class="tag tag-useful">🛠 Utile</span>',
   info: '<span class="tag tag-info">· Info</span>',
 };
 
-module.exports = { head, footer, LOGOS, TAGS };
+module.exports = { head, footer, LOGOS, TAGS, IMPORTANCE, VERDICTS };

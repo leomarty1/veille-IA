@@ -115,12 +115,22 @@ const figures = (h) => (stripTags(h).replace(/\b20\d\d\b/g, '').match(/\d+([.,]\
 let data = null, models = null;
 try { data = JSON.parse(read('briefs/data.json')); check('data.json parsable', true); }
 catch (e) { check('data.json parsable', false, e.message); }
-try { models = JSON.parse(read('modeles/models-data.json')); check('models-data.json parsable', true); }
-catch (e) { check('models-data.json parsable', false, e.message); }
+try { models = JSON.parse(read('modeles/models.json')); check('models.json parsable', true); }
+catch (e) { check('models.json parsable', false, e.message); }
 
 const briefs = (data && data.briefs) || [];
 check('data.json trié du plus récent au plus ancien',
   briefs.every((b, i) => i === 0 || briefs[i - 1].date > b.date));
+
+/* Format de chaque brief : 2 = brief simplifié (oct. 2026, templates/brief-v2.js),
+   1 = format historique avec pages détail. Les checks de structure HTML diffèrent. */
+const SCHEMA = new Map();
+for (const b of briefs) {
+  let s = 1;
+  if (exists('briefs/' + b.date + '.json')) { try { s = JSON.parse(read('briefs/' + b.date + '.json')).schema === 2 ? 2 : 1; } catch (e) { /* signalé plus bas */ } }
+  SCHEMA.set(b.date, s);
+}
+const isV2 = (b) => SCHEMA.get(b.date) === 2;
 
 /* 2. Invariants de comptage par brief ----------------------------- */
 for (const b of briefs) {
@@ -142,6 +152,12 @@ for (const b of briefs) {
   const html = read(file);
   const links = [...new Set([...html.matchAll(/href="\.\.\/items\/([^"]+\.html)"/g)].map(m => m[1]))];
   for (const l of links) check(`lien item résolu (${b.date} → ${l})`, exists('items/' + l));
+  if (isV2(b)) {
+    // format 2 : chaque annonce a une ancre id="<slug>" (article, carte modèle ou ligne « En bref »)
+    const missing = (b.items || []).filter((it) => !html.includes(`id="${it.slug}"`));
+    check(`chaque annonce est rendue (${b.date})`, missing.length === 0, missing.map((i) => i.slug).join(', '));
+    continue;
+  }
   const arts = (html.match(/<article class="item/g) || []).length;
   check(`items_count == nb <article> (${b.date})`, arts === b.items_count, `${arts} vs ${b.items_count}`);
 }
@@ -153,6 +169,13 @@ for (const b of briefs) {
   const file = 'briefs/' + b.filename;
   if (!exists(file)) continue;
   const html = read(file);
+  if (isV2(b)) {
+    check(`section « En 30 secondes » (${b.date})`, /id="en-30-secondes"/.test(html));
+    check(`section « Pour Lynxter » (${b.date})`, /id="pour-lynxter"/.test(html));
+    check(`section « Les annonces » (${b.date})`, /id="annonces"/.test(html));
+    check(`feuille de style v2 chargée (${b.date})`, /assets\/v2\.css/.test(html));
+    continue;
+  }
   check(`section TL;DR (${b.date})`, /class="tldr/.test(html));
   check(`section lynxter-hero (${b.date})`, /class="lynxter-hero/.test(html));
   check(`section synthèse (${b.date})`, /class="synthese/.test(html));
@@ -216,12 +239,115 @@ if (exists('briefs/index.html')) {
   });
 }
 
-/* 6. Fiabilité des modèles : non-sortis => approximate:true ------- */
-for (const m of (models && models.models) || []) {
-  if (m.status && m.status !== 'released') {
-    check(`modèle non sorti = approximate:true (${m.id})`, m.approximate === true);
+/* 6. Base modèles (modeles/models.json) : chaque chiffre a sa source --- */
+const MODEL_STATUS = ['ga', 'preview', 'restricted', 'unreleased', 'deprecated', 'retired'];
+{
+  const list = (models && models.models) || [];
+  const ids = new Set();
+  for (const m of list) {
+    check(`modèle : id unique (${m.id})`, !ids.has(m.id));
+    ids.add(m.id);
   }
-  warn(`modèle a une note de source (${m.id})`, typeof m.notes === 'string' && m.notes.length > 20, 'notes absente — d\'où vient le score ?');
+  for (const m of list) {
+    check(`modèle : date ISO (${m.id})`, /^\d{4}-\d{2}-\d{2}$/.test(m.date || ''), m.date);
+    check(`modèle : statut connu (${m.id})`, MODEL_STATUS.includes(m.status), m.status);
+    check(`modèle : remplace un modèle connu (${m.id})`, !m.replaces || ids.has(m.replaces), m.replaces);
+    check(`modèle : au moins une source (${m.id})`, Array.isArray(m.sources) && m.sources.length > 0);
+    for (const k of ['price_in', 'price_out', 'context_k']) {
+      check(`modèle : ${k} numérique ou null (${m.id})`, m[k] == null || typeof m[k] === 'number', String(m[k]));
+    }
+    for (const [k, sc] of Object.entries(m.scores || {})) {
+      check(`score sourcé (${m.id} · ${k})`, sc && typeof sc.value === 'number' && /^https?:\/\//.test(sc.source || ''), JSON.stringify(sc));
+      check(`score : officiel ou non, explicitement (${m.id} · ${k})`, sc && typeof sc.official === 'boolean');
+      check(`score : test déclaré dans benchmarks{} (${m.id} · ${k})`, !!(models.benchmarks && models.benchmarks[k]), k);
+    }
+    // Un modèle non sorti n'affiche pas de score présenté comme officiel.
+    if (m.status === 'unreleased') {
+      check(`modèle non sorti sans score « officiel » (${m.id})`, Object.values(m.scores || {}).every((s) => !s.official));
+    }
+  }
+}
+
+/* 7bis. Règles du format 2 : lisible par toute l'équipe, verdicts Lynxter, cartes modèles.
+   Mêmes gates de sourcing, de fenêtre et de ledger que le format 1. */
+const VERDICTS = ['a-faire', 'a-tester', 'a-surveiller', 'rien'];
+const THEMES = ['modeles', 'outils', 'entreprise', 'ouvert', 'autre'];
+const CHARTE = ['ok', 'vert', 'hors-cadre', 'local'];
+const words = (h) => stripTags(h).split(' ').filter(Boolean).length;
+const glossary = require('./glossary');
+function qaV2(j, { gate, prevDate, ledgerSlugs, ledgerUrls }) {
+  const d = j.date;
+  const slugs = new Set((j.items || []).map((i) => i.slug));
+  gate(`titre court, ≤ 90 caractères (${d})`, (j.title || '').length > 0 && j.title.length <= 90, (j.title || '').length + ' car');
+  gate(`chapeau (lead) présent, ≤ 60 mots (${d})`, !!j.lead && words(j.lead) <= 60, words(j.lead || '') + ' mots');
+  gate(`En 30 secondes : 1 à 3 points (${d})`, Array.isArray(j.en_30s) && j.en_30s.length >= 1 && j.en_30s.length <= 3);
+  for (const p of j.en_30s || []) gate(`En 30 secondes : ≤ 45 mots par point (${d})`, words(p) <= 45, words(p) + ' mots : ' + stripTags(p).slice(0, 50));
+  gate(`highlights : 3 phrases pour la home (${d})`, Array.isArray(j.highlights) && j.highlights.length === 3);
+  gate(`Pour Lynxter : 0 à 4 lignes (${d})`, Array.isArray(j.pour_lynxter) && j.pour_lynxter.length <= 4);
+  for (const r of j.pour_lynxter || []) {
+    const id = `${d} · ${stripTags(r.titre || '').slice(0, 40)}`;
+    gate(`Pour Lynxter : verdict connu (${id})`, VERDICTS.includes(r.verdict), r.verdict);
+    gate(`Pour Lynxter : titre + pourquoi (${id})`, !!r.titre && !!r.pourquoi);
+    gate(`Pour Lynxter : pourquoi ≤ 60 mots (${id})`, words(r.pourquoi || '') <= 60, words(r.pourquoi || '') + ' mots');
+    gate(`Pour Lynxter : statut charte connu (${id})`, r.charte == null || CHARTE.includes(r.charte), r.charte);
+    for (const s of r.items || []) gate(`Pour Lynxter : annonce liée existe (${id} → ${s})`, slugs.has(s));
+  }
+  const mdb = (models && models.models) || [];
+  for (const e of j.modeles || []) {
+    const m = mdb.find((x) => x.id === e.id);
+    gate(`carte modèle : présent dans models.json (${d} · ${e.id})`, !!m);
+    gate(`carte modèle : annonce liée existe (${d} · ${e.id})`, !e.item || slugs.has(e.item), e.item);
+    gate(`carte modèle : « en clair » ≤ 50 mots (${d} · ${e.id})`, !!e.en_clair && words(e.en_clair) <= 50, words(e.en_clair || '') + ' mots');
+    gate(`carte modèle : verdict connu (${d} · ${e.id})`, !e.pour_nous || VERDICTS.includes(e.verdict), e.verdict);
+  }
+  const prose = [j.lead, ...(j.en_30s || []), ...(j.pour_lynxter || []).map((r) => r.pourquoi), ...(j.items || []).map((i) => i.resume)].join(' ');
+  const sentences = stripTags(prose).split(/(?<=[.!?…])\s+/).filter((s) => s.length > 3);
+  const avg = sentences.length ? Math.round(words(prose) / sentences.length) : 0;
+  gate(`phrases courtes : ≤ 24 mots en moyenne (${d})`, avg <= 24, avg + ' mots/phrase');
+  const hit = stripTags(prose).match(SUPERLATIVES);
+  gate(`zéro superlatif marketing (${d})`, !hit, hit ? '« ' + hit[0] + ' »' : '');
+  for (const blob of [...(j.en_30s || []), ...(j.items || []).map((i) => i.resume)]) {
+    gate(`pas de code ni de nom de paramètre dans le texte courant (${d})`, !/<code>/.test(blob || ''), stripTags(blob).slice(0, 60) + ' — le mettre dans « chiffres »');
+  }
+  const acr = glossary.undefinedAcronyms(stripTags([...(j.en_30s || []), ...(j.pour_lynxter || []).map((r) => r.pourquoi), ...(j.items || []).map((i) => i.resume)].join(' ')));
+  warn(`sigles définis dans le lexique (${d})`, acr.length === 0, acr.join(', ') + ' → ajouter à build/glossaire.json');
+
+  for (const it of j.items || []) {
+    const id = `${d} · ${it.slug}`;
+    gate(`date dans la fenêtre (${id})`, /^\d{4}-\d{2}-\d{2}$/.test(it.date || '') && it.date <= d && (!prevDate || it.date > prevDate), `${it.date} ∉ (${prevDate || '−∞'}, ${d}]`);
+    gate(`slug préfixé par la date du brief (${id})`, (it.slug || '').startsWith(d + '-'));
+    gate(`slug non déjà couvert (${id})`, !ledgerSlugs.has((it.slug || '').replace(/^\d{4}-\d{2}-\d{2}-/, '')), 'déjà dans un des ' + LEDGER_DEPTH + ' briefs précédents');
+    const prim = (it.sources || []).find((s) => s.primary);
+    if (prim && prim.url && !isHub(prim.url)) gate(`URL primaire non déjà couverte (${id})`, !ledgerUrls.has(prim.url.replace(/\/+$/, '')), prim.url);
+    gate(`importance connue (${id})`, CANON.includes(it.tag), it.tag);
+    gate(`thème connu (${id})`, THEMES.includes(it.theme), it.theme);
+    gate(`titre + résumé (${id})`, !!it.title && !!it.resume);
+    const n = (stripTags(it.resume).match(/[.!?…](?=\s|$)/g) || []).length;
+    if (it.tag === 'info') {
+      gate(`En bref : ≤ 2 phrases, ≤ 35 mots (${id})`, n <= 2 && words(it.resume) <= 35, `${n} phrases, ${words(it.resume)} mots`);
+    } else {
+      gate(`résumé : ≤ 3 phrases, ≤ 75 mots (${id})`, n <= 3 && words(it.resume) <= 75, `${n} phrases, ${words(it.resume)} mots`);
+    }
+    if (it.pour_nous) {
+      gate(`pour nous : verdict connu (${id})`, VERDICTS.includes(it.pour_nous.verdict), it.pour_nous.verdict);
+      gate(`pour nous : ≤ 40 mots (${id})`, words(it.pour_nous.texte || '') <= 40, words(it.pour_nous.texte || '') + ' mots');
+    }
+    // Gate source primaire, identique au format 1.
+    const primaries = (it.sources || []).filter((s) => s.primary);
+    const hasPrimary = primaries.length > 0;
+    gate(`has_primary cohérent avec sources[] (${id})`, (it.has_primary !== false) === hasPrimary, `has_primary=${it.has_primary} vs ${primaries.length} primaire(s)`);
+    for (const s of primaries) {
+      const cls = classify(s.url);
+      gate(`source primaire = domaine officiel (${id})`, cls !== 'secondary' && cls !== 'invalid', `${cls} : ${s.url}`);
+      warn(`domaine primaire connu, à qualifier dans qa.js sinon (${id})`, cls !== 'unknown', hostOf(s.url));
+    }
+    if (!hasPrimary) {
+      const secs = (it.sources || []).filter((s) => !s.primary);
+      gate(`≥ 2 secondaires si pas de primaire (${id})`, secs.length >= 2, secs.length + ' source(s)');
+      gate(`secondaires indépendantes (${id})`, new Set(secs.map((s) => hostOf(s.url))).size >= Math.min(2, secs.length));
+      for (const s of secs) gate(`pas d'agrégateur en secondaire (${id})`, !/chatforest|releasebot|gradually\.ai|aireleasetracker|llmgateway/i.test(s.url), s.url);
+    }
+  }
 }
 
 /* 7. Règles éditoriales et de sourcing, depuis la source unique JSON.
@@ -250,6 +376,7 @@ briefs.forEach((b, idx) => {
   check(`JSON.date == data.json (${b.date})`, j.date === b.date);
   gate(`actors_scanned numérique ≥ 5 (${b.date})`, typeof j.actors_scanned === 'number' && j.actors_scanned >= 5, String(j.actors_scanned));
   check(`items JSON == items_count (${b.date})`, (j.items || []).length === b.items_count, `${(j.items || []).length} vs ${b.items_count}`);
+  if (j.schema === 2) { qaV2(j, { gate, prevDate, ledgerSlugs, ledgerUrls }); return; }
   gate(`tldr : 1 à 3 bullets (${b.date})`, Array.isArray(j.tldr) && j.tldr.length >= 1 && j.tldr.length <= 3);
   for (const blob of [...(j.tldr || []), ...(j.lynxter_hero || []), j.intro_html || '', j.synthese_html || '']) {
     const hit = stripTags(blob).match(SUPERLATIVES);
@@ -351,8 +478,12 @@ for (const b of briefs) {
       ? fs.readdirSync(path.join(ROOT, 'items')).filter((f) => f.startsWith(b.date)).map((f) => 'items/' + f)
       : []
   );
-  const dirty = pages.filter((p) => exists(p) && /undefined/.test(read(p)));
-  check(`aucun "undefined" rendu (${b.date})`, dirty.length === 0, dirty.join(', '));
+  const dirty = pages.filter((p) => exists(p) && /undefined|>NaN<|NaN %/.test(read(p)));
+  check(`aucun "undefined"/"NaN" rendu (${b.date})`, dirty.length === 0, dirty.join(', '));
+}
+for (const p of ['modeles/index.html', 'lexique/index.html']) {
+  if (exists(p)) check(`aucun "undefined"/"NaN" rendu (${p})`, !/undefined|>NaN<|NaN %|"NaN"/.test(read(p)));
+  else check(`page générée présente (${p})`, false, 'lancer node build/site.js');
 }
 
 /* 9. Pages détail orphelines : un fichier items/<date>-*.html sans article dans son brief. */
@@ -360,7 +491,7 @@ if (fs.existsSync(path.join(ROOT, 'items'))) {
   const byDate = new Map(briefs.map((b) => [b.date, exists('briefs/' + b.filename) ? read('briefs/' + b.filename) : '']));
   for (const f of fs.readdirSync(path.join(ROOT, 'items')).filter((f) => f.endsWith('.html'))) {
     const d = f.slice(0, 10);
-    if (!byDate.has(d)) continue;
+    if (!byDate.has(d) || SCHEMA.get(d) === 2) continue; // format 2 : plus de pages détail
     warn(`page détail référencée par son brief (items/${f})`, byDate.get(d).includes('../items/' + f), 'orpheline');
   }
 }

@@ -45,7 +45,9 @@ const nL = by_tag.lynxter, nU = by_tag.useful;
 
 /* Highlights : `highlights[]` du JSON (1 phrase HTML chacune), sinon le TL;DR. */
 const highlightsHtml = (b.highlights && b.highlights.length ? b.highlights : b.tldr || []).slice(0, 3);
-const actorsForFilter = [...new Set([...(b.actors_order || []).map(key), ...items.map((i) => key(i.actor))])];
+// Format 2 : pas d'actors_order ; les 5 principaux sont scannés chaque semaine, même sans annonce.
+const scanned = b.schema === 2 ? [...PRINCIPAUX, ...(b.rien_de_notable || [])] : (b.actors_order || []);
+const actorsForFilter = [...new Set([...scanned.map(key), ...items.map((i) => key(i.actor))])];
 const tagsPresent = TAG_ORDER.filter((t) => by_tag[t] > 0);
 
 const changed = [];
@@ -108,7 +110,13 @@ const changed = [];
     home = home.replace(/(Prochaine édition&nbsp;: )[^·<]+( · 01:00 Europe\/Paris)/, `$1${next}$2`);
 
     // 2c. bloc « Dernier brief » — régénéré intégralement, <a> fermé.
-    const tagLine = nL > 0 ? `🎯 ${nL} item${nL > 1 ? 's' : ''} impact direct Lynxter · ${nU} 🛠 à connaître` : `Semaine calme · ${nU} 🛠 à connaître`;
+    let tagLine = nL > 0 ? `🎯 ${nL} item${nL > 1 ? 's' : ''} impact direct Lynxter · ${nU} 🛠 à connaître` : `Semaine calme · ${nU} 🛠 à connaître`;
+    if (b.schema === 2) {
+      // format 2 : la home annonce ce que le brief demande à Lynxter, pas un décompte d'items
+      const v = (b.pour_lynxter || []).reduce((a, r) => { a[r.verdict] = (a[r.verdict] || 0) + 1; return a; }, {});
+      const parts = [['a-faire', 'à faire'], ['a-tester', 'à tester'], ['a-surveiller', 'à surveiller']].filter(([k]) => v[k]).map(([k, l]) => `${v[k]} ${l}`);
+      tagLine = parts.length ? `Pour Lynxter : ${parts.join(' · ')}` : 'Pour Lynxter : rien à faire cette semaine';
+    }
     const featured = `<a class="featured reveal" href="briefs/${date}.html">
         <p class="featured-tag">${tagLine}</p>
         <h3>${b.title}</h3>

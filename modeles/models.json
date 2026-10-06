@@ -1,0 +1,4963 @@
+{
+ "meta": {
+  "updated": "2026-10-06",
+  "note": "Chaque chiffre porte sa source. official:true = publié par l'éditeur du modèle (ou par un autre éditeur reprenant un chiffre officiel) ; official:false = estimation tierce. Prix : tarif API standard en $ par million de tokens."
+ },
+ "families": {
+  "claude-fable": {
+   "name": "Claude Fable",
+   "actor": "Anthropic",
+   "tier": "premium"
+  },
+  "claude-mythos": {
+   "name": "Claude Mythos",
+   "actor": "Anthropic",
+   "tier": "premium"
+  },
+  "claude-opus": {
+   "name": "Claude Opus",
+   "actor": "Anthropic",
+   "tier": "haut"
+  },
+  "claude-sonnet": {
+   "name": "Claude Sonnet",
+   "actor": "Anthropic",
+   "tier": "milieu"
+  },
+  "claude-haiku": {
+   "name": "Claude Haiku",
+   "actor": "Anthropic",
+   "tier": "eco"
+  },
+  "gpt-astra": {
+   "name": "GPT Astra",
+   "actor": "OpenAI",
+   "tier": "premium"
+  },
+  "gpt-premium": {
+   "name": "GPT (très haut de gamme)",
+   "actor": "OpenAI",
+   "tier": "premium"
+  },
+  "gpt-flagship": {
+   "name": "GPT (modèle principal)",
+   "actor": "OpenAI",
+   "tier": "haut"
+  },
+  "gpt-terra": {
+   "name": "GPT Terra",
+   "actor": "OpenAI",
+   "tier": "milieu"
+  },
+  "gpt-mini": {
+   "name": "GPT mini / Luna",
+   "actor": "OpenAI",
+   "tier": "eco"
+  },
+  "openai-reasoning": {
+   "name": "OpenAI o (raisonnement)",
+   "actor": "OpenAI",
+   "tier": "special"
+  },
+  "gpt-cyber": {
+   "name": "GPT Cyber",
+   "actor": "OpenAI",
+   "tier": "special"
+  },
+  "gpt-oss": {
+   "name": "gpt-oss",
+   "actor": "OpenAI",
+   "tier": "ouvert"
+  },
+  "gemini-argon": {
+   "name": "Gemini 4",
+   "actor": "Google",
+   "tier": "haut"
+  },
+  "gemini-pro": {
+   "name": "Gemini Pro",
+   "actor": "Google",
+   "tier": "haut"
+  },
+  "gemini-flash": {
+   "name": "Gemini Flash",
+   "actor": "Google",
+   "tier": "milieu"
+  },
+  "gemini-flash-lite": {
+   "name": "Gemini Flash-Lite",
+   "actor": "Google",
+   "tier": "eco"
+  },
+  "gemini-flash-cyber": {
+   "name": "Gemini Flash Cyber",
+   "actor": "Google",
+   "tier": "special"
+  },
+  "gemma": {
+   "name": "Gemma",
+   "actor": "Google",
+   "tier": "ouvert"
+  },
+  "gemma-diffusion": {
+   "name": "DiffusionGemma",
+   "actor": "Google",
+   "tier": "ouvert"
+  },
+  "mistral-large": {
+   "name": "Mistral Large",
+   "actor": "Mistral",
+   "tier": "haut"
+  },
+  "mistral-medium": {
+   "name": "Mistral Medium",
+   "actor": "Mistral",
+   "tier": "milieu"
+  },
+  "mistral-small": {
+   "name": "Mistral Small",
+   "actor": "Mistral",
+   "tier": "eco"
+  },
+  "devstral": {
+   "name": "Devstral",
+   "actor": "Mistral",
+   "tier": "special"
+  },
+  "magistral": {
+   "name": "Magistral",
+   "actor": "Mistral",
+   "tier": "special"
+  },
+  "llama": {
+   "name": "Llama",
+   "actor": "Meta",
+   "tier": "ouvert"
+  },
+  "muse-spark": {
+   "name": "Muse Spark",
+   "actor": "Meta",
+   "tier": "haut"
+  },
+  "muse-glimmer": {
+   "name": "Muse Glimmer",
+   "actor": "Meta",
+   "tier": "ouvert"
+  },
+  "deepseek": {
+   "name": "DeepSeek",
+   "actor": "DeepSeek",
+   "tier": "ouvert"
+  },
+  "deepseek-reasoning": {
+   "name": "DeepSeek R",
+   "actor": "DeepSeek",
+   "tier": "ouvert"
+  },
+  "deepseek-pro": {
+   "name": "DeepSeek Pro",
+   "actor": "DeepSeek",
+   "tier": "haut"
+  },
+  "deepseek-flash": {
+   "name": "DeepSeek Flash",
+   "actor": "DeepSeek",
+   "tier": "ouvert"
+  },
+  "grok": {
+   "name": "Grok",
+   "actor": "xAI",
+   "tier": "haut"
+  },
+  "qwen": {
+   "name": "Qwen",
+   "actor": "Alibaba",
+   "tier": "ouvert"
+  },
+  "qwen-max": {
+   "name": "Qwen Max",
+   "actor": "Alibaba",
+   "tier": "haut"
+  },
+  "qwen-27b": {
+   "name": "Qwen 27B",
+   "actor": "Alibaba",
+   "tier": "ouvert"
+  },
+  "glm": {
+   "name": "GLM",
+   "actor": "Z.ai",
+   "tier": "ouvert"
+  },
+  "longcat": {
+   "name": "LongCat",
+   "actor": "Meituan",
+   "tier": "ouvert"
+  },
+  "cohere-north": {
+   "name": "Cohere North",
+   "actor": "Cohere",
+   "tier": "ouvert"
+  },
+  "deepseek-reasoner": {
+   "name": "DeepSeek R",
+   "actor": "DeepSeek",
+   "tier": "ouvert"
+  },
+  "openai-reasoning-mini": {
+   "name": "OpenAI o-mini (raisonnement)",
+   "actor": "OpenAI",
+   "tier": "special"
+  },
+  "qwen-coder": {
+   "name": "Qwen Coder",
+   "actor": "Alibaba",
+   "tier": "ouvert"
+  },
+  "gpt-codex": {
+   "name": "GPT Codex",
+   "actor": "OpenAI",
+   "tier": "special"
+  }
+ },
+ "benchmarks": {
+  "aa-briefcase": {
+   "name": "AA-Briefcase v1.1",
+   "unit": "Elo",
+   "what": "Tâches de travail de connaissance d'Artificial Analysis notées en Elo (définition exacte à vérifier)."
+  },
+  "advanced-cyber-completion": {
+   "name": "Advanced Cybersecurity Completion Rate (OpenAI, interne)",
+   "unit": "%",
+   "what": "Éval interne d'OpenAI : part des requêtes offensives (chaînes d'exploits, élévation de privilèges) menées à bien."
+  },
+  "aime-2024": {
+   "name": "AIME 2024",
+   "unit": "%",
+   "what": "Concours de mathématiques américain (édition 2024), niveau lycée avancé."
+  },
+  "aime-2025": {
+   "name": "AIME 2025",
+   "unit": "%",
+   "what": "Concours de mathématiques américain (édition 2025), niveau lycée avancé."
+  },
+  "arc-agi-2": {
+   "name": "ARC-AGI-2",
+   "unit": "%",
+   "what": "Énigmes visuelles inédites : mesure la capacité à raisonner sur un problème jamais vu."
+  },
+  "arc-agi-3": {
+   "name": "ARC-AGI-3",
+   "unit": "%",
+   "what": "Résoudre des problèmes nouveaux (jeux et puzzles interactifs) sans connaissance préalable : mesure la capacité d'adaptation."
+  },
+  "automationbench": {
+   "name": "AutomationBench (Zapier)",
+   "unit": "%",
+   "what": "Réaliser de bout en bout des workflows métier (CRM, e-mails, tableurs) via des outils.",
+   "short": "AutomationBench"
+  },
+  "browsecomp": {
+   "name": "BrowseComp",
+   "unit": "%",
+   "what": "Trouver des informations difficiles à dénicher en naviguant sur le web."
+  },
+  "chartography": {
+   "name": "Chartography",
+   "unit": "%",
+   "what": "Lire et raisonner sur des graphiques et visuels de données (conditions exactes non précisées dans la table d'Opus 5.5)."
+  },
+  "chartography-no-tools": {
+   "name": "Chartography (sans outils)",
+   "unit": "%",
+   "what": "Lire et raisonner sur des graphiques, sans outils.",
+   "short": "Chartography (sans outils)"
+  },
+  "cursorbench-3-2": {
+   "name": "CursorBench 3.2",
+   "unit": "%",
+   "what": "Tâches de code réelles issues de l'usage de l'éditeur Cursor (version 3.2)."
+  },
+  "cursorbench-4": {
+   "name": "CursorBench 4.0",
+   "unit": "%",
+   "what": "Version 4.0 des tâches de code réelles issues de Cursor."
+  },
+  "cybergym": {
+   "name": "CyberGym",
+   "unit": "%",
+   "what": "Reproduire et exploiter des vulnérabilités logicielles réelles."
+  },
+  "deepswe-1-1": {
+   "name": "DeepSWE v1.1",
+   "unit": "%",
+   "what": "113 tâches d'ingénierie logicielle longues, vérifiées à la main, sur cinq langages. Très utilisé par Google, OpenAI, Meta, xAI et DeepSeek en 2026."
+  },
+  "eebench": {
+   "name": "EEBench",
+   "unit": "%",
+   "what": "Problèmes d'ingénierie électrique."
+  },
+  "frontier-bench": {
+   "name": "Frontier-Bench v0.1",
+   "unit": "%",
+   "what": "Tâches agentiques longues et difficiles mises en avant par Anthropic pour Opus 5 (définition exacte à vérifier)."
+  },
+  "frontiercode-1-1": {
+   "name": "FrontierCode v1.1 (Main)",
+   "unit": "%",
+   "what": "Évaluation de code de Cognition sur des tâches d'ingénierie difficiles.",
+   "short": "FrontierCode 1.1"
+  },
+  "frontiermath-t4": {
+   "name": "FrontierMath Tier 4",
+   "unit": "%",
+   "what": "Problèmes de mathématiques de niveau recherche."
+  },
+  "frontierswe": {
+   "name": "FrontierSWE (v1)",
+   "unit": "%",
+   "what": "Tâches d'ingénierie logicielle de pointe (première version du classement)."
+  },
+  "frontierswe-v2": {
+   "name": "FrontierSWE v2",
+   "unit": "%",
+   "what": "Classement public de Proximal sur des tâches d'ingénierie logicielle de pointe (version 2)."
+  },
+  "gdpval-aa": {
+   "name": "GDPval-AA (version non précisée)",
+   "unit": "Elo",
+   "what": "Travail de bureau à valeur économique (documents, analyses, tableurs), noté en Elo par Artificial Analysis. Version non précisée par la source."
+  },
+  "gdpval-aa-v2": {
+   "name": "GDPval-AA v2",
+   "unit": "Elo",
+   "what": "Travail de bureau à valeur économique, noté en Elo (version 2). Non comparable à la v2.1.",
+   "short": "GDPval-AA v2"
+  },
+  "gdpval-aa-v2-1": {
+   "name": "GDPval-AA v2.1",
+   "unit": "Elo",
+   "what": "Travail de bureau à valeur économique, noté en Elo (version 2.1, tables d'Anthropic depuis Opus 5.5).",
+   "short": "GDPval-AA v2.1"
+  },
+  "gpqa-diamond": {
+   "name": "GPQA Diamond",
+   "unit": "%",
+   "what": "Questions scientifiques de niveau doctorat (physique, chimie, biologie)."
+  },
+  "hle-no-tools": {
+   "name": "Humanity's Last Exam (sans outils)",
+   "unit": "%",
+   "what": "Questions d'experts très difficiles, toutes disciplines, sans outils.",
+   "short": "Humanity's Last Exam (sans outils)"
+  },
+  "hle-tools": {
+   "name": "Humanity's Last Exam (avec outils)",
+   "unit": "%",
+   "what": "Questions d'experts très difficiles, toutes disciplines, avec recherche et outils.",
+   "short": "Humanity's Last Exam (outils)"
+  },
+  "mcp-atlas": {
+   "name": "MCP Atlas",
+   "unit": "score",
+   "what": "Utiliser correctement des outils exposés via le protocole MCP."
+  },
+  "mle-bench": {
+   "name": "MLE-Bench",
+   "unit": "%",
+   "what": "Mener des projets de machine learning de bout en bout (type compétitions Kaggle)."
+  },
+  "nl2repo": {
+   "name": "NL2Repo",
+   "unit": "%",
+   "what": "Générer un dépôt de code complet à partir d'une description en langage naturel."
+  },
+  "osworld": {
+   "name": "OSWorld (original)",
+   "unit": "%",
+   "what": "Première version du test où l'IA pilote un ordinateur. Non comparable aux versions suivantes."
+  },
+  "osworld-2-0": {
+   "name": "OSWorld 2.0 (partial)",
+   "unit": "%",
+   "what": "Version 2.0 du test d'utilisation d'ordinateur, crédit partiel accordé. Non comparable à OSWorld-Verified ni à 2.1.",
+   "short": "OSWorld 2.0"
+  },
+  "osworld-2-0-offline": {
+   "name": "OSWorld 2.0 (sous-ensemble hors ligne, OpenAI)",
+   "unit": "%",
+   "what": "Sous-ensemble hors ligne d'OSWorld 2.0 utilisé par OpenAI. Non comparable aux chiffres OSWorld 2.0/2.1 d'Anthropic.",
+   "short": "OSWorld 2.0 (version OpenAI)"
+  },
+  "osworld-2-0-strict": {
+   "name": "OSWorld 2.0 (strict)",
+   "unit": "%",
+   "what": "OSWorld 2.0 sans crédit partiel : la tâche doit être entièrement réussie."
+  },
+  "osworld-2-1": {
+   "name": "OSWorld 2.1 (partial)",
+   "unit": "%",
+   "what": "Version 2.1 du test d'utilisation d'ordinateur, crédit partiel. Utilisée par Anthropic depuis Opus 5.5.",
+   "short": "OSWorld 2.1"
+  },
+  "osworld-verified": {
+   "name": "OSWorld-Verified",
+   "unit": "%",
+   "what": "Se servir d'un ordinateur comme un humain (clics, saisie, captures d'écran) pour accomplir des tâches dans de vraies applications."
+  },
+  "swe-bench-multilingual": {
+   "name": "SWE-bench Multilingual",
+   "unit": "%",
+   "what": "Même principe que SWE-bench, sur des dépôts dans plusieurs langages de programmation."
+  },
+  "swe-bench-pro": {
+   "name": "SWE-bench Pro",
+   "unit": "%",
+   "what": "Tâches de code longues, sur plusieurs fichiers et mal spécifiées, dans de vrais dépôts. OpenAI estime ~30 % des tâches publiques défectueuses (audit du 8 juillet 2026)."
+  },
+  "swe-bench-verified": {
+   "name": "SWE-bench Verified",
+   "unit": "%",
+   "what": "Corriger de vrais bugs tirés de projets GitHub (500 tâches Python vérifiées par des humains). Proche de la saturation, plus publié par Anthropic, OpenAI ni Google sur leurs derniers modèles."
+  },
+  "terminal-bench-1": {
+   "name": "Terminal-Bench 1.0",
+   "unit": "%",
+   "what": "Première version (2025) du test de tâches complètes en ligne de commande."
+  },
+  "terminal-bench-2": {
+   "name": "Terminal-Bench 2.0",
+   "unit": "%",
+   "what": "Deuxième version (fin 2025) du test de tâches complètes en ligne de commande."
+  },
+  "terminal-bench-2-1": {
+   "name": "Terminal-Bench 2.1",
+   "unit": "%",
+   "what": "Accomplir des tâches de bout en bout en ligne de commande (terminal). Les scores varient fortement selon le « harnais » (l'agent maison) utilisé."
+  },
+  "terminal-bench-3": {
+   "name": "Terminal-Bench 3.0",
+   "unit": "%",
+   "what": "Version 3.0, plus difficile, des tâches agentiques en terminal (utilisée par xAI pour Grok 4.5/4.6)."
+  },
+  "terminal-bench-4": {
+   "name": "Terminal-Bench 4.0",
+   "unit": "%",
+   "what": "Version 2026, nettement plus dure, des tâches agentiques en terminal. Le benchmark de code agentique le plus partagé entre éditeurs à l'automne 2026."
+  },
+  "terminal-bench-science": {
+   "name": "Terminal-Bench-Science 0.1",
+   "unit": "%",
+   "what": "Mener une recherche scientifique via le terminal : explorer des données, lancer des simulations, ajuster des équations, prouver des théorèmes.",
+   "short": "Terminal-Bench Science"
+  }
+ },
+ "models": [
+  {
+   "id": "gpt-4o",
+   "name": "GPT-4o",
+   "actor": "OpenAI",
+   "family": "gpt-flagship",
+   "date": "2024-05-13",
+   "status": "ga",
+   "price_in": 5,
+   "price_out": 15,
+   "context_k": 128,
+   "output_k": 4,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 33.2,
+     "official": true,
+     "source": "https://www.helicone.ai/blog/gpt-4.1-full-developer-guide",
+     "note": "Chiffre OpenAI repris dans l'annonce GPT-4.1."
+    },
+    "gpqa-diamond": {
+     "value": 53.6,
+     "official": true,
+     "source": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+     "note": "Chiffre de lancement OpenAI (repris par Anthropic et dans l'annonce GPT-4.5) ; simple-evals : 49,9 (05-13), 53,1 (08-06)."
+    },
+    "aime-2024": {
+     "value": 9.3,
+     "official": false,
+     "source": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+     "note": "Cité par Anthropic et DeepSeek."
+    }
+   },
+   "sources": [
+    "https://www.prompthub.us/models/gpt-4o",
+    "https://custom.typingmind.com/tools/estimate-llm-usage-costs/openai/gpt-4o-2024-05-13",
+    "https://github.com/openai/simple-evals",
+    "https://www.anthropic.com/news/3-5-models-and-computer-use"
+   ],
+   "confidence": "verified",
+   "notes": "Prix de lancement 5/15 $ ; 2,50/10 $ à partir du snapshot 2024-08-06. output_k = mémoire (4K au lancement, 16K pour 08-06)."
+  },
+  {
+   "id": "claude-3-5-sonnet-jun2024",
+   "name": "Claude 3.5 Sonnet (juin 2024)",
+   "actor": "Anthropic",
+   "family": "claude-sonnet",
+   "date": "2024-06-20",
+   "status": "ga",
+   "price_in": 3,
+   "price_out": 15,
+   "context_k": 200,
+   "output_k": 8,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 33.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+     "note": "Mesure publiée par Anthropic en oct. 2024 (SWE-bench Verified n'existait pas en juin 2024)."
+    },
+    "gpqa-diamond": {
+     "value": 59.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-3-5-sonnet"
+    },
+    "aime-2024": {
+     "value": 9.6,
+     "official": true,
+     "source": "https://www.anthropic.com/news/3-5-models-and-computer-use"
+    }
+   },
+   "sources": [
+    "https://www.anthropic.com/news/claude-3-5-sonnet",
+    "https://www.anthropic.com/news/3-5-models-and-computer-use",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+   ],
+   "confidence": "verified",
+   "notes": "Prix et contexte 200K dans l'annonce. La page affiche 'Jun 21, 2024' (fuseau) ; ID API claude-3-5-sonnet-20240620. output_k 8K = mémoire (4K au lancement, 8K via en-tête bêta ensuite). Retiré de l'API le 2025-10-28 (page dépréciations)."
+  },
+  {
+   "id": "gpt-4o-mini",
+   "name": "GPT-4o mini",
+   "actor": "OpenAI",
+   "family": "gpt-mini",
+   "date": "2024-07-18",
+   "status": "ga",
+   "price_in": 0.15,
+   "price_out": 0.6,
+   "context_k": 128,
+   "output_k": 16,
+   "open_weights": false,
+   "scores": {
+    "gpqa-diamond": {
+     "value": 40.2,
+     "official": true,
+     "source": "https://github.com/openai/simple-evals",
+     "note": "Aussi cité par Anthropic (0-shot CoT)."
+    }
+   },
+   "sources": [
+    "https://telnyx.com/llm-library/gpt-4o-mini",
+    "https://github.com/openai/simple-evals"
+   ],
+   "confidence": "verified"
+  },
+  {
+   "id": "llama-3-1-405b",
+   "name": "Llama 3.1 405B",
+   "actor": "Meta",
+   "family": "llama",
+   "date": "2024-07-23",
+   "status": "ga",
+   "context_k": 128,
+   "open_weights": true,
+   "scores": {
+    "gpqa-diamond": {
+     "value": 49.0,
+     "official": true,
+     "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md",
+     "note": "Valeur du model card Llama 4 ; le model card 3.1 donne 'GPQA 0-shot' 50,7 (sous-ensemble non précisé)."
+    }
+   },
+   "sources": [
+    "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md",
+    "https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md"
+   ],
+   "confidence": "verified",
+   "notes": "Llama 3.1 Community License. Pas de prix éditeur (hébergeurs tiers)."
+  },
+  {
+   "id": "mistral-large-2",
+   "name": "Mistral Large 2",
+   "actor": "Mistral",
+   "family": "mistral-large",
+   "date": "2024-07-24",
+   "status": "ga",
+   "price_in": 3,
+   "price_out": 9,
+   "context_k": 128,
+   "open_weights": true,
+   "scores": {},
+   "sources": [
+    "https://github.com/mistralai/mistral-inference",
+    "https://www.longtermwiki.com/ai-models/mistral-large-2"
+   ],
+   "confidence": "verified",
+   "notes": "123B dense. Poids publiés sous Mistral Research License (usage non commercial). Aucun score de notre liste publié par Mistral."
+  },
+  {
+   "id": "o1-preview",
+   "name": "o1-preview",
+   "actor": "OpenAI",
+   "family": "openai-reasoning",
+   "date": "2024-09-12",
+   "status": "preview",
+   "price_in": 15,
+   "price_out": 60,
+   "context_k": 128,
+   "output_k": 32,
+   "open_weights": false,
+   "scores": {
+    "gpqa-diamond": {
+     "value": 73.3,
+     "official": true,
+     "source": "https://github.com/openai/simple-evals"
+    }
+   },
+   "sources": [
+    "https://github.com/openai/simple-evals"
+   ],
+   "confidence": "memory-only",
+   "notes": "Seul le GPQA (simple-evals d'OpenAI) a été vérifié ; date, prix et contexte viennent de la mémoire. Le SWE-bench 43 % de models-data.json n'a pas été retrouvé."
+  },
+  {
+   "id": "gemini-1-5-pro-002",
+   "name": "Gemini 1.5 Pro (002)",
+   "actor": "Google",
+   "family": "gemini-pro",
+   "date": "2024-09-24",
+   "status": "ga",
+   "price_in": 1.25,
+   "price_out": 5,
+   "context_k": 2000,
+   "output_k": 8,
+   "open_weights": false,
+   "scores": {
+    "gpqa-diamond": {
+     "value": 59.1,
+     "official": false,
+     "source": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+     "note": "Cité par Anthropic."
+    }
+   },
+   "sources": [
+    "https://developers.googleblog.com/updated-gemini-models-reduced-15-pro-pricing-increased-rate-limits-and-more/",
+    "https://feeds.simonwillison.net/2024/Sep/24/gemini-models/"
+   ],
+   "confidence": "verified",
+   "notes": "Version de production 002 (1.5 Pro initial : févr. 2024, hors période). Prix <=128K effectif au 2024-10-01 : -64 % en entrée, -52 % en sortie (3,50/10,50 -> 1,25/5 $) ; >128K : 2,50/10 $. Le résumé de recherche donnait 2,50 $ en sortie, incohérent avec les -52 % annoncés."
+  },
+  {
+   "id": "claude-3-5-haiku",
+   "name": "Claude 3.5 Haiku",
+   "actor": "Anthropic",
+   "family": "claude-haiku",
+   "date": "2024-10-22",
+   "status": "ga",
+   "price_in": 0.8,
+   "price_out": 4,
+   "context_k": 200,
+   "output_k": 8,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 40.6,
+     "official": true,
+     "source": "https://www.anthropic.com/news/3-5-models-and-computer-use"
+    },
+    "gpqa-diamond": {
+     "value": 41.6,
+     "official": true,
+     "source": "https://www.anthropic.com/news/3-5-models-and-computer-use"
+    },
+    "aime-2024": {
+     "value": 5.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/3-5-models-and-computer-use"
+    }
+   },
+   "sources": [
+    "https://www.anthropic.com/news/3-5-models-and-computer-use",
+    "https://platform.claude.com/docs/en/about-claude/pricing",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+   ],
+   "confidence": "verified",
+   "notes": "Date = annonce (ID claude-3-5-haiku-20241022) ; disponibilité API début nov. 2024 (mémoire). Prix de référence 0,80/4 $ (révision du 03/12/2024 notée sur la page d'annonce, confirmée par la page pricing). Retiré le 2026-02-19."
+  },
+  {
+   "id": "claude-3-5-sonnet-oct2024",
+   "name": "Claude 3.5 Sonnet (oct. 2024)",
+   "actor": "Anthropic",
+   "family": "claude-sonnet",
+   "replaces": "claude-3-5-sonnet-jun2024",
+   "date": "2024-10-22",
+   "status": "ga",
+   "price_in": 3,
+   "price_out": 15,
+   "context_k": 200,
+   "output_k": 8,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 49.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/3-5-models-and-computer-use"
+    },
+    "gpqa-diamond": {
+     "value": 65.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/3-5-models-and-computer-use"
+    },
+    "aime-2024": {
+     "value": 16.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/3-5-models-and-computer-use"
+    },
+    "osworld": {
+     "value": 14.9,
+     "official": true,
+     "source": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+     "note": "22,0 % avec davantage d'étapes."
+    }
+   },
+   "sources": [
+    "https://www.anthropic.com/news/3-5-models-and-computer-use",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+   ],
+   "confidence": "verified",
+   "notes": "Même prix que la version de juin (annonce). Lancement de l'outil computer use. ID claude-3-5-sonnet-20241022."
+  },
+  {
+   "id": "o1",
+   "name": "o1",
+   "actor": "OpenAI",
+   "family": "openai-reasoning",
+   "replaces": "o1-preview",
+   "date": "2024-12-05",
+   "status": "ga",
+   "price_in": 15,
+   "price_out": 60,
+   "context_k": 200,
+   "output_k": 100,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 48.9,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-3-7-sonnet",
+     "note": "Chiffre OpenAI repris par Anthropic et DeepSeek."
+    },
+    "gpqa-diamond": {
+     "value": 75.7,
+     "official": true,
+     "source": "https://github.com/openai/simple-evals",
+     "note": "78,0 % en cons@64 (cité par Anthropic)."
+    },
+    "aime-2024": {
+     "value": 79.2,
+     "official": true,
+     "source": "https://github.com/deepseek-ai/DeepSeek-R1",
+     "note": "83,3 % en cons@64 (cité par Anthropic)."
+    }
+   },
+   "sources": [
+    "https://pricepertoken.com/pricing-page/model/openai-o1",
+    "https://www.prompthub.us/models/o1",
+    "https://github.com/openai/simple-evals",
+    "https://www.anthropic.com/news/claude-3-7-sonnet",
+    "https://github.com/deepseek-ai/DeepSeek-R1"
+   ],
+   "confidence": "verified",
+   "notes": "Sortie dans ChatGPT le 2024-12-05 ; API o1-2024-12-17."
+  },
+  {
+   "id": "deepseek-v3",
+   "name": "DeepSeek-V3",
+   "actor": "DeepSeek",
+   "family": "deepseek",
+   "date": "2024-12-26",
+   "status": "ga",
+   "price_in": 0.27,
+   "price_out": 1.1,
+   "context_k": 128,
+   "open_weights": true,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 42.0,
+     "official": true,
+     "source": "https://github.com/deepseek-ai/DeepSeek-V3"
+    },
+    "gpqa-diamond": {
+     "value": 59.1,
+     "official": true,
+     "source": "https://github.com/deepseek-ai/DeepSeek-V3"
+    },
+    "aime-2024": {
+     "value": 39.2,
+     "official": true,
+     "source": "https://github.com/deepseek-ai/DeepSeek-V3"
+    }
+   },
+   "sources": [
+    "https://github.com/deepseek-ai/DeepSeek-V3",
+    "https://technode.com/2025/02/10/deepseek-v3-ends-promotional-pricing-updates-api-service-rates/"
+   ],
+   "confidence": "uncertain",
+   "notes": "MoE 671B / 37B actifs, code MIT + licence modèle DeepSeek (usage commercial autorisé). Prix standard 0,27/1,10 $ à partir du 2025-02-09 (promo avant). Date de sortie de mémoire (non reconfirmée)."
+  },
+  {
+   "id": "deepseek-r1",
+   "name": "DeepSeek-R1",
+   "actor": "DeepSeek",
+   "family": "deepseek-reasoner",
+   "date": "2025-01-20",
+   "status": "ga",
+   "price_in": 0.55,
+   "price_out": 2.19,
+   "context_k": 128,
+   "open_weights": true,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 49.2,
+     "official": true,
+     "source": "https://github.com/deepseek-ai/DeepSeek-R1"
+    },
+    "gpqa-diamond": {
+     "value": 71.5,
+     "official": true,
+     "source": "https://github.com/deepseek-ai/DeepSeek-R1"
+    },
+    "aime-2024": {
+     "value": 79.8,
+     "official": true,
+     "source": "https://github.com/deepseek-ai/DeepSeek-R1"
+    }
+   },
+   "sources": [
+    "https://github.com/deepseek-ai/DeepSeek-R1",
+    "https://getdeploying.com/llms/deepseek-r1"
+   ],
+   "confidence": "verified",
+   "notes": "Poids MIT. La mise à jour R1-0528 n'est pas incluse."
+  },
+  {
+   "id": "gemini-2-0-flash",
+   "name": "Gemini 2.0 Flash",
+   "actor": "Google",
+   "family": "gemini-flash",
+   "date": "2025-02-05",
+   "status": "ga",
+   "price_in": 0.1,
+   "price_out": 0.4,
+   "context_k": 1000,
+   "output_k": 8,
+   "open_weights": false,
+   "scores": {},
+   "sources": [
+    "https://developers.googleblog.com/gemini-2-family-expands/",
+    "https://feeds.simonwillison.net/2025/Feb/5/gemini-2/"
+   ],
+   "confidence": "verified",
+   "notes": "GA le 2025-02-05 (expérimental depuis le 2024-12-11). GPQA officiel non retrouvé (un agrégateur donne 62,3)."
+  },
+  {
+   "id": "grok-3",
+   "name": "Grok 3",
+   "actor": "xAI",
+   "family": "grok",
+   "date": "2025-02-17",
+   "status": "preview",
+   "price_in": 3,
+   "price_out": 15,
+   "context_k": 131,
+   "open_weights": false,
+   "scores": {
+    "gpqa-diamond": {
+     "value": 84.6,
+     "official": true,
+     "source": "https://www.datalearner.com/en/ai-models/pretrained-models/grok-3",
+     "note": "80,2 % en passe unique (cité par Anthropic)."
+    },
+    "aime-2025": {
+     "value": 93.3,
+     "official": true,
+     "source": "https://www.datalearner.com/en/ai-models/pretrained-models/grok-3",
+     "note": "Anthropic étiquette ce 93,3 % 'AIME 2024' ; méthodologie contestée (TechCrunch)."
+    }
+   },
+   "sources": [
+    "https://www.datalearner.com/en/ai-models/pretrained-models/grok-3",
+    "https://techcrunch.com/2025/02/22/did-xai-lie-about-grok-3s-benchmarks",
+    "https://www.anthropic.com/news/claude-3-7-sonnet"
+   ],
+   "confidence": "verified",
+   "notes": "Bêta le 2025-02-17, API en avril 2025."
+  },
+  {
+   "id": "claude-3-7-sonnet",
+   "name": "Claude 3.7 Sonnet",
+   "actor": "Anthropic",
+   "family": "claude-sonnet",
+   "replaces": "claude-3-5-sonnet-oct2024",
+   "date": "2025-02-24",
+   "status": "ga",
+   "price_in": 3,
+   "price_out": 15,
+   "context_k": 200,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 62.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-3-7-sonnet",
+     "note": "70,3 % avec scaffold custom + calcul parallèle sur 489 tâches (63,7 % sans ce scaffold sur ce sous-ensemble)."
+    },
+    "gpqa-diamond": {
+     "value": 78.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-3-7-sonnet",
+     "note": "68,0 % sans réflexion étendue ; 84,8 % avec calcul parallèle."
+    },
+    "aime-2024": {
+     "value": 61.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-3-7-sonnet",
+     "note": "23,3 % sans réflexion étendue ; 80,0 % avec calcul parallèle."
+    }
+   },
+   "sources": [
+    "https://www.anthropic.com/news/claude-3-7-sonnet",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+   ],
+   "confidence": "verified",
+   "notes": "Annonce datée du 24 févr. 2025 ; 3 $/15 $ (réflexion incluse). Sortie max 128K mentionnée dans l'annonce (via bêta ; 64K par défaut, mémoire). Retiré le 2026-02-19."
+  },
+  {
+   "id": "gpt-4-5",
+   "name": "GPT-4.5 (preview)",
+   "actor": "OpenAI",
+   "family": "gpt-premium",
+   "replaces": "gpt-4o",
+   "date": "2025-02-27",
+   "status": "preview",
+   "price_in": 75,
+   "price_out": 150,
+   "context_k": 128,
+   "output_k": 16,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 38.0,
+     "official": true,
+     "source": "https://feeds.simonwillison.net/2025/Feb/27/introducing-gpt-45/",
+     "note": "L'annonce GPT-4.1 (avril 2025) cite ensuite 28 % pour GPT-4.5."
+    },
+    "gpqa-diamond": {
+     "value": 71.4,
+     "official": true,
+     "source": "https://www.helicone.ai/blog/gpt-4.5-benchmarks"
+    }
+   },
+   "sources": [
+    "https://feeds.simonwillison.net/2025/Feb/27/introducing-gpt-45/",
+    "https://www.helicone.ai/blog/gpt-4.5-benchmarks",
+    "https://www.analyticsvidhya.com/blog/2025/02/access-the-gpt-4-5-using-api/"
+   ],
+   "confidence": "verified",
+   "notes": "Research preview, modèle non-reasoning le plus cher d'OpenAI. Retiré de ChatGPT le 2026-06-27 (brief interne) ; retiré de l'API mi-2025 (mémoire)."
+  },
+  {
+   "id": "gemini-2-5-pro",
+   "name": "Gemini 2.5 Pro",
+   "actor": "Google",
+   "family": "gemini-pro",
+   "replaces": "gemini-1-5-pro-002",
+   "date": "2025-03-25",
+   "status": "preview",
+   "price_in": 1.25,
+   "price_out": 10,
+   "context_k": 1000,
+   "output_k": 64,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 63.8,
+     "official": true,
+     "source": "https://charonhub.deeplearning.ai/googles-gemini-2-5-pro-experimental-outperforms-top-ai-models/",
+     "note": "67,2 % pour la version 06-05/GA (page Google citée par Anthropic) ; 63,2 % pour 05-06."
+    },
+    "gpqa-diamond": {
+     "value": 84.0,
+     "official": true,
+     "source": "https://charonhub.deeplearning.ai/googles-gemini-2-5-pro-experimental-outperforms-top-ai-models/",
+     "note": "86,4 % pour la version 06-05."
+    },
+    "aime-2025": {
+     "value": 88.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-5",
+     "note": "Page Google citée par Anthropic."
+    },
+    "terminal-bench-1": {
+     "value": 25.3,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-5",
+     "note": "Leaderboard (Terminus 1) cité par Anthropic."
+    }
+   },
+   "sources": [
+    "https://charonhub.deeplearning.ai/googles-gemini-2-5-pro-experimental-outperforms-top-ai-models/",
+    "https://www.longtermwiki.com/ai-models/gemini-2-5-pro",
+    "https://www.anthropic.com/news/claude-sonnet-4-5",
+    "https://www.anthropic.com/news/claude-opus-4-1"
+   ],
+   "confidence": "verified",
+   "notes": "Expérimental public le 2025-03-25, GA le 2025-06-17. Prix <=200K : 1,25/10 $."
+  },
+  {
+   "id": "llama-4-maverick",
+   "name": "Llama 4 Maverick",
+   "actor": "Meta",
+   "family": "llama",
+   "replaces": "llama-3-1-405b",
+   "date": "2025-04-05",
+   "status": "ga",
+   "context_k": 1000,
+   "open_weights": true,
+   "scores": {
+    "gpqa-diamond": {
+     "value": 69.8,
+     "official": true,
+     "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md"
+    }
+   },
+   "sources": [
+    "https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md"
+   ],
+   "confidence": "verified",
+   "notes": "MoE 17B actifs / 128 experts, contexte 1M. Meta n'a publié aucun score SWE-bench (les ~70 % de models-data.json sont des estimations sans source).",
+   "en_clair": "Dernière génération Llama (avril 2025), ouverte. Meta mise désormais sur Muse."
+  },
+  {
+   "id": "llama-4-scout",
+   "name": "Llama 4 Scout",
+   "actor": "Meta",
+   "family": "llama",
+   "date": "2025-04-05",
+   "status": "ga",
+   "context_k": 10000,
+   "open_weights": true,
+   "scores": {
+    "gpqa-diamond": {
+     "value": 57.2,
+     "official": true,
+     "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md"
+    }
+   },
+   "sources": [
+    "https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md"
+   ],
+   "confidence": "verified",
+   "notes": "MoE 17B actifs, contexte 10M. Llama 4 Community License. Meta n'a publié aucun score SWE-bench.",
+   "en_clair": "Version compacte de Llama 4 (avril 2025), ouverte, avec une très grande mémoire de travail."
+  },
+  {
+   "id": "gpt-4-1",
+   "name": "GPT-4.1",
+   "actor": "OpenAI",
+   "family": "gpt-flagship",
+   "replaces": "gpt-4-5",
+   "date": "2025-04-14",
+   "status": "ga",
+   "price_in": 2,
+   "price_out": 8,
+   "context_k": 1047,
+   "output_k": 32,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 54.6,
+     "official": true,
+     "source": "https://www.helicone.ai/blog/gpt-4.1-full-developer-guide"
+    },
+    "gpqa-diamond": {
+     "value": 66.3,
+     "official": true,
+     "source": "https://github.com/openai/simple-evals"
+    }
+   },
+   "sources": [
+    "https://www.helicone.ai/blog/gpt-4.1-full-developer-guide",
+    "https://github.com/openai/simple-evals",
+    "https://www.anthropic.com/news/claude-4"
+   ],
+   "confidence": "verified",
+   "notes": "Modèle API (pas ChatGPT au lancement), contexte ~1M (1 047 576 tokens). Positionné comme successeur API de GPT-4.5 preview."
+  },
+  {
+   "id": "o3",
+   "name": "o3",
+   "actor": "OpenAI",
+   "family": "openai-reasoning",
+   "replaces": "o1",
+   "date": "2025-04-16",
+   "status": "ga",
+   "price_in": 2,
+   "price_out": 8,
+   "context_k": 200,
+   "output_k": 100,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 69.1,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-4",
+     "note": "Chiffre OpenAI repris dans les tableaux Anthropic."
+    },
+    "gpqa-diamond": {
+     "value": 83.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-1",
+     "note": "simple-evals (sans outils) : 82,8."
+    },
+    "aime-2025": {
+     "value": 88.9,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-1"
+    },
+    "terminal-bench-1": {
+     "value": 30.2,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-opus-4-1",
+     "note": "Mesuré par Anthropic (Terminus 1)."
+    }
+   },
+   "sources": [
+    "https://anotherwrapper.com/tools/llm-pricing/o4-mini/o3",
+    "https://www.anthropic.com/news/claude-4",
+    "https://www.anthropic.com/news/claude-opus-4-1",
+    "https://github.com/openai/simple-evals"
+   ],
+   "confidence": "verified",
+   "notes": "Prix de référence 2/8 $ (vérifié) ; prix de lancement 10/40 $ (mémoire), baissé de 80 % en juin 2025."
+  },
+  {
+   "id": "o4-mini",
+   "name": "o4-mini",
+   "actor": "OpenAI",
+   "family": "openai-reasoning-mini",
+   "date": "2025-04-16",
+   "status": "ga",
+   "price_in": 1.1,
+   "price_out": 4.4,
+   "context_k": 200,
+   "output_k": 100,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 68.1,
+     "official": true,
+     "source": "https://www.longtermwiki.com/ai-models/o4-mini"
+    },
+    "gpqa-diamond": {
+     "value": 81.4,
+     "official": true,
+     "source": "https://www.longtermwiki.com/ai-models/o4-mini",
+     "note": "simple-evals : 77,6 (medium) / 81,3 (high)."
+    },
+    "aime-2025": {
+     "value": 92.7,
+     "official": true,
+     "source": "https://www.longtermwiki.com/ai-models/o4-mini"
+    }
+   },
+   "sources": [
+    "https://www.longtermwiki.com/ai-models/o4-mini",
+    "https://anotherwrapper.com/tools/llm-pricing/o4-mini/o3",
+    "https://github.com/openai/simple-evals"
+   ],
+   "confidence": "verified",
+   "notes": "Prédécesseur o3-mini non inclus dans le jeu."
+  },
+  {
+   "id": "gemini-2-5-flash",
+   "name": "Gemini 2.5 Flash",
+   "actor": "Google",
+   "family": "gemini-flash",
+   "replaces": "gemini-2-0-flash",
+   "date": "2025-04-17",
+   "status": "preview",
+   "price_in": 0.3,
+   "price_out": 2.5,
+   "context_k": 1000,
+   "output_k": 64,
+   "open_weights": false,
+   "scores": {
+    "gpqa-diamond": {
+     "value": 82.8,
+     "official": true,
+     "source": "https://developers.googleblog.com/gemini-2-5-thinking-model-updates/"
+    },
+    "aime-2025": {
+     "value": 72.0,
+     "official": true,
+     "source": "https://developers.googleblog.com/gemini-2-5-thinking-model-updates/"
+    },
+    "swe-bench-verified": {
+     "value": 60.3,
+     "official": true,
+     "source": "https://developers.googleblog.com/gemini-2-5-thinking-model-updates/",
+     "note": "60,3 % selon la source trouvée, 60,4 % selon la mémoire : à revérifier."
+    }
+   },
+   "sources": [
+    "https://developers.googleblog.com/gemini-2-5-thinking-model-updates/",
+    "https://blog.google/products/gemini/gemini-2-5-model-family-expands/"
+   ],
+   "confidence": "uncertain",
+   "notes": "Preview publique mi-avril 2025 (date du 17/04 de mémoire), GA le 2025-06-17 au prix 0,30/2,50 $ (vérifié). Scores issus d'un seul résumé de recherche."
+  },
+  {
+   "id": "qwen3-235b-a22b",
+   "name": "Qwen3-235B-A22B",
+   "actor": "Alibaba",
+   "family": "qwen",
+   "date": "2025-04-29",
+   "status": "ga",
+   "context_k": 128,
+   "open_weights": true,
+   "scores": {
+    "aime-2025": {
+     "value": 81.5,
+     "official": true,
+     "source": "https://arxiv.org/pdf/2505.09388"
+    },
+    "gpqa-diamond": {
+     "value": 71.1,
+     "official": true,
+     "source": "https://arxiv.org/pdf/2505.09388"
+    }
+   },
+   "sources": [
+    "https://github.com/QwenLM/Qwen3",
+    "https://arxiv.org/pdf/2505.09388",
+    "https://www.datalearner.com/en/ai-models/pretrained-models/Qwen3-235B-A22B"
+   ],
+   "confidence": "verified",
+   "notes": "Apache 2.0, MoE 235B / 22B actifs. Contexte 32K natif, 128K avec YaRN. Mises à jour 2507 (256K) non incluses. Prix Alibaba Cloud non retenu."
+  },
+  {
+   "id": "mistral-medium-3",
+   "name": "Mistral Medium 3",
+   "actor": "Mistral",
+   "family": "mistral-medium",
+   "date": "2025-05-07",
+   "status": "ga",
+   "price_in": 0.4,
+   "price_out": 2,
+   "context_k": 128,
+   "open_weights": false,
+   "scores": {},
+   "sources": [
+    "https://getdeploying.com/llms/mistral-medium-3",
+    "https://modelcompare.dev/models/mistral/medium-2505"
+   ],
+   "confidence": "verified",
+   "notes": "Modèle API (poids fermés)."
+  },
+  {
+   "id": "claude-opus-4",
+   "name": "Claude Opus 4",
+   "actor": "Anthropic",
+   "family": "claude-opus",
+   "date": "2025-05-22",
+   "status": "ga",
+   "price_in": 15,
+   "price_out": 75,
+   "context_k": 200,
+   "output_k": 32,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 72.5,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-4",
+     "note": "79,4 % avec calcul parallèle."
+    },
+    "terminal-bench-1": {
+     "value": 43.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-4",
+     "note": "Valeur de lancement ; 39,2 % avec le harness Terminus 1 dans le tableau Opus 4.1 ; 50,0 % avec calcul parallèle."
+    },
+    "gpqa-diamond": {
+     "value": 79.6,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-1",
+     "note": "74,9 % sans réflexion étendue (annonce Claude 4)."
+    },
+    "aime-2025": {
+     "value": 75.5,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-1",
+     "note": "Valeur reprise du tableau de l'annonce Opus 4.1."
+    }
+   },
+   "sources": [
+    "https://www.anthropic.com/news/claude-4",
+    "https://www.anthropic.com/news/claude-opus-4-1",
+    "https://platform.claude.com/docs/en/about-claude/pricing",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+   ],
+   "confidence": "verified",
+   "notes": "15 $/75 $ confirmés par l'annonce et la page pricing. Pas de tableau complet dans l'annonce Claude 4 (seulement le graphique SWE-bench). output_k 32K = mémoire. Retiré le 2026-06-15."
+  },
+  {
+   "id": "claude-sonnet-4",
+   "name": "Claude Sonnet 4",
+   "actor": "Anthropic",
+   "family": "claude-sonnet",
+   "replaces": "claude-3-7-sonnet",
+   "date": "2025-05-22",
+   "status": "ga",
+   "price_in": 3,
+   "price_out": 15,
+   "context_k": 200,
+   "output_k": 64,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 72.7,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-4",
+     "note": "80,2 % avec calcul parallèle."
+    },
+    "terminal-bench-1": {
+     "value": 35.5,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-1"
+    },
+    "gpqa-diamond": {
+     "value": 75.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-1",
+     "note": "70,0 % sans réflexion étendue ; 76,1 % dans le tableau Sonnet 4.5."
+    },
+    "aime-2025": {
+     "value": 70.5,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-1"
+    },
+    "osworld-verified": {
+     "value": 42.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-5",
+     "note": "Mesure publiée en sept. 2025 (tableau Sonnet 4.5)."
+    }
+   },
+   "sources": [
+    "https://www.anthropic.com/news/claude-4",
+    "https://www.anthropic.com/news/claude-opus-4-1",
+    "https://www.anthropic.com/news/claude-sonnet-4-5",
+    "https://platform.claude.com/docs/en/about-claude/pricing",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+   ],
+   "confidence": "verified",
+   "notes": "Contexte 1M ajouté en bêta à l'été 2025 (mémoire). Retiré le 2026-06-15."
+  },
+  {
+   "id": "grok-4",
+   "name": "Grok 4",
+   "actor": "xAI",
+   "family": "grok",
+   "replaces": "grok-3",
+   "date": "2025-07-09",
+   "status": "ga",
+   "price_in": 3,
+   "price_out": 15,
+   "context_k": 256,
+   "open_weights": false,
+   "scores": {
+    "gpqa-diamond": {
+     "value": 87.5,
+     "official": true,
+     "source": "https://www.keywordsai.co/blog/intro-grok4"
+    },
+    "hle-no-tools": {
+     "value": 25.4,
+     "official": true,
+     "source": "https://www.keywordsai.co/blog/intro-grok4"
+    },
+    "hle-tools": {
+     "value": 44.4,
+     "official": true,
+     "source": "https://www.keywordsai.co/blog/intro-grok4"
+    },
+    "arc-agi-2": {
+     "value": 15.9,
+     "official": false,
+     "source": "https://www.keywordsai.co/blog/intro-grok4",
+     "note": "Mesure ARC Prize."
+    }
+   },
+   "sources": [
+    "https://www.keywordsai.co/blog/intro-grok4",
+    "https://openrouter.ai/models/x-ai/grok-4"
+   ],
+   "confidence": "verified",
+   "notes": "Pas de SWE-bench officiel dans l'annonce écrite. Variante Heavy réservée à l'abonnement à 300 $/mois."
+  },
+  {
+   "id": "qwen3-coder-480b",
+   "name": "Qwen3-Coder-480B-A35B",
+   "actor": "Alibaba",
+   "family": "qwen-coder",
+   "date": "2025-07-22",
+   "status": "ga",
+   "context_k": 256,
+   "open_weights": true,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 69.6,
+     "official": true,
+     "source": "https://www.datalearner.com/blog/1051753230601318"
+    }
+   },
+   "sources": [
+    "https://github.com/QwenLM/Qwen3-Coder",
+    "https://www.datalearner.com/blog/1051753230601318",
+    "https://timkellogg.me/threads/2025-07-22-here-it-is-benchmarks-tough-competition-with/"
+   ],
+   "confidence": "verified",
+   "notes": "Apache 2.0, 256K natif (1M avec YaRN)."
+  },
+  {
+   "id": "claude-opus-4-1",
+   "name": "Claude Opus 4.1",
+   "actor": "Anthropic",
+   "family": "claude-opus",
+   "replaces": "claude-opus-4",
+   "date": "2025-08-05",
+   "status": "ga",
+   "price_in": 15,
+   "price_out": 75,
+   "context_k": 200,
+   "output_k": 32,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 74.5,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-1"
+    },
+    "terminal-bench-1": {
+     "value": 43.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-1"
+    },
+    "terminal-bench-2": {
+     "value": 46.5,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-5",
+     "note": "Valeur du tableau Opus 4.5 (nov. 2025)."
+    },
+    "gpqa-diamond": {
+     "value": 80.9,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-1"
+    },
+    "aime-2025": {
+     "value": 78.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-1"
+    },
+    "osworld-verified": {
+     "value": 44.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-5"
+    }
+   },
+   "sources": [
+    "https://www.anthropic.com/news/claude-opus-4-1",
+    "https://www.anthropic.com/news/claude-sonnet-4-5",
+    "https://www.anthropic.com/news/claude-opus-4-5",
+    "https://platform.claude.com/docs/en/about-claude/pricing",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+   ],
+   "confidence": "verified",
+   "notes": "Même prix qu'Opus 4 (annonce). Retiré le 2026-08-05."
+  },
+  {
+   "id": "gpt-oss-120b",
+   "name": "gpt-oss-120b",
+   "actor": "OpenAI",
+   "family": "gpt-oss",
+   "date": "2025-08-05",
+   "status": "ga",
+   "context_k": 131,
+   "open_weights": true,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 62.4,
+     "official": true,
+     "source": "https://docs.api.nvidia.com/nim/reference/openai-gpt-oss-120b"
+    },
+    "gpqa-diamond": {
+     "value": 80.1,
+     "official": true,
+     "source": "https://docs.api.nvidia.com/nim/reference/openai-gpt-oss-120b"
+    },
+    "aime-2025": {
+     "value": 97.9,
+     "official": true,
+     "source": "https://docs.api.nvidia.com/nim/reference/openai-gpt-oss-120b"
+    }
+   },
+   "sources": [
+    "https://github.com/openai/gpt-oss",
+    "https://docs.api.nvidia.com/nim/reference/openai-gpt-oss-120b",
+    "https://www.morphllm.com/gpt-oss"
+   ],
+   "confidence": "verified",
+   "notes": "Poids ouverts Apache 2.0, MoE 117B total / 5,1B actifs, tient sur un GPU 80 Go. Pas de prix éditeur (hébergement tiers).",
+   "en_clair": "Modèle ouvert d'OpenAI (licence Apache 2.0) qui tient sur une seule carte graphique de 80 Go : candidat sérieux pour l'infra locale."
+  },
+  {
+   "id": "gpt-oss-20b",
+   "name": "gpt-oss-20b",
+   "actor": "OpenAI",
+   "family": "gpt-oss",
+   "date": "2025-08-05",
+   "status": "ga",
+   "context_k": 131,
+   "open_weights": true,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 60.7,
+     "official": true,
+     "source": "https://docs.api.nvidia.com/nim/reference/openai-gpt-oss-20b"
+    },
+    "gpqa-diamond": {
+     "value": 71.5,
+     "official": true,
+     "source": "https://docs.api.nvidia.com/nim/reference/openai-gpt-oss-20b"
+    },
+    "aime-2025": {
+     "value": 98.7,
+     "official": true,
+     "source": "https://docs.api.nvidia.com/nim/reference/openai-gpt-oss-20b"
+    }
+   },
+   "sources": [
+    "https://github.com/openai/gpt-oss",
+    "https://docs.api.nvidia.com/nim/reference/openai-gpt-oss-20b",
+    "https://www.morphllm.com/gpt-oss"
+   ],
+   "confidence": "verified",
+   "notes": "Poids ouverts Apache 2.0, MoE 21B total / 3,6B actifs.",
+   "en_clair": "Petite version ouverte d'OpenAI (21 milliards de paramètres), légère à faire tourner : bon premier test pour une infra locale."
+  },
+  {
+   "id": "gpt-5",
+   "name": "GPT-5",
+   "actor": "OpenAI",
+   "family": "gpt-flagship",
+   "replaces": "gpt-4-1",
+   "date": "2025-08-07",
+   "status": "ga",
+   "price_in": 1.25,
+   "price_out": 10,
+   "context_k": 400,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 74.9,
+     "official": true,
+     "source": "https://anotherwrapper.com/llm-pricing/gpt-5-2025-08-07",
+     "note": "Sur 477 tâches ; 72,8 % sur les 500 tâches (system card, cité par Anthropic)."
+    },
+    "gpqa-diamond": {
+     "value": 85.7,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-5",
+     "note": "Chiffre de l'annonce OpenAI repris par Anthropic ; GPT-5 pro avec Python : 89,4 %."
+    },
+    "aime-2025": {
+     "value": 94.6,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-5",
+     "note": "99,6 % avec Python."
+    },
+    "terminal-bench-1": {
+     "value": 43.8,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-5",
+     "note": "Leaderboard Terminal-Bench (Terminus 2), cité par Anthropic."
+    }
+   },
+   "sources": [
+    "https://anotherwrapper.com/llm-pricing/gpt-5-2025-08-07",
+    "https://vellum.ai/blog/gpt-5-benchmarks",
+    "https://www.anthropic.com/news/claude-sonnet-4-5",
+    "https://www.anthropic.com/news/claude-haiku-4-5"
+   ],
+   "confidence": "verified",
+   "notes": "Contexte total 400K (dont 128K de sortie, mémoire pour le découpage)."
+  },
+  {
+   "id": "deepseek-v3-1",
+   "name": "DeepSeek-V3.1",
+   "actor": "DeepSeek",
+   "family": "deepseek",
+   "replaces": "deepseek-v3",
+   "date": "2025-08-21",
+   "status": "ga",
+   "context_k": 128,
+   "open_weights": true,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 66.0,
+     "official": true,
+     "source": "https://wandb.ai/byyoung3/ml-news/reports/DeepSeek-V3-1-Benchmark-Scores---VmlldzoxNDA4NjM3Mg"
+    }
+   },
+   "sources": [
+    "https://wandb.ai/byyoung3/ml-news/reports/DeepSeek-V3-1-Benchmark-Scores---VmlldzoxNDA4NjM3Mg",
+    "https://github.com/deepseek-ai/DeepSeek-V3.2-Exp"
+   ],
+   "confidence": "uncertain",
+   "notes": "Modèle hybride (fusionne V3 et R1). Prix non vérifié (0,56/1,68 $ de mémoire). V3.1-Terminus (sept. 2025, GitHub DeepSeek) : SWE-bench Verified 68,4, GPQA 80,7, HLE 21,7, AIME 2025 88,4, Terminal-bench 36,7."
+  },
+  {
+   "id": "claude-sonnet-4-5",
+   "name": "Claude Sonnet 4.5",
+   "actor": "Anthropic",
+   "family": "claude-sonnet",
+   "replaces": "claude-sonnet-4",
+   "date": "2025-09-29",
+   "status": "ga",
+   "price_in": 3,
+   "price_out": 15,
+   "context_k": 200,
+   "output_k": 64,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 77.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-5",
+     "note": "82,0 % avec calcul parallèle ; 78,2 % en configuration 1M."
+    },
+    "terminal-bench-1": {
+     "value": 50.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-5"
+    },
+    "terminal-bench-2": {
+     "value": 51.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6",
+     "note": "Tableau Opus 4.6 ; 50,0 % dans le tableau Opus 4.5."
+    },
+    "osworld-verified": {
+     "value": 61.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-5"
+    },
+    "gpqa-diamond": {
+     "value": 83.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-5"
+    },
+    "aime-2025": {
+     "value": 87.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-5",
+     "note": "100 % avec Python."
+    },
+    "arc-agi-2": {
+     "value": 13.6,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-5"
+    },
+    "hle-no-tools": {
+     "value": 17.7,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6"
+    },
+    "hle-tools": {
+     "value": 33.6,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6"
+    }
+   },
+   "sources": [
+    "https://www.anthropic.com/news/claude-sonnet-4-5",
+    "https://www.anthropic.com/news/claude-opus-4-5",
+    "https://www.anthropic.com/news/claude-opus-4-6",
+    "https://platform.claude.com/docs/en/models/sonnet-4-5/overview",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+   ],
+   "confidence": "verified",
+   "notes": "Contexte 200K (1M en bêta). Déprécié le 2026-09-30, retrait prévu le 2026-11-30."
+  },
+  {
+   "id": "claude-haiku-4-5",
+   "name": "Claude Haiku 4.5",
+   "actor": "Anthropic",
+   "family": "claude-haiku",
+   "replaces": "claude-3-5-haiku",
+   "date": "2025-10-15",
+   "status": "ga",
+   "price_in": 1,
+   "price_out": 5,
+   "context_k": 200,
+   "output_k": 64,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 73.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-haiku-4-5"
+    },
+    "terminal-bench-1": {
+     "value": 41.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-haiku-4-5"
+    },
+    "osworld-verified": {
+     "value": 50.7,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-haiku-4-5"
+    },
+    "gpqa-diamond": {
+     "value": 73.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-haiku-4-5"
+    },
+    "aime-2025": {
+     "value": 80.7,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-haiku-4-5",
+     "note": "96,3 % avec Python."
+    }
+   },
+   "sources": [
+    "https://platform.claude.com/docs/en/about-claude/models/overview",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+    "https://www.anthropic.com/news/claude-haiku-4-5",
+    "https://platform.claude.com/docs/en/models/haiku-4-5/overview",
+    "https://platform.claude.com/docs/en/about-claude/pricing"
+   ],
+   "confidence": "verified",
+   "notes": "Aucun nouveau Haiku entre juin et octobre 2026. La page de Claude Sonnet 5.5 (28 sept. 2026) annonce Claude Haiku 5.5 « dans les prochaines semaines ». Retraite au plus tôt le 2026-10-15 (engagement minimal, pas une date annoncée).",
+   "en_clair": "Le modèle rapide et économique d'Anthropic, sorti en octobre 2025. Anthropic annonce Haiku 5.5 « dans les prochaines semaines ».",
+   "claims": [
+    {
+     "text": "Claude Haiku 5.5 annoncé « dans les prochaines semaines » (annonce de Sonnet 5.5)",
+     "source": "https://www.anthropic.com/claude-sonnet-5-5"
+    }
+   ]
+  },
+  {
+   "id": "gpt-5-1",
+   "name": "GPT-5.1",
+   "actor": "OpenAI",
+   "family": "gpt-flagship",
+   "replaces": "gpt-5",
+   "date": "2025-11-12",
+   "status": "ga",
+   "price_in": 1.25,
+   "price_out": 10,
+   "context_k": 400,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 76.3,
+     "official": true,
+     "source": "https://www.datalearner.com/en/benchmarks/SWE-bench-Verified",
+     "note": "Aussi cité par Anthropic ; GPT-5.1-Codex-Max : 77,9 %."
+    },
+    "terminal-bench-2": {
+     "value": 47.6,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-opus-4-5",
+     "note": "Tableau Anthropic ; GPT-5.1-Codex-Max : 58,1 %."
+    },
+    "gpqa-diamond": {
+     "value": 88.1,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-opus-4-5",
+     "note": "Cité par Anthropic."
+    },
+    "arc-agi-2": {
+     "value": 17.6,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-opus-4-5",
+     "note": "Cité par Anthropic."
+    }
+   },
+   "sources": [
+    "https://getdeploying.com/llms/gpt-5.1",
+    "https://blockchain.news/ainews/gpt-5-1-api-release-new-features-codex-models-and-24-hour-prompt-caching-for-developers",
+    "https://www.anthropic.com/news/claude-opus-4-5"
+   ],
+   "confidence": "verified",
+   "notes": "ChatGPT le 2025-11-12, API (snapshot gpt-5.1-2025-11-13) le lendemain."
+  },
+  {
+   "id": "gemini-3-pro",
+   "name": "Gemini 3 Pro",
+   "actor": "Google",
+   "family": "gemini-pro",
+   "replaces": "gemini-2-5-pro",
+   "date": "2025-11-18",
+   "status": "preview",
+   "price_in": 2,
+   "price_out": 12,
+   "context_k": 1000,
+   "output_k": 64,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 76.2,
+     "official": true,
+     "source": "https://vellum.ai/blog/google-gemini-3-benchmarks",
+     "note": "Aussi cité par Anthropic."
+    },
+    "terminal-bench-2": {
+     "value": 54.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6",
+     "note": "56,2 % mesuré par Anthropic."
+    },
+    "gpqa-diamond": {
+     "value": 91.9,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-5"
+    },
+    "hle-no-tools": {
+     "value": 37.5,
+     "official": true,
+     "source": "https://vellum.ai/blog/google-gemini-3-benchmarks"
+    },
+    "hle-tools": {
+     "value": 45.8,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6"
+    },
+    "arc-agi-2": {
+     "value": 31.1,
+     "official": true,
+     "source": "https://vellum.ai/blog/google-gemini-3-benchmarks",
+     "note": "45,1 % en Deep Think."
+    },
+    "aime-2025": {
+     "value": 95.0,
+     "official": true,
+     "source": "https://vellum.ai/blog/google-gemini-3-benchmarks"
+    }
+   },
+   "sources": [
+    "https://vellum.ai/blog/google-gemini-3-benchmarks",
+    "https://dev.to/dr_hernani_costa/gemini-3-pro-vs-flash-choose-the-right-ai-model-for-2025-286p",
+    "https://www.anthropic.com/news/claude-opus-4-5",
+    "https://www.anthropic.com/news/claude-opus-4-6"
+   ],
+   "confidence": "verified",
+   "notes": "Prix <=200K : 2/12 $ ; >200K : 4/18 $. Contexte 1M, sortie 64K."
+  },
+  {
+   "id": "claude-opus-4-5",
+   "name": "Claude Opus 4.5",
+   "actor": "Anthropic",
+   "family": "claude-opus",
+   "replaces": "claude-opus-4-1",
+   "date": "2025-11-24",
+   "status": "ga",
+   "price_in": 5,
+   "price_out": 25,
+   "context_k": 200,
+   "output_k": 64,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 80.9,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-5"
+    },
+    "terminal-bench-2": {
+     "value": 59.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-5",
+     "note": "59,8 % dans le tableau Opus 4.6."
+    },
+    "osworld-verified": {
+     "value": 66.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-5"
+    },
+    "arc-agi-2": {
+     "value": 37.6,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-5"
+    },
+    "gpqa-diamond": {
+     "value": 87.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-5"
+    },
+    "hle-no-tools": {
+     "value": 30.8,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6"
+    },
+    "hle-tools": {
+     "value": 43.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6"
+    }
+   },
+   "sources": [
+    "https://www.anthropic.com/news/claude-opus-4-5",
+    "https://www.anthropic.com/news/claude-opus-4-6",
+    "https://platform.claude.com/docs/en/models/opus-4-5/overview",
+    "https://platform.claude.com/docs/en/about-claude/pricing"
+   ],
+   "confidence": "verified",
+   "notes": "Baisse de prix de la gamme Opus : 15/75 $ -> 5/25 $. ID claude-opus-4-5-20251101."
+  },
+  {
+   "id": "deepseek-v3-2",
+   "name": "DeepSeek-V3.2",
+   "actor": "DeepSeek",
+   "family": "deepseek",
+   "replaces": "deepseek-v3-1",
+   "date": "2025-12-01",
+   "status": "ga",
+   "price_in": 0.28,
+   "price_out": 0.42,
+   "context_k": 128,
+   "open_weights": true,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 73.1,
+     "official": true,
+     "source": "https://arxiv.org/pdf/2512.02556"
+    },
+    "gpqa-diamond": {
+     "value": 82.4,
+     "official": true,
+     "source": "https://arxiv.org/pdf/2512.02556"
+    }
+   },
+   "sources": [
+    "https://arxiv.org/pdf/2512.02556",
+    "https://c3.unu.edu/blog/inside-deepseeks-end-of-year-ai-breakthrough-what-the-new-models-deliver",
+    "https://github.com/deepseek-ai/DeepSeek-V3.2-Exp"
+   ],
+   "confidence": "uncertain",
+   "notes": "Sortie avec V3.2-Speciale. Scores du rapport technique via résumé de recherche (arXiv bloqué). Prix 0,28/0,42 $ formulé 'autour de' par la source. V3.2-Exp (29/09/2025, GitHub) : SWE-bench Verified 67,8, GPQA 79,9, HLE 19,8, AIME 2025 89,3."
+  },
+  {
+   "id": "mistral-large-3",
+   "name": "Mistral Large 3",
+   "actor": "Mistral",
+   "family": "mistral-large",
+   "replaces": "mistral-large-2",
+   "date": "2025-12-02",
+   "status": "ga",
+   "price_in": 0.5,
+   "price_out": 1.5,
+   "context_k": 256,
+   "open_weights": true,
+   "scores": {},
+   "sources": [
+    "https://openrouter.ai/mistralai/mistral-large-2512/pricing",
+    "https://losclouds.com/ai-models/mistral-large-3"
+   ],
+   "confidence": "verified",
+   "notes": "MoE 675B total / 41B actifs, licence Apache 2.0 (pas MIT), contexte 256K (262 144). Annonce du 2 déc. 2025 (un listing indique le 1er). Pas de SWE-bench Verified officiel.",
+   "en_clair": "Le plus grand modèle de Mistral (décembre 2025) : ouvert, très bon marché, et autorisé par notre charte."
+  },
+  {
+   "id": "devstral-2",
+   "name": "Devstral 2",
+   "actor": "Mistral",
+   "family": "devstral",
+   "date": "2025-12-09",
+   "status": "ga",
+   "price_in": 0.4,
+   "price_out": 2,
+   "context_k": 256,
+   "open_weights": true,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 72.2,
+     "official": true,
+     "source": "https://innovatopia.jp/ai/ai-news/74383/"
+    }
+   },
+   "sources": [
+    "https://innovatopia.jp/ai/ai-news/74383/",
+    "https://www.verdent.ai/guides/model/devstral-2"
+   ],
+   "confidence": "uncertain",
+   "notes": "123B dense, licence MIT modifiée, 256K. Date exacte (9 déc. 2025) de mémoire, recherche : 'décembre 2025'. Devstral Small 2 (24B, Apache 2.0) : 68,0 %. Devstral (Small) de mai 2025 non inclus."
+  },
+  {
+   "id": "gpt-5-2",
+   "name": "GPT-5.2",
+   "actor": "OpenAI",
+   "family": "gpt-flagship",
+   "replaces": "gpt-5-1",
+   "date": "2025-12-11",
+   "status": "ga",
+   "price_in": 1.75,
+   "price_out": 14,
+   "context_k": 400,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 80.0,
+     "official": true,
+     "source": "https://anotherwrapper.com/tools/llm-pricing/gpt-5.2-2025-12-11",
+     "note": "Aussi cité par Anthropic."
+    },
+    "terminal-bench-2": {
+     "value": 64.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6",
+     "note": "64,7 % mesuré par Anthropic."
+    },
+    "gpqa-diamond": {
+     "value": 93.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6"
+    },
+    "arc-agi-2": {
+     "value": 54.2,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6"
+    },
+    "hle-no-tools": {
+     "value": 36.6,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6"
+    },
+    "hle-tools": {
+     "value": 50.0,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6"
+    }
+   },
+   "sources": [
+    "https://anotherwrapper.com/tools/llm-pricing/gpt-5.2-2025-12-11",
+    "https://www.datalearner.com/en/ai-models/pretrained-models/739",
+    "https://www.anthropic.com/news/claude-opus-4-6"
+   ],
+   "confidence": "verified",
+   "notes": "Hausse de prix vs GPT-5.1 (1,25/10 -> 1,75/14 $). Plusieurs scores du tableau Anthropic sont ceux de la variante Pro."
+  },
+  {
+   "id": "gemini-3-flash",
+   "name": "Gemini 3 Flash",
+   "actor": "Google",
+   "family": "gemini-flash",
+   "replaces": "gemini-2-5-flash",
+   "date": "2025-12-17",
+   "status": "preview",
+   "price_in": 0.5,
+   "price_out": 3,
+   "context_k": 1000,
+   "output_k": 64,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 78.0,
+     "official": true,
+     "source": "https://anotherwrapper.com/llm-pricing/gemini-3-flash-preview",
+     "note": "Aussi cité par Anthropic (tableau Sonnet 4.6)."
+    }
+   },
+   "sources": [
+    "https://anotherwrapper.com/llm-pricing/gemini-3-flash-preview",
+    "https://www.anthropic.com/news/claude-sonnet-4-6"
+   ],
+   "confidence": "verified",
+   "notes": "GPQA 90,4 / HLE 33,7 (mémoire) non retenus faute de source."
+  },
+  {
+   "id": "claude-opus-4-6",
+   "name": "Claude Opus 4.6",
+   "actor": "Anthropic",
+   "family": "claude-opus",
+   "replaces": "claude-opus-4-5",
+   "date": "2026-02-05",
+   "status": "ga",
+   "price_in": 5,
+   "price_out": 25,
+   "context_k": 1000,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 80.8,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6",
+     "note": "81,42 % avec modification du prompt."
+    },
+    "swe-bench-pro": {
+     "value": 53.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7"
+    },
+    "terminal-bench-2": {
+     "value": 65.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6"
+    },
+    "osworld-verified": {
+     "value": 72.7,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6"
+    },
+    "arc-agi-2": {
+     "value": 68.8,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6"
+    },
+    "gpqa-diamond": {
+     "value": 91.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6"
+    },
+    "hle-no-tools": {
+     "value": 40.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6"
+    },
+    "hle-tools": {
+     "value": 53.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-6",
+     "note": "Mis à jour à 53,3 % dans le tableau Opus 4.7 (53,1 % sur la page Glasswing)."
+    }
+   },
+   "sources": [
+    "https://www.anthropic.com/news/claude-opus-4-6",
+    "https://www.anthropic.com/news/claude-opus-4-7",
+    "https://platform.claude.com/docs/en/models/opus-4-6/overview",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+   ],
+   "confidence": "verified",
+   "notes": "Premier Opus avec contexte 1M (bêta au lancement ; tarif premium 10/37,50 $ au-delà de 200K tokens). Sortie max 128K (doc)."
+  },
+  {
+   "id": "gpt-5-3-codex",
+   "name": "GPT-5.3-Codex",
+   "actor": "OpenAI",
+   "family": "gpt-codex",
+   "date": "2026-02-05",
+   "status": "ga",
+   "price_in": 1.75,
+   "price_out": 14,
+   "context_k": 400,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-pro": {
+     "value": 56.8,
+     "official": true,
+     "source": "https://openai.com/index/introducing-gpt-5-3-codex"
+    },
+    "terminal-bench-2": {
+     "value": 77.3,
+     "official": true,
+     "source": "https://openai.com/index/introducing-gpt-5-3-codex"
+    },
+    "osworld-verified": {
+     "value": 64.7,
+     "official": true,
+     "source": "https://openai.com/index/introducing-gpt-5-3-codex"
+    }
+   },
+   "sources": [
+    "https://openai.com/index/introducing-gpt-5-3-codex",
+    "https://www.morphllm.com/codex-5-3",
+    "https://pricepertoken.com/pricing-page/model/openai-gpt-5.3-codex",
+    "https://anotherwrapper.com/llm-pricing/gpt-5.3-codex"
+   ],
+   "confidence": "uncertain",
+   "notes": "Scores et date confirmés via des comptes rendus de l'annonce OpenAI (openai.com bloqué par le proxy). Prix API incertain : 1,75/14 $ (deux agrégateurs) contre 2/10 $ (morphllm). OpenAI n'a pas publié de SWE-bench Verified pour ce modèle (SWE-bench Pro à la place). Prédécesseurs Codex (5.1-Codex-Max, 5.2-Codex) non inclus."
+  },
+  {
+   "id": "claude-sonnet-4-6",
+   "name": "Claude Sonnet 4.6",
+   "actor": "Anthropic",
+   "family": "claude-sonnet",
+   "replaces": "claude-sonnet-4-5",
+   "date": "2026-02-17",
+   "status": "ga",
+   "price_in": 3,
+   "price_out": 15,
+   "context_k": 1000,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 79.6,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-6",
+     "note": "80,2 % avec modification du prompt."
+    },
+    "terminal-bench-2": {
+     "value": 59.1,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-6"
+    },
+    "osworld-verified": {
+     "value": 78.5,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-5",
+     "note": "valeur mise à jour par Anthropic dans l'annonce de Sonnet 5 (méthode d'éval révisée)"
+    },
+    "arc-agi-2": {
+     "value": 58.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-6",
+     "note": "60,4 % en effort high (note de bas de page)."
+    },
+    "gpqa-diamond": {
+     "value": 89.9,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-4-6"
+    },
+    "hle-no-tools": {
+     "value": 34.6,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-5",
+     "note": "valeur mise à jour (nouveau modèle correcteur)"
+    },
+    "hle-tools": {
+     "value": 46.8,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-5",
+     "note": "valeur mise à jour (nouveau modèle correcteur)"
+    }
+   },
+   "sources": [
+    "https://platform.claude.com/docs/en/models/sonnet-4-6/overview",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+    "https://www.anthropic.com/news/claude-sonnet-5",
+    "https://www.anthropic.com/news/claude-sonnet-4-6",
+    "https://platform.claude.com/docs/en/about-claude/pricing"
+   ],
+   "confidence": "verified",
+   "notes": "Modèle antérieur à la période, gardé pour la comparaison avant/après. Legacy, retraite au plus tôt le 2027-02-17. models-data.json indique 200k de contexte ; la doc officielle donne 1M."
+  },
+  {
+   "id": "gemini-3-1-pro",
+   "name": "Gemini 3.1 Pro",
+   "actor": "Google",
+   "family": "gemini-pro",
+   "replaces": "gemini-3-pro",
+   "date": "2026-02-19",
+   "status": "preview",
+   "price_in": 2,
+   "price_out": 12,
+   "context_k": 1000,
+   "output_k": 64,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 80.6,
+     "official": true,
+     "source": "https://techinformed.com/google-rolls-out-gemini-3-1-pro-preview/"
+    },
+    "swe-bench-pro": {
+     "value": 54.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7",
+     "note": "Cité par Anthropic."
+    },
+    "terminal-bench-2": {
+     "value": 68.5,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7",
+     "note": "Cité par Anthropic."
+    },
+    "gpqa-diamond": {
+     "value": 94.3,
+     "official": true,
+     "source": "https://techinformed.com/google-rolls-out-gemini-3-1-pro-preview/"
+    },
+    "hle-no-tools": {
+     "value": 44.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7"
+    },
+    "hle-tools": {
+     "value": 51.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7"
+    },
+    "arc-agi-2": {
+     "value": 77.1,
+     "official": true,
+     "source": "https://techinformed.com/google-rolls-out-gemini-3-1-pro-preview/"
+    },
+    "terminal-bench-2-1": {
+     "value": 70.3,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-opus-4-8",
+     "note": "Tableau Anthropic Opus 4.8."
+    },
+    "osworld-verified": {
+     "value": 76.2,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-opus-4-8",
+     "note": "Tableau Anthropic Opus 4.8 (Google n'en publiait pas)."
+    }
+   },
+   "sources": [
+    "https://techinformed.com/google-rolls-out-gemini-3-1-pro-preview/",
+    "https://charonhub.deeplearning.ai/google-releases-gemini-3-1-pro-in-preview-tops-intelligence-index-at-same-price/",
+    "https://www.anthropic.com/news/claude-opus-4-7",
+    "https://www.anthropic.com/news/claude-opus-4-8",
+    "https://cloudprice.net/models/google-gemini-3-1-pro"
+   ],
+   "confidence": "verified",
+   "notes": "Preview le 2026-02-19, même prix que 3 Pro. Contexte 1M (pas 2M).",
+   "en_clair": "Le haut de gamme de Google accessible au public, en attendant l'ouverture de Gemini 4 Argon."
+  },
+  {
+   "id": "gpt-5-4",
+   "name": "GPT-5.4",
+   "actor": "OpenAI",
+   "family": "gpt-flagship",
+   "replaces": "gpt-5-2",
+   "date": "2026-03-05",
+   "status": "ga",
+   "price_in": 2.5,
+   "price_out": 15,
+   "context_k": 1050,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-pro": {
+     "value": 57.7,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7",
+     "note": "Valeur OpenAI reprise dans le tableau Anthropic Opus 4.7."
+    },
+    "terminal-bench-2": {
+     "value": 75.1,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7"
+    },
+    "osworld-verified": {
+     "value": 75.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7"
+    },
+    "gpqa-diamond": {
+     "value": 94.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7"
+    },
+    "hle-no-tools": {
+     "value": 42.7,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7"
+    },
+    "hle-tools": {
+     "value": 58.7,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7"
+    }
+   },
+   "sources": [
+    "https://pricepertoken.com/pricing-page/model/openai-gpt-5.4",
+    "https://benchlm.ai/blog/posts/openai-api-pricing",
+    "https://www.anthropic.com/news/claude-opus-4-7"
+   ],
+   "confidence": "verified",
+   "notes": "Contexte ~1,05M (agrégateurs : 'jusqu'à 1,1M'). Pas de SWE-bench Verified publié (tiret dans le tableau Anthropic)."
+  },
+  {
+   "id": "claude-mythos-preview",
+   "name": "Claude Mythos Preview",
+   "actor": "Anthropic",
+   "family": "claude-mythos",
+   "date": "2026-04-07",
+   "status": "deprecated",
+   "price_in": 25,
+   "price_out": 125,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 93.9,
+     "official": true,
+     "source": "https://www.anthropic.com/glasswing"
+    },
+    "swe-bench-pro": {
+     "value": 77.8,
+     "official": true,
+     "source": "https://www.anthropic.com/glasswing"
+    },
+    "terminal-bench-2": {
+     "value": 82.0,
+     "official": true,
+     "source": "https://www.anthropic.com/glasswing",
+     "note": "92,1 % avec timeouts de 4 h et mises à jour Terminal-Bench 2.1."
+    },
+    "gpqa-diamond": {
+     "value": 94.6,
+     "official": true,
+     "source": "https://www.anthropic.com/glasswing"
+    },
+    "hle-no-tools": {
+     "value": 56.8,
+     "official": true,
+     "source": "https://www.anthropic.com/glasswing",
+     "note": "Anthropic signale une possible mémorisation sur HLE."
+    },
+    "hle-tools": {
+     "value": 64.7,
+     "official": true,
+     "source": "https://www.anthropic.com/glasswing"
+    },
+    "osworld-verified": {
+     "value": 79.6,
+     "official": true,
+     "source": "https://www.anthropic.com/glasswing"
+    }
+   },
+   "sources": [
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+    "https://www.anthropic.com/news/expanding-project-glasswing",
+    "https://www.anthropic.com/glasswing",
+    "https://www.anthropic.com/news/claude-opus-4-7"
+   ],
+   "confidence": "verified",
+   "notes": "Préversion réservée à Project Glasswing (programme lancé en avril 2026, date exacte non vérifiée). Dépréciée le 9 juin 2026, retrait « à annoncer ». Le 93.9 % SWE-bench de models-data.json est une rumeur, pas un chiffre officiel : non repris."
+  },
+  {
+   "id": "claude-opus-4-7",
+   "name": "Claude Opus 4.7",
+   "actor": "Anthropic",
+   "family": "claude-opus",
+   "replaces": "claude-opus-4-6",
+   "date": "2026-04-16",
+   "status": "ga",
+   "price_in": 5,
+   "price_out": 25,
+   "context_k": 1000,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 87.6,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7"
+    },
+    "swe-bench-pro": {
+     "value": 64.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7"
+    },
+    "terminal-bench-2": {
+     "value": 69.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7"
+    },
+    "osworld-verified": {
+     "value": 78.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7",
+     "note": "Réévalué à 82,8 % (tableau) / 82,3 % (note) dans l'annonce Opus 4.8 après changement de méthodologie."
+    },
+    "gpqa-diamond": {
+     "value": 94.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7"
+    },
+    "hle-no-tools": {
+     "value": 46.9,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7"
+    },
+    "hle-tools": {
+     "value": 54.7,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-7"
+    }
+   },
+   "sources": [
+    "https://www.anthropic.com/news/claude-opus-4-7",
+    "https://www.anthropic.com/news/claude-opus-4-8",
+    "https://platform.claude.com/docs/en/models/opus-4-7/overview",
+    "https://platform.claude.com/docs/en/about-claude/pricing"
+   ],
+   "confidence": "verified",
+   "notes": "Contexte 1M au tarif standard. Nouveau tokenizer (~30 % de tokens en plus pour un même texte, doc pricing) : le coût réel par texte augmente à prix facial égal."
+  },
+  {
+   "id": "gpt-5-5",
+   "name": "GPT-5.5",
+   "actor": "OpenAI",
+   "family": "gpt-flagship",
+   "replaces": "gpt-5-4",
+   "date": "2026-04-23",
+   "status": "ga",
+   "price_in": 5,
+   "price_out": 30,
+   "context_k": 1000,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-2": {
+     "value": 82.7,
+     "official": true,
+     "source": "https://decrypt.co/365333/openai-gpt-5-5-release-agentic-coding-benchmarks",
+     "note": "Leaderboard Terminal-Bench le même jour : 82,0 ± 2,2 %."
+    },
+    "osworld-verified": {
+     "value": 78.7,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-opus-4-8",
+     "note": "table d'Anthropic (Opus 4.8), archive"
+    },
+    "swe-bench-pro": {
+     "value": 58.6,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-opus-4-8",
+     "note": "table d'Anthropic (Opus 4.8), archive"
+    },
+    "terminal-bench-2-1": {
+     "value": 78.2,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-opus-4-8",
+     "note": "83,4 % déclaré par OpenAI avec Codex CLI."
+    },
+    "hle-no-tools": {
+     "value": 41.4,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-opus-4-8",
+     "note": "Cité par Anthropic."
+    },
+    "hle-tools": {
+     "value": 52.2,
+     "official": false,
+     "source": "https://www.anthropic.com/news/claude-opus-4-8",
+     "note": "Cité par Anthropic."
+    },
+    "deepswe-1-1": {
+     "value": 67.0,
+     "official": false,
+     "source": "https://aiweekly.co/alerts/meta-prices-muse-spark-11-api-at-125425-per-m-tokens",
+     "note": "comparatif Muse Spark 1.1, presse"
+    },
+    "mcp-atlas": {
+     "value": 75.3,
+     "official": false,
+     "source": "https://www.techtimes.com/articles/320088/20260710/metas-muse-spark-11-opens-paid-api-one-quarter-anthropic-openai-rates.htm",
+     "note": "table de Meta (Muse Spark 1.1), archive"
+    },
+    "frontierswe": {
+     "value": 72.6,
+     "official": false,
+     "source": "https://huggingface.co/zai-org/GLM-5.2",
+     "note": "table de Z.ai (GLM-5.2), archive"
+    }
+   },
+   "claims": [
+    {
+     "text": "environ 40 % de tokens de sortie en moins que GPT-5.4, prix doublés",
+     "source": "https://www.implicator.ai/openai-gpt-5-5-by-the-numbers-higher-prices-disputed-benchmarks.md"
+    }
+   ],
+   "sources": [
+    "https://framia.converge.ai/page/en-US/news/gpt-5-5-pricing-cost",
+    "https://www.implicator.ai/openai-gpt-5-5-by-the-numbers-higher-prices-disputed-benchmarks.md",
+    "https://decrypt.co/365333/openai-gpt-5-5-release-agentic-coding-benchmarks",
+    "https://www.implicator.ai/openai-gpt-5-5-by-the-numbers-higher-prices-disputed-benchmarks/",
+    "https://www.anthropic.com/news/claude-opus-4-8"
+   ],
+   "confidence": "verified",
+   "notes": "Modèle antérieur à la période (avant/après). API ouverte le 24 avril, cache $0.50/M. Contexte : 1M dans models-data.json, 1,1M selon la presse, donc null. Statut API actuel non vérifié (GPT-5.2 retiré de ChatGPT le 12 juin, pas de l'API)."
+  },
+  {
+   "id": "mistral-medium-3-5",
+   "name": "Mistral Medium 3.5",
+   "actor": "Mistral",
+   "family": "mistral-medium",
+   "replaces": "mistral-medium-3",
+   "date": "2026-04-29",
+   "status": "ga",
+   "price_in": 1.5,
+   "price_out": 7.5,
+   "context_k": 256,
+   "open_weights": true,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 77.6,
+     "official": true,
+     "source": "https://datanorth.ai/news/mistral-medium-3-5-release"
+    }
+   },
+   "sources": [
+    "https://datanorth.ai/news/mistral-medium-3-5-release",
+    "https://llm-stats.com/models/mistral-medium-3-5",
+    "https://gigazine.net/gsc_news/en/20260430-mistral-medium-3-5/",
+    "https://mistral.ai/news/vibe-remote-agents-mistral-medium-3-5",
+    "https://en.wikipedia.org/wiki/Mistral_AI"
+   ],
+   "confidence": "verified",
+   "notes": "128B dense, poids ouverts (MIT modifiée), 256K. Sortie le 29-30 avr. 2026 (le brief interne du 11/05 la date du 2 mai, jour de l'annonce Vibe Remote Agents). Le Medium 3.1 intermédiaire n'est pas inclus.",
+   "en_clair": "Le modèle intermédiaire de Mistral (avril 2026), ouvert. Aucun nouveau modèle généraliste chez Mistral depuis."
+  },
+  {
+   "id": "gemini-3-5-flash",
+   "name": "Gemini 3.5 Flash",
+   "actor": "Google",
+   "family": "gemini-flash",
+   "replaces": "gemini-3-flash",
+   "date": "2026-05-19",
+   "status": "ga",
+   "price_in": 1.5,
+   "price_out": 9,
+   "context_k": 1000,
+   "output_k": 64,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-2-1": {
+     "value": 76.2,
+     "official": true,
+     "source": "https://latent.space/p/ainews-google-io-2026-gemini-35-flash"
+    },
+    "mcp-atlas": {
+     "value": 83.6,
+     "official": true,
+     "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/",
+     "note": "archive"
+    },
+    "osworld-verified": {
+     "value": 78.4,
+     "official": true,
+     "source": "https://the-decoder.com/google-bakes-computer-control-directly-into-gemini-3-5-flash-letting-the-model-see-and-operate-your-screen/",
+     "note": "computer use natif (24 juin), archive"
+    },
+    "gdpval-aa": {
+     "value": 1656,
+     "official": true,
+     "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/",
+     "note": "archive (mai)"
+    },
+    "deepswe-1-1": {
+     "value": 37,
+     "official": true,
+     "source": "https://www.chatbase.co/blog/gemini-3-6-flash",
+     "note": "comparatif de 3.6 Flash (version DeepSWE non précisée)"
+    },
+    "mle-bench": {
+     "value": 49.7,
+     "official": true,
+     "source": "https://www.chatbase.co/blog/gemini-3-6-flash",
+     "note": "comparatif de 3.6 Flash"
+    },
+    "swe-bench-pro": {
+     "value": 55.1,
+     "official": true,
+     "source": "https://latent.space/p/ainews-google-io-2026-gemini-35-flash"
+    },
+    "gpqa-diamond": {
+     "value": 92.2,
+     "official": false,
+     "source": "https://www.requesty.ai/models/compare/google--gemini-3.5-flash/openai--gpt-5.4",
+     "note": "Source unique non officielle."
+    },
+    "hle-no-tools": {
+     "value": 42.7,
+     "official": false,
+     "source": "https://www.requesty.ai/models/compare/google--gemini-3.5-flash/openai--gpt-5.4",
+     "note": "Source unique non officielle, variante non précisée."
+    }
+   },
+   "claims": [
+    {
+     "text": "génération 4× plus rapide que les modèles frontière concurrents (selon Google)",
+     "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/"
+    }
+   ],
+   "sources": [
+    "https://latent.space/p/ainews-google-io-2026-gemini-35-flash",
+    "https://letsdatascience.com/news/google-delays-gemini-35-pro-releases-35-flash-at-io-0dcab6cd",
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/",
+    "https://www.chatbase.co/blog/gemini-3-6-flash"
+   ],
+   "confidence": "verified",
+   "notes": "GA directe à Google I/O (2026-05-19). 3x le prix de Gemini 3 Flash. Google publie SWE-bench Pro, pas SWE-bench Verified (le 81,0 % de models-data.json n'a pas de source). Gemini 3.5 Pro annoncé pour juin (hors périmètre)."
+  },
+  {
+   "id": "claude-opus-4-8",
+   "name": "Claude Opus 4.8",
+   "actor": "Anthropic",
+   "family": "claude-opus",
+   "replaces": "claude-opus-4-7",
+   "date": "2026-05-28",
+   "status": "ga",
+   "price_in": 5,
+   "price_out": 25,
+   "context_k": 1000,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 88.6,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-8",
+     "note": "archive uniquement (brief 2026-06-01)"
+    },
+    "swe-bench-pro": {
+     "value": 69.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-8",
+     "note": "archive uniquement"
+    },
+    "terminal-bench-2-1": {
+     "value": 74.6,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-8"
+    },
+    "osworld-verified": {
+     "value": 83.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-8",
+     "note": "archive uniquement"
+    },
+    "hle-no-tools": {
+     "value": 49.8,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-8"
+    },
+    "hle-tools": {
+     "value": 57.9,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-8"
+    },
+    "gdpval-aa": {
+     "value": 1890,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-4-8",
+     "note": "archive uniquement ; version GDPval-AA non précisée"
+    },
+    "mcp-atlas": {
+     "value": 82.2,
+     "official": false,
+     "source": "https://www.techtimes.com/articles/320088/20260710/metas-muse-spark-11-opens-paid-api-one-quarter-anthropic-openai-rates.htm",
+     "note": "table de Meta (Muse Spark 1.1), archive"
+    },
+    "frontierswe": {
+     "value": 75.1,
+     "official": false,
+     "source": "https://huggingface.co/zai-org/GLM-5.2",
+     "note": "table de Z.ai (GLM-5.2), archive"
+    }
+   },
+   "claims": [
+    {
+     "text": "fast mode à $10/$50, 3× moins cher que celui d'Opus 4.7",
+     "source": "archive:veille-ia/briefs/2026-06-01.json#2026-06-01-claude-opus-4-8"
+    }
+   ],
+   "sources": [
+    "https://platform.claude.com/docs/en/models/opus-4-8/overview",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+    "https://www.anthropic.com/news/claude-opus-4-8",
+    "https://www.anthropic.com/claude-opus-4-8-system-card",
+    "https://platform.claude.com/docs/en/about-claude/pricing",
+    "https://vellum.ai/blog/claude-opus-4-8-benchmarks-explained",
+    "https://codersera.com/blog/claude-opus-4-8-launch-guide-2026/amp/"
+   ],
+   "confidence": "verified",
+   "notes": "Modèle antérieur à la période (gardé pour avant/après). Prix, date, contexte et sortie vérifiés sur la doc officielle ; scores issus de l'archive (brief 2026-06-01). Legacy, retraite au plus tôt le 2027-05-28."
+  },
+  {
+   "id": "claude-fable-5",
+   "name": "Claude Fable 5",
+   "actor": "Anthropic",
+   "family": "claude-fable",
+   "date": "2026-06-09",
+   "status": "ga",
+   "price_in": 10,
+   "price_out": 50,
+   "context_k": 1000,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 95.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+     "note": "tableau en image sur la page officielle ; confirmé par l'archive et des sources tierces (computingforgeeks)"
+    },
+    "swe-bench-pro": {
+     "value": 80.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+     "note": "idem"
+    },
+    "osworld-verified": {
+     "value": 85.0,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+     "note": "idem"
+    },
+    "terminal-bench-2-1": {
+     "value": 84.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+     "note": "d'après la presse (computingforgeeks) : 84.3 % avec bascule de sécurité dans 20,9 % des essais ; archive « ~84 % »"
+    },
+    "terminal-bench-science": {
+     "value": 24.7,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    },
+    "terminal-bench-4": {
+     "value": 42.0,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    },
+    "gdpval-aa-v2": {
+     "value": 1723,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    },
+    "osworld-2-0": {
+     "value": 72.9,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    },
+    "osworld-2-0-strict": {
+     "value": 36.1,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    },
+    "hle-no-tools": {
+     "value": 57.8,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    },
+    "hle-tools": {
+     "value": 63.8,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    },
+    "automationbench": {
+     "value": 17.1,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    },
+    "cursorbench-3-2": {
+     "value": 70.5,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    }
+   },
+   "claims": [
+    {
+     "text": "classifieurs de sécurité qui basculent les requêtes sensibles vers Opus 4.8, déclenchés dans moins de 5 % des sessions",
+     "source": "archive:veille-ia/briefs/2026-06-15.json#2026-06-15-claude-fable-5-mythos-5"
+    }
+   ],
+   "sources": [
+    "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+    "https://platform.claude.com/docs/en/models/fable-5/overview",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+    "https://www.anthropic.com/news/fable-mythos-access",
+    "https://www.anthropic.com/news/redeploying-fable-5",
+    "https://computingforgeeks.com/claude-fable-5-released-features-benchmarks/"
+   ],
+   "confidence": "verified",
+   "notes": "Mêmes poids que Mythos 5. Suspendu pour tous le 12 juin 2026 (directive de contrôle à l'export US), redéployé le 1er juillet après levée le 30 juin (19 jours de blackout). Legacy (actif), retraite au plus tôt le 2027-06-09. Les valeurs de Terminal-Bench 2.1 divergent selon les sources (voir alt)."
+  },
+  {
+   "id": "claude-mythos-5",
+   "name": "Claude Mythos 5",
+   "actor": "Anthropic",
+   "family": "claude-mythos",
+   "replaces": "claude-mythos-preview",
+   "date": "2026-06-09",
+   "status": "restricted",
+   "price_in": 10,
+   "price_out": 50,
+   "context_k": 1000,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-2-1": {
+     "value": 88.0,
+     "official": false,
+     "source": "https://openai.com/index/gpt-5-6/",
+     "note": "table d'OpenAI au lancement de GPT-5.6, via l'archive ; mêmes poids que Fable 5"
+    }
+   },
+   "sources": [
+    "https://platform.claude.com/docs/en/models/fable-5/overview",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+    "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+    "https://www.anthropic.com/news/redeploying-fable-5",
+    "https://www.bloomberg.com/news/articles/2026-09-10/anthropic-gives-eu-access-to-mythos-months-after-model-s-release"
+   ],
+   "confidence": "verified",
+   "notes": "Mêmes poids que Fable 5, sur invitation (Project Glasswing, cyberdéfense) ; même grille et mêmes specs que Fable 5 d'après la doc. Coupé du 12 juin au 30 juin 2026, puis réservé aux organisations US approuvées. Retraite au plus tôt le 2027-06-09."
+  },
+  {
+   "id": "north-mini-code",
+   "name": "North Mini Code",
+   "actor": "Cohere",
+   "family": "cohere-north",
+   "date": "2026-06-09",
+   "status": "ga",
+   "context_k": 256,
+   "open_weights": true,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 61.0,
+     "official": true,
+     "source": "https://cohere.com/blog/north-mini-code",
+     "note": "pass@1 via mini-SWE-Agent (80.2 % en pass@10) ; archive"
+    }
+   },
+   "claims": [
+    {
+     "text": "jusqu'à 2,8× le débit de sortie de Devstral Small 2",
+     "source": "archive:veille-ia/briefs/2026-06-15.json#2026-06-15-cohere-north-mini-code"
+    }
+   ],
+   "sources": [
+    "https://cohere.com/blog/north-mini-code",
+    "https://huggingface.co/CohereLabs/North-Mini-Code-1.0"
+   ],
+   "confidence": "archive-only",
+   "notes": "MoE 30B / 3B actifs, Apache 2.0, tourne sur un H100 en FP8. Seule sortie Cohere notable de la période (Command A+, open source, date du 20 mai)."
+  },
+  {
+   "id": "diffusiongemma-26b-a4b",
+   "name": "DiffusionGemma 26B-A4B",
+   "actor": "Google",
+   "family": "gemma-diffusion",
+   "date": "2026-06-10",
+   "status": "ga",
+   "context_k": 256,
+   "open_weights": true,
+   "scores": {},
+   "claims": [
+    {
+     "text": "jusqu'à 4× plus rapide que l'équivalent autorégressif ; 1 000 à 1 100+ tokens/s sur un H100 en FP8",
+     "source": "archive:veille-ia/briefs/2026-06-15.json#2026-06-15-diffusiongemma"
+    }
+   ],
+   "sources": [
+    "https://developers.googleblog.com/diffusiongemma-the-developer-guide/"
+   ],
+   "confidence": "archive-only",
+   "notes": "MoE 26B total / 3,8B actifs générant le texte par diffusion, Apache 2.0. Expérimental : Google le dit nettement inférieur à Gemma 4 en raisonnement, maths et code. Aucun score chiffré publié.",
+   "en_clair": "Modèle ouvert expérimental de Google qui génère le texte par « diffusion ». Google le dit moins bon que Gemma 4 en raisonnement et en code."
+  },
+  {
+   "id": "glm-5-2",
+   "name": "GLM-5.2",
+   "actor": "Z.ai",
+   "family": "glm",
+   "date": "2026-06-16",
+   "status": "ga",
+   "price_in": 1.4,
+   "price_out": 4.4,
+   "context_k": 1000,
+   "open_weights": true,
+   "scores": {
+    "swe-bench-pro": {
+     "value": 62.1,
+     "official": true,
+     "source": "https://huggingface.co/zai-org/GLM-5.2"
+    },
+    "frontierswe": {
+     "value": 74.4,
+     "official": true,
+     "source": "https://huggingface.co/zai-org/GLM-5.2",
+     "note": "archive"
+    }
+   },
+   "claims": [
+    {
+     "text": "~1/6 du prix de GPT-5.5 (~$5.80/M combinés contre ~$35)",
+     "source": "archive:veille-ia/briefs/2026-06-22.json#2026-06-22-glm-5-2-open-weights"
+    }
+   ],
+   "sources": [
+    "https://huggingface.co/zai-org/GLM-5.2",
+    "https://huggingface.co/blog/zai-org/glm-52-blog",
+    "https://aiweekly.co/alerts/glm-52-tops-gpt-55-on-coding-benchmarks-at-one-sixth-the-cost",
+    "https://mistral.ai/news/regional-inference-open-models-new-compute/"
+   ],
+   "confidence": "verified",
+   "notes": "Licence MIT, MoE ~750B / ~40B actifs ; self-host sur 8× H100 (1,51 To en BF16). Hébergé aussi par Mistral (zai-glm-5-2) au même prix. Appels à l'API Z.ai soumis au droit chinois."
+  },
+  {
+   "id": "claude-sonnet-5",
+   "name": "Claude Sonnet 5",
+   "actor": "Anthropic",
+   "family": "claude-sonnet",
+   "replaces": "claude-sonnet-4-6",
+   "date": "2026-06-30",
+   "status": "ga",
+   "price_in": 2,
+   "price_out": 10,
+   "context_k": 1000,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 85.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-5",
+     "note": "tableau en image sur la page officielle ; valeur confirmée par l'archive et des sources tierces (cometapi, benchlm)"
+    },
+    "swe-bench-pro": {
+     "value": 63.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-5",
+     "note": "idem (tableau image)"
+    },
+    "swe-bench-multilingual": {
+     "value": 78.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-5",
+     "note": "idem (tableau image)"
+    },
+    "terminal-bench-2-1": {
+     "value": 80.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-5",
+     "note": "idem (tableau image)"
+    },
+    "osworld-verified": {
+     "value": 81.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-5",
+     "note": "archive uniquement pour cette valeur (tableau image)"
+    },
+    "browsecomp": {
+     "value": 84.7,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-sonnet-5",
+     "note": "single-agent ; 86.6 % en multi-agent ; archive uniquement (tableau image)"
+    },
+    "terminal-bench-4": {
+     "value": 10.3,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5",
+     "note": "publié par Anthropic dans la table de Sonnet 5.5 (même éditeur)"
+    },
+    "frontiercode-1-1": {
+     "value": 42.4,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5",
+     "note": "table de Sonnet 5.5"
+    },
+    "cursorbench-4": {
+     "value": 34.1,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5",
+     "note": "table de Sonnet 5.5"
+    },
+    "gdpval-aa-v2-1": {
+     "value": 1449,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5",
+     "note": "table de Sonnet 5.5"
+    },
+    "aa-briefcase": {
+     "value": 1359,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5",
+     "note": "table de Sonnet 5.5"
+    },
+    "hle-tools": {
+     "value": 54.9,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5",
+     "note": "table de Sonnet 5.5"
+    },
+    "osworld-2-1": {
+     "value": 57.0,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5",
+     "note": "table de Sonnet 5.5"
+    },
+    "chartography-no-tools": {
+     "value": 15.6,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5",
+     "note": "table de Sonnet 5.5"
+    }
+   },
+   "claims": [
+    {
+     "text": "prix d'introduction $2/$10 rendu permanent le 10 août 2026 (le passage à $3/$15 prévu au 1er septembre ne s'applique plus)",
+     "source": "https://www.anthropic.com/news/claude-sonnet-5"
+    }
+   ],
+   "sources": [
+    "https://www.anthropic.com/news/claude-sonnet-5",
+    "https://platform.claude.com/docs/en/models/sonnet-5/overview",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+    "https://www.cometapi.com/es/models/anthropic/claude-sonnet-5/",
+    "https://www.benchlm.ai/models/claude-sonnet-5"
+   ],
+   "confidence": "verified",
+   "notes": "Statut legacy (toujours actif), retraite au plus tôt le 2027-06-30. Défaut de Claude Code dès la v2.1.197. Une partie des scores vient de la table de Sonnet 5.5 (même éditeur, donc official:true). Le score Terminal-Bench 4.0 de 10.3 % surprend face aux 70.6 % de Sonnet 5.5 : à revérifier visuellement sur la page."
+  },
+  {
+   "id": "longcat-2-0",
+   "name": "LongCat-2.0",
+   "actor": "Meituan",
+   "family": "longcat",
+   "date": "2026-06-30",
+   "status": "ga",
+   "context_k": 1000,
+   "open_weights": true,
+   "scores": {
+    "swe-bench-pro": {
+     "value": 59.5,
+     "official": true,
+     "source": "https://www.longcatai.org/models/longcat-2",
+     "note": "auto-déclaré, archive"
+    }
+   },
+   "sources": [
+    "https://www.longcatai.org/models/longcat-2"
+   ],
+   "confidence": "archive-only",
+   "notes": "MoE 1,6T sous MIT, entraîné et servi sur des puces chinoises (50 000+ ASIC). Diffusé ~2 mois sur OpenRouter sous le nom « Owl Alpha ». Prix non trouvé."
+  },
+  {
+   "id": "grok-4-5",
+   "name": "Grok 4.5",
+   "actor": "xAI",
+   "family": "grok",
+   "date": "2026-07-08",
+   "status": "ga",
+   "price_in": 2,
+   "price_out": 6,
+   "context_k": 500,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-pro": {
+     "value": 64.7,
+     "official": false,
+     "source": "https://artificialanalysis.ai/articles/grok-4-5-brings-spacexai-to-the-the-intelligence-frontier",
+     "note": "archive ; origine officielle non établie"
+    },
+    "terminal-bench-3": {
+     "value": 15.7,
+     "official": true,
+     "source": "https://x.ai/news",
+     "note": "table de Grok 4.6 (archive)"
+    },
+    "deepswe-1-1": {
+     "value": 54,
+     "official": true,
+     "source": "https://x.ai/news",
+     "note": "table de Grok 4.6 (archive)"
+    }
+   },
+   "claims": [
+    {
+     "text": "~4,2× moins de tokens qu'Opus 4.8 par tâche (Artificial Analysis)",
+     "source": "https://artificialanalysis.ai/articles/grok-4-5-brings-spacexai-to-the-the-intelligence-frontier"
+    }
+   ],
+   "sources": [
+    "https://techcrunch.com/2026/07/08/spacexai-releases-grok-4-5-which-elon-describes-as-an-opus-class-model/",
+    "https://pasqualepillitteri.it/en/news/10915/grok-4-6-released-cursor-grok-build-api"
+   ],
+   "confidence": "verified",
+   "notes": "Co-entraîné avec Cursor. $4/$12 au-delà de 200k. Taux d'hallucination AA-Omniscience passé de 25 % (Grok 4.3) à 54 %. Indisponible dans l'UE au lancement."
+  },
+  {
+   "id": "gpt-5-6-luna",
+   "name": "GPT-5.6 Luna",
+   "actor": "OpenAI",
+   "family": "gpt-mini",
+   "date": "2026-07-09",
+   "status": "ga",
+   "price_in": 0.2,
+   "price_out": 1.2,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-2-1": {
+     "value": 82.5,
+     "official": true,
+     "source": "https://openai.com/index/gpt-5-6/",
+     "note": "archive"
+    }
+   },
+   "claims": [
+    {
+     "text": "prix baissé de 80 % le 30 juillet ($1/$6 → $0.20/$1.20)",
+     "source": "https://www.eweek.com/news/openai-gpt-5-6-api-price-cuts/"
+    }
+   ],
+   "sources": [
+    "https://openai.com/index/gpt-5-6/",
+    "https://datanorth.ai/news/openai-releases-gpt-5-6-sol-terra-and-luna",
+    "https://www.eweek.com/news/openai-gpt-5-6-api-price-cuts/",
+    "https://www.edenai.co/post/openai-cuts-gpt-5-6-api-prices-luna-falls-80-terra-20-sol-holds"
+   ],
+   "confidence": "verified",
+   "notes": "Prix actuel après la baisse du 30 juillet ; prix de lancement $1/$6. Remplacé par GPT-6 Luna le 22 septembre."
+  },
+  {
+   "id": "gpt-5-6-sol",
+   "name": "GPT-5.6 Sol",
+   "actor": "OpenAI",
+   "family": "gpt-flagship",
+   "replaces": "gpt-5-5",
+   "date": "2026-07-09",
+   "status": "ga",
+   "price_in": 5,
+   "price_out": 30,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-2-1": {
+     "value": 88.8,
+     "official": true,
+     "source": "https://openai.com/index/gpt-5-6/",
+     "note": "91.9 % en configuration « Ultra » multi-agents"
+    },
+    "terminal-bench-4": {
+     "value": 37.3,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "tables d'Anthropic (Opus 5.5, Fable 5.1) ; même valeur dans la table d'OpenAI pour Astra"
+    },
+    "terminal-bench-science": {
+     "value": 22.4,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "tables d'Opus 5.5 et de Fable 5.1"
+    },
+    "cursorbench-4": {
+     "value": 41.7,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    },
+    "cursorbench-3-2": {
+     "value": 67.2,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    },
+    "frontiercode-1-1": {
+     "value": 47.5,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    },
+    "gdpval-aa-v2-1": {
+     "value": 1588,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    },
+    "gdpval-aa-v2": {
+     "value": 1711,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    },
+    "automationbench": {
+     "value": 28.8,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    },
+    "aa-briefcase": {
+     "value": 1483,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5",
+     "note": "table de Sonnet 5.5"
+    },
+    "chartography-no-tools": {
+     "value": 53.6,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5",
+     "note": "table de Sonnet 5.5"
+    },
+    "deepswe-1-1": {
+     "value": 72.7,
+     "official": false,
+     "source": "https://www.vellum.ai/md/blog/gemini-3-8-flash-benchmarks-explained",
+     "note": "table de Google (Gemini 3.8 Flash)"
+    },
+    "frontiermath-t4": {
+     "value": 83,
+     "official": true,
+     "source": "https://www.datacamp.com/blog/gpt-6-astra",
+     "note": "table d'OpenAI pour Astra, via la presse"
+    },
+    "osworld-2-0-offline": {
+     "value": 65.7,
+     "official": true,
+     "source": "https://www.datacamp.com/blog/gpt-6-astra",
+     "note": "table d'OpenAI pour Astra, via la presse"
+    }
+   },
+   "claims": [
+    {
+     "text": "54 % plus efficient en tokens sur le code agentique (Sam Altman)",
+     "source": "https://openai.com/index/gpt-5-6/"
+    },
+    {
+     "text": "Fast mode (ex-Priority Processing) depuis le 30 juillet : jusqu'à 2,5× la vitesse au double du prix ($10/$60)",
+     "source": "https://www.eweek.com/news/openai-gpt-5-6-api-price-cuts/"
+    }
+   ],
+   "sources": [
+    "https://openai.com/index/gpt-5-6/",
+    "https://datanorth.ai/news/openai-releases-gpt-5-6-sol-terra-and-luna",
+    "https://rits.shanghai.nyu.edu/ai/openai-launches-gpt-5-6-family-sol-terra-and-luna-reach-general-availability/",
+    "https://www.eweek.com/news/openai-gpt-5-6-api-price-cuts/"
+   ],
+   "confidence": "verified",
+   "notes": "Preview limitée à ~20 partenaires approuvés par le gouvernement US à partir du 26 juin, GA le 9 juillet. Contexte contradictoire : 1,5M (archive, preview) contre ~1,05M (presse, GA), donc laissé à null. METR y a mesuré le taux de reward-hacking le plus élevé de tous les modèles publics évalués. Remplacé par GPT-6 Sol le 22 sept. ; dépréciation non trouvée."
+  },
+  {
+   "id": "gpt-5-6-terra",
+   "name": "GPT-5.6 Terra",
+   "actor": "OpenAI",
+   "family": "gpt-terra",
+   "date": "2026-07-09",
+   "status": "ga",
+   "price_in": 2,
+   "price_out": 12,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-2-1": {
+     "value": 84.3,
+     "official": true,
+     "source": "https://openai.com/index/gpt-5-6/",
+     "note": "archive"
+    }
+   },
+   "claims": [
+    {
+     "text": "prix baissé de 20 % le 30 juillet ($2.50/$15 → $2/$12)",
+     "source": "https://www.eweek.com/news/openai-gpt-5-6-api-price-cuts/"
+    },
+    {
+     "text": "présenté comme compétitif avec GPT-5.5 pour environ deux fois moins cher",
+     "source": "https://datanorth.ai/news/openai-releases-gpt-5-6-sol-terra-and-luna"
+    }
+   ],
+   "sources": [
+    "https://openai.com/index/gpt-5-6/",
+    "https://datanorth.ai/news/openai-releases-gpt-5-6-sol-terra-and-luna",
+    "https://www.eweek.com/news/openai-gpt-5-6-api-price-cuts/",
+    "https://www.edenai.co/post/openai-cuts-gpt-5-6-api-prices-luna-falls-80-terra-20-sol-holds"
+   ],
+   "confidence": "verified",
+   "notes": "Palier intermédiaire sans successeur GPT-6 annoncé. Prix actuel ($2/$12) ; prix de lancement $2.50/$15. Contexte : même contradiction que GPT-5.6 Sol.",
+   "en_clair": "Gamme intermédiaire de la génération 5.6. GPT-6.1 Sol coûte désormais un peu moins cher."
+  },
+  {
+   "id": "muse-spark-1-1",
+   "name": "Muse Spark 1.1",
+   "actor": "Meta",
+   "family": "muse-spark",
+   "date": "2026-07-09",
+   "status": "preview",
+   "price_in": 1.25,
+   "price_out": 4.25,
+   "context_k": 1000,
+   "open_weights": false,
+   "scores": {
+    "mcp-atlas": {
+     "value": 88.1,
+     "official": true,
+     "source": "https://aiweekly.co/alerts/meta-prices-muse-spark-11-api-at-125425-per-m-tokens",
+     "note": "presse"
+    },
+    "terminal-bench-2-1": {
+     "value": 76.2,
+     "official": true,
+     "source": "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2",
+     "note": "valeur donnée par Meta au lancement de 1.2"
+    },
+    "deepswe-1-1": {
+     "value": 53.0,
+     "official": true,
+     "source": "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2",
+     "note": "valeur donnée par Meta au lancement de 1.2"
+    }
+   },
+   "claims": [
+    {
+     "text": "20 $ de crédits offerts, API compatible OpenAI ; preview limitée aux développeurs US",
+     "source": "https://aiweekly.co/alerts/meta-prices-muse-spark-11-api-at-125425-per-m-tokens"
+    }
+   ],
+   "sources": [
+    "https://aiweekly.co/alerts/meta-prices-muse-spark-11-api-at-125425-per-m-tokens",
+    "https://datanorth.ai/news/meta-releases-muse-spark-1-1-agentic-ai-model"
+   ],
+   "confidence": "verified",
+   "notes": "Premier modèle Meta facturé et sans poids ouverts. Muse Spark (avril 2026, non tarifé) n'est pas inclus."
+  },
+  {
+   "id": "gemini-3-5-flash-cyber",
+   "name": "Gemini 3.5 Flash Cyber",
+   "actor": "Google",
+   "family": "gemini-flash-cyber",
+   "date": "2026-07-21",
+   "status": "restricted",
+   "open_weights": false,
+   "scores": {},
+   "sources": [
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/"
+   ],
+   "confidence": "archive-only",
+   "notes": "Pilote à accès limité couplé à l'agent CodeMender. Ni prix ni score publics."
+  },
+  {
+   "id": "gemini-3-5-flash-lite",
+   "name": "Gemini 3.5 Flash-Lite",
+   "actor": "Google",
+   "family": "gemini-flash-lite",
+   "date": "2026-07-21",
+   "status": "ga",
+   "price_in": 0.3,
+   "price_out": 2.5,
+   "open_weights": false,
+   "scores": {},
+   "claims": [
+    {
+     "text": "350 tokens/s en sortie",
+     "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/"
+    }
+   ],
+   "sources": [
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/",
+    "https://www.chatbase.co/blog/gemini-3-6-flash"
+   ],
+   "confidence": "verified",
+   "notes": "Prédécesseur Gemini 3.1 Flash-Lite cité dans l'archive mais non documenté ici.",
+   "en_clair": "La version la plus économique de Gemini, pour les gros volumes."
+  },
+  {
+   "id": "gemini-3-6-flash",
+   "name": "Gemini 3.6 Flash",
+   "actor": "Google",
+   "family": "gemini-flash",
+   "replaces": "gemini-3-5-flash",
+   "date": "2026-07-21",
+   "status": "ga",
+   "price_in": 1.5,
+   "price_out": 7.5,
+   "context_k": 1000,
+   "open_weights": false,
+   "scores": {
+    "deepswe-1-1": {
+     "value": 49.0,
+     "official": true,
+     "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/",
+     "note": "carte de 3.7 Flash ; 49 % à la sortie de 3.6"
+    },
+    "frontiercode-1-1": {
+     "value": 34.4,
+     "official": true,
+     "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/",
+     "note": "archive"
+    },
+    "automationbench": {
+     "value": 17.0,
+     "official": true,
+     "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/",
+     "note": "archive"
+    },
+    "mle-bench": {
+     "value": 63.9,
+     "official": true,
+     "source": "https://www.chatbase.co/blog/gemini-3-6-flash",
+     "note": "presse"
+    },
+    "osworld-verified": {
+     "value": 83.0,
+     "official": true,
+     "source": "https://www.chatbase.co/blog/gemini-3-6-flash",
+     "note": "presse"
+    },
+    "gdpval-aa": {
+     "value": 1421,
+     "official": true,
+     "source": "https://www.chatbase.co/blog/gemini-3-6-flash",
+     "note": "presse ; version non précisée"
+    }
+   },
+   "claims": [
+    {
+     "text": "17 % de tokens de sortie en moins que 3.5 Flash (indice Artificial Analysis)",
+     "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/"
+    }
+   ],
+   "sources": [
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/",
+    "https://www.chatbase.co/blog/gemini-3-6-flash",
+    "https://techcrunch.com/2026/07/21/google-releases-three-new-gemini-models-but-no-3-5-pro/"
+   ],
+   "confidence": "verified",
+   "notes": "Remplacé par 3.7 Flash le 13 août ; statut de l'ID non vérifié."
+  },
+  {
+   "id": "claude-opus-5",
+   "name": "Claude Opus 5",
+   "actor": "Anthropic",
+   "family": "claude-opus",
+   "replaces": "claude-opus-4-8",
+   "date": "2026-07-24",
+   "status": "ga",
+   "price_in": 5,
+   "price_out": 25,
+   "context_k": 1000,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-pro": {
+     "value": 79.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-5",
+     "note": "absent du texte de la page officielle (tableau probablement en image) ; confirmé par l'archive et des sources tierces (edenai, datanorth)"
+    },
+    "arc-agi-3": {
+     "value": 30.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-5",
+     "note": "idem ; la page dit « trois fois le score du modèle suivant »"
+    },
+    "frontier-bench": {
+     "value": 43.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-opus-5",
+     "note": "effort max ; 44.4 % en xhigh (archive) ; même réserve (tableau image)"
+    },
+    "terminal-bench-4": {
+     "value": 52.3,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5 (Anthropic)"
+    },
+    "frontiercode-1-1": {
+     "value": 48.0,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    },
+    "cursorbench-4": {
+     "value": 46.6,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    },
+    "gdpval-aa-v2-1": {
+     "value": 1708,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    },
+    "gdpval-aa-v2": {
+     "value": 1824,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    },
+    "automationbench": {
+     "value": 26.9,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "tables d'Opus 5.5 et de Fable 5.1 (même valeur)"
+    },
+    "hle-tools": {
+     "value": 63.6,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "tables d'Opus 5.5 et de Fable 5.1"
+    },
+    "hle-no-tools": {
+     "value": 56.6,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    },
+    "terminal-bench-science": {
+     "value": 29.0,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "tables d'Opus 5.5 et de Fable 5.1"
+    },
+    "osworld-2-1": {
+     "value": 74.0,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    },
+    "osworld-2-0": {
+     "value": 75.4,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    },
+    "osworld-2-0-strict": {
+     "value": 39.6,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    },
+    "cursorbench-3-2": {
+     "value": 70.0,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+     "note": "table de Fable 5.1"
+    },
+    "chartography": {
+     "value": 83.4,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    },
+    "deepswe-1-1": {
+     "value": 74.0,
+     "official": false,
+     "source": "https://www.vellum.ai/md/blog/gemini-3-8-flash-benchmarks-explained",
+     "note": "chiffre de la table de Google (Gemini 3.8 Flash), relayé par la presse"
+    },
+    "osworld-2-0-offline": {
+     "value": 60.3,
+     "official": false,
+     "source": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+     "note": "effort medium, table d'OpenAI (GPT-6 Sol)"
+    }
+   },
+   "claims": [
+    {
+     "text": "approche l'intelligence de Fable 5 pour moitié prix",
+     "source": "https://www.anthropic.com/news/claude-opus-5"
+    },
+    {
+     "text": "CursorBench 3.2 en effort max : à 0,5 % du meilleur score de Fable 5, pour moitié moins cher par tâche",
+     "source": "https://www.anthropic.com/news/claude-opus-5"
+    },
+    {
+     "text": "ARC-AGI-3 : trois fois le score du modèle suivant",
+     "source": "https://www.anthropic.com/news/claude-opus-5"
+    },
+    {
+     "text": "AutomationBench (Zapier) : taux de réussite ~1,5× le modèle suivant à coût égal",
+     "source": "https://www.anthropic.com/news/claude-opus-5"
+    },
+    {
+     "text": "OSWorld 2.0 : dépasse le meilleur résultat de Fable 5 pour un peu plus d'un tiers du coût",
+     "source": "https://www.anthropic.com/news/claude-opus-5"
+    },
+    {
+     "text": "fast mode ~2,5× plus rapide, au double du prix ($10/$50)",
+     "source": "https://www.anthropic.com/news/claude-opus-5"
+    }
+   ],
+   "sources": [
+    "https://www.anthropic.com/news/claude-opus-5",
+    "https://platform.claude.com/docs/en/models/opus-5/overview",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+    "https://www.edenai.co/post/claude-opus-5-benchmarks-scores-pricing-routing",
+    "https://datanorth.ai/news/claude-opus-5-by-anthropic"
+   ],
+   "confidence": "verified",
+   "notes": "Legacy (actif), retraite au plus tôt le 2027-07-24. Prix, date, contexte et sortie vérifiés sur la doc officielle. Les scores SWE-bench Pro, ARC-AGI-3 et Frontier-Bench ne figurent pas dans le texte de l'annonce (probablement en image) : confirmés par des sources tierces seulement."
+  },
+  {
+   "id": "deepseek-v4-flash",
+   "name": "DeepSeek V4-Flash",
+   "actor": "DeepSeek",
+   "family": "deepseek-flash",
+   "date": "2026-07-31",
+   "status": "ga",
+   "price_in": 0.14,
+   "price_out": 0.28,
+   "context_k": 1000,
+   "open_weights": true,
+   "scores": {
+    "terminal-bench-2-1": {
+     "value": 82.7,
+     "official": true,
+     "source": "https://www.marktechpost.com/2026/07/31/deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains/",
+     "note": "build 0731, harnais DeepSeek non publié ; archive"
+    },
+    "deepswe-1-1": {
+     "value": 54.4,
+     "official": true,
+     "source": "https://www.marktechpost.com/2026/07/31/deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains/",
+     "note": "idem (version DeepSWE non précisée)"
+    },
+    "nl2repo": {
+     "value": 54.2,
+     "official": true,
+     "source": "https://www.marktechpost.com/2026/07/31/deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains/",
+     "note": "idem"
+    },
+    "cybergym": {
+     "value": 76.7,
+     "official": true,
+     "source": "https://www.marktechpost.com/2026/07/31/deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains/",
+     "note": "idem"
+    },
+    "automationbench": {
+     "value": 25.1,
+     "official": true,
+     "source": "https://www.marktechpost.com/2026/07/31/deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains/",
+     "note": "idem"
+    }
+   },
+   "sources": [
+    "https://www.marktechpost.com/2026/07/31/deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains/"
+   ],
+   "confidence": "archive-only",
+   "notes": "Preview depuis le 24 avril ; l'ID deepseek-v4-flash remplace deepseek-chat le 24 juillet ; build 0731 en bêta publique le 31 juillet. MoE 284B / 13B actifs. Prix de lancement : le tarif après la hausse générale du 16 août n'a pas été vérifié."
+  },
+  {
+   "id": "qwen3-8-max",
+   "name": "Qwen3.8-Max",
+   "actor": "Alibaba",
+   "family": "qwen-max",
+   "date": "2026-08-03",
+   "status": "ga",
+   "price_in": 2,
+   "price_out": 6,
+   "context_k": 1000,
+   "open_weights": true,
+   "scores": {
+    "gpqa-diamond": {
+     "value": 92.6,
+     "official": true,
+     "source": "https://datanorth.ai/news/alibaba-releases-qwen3-8-max",
+     "note": "presse"
+    },
+    "terminal-bench-2-1": {
+     "value": 86.6,
+     "official": true,
+     "source": "https://datanorth.ai/news/alibaba-releases-qwen3-8-max",
+     "note": "presse"
+    },
+    "swe-bench-pro": {
+     "value": 67.7,
+     "official": true,
+     "source": "https://datanorth.ai/news/alibaba-releases-qwen3-8-max",
+     "note": "presse"
+    },
+    "frontierswe": {
+     "value": 73.5,
+     "official": true,
+     "source": "https://datanorth.ai/news/alibaba-releases-qwen3-8-max",
+     "note": "presse, version non précisée"
+    }
+   },
+   "sources": [
+    "https://datanorth.ai/news/alibaba-releases-qwen3-8-max",
+    "https://docs.apiyi.com/en/live/2026-08/qwen3-8-max-launch",
+    "https://www.noze.it/en/insights/qwen-3-8-max/",
+    "https://www.dsebastien.net/qwen-3-8/"
+   ],
+   "confidence": "uncertain",
+   "notes": "Absent de l'archive ; web uniquement (sources secondaires). Preview le 19 juillet, GA le 3 août. MoE 2,4T / 95B actifs, texte, image et vidéo. Prix « officiel » $2/$6 incertain (revendeurs à $1.65/$4.95). Checkpoint ouvert Qwen3.8-2.4T-A95B publié vers le 12-13 août sous licence maison, texte seul, sans 1M natif. Prédécesseur Qwen3.7-Max (API seule, date inconnue)."
+  },
+  {
+   "id": "muse-spark-1-2",
+   "name": "Muse Spark 1.2",
+   "actor": "Meta",
+   "family": "muse-spark",
+   "replaces": "muse-spark-1-1",
+   "date": "2026-08-05",
+   "status": "preview",
+   "price_in": 1.25,
+   "price_out": 4.25,
+   "context_k": 1000,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-2-1": {
+     "value": 82.9,
+     "official": true,
+     "source": "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2",
+     "note": "harnais agent Meta"
+    },
+    "deepswe-1-1": {
+     "value": 59.3,
+     "official": true,
+     "source": "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2"
+    }
+   },
+   "claims": [
+    {
+     "text": "palier « contributor » à ~$0.10/$0.20 en échange de l'usage des prompts et réponses pour l'entraînement",
+     "source": "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2"
+    }
+   ],
+   "sources": [
+    "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2",
+    "https://simonwillison.net/2026/Aug/5/muse-code-and-muse-spark-12/",
+    "https://datanorth.ai/news/meta-releases-muse-spark-1-2-and-muse-code"
+   ],
+   "confidence": "verified",
+   "notes": "Co-entraîné avec l'agent terminal Muse Code (bêta). Sous le harnais commun de Vals AI : 14e sur 50 sur Terminal-Bench, contre 2e dans la config Meta."
+  },
+  {
+   "id": "gpt-5-6-cyber",
+   "name": "GPT-5.6-Cyber",
+   "actor": "OpenAI",
+   "family": "gpt-cyber",
+   "date": "2026-08-10",
+   "status": "restricted",
+   "open_weights": false,
+   "scores": {
+    "advanced-cyber-completion": {
+     "value": 95,
+     "official": true,
+     "source": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/",
+     "note": "archive ; même éval : GPT-5.6 Sol standard 1.5 %, Sol via Daybreak Blue 2 %"
+    }
+   },
+   "claims": [
+    {
+     "text": "deux failles inédites trouvées dans le moteur V8 de Chrome (CVE-2026-15903)",
+     "source": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/"
+    }
+   ],
+   "sources": [
+    "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows/",
+    "https://openai.com/index/daybreak-models-are-now-available-on-aws/"
+   ],
+   "confidence": "archive-only",
+   "notes": "Basé sur GPT-5.6 Sol. Accès Daybreak Red (défenseurs approuvés), aussi sur Amazon Bedrock. Pas de prix public. (remplace gpt-5-5-cyber, hors base)"
+  },
+  {
+   "id": "muse-glimmer-30b",
+   "name": "Muse Glimmer 30B",
+   "actor": "Meta",
+   "family": "muse-glimmer",
+   "date": "2026-08-10",
+   "status": "ga",
+   "context_k": 131.072,
+   "open_weights": true,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 76.0,
+     "official": true,
+     "source": "https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model"
+    },
+    "swe-bench-pro": {
+     "value": 51.2,
+     "official": true,
+     "source": "https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model"
+    },
+    "mcp-atlas": {
+     "value": 75.5,
+     "official": true,
+     "source": "https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model",
+     "note": "MCP-Atlas public"
+    }
+   },
+   "claims": [
+    {
+     "text": "tourne sur un seul GPU grand public ou un Mac Apple silicon (~24 Go en ~4 bits)",
+     "source": "https://datanorth.ai/news/meta-releases-muse-glimmer-agentic-model"
+    }
+   ],
+   "sources": [
+    "https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model",
+    "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+    "https://datanorth.ai/news/meta-releases-muse-glimmer-agentic-model"
+   ],
+   "confidence": "verified",
+   "notes": "Poids ouverts Apache 2.0, texte et images, plus de 100 langues. Comparé par Meta à Gemma4-31B (SWE-bench Pro 36.9 %) et Qwen3.6-27B.",
+   "en_clair": "Modèle ouvert de Meta de taille moyenne (30 milliards de paramètres), texte et images : candidat pour un serveur local."
+  },
+  {
+   "id": "grok-4-6",
+   "name": "Grok 4.6",
+   "actor": "xAI",
+   "family": "grok",
+   "replaces": "grok-4-5",
+   "date": "2026-08-12",
+   "status": "ga",
+   "price_in": 2,
+   "price_out": 6,
+   "context_k": 500,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-3": {
+     "value": 26,
+     "official": true,
+     "source": "https://x.ai/news",
+     "note": "archive"
+    },
+    "deepswe-1-1": {
+     "value": 65.9,
+     "official": true,
+     "source": "https://pasqualepillitteri.it/en/news/10915/grok-4-6-released-cursor-grok-build-api"
+    },
+    "cursorbench-3-2": {
+     "value": 69.9,
+     "official": true,
+     "source": "https://pasqualepillitteri.it/en/news/10915/grok-4-6-released-cursor-grok-build-api",
+     "note": "presse"
+    },
+    "terminal-bench-4": {
+     "value": 20.3,
+     "official": true,
+     "source": "https://x.ai/news/grok-4-7",
+     "note": "table de Grok 4.7"
+    },
+    "cursorbench-4": {
+     "value": 40.4,
+     "official": true,
+     "source": "https://x.ai/news/grok-4-7",
+     "note": "table de Grok 4.7"
+    },
+    "eebench": {
+     "value": 53.0,
+     "official": true,
+     "source": "https://x.ai/news/grok-4-7",
+     "note": "table de Grok 4.7"
+    }
+   },
+   "claims": [
+    {
+     "text": "au-delà de 200k tokens, $4/$12 sur toute la requête",
+     "source": "https://appwrite.io/blog/post/whats-new-in-grok-46-from-500k-context-to-pricing.md"
+    }
+   ],
+   "sources": [
+    "https://x.ai/news",
+    "https://pasqualepillitteri.it/en/news/10915/grok-4-6-released-cursor-grok-build-api",
+    "https://appwrite.io/blog/post/whats-new-in-grok-46-from-500k-context-to-pricing.md"
+   ],
+   "confidence": "verified",
+   "notes": "Indice Artificial Analysis 61, à égalité avec GPT-5.6 Sol (tiers). En retard reconnu par xAI sur DeepSWE et Terminal-Bench face à GPT-5.6 Sol Max."
+  },
+  {
+   "id": "deepseek-v4-pro",
+   "name": "DeepSeek V4-Pro (0813)",
+   "actor": "DeepSeek",
+   "family": "deepseek-pro",
+   "replaces": "deepseek-v3-2",
+   "date": "2026-08-13",
+   "status": "ga",
+   "price_in": 1.32,
+   "price_out": 3.96,
+   "context_k": 1000,
+   "output_k": 384,
+   "open_weights": false,
+   "scores": {
+    "swe-bench-verified": {
+     "value": 80.6,
+     "official": false,
+     "source": "https://thenextweb.com/news/deepseek-peak-hour-api-surcharge-v4-price-war",
+     "note": "relayé par la presse fin juillet (archive), version (preview ?) et origine non vérifiées"
+    },
+    "terminal-bench-2-1": {
+     "value": 87.9,
+     "official": true,
+     "source": "https://api-docs.deepseek.com/quick_start/pricing",
+     "note": "harnais DeepSeek non publié ; archive"
+    },
+    "deepswe-1-1": {
+     "value": 62.7,
+     "official": true,
+     "source": "https://codersera.com/blog/deepseek-v4-pro-0813-guide-2026/",
+     "note": "archive (12.8 pour la preview)"
+    },
+    "cybergym": {
+     "value": 83.3,
+     "official": true,
+     "source": "https://codersera.com/blog/deepseek-v4-pro-0813-guide-2026/",
+     "note": "archive"
+    },
+    "nl2repo": {
+     "value": 61.5,
+     "official": true,
+     "source": "https://codersera.com/blog/deepseek-v4-pro-0813-guide-2026/",
+     "note": "archive"
+    }
+   },
+   "claims": [
+    {
+     "text": "depuis le 16 août : heures pleines $1.32/$3.96, heures creuses $0.66/$1.98 (avant : $0.435/$0.87)",
+     "source": "https://runtimewire.com/article/deepseek-v4-api-peak-off-peak-price-increase"
+    }
+   ],
+   "sources": [
+    "https://api-docs.deepseek.com/quick_start/pricing",
+    "https://codersera.com/blog/deepseek-v4-pro-0813-guide-2026/",
+    "https://runtimewire.com/article/deepseek-v4-api-peak-off-peak-price-increase",
+    "https://www.usagepricing.com/blueprint/activity/deepseek-2026-09-11-v4-pro-retirement-reversed",
+    "https://rits.shanghai.nyu.edu/ai/deepseek-releases-v4-open-source-1-6t-moe-with-1m-context",
+    "https://www.datalearner.com/en/ai-models/pretrained-models/deepseek-v4-pro"
+   ],
+   "confidence": "verified",
+   "notes": "Preview publique depuis le 24 avril (poids MIT de la preview, 1,6T / 49B actifs) ; GA du checkpoint 0813 le 13 août, poids 0813 non publiés (archive). Prix = heures pleines. Le 10 sept., DeepSeek annonce le routage de V4-Pro vers V4.1-Flash au 14 sept., puis revient sur cette décision le 11 sept. : service maintenu."
+  },
+  {
+   "id": "gemini-3-7-flash",
+   "name": "Gemini 3.7 Flash",
+   "actor": "Google",
+   "family": "gemini-flash",
+   "replaces": "gemini-3-6-flash",
+   "date": "2026-08-13",
+   "status": "ga",
+   "price_in": 0.75,
+   "price_out": 3.75,
+   "context_k": 1000,
+   "output_k": 64,
+   "open_weights": false,
+   "scores": {
+    "deepswe-1-1": {
+     "value": 65.3,
+     "official": true,
+     "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/"
+    },
+    "frontiercode-1-1": {
+     "value": 43.6,
+     "official": true,
+     "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/",
+     "note": "archive"
+    },
+    "automationbench": {
+     "value": 30.4,
+     "official": true,
+     "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/",
+     "note": "archive"
+    },
+    "terminal-bench-2-1": {
+     "value": 81.6,
+     "official": false,
+     "source": "https://www.vellum.ai/md/blog/gemini-3-8-flash-benchmarks-explained",
+     "note": "table de Google (Gemini 3.8 Flash), presse"
+    }
+   },
+   "claims": [
+    {
+     "text": "prix de lancement moitié de celui de 3.6 Flash, valable jusqu'au 31 déc. 2026 puis $1.50/$7.50",
+     "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/"
+    },
+    {
+     "text": "Elo WebDev Arena 1588 (1538 pour 3.6 Flash), GDM-MRCR 97.0 %",
+     "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/"
+    }
+   ],
+   "sources": [
+    "https://deepmind.google/models/model-cards/gemini-3-7-flash/",
+    "https://ai.google.dev/gemini-api/docs/changelog",
+    "https://www.axios.com/2026/08/13/google-gemini-37-flash"
+   ],
+   "confidence": "verified",
+   "notes": "Remplace intégralement 3.6 Flash 23 jours après (améliorations algorithmiques, pas de réentraînement). Cutoff mars 2026."
+  },
+  {
+   "id": "glm-5-3",
+   "name": "GLM-5.3",
+   "actor": "Z.ai",
+   "family": "glm",
+   "replaces": "glm-5-2",
+   "date": "2026-08-14",
+   "status": "ga",
+   "price_in": 1.4,
+   "price_out": 4.4,
+   "scores": {},
+   "sources": [
+    "https://datanorth.ai/news/z-ai-releases-glm-5-3",
+    "https://aireiter.com/blog/glm-5-2-vs-glm-5-3"
+   ],
+   "confidence": "uncertain",
+   "notes": "Absent de l'archive ; web uniquement. Modèle code et cybersécurité sur la même base que GLM-5.2, gains par post-entraînement seul, même prix. Poids ouverts et scores non vérifiés.",
+   "open_weights": false
+  },
+  {
+   "id": "qwen3-8-27b",
+   "name": "Qwen3.8-27B",
+   "actor": "Alibaba",
+   "family": "qwen-27b",
+   "date": "2026-08-14",
+   "status": "ga",
+   "open_weights": true,
+   "scores": {},
+   "sources": [
+    "https://www.orcarouter.ai/blog/qwen-3-8-27b-huggingface",
+    "https://www.dsebastien.net/qwen-3-8/"
+   ],
+   "confidence": "uncertain",
+   "notes": "Web uniquement. 28B dense avec encodeur visuel, Apache 2.0, tient sur un GPU. Aucun score trouvé. (remplace qwen3-6-27b, hors base)"
+  },
+  {
+   "id": "claude-fable-5-1",
+   "name": "Claude Fable 5.1",
+   "actor": "Anthropic",
+   "family": "claude-fable",
+   "replaces": "claude-fable-5",
+   "date": "2026-09-01",
+   "status": "ga",
+   "price_in": 10,
+   "price_out": 50,
+   "context_k": 1000,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-science": {
+     "value": 52.6,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+    },
+    "terminal-bench-4": {
+     "value": 55.8,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+    },
+    "gdpval-aa-v2": {
+     "value": 1853,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+    },
+    "osworld-2-0": {
+     "value": 77.9,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+    },
+    "osworld-2-0-strict": {
+     "value": 41.7,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+    },
+    "hle-no-tools": {
+     "value": 60.9,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+    },
+    "hle-tools": {
+     "value": 65.0,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+    },
+    "automationbench": {
+     "value": 31.4,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+    },
+    "cursorbench-3-2": {
+     "value": 73.4,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+    },
+    "frontiercode-1-1": {
+     "value": 50.3,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    },
+    "cursorbench-4": {
+     "value": 51.8,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    },
+    "gdpval-aa-v2-1": {
+     "value": 1735,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    },
+    "osworld-2-1": {
+     "value": 80.7,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    },
+    "chartography": {
+     "value": 88.4,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    }
+   },
+   "claims": [
+    {
+     "text": "cache reads $0.25/M, soit −75 % vs Fable 5 ($1/M)",
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+    },
+    {
+     "text": "environ 25 % d'économie vs Fable 5 sur une charge typique, jusqu'à ~45 % sur du travail très agentique",
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+    },
+    {
+     "text": "partenaire early access : environ deux fois plus rapide qu'Opus 5 avec moitié moins de tokens",
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+    }
+   ],
+   "sources": [
+    "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+    "https://platform.claude.com/docs/en/about-claude/models/overview",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+   ],
+   "confidence": "verified",
+   "notes": "Défaut Fable dans Claude Code 2.1.257. Aucun SWE-bench Verified publié (les 95 % qui circulent viennent de leaderboards tiers). Rétention 30 jours obligatoire, pas de ZDR sans accord. tool_choice any/tool → 400. Retraite au plus tôt le 2027-09-01.",
+   "en_clair": "Le modèle le plus puissant d'Anthropic ouvert au public, pour les tâches les plus longues et difficiles. Deux fois et demie le prix d'Opus 5.5."
+  },
+  {
+   "id": "claude-mythos-5-1",
+   "name": "Claude Mythos 5.1",
+   "actor": "Anthropic",
+   "family": "claude-mythos",
+   "replaces": "claude-mythos-5",
+   "date": "2026-09-01",
+   "status": "restricted",
+   "price_in": 10,
+   "price_out": 50,
+   "context_k": 1000,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-4": {
+     "value": 60.9,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+    }
+   },
+   "sources": [
+    "https://platform.claude.com/docs/en/models/mythos-5-1/overview",
+    "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+   ],
+   "confidence": "verified",
+   "notes": "Même modèle que Fable 5.1 avec garde-fous cyber et biologie desserrés. Doc officielle : sur invitation uniquement, dans le cadre de Project Glasswing. L'annonce et l'archive évoquent aussi des programmes de vérification (Cyber, Life Sciences) réservés à des organisations US. L'ENISA a eu accès à Mythos 5 mais pas à la 5.1 (Bloomberg, 10 sept.)."
+  },
+  {
+   "id": "gemini-3-8-flash",
+   "name": "Gemini 3.8 Flash",
+   "actor": "Google",
+   "family": "gemini-flash",
+   "replaces": "gemini-3-7-flash",
+   "date": "2026-09-02",
+   "status": "ga",
+   "price_in": 0.75,
+   "price_out": 3.75,
+   "context_k": 1049,
+   "output_k": 65.536,
+   "open_weights": false,
+   "scores": {
+    "deepswe-1-1": {
+     "value": 73.7,
+     "official": true,
+     "source": "https://www.vellum.ai/md/blog/gemini-3-8-flash-benchmarks-explained",
+     "note": "presse, d'après la table de Google"
+    }
+   },
+   "claims": [
+    {
+     "text": "bat Gemini 3.7 Flash sur tous les benchmarks publiés, et Claude Opus 5 sur trois d'entre eux",
+     "source": "https://ai.google.dev/gemini-api/docs/changelog"
+    },
+    {
+     "text": "prix doublé le 1er janvier 2027 : $1.50/$7.50",
+     "source": "https://ai.google.dev/gemini-api/docs/changelog"
+    },
+    {
+     "text": "DeepSWE v1.1 à 0,3 point de Claude Opus 5 (74.0 %)",
+     "source": "https://www.vellum.ai/md/blog/gemini-3-8-flash-benchmarks-explained"
+    }
+   ],
+   "sources": [
+    "https://ai.google.dev/gemini-api/docs/changelog",
+    "https://www.vellum.ai/md/blog/gemini-3-8-flash-benchmarks-explained",
+    "https://computingforgeeks.com/gemini-3-8-flash-released-features-benchmarks/"
+   ],
+   "confidence": "verified",
+   "notes": "ID stable gemini-3.8-flash, niveaux de thinking low/medium/high. Troisième Flash en six semaines.",
+   "en_clair": "Le modèle rapide de Google. Même prix que la version 3.7, meilleur en programmation."
+  },
+  {
+   "id": "gemini-3-8-flash-cyber",
+   "name": "Gemini 3.8 Flash Cyber",
+   "actor": "Google",
+   "family": "gemini-flash-cyber",
+   "replaces": "gemini-3-5-flash-cyber",
+   "date": "2026-09-02",
+   "status": "restricted",
+   "open_weights": false,
+   "scores": {},
+   "sources": [
+    "https://ai.google.dev/gemini-api/docs/changelog"
+   ],
+   "confidence": "archive-only",
+   "notes": "Même cœur que 3.8 Flash. Programme Fairwind (États, infrastructures critiques, mainteneurs validés). Ni prix ni score publics."
+  },
+  {
+   "id": "muse-spark-1-3",
+   "name": "Muse Spark 1.3",
+   "actor": "Meta",
+   "family": "muse-spark",
+   "replaces": "muse-spark-1-2",
+   "date": "2026-09-02",
+   "status": "preview",
+   "context_k": 1000,
+   "open_weights": false,
+   "scores": {
+    "deepswe-1-1": {
+     "value": 75.4,
+     "official": true,
+     "source": "https://research.meta.ai/blog/introducing-muse-spark-1-3"
+    },
+    "terminal-bench-2-1": {
+     "value": 88.8,
+     "official": true,
+     "source": "https://research.meta.ai/blog/introducing-muse-spark-1-3",
+     "note": "à égalité avec GPT-5.6 Sol selon Meta"
+    }
+   },
+   "claims": [
+    {
+     "text": "environ 20 % d'appels d'outils et 25 % de tokens en moins que Muse Spark 1.2 à travail égal",
+     "source": "https://research.meta.ai/blog/introducing-muse-spark-1-3"
+    }
+   ],
+   "sources": [
+    "https://research.meta.ai/blog/introducing-muse-spark-1-3",
+    "https://www.eesel.ai/blog/muse-spark-1-3",
+    "https://pasqualepillitteri.it/en/news/14145/meta-muse-spark-1-3-coding-model"
+   ],
+   "confidence": "verified",
+   "notes": "Propriétaire. Prix API non trouvé. Statut « preview » par prudence (Meta Model API en preview US au lancement de 1.1). Le comparatif de Meta oppose le mode max de 1.3 (encore en tests de sûreté au lancement) au mode xhigh de 1.2. Claude Opus 5 (max) reste devant sur 4 lignes sur 6 du comparatif agent.",
+   "en_clair": "Le modèle principal de Meta, en préversion, qui fait tourner son agent Muse. Prix de l'API non publié."
+  },
+  {
+   "id": "gpt-6-astra",
+   "name": "GPT-6 Astra",
+   "actor": "OpenAI",
+   "family": "gpt-astra",
+   "replaces": "gpt-5-6-sol",
+   "date": "2026-09-03",
+   "status": "ga",
+   "price_in": 10,
+   "price_out": 50,
+   "context_k": 1050,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "deepswe-1-1": {
+     "value": 74.1,
+     "official": true,
+     "source": "https://help.openai.com/en/articles/9624314-model-release-notes",
+     "note": "archive + presse"
+    },
+    "frontiermath-t4": {
+     "value": 97.6,
+     "official": true,
+     "source": "https://www.datacamp.com/blog/gpt-6-astra",
+     "note": "presse ; même tableau : GPT-5.6 Sol 83 %, Fable 5.1 87,8 %"
+    },
+    "osworld-2-0-offline": {
+     "value": 72.6,
+     "official": true,
+     "source": "https://www.datacamp.com/blog/gpt-6-astra",
+     "note": "presse (GPT-5.6 Sol : 65.7 %)"
+    },
+    "terminal-bench-4": {
+     "value": 57.7,
+     "official": true,
+     "source": "https://www.datacamp.com/blog/gpt-6-astra",
+     "note": "presse, d'après la table d'OpenAI"
+    },
+    "terminal-bench-science": {
+     "value": 68.1,
+     "official": true,
+     "source": "https://openai.com/index/introducing-gpt-6-1-sol/",
+     "note": "effort max, d'après le lancement de GPT-6.1 Sol (archive)"
+    },
+    "frontiercode-1-1": {
+     "value": 53.3,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    },
+    "gdpval-aa-v2-1": {
+     "value": 1542,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5"
+    },
+    "automationbench": {
+     "value": 41.4,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5 ; OpenAI donne 30.3 % en effort low"
+    },
+    "hle-tools": {
+     "value": 57.2,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "table d'Opus 5.5 ; variante avec outils supposée (non précisée)"
+    },
+    "frontierswe-v2": {
+     "value": 65.5,
+     "official": false,
+     "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+     "note": "repris par Google dans l'annonce de Gemini 4 Argon ; archive"
+    }
+   },
+   "claims": [
+    {
+     "text": "au-delà de 272k tokens d'entrée, toute la requête passe à ×2 en entrée/cache et ×1,5 en sortie",
+     "source": "https://help.openai.com/en/articles/9624314-model-release-notes"
+    },
+    {
+     "text": "tâches Terminal-Bench 4.0 bouclées ~47 % plus vite que GPT-5.6 Sol",
+     "source": "https://emergent.sh/learn/gpt-6-astra-benchmarks"
+    },
+    {
+     "text": "MRCR v2 8-needle : 100 % entre 256k et 512k, 96.3 % entre 512k et 1M",
+     "source": "archive:veille-ia/briefs/2026-09-06.json#2026-09-06-openai-gpt-6-astra"
+    }
+   ],
+   "sources": [
+    "https://help.openai.com/en/articles/9624314-model-release-notes",
+    "https://openai.com/index/gpt-6-astra/",
+    "https://www.datacamp.com/blog/gpt-6-astra",
+    "https://emergent.sh/learn/gpt-6-astra-benchmarks",
+    "https://docs.apiyi.com/en/news/gpt-6-astra-launch"
+   ],
+   "confidence": "verified",
+   "notes": "Preview partenaires le 3 septembre, ouvert aux payants le 4 dans une version qui refuse certains prompts cyber. Cache reads $1/M. Pas de SWE-bench Verified publié. GPT-6.1 Astra, prévu en octobre, aurait été abandonné pour comportements trompeurs (Reuters, 28 sept., sans annonce officielle d'OpenAI). « replaces » pointe vers GPT-5.6 Sol, le haut de gamme précédent auquel OpenAI compare Astra : il n'existe pas de gamme Astra antérieure.",
+   "en_clair": "Le très haut de gamme d'OpenAI. Cinq fois le prix de GPT-6.1 Sol, pour environ 2 points de mieux selon OpenAI."
+  },
+  {
+   "id": "deepseek-v4-1-flash",
+   "name": "DeepSeek V4.1-Flash",
+   "actor": "DeepSeek",
+   "family": "deepseek-flash",
+   "replaces": "deepseek-v4-flash",
+   "date": "2026-09-10",
+   "status": "ga",
+   "price_in": 0.3,
+   "price_out": 1.2,
+   "open_weights": true,
+   "scores": {
+    "deepswe-1-1": {
+     "value": 74.2,
+     "official": true,
+     "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+     "note": "harnais DeepSeek"
+    },
+    "automationbench": {
+     "value": 54.8,
+     "official": true,
+     "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+    },
+    "cybergym": {
+     "value": 88.1,
+     "official": true,
+     "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+    }
+   },
+   "claims": [
+    {
+     "text": "devant GPT-5.6 Sol et Claude Opus 5 sur 4 des 5 benchmarks agentiques retenus par DeepSeek",
+     "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+    },
+    {
+     "text": "heures creuses à moitié prix ($0.15/$0.60) ; lecture de cache ~$0.003-0.006/M",
+     "source": "https://propakistani.pk/2026/09/11/deepseek-v4-1-flash-launches-with-lower-prices-and-native-vision/"
+    }
+   ],
+   "sources": [
+    "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+    "https://thenextweb.com/news/deepseek-v4-1-flash-launch-v4-pro-retired-price-cut",
+    "https://propakistani.pk/2026/09/11/deepseek-v4-1-flash-launches-with-lower-prices-and-native-vision/"
+   ],
+   "confidence": "verified",
+   "notes": "Poids MIT. Prix = heures pleines (01-04h et 06-10h UTC en semaine). Taille contradictoire : 552B MoE (archive) contre ~748B (552B + 196B « Engram ») selon la presse ; ~8B actifs en préremplissage, 16B en décodage. Vision native selon la presse. Pas de SWE-bench Verified."
+  },
+  {
+   "id": "grok-4-7",
+   "name": "Grok 4.7",
+   "actor": "xAI",
+   "family": "grok",
+   "replaces": "grok-4-6",
+   "date": "2026-09-21",
+   "status": "ga",
+   "price_in": 2,
+   "price_out": 6,
+   "context_k": 500,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-4": {
+     "value": 38.0,
+     "official": true,
+     "source": "https://x.ai/news/grok-4-7"
+    },
+    "deepswe-1-1": {
+     "value": 71.0,
+     "official": true,
+     "source": "https://x.ai/news/grok-4-7",
+     "note": "effort high"
+    },
+    "cursorbench-4": {
+     "value": 46.3,
+     "official": true,
+     "source": "https://x.ai/news/grok-4-7"
+    },
+    "eebench": {
+     "value": 64.0,
+     "official": true,
+     "source": "https://x.ai/news/grok-4-7",
+     "note": "archive"
+    }
+   },
+   "claims": [
+    {
+     "text": "bat Grok 4.6 sur les 7 benchmarks retenus et GPT-5.6 Sol Max sur 4",
+     "source": "https://x.ai/news/grok-4-7"
+    },
+    {
+     "text": "au-delà de 200k tokens de prompt, toute la requête passe à $4/$1/$12 (entrée/cache/sortie)",
+     "source": "https://x.ai/news/grok-4-7"
+    }
+   ],
+   "sources": [
+    "https://x.ai/news/grok-4-7",
+    "https://llm-stats.com/blog/research/grok-4-7-launch",
+    "https://braindetox.kr/en/posts/grok_4_7_release_2026.html"
+   ],
+   "confidence": "verified",
+   "notes": "Prix inchangé vs 4.6, entrée en cache $0.50/M. Loin d'Opus 5.5 sur Terminal-Bench 4.0 (66.4 %) et CursorBench 4.0 (57.8 %)."
+  },
+  {
+   "id": "claude-opus-5-5",
+   "name": "Claude Opus 5.5",
+   "actor": "Anthropic",
+   "family": "claude-opus",
+   "replaces": "claude-opus-5",
+   "date": "2026-09-22",
+   "status": "ga",
+   "price_in": 4,
+   "price_out": 20,
+   "context_k": 1000,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-4": {
+     "value": 66.4,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    "frontiercode-1-1": {
+     "value": 54.4,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    "cursorbench-4": {
+     "value": 57.8,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    "gdpval-aa-v2-1": {
+     "value": 1846,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    "automationbench": {
+     "value": 40.0,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    "hle-tools": {
+     "value": 67.7,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5",
+     "note": "la table d'Opus 5.5 ne précise pas la variante ; la table de Sonnet 5.5 l'étiquette « avec outils »"
+    },
+    "terminal-bench-science": {
+     "value": 58.7,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    "osworld-2-1": {
+     "value": 81.8,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    "chartography": {
+     "value": 89.0,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    "chartography-no-tools": {
+     "value": 64.4,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5",
+     "note": "table de Sonnet 5.5"
+    },
+    "aa-briefcase": {
+     "value": 1822,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5",
+     "note": "table de Sonnet 5.5"
+    },
+    "deepswe-1-1": {
+     "value": 74.2,
+     "official": false,
+     "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+     "note": "chiffre repris par Google (leaderboards / system cards) dans l'annonce de Gemini 4 Argon ; archive uniquement"
+    },
+    "frontierswe-v2": {
+     "value": 62.3,
+     "official": false,
+     "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+     "note": "idem, repris par Google ; archive uniquement"
+    }
+   },
+   "claims": [
+    {
+     "text": "coût d'exécution 40 % inférieur à Opus 5",
+     "source": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    {
+     "text": "sortie générée plus de 30 % plus vite qu'Opus 5",
+     "source": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    {
+     "text": "prix au token −20 % vs Opus 5 ($4/$20 contre $5/$25), cache reads −60 % ($0.20/M)",
+     "source": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    {
+     "text": "fast mode (research preview) à $8/$40",
+     "source": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    {
+     "text": "un client a bouclé une migration de 680 000 lignes en moins d'une journée",
+     "source": "archive:veille-ia/briefs/2026-09-27.json#2026-09-27-claude-opus-5-5"
+    },
+    {
+     "text": "Terminal-Bench-Science 0.1 en effort max : $23.21 par tâche selon OpenAI (vs $5.47 pour GPT-6.1 Sol)",
+     "source": "https://www.vellum.ai/blog/gpt-6-1-sol-benchmarks-explained"
+    }
+   ],
+   "sources": [
+    "https://www.anthropic.com/claude-opus-5-5",
+    "https://platform.claude.com/docs/en/about-claude/models/overview",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+   ],
+   "confidence": "verified",
+   "notes": "Opus par défaut sur l'API et dans Claude Code 2.1.280. Aucun SWE-bench Verified ni Pro publié par Anthropic ; le 89.9 % SWE-bench Pro qui circule vient du classement tiers BenchLM. Thinking non désactivable, tool_choice any/tool → 400. Retraite au plus tôt le 2027-09-22.",
+   "en_clair": "Le haut de gamme d'Anthropic. 20 % moins cher qu'Opus 5, et nettement meilleur sur les tests de programmation et d'utilisation d'un ordinateur."
+  },
+  {
+   "id": "gpt-6-luna",
+   "name": "GPT-6 Luna",
+   "actor": "OpenAI",
+   "family": "gpt-mini",
+   "replaces": "gpt-5-6-luna",
+   "date": "2026-09-22",
+   "status": "ga",
+   "price_in": 0.1,
+   "price_out": 0.5,
+   "context_k": 1050,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {},
+   "claims": [
+    {
+     "text": "prix API divisé par deux vs GPT-5.6 Luna ($0.20/$1.20)",
+     "source": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+    }
+   ],
+   "sources": [
+    "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+    "https://computingforgeeks.com/gpt-6-sol-luna-released-features-benchmarks/"
+   ],
+   "confidence": "verified",
+   "notes": "Option volume d'OpenAI, aussi proposée aux comptes Free et Go dans l'application de bureau. Aucun score publié trouvé.",
+   "en_clair": "Le plus petit modèle d'OpenAI : 0,50 $ le million de tokens écrits, pour les gros volumes de tâches simples. Aucun score publié."
+  },
+  {
+   "id": "gpt-6-sol",
+   "name": "GPT-6 Sol",
+   "actor": "OpenAI",
+   "family": "gpt-flagship",
+   "replaces": "gpt-5-6-sol",
+   "date": "2026-09-22",
+   "status": "ga",
+   "price_in": 2,
+   "price_out": 10,
+   "context_k": 1050,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "automationbench": {
+     "value": 33.2,
+     "official": true,
+     "source": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+     "note": "effort xhigh, $0.27 par tâche"
+    },
+    "osworld-2-0-offline": {
+     "value": 60.5,
+     "official": true,
+     "source": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+     "note": "effort xhigh"
+    },
+    "frontiercode-1-1": {
+     "value": 49.3,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5",
+     "note": "table de Claude Sonnet 5.5 (Anthropic)"
+    }
+   },
+   "claims": [
+    {
+     "text": "prix API divisés par deux vs les GPT-5.6 remplacés",
+     "source": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+    },
+    {
+     "text": "moitié moins d'erreurs que la génération 5.6 sur les tests de factualité",
+     "source": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+    },
+    {
+     "text": "AutomationBench : 33.2 % contre 26.9 % pour Claude Opus 5 (max) à 11,1× le coût, et 30.3 % pour GPT-6 Astra (low) à 3,9× le coût",
+     "source": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+    },
+    {
+     "text": "OSWorld 2.0 hors ligne : 60.5 % contre 60.3 % pour Opus 5 (medium), coût par tâche ~80 % inférieur",
+     "source": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+    }
+   ],
+   "sources": [
+    "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+    "https://computingforgeeks.com/gpt-6-sol-luna-released-features-benchmarks/",
+    "https://www.vellum.ai/blog/gpt-6-sol-and-luna-benchmarks-explained"
+   ],
+   "confidence": "verified",
+   "notes": "Remplace GPT-5.6 Sol. Les comparaisons d'OpenAI portent sur Opus 5, pas sur Opus 5.5 sorti le même jour. Remplacé à son tour par GPT-6.1 Sol le 29 septembre ; statut de dépréciation non trouvé."
+  },
+  {
+   "id": "claude-sonnet-5-5",
+   "name": "Claude Sonnet 5.5",
+   "actor": "Anthropic",
+   "family": "claude-sonnet",
+   "replaces": "claude-sonnet-5",
+   "date": "2026-09-28",
+   "status": "ga",
+   "price_in": 2,
+   "price_out": 10,
+   "context_k": 1000,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-4": {
+     "value": 70.6,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5"
+    },
+    "frontiercode-1-1": {
+     "value": 46.2,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5",
+     "note": "effort max"
+    },
+    "cursorbench-4": {
+     "value": 55.5,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5"
+    },
+    "gdpval-aa-v2-1": {
+     "value": 1844,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5"
+    },
+    "aa-briefcase": {
+     "value": 1811,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5"
+    },
+    "hle-tools": {
+     "value": 64.5,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5"
+    },
+    "osworld-2-1": {
+     "value": 80.1,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5"
+    },
+    "chartography-no-tools": {
+     "value": 61.6,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-sonnet-5-5"
+    }
+   },
+   "claims": [
+    {
+     "text": "génération plus de 30 % plus rapide que Sonnet 5",
+     "source": "https://www.anthropic.com/claude-sonnet-5-5"
+    },
+    {
+     "text": "jusqu'à 30 % de coût par tâche en moins que Sonnet 5, à prix au token inchangé",
+     "source": "https://www.anthropic.com/claude-sonnet-5-5"
+    },
+    {
+     "text": "cache reads $0.20/M, cache writes $2.50/M (5 min)",
+     "source": "https://www.anthropic.com/claude-sonnet-5-5"
+    },
+    {
+     "text": "300k tokens de sortie en Batch API (en-tête bêta)",
+     "source": "https://platform.claude.com/docs/en/about-claude/models/overview"
+    }
+   ],
+   "sources": [
+    "https://www.anthropic.com/claude-sonnet-5-5",
+    "https://platform.claude.com/docs/en/about-claude/models/overview",
+    "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+    "https://platform.claude.com/docs/en/models/sonnet-5-5/overview"
+   ],
+   "confidence": "verified",
+   "notes": "Sonnet par défaut sur l'API et dans Claude Code 2.1.284. Aucun SWE-bench Verified ni Pro publié. Retraite au plus tôt le 2027-09-28. Ruptures d'API vs Sonnet 5 (thinking disabled et tool_choice any/tool → 400). Le 30/09, Sonnet 4.5 (claude-sonnet-4-5-20250929) est déprécié, retrait de l'API le 2026-11-30, remplaçant recommandé : Sonnet 5.5.",
+   "en_clair": "Le milieu de gamme d'Anthropic, au niveau d'Opus 5.5 sur plusieurs tests pour deux fois moins cher. Un grand pas par rapport à Sonnet 5."
+  },
+  {
+   "id": "gpt-6-1-sol",
+   "name": "GPT-6.1 Sol",
+   "actor": "OpenAI",
+   "family": "gpt-flagship",
+   "replaces": "gpt-6-sol",
+   "date": "2026-09-29",
+   "status": "ga",
+   "price_in": 2,
+   "price_out": 10,
+   "open_weights": false,
+   "scores": {},
+   "claims": [
+    {
+     "text": "environ 2 points sous GPT-6 Astra en code agentique, computer use et analyse documentaire, pour 1/5 du prix",
+     "source": "https://openai.com/index/introducing-gpt-6-1-sol/"
+    },
+    {
+     "text": "Terminal-Bench-Science 0.1 en effort max : plus de 2× le score de GPT-6 Sol ; $5.47 par tâche contre $23.80 pour Astra (et $23.21 pour Claude Opus 5.5)",
+     "source": "https://www.vellum.ai/blog/gpt-6-1-sol-benchmarks-explained"
+    },
+    {
+     "text": "DeepSWE v1.1 : égale la précision haute d'Astra pour un coût par tâche ~80 % inférieur (~$1.50 contre ~$7.70)",
+     "source": "https://www.vellum.ai/blog/gpt-6-1-sol-benchmarks-explained"
+    },
+    {
+     "text": "OSWorld 2.0 (hors ligne) : à 2,1 points d'Astra pour 1/7 du coût par tâche",
+     "source": "https://www.vellum.ai/blog/gpt-6-1-sol-benchmarks-explained"
+    },
+    {
+     "text": "entrée en cache à $0.10/M (−50 % vs GPT-6 Sol)",
+     "source": "https://openai.com/index/introducing-gpt-6-1-sol/"
+    },
+    {
+     "text": "palier Ultrafast jusqu'à 300 tokens/s facturé 6× (d'abord sur Astra, puis 6.1 Sol)",
+     "source": "https://openai.com/index/introducing-gpt-6-1-sol/"
+    }
+   ],
+   "sources": [
+    "https://openai.com/index/introducing-gpt-6-1-sol/",
+    "https://www.vellum.ai/blog/gpt-6-1-sol-benchmarks-explained",
+    "https://www.datacamp.com/es/blog/gpt-6-1-sol"
+   ],
+   "confidence": "verified",
+   "notes": "Lancé à la DevDay (ChatGPT Work, Codex, API ; ID gpt-6.1-sol). Aucun score absolu officiel trouvé dans les sources consultables (openai.com bloqué par l'egress) : seulement des écarts relatifs et des coûts par tâche. Pas de SWE-bench publié. Aucun benchmark commun à score officiel avec Claude Sonnet 5.5, vendu au même prix. Contexte et sortie non confirmés pour 6.1 (GPT-6 Sol : 1,05M / 128k).",
+   "en_clair": "Le modèle principal d'OpenAI, au même prix que Claude Sonnet 5.5. Proche d'Astra selon OpenAI ; aucun test commun publié avec Claude."
+  },
+  {
+   "id": "gemini-4-argon",
+   "name": "Gemini 4 Argon",
+   "actor": "Google",
+   "family": "gemini-argon",
+   "replaces": "gemini-3-1-pro",
+   "date": "2026-09-30",
+   "status": "restricted",
+   "price_in": 2,
+   "price_out": 10,
+   "context_k": 1000,
+   "output_k": 1000,
+   "open_weights": false,
+   "scores": {
+    "deepswe-1-1": {
+     "value": 77.9,
+     "official": true,
+     "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+     "note": "mesuré par Google"
+    },
+    "frontierswe-v2": {
+     "value": 55.0,
+     "official": true,
+     "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+     "note": "repris par Google du leaderboard public de Proximal (non calculé par Google)"
+    }
+   },
+   "claims": [
+    {
+     "text": "en tête sur 12 benchmarks sur 18 selon Google, avec des scores concurrents tirés de leaderboards et de system cards",
+     "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"
+    },
+    {
+     "text": "prix de lancement $2/$10, passage annoncé à $4/$20 ensuite ; 95 % de remise sur l'entrée en cache",
+     "source": "https://www.eesel.ai/blog/gemini-4-argon-pricing"
+    },
+    {
+     "text": "jusqu'à 1M de tokens générés en une seule réponse",
+     "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"
+    }
+   ],
+   "sources": [
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+    "https://www.eesel.ai/blog/gemini-4-argon-pricing",
+    "https://www.testingcatalog.com/google-unveils-gemini-4-argon-with-sota-score-on-deepswe.md",
+    "https://www.cnbc.com/2026/09/30/google-gemini-4-argon-ai.html"
+   ],
+   "confidence": "verified",
+   "notes": "Réservé aux cyberdéfenseurs du programme Fairwind ; ouverture à l'API payante et à Google AI Ultra sans date. Opus 5.5 reste devant sur Terminal-Bench 4.0 (chiffre non donné dans les sources). Pas de SWE-bench Verified. Indice Artificial Analysis 53 (tiers), à égalité avec GPT-6 Astra. « replaces » pointe vers Gemini 3.1 Pro, haut de gamme précédent de Google : il n'existe pas d'Argon antérieur."
+  }
+ ]
+}
