@@ -38,7 +38,11 @@
     show(el, r.left + r.width / 2, r.top);
   });
   document.addEventListener('focusout', hide);
-  window.addEventListener('scroll', hide, { passive: true });
+  window.addEventListener('scroll', function () {
+    var a = document.activeElement;
+    var el = a && a.closest && a.closest('[data-tip]');
+    if (el) { var r = el.getBoundingClientRect(); show(el, r.left + r.width / 2, r.top); } else hide();
+  }, { passive: true });
 
   // ─── Comparateur : filtres + tri ───────────────────────
   var table = document.querySelector('[data-cmp-table]');

@@ -68,7 +68,7 @@ Les outils `mcp__github__*` ne servent ni de voie d'écriture ni de test (ils se
 
 ### 1. Fenêtre, ledger, faits vérifiés
 
-- Lire `briefs/data.json` : fenêtre = date du dernier brief (exclue) → aujourd'hui (incluse). Ledger anti-doublon = `items[]` (slug, primary_url) des 4 derniers briefs.
+- Lire `briefs/data.json` : fenêtre = date du dernier brief (**incluse**, car un brief peut sortir en milieu de journée) → aujourd'hui (incluse). Ledger anti-doublon = `items[]` (slug, primary_url) des 4 derniers briefs : c'est lui qui écarte ce qui est déjà couvert.
 - `node build/scout.js <since> <date> --json` : entrées datées lues sur les pages officielles qui répondent (changelog Claude Code ancré par version, release notes de la plateforme Claude, SDK). À couvrir en priorité, avec l'URL du scout en source primaire.
 
 ### 2. Recherche
@@ -106,6 +106,9 @@ modeles[] { id (dans models.json), item (slug), en_clair (≤ 50 mots), verdict,
 items[] { slug "<date>-<kebab>", actor ("Google DeepMind" pour Google), tag, theme, date, title, resume,
           pour_nous?{verdict, texte ≤ 40 mots}, chiffres?[], sources[{label,url,primary}], has_primary },
 rien_de_notable[] (acteurs suivis sans annonce), sources_footer[], prev { href, title }
+
+Limites vérifiées par la QA : resume ≤ 3 phrases et ≤ 75 mots (info : ≤ 2 phrases et ≤ 35 mots) ;
+actors_scanned = nombre d'éditeurs suivis (≥ 5) ; highlights : 1 à 3 phrases (semaine calme : une seule suffit).
 ```
 
 ### 5. Mettre à jour les données et générer
@@ -123,7 +126,7 @@ rien_de_notable[] (acteurs suivis sans annonce), sources_footer[], prev { href, 
 
 - Reprendre **tout le tableau de l'annonce** : le score du nouveau modèle **et** celui du modèle précédent quand l'éditeur le publie (à poser dans l'objet du modèle précédent, `source` = l'annonce). C'est ce qui alimente « nouveau contre ancien ».
 - Un nouveau test → le déclarer dans `benchmarks{}` (`name`, `unit`, `what` en une phrase simple).
-- Une nouvelle gamme → `families{}` (`name`, `actor`, `tier` : `haut` | `milieu` | `eco` | `ouvert` | `special`).
+- Une nouvelle gamme → `families{}` (`name`, `actor`, `tier` : `premium` | `haut` | `milieu` | `eco` | `ouvert` | `special`).
 - Un modèle retiré ou déprécié dans la fenêtre → mettre à jour `status` et `retire_date`.
 - Jamais de score inventé ni « estimé » sans `official:false` et sa source. Mettre `meta.updated` à la date du brief.
 
@@ -179,13 +182,13 @@ QA → commit → push de la branche → fast-forward et push de `main` → vér
 
 | Sujet | État | Action |
 |---|---|---|
-| **Jeton GitHub (PAT) en clair dans le prompt de la routine** | Toujours présent dans le prompt stocké sur claude.ai au 2026-10-06, alors que le dépôt est **public**. Inutilisé depuis août : à considérer comme compromis. | **Léo :** le révoquer sur https://github.com/settings/personal-access-tokens, puis recoller `.claude/routine-prompt.md` (sans jeton) dans https://claude.ai/code/routines. |
-| **Prompt de la routine** | Mentionne encore « Claude Opus 4.7 », le PAT et l'ancien format. | Recoller `.claude/routine-prompt.md`. |
+| **Jetons** | La publication passe par l'App GitHub Claude : aucun jeton n'est nécessaire. | Ne jamais mettre de jeton dans le prompt de la routine ni dans le dépôt ; un jeton déjà exposé se révoque. |
+| **Prompt de la routine** | Version de référence : `.claude/routine-prompt.md`. | Le recoller dans https://claude.ai/code/routines s'il diverge. |
 | **Voie d'écriture** | `WRITE_PATH = git-cli` : `build/publish.sh` pousse via le remote configuré par l'environnement (App GitHub Claude). | — |
 | **Workflow `veille` (sous-agents)** | Échoue vite si moins de 3 scans principaux aboutissent ; repli : dérouler les étapes 1 à 5 dans la session principale. | Re-tester au prochain run. |
 | **Egress** | Souvent restreint (seuls `code.claude.com` et `github.com` répondent en WebFetch). | Repli documenté étape 0 et 2. |
 | **Quota de recherches web** | Environ 200 WebSearch par tour, **partagés entre tous les sous-agents**. Au-delà, les recherches échouent sans bruit. Observé le 2026-10-06 : un run avec double vérification par annonce a épuisé le quota et trois annonces vraies (dont une de Mistral) ont été écartées comme « non confirmées ». | Viser ~50 recherches au total. Une annonce qu'on n'a pas pu vérifier faute de quota est **indéterminée, pas fausse** : la signaler dans le rapport et la reprendre au brief suivant, jamais la classer comme réfutée. |
-| **Dépôt public sur compte personnel** | Écart avec la charte IA Lynxter (actifs IA sur serveurs Lynxter, pas d'hébergement personnel, pas d'exposition sans validation IT). Arbitrage direction en attente. | Ne rien publier ici qui ne soit public par ailleurs. Suivre l'arbitrage. |
+| **Dépôt public** | Tout ce qui est écrit ici est public. | Ne rien publier qui ne soit public par ailleurs : ni client, ni chiffre interne, ni détail d'organisation. |
 
 ---
 

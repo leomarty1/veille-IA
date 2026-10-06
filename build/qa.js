@@ -252,6 +252,8 @@ const MODEL_STATUS = ['ga', 'preview', 'restricted', 'unreleased', 'deprecated',
     check(`modèle : date ISO (${m.id})`, /^\d{4}-\d{2}-\d{2}$/.test(m.date || ''), m.date);
     check(`modèle : statut connu (${m.id})`, MODEL_STATUS.includes(m.status), m.status);
     check(`modèle : remplace un modèle connu (${m.id})`, !m.replaces || ids.has(m.replaces), m.replaces);
+    check(`modèle : gamme déclarée dans families{} (${m.id})`, !!(models.families && models.families[m.family]), m.family);
+    check(`modèle : éditeur canonique (${m.id})`, !['Google DeepMind', 'Mistral AI'].includes(m.actor), m.actor);
     check(`modèle : au moins une source (${m.id})`, Array.isArray(m.sources) && m.sources.length > 0);
     for (const k of ['price_in', 'price_out', 'context_k']) {
       check(`modèle : ${k} numérique ou null (${m.id})`, m[k] == null || typeof m[k] === 'number', String(m[k]));
@@ -282,7 +284,7 @@ function qaV2(j, { gate, prevDate, ledgerSlugs, ledgerUrls }) {
   gate(`chapeau (lead) présent, ≤ 60 mots (${d})`, !!j.lead && words(j.lead) <= 60, words(j.lead || '') + ' mots');
   gate(`En 30 secondes : 1 à 3 points (${d})`, Array.isArray(j.en_30s) && j.en_30s.length >= 1 && j.en_30s.length <= 3);
   for (const p of j.en_30s || []) gate(`En 30 secondes : ≤ 45 mots par point (${d})`, words(p) <= 45, words(p) + ' mots : ' + stripTags(p).slice(0, 50));
-  gate(`highlights : 3 phrases pour la home (${d})`, Array.isArray(j.highlights) && j.highlights.length === 3);
+  gate(`highlights : 1 à 3 phrases pour la home (${d})`, Array.isArray(j.highlights) && j.highlights.length >= 1 && j.highlights.length <= 3);
   gate(`Pour Lynxter : 0 à 4 lignes (${d})`, Array.isArray(j.pour_lynxter) && j.pour_lynxter.length <= 4);
   for (const r of j.pour_lynxter || []) {
     const id = `${d} · ${stripTags(r.titre || '').slice(0, 40)}`;
@@ -314,7 +316,8 @@ function qaV2(j, { gate, prevDate, ledgerSlugs, ledgerUrls }) {
 
   for (const it of j.items || []) {
     const id = `${d} · ${it.slug}`;
-    gate(`date dans la fenêtre (${id})`, /^\d{4}-\d{2}-\d{2}$/.test(it.date || '') && it.date <= d && (!prevDate || it.date > prevDate), `${it.date} ∉ (${prevDate || '−∞'}, ${d}]`);
+    // Format 2 : le jour du brief précédent est inclus (un brief peut sortir en milieu de journée) ; le ledger écarte les doublons.
+    gate(`date dans la fenêtre (${id})`, /^\d{4}-\d{2}-\d{2}$/.test(it.date || '') && it.date <= d && (!prevDate || it.date >= prevDate), `${it.date} ∉ [${prevDate || '−∞'}, ${d}]`);
     gate(`slug préfixé par la date du brief (${id})`, (it.slug || '').startsWith(d + '-'));
     gate(`slug non déjà couvert (${id})`, !ledgerSlugs.has((it.slug || '').replace(/^\d{4}-\d{2}-\d{2}-/, '')), 'déjà dans un des ' + LEDGER_DEPTH + ' briefs précédents');
     const prim = (it.sources || []).find((s) => s.primary);

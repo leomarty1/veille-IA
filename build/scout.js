@@ -6,7 +6,7 @@
    quand l'egress est restreint (observé 2026-08-09 et 2026-09-06 : seuls
    code.claude.com, platform.claude.com, github.com et
    raw.githubusercontent.com répondent), et sort la liste DATÉE des
-   entrées dans la fenêtre (since exclu → until inclus). Zéro modèle,
+   entrées dans la fenêtre (since inclus → until inclus ; le ledger écarte ce qui est déjà couvert). Zéro modèle,
    zéro hallucination possible : ce qui sort d'ici est ce que la page dit.
 
        node build/scout.js 2026-08-30 2026-09-06          # lisible
@@ -116,7 +116,7 @@ function curl(url) {
   return execFileSync('curl', ['-sS', '-L', '-f', '--max-time', '25', '-A', 'veille-IA scout (+https://github.com/leomarty1/veille-IA)', url], { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'] });
 }
 
-const inWindow = (d) => d > since && d <= until;
+const inWindow = (d) => d >= since && d <= until;
 const result = { since, until, sources: [] };
 for (const s of SOURCES) {
   const r = { id: s.id, actor: s.actor, label: s.label, url: s.url, ok: false, error: null, entries: [], total_parsed: 0 };

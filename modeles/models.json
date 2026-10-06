@@ -498,7 +498,7 @@
     "https://www.anthropic.com/news/3-5-models-and-computer-use"
    ],
    "confidence": "verified",
-   "notes": "Prix de lancement 5/15 $ ; 2,50/10 $ à partir du snapshot 2024-08-06. output_k = mémoire (4K au lancement, 16K pour 08-06)."
+   "notes": "Prix de lancement 5/15 $ ; 2,50/10 $ à partir du snapshot 2024-08-06. output_k = non vérifié (4K au lancement, 16K pour 08-06)."
   },
   {
    "id": "claude-3-5-sonnet-jun2024",
@@ -536,7 +536,7 @@
     "https://platform.claude.com/docs/en/about-claude/model-deprecations"
    ],
    "confidence": "verified",
-   "notes": "Prix et contexte 200K dans l'annonce. La page affiche 'Jun 21, 2024' (fuseau) ; ID API claude-3-5-sonnet-20240620. output_k 8K = mémoire (4K au lancement, 8K via en-tête bêta ensuite). Retiré de l'API le 2025-10-28 (page dépréciations)."
+   "notes": "Prix et contexte 200K dans l'annonce. La page affiche 'Jun 21, 2024' (fuseau) ; ID API claude-3-5-sonnet-20240620. output_k 8K = non vérifié (4K au lancement, 8K via en-tête bêta ensuite). Retiré de l'API le 2025-10-28 (page dépréciations)."
   },
   {
    "id": "gpt-4o-mini",
@@ -630,7 +630,7 @@
     "https://github.com/openai/simple-evals"
    ],
    "confidence": "memory-only",
-   "notes": "Seul le GPQA (simple-evals d'OpenAI) a été vérifié ; date, prix et contexte viennent de la mémoire. Le SWE-bench 43 % de models-data.json n'a pas été retrouvé."
+   "notes": "Seul le GPQA (simple-evals d'OpenAI) a été vérifié ; date, prix et contexte ne sont pas vérifiés. Le SWE-bench 43 % de models-data.json n'a pas été retrouvé."
   },
   {
    "id": "gemini-1-5-pro-002",
@@ -694,7 +694,7 @@
     "https://platform.claude.com/docs/en/about-claude/model-deprecations"
    ],
    "confidence": "verified",
-   "notes": "Date = annonce (ID claude-3-5-haiku-20241022) ; disponibilité API début nov. 2024 (mémoire). Prix de référence 0,80/4 $ (révision du 03/12/2024 notée sur la page d'annonce, confirmée par la page pricing). Retiré le 2026-02-19."
+   "notes": "Date = annonce (ID claude-3-5-haiku-20241022) ; disponibilité API début nov. 2024 (à vérifier). Prix de référence 0,80/4 $ (révision du 03/12/2024 notée sur la page d'annonce, confirmée par la page pricing). Retiré le 2026-02-19."
   },
   {
    "id": "claude-3-5-sonnet-oct2024",
@@ -815,7 +815,7 @@
     "https://technode.com/2025/02/10/deepseek-v3-ends-promotional-pricing-updates-api-service-rates/"
    ],
    "confidence": "uncertain",
-   "notes": "MoE 671B / 37B actifs, code MIT + licence modèle DeepSeek (usage commercial autorisé). Prix standard 0,27/1,10 $ à partir du 2025-02-09 (promo avant). Date de sortie de mémoire (non reconfirmée)."
+   "notes": "MoE 671B / 37B actifs, code MIT + licence modèle DeepSeek (usage commercial autorisé). Prix standard 0,27/1,10 $ à partir du 2025-02-09 (promo avant). Date de sortie non vérifiée."
   },
   {
    "id": "deepseek-r1",
@@ -943,7 +943,7 @@
     "https://platform.claude.com/docs/en/about-claude/model-deprecations"
    ],
    "confidence": "verified",
-   "notes": "Annonce datée du 24 févr. 2025 ; 3 $/15 $ (réflexion incluse). Sortie max 128K mentionnée dans l'annonce (via bêta ; 64K par défaut, mémoire). Retiré le 2026-02-19."
+   "notes": "Annonce datée du 24 févr. 2025 ; 3 $/15 $ (réflexion incluse). Sortie max 128K mentionnée dans l'annonce (via bêta ; 64K par défaut, non vérifié). Retiré le 2026-02-19."
   },
   {
    "id": "gpt-4-5",
@@ -977,7 +977,7 @@
     "https://www.analyticsvidhya.com/blog/2025/02/access-the-gpt-4-5-using-api/"
    ],
    "confidence": "verified",
-   "notes": "Research preview, modèle non-reasoning le plus cher d'OpenAI. Retiré de ChatGPT le 2026-06-27 (brief interne) ; retiré de l'API mi-2025 (mémoire)."
+   "notes": "Research preview, modèle non-reasoning le plus cher d'OpenAI. Retiré de ChatGPT le 2026-06-27 (voir le brief public du 2026-06-29) ; retrait de l'API mi-2025, date à vérifier."
   },
   {
    "id": "gemini-2-5-pro",
@@ -1152,7 +1152,7 @@
     "https://github.com/openai/simple-evals"
    ],
    "confidence": "verified",
-   "notes": "Prix de référence 2/8 $ (vérifié) ; prix de lancement 10/40 $ (mémoire), baissé de 80 % en juin 2025."
+   "notes": "Prix de référence 2/8 $ (vérifié) ; prix de lancement 10/40 $ (à vérifier), baissé de 80 % en juin 2025."
   },
   {
    "id": "o4-mini",
@@ -1228,7 +1228,7 @@
     "https://blog.google/products/gemini/gemini-2-5-model-family-expands/"
    ],
    "confidence": "uncertain",
-   "notes": "Preview publique mi-avril 2025 (date du 17/04 de mémoire), GA le 2025-06-17 au prix 0,30/2,50 $ (vérifié). Scores issus d'un seul résumé de recherche."
+   "notes": "Preview publique mi-avril 2025 (date du 17/04 non vérifiée), GA le 2025-06-17 au prix 0,30/2,50 $ (vérifié). Scores issus d'un seul résumé de recherche."
   },
   {
    "id": "qwen3-235b-a22b",
@@ -1323,7 +1323,7 @@
     "https://platform.claude.com/docs/en/about-claude/model-deprecations"
    ],
    "confidence": "verified",
-   "notes": "15 $/75 $ confirmés par l'annonce et la page pricing. Pas de tableau complet dans l'annonce Claude 4 (seulement le graphique SWE-bench). output_k 32K = mémoire. Retiré le 2026-06-15."
+   "notes": "15 $/75 $ confirmés par l'annonce et la page pricing. Pas de tableau complet dans l'annonce Claude 4 (seulement le graphique SWE-bench). output_k 32K = non vérifié. Retiré le 2026-06-15."
   },
   {
    "id": "claude-sonnet-4",
@@ -1376,7 +1376,7 @@
     "https://platform.claude.com/docs/en/about-claude/model-deprecations"
    ],
    "confidence": "verified",
-   "notes": "Contexte 1M ajouté en bêta à l'été 2025 (mémoire). Retiré le 2026-06-15."
+   "notes": "Contexte 1M ajouté en bêta à l'été 2025 (à vérifier). Retiré le 2026-06-15."
   },
   {
    "id": "grok-4",
@@ -1616,7 +1616,7 @@
     "https://www.anthropic.com/news/claude-haiku-4-5"
    ],
    "confidence": "verified",
-   "notes": "Contexte total 400K (dont 128K de sortie, mémoire pour le découpage)."
+   "notes": "Contexte total 400K (dont 128K de sortie, découpage non vérifié)."
   },
   {
    "id": "deepseek-v3-1",
@@ -1640,7 +1640,7 @@
     "https://github.com/deepseek-ai/DeepSeek-V3.2-Exp"
    ],
    "confidence": "uncertain",
-   "notes": "Modèle hybride (fusionne V3 et R1). Prix non vérifié (0,56/1,68 $ de mémoire). V3.1-Terminus (sept. 2025, GitHub DeepSeek) : SWE-bench Verified 68,4, GPQA 80,7, HLE 21,7, AIME 2025 88,4, Terminal-bench 36,7."
+   "notes": "Modèle hybride (fusionne V3 et R1). Prix non vérifié (0,56/1,68 $ à confirmer). V3.1-Terminus (sept. 2025, GitHub DeepSeek) : SWE-bench Verified 68,4, GPQA 80,7, HLE 21,7, AIME 2025 88,4, Terminal-bench 36,7."
   },
   {
    "id": "claude-sonnet-4-5",
@@ -2018,7 +2018,7 @@
     "https://www.verdent.ai/guides/model/devstral-2"
    ],
    "confidence": "uncertain",
-   "notes": "123B dense, licence MIT modifiée, 256K. Date exacte (9 déc. 2025) de mémoire, recherche : 'décembre 2025'. Devstral Small 2 (24B, Apache 2.0) : 68,0 %. Devstral (Small) de mai 2025 non inclus."
+   "notes": "123B dense, licence MIT modifiée, 256K. Date exacte (9 déc. 2025) non vérifié, recherche : 'décembre 2025'. Devstral Small 2 (24B, Apache 2.0) : 68,0 %. Devstral (Small) de mai 2025 non inclus."
   },
   {
    "id": "gpt-5-2",
@@ -2101,7 +2101,7 @@
     "https://www.anthropic.com/news/claude-sonnet-4-6"
    ],
    "confidence": "verified",
-   "notes": "GPQA 90,4 / HLE 33,7 (mémoire) non retenus faute de source."
+   "notes": "GPQA 90,4 / HLE 33,7 (à vérifier) non retenus faute de source."
   },
   {
    "id": "claude-opus-4-6",
@@ -2629,7 +2629,7 @@
     "https://en.wikipedia.org/wiki/Mistral_AI"
    ],
    "confidence": "verified",
-   "notes": "128B dense, poids ouverts (MIT modifiée), 256K. Sortie le 29-30 avr. 2026 (le brief interne du 11/05 la date du 2 mai, jour de l'annonce Vibe Remote Agents). Le Medium 3.1 intermédiaire n'est pas inclus.",
+   "notes": "128B dense, poids ouverts (MIT modifiée), 256K. Sortie le 29-30 avr. 2026 (le brief public du 2026-05-11 la datait du 2 mai, jour de l'annonce Vibe Remote Agents). Le Medium 3.1 intermédiaire n'est pas inclus.",
    "en_clair": "Le modèle intermédiaire de Mistral (avril 2026), ouvert. Aucun nouveau modèle généraliste chez Mistral depuis."
   },
   {

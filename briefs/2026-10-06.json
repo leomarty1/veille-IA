@@ -50,7 +50,7 @@
     {
       "verdict": "rien",
       "titre": "Filigrane, publicités, Codex : rien à changer côté OpenAI",
-      "pourquoi": "En Europe, ChatGPT et Codex marqueront bientôt leurs textes d'un filigrane, notre compte partagé compris. Anthropic a annoncé en août que ses futurs modèles Claude marqueraient aussi leur texte. Le filigrane n'identifie pas l'utilisateur et le détecteur n'est pas public. Les publicités en images ne sont testées qu'aux États-Unis. Codex n'est pas dans nos outils.",
+      "pourquoi": "En Europe, ChatGPT et Codex marqueront bientôt leurs textes d'un filigrane, y compris pour nos usages de ChatGPT. Anthropic a annoncé en août que ses futurs modèles Claude marqueraient aussi leur texte. Le filigrane n'identifie pas l'utilisateur et le détecteur n'est pas public. Les publicités en images ne sont testées qu'aux États-Unis. Codex n'est pas dans nos outils.",
       "qui": null,
       "charte": "vert",
       "items": [
@@ -201,7 +201,7 @@
       "resume": "OpenAI présente textGrain : l'IA oriente légèrement le choix de ses mots, et seul un détecteur muni d'une clé secrète repère cette signature. En Europe, il sera appliqué d'office au texte de ChatGPT et de Codex dans les semaines qui viennent, pour répondre à l'AI Act. Le détecteur n'est pas public : il est réservé à des chercheurs et organismes approuvés.",
       "pour_nous": {
         "verdict": "rien",
-        "texte": "Notre compte ChatGPT partagé est concerné : ses textes porteront ce filigrane. Rien à changer : le filigrane n'identifie pas l'utilisateur et le détecteur n'est pas public."
+        "texte": "Nos usages de ChatGPT sont concernés : leurs textes porteront ce filigrane. Rien à changer : le filigrane n'identifie pas l'utilisateur et le détecteur n'est pas public."
       },
       "chiffres": [
         "Détection, selon OpenAI : environ 80 % des passages de 200 tokens (environ 150 mots) et 95 % des passages de 400 tokens (environ 300 mots), pour 1 % de faux positifs, en conditions favorables",

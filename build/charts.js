@@ -111,7 +111,7 @@ function timeSteps({ series, yLabel, yMax, asOf, width = 960, height = 340, id =
     const marks = pts.map((p) => {
       const tip = `<b>${unit === '$' ? '$' + fmt(p.value, 2) : fmt(p.value) + ' ' + unit}</b> · ${esc(p.label)}<br>${dateFr(p.date)}${p.extra ? ' · ' + esc(p.extra) : ''}`;
       const clipped = p.value > vMax;
-      return `<circle class="hit" cx="${x(p.date)}" cy="${y(p.value)}" r="12" tabindex="0" data-tip="${esc(tip)}"/><circle class="mk f-${cls}" cx="${x(p.date)}" cy="${y(p.value)}" r="${markEvery ? 4.5 : 0}"/>${clipped ? `<text x="${x(p.date) + 8}" y="${y(p.value) + 4}">↑ ${unit === '$' ? '$' + fmt(p.value, 0) : fmt(p.value)}</text>` : ''}`;
+      return `<circle class="hit" cx="${x(p.date)}" cy="${y(p.value)}" r="12" tabindex="0" data-tip="${esc(tip)}" aria-label="${esc(tip.replace(/<[^>]+>/g, ' '))}"/><circle class="mk f-${cls}" cx="${x(p.date)}" cy="${y(p.value)}" r="${markEvery ? 4.5 : 0}"/>${clipped ? `<text x="${x(p.date) + 8}" y="${y(p.value) + 4}">↑ ${unit === '$' ? '$' + fmt(p.value, 0) : fmt(p.value)}</text>` : ''}`;
     }).join('');
     const last = pts[pts.length - 1];
     ends.push({ y: y(last.value), text: `${s.name} · ${unit === '$' ? '$' + fmt(last.value, 2) : fmt(last.value) + ' ' + unit}`, cls });
@@ -160,7 +160,7 @@ function frontier({ points, yLabel, width = 960, height = 320, id = 'fr', yMin =
   const dots = pts.map((p) => {
     const rec = records.includes(p);
     const tip = `<b>${fmt(p.value)} %</b> · ${esc(p.label)}<br>${dateFr(p.date)}${rec ? ' · record à cette date' : ''}`;
-    return `<circle class="hit" cx="${x(p.date)}" cy="${y(p.value)}" r="12" tabindex="0" data-tip="${esc(tip)}"/><circle class="mk ${rec ? (actorClass(p.actor) === 'other' ? 'f-ink' : 'f-' + actorClass(p.actor)) : 'f-old'}" cx="${x(p.date)}" cy="${y(p.value)}" r="${rec ? 5 : 4}"/>`;
+    return `<circle class="hit" cx="${x(p.date)}" cy="${y(p.value)}" r="12" tabindex="0" data-tip="${esc(tip)}" aria-label="${esc(tip.replace(/<[^>]+>/g, ' '))}"/><circle class="mk ${rec ? (actorClass(p.actor) === 'other' ? 'f-ink' : 'f-' + actorClass(p.actor)) : 'f-old'}" cx="${x(p.date)}" cy="${y(p.value)}" r="${rec ? 5 : 4}"/>`;
   }).join('');
   // libellés : premier et dernier record + record avec le plus grand saut
   const lab = new Set([records[0], records[records.length - 1]]);

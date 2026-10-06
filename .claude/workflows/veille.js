@@ -112,10 +112,10 @@ const QA_SCHEMA = {
 
 const TON = `Ton editorial (CLAUDE.md §1 et CONTEXTE_LYNXTER.md) : lecteur = equipe Lynxter (support, commerce, dev, direction), PAS specialiste de l'IA, lecture en 5 minutes. Phrases courtes (20 mots en moyenne), mots courants, tout terme technique soit remplace soit present dans build/glossaire.json. Pas de code ni de nom de parametre dans les resumes (ils vont dans chiffres[]). Un ou deux chiffres utiles par annonce avec leur point de comparaison. Zero superlatif. Pour Lynxter : uniquement a partir de ce que CONTEXTE_LYNXTER.md dit qu'on utilise, jamais d'outil ou de processus interne invente ; « rien a faire » est une reponse normale.`
 
-const LEDGER_TXT = A.ledger.length ? JSON.stringify(A.ledger.slice(0, 60)) : "[]"
+const LEDGER_TXT = A.ledger.length ? JSON.stringify(A.ledger.slice(0, 120)) : "[]"
 
 function scanPrompt(a) {
-  return `Tu scannes l'actualite IA de ${a.actor} sur la fenetre ${A.since} (exclu) -> ${A.date} (inclus).
+  return `Tu scannes l'actualite IA de ${a.actor} sur la fenetre ${A.since} (inclus : le brief precedent a pu sortir en cours de journee) -> ${A.date} (inclus).
 Sources officielles a ouvrir en priorite : ${a.sources.join(" · ")}.
 
 METHODE
@@ -135,7 +135,7 @@ Renvoie via la sortie structuree.`
 }
 
 function consolidatePrompt(scans) {
-  return `Tu consolides et REDIGES le brief veille IA du ${A.date} (fenetre ${A.since} exclu -> ${A.date} inclus).
+  return `Tu consolides et REDIGES le brief veille IA du ${A.date} (fenetre ${A.since} inclus -> ${A.date} inclus ; le ledger ecarte ce qui est deja couvert).
 
 RESULTATS DE SCAN PAR ACTEUR (bruts, a croiser) :
 ${JSON.stringify(scans, null, 2)}
@@ -148,8 +148,8 @@ TA TACHE
 1. DEDUP intra-fenetre (une meme annonce vue par deux scans = un item) ET inter-briefs : ecarte tout ce qui recoupe le ledger ${LEDGER_TXT}. Ecarte aussi : hors fenetre, confidence="rumor" (sauf mention explicite « annonce non materialisee » en · info), repackagings marketing, partenariats sans substance technique.
 2. SCORING (lis d'abord CONTEXTE_LYNXTER.md) : tag lynxter = « Important pour nous » (touche un outil qu'on utilise ou une decision proche), useful = « Bon a savoir », info = « En bref » (2 phrases, 35 mots max). theme = modeles | outils | entreprise | ouvert | autre.
 3. GATE source primaire : un 🎯/🛠 a >= 1 source sur le domaine OFFICIEL de l'acteur (has_primary=true, sources[].primary=true sur cette URL) ; sinon has_primary=false + >= 2 secondaires independantes, et le brief affichera « sans annonce officielle ». Ne JAMAIS poser primary=true sur un domaine de presse ou d'agregateur — build/qa.js le bloque.
-4. Semaine calme (< 3 items sur Anthropic/OpenAI/Google DeepMind/Meta/Mistral) : brief minimal honnete, titre type « Semaine calme cote frontiere », pas de padding, sections en actor_empty.
-5. ECRIS le fichier briefs/${A.date}.json avec l'outil Write, au FORMAT 2. Reference : LIS d'abord briefs/2026-10-04.json et la section 4 de CLAUDE.md. Cles :
+4. Semaine calme (< 3 items sur Anthropic/OpenAI/Google DeepMind/Meta/Mistral) : brief minimal honnete, titre type « Semaine calme cote frontiere », pas de padding, acteurs sans annonce listes dans rien_de_notable[].
+5. ECRIS le fichier briefs/${A.date}.json avec l'outil Write, au FORMAT 2. Reference : LIS d'abord briefs/2026-10-04.json et CLAUDE.md §3 etape 4. Cles :
    schema: 2, date, period, title (<= 90 car., le fait + ce qu'il change), description, lead (<= 60 mots), actors_scanned (nombre),
    en_30s[1-3] (<= 45 mots chacun), highlights[3] (phrases courtes pour la home),
    pour_lynxter[<= 4] { verdict: a-faire|a-tester|a-surveiller|rien, titre, pourquoi (<= 60 mots), qui, charte: ok|vert|hors-cadre|local|null, items[slugs] },
@@ -193,7 +193,7 @@ if (okPrincipaux.length < MIN_SCANS_PRINCIPAUX) {
     `veille: ${okPrincipaux.length}/${PRINCIPAUX.length} scans principaux ont abouti (minimum ${MIN_SCANS_PRINCIPAUX}). ` +
     `Sous-agents probablement inoperants (verifier les transcripts : erreurs d'outils, StructuredOutput). ` +
     `Repli : derouler les etapes 1-5 de CLAUDE.md dans la session principale (WebSearch/WebFetch y fonctionnent), ` +
-    `puis node build/gen.js, node build/sync.js, node build/qa.js, bash build/publish.sh.`
+    `puis node build/gen.js <date>, node build/site.js, node build/sync.js <date>, node build/qa.js, bash build/publish.sh <date>.`
   )
 }
 

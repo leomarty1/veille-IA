@@ -1,0 +1,7 @@
+# Fichiers de travail de la routine : jamais publiés
+*_preview.html
+briefs/*_preview.json
+scout*.json
+*.log
+node_modules/
+.DS_Store

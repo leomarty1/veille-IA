@@ -2,7 +2,7 @@
 
 > Fichier tenu à la main par Léo. La routine le lit **avant** d'écrire la section « Pour Lynxter » et les lignes « Pour nous » du brief.
 > Le dépôt est public : rien de confidentiel ici (pas de client, pas de chiffre interne, pas de nom de serveur).
-> Dernière mise à jour : 2026-10-06 (première version, **à relire et compléter par Léo**, notamment les lignes marquées « à confirmer »).
+> Dernière mise à jour : 2026-10-06.
 
 ## Qui lit le brief
 
@@ -10,29 +10,18 @@ L'équipe Lynxter : support technique, commerce, développement, direction. Des 
 
 Lynxter conçoit et fabrique à Bayonne des imprimantes 3D industrielles multi-têtes (filament, silicone, polyuréthane), pour l'aéronautique, le médical, l'académique et l'industrie.
 
-## Ce qu'on utilise vraiment (octobre 2026)
+## Nos outils, en bref
 
-| Outil | Usage | Statut charte |
-|---|---|---|
-| Claude Code, Cowork (Anthropic, comptes pro) | Support technique (diagnostic, réponses, base de connaissance), tâches administratives, développement | Autorisé : données publiques et internes anonymisées |
-| Routines Claude (tâches planifiées dans le cloud) | Automatisations récurrentes, dont ce brief. Modèle actuel : Claude Opus 5.5 | Autorisé |
-| ChatGPT (un compte partagé) | Usage ponctuel | Données publiques uniquement |
-| Mistral (compte pro) | Autorisé par la charte ; usage actuel à confirmer | Autorisé |
-| Gemini, Perplexity, Copilot, Grok, Meta AI… | Pas d'usage officiel | Hors cadre : données publiques uniquement |
-| Infrastructure locale | Prévue, pas encore en place | Seule voie prévue pour les données sensibles |
+- **Claude** (Claude Code, Cowork, routines planifiées) : notre outil principal, pour le support technique, les tâches administratives et le développement. Nos routines tournent aujourd'hui sur Claude Opus 5.5.
+- **Mistral** : autorisé, comme Claude.
+- **ChatGPT** : données publiques uniquement.
+- **Autres IA en ligne** (Gemini, Perplexity, Copilot, Grok, Meta AI…) : hors cadre, données publiques uniquement.
+- **Infrastructure locale** : prévue ; c'est pour elle que les modèles ouverts nous intéressent.
+- Nous n'intégrons pas d'API d'IA dans nos propres logiciels : un changement purement technique d'API (SDK, paramètres) est rarement « à faire » pour nous.
 
-À confirmer par Léo :
-- Appel direct à l'API Claude depuis nos propres logiciels : **a priori aucun**. Les changements purement techniques de l'API (SDK, paramètres) ne sont donc presque jamais « à faire » pour nous.
-- Outils IA de l'équipe développement (stack PHP/Symfony, Vue.js, C++ embarqué) : à préciser.
-- Forge de code (GitHub, GitLab…) : à préciser.
+## Règle de base
 
-## Règles à respecter (résumé de la charte IA Lynxter v0.2)
-
-- Données clients nominatives, financières, RH, R&D non publiée, secrets : **jamais** dans une IA cloud.
-- Claude et Mistral (comptes pro) : données publiques et données internes anonymisées.
-- ChatGPT (compte partagé) : données publiques seulement.
-- Toute autre IA cloud : hors cadre officiel, données publiques seulement.
-- L'humain décide : le brief **propose**, Léo ou la direction valident.
+Nos règles internes d'usage de l'IA décident quels outils peuvent recevoir quelles données. Le brief ne propose jamais de faire passer des données internes ou clients dans un outil hors cadre, et il **propose** sans décider : Léo ou la direction valident.
 
 ## Ce qui compte pour nous, par ordre de priorité
 

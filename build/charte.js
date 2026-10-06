@@ -4,7 +4,7 @@
    utilisée par le brief et le comparateur : si la charte change, on
    change ici et tout le site suit.
      • Claude / Mistral (compte pro)  → données publiques + internes anonymisées
-     • ChatGPT (compte partagé)       → données publiques uniquement
+     • ChatGPT                        → données publiques uniquement
      • autres IA cloud                → hors cadre officiel, données publiques uniquement
      • infra locale (à venir)         → toutes données ; concerne les modèles ouverts
    ════════════════════════════════════════════════════════════════ */
@@ -12,7 +12,7 @@
 
 const STATUS = {
   ok: { cls: 'ch-ok', short: 'Autorisé', long: 'Autorisé par la charte : données publiques et données internes anonymisées' },
-  vert: { cls: 'ch-vert', short: 'Données publiques seulement', long: 'Via le compte ChatGPT partagé : données publiques uniquement' },
+  vert: { cls: 'ch-vert', short: 'Données publiques seulement', long: 'ChatGPT : données publiques uniquement' },
   'hors-cadre': { cls: 'ch-non', short: 'Hors cadre', long: 'Hors du cadre officiel de la charte : données publiques uniquement' },
   local: { cls: 'ch-local', short: 'Infra locale ?', long: 'Modèle ouvert : candidat pour la future infrastructure locale Lynxter (seule voie prévue pour les données sensibles)' },
 };

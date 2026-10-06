@@ -48,50 +48,51 @@ Jusqu'au 2026-09-06, quatre fichiers étaient mis à jour à la main à chaque r
 
 Relancer ne change rien ; relancer sur un ancien brief régénère son entrée sans toucher au reste. Le contenu éditorial passe par des remplacements-fonction (`$10/$50` n'est pas un groupe de capture).
 
-## `node build/qa.js` — garde-fou QA (étape 5.5 de CLAUDE.md)
+## `node build/qa.js` — garde-fou QA (CLAUDE.md §3 étape 5)
 
-Garde-fou **exécutable** à lancer **avant tout push** (et en CI). Sort en code `1` si un check échoue → bloque la publication. Les checks structurels bloquent partout ; les règles éditoriales et de sourcing bloquent sur le brief le plus récent et signalent (`⚠`) sur les briefs déjà publiés. Vérifie :
+Garde-fou **exécutable** à lancer **avant tout push**. Sort en code `1` si un check échoue : la publication est bloquée. Les checks structurels bloquent partout ; les règles éditoriales et de sourcing bloquent sur le brief le plus récent et ne font que signaler (`⚠`) sur les briefs déjà publiés.
 
-- `data.json` et `models-data.json` parsables, `data.json` trié ;
-- invariants par brief : `Σ by_tag == items_count` et `Σ by_actor == items_count` (et `by_actor` présent, clé `Google` et non `Google DeepMind`) ;
-- chaque lien `../items/*.html` d'un brief pointe vers un fichier existant ; `items_count` == nombre d'`<article class="item">` ;
-- compteurs de `index.html` == sommes recalculées ; bloc « Dernier brief » = brief le plus récent, `<a>` fermé ; cohérence de l'archive (`data-items`, `data-actors` compatibles avec les filtres) ;
-- **sourcing** : une source `primary:true` est sur un domaine d'éditeur (allowlist `OFFICIAL`) — presse/agrégateur (`SECONDARY`) en primaire = ✗ ; domaine inconnu = ⚠ à qualifier ; URL hub = ⚠ ; sans primaire → marqueur « sans annonce officielle » + ≥ 2 secondaires indépendantes, jamais d'agrégateur ; `has_primary` cohérent avec `sources[]` ;
-- **fenêtre** : `items[].date` ∈ (brief précédent, brief] ; slug préfixé par la date ;
-- **ledger** : slug et URL primaire non déjà couverts dans les 4 briefs précédents ;
-- **profondeur** : `· info` ≤ 3 phrases et sans `detail` ; 🎯/🛠 avec `detail` (≥ 3/2 paragraphes de contexte, ≥ 2 Lynxter, 4 stats), ≥ 2/1 chiffres ; 🎯 sans comparaison inter-acteurs = ⚠ ;
-- **style** : zéro superlatif marketing ;
-- **liens internes** : `related[].slug` et `nav.prev/next` résolus, tag des related canonique ; aucun `undefined` rendu ; page détail orpheline = ⚠ ;
-- tout modèle `status != released` est `approximate:true` ; modèle sans `notes` = ⚠.
+Communs aux deux formats :
+- `data.json` et `modeles/models.json` parsables, `data.json` trié ; `Σ by_tag == items_count`, `Σ by_actor == items_count`, clé `Google` (pas `Google DeepMind`) ;
+- compteurs de la home, bloc « Dernier brief » (le plus récent, `<a>` fermé), cohérence de l'archive et de ses filtres ;
+- **sourcing** : `primary:true` seulement sur un domaine d'éditeur (allowlist `OFFICIAL`, presse en primaire = ✗, domaine inconnu = ⚠) ; sans primaire : marqueur « sans annonce officielle » + ≥ 2 secondaires indépendantes, jamais d'agrégateur ;
+- **ledger** : slug et URL primaire non couverts par les 4 briefs précédents ; aucun `undefined`/`NaN` rendu ;
+- **base modèles** : id unique, date ISO, statut connu, `replaces` et `family` déclarés, éditeur canonique, chaque score avec sa source et `official` explicite, aucun score « officiel » pour un modèle non sorti.
+
+Format 2 (`"schema": 2`) :
+- sections « En 30 secondes », « Pour Lynxter », « Les annonces » présentes, chaque annonce rendue (ancre `id="<slug>"`) ;
+- titre ≤ 90 caractères, chapeau ≤ 60 mots, En 30 secondes 1 à 3 points de ≤ 45 mots, highlights 1 à 3 ;
+- Pour Lynxter ≤ 4 lignes, verdict connu, pourquoi ≤ 60 mots, statut charte connu, annonces liées existantes ; cartes modèles présentes dans `models.json`, « en clair » ≤ 50 mots ;
+- phrases courtes (≤ 24 mots en moyenne), zéro superlatif, pas de code dans le texte courant, sigles absents du lexique = ⚠ ;
+- fenêtre : `items[].date` ∈ [brief précédent, brief] (jour précédent inclus, le ledger écarte les doublons) ; résumé ≤ 3 phrases et ≤ 75 mots (En bref : ≤ 2 phrases et ≤ 35 mots) ; « pour nous » ≤ 40 mots.
+
+Format 1 (briefs jusqu'au 2026-09-27) : pages détail liées et présentes, profondeur 🎯/🛠, `· info` ≤ 3 phrases.
 
 ```bash
 node build/qa.js   # ✅ ou ❌ + exit 1
 ```
 
-## `.claude/workflows/veille.js` — routine en Dynamic Workflow (Track B)
-
-Réécrit la routine séquentielle en **fan-out / fan-in** :
+## `.claude/workflows/veille.js` — la routine en workflow
 
 ```
-Recherche     1 sous-agent par acteur, en parallèle (search + fetch primaire ; repli search-only si egress bloqué)
-              → fail-fast si < 3 scans principaux aboutissent (sous-agents HS) : repli manuel indiqué
-Consolidation cross-check + dedup inter-briefs (ledger) + scoring 🎯/🛠/· → ÉCRIT briefs/<date>.json
-Rédaction     node build/gen.js + node build/sync.js (+ modeles/ à la main si score officiel)
-QA            node build/qa.js (bloquant ; corrections dans le JSON, jusqu'à 3 passes)
-→ bash build/publish.sh <date> (hors workflow, par la session principale)
+Recherche     1 sous-agent par éditeur, en parallèle (recherche + lecture de la source officielle ; repli recherche seule si egress bloqué)
+              → arrêt rapide si < 3 scans principaux aboutissent : repli manuel indiqué
+Consolidation recoupement + dédoublonnage (ledger) + verdicts Lynxter → ÉCRIT briefs/<date>.json (format 2),
+              met à jour modeles/models.json et build/glossaire.json
+Rédaction     node build/gen.js + build/site.js + build/sync.js
+QA            node build/qa.js (bloquant ; corrections dans les JSON, jusqu'à 3 passes)
+→ bash build/publish.sh <date> (par la session principale)
 ```
 
-Lancement : la routine invoque le workflow `veille` avec `args = { date, since, ledger }`. Le brief ne transite plus en `StructuredOutput` géant (cause de l'échec du 2026-09-06) : le sous-agent de consolidation écrit le fichier et ne renvoie qu'un résumé (compteurs, titre, annonces écartées et pourquoi). Le retour du workflow porte `egress_blocked`, `primary_fetched_ratio`, `scans_failed` et `dropped` pour le rapport final.
+Lancement : `Workflow({ name: "veille", args: { date, since, ledger, scout } })`. Le quota de recherches web (~200 par tour) est partagé entre tous les sous-agents : une annonce non vérifiable faute de quota est « indéterminée », pas fausse.
 
-## `build/gen.js` — générateur de pages (Track A)
+## `build/gen.js` — générateur de pages
 
-Source unique → HTML. À partir de `briefs/<date>.json` (un item décrit **une seule fois**), génère la page brief + une page détail par item 🎯/🛠, via les templates `build/templates/` et le chrome partagé `build/lib.js` (header/footer écrits une fois, plus de duplication).
+Source unique → HTML. Un brief `"schema": 2` donne une page unique (`templates/brief-v2.js`, cartes modèles lues dans `modeles/models.json`) ; un brief format 1 donne la page brief et une page détail par item 🎯/🛠 (`templates/brief.js`, `templates/item.js`).
 
 ```bash
-node build/gen.js 2026-06-01                 # lit briefs/2026-06-01.json → écrit le HTML
-node build/gen.js build/example-brief.json _preview   # depuis un chemin, suffixe non-destructif
+node build/gen.js 2026-10-06                 # lit briefs/2026-10-06.json → écrit briefs/2026-10-06.html
+node build/gen.js briefs/2026-10-06.json _preview   # depuis un chemin, suffixe non destructif
 ```
 
-`build/example-brief.json` = schéma de référence (brief 2026-06-01, prouvé rendu dans le navigateur). Champs clés : `title_html`, `intro_html`, `tldr[]`, `lynxter_hero[]`, `synthese_html`, `actors_order[]`, `actor_empty{}`, `items[]` (chaque item : slug, actor, tag, date, title, context_html, sources[], et `detail{}` pour les 🎯/🛠 → stats, context_paragraphs, lynxter_paragraphs, source, related, nav). La section « Acteurs secondaires » = items dont l'`actor` n'est pas dans `actors_order`.
-
-**État** : templates brief + item prouvés fonctionnels (rendu navigateur vérifié). `data.json`, compteurs home et archives sont dérivés par `sync.js` depuis le 2026-09-07. Reste en follow-up : le classement `modeles/` (éditorial, encore manuel) et la migration des 4 briefs historiques sans JSON (2026-05-11 → 2026-06-01) — tant qu'ils n'ont pas de `items[]` dans `data.json`, le ledger anti-doublon ne les voit pas.
+Référence du format 2 : `briefs/2026-10-04.json` et `briefs/2026-10-06.json`. `build/example-brief.json` reste la référence du format 1 (archives).
