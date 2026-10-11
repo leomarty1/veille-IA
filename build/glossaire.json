@@ -25,6 +25,7 @@
       "id": "contexte",
       "label": "Fenêtre de contexte",
       "match": [
+        "mémoire de travail",
         "fenêtre de contexte",
         "re:\\d+(?:[.,]\\d+)?\\s?[kKM](?:\\s+(?:de\\s+)?tokens)?\\s+de contexte"
       ],
@@ -603,6 +604,48 @@
       ],
       "cs": true,
       "def": "Outil de Claude Code qui télécharge et lit une page web à la demande."
+    },
+    {
+      "id": "managed-agents",
+      "label": "Claude Managed Agents",
+      "match": [
+        "Claude Managed Agents",
+        "Managed Agents"
+      ],
+      "def": "Service d'Anthropic qui fait tourner des agents Claude sur ses propres serveurs, pour les entreprises qui en construisent."
+    },
+    {
+      "id": "compliance-api",
+      "label": "Compliance API",
+      "match": [
+        "Compliance API"
+      ],
+      "def": "Accès réservé aux offres Claude Enterprise qui permet au service conformité d'exporter les conversations et documents de l'entreprise."
+    },
+    {
+      "id": "politique-usage",
+      "label": "Politique d'usage",
+      "match": [
+        "politique d'usage"
+      ],
+      "def": "Règles d'Anthropic qui disent ce qu'on a le droit de faire avec Claude. Tout utilisateur les accepte."
+    },
+    {
+      "id": "open-source",
+      "label": "Open source",
+      "match": [
+        "open source"
+      ],
+      "def": "Logiciel dont le code est public, que chacun peut lire, réutiliser et modifier."
+    },
+    {
+      "id": "credits-api",
+      "label": "Crédits API",
+      "match": [
+        "crédits API",
+        "crédits d'API"
+      ],
+      "def": "Somme prépayée qui paie l'usage de l'API Claude, facturée sinon à la quantité de texte traitée."
     }
   ]
 }

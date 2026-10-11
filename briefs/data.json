@@ -1,6 +1,137 @@
 {
   "briefs": [
     {
+      "date": "2026-10-11",
+      "filename": "2026-10-11.html",
+      "items_count": 15,
+      "by_tag": {
+        "lynxter": 2,
+        "useful": 4,
+        "info": 9
+      },
+      "by_actor": {
+        "Anthropic": 10,
+        "Mistral": 1,
+        "OpenAI": 2,
+        "Google": 1,
+        "Meta": 1
+      },
+      "mode": "hebdomadaire",
+      "title": "Claude Haiku 5.5 : le petit modèle d'Anthropic, environ quatre fois moins cher",
+      "highlights": [
+        "Claude Haiku 5.5 : environ 75 % moins cher que Haiku 4.5, et nettement meilleur",
+        "Claude Code 2.1.294 corrige une faille dans les règles automatiques : mise à jour à faire",
+        "Mistral Large 4 en préversion, poids promis fin octobre ; ChatGPT passe à GPT-6 pour tous"
+      ],
+      "items": [
+        {
+          "slug": "2026-10-11-claude-haiku-5-5",
+          "title": "Claude Haiku 5.5 : le petit modèle rapide d'Anthropic, environ 75 % moins cher",
+          "primary_url": "https://www.anthropic.com/claude-haiku-5-5",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-11-claude-code-2-1-292-296",
+          "title": "Claude Code 2.1.292 à 2.1.296 : une correction de sécurité sur les règles automatiques",
+          "primary_url": "https://code.claude.com/docs/en/changelog#2-1-294",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-11-anthropic-politique-usage-2026",
+          "title": "Politique d'usage de Claude : nouvelles règles pour les machines physiques au 12 novembre",
+          "primary_url": "https://www.anthropic.com/news/2026-usage-policy-update",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-11-claude-credits-api-max-team",
+          "title": "Forfaits Claude Max et Team : des crédits API mensuels inclus",
+          "primary_url": "https://platform.claude.com/docs/en/about-claude/api-credits-for-subscribers",
+          "tag": "useful",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-11-mistral-large-4",
+          "title": "Mistral Large 4 : le modèle annoncé le 6 octobre a un nom et un prix, ses poids arrivent fin octobre",
+          "primary_url": "https://thenextweb.com/news/mistral-releases-large-4-a-1-trillion-parameter-open-weight-ai-model",
+          "tag": "useful",
+          "actor": "Mistral"
+        },
+        {
+          "slug": "2026-10-11-chatgpt-gpt-6-pour-tous",
+          "title": "ChatGPT passe à GPT-6 pour tous, avec des réponses à manipuler",
+          "primary_url": "https://openai.com/index/gpt-6-for-everyone/",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-10-11-sonnet-5-5-cache-moins-cher",
+          "title": "Sonnet 5.5 : relecture du cache à moitié prix.",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview#october-7-2026",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-11-anthropic-cybersecurite-defense",
+          "title": "Anthropic et la cybersécurité.",
+          "primary_url": "https://www.anthropic.com/news/anthropic-cyber-mission",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-11-anthropic-genesis-mission",
+          "title": "Genesis Mission.",
+          "primary_url": "https://www.anthropic.com/news/genesis-mission-commitment",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-11-managed-agents-workflows",
+          "title": "Claude Managed Agents.",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview#october-9-2026",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-11-anthropic-sdk-python-1-12-1-13",
+          "title": "Kit Python d'Anthropic, versions 1.12 et 1.13.",
+          "primary_url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.12.0",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-11-compliance-api-claude-unifie",
+          "title": "Compliance API.",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview#october-8-2026",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-11-codex-composer-predictions",
+          "title": "Codex devine la prochaine consigne.",
+          "primary_url": "https://help.openai.com/en/articles/20001601-composer-predictions-in-codex",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-10-11-gemini-auto-comptes-gratuits",
+          "title": "Application Gemini, sans annonce officielle.",
+          "primary_url": "https://9to5google.com/2026/10/09/gemini-auto-free-users/",
+          "tag": "info",
+          "actor": "Google DeepMind"
+        },
+        {
+          "slug": "2026-10-11-meta-sierra-personal-agent-protocol",
+          "title": "Meta et Sierra, sans annonce officielle de Meta.",
+          "primary_url": "https://sierra.ai/blog/introducing-personal-agent-protocol",
+          "tag": "info",
+          "actor": "Meta"
+        }
+      ]
+    },
+    {
       "date": "2026-10-06",
       "filename": "2026-10-06.html",
       "items_count": 9,

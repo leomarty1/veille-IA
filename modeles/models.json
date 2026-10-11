@@ -1,6 +1,6 @@
 {
  "meta": {
-  "updated": "2026-10-06",
+  "updated": "2026-10-11",
   "note": "Chaque chiffre porte sa source. official:true = publié par l'éditeur du modèle (ou par un autre éditeur reprenant un chiffre officiel) ; official:false = estimation tierce. Prix : tarif API standard en $ par million de tokens."
  },
  "families": {
@@ -456,6 +456,12 @@
    "unit": "%",
    "what": "Mener une recherche scientifique via le terminal : explorer des données, lancer des simulations, ajuster des équations, prouver des théorèmes.",
    "short": "Terminal-Bench Science"
+  },
+  "osworld-2-1-offline": {
+   "name": "OSWorld 2.1 (sous-ensemble hors ligne)",
+   "unit": "%",
+   "what": "Version 2.1 du test d'utilisation d'ordinateur, limitée aux tâches faisables sans accès internet. Utilisée par Anthropic pour Haiku 5.5.",
+   "short": "OSWorld 2.1 hors ligne"
   }
  },
  "models": [
@@ -1754,6 +1760,41 @@
      "official": true,
      "source": "https://www.anthropic.com/news/claude-haiku-4-5",
      "note": "96,3 % avec Python."
+    },
+    "osworld-2-1-offline": {
+     "value": 15.7,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    "terminal-bench-4": {
+     "value": 0.0,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    "hle-no-tools": {
+     "value": 10.2,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    "hle-tools": {
+     "value": 18.7,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    "gdpval-aa-v2-1": {
+     "value": 735,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    "aa-briefcase": {
+     "value": 614,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    "chartography-no-tools": {
+     "value": 6.4,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
     }
    },
    "sources": [
@@ -1761,11 +1802,12 @@
     "https://platform.claude.com/docs/en/about-claude/model-deprecations",
     "https://www.anthropic.com/news/claude-haiku-4-5",
     "https://platform.claude.com/docs/en/models/haiku-4-5/overview",
-    "https://platform.claude.com/docs/en/about-claude/pricing"
+    "https://platform.claude.com/docs/en/about-claude/pricing",
+    "https://www.anthropic.com/claude-haiku-5-5"
    ],
    "confidence": "verified",
-   "notes": "Aucun nouveau Haiku entre juin et octobre 2026. La page de Claude Sonnet 5.5 (28 sept. 2026) annonce Claude Haiku 5.5 « dans les prochaines semaines ». Retraite au plus tôt le 2026-10-15 (engagement minimal, pas une date annoncée).",
-   "en_clair": "Le modèle rapide et économique d'Anthropic, sorti en octobre 2025. Anthropic annonce Haiku 5.5 « dans les prochaines semaines ».",
+   "notes": "Retraite au plus tôt le 2026-10-15 (engagement minimal, pas une date annoncée). Remplacé par Claude Haiku 5.5 le 2026-10-07 (Haiku par défaut de l'API et de Claude Code 2.1.293) ; aucune date de retrait publiée à cette date. Scores 2026 repris du tableau de l'annonce de Haiku 5.5.",
+   "en_clair": "Le modèle rapide et économique d'Anthropic, sorti en octobre 2025. Remplacé le 7 octobre 2026 par Haiku 5.5, sans date de retrait annoncée.",
    "claims": [
     {
      "text": "Claude Haiku 5.5 annoncé « dans les prochaines semaines » (annonce de Sonnet 5.5)",
@@ -4709,7 +4751,32 @@
    "context_k": 1050,
    "output_k": 128,
    "open_weights": false,
-   "scores": {},
+   "scores": {
+    "osworld-2-1-offline": {
+     "value": 48.9,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-haiku-5-5",
+     "note": "mesuré et publié par Anthropic dans l'annonce de Haiku 5.5, pas par OpenAI"
+    },
+    "terminal-bench-4": {
+     "value": 16.4,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-haiku-5-5",
+     "note": "mesuré et publié par Anthropic dans l'annonce de Haiku 5.5, pas par OpenAI"
+    },
+    "gdpval-aa-v2-1": {
+     "value": 1437,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-haiku-5-5",
+     "note": "mesuré et publié par Anthropic dans l'annonce de Haiku 5.5, pas par OpenAI"
+    },
+    "frontiercode-1-1": {
+     "value": 42.4,
+     "official": false,
+     "source": "https://www.anthropic.com/claude-haiku-5-5",
+     "note": "mesuré et publié par Anthropic dans l'annonce de Haiku 5.5, pas par OpenAI"
+    }
+   },
    "claims": [
     {
      "text": "prix API divisé par deux vs GPT-5.6 Luna ($0.20/$1.20)",
@@ -4721,7 +4788,7 @@
     "https://computingforgeeks.com/gpt-6-sol-luna-released-features-benchmarks/"
    ],
    "confidence": "verified",
-   "notes": "Option volume d'OpenAI, aussi proposée aux comptes Free et Go dans l'application de bureau. Aucun score publié trouvé.",
+   "notes": "Option volume d'OpenAI, aussi proposée aux comptes Free et Go dans l'application de bureau. Aucun score publié trouvé. Scores ajoutés le 2026-10-11 : chiffres d'Anthropic (annonce de Haiku 5.5), official:false. Depuis le 8 oct. 2026, modèle des comptes Free et Go dans ChatGPT.",
    "en_clair": "Le plus petit modèle d'OpenAI : 0,50 $ le million de tokens écrits, pour les gros volumes de tâches simples. Aucun score publié."
   },
   {
@@ -4837,6 +4904,16 @@
      "value": 61.6,
      "official": true,
      "source": "https://www.anthropic.com/claude-sonnet-5-5"
+    },
+    "osworld-2-1-offline": {
+     "value": 83.9,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    "hle-no-tools": {
+     "value": 56.9,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
     }
    },
    "claims": [
@@ -4849,22 +4926,23 @@
      "source": "https://www.anthropic.com/claude-sonnet-5-5"
     },
     {
-     "text": "cache reads $0.20/M, cache writes $2.50/M (5 min)",
-     "source": "https://www.anthropic.com/claude-sonnet-5-5"
-    },
-    {
      "text": "300k tokens de sortie en Batch API (en-tête bêta)",
      "source": "https://platform.claude.com/docs/en/about-claude/models/overview"
+    },
+    {
+     "text": "cache reads $0.10/M depuis le 7 oct. 2026 (au lieu de $0.20), cache writes inchangés",
+     "source": "https://platform.claude.com/docs/en/release-notes/overview#october-7-2026"
     }
    ],
    "sources": [
     "https://www.anthropic.com/claude-sonnet-5-5",
     "https://platform.claude.com/docs/en/about-claude/models/overview",
     "https://platform.claude.com/docs/en/about-claude/model-deprecations",
-    "https://platform.claude.com/docs/en/models/sonnet-5-5/overview"
+    "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+    "https://platform.claude.com/docs/en/release-notes/overview#october-7-2026"
    ],
    "confidence": "verified",
-   "notes": "Sonnet par défaut sur l'API et dans Claude Code 2.1.284. Aucun SWE-bench Verified ni Pro publié. Retraite au plus tôt le 2027-09-28. Ruptures d'API vs Sonnet 5 (thinking disabled et tool_choice any/tool → 400). Le 30/09, Sonnet 4.5 (claude-sonnet-4-5-20250929) est déprécié, retrait de l'API le 2026-11-30, remplaçant recommandé : Sonnet 5.5.",
+   "notes": "Sonnet par défaut sur l'API et dans Claude Code 2.1.284. Aucun SWE-bench Verified ni Pro publié. Retraite au plus tôt le 2027-09-28. Ruptures d'API vs Sonnet 5 (thinking disabled et tool_choice any/tool → 400). Le 30/09, Sonnet 4.5 (claude-sonnet-4-5-20250929) est déprécié, retrait de l'API le 2026-11-30, remplaçant recommandé : Sonnet 5.5. Le tableau de l'annonce de Haiku 5.5 (7 oct.) donne pour Sonnet 5.5 des valeurs légèrement différentes de son annonce : GDPval-AA v2.1 1840, AA-Briefcase 1824, FrontierCode 52,1 % (effort xhigh) ; les valeurs de l'annonce de Sonnet 5.5 sont conservées ici.",
    "en_clair": "Le milieu de gamme d'Anthropic, au niveau d'Opus 5.5 sur plusieurs tests pour deux fois moins cher. Un grand pas par rapport à Sonnet 5."
   },
   {
@@ -4997,6 +5075,128 @@
    ],
    "confidence": "uncertain",
    "notes": "Annonce du 5 oct. 2026 (page de l'éditeur non lue : egress bloqué). MoE texte seul. API bêta compatible OpenAI sur liste d'attente, sans prix publié. Poids promis « plus tard en octobre » sous Apache 2.0, avec rapport technique, model card et stack de service : passer open_weights à true et compléter contexte, matériel requis et scores à leur publication. Taille : 501B paramètres, dont 23B actifs par token (titre de reflection.ai/blog/introducing-beam ; TechCrunch, MarkTechPost, Unite.AI). Pré-entraînement : 23,8T tokens (TechCrunch, Unite.AI). Contexte annoncé à 1M tokens après midtraining mais 256K en RL : context_k laissé null. Scores non repris (chiffres divergents entre reprises presse). Premier modèle de l'éditeur (replaces null)."
+  },
+  {
+   "id": "claude-haiku-5-5",
+   "name": "Claude Haiku 5.5",
+   "actor": "Anthropic",
+   "family": "claude-haiku",
+   "replaces": "claude-haiku-4-5",
+   "date": "2026-10-07",
+   "status": "ga",
+   "price_in": 0.1,
+   "price_out": 0.5,
+   "context_k": 1000,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "osworld-2-1-offline": {
+     "value": 72.4,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    "terminal-bench-4": {
+     "value": 39.2,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    "hle-no-tools": {
+     "value": 45.9,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    "hle-tools": {
+     "value": 57.4,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    "gdpval-aa-v2-1": {
+     "value": 1620,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    "aa-briefcase": {
+     "value": 1578,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    "chartography-no-tools": {
+     "value": 46.4,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    "frontiercode-1-1": {
+     "value": 46.4,
+     "official": true,
+     "source": "https://www.anthropic.com/claude-haiku-5-5",
+     "note": "effort xhigh ; pas de score publié pour Haiku 4.5"
+    }
+   },
+   "claims": [
+    {
+     "text": "$0.10/$0.50 par M tokens jusqu'à 100 000 tokens de demande, $0.50/$2.50 au-delà",
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    {
+     "text": "environ 75 % moins cher que Haiku 4.5 en moyenne, selon Anthropic",
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    {
+     "text": "le même texte compte environ 30 % de tokens en plus qu'avec Haiku 4.5",
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    {
+     "text": "devant GPT-6 Luna sur OSWorld 2.1 hors ligne, Terminal-Bench 4.0, GDPval-AA et FrontierCode, selon Anthropic",
+     "source": "https://www.anthropic.com/claude-haiku-5-5"
+    }
+   ],
+   "en_clair": "Le petit modèle rapide d'Anthropic : 0,50 $ le million de tokens écrits, mémoire de travail de 1 million de tokens. Très au-dessus de Haiku 4.5, encore loin de Sonnet 5.5 sur les tâches longues.",
+   "sources": [
+    "https://www.anthropic.com/claude-haiku-5-5",
+    "https://platform.claude.com/docs/en/release-notes/overview#october-7-2026",
+    "https://platform.claude.com/docs/en/models/haiku-5-5/whats-new-haiku-5-5",
+    "https://code.claude.com/docs/en/changelog#2-1-293"
+   ],
+   "confidence": "verified",
+   "notes": "Haiku par défaut sur l'API et dans Claude Code 2.1.293. Premier Haiku avec réglage d'effort. Ruptures vs Haiku 4.5 (erreur 400) : extended thinking manuel (budget_tokens), temperature/top_p/top_k, prefill, outil computer_20250124. Pas de structured outputs sur Bedrock. Disponible sur API Claude, Bedrock, Claude Platform on AWS, Google Cloud, Microsoft Foundry. Aucune date de retrait de Haiku 4.5 publiée au 2026-10-11."
+  },
+  {
+   "id": "mistral-large-4",
+   "name": "Mistral Large 4",
+   "actor": "Mistral",
+   "family": "mistral-large",
+   "replaces": "mistral-large-3",
+   "date": "2026-10-06",
+   "status": "preview",
+   "price_in": 1.36,
+   "price_out": 4.18,
+   "context_k": 1000,
+   "output_k": null,
+   "open_weights": false,
+   "scores": {},
+   "claims": [
+    {
+     "text": "scores préliminaires de Mistral (entraînement en cours) : DeepSWE 61,7 % (GLM-5.3 61 %, DeepSeek-V4-Pro 57 %), CyberGym-E2E 82 (MiMo-V2.6-Pro 79)",
+     "source": "https://thenextweb.com/news/mistral-releases-large-4-a-1-trillion-parameter-open-weight-ai-model"
+    },
+    {
+     "text": "38 à l'indice d'Artificial Analysis, derrière GLM-5.3 (45) et Kimi K3 (44) ; 32e sur 44 chez Vals AI (estimations tierces)",
+     "source": "https://www.blogdumoderateur.com/mistral-large-4-mistral-ai-veut-reduire-ecart-modeles-open-weight-chinois/"
+    },
+    {
+     "text": "prix affiché à moitié pendant la préversion : $0.68/$2.09 par M tokens",
+     "source": "https://betanews.com/article/mistral-large-4-preview-open-weights/"
+    }
+   ],
+   "en_clair": "Le nouveau grand modèle de Mistral, environ 1 050 milliards de paramètres. Préversion en ligne, poids promis fin octobre. Trop gros pour un petit serveur local.",
+   "sources": [
+    "https://thenextweb.com/news/mistral-releases-large-4-a-1-trillion-parameter-open-weight-ai-model",
+    "https://www.blogdumoderateur.com/mistral-large-4-mistral-ai-veut-reduire-ecart-modeles-open-weight-chinois/",
+    "https://betanews.com/article/mistral-large-4-preview-open-weights/",
+    "https://www.justgeek.fr/mistral-large-4-159280/"
+   ],
+   "confidence": "uncertain",
+   "notes": "Page mistral.ai non lue (egress bloqué), données de presse concordantes. Surnom « Le Chonk ». MoE ~1 050B paramètres, 49B actifs selon l'annonce (52B selon la fiche technique). Texte et images en entrée. Contexte annoncé 1M tokens ; Vals AI et Artificial Analysis listent ~512K. API et Mistral Studio uniquement. Poids ouverts promis fin octobre (26-27 oct. selon les sources), licence non publiée : passer open_weights à true et compléter à la publication. Scores préliminaires non repris dans scores{} (version de DeepSWE non précisée, CyberGym-E2E différent de CyberGym). Aucun test commun publié avec Mistral Large 3."
   }
  ]
 }

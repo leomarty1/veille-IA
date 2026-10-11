@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Haiku 5.5 : le petit modèle d'Anthropic, environ quatre fois moins cher — Veille IA Lynxter</title>
+<meta name="description" content="Veille IA du 6 au 11 octobre 2026 : Claude Haiku 5.5, cinq mises à jour de Claude Code dont une de sécurité, nouvelle politique d'usage d'Anthropic, Mistral Large 4, GPT-6 pour tous dans ChatGPT. Ce que ça change pour Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/v2.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/" class="active">Briefs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../lexique/">Lexique</a>
+      <a href="../methodo/">Méthodo</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="b2">
+  <div class="breadcrumb" style="margin-top:32px">
+    <a href="../">Accueil</a><span class="breadcrumb-sep">/</span><a href="./">Briefs</a><span class="breadcrumb-sep">/</span><span class="current">2026-10-11</span>
+  </div>
+
+  <header class="b2-head">
+    <p class="b2-kicker">Veille IA · 6 → 11 octobre 2026</p>
+    <h1 class="b2-title">Claude Haiku 5.5 : le petit modèle d'Anthropic, environ quatre fois moins cher</h1>
+    <p class="b2-lead">Anthropic sort <strong>Claude Haiku 5.5</strong>, son petit modèle rapide, à un prix environ quatre fois plus bas que Haiku 4.5. Pour nous, l'action de la semaine est ailleurs : une correction de sécurité dans <span class="term" tabindex="0" data-def="Assistant d'Anthropic qui travaille dans un terminal ou un éditeur : code, fichiers, automatisations.">Claude Code</span>. Mistral donne enfin le nom de son nouveau modèle, et ChatGPT passe à GPT-6 pour tous.</p>
+    <ul class="b2-meta"><li>15 annonces retenues</li><li>9 éditeurs suivis</li><li>Lecture : ~5 min</li><li><a href="../modeles/">Comparateur de modèles</a></li></ul>
+  </header>
+
+  <section class="b2-section" id="en-30-secondes">
+    <h2 class="b2-h2">En 30 secondes</h2>
+    <div class="b2-30s"><ol>
+      <li><strong>Claude Haiku 5.5</strong> (7 oct.) coûte environ 75 % de moins que Haiku 4.5 et fait bien mieux sur les tests d'Anthropic. Il reste loin de Sonnet 5.5 sur les tâches longues. Claude Code l'utilise déjà par défaut.</li>
+      <li><strong>Claude Code</strong> reçoit cinq versions. La 2.1.294 corrige des règles automatiques qui laissaient passer ce qu'elles devaient bloquer : chaque poste doit être au moins en 2.1.294.</li>
+      <li><strong>Mistral Large 4</strong> est en <span class="term" tabindex="0" data-def="Fonction encore en test : elle peut changer ou disparaître. À éviter pour un usage critique.">préversion</span>, téléchargeable fin octobre, mais très gros. Anthropic durcit au 12 novembre ses règles pour Claude branché sur une machine physique. <strong>ChatGPT</strong> passe à GPT-6 pour tous.</li>
+    </ol></div>
+  </section>
+
+  <section class="b2-section" id="pour-lynxter">
+    <h2 class="b2-h2">Pour Lynxter cette semaine</h2>
+    <p class="b2-sub">Ce que ces annonces changent pour nous. Propositions à valider : rien n'est engagé sans feu vert.</p>
+    <ul class="b2-lx">
+<li class="b2-lx-row">
+    <span class="verdict v-faire">À faire</span>
+    <div>
+      <h3>Passer Claude Code en version 2.1.294 ou plus</h3>
+      <p>La 2.1.294 corrige des règles automatiques rédigées comme des consignes (« bloque les commandes qui… ») qui laissaient passer ce qu'elles devaient bloquer. Pour vérifier, taper <code>claude --version</code> dans un terminal. À savoir aussi : depuis la 2.1.292, nos <span class="term" tabindex="0" data-def="Tâche Claude planifiée qui tourne seule dans le cloud, sans PC allumé (ce brief en est une).">routines</span> publient leurs pages privées sans demander d'accord.</p>
+      <div class="b2-lx-foot"><span><b>Qui :</b> Chaque utilisateur de Claude Code</span><span><a href="#2026-10-11-claude-code-2-1-292-296">Voir l'annonce ↓</a></span></div>
+    </div>
+  </li>
+<li class="b2-lx-row">
+    <span class="verdict v-surveiller">À surveiller</span>
+    <div>
+      <h3>Nouvelle politique d'usage de Claude au 12 novembre : machines physiques</h3>
+      <p>Si Claude pilote un jour un équipement physique, comme une imprimante ou un banc de test, il faudra un opérateur qualifié capable de l'arrêter. La machine devra aussi rester sûre si Claude se déconnecte. Nos usages listés (support, administratif, développement) ne sont pas concernés aujourd'hui.</p>
+      <div class="b2-lx-foot"><span><b>Qui :</b> Léo, direction</span><span><span class="charte ch-ok" title="Autorisé par la charte : données publiques et données internes anonymisées">Autorisé</span></span><span><a href="#2026-10-11-anthropic-politique-usage-2026">Voir l'annonce ↓</a></span></div>
+    </div>
+  </li>
+<li class="b2-lx-row">
+    <span class="verdict v-surveiller">À surveiller</span>
+    <div>
+      <h3>Mistral Large 4 : attendre les poids et la licence, fin octobre</h3>
+      <p>Mistral est autorisé par notre <span class="term" tabindex="0" data-def="Nos règles internes d'usage de l'IA : quelles données, dans quels outils.">charte</span>. Mais avec environ 1 050 <span class="term" tabindex="0" data-def="Taille d'un modèle, en milliards (« 30B »). Plus il y en a, plus il faut de matériel pour le faire tourner.">milliards de paramètres</span>, ce modèle demandera sans doute un serveur à plusieurs cartes graphiques haut de gamme (estimation). Regarder sa licence et le matériel conseillé à la sortie des poids. Aucun test commun publié avec Mistral Large 3.</p>
+      <div class="b2-lx-foot"><span><b>Qui :</b> Léo</span><span><span class="charte ch-local" title="Modèle ouvert : candidat pour la future infrastructure locale Lynxter (seule voie prévue pour les données sensibles)"><span class="term" tabindex="0" data-def="Serveurs Lynxter (prévus) où faire tourner des modèles ouverts : la seule voie prévue pour les données sensibles.">Infra locale</span> ?</span></span><span><a href="#2026-10-11-mistral-large-4">Voir l'annonce ↓</a></span></div>
+    </div>
+  </li>
+<li class="b2-lx-row">
+    <span class="verdict v-rien">Rien à faire</span>
+    <div>
+      <h3>Haiku 5.5, crédits API, GPT-6 dans ChatGPT : rien à changer</h3>
+      <p>Claude Code utilise déjà Haiku 5.5 tout seul pour ses petites tâches. Il reste trop loin de Sonnet 5.5 pour remplacer le modèle de nos routines. Les <span class="term" tabindex="0" data-def="Somme prépayée qui paie l'usage de l'API Claude, facturée sinon à la quantité de texte traitée.">crédits API</span> offerts aux forfaits Max et Team ne servent pas : nous n'intégrons pas d'<span class="term" tabindex="0" data-def="Accès direct au modèle depuis un logiciel ou un script, facturé à l'usage (au token).">API</span>. ChatGPT reste limité aux données publiques.</p>
+      <div class="b2-lx-foot"><span><a href="#2026-10-11-claude-haiku-5-5">Voir l'annonce ↓</a></span></div>
+    </div>
+  </li>
+    </ul>
+  </section>
+
+  <section class="b2-section" id="modeles">
+    <h2 class="b2-h2">Les modèles de la semaine</h2>
+    <p class="b2-sub">Chaque nouveau modèle face à celui qu'il remplace, sur les tests publiés par son éditeur. Prix en dollars pour un million de <span class="term" tabindex="0" data-def="Morceau de mot (environ ¾ d'un mot). C'est l'unité que les IA lisent, écrivent et facturent.">tokens</span>. <a href="../modeles/">Tous les modèles →</a></p>
+    <div class="b2-models">
+<article class="b2-model" id="2026-10-11-claude-haiku-5-5">
+  <div class="b2-model-head">
+    <h3><span class="b2-actor a-anthropic"><i></i></span>Claude Haiku 5.5</h3>
+    <span class="replaces">remplace Claude Haiku 4.5 · sorti le 7 oct. 2026</span>
+  </div>
+  <p class="plain">Le petit modèle d'Anthropic fait un grand saut par rapport à Haiku 4.5, pour environ quatre fois moins cher. Selon Anthropic, il devance GPT-6 Luna, son équivalent chez OpenAI. Il reste nettement derrière Sonnet 5.5 sur les tâches longues et techniques.</p>
+  <ul class="b2-facts"><li><span class="k">Prix (lecture / écriture)</span><span class="v">$0,1 / $0,5 <span class="d delta-good">−90 %</span></span></li><li><span class="k"><span class="term" tabindex="0" data-def="Quantité de texte que le modèle garde en tête d'un coup. 1 million de tokens ≈ 1 500 pages.">Mémoire de travail</span></span><span class="v">1 M tokens <span class="d delta-good">+400 %</span></span></li><li><span class="k">Disponibilité</span><span class="v">Disponible</span></li><li><span class="k">Chez Lynxter</span><span class="v"><span class="charte ch-ok" title="Autorisé par la charte : données publiques et données internes anonymisées">Autorisé</span></span></li></ul>
+  <div class="viz" id="m0"><div class="db" role="img" aria-label="Claude Haiku 4.5 comparé à Claude Haiku 5.5 sur 5 test(s)">
+  <div class="db-row">
+    <div class="db-label"><span class="term" tabindex="0" data-def="Test où l'IA pilote un vrai ordinateur (clics, fenêtres, logiciels) pour réaliser une tâche de bureau.">OSWorld</span> 2.1 hors ligne</div>
+    <div class="db-track">
+      <span class="db-link" style="left:15.7%;width:56.7%"></span>
+      <span class="db-dot db-old" style="left:15.7%" tabindex="0" data-tip="&lt;b&gt;15,7 %&lt;/b&gt; · Claude Haiku 4.5&lt;br&gt;OSWorld 2.1 hors ligne" aria-label="Claude Haiku 4.5 15,7 %"></span>
+      <span class="db-dot db-new s-anthropic" style="left:72.4%" tabindex="0" data-tip="&lt;b&gt;72,4 %&lt;/b&gt; · Claude Haiku 5.5&lt;br&gt;OSWorld 2.1 hors ligne (+56,7 pt)" aria-label="Claude Haiku 5.5 72,4 %"></span>
+      <span class="db-val" style="left:72.4%">72,4</span>
+    </div>
+  </div>
+<div class="db-row">
+    <div class="db-label"><span class="term" tabindex="0" data-def="Test où l'IA accomplit seule des tâches techniques complètes en ligne de commande : installer, configurer, déboguer.">Terminal-Bench</span> 4.0</div>
+    <div class="db-track">
+      <span class="db-link" style="left:0%;width:39.2%"></span>
+      <span class="db-dot db-old" style="left:0%" tabindex="0" data-tip="&lt;b&gt;0 %&lt;/b&gt; · Claude Haiku 4.5&lt;br&gt;Terminal-Bench 4.0" aria-label="Claude Haiku 4.5 0 %"></span>
+      <span class="db-dot db-new s-anthropic" style="left:39.2%" tabindex="0" data-tip="&lt;b&gt;39,2 %&lt;/b&gt; · Claude Haiku 5.5&lt;br&gt;Terminal-Bench 4.0 (+39,2 pt)" aria-label="Claude Haiku 5.5 39,2 %"></span>
+      <span class="db-val" style="left:39.2%">39,2</span>
+    </div>
+  </div>
+<div class="db-row">
+    <div class="db-label"><span class="term" tabindex="0" data-def="Questions d'experts très difficiles, dans des dizaines de disciplines.">Humanity's Last Exam</span> (sans outils)</div>
+    <div class="db-track">
+      <span class="db-link" style="left:10.2%;width:35.7%"></span>
+      <span class="db-dot db-old" style="left:10.2%" tabindex="0" data-tip="&lt;b&gt;10,2 %&lt;/b&gt; · Claude Haiku 4.5&lt;br&gt;Humanity's Last Exam (sans outils)" aria-label="Claude Haiku 4.5 10,2 %"></span>
+      <span class="db-dot db-new s-anthropic" style="left:45.9%" tabindex="0" data-tip="&lt;b&gt;45,9 %&lt;/b&gt; · Claude Haiku 5.5&lt;br&gt;Humanity's Last Exam (sans outils) (+35,7 pt)" aria-label="Claude Haiku 5.5 45,9 %"></span>
+      <span class="db-val" style="left:45.9%">45,9</span>
+    </div>
+  </div>
+<div class="db-row">
+    <div class="db-label">Humanity's Last Exam (outils)</div>
+    <div class="db-track">
+      <span class="db-link" style="left:18.7%;width:38.7%"></span>
+      <span class="db-dot db-old" style="left:18.7%" tabindex="0" data-tip="&lt;b&gt;18,7 %&lt;/b&gt; · Claude Haiku 4.5&lt;br&gt;Humanity's Last Exam (outils)" aria-label="Claude Haiku 4.5 18,7 %"></span>
+      <span class="db-dot db-new s-anthropic" style="left:57.4%" tabindex="0" data-tip="&lt;b&gt;57,4 %&lt;/b&gt; · Claude Haiku 5.5&lt;br&gt;Humanity's Last Exam (outils) (+38,7 pt)" aria-label="Claude Haiku 5.5 57,4 %"></span>
+      <span class="db-val" style="left:57.4%">57,4</span>
+    </div>
+  </div>
+<div class="db-row">
+    <div class="db-label">Chartography (sans outils)</div>
+    <div class="db-track">
+      <span class="db-link" style="left:6.4%;width:40%"></span>
+      <span class="db-dot db-old" style="left:6.4%" tabindex="0" data-tip="&lt;b&gt;6,4 %&lt;/b&gt; · Claude Haiku 4.5&lt;br&gt;Chartography (sans outils)" aria-label="Claude Haiku 4.5 6,4 %"></span>
+      <span class="db-dot db-new s-anthropic" style="left:46.4%" tabindex="0" data-tip="&lt;b&gt;46,4 %&lt;/b&gt; · Claude Haiku 5.5&lt;br&gt;Chartography (sans outils) (+40 pt)" aria-label="Claude Haiku 5.5 46,4 %"></span>
+      <span class="db-val" style="left:46.4%">46,4</span>
+    </div>
+  </div>
+  <div class="db-row db-axis"><div class="db-label"></div><div class="db-track"><span style="left:0%">0&nbsp;%</span><span style="left:25%">25&nbsp;%</span><span style="left:50%">50&nbsp;%</span><span style="left:75%">75&nbsp;%</span><span style="left:100%">100&nbsp;%</span></div></div>
+</div>
+<ul class="viz-legend"><li><i class="dot" style="background:var(--s-old)"></i>Claude Haiku 4.5 (avant)</li><li><i class="dot" style="background:var(--s-anthropic)"></i>Claude Haiku 5.5</li></ul><ul class="cmp-vs" style="margin-top:10px"><li><span><span class="term" tabindex="0" data-def="Test sur des tâches de travail réelles de nombreux métiers (rapports, tableaux), comparées au travail d'experts. Score en points de classement.">GDPval-AA</span> v2.1</span><span>735 → <b>1 620</b> Elo</span></li><li><span>AA-Briefcase v1.1</span><span>614 → <b>1 578</b> Elo</span></li><li><span>FrontierCode 1.1</span><span><b>46,4</b> %</span></li></ul><details class="viz-data"><summary>Voir les données</summary>
+<div class="cmp-table-wrap"><table class="cmp-table" style="min-width:0"><caption class="viz-note" style="caption-side:bottom;text-align:left;padding:8px 12px">Scores publiés par l'éditeur.</caption>
+<thead><tr><th>Test</th><th class="n">Claude Haiku 4.5</th><th class="n">Claude Haiku 5.5</th><th class="n">Écart</th></tr></thead>
+<tbody><tr><td>OSWorld 2.1 hors ligne</td><td class="n">15,7</td><td class="n">72,4</td><td class="n">+56,7</td></tr><tr><td>Terminal-Bench 4.0</td><td class="n">0</td><td class="n">39,2</td><td class="n">+39,2</td></tr><tr><td>Humanity's Last Exam (sans outils)</td><td class="n">10,2</td><td class="n">45,9</td><td class="n">+35,7</td></tr><tr><td>Humanity's Last Exam (outils)</td><td class="n">18,7</td><td class="n">57,4</td><td class="n">+38,7</td></tr><tr><td>GDPval-AA v2.1</td><td class="n">735</td><td class="n">1 620</td><td class="n">+885</td></tr><tr><td>AA-Briefcase v1.1</td><td class="n">614</td><td class="n">1 578</td><td class="n">+964</td></tr><tr><td>Chartography (sans outils)</td><td class="n">6,4</td><td class="n">46,4</td><td class="n">+40</td></tr><tr><td>FrontierCode 1.1</td><td class="n">—</td><td class="n">46,4</td><td class="n">—</td></tr></tbody></table></div></details></div>
+  <div class="b2-forus"><span class="verdict v-rien">Rien à faire</span><p>Rien à faire : Claude Code l'utilise déjà par défaut pour ses petites tâches.</p></div>
+  <details><summary>Les chiffres</summary><ul><li>Prix : $0,10 / $0,50 par M tokens jusqu'à 100 000 tokens de demande, $0,50 / $2,50 au-delà (Haiku 4.5 : $1 / $5). Le même texte compte environ 30 % de tokens en plus qu'avec Haiku 4.5 : Anthropic annonce environ 75 % d'économie en moyenne</li><li>Mémoire de travail 1M tokens (Haiku 4.5 : 200k), sortie jusqu'à 128k tokens (64k)</li><li>Scores Anthropic (Haiku 5.5 / Haiku 4.5 / Sonnet 5.5) : OSWorld 2.1 hors ligne 72,4 / 15,7 / 83,9 % ; Terminal-Bench 4.0 39,2 / 0,0 / 70,6 % ; Humanity's Last Exam sans outils 45,9 / 10,2 / 56,9 %, avec outils 57,4 / 18,7 / 64,5 % ; GDPval-AA v2.1 1 620 / 735 / 1 840 Elo ; Chartography sans outils 46,4 / 6,4 / 61,6 %</li><li>FrontierCode 1.1 : 46,4 % (Sonnet 5.5 : 52,1 % en <span class="term" tabindex="0" data-def="Réglage qui dit au modèle combien réfléchir : bas = rapide et économique, haut = plus soigné.">effort xhigh</span> ; pas de score pour Haiku 4.5)</li><li>Selon Anthropic, GPT-6 Luna obtient 48,9 % sur OSWorld 2.1 hors ligne, 16,4 % sur Terminal-Bench 4.0 et 42,4 % sur FrontierCode (chiffres mesurés par Anthropic)</li><li>Premier Haiku avec réglage d'effort. Disponible sur l'API Claude, Amazon Bedrock, Claude Platform on AWS, Google Cloud et Microsoft Foundry ; par défaut dans Claude Code 2.1.293</li><li>Code écrit pour Haiku 4.5 : erreur 400 avec <code>budget_tokens</code> (réflexion manuelle), <code>temperature</code> / <code>top_p</code> / <code>top_k</code>, le préremplissage de réponse et l'outil <code>computer_20250124</code>. Pas de sorties structurées sur Bedrock</li><li>Aucune date de <span class="term" tabindex="0" data-def="Un modèle déprécié marche encore mais sa date de fin est annoncée. Après le retrait, les appels échouent.">retrait</span> de Haiku 4.5 publiée. L'annonce ne dit pas si Haiku 5.5 arrive dans les applis Claude</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://www.anthropic.com/claude-haiku-5-5" target="_blank" rel="noopener">anthropic.com/claude-haiku-5-5</a> · <a href="https://platform.claude.com/docs/en/release-notes/overview#october-7-2026" target="_blank" rel="noopener">platform.claude.com — release notes 7 oct.</a> · <a href="https://platform.claude.com/docs/en/models/haiku-5-5/whats-new-haiku-5-5" target="_blank" rel="noopener">platform.claude.com — nouveautés de Haiku 5.5</a> · <a href="https://mezha.ua/en/news/claude-haiku-5-5-reveal-315947/" target="_blank" rel="noopener">mezha.ua</a> <span class="est">(presse)</span></p>
+</article>
+<article class="b2-model" id="2026-10-11-mistral-large-4">
+  <div class="b2-model-head">
+    <h3><span class="b2-actor a-other"><i></i></span>Mistral Large 4</h3>
+    <span class="replaces">remplace Mistral Large 3 · sorti le 6 oct. 2026</span>
+  </div>
+  <p class="plain">Le nouveau grand modèle de Mistral, en préversion en ligne. Ses scores sont provisoires et le placent derrière les meilleurs <span class="term" tabindex="0" data-def="Modèle téléchargeable : on peut le faire tourner sur ses propres serveurs, sans envoyer de données à l'éditeur.">modèles ouverts</span> chinois selon les classements tiers. Ses poids doivent sortir fin octobre.</p>
+  <ul class="b2-facts"><li><span class="k">Prix (lecture / écriture)</span><span class="v">$1,36 / $4,18 <span class="d delta-bad">+179 %</span></span></li><li><span class="k">Mémoire de travail</span><span class="v">1 M tokens <span class="d delta-good">+291 %</span></span></li><li><span class="k">Disponibilité</span><span class="v">Préversion</span></li><li><span class="k">Chez Lynxter</span><span class="v"><span class="charte ch-ok" title="Autorisé par la charte : données publiques et données internes anonymisées">Autorisé</span></span></li></ul>
+  <p class="b2-quiet">Aucun score officiel publié pour ce modèle.</p>
+  <div class="b2-forus"><span class="verdict v-surveiller">À surveiller</span><p>Mistral est autorisé par notre charte. Pour une installation locale, attendre la licence et le matériel conseillé : le modèle est très gros.</p></div>
+  <details><summary>Les chiffres</summary><ul><li><span class="term" tabindex="0" data-def="Architecture où seule une partie du modèle travaille à chaque mot : plus rapide et moins cher à faire tourner.">Mixture of Experts</span> : environ 1 050 milliards de paramètres au total, 49 milliards actifs selon l'annonce (52 selon la fiche technique) ; texte et images en entrée</li><li>Contexte annoncé : 1M tokens (Vals AI et Artificial Analysis listent environ 512k)</li><li>Prix catalogue $1,36 / $4,18 par M tokens, affiché $0,68 / $2,09 pendant la préversion, sans date de fin. API et Mistral Studio uniquement</li><li>Poids ouverts promis « d'ici la fin du mois » (26 ou 27 octobre selon les sources), licence non publiée</li><li>Scores préliminaires de Mistral (entraînement en cours) : <span class="term" tabindex="0" data-def="Test de programmation sur des tâches de développement longues, cité par Google pour Gemini.">DeepSWE</span> 61,7 % (<span class="term" tabindex="0" data-def="Famille de modèles d'IA de l'éditeur chinois Z.ai, dont plusieurs versions sont des modèles ouverts, téléchargeables librement.">GLM</span>-5.3 : 61 %, DeepSeek-V4-Pro : 57 %)</li><li>Selon Artificial Analysis : indice 38, contre 45 pour GLM-5.3 et 44 pour Kimi K3 ; 32e sur 44 chez Vals AI</li><li>Aucun test commun publié avec Mistral Large 3. Page mistral.ai non lue (accès bloqué) : détails repris de la presse</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://thenextweb.com/news/mistral-releases-large-4-a-1-trillion-parameter-open-weight-ai-model" target="_blank" rel="noopener">thenextweb.com</a> <span class="est">(presse)</span> · <a href="https://www.blogdumoderateur.com/mistral-large-4-mistral-ai-veut-reduire-ecart-modeles-open-weight-chinois/" target="_blank" rel="noopener">blogdumoderateur.com</a> <span class="est">(presse)</span> · <a href="https://betanews.com/article/mistral-large-4-preview-open-weights/" target="_blank" rel="noopener">betanews.com</a> <span class="est">(presse)</span> · <a href="https://www.justgeek.fr/mistral-large-4-159280/" target="_blank" rel="noopener">justgeek.fr</a> <span class="est">(presse)</span> · <em>sans annonce officielle</em></p>
+</article>
+    </div>
+  </section>
+
+  <section class="b2-section" id="annonces">
+    <h2 class="b2-h2">Les annonces</h2>
+
+<div class="b2-theme"><h3>Outils et assistants</h3>
+<article class="b2-item" id="2026-10-11-claude-code-2-1-292-296">
+  <div class="b2-item-top"><span class="b2-actor a-anthropic"><i></i>Anthropic</span><span>6 oct. 2026</span><span class="b2-imp i-lynxter">Important pour nous</span></div>
+  <h4>Claude Code 2.1.292 à 2.1.296 : une correction de sécurité sur les règles automatiques</h4>
+  <p>Cinq versions de Claude Code sortent du 6 au 9 octobre. La 2.1.294 corrige des <span class="term" tabindex="0" data-def="Point d'accroche où un plugin réagit à un événement de Claude Code, par exemple juste avant l'utilisation d'un outil.">hooks</span> rédigés comme des consignes qui laissaient passer ce qu'ils devaient bloquer, et la 2.1.295 permet de bloquer l'action quand un hook plante. Haiku 5.5 devient le petit modèle par défaut, et les routines publient leurs pages privées sans demander d'accord.</p>
+  <div class="b2-forus"><span class="verdict v-faire">À faire</span><p>Vérifier que chaque poste est en 2.1.294 ou plus (<code>claude --version</code> dans un terminal).</p></div><details><summary>Les chiffres</summary><ul><li>2.1.292 (6 oct.) : paramètre <code>effort</code> pour l'outil Agent (effort réglable par sous-agent) ; serveurs <span class="term" tabindex="0" data-def="Standard ouvert pour brancher une IA sur un outil ou une base de données (un « connecteur »).">MCP</span> locaux en protocole 2026-07-28 par défaut ; les routines planifiées et « Run now » publient un artefact privé sans demander d'accord</li><li>2.1.293 (7 oct.) : Claude Haiku 5.5 (<code>claude-haiku-5-5</code>) devient le Haiku par défaut ; synchronisation des skills claude.ai toutes les 40 minutes au lieu de 10 hors session</li><li>2.1.294 (8 oct.) : les hooks <code>prompt</code> et <code>agent</code> écrits comme des consignes (« Block commands that… ») laissaient passer ce qu'ils devaient bloquer : corrigé</li><li>2.1.295 (8 oct.) : <code>onFailure: "block"</code> pour les hooks commande et HTTP (un hook qui ne démarre pas, expire ou sort en erreur bloque l'action) ; prise en charge d'OSC 7501 pour afficher l'état de Claude Code dans le terminal</li><li>2.1.296 (9 oct.) : <code>CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL</code> (un seul modèle pour tous les <span class="term" tabindex="0" data-def="IA qui enchaîne seule plusieurs actions (chercher, lire, écrire, exécuter) pour atteindre un objectif.">agents</span> d'un workflow), <code>autoCompactWindow</code> pour les sous-agents, option <code>allow_large</code> de l'outil Read, coûts du cache Sonnet 5.5 recalculés à $0,10/M</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://code.claude.com/docs/en/changelog#2-1-294" target="_blank" rel="noopener">code.claude.com/changelog#2-1-294</a> · <a href="https://code.claude.com/docs/en/changelog#2-1-292" target="_blank" rel="noopener">code.claude.com/changelog#2-1-292</a> · <a href="https://code.claude.com/docs/en/changelog#2-1-295" target="_blank" rel="noopener">code.claude.com/changelog#2-1-295</a> · <a href="https://code.claude.com/docs/en/changelog#2-1-296" target="_blank" rel="noopener">code.claude.com/changelog#2-1-296</a></p>
+</article>
+<article class="b2-item" id="2026-10-11-chatgpt-gpt-6-pour-tous">
+  <div class="b2-item-top"><span class="b2-actor a-openai"><i></i>OpenAI</span><span>7 oct. 2026</span></div>
+  <h4>ChatGPT passe à GPT-6 pour tous, avec des réponses à manipuler</h4>
+  <p>ChatGPT utilise GPT-6 pour tous ses comptes : GPT-6 Sol pour les payants depuis le 7 octobre, GPT-6 Luna pour les gratuits depuis le 8. Ses réponses peuvent maintenant contenir des graphiques, boutons, formulaires ou cartes à manipuler. Selon OpenAI, la réponse avec recherche web commence 44 % plus tôt qu'avec GPT-5.6.</p>
+  <div class="b2-forus"><span class="verdict v-rien">Rien à faire</span><p>ChatGPT reste réservé aux données publiques chez nous. Rien à changer.</p></div><details><summary>Les chiffres</summary><ul><li>Plus, Pro, Business, Enterprise : GPT-6 Sol depuis le 7 octobre ; Free et Go : GPT-6 Luna à partir du 8 octobre</li><li>« Intelligent UI » : activée par l'administrateur dans Enterprise ; seul l'onglet Chat change, pas Work ni <span class="term" tabindex="0" data-def="L'assistant de programmation d'OpenAI, concurrent de Claude Code.">Codex</span></li><li>Délai avant le début de la réponse avec recherche web : −44 % pour GPT-6 Instant contre GPT-5.6 Instant, selon OpenAI (une version traduite de l'annonce dit −32 %, écart non expliqué)</li><li>Aucun nouveau modèle dans l'API</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://openai.com/index/gpt-6-for-everyone/" target="_blank" rel="noopener">openai.com/index/gpt-6-for-everyone</a> · <a href="https://www.androidheadlines.com/2026/10/openai-bringing-gpt-6-ai-models-chatgpt-everyone.html" target="_blank" rel="noopener">androidheadlines.com</a> <span class="est">(presse)</span> · <a href="https://propakistani.pk/2026/10/08/openai-is-turning-chatgpt-into-a-more-interactive-interface/" target="_blank" rel="noopener">propakistani.pk</a> <span class="est">(presse)</span></p>
+</article>
+</div>
+<div class="b2-theme"><h3>Entreprises, sécurité et règles</h3>
+<article class="b2-item" id="2026-10-11-claude-credits-api-max-team">
+  <div class="b2-item-top"><span class="b2-actor a-anthropic"><i></i>Anthropic</span><span>7 oct. 2026</span></div>
+  <h4>Forfaits Claude Max et Team : des crédits API mensuels inclus</h4>
+  <p>Les abonnés Claude Max et Team reçoivent chaque mois des crédits pour l'API Claude : 100 à 200 $ pour Max, 20 à 100 $ par siège pour Team, plafonnés à 500 $. Ils couvrent l'API et les outils pour construire des agents, mais pas Claude Code ni l'usage supplémentaire des applis. Les crédits non utilisés sont perdus en fin de mois.</p>
+  <div class="b2-forus"><span class="verdict v-rien">Rien à faire</span><p>Nous n'intégrons pas d'API dans nos logiciels : ces crédits n'ont pas d'usage chez nous pour l'instant.</p></div><details><summary>Les chiffres</summary><ul><li>Max 5x : $100/mois ; Max 20x : $200/mois ; Team : $20 par siège Standard, $100 par siège Premium, mis en commun et plafonnés à $500/mois</li><li>Couverts : API Claude, <span class="term" tabindex="0" data-def="Service d'Anthropic qui fait tourner des agents Claude sur ses propres serveurs, pour les entreprises qui en construisent.">Claude Managed Agents</span>, <span class="term" tabindex="0" data-def="Kit d'Anthropic pour construire ses propres agents, avec le moteur qui fait tourner Claude Code.">Claude Agent SDK</span>, playground. Exclus : Claude Code, usage supplémentaire des applis, Bedrock, Google Cloud, Foundry</li><li>À rattacher à une organisation de la Console ; 7 jours d'abonnement minimum ; pas de report d'un mois sur l'autre</li><li>Free, Pro et Enterprise non éligibles</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://platform.claude.com/docs/en/about-claude/api-credits-for-subscribers" target="_blank" rel="noopener">platform.claude.com — crédits API pour les abonnés</a> · <a href="https://platform.claude.com/docs/en/release-notes/overview#october-7-2026" target="_blank" rel="noopener">platform.claude.com — release notes 7 oct.</a></p>
+</article>
+</div>
+
+<div class="b2-theme"><h3>Le reste</h3>
+<article class="b2-item" id="2026-10-11-anthropic-politique-usage-2026">
+  <div class="b2-item-top"><span class="b2-actor a-anthropic"><i></i>Anthropic</span><span>8 oct. 2026</span></div>
+  <h4><span class="term" tabindex="0" data-def="Règles d'Anthropic qui disent ce qu'on a le droit de faire avec Claude. Tout utilisateur les accepte.">Politique d'usage</span> de Claude : nouvelles règles pour les machines physiques au 12 novembre</h4>
+  <p>Anthropic met à jour sa politique d'usage, applicable le 12 novembre 2026. Claude branché sur un équipement physique autonome exige un opérateur qualifié capable de l'arrêter, et la machine doit rester sûre si Claude se déconnecte. Les interdictions s'étendent aux armes autonomes, aux opérations de tromperie et au suivi de personnes sans leur accord.</p>
+  <div class="b2-forus"><span class="verdict v-surveiller">À surveiller</span><p>Aucun de nos usages listés ne pilote une machine. À relire si un projet relie un jour Claude à une imprimante ou à un équipement de production.</p></div><details><summary>Les chiffres</summary><ul><li>Entrée en vigueur : 12 novembre 2026</li><li>Armes : logiciels de guidage, composants et armement de drones ou véhicules autonomes explicitement interdits</li><li>Nouvelle section sur les activités trompeuses : faux comptes, faux sites d'information, opérations d'influence</li><li>La cruauté gratuite et répétée envers Claude est interdite dans les cas extrêmes</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://www.anthropic.com/news/2026-usage-policy-update" target="_blank" rel="noopener">anthropic.com/news/2026-usage-policy-update</a></p>
+</article>
+</div>
+  </section>
+<section class="b2-section" id="en-bref">
+  <h2 class="b2-h2">En bref</h2>
+  <ul class="b2-brief-list"><li id="2026-10-11-sonnet-5-5-cache-moins-cher"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong>Sonnet 5.5 : relecture du cache à moitié prix.</strong> Relire un texte déjà <span class="term" tabindex="0" data-def="Remise quand on renvoie un texte déjà lu par le modèle (instructions, documents) : ce texte est facturé bien moins cher.">en cache</span> coûte 0,10 $ <span class="term" tabindex="0" data-def="Prix pour un million de tokens (≈ 750 000 mots) : le 1er chiffre pour ce que le modèle lit, le 2e pour ce qu'il écrit.">par million de tokens</span> au lieu de 0,20 $. Les autres prix de Sonnet 5.5 ne changent pas. <span class="b2-src" style="display:inline"><a href="https://platform.claude.com/docs/en/release-notes/overview#october-7-2026" target="_blank" rel="noopener">platform.claude.com — release notes 7 oct.</a></span></li><li id="2026-10-11-anthropic-cybersecurite-defense"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong>Anthropic et la cybersécurité.</strong> Accès par niveaux à Claude pour les métiers de la cybersécurité, et aide aux défenseurs des réseaux d'eau, d'énergie et de transport. Un scanner gratuit vérifie aussi les projets <span class="term" tabindex="0" data-def="Logiciel dont le code est public, que chacun peut lire, réutiliser et modifier.">open source</span>. <span class="b2-src" style="display:inline"><a href="https://www.anthropic.com/news/anthropic-cyber-mission" target="_blank" rel="noopener">anthropic.com/news/anthropic-cyber-mission</a></span></li><li id="2026-10-11-anthropic-genesis-mission"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong>Genesis Mission.</strong> Anthropic engage 150 millions de dollars sur trois ans dans ce programme américain de recherche par l'IA : Claude pour des centaines de projets dans plus de 15 agences, dont la NASA. <span class="b2-src" style="display:inline"><a href="https://www.anthropic.com/news/genesis-mission-commitment" target="_blank" rel="noopener">anthropic.com/news/genesis-mission-commitment</a></span></li><li id="2026-10-11-managed-agents-workflows"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong>Claude Managed Agents.</strong> Un agent peut lancer de nombreux autres agents par étapes, par exemple pour relire des centaines de documents. Sa lecture de pages web est aussi mieux bornée. <span class="b2-src" style="display:inline"><a href="https://platform.claude.com/docs/en/release-notes/overview#october-9-2026" target="_blank" rel="noopener">platform.claude.com — release notes 9 oct.</a></span></li><li id="2026-10-11-anthropic-sdk-python-1-12-1-13"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong>Kit Python d'Anthropic, versions 1.12 et 1.13.</strong> Ajoute Haiku 5.5, les outils navigateur et ordinateur, et les nouveautés de Claude Managed Agents. <span class="b2-src" style="display:inline"><a href="https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.12.0" target="_blank" rel="noopener">github.com/anthropics/anthropic-sdk-python — v1.12.0</a></span></li><li id="2026-10-11-compliance-api-claude-unifie"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong><span class="term" tabindex="0" data-def="Accès réservé aux offres Claude Enterprise qui permet au service conformité d'exporter les conversations et documents de l'entreprise.">Compliance API</span>.</strong> Pour Claude Enterprise seulement : l'export couvre les conversations de la nouvelle appli Claude unifiée et les documents au format Word. <span class="b2-src" style="display:inline"><a href="https://platform.claude.com/docs/en/release-notes/overview#october-8-2026" target="_blank" rel="noopener">platform.claude.com — release notes 8 oct.</a></span></li><li id="2026-10-11-codex-composer-predictions"><span class="b2-actor a-openai"><i></i>OpenAI</span> — <strong>Codex devine la prochaine consigne.</strong> En bêta pour les abonnés Pro, Codex propose la consigne suivante d'après la conversation. On peut aussi réorienter une tâche en cours, selon le responsable de Codex. <span class="b2-src" style="display:inline"><a href="https://help.openai.com/en/articles/20001601-composer-predictions-in-codex" target="_blank" rel="noopener">help.openai.com — Composer predictions in Codex</a></span></li><li id="2026-10-11-gemini-auto-comptes-gratuits"><span class="b2-actor a-google"><i></i>Google</span> — <strong>Application Gemini, sans annonce officielle.</strong> Selon 9to5Google, les comptes gratuits ne choisissent plus leur modèle depuis le 9 octobre : Google décide pour eux. Les abonnés AI Pro gagnent Deep Think. <span class="b2-src" style="display:inline"><a href="https://9to5google.com/2026/10/09/gemini-auto-free-users/" target="_blank" rel="noopener">9to5google.com — 9 oct.</a> · <em>sans annonce officielle</em></span></li><li id="2026-10-11-meta-sierra-personal-agent-protocol"><span class="b2-actor a-other"><i></i>Meta</span> — <strong>Meta et Sierra, sans annonce officielle de Meta.</strong> Les deux sociétés proposent une règle commune pour qu'un assistant IA personnel s'identifie auprès d'une entreprise et y agisse. Première version attendue fin octobre. <span class="b2-src" style="display:inline"><a href="https://sierra.ai/blog/introducing-personal-agent-protocol" target="_blank" rel="noopener">sierra.ai — billet du co-annonceur</a> · <em>sans annonce officielle</em></span></li></ul>
+</section>
+  <p class="b2-quiet" style="margin-top:28px">Rien de notable cette semaine chez : Perplexity, xAI, <span class="term" tabindex="0" data-def="Éditeur de code avec IA intégrée, concurrent de Claude Code.">Cursor</span>, DeepSeek.</p>
+
+  <section class="b2-section" id="mots" data-noterm>
+    <h2 class="b2-h2">Les mots du brief</h2>
+    <p class="b2-sub">Survolez ou touchez un mot souligné en pointillés pour sa définition. <a href="../lexique/">Lexique complet →</a></p>
+    <dl class="b2-lexique"><div><dt>Claude Code</dt><dd>Assistant d'Anthropic qui travaille dans un terminal ou un éditeur : code, fichiers, automatisations.</dd></div><div><dt>Préversion (preview, bêta)</dt><dd>Fonction encore en test : elle peut changer ou disparaître. À éviter pour un usage critique.</dd></div><div><dt>Routine</dt><dd>Tâche Claude planifiée qui tourne seule dans le cloud, sans PC allumé (ce brief en est une).</dd></div><div><dt>Charte IA Lynxter</dt><dd>Nos règles internes d'usage de l'IA : quelles données, dans quels outils.</dd></div><div><dt>Paramètres (taille d'un modèle)</dt><dd>Taille d'un modèle, en milliards (« 30B »). Plus il y en a, plus il faut de matériel pour le faire tourner.</dd></div><div><dt>Infrastructure locale</dt><dd>Serveurs Lynxter (prévus) où faire tourner des modèles ouverts : la seule voie prévue pour les données sensibles.</dd></div><div><dt>Crédits API</dt><dd>Somme prépayée qui paie l'usage de l'API Claude, facturée sinon à la quantité de texte traitée.</dd></div><div><dt>API</dt><dd>Accès direct au modèle depuis un logiciel ou un script, facturé à l'usage (au token).</dd></div><div><dt>Token</dt><dd>Morceau de mot (environ ¾ d'un mot). C'est l'unité que les IA lisent, écrivent et facturent.</dd></div><div><dt>Fenêtre de contexte</dt><dd>Quantité de texte que le modèle garde en tête d'un coup. 1 million de tokens ≈ 1 500 pages.</dd></div><div><dt>OSWorld</dt><dd>Test où l'IA pilote un vrai ordinateur (clics, fenêtres, logiciels) pour réaliser une tâche de bureau.</dd></div><div><dt>Terminal-Bench</dt><dd>Test où l'IA accomplit seule des tâches techniques complètes en ligne de commande : installer, configurer, déboguer.</dd></div><div><dt>Humanity's Last Exam</dt><dd>Questions d'experts très difficiles, dans des dizaines de disciplines.</dd></div><div><dt>GDPval</dt><dd>Test sur des tâches de travail réelles de nombreux métiers (rapports, tableaux), comparées au travail d'experts. Score en points de classement.</dd></div><div><dt>Niveau d'effort</dt><dd>Réglage qui dit au modèle combien réfléchir : bas = rapide et économique, haut = plus soigné.</dd></div><div><dt>Dépréciation / retrait</dt><dd>Un modèle déprécié marche encore mais sa date de fin est annoncée. Après le retrait, les appels échouent.</dd></div><div><dt>Modèle ouvert (open weights)</dt><dd>Modèle téléchargeable : on peut le faire tourner sur ses propres serveurs, sans envoyer de données à l'éditeur.</dd></div><div><dt>Mixture of Experts (MoE)</dt><dd>Architecture où seule une partie du modèle travaille à chaque mot : plus rapide et moins cher à faire tourner.</dd></div><div><dt>DeepSWE</dt><dd>Test de programmation sur des tâches de développement longues, cité par Google pour Gemini.</dd></div><div><dt>GLM</dt><dd>Famille de modèles d'IA de l'éditeur chinois Z.ai, dont plusieurs versions sont des modèles ouverts, téléchargeables librement.</dd></div><div><dt>Hook</dt><dd>Point d'accroche où un plugin réagit à un événement de Claude Code, par exemple juste avant l'utilisation d'un outil.</dd></div><div><dt>MCP</dt><dd>Standard ouvert pour brancher une IA sur un outil ou une base de données (un « connecteur »).</dd></div><div><dt>Agent</dt><dd>IA qui enchaîne seule plusieurs actions (chercher, lire, écrire, exécuter) pour atteindre un objectif.</dd></div><div><dt>Codex</dt><dd>L'assistant de programmation d'OpenAI, concurrent de Claude Code.</dd></div><div><dt>Claude Managed Agents</dt><dd>Service d'Anthropic qui fait tourner des agents Claude sur ses propres serveurs, pour les entreprises qui en construisent.</dd></div><div><dt>Claude Agent SDK</dt><dd>Kit d'Anthropic pour construire ses propres agents, avec le moteur qui fait tourner Claude Code.</dd></div><div><dt>Politique d'usage</dt><dd>Règles d'Anthropic qui disent ce qu'on a le droit de faire avec Claude. Tout utilisateur les accepte.</dd></div><div><dt>Cache</dt><dd>Remise quand on renvoie un texte déjà lu par le modèle (instructions, documents) : ce texte est facturé bien moins cher.</dd></div><div><dt>Prix « $2/$10 »</dt><dd>Prix pour un million de tokens (≈ 750 000 mots) : le 1er chiffre pour ce que le modèle lit, le 2e pour ce qu'il écrit.</dd></div><div><dt>Open source</dt><dd>Logiciel dont le code est public, que chacun peut lire, réutiliser et modifier.</dd></div><div><dt>Compliance API</dt><dd>Accès réservé aux offres Claude Enterprise qui permet au service conformité d'exporter les conversations et documents de l'entreprise.</dd></div><div><dt>Cursor</dt><dd>Éditeur de code avec IA intégrée, concurrent de Claude Code.</dd></div></dl>
+  </section>
+
+  <section class="sources-footer" style="margin-top:48px">
+    <strong>Sources consultées</strong>
+    <a href="https://www.anthropic.com/claude-haiku-5-5">anthropic.com/claude-haiku-5-5</a> · <a href="https://code.claude.com/docs/en/changelog#2-1-294">code.claude.com/changelog</a> · <a href="https://platform.claude.com/docs/en/release-notes/overview#october-7-2026">platform.claude.com — release notes</a> · <a href="https://www.anthropic.com/news/2026-usage-policy-update">anthropic.com/news/2026-usage-policy-update</a> · <a href="https://openai.com/index/gpt-6-for-everyone/">openai.com/index/gpt-6-for-everyone</a> · <a href="https://thenextweb.com/news/mistral-releases-large-4-a-1-trillion-parameter-open-weight-ai-model">thenextweb.com — Mistral Large 4</a>
+  </section>
+
+  <nav class="brief-nav">
+    <a class="prev" href="2026-10-06.html"><span class="label">← Brief précédent</span><span class="title">Claude Code pouvait parfois lire des fichiers interdits : passer en 2.1.291</span></a>
+    <a class="next" href="./"><span class="label">Voir l'archive →</span><span class="title">Tous les briefs</span></a>
+  </nav>
+</div>
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Brief du 2026-10-11 · format 2</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Comparateur de modèles</a></li>
+        <li><a href="../lexique/">Lexique</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../acteurs/">Acteurs suivis</a></li>
+        <li><a href="../futur/">Prospective (mai 2026)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+<script src="../assets/v2.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,545 @@
+{
+  "schema": 2,
+  "date": "2026-10-11",
+  "period": "6 → 11 octobre 2026",
+  "title": "Claude Haiku 5.5 : le petit modèle d'Anthropic, environ quatre fois moins cher",
+  "description": "Veille IA du 6 au 11 octobre 2026 : Claude Haiku 5.5, cinq mises à jour de Claude Code dont une de sécurité, nouvelle politique d'usage d'Anthropic, Mistral Large 4, GPT-6 pour tous dans ChatGPT. Ce que ça change pour Lynxter.",
+  "lead": "Anthropic sort <strong>Claude Haiku 5.5</strong>, son petit modèle rapide, à un prix environ quatre fois plus bas que Haiku 4.5. Pour nous, l'action de la semaine est ailleurs : une correction de sécurité dans Claude Code. Mistral donne enfin le nom de son nouveau modèle, et ChatGPT passe à GPT-6 pour tous.",
+  "actors_scanned": 9,
+  "en_30s": [
+    "<strong>Claude Haiku 5.5</strong> (7 oct.) coûte environ 75 % de moins que Haiku 4.5 et fait bien mieux sur les tests d'Anthropic. Il reste loin de Sonnet 5.5 sur les tâches longues. Claude Code l'utilise déjà par défaut.",
+    "<strong>Claude Code</strong> reçoit cinq versions. La 2.1.294 corrige des règles automatiques qui laissaient passer ce qu'elles devaient bloquer : chaque poste doit être au moins en 2.1.294.",
+    "<strong>Mistral Large 4</strong> est en préversion, téléchargeable fin octobre, mais très gros. Anthropic durcit au 12 novembre ses règles pour Claude branché sur une machine physique. <strong>ChatGPT</strong> passe à GPT-6 pour tous."
+  ],
+  "highlights": [
+    "Claude Haiku 5.5 : environ 75 % moins cher que Haiku 4.5, et nettement meilleur",
+    "Claude Code 2.1.294 corrige une faille dans les règles automatiques : mise à jour à faire",
+    "Mistral Large 4 en préversion, poids promis fin octobre ; ChatGPT passe à GPT-6 pour tous"
+  ],
+  "pour_lynxter": [
+    {
+      "verdict": "a-faire",
+      "titre": "Passer Claude Code en version 2.1.294 ou plus",
+      "pourquoi": "La 2.1.294 corrige des règles automatiques rédigées comme des consignes (« bloque les commandes qui… ») qui laissaient passer ce qu'elles devaient bloquer. Pour vérifier, taper <code>claude --version</code> dans un terminal. À savoir aussi : depuis la 2.1.292, nos routines publient leurs pages privées sans demander d'accord.",
+      "qui": "Chaque utilisateur de Claude Code",
+      "charte": null,
+      "items": [
+        "2026-10-11-claude-code-2-1-292-296"
+      ]
+    },
+    {
+      "verdict": "a-surveiller",
+      "titre": "Nouvelle politique d'usage de Claude au 12 novembre : machines physiques",
+      "pourquoi": "Si Claude pilote un jour un équipement physique, comme une imprimante ou un banc de test, il faudra un opérateur qualifié capable de l'arrêter. La machine devra aussi rester sûre si Claude se déconnecte. Nos usages listés (support, administratif, développement) ne sont pas concernés aujourd'hui.",
+      "qui": "Léo, direction",
+      "charte": "ok",
+      "items": [
+        "2026-10-11-anthropic-politique-usage-2026"
+      ]
+    },
+    {
+      "verdict": "a-surveiller",
+      "titre": "Mistral Large 4 : attendre les poids et la licence, fin octobre",
+      "pourquoi": "Mistral est autorisé par notre charte. Mais avec environ 1 050 milliards de paramètres, ce modèle demandera sans doute un serveur à plusieurs cartes graphiques haut de gamme (estimation). Regarder sa licence et le matériel conseillé à la sortie des poids. Aucun test commun publié avec Mistral Large 3.",
+      "qui": "Léo",
+      "charte": "local",
+      "items": [
+        "2026-10-11-mistral-large-4"
+      ]
+    },
+    {
+      "verdict": "rien",
+      "titre": "Haiku 5.5, crédits API, GPT-6 dans ChatGPT : rien à changer",
+      "pourquoi": "Claude Code utilise déjà Haiku 5.5 tout seul pour ses petites tâches. Il reste trop loin de Sonnet 5.5 pour remplacer le modèle de nos routines. Les crédits API offerts aux forfaits Max et Team ne servent pas : nous n'intégrons pas d'API. ChatGPT reste limité aux données publiques.",
+      "qui": null,
+      "charte": null,
+      "items": [
+        "2026-10-11-claude-haiku-5-5",
+        "2026-10-11-claude-credits-api-max-team",
+        "2026-10-11-chatgpt-gpt-6-pour-tous"
+      ]
+    }
+  ],
+  "modeles": [
+    {
+      "id": "claude-haiku-5-5",
+      "item": "2026-10-11-claude-haiku-5-5",
+      "en_clair": "Le petit modèle d'Anthropic fait un grand saut par rapport à Haiku 4.5, pour environ quatre fois moins cher. Selon Anthropic, il devance GPT-6 Luna, son équivalent chez OpenAI. Il reste nettement derrière Sonnet 5.5 sur les tâches longues et techniques.",
+      "verdict": "rien",
+      "pour_nous": "Rien à faire : Claude Code l'utilise déjà par défaut pour ses petites tâches."
+    },
+    {
+      "id": "mistral-large-4",
+      "item": "2026-10-11-mistral-large-4",
+      "en_clair": "Le nouveau grand modèle de Mistral, en préversion en ligne. Ses scores sont provisoires et le placent derrière les meilleurs modèles ouverts chinois selon les classements tiers. Ses poids doivent sortir fin octobre.",
+      "verdict": "a-surveiller",
+      "pour_nous": "Mistral est autorisé par notre charte. Pour une installation locale, attendre la licence et le matériel conseillé : le modèle est très gros."
+    }
+  ],
+  "items": [
+    {
+      "slug": "2026-10-11-claude-haiku-5-5",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "theme": "modeles",
+      "date": "2026-10-07",
+      "title": "Claude Haiku 5.5 : le petit modèle rapide d'Anthropic, environ 75 % moins cher",
+      "resume": "Anthropic sort Claude Haiku 5.5, son modèle rapide pour les gros volumes, à 0,10 $ / 0,50 $ par million de tokens, contre 1 $ / 5 $ pour Haiku 4.5. Sur le test d'usage d'ordinateur OSWorld, il obtient 72,4 %, contre 15,7 % pour Haiku 4.5 et 83,9 % pour Sonnet 5.5. Il devient le Haiku par défaut de Claude Code, avec une mémoire de travail de 1 million de tokens.",
+      "pour_nous": {
+        "verdict": "rien",
+        "texte": "Claude Code l'utilise déjà tout seul pour ses petites tâches. Pas de raison de l'imposer ailleurs."
+      },
+      "chiffres": [
+        "Prix : $0,10 / $0,50 par M tokens jusqu'à 100 000 tokens de demande, $0,50 / $2,50 au-delà (Haiku 4.5 : $1 / $5). Le même texte compte environ 30 % de tokens en plus qu'avec Haiku 4.5 : Anthropic annonce environ 75 % d'économie en moyenne",
+        "Mémoire de travail 1M tokens (Haiku 4.5 : 200k), sortie jusqu'à 128k tokens (64k)",
+        "Scores Anthropic (Haiku 5.5 / Haiku 4.5 / Sonnet 5.5) : OSWorld 2.1 hors ligne 72,4 / 15,7 / 83,9 % ; Terminal-Bench 4.0 39,2 / 0,0 / 70,6 % ; Humanity's Last Exam sans outils 45,9 / 10,2 / 56,9 %, avec outils 57,4 / 18,7 / 64,5 % ; GDPval-AA v2.1 1 620 / 735 / 1 840 Elo ; Chartography sans outils 46,4 / 6,4 / 61,6 %",
+        "FrontierCode 1.1 : 46,4 % (Sonnet 5.5 : 52,1 % en effort xhigh ; pas de score pour Haiku 4.5)",
+        "Selon Anthropic, GPT-6 Luna obtient 48,9 % sur OSWorld 2.1 hors ligne, 16,4 % sur Terminal-Bench 4.0 et 42,4 % sur FrontierCode (chiffres mesurés par Anthropic)",
+        "Premier Haiku avec réglage d'effort. Disponible sur l'API Claude, Amazon Bedrock, Claude Platform on AWS, Google Cloud et Microsoft Foundry ; par défaut dans Claude Code 2.1.293",
+        "Code écrit pour Haiku 4.5 : erreur 400 avec <code>budget_tokens</code> (réflexion manuelle), <code>temperature</code> / <code>top_p</code> / <code>top_k</code>, le préremplissage de réponse et l'outil <code>computer_20250124</code>. Pas de sorties structurées sur Bedrock",
+        "Aucune date de retrait de Haiku 4.5 publiée. L'annonce ne dit pas si Haiku 5.5 arrive dans les applis Claude"
+      ],
+      "sources": [
+        {
+          "label": "anthropic.com/claude-haiku-5-5",
+          "url": "https://www.anthropic.com/claude-haiku-5-5",
+          "primary": true
+        },
+        {
+          "label": "platform.claude.com — release notes 7 oct.",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#october-7-2026",
+          "primary": true
+        },
+        {
+          "label": "platform.claude.com — nouveautés de Haiku 5.5",
+          "url": "https://platform.claude.com/docs/en/models/haiku-5-5/whats-new-haiku-5-5",
+          "primary": true
+        },
+        {
+          "label": "mezha.ua",
+          "url": "https://mezha.ua/en/news/claude-haiku-5-5-reveal-315947/",
+          "primary": false
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-11-claude-code-2-1-292-296",
+      "actor": "Anthropic",
+      "tag": "lynxter",
+      "theme": "outils",
+      "date": "2026-10-06",
+      "title": "Claude Code 2.1.292 à 2.1.296 : une correction de sécurité sur les règles automatiques",
+      "resume": "Cinq versions de Claude Code sortent du 6 au 9 octobre. La 2.1.294 corrige des hooks rédigés comme des consignes qui laissaient passer ce qu'ils devaient bloquer, et la 2.1.295 permet de bloquer l'action quand un hook plante. Haiku 5.5 devient le petit modèle par défaut, et les routines publient leurs pages privées sans demander d'accord.",
+      "pour_nous": {
+        "verdict": "a-faire",
+        "texte": "Vérifier que chaque poste est en 2.1.294 ou plus (<code>claude --version</code> dans un terminal)."
+      },
+      "chiffres": [
+        "2.1.292 (6 oct.) : paramètre <code>effort</code> pour l'outil Agent (effort réglable par sous-agent) ; serveurs MCP locaux en protocole 2026-07-28 par défaut ; les routines planifiées et « Run now » publient un artefact privé sans demander d'accord",
+        "2.1.293 (7 oct.) : Claude Haiku 5.5 (<code>claude-haiku-5-5</code>) devient le Haiku par défaut ; synchronisation des skills claude.ai toutes les 40 minutes au lieu de 10 hors session",
+        "2.1.294 (8 oct.) : les hooks <code>prompt</code> et <code>agent</code> écrits comme des consignes (« Block commands that… ») laissaient passer ce qu'ils devaient bloquer : corrigé",
+        "2.1.295 (8 oct.) : <code>onFailure: \"block\"</code> pour les hooks commande et HTTP (un hook qui ne démarre pas, expire ou sort en erreur bloque l'action) ; prise en charge d'OSC 7501 pour afficher l'état de Claude Code dans le terminal",
+        "2.1.296 (9 oct.) : <code>CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL</code> (un seul modèle pour tous les agents d'un workflow), <code>autoCompactWindow</code> pour les sous-agents, option <code>allow_large</code> de l'outil Read, coûts du cache Sonnet 5.5 recalculés à $0,10/M"
+      ],
+      "sources": [
+        {
+          "label": "code.claude.com/changelog#2-1-294",
+          "url": "https://code.claude.com/docs/en/changelog#2-1-294",
+          "primary": true
+        },
+        {
+          "label": "code.claude.com/changelog#2-1-292",
+          "url": "https://code.claude.com/docs/en/changelog#2-1-292",
+          "primary": true
+        },
+        {
+          "label": "code.claude.com/changelog#2-1-295",
+          "url": "https://code.claude.com/docs/en/changelog#2-1-295",
+          "primary": true
+        },
+        {
+          "label": "code.claude.com/changelog#2-1-296",
+          "url": "https://code.claude.com/docs/en/changelog#2-1-296",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-11-anthropic-politique-usage-2026",
+      "actor": "Anthropic",
+      "tag": "useful",
+      "theme": "autre",
+      "date": "2026-10-08",
+      "title": "Politique d'usage de Claude : nouvelles règles pour les machines physiques au 12 novembre",
+      "resume": "Anthropic met à jour sa politique d'usage, applicable le 12 novembre 2026. Claude branché sur un équipement physique autonome exige un opérateur qualifié capable de l'arrêter, et la machine doit rester sûre si Claude se déconnecte. Les interdictions s'étendent aux armes autonomes, aux opérations de tromperie et au suivi de personnes sans leur accord.",
+      "pour_nous": {
+        "verdict": "a-surveiller",
+        "texte": "Aucun de nos usages listés ne pilote une machine. À relire si un projet relie un jour Claude à une imprimante ou à un équipement de production."
+      },
+      "chiffres": [
+        "Entrée en vigueur : 12 novembre 2026",
+        "Armes : logiciels de guidage, composants et armement de drones ou véhicules autonomes explicitement interdits",
+        "Nouvelle section sur les activités trompeuses : faux comptes, faux sites d'information, opérations d'influence",
+        "La cruauté gratuite et répétée envers Claude est interdite dans les cas extrêmes"
+      ],
+      "sources": [
+        {
+          "label": "anthropic.com/news/2026-usage-policy-update",
+          "url": "https://www.anthropic.com/news/2026-usage-policy-update",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-11-claude-credits-api-max-team",
+      "actor": "Anthropic",
+      "tag": "useful",
+      "theme": "entreprise",
+      "date": "2026-10-07",
+      "title": "Forfaits Claude Max et Team : des crédits API mensuels inclus",
+      "resume": "Les abonnés Claude Max et Team reçoivent chaque mois des crédits pour l'API Claude : 100 à 200 $ pour Max, 20 à 100 $ par siège pour Team, plafonnés à 500 $. Ils couvrent l'API et les outils pour construire des agents, mais pas Claude Code ni l'usage supplémentaire des applis. Les crédits non utilisés sont perdus en fin de mois.",
+      "pour_nous": {
+        "verdict": "rien",
+        "texte": "Nous n'intégrons pas d'API dans nos logiciels : ces crédits n'ont pas d'usage chez nous pour l'instant."
+      },
+      "chiffres": [
+        "Max 5x : $100/mois ; Max 20x : $200/mois ; Team : $20 par siège Standard, $100 par siège Premium, mis en commun et plafonnés à $500/mois",
+        "Couverts : API Claude, Claude Managed Agents, Claude Agent SDK, playground. Exclus : Claude Code, usage supplémentaire des applis, Bedrock, Google Cloud, Foundry",
+        "À rattacher à une organisation de la Console ; 7 jours d'abonnement minimum ; pas de report d'un mois sur l'autre",
+        "Free, Pro et Enterprise non éligibles"
+      ],
+      "sources": [
+        {
+          "label": "platform.claude.com — crédits API pour les abonnés",
+          "url": "https://platform.claude.com/docs/en/about-claude/api-credits-for-subscribers",
+          "primary": true
+        },
+        {
+          "label": "platform.claude.com — release notes 7 oct.",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#october-7-2026",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-11-mistral-large-4",
+      "actor": "Mistral",
+      "tag": "useful",
+      "theme": "ouvert",
+      "date": "2026-10-06",
+      "title": "Mistral Large 4 : le modèle annoncé le 6 octobre a un nom et un prix, ses poids arrivent fin octobre",
+      "resume": "Suite de l'annonce du 6 octobre, sans annonce officielle lue : le modèle s'appelle Mistral Large 4 et il est en préversion en ligne. Il compte environ 1 050 milliards de paramètres, pour 1,36 $ / 4,18 $ par million de tokens, moitié prix pendant la préversion. Ses poids sont promis fin octobre ; selon Artificial Analysis, il reste derrière GLM-5.3, un modèle ouvert chinois.",
+      "pour_nous": {
+        "verdict": "a-surveiller",
+        "texte": "Mistral est autorisé par notre charte. Pour une installation locale, attendre la licence et le matériel conseillé à la sortie des poids."
+      },
+      "chiffres": [
+        "Mixture of Experts : environ 1 050 milliards de paramètres au total, 49 milliards actifs selon l'annonce (52 selon la fiche technique) ; texte et images en entrée",
+        "Contexte annoncé : 1M tokens (Vals AI et Artificial Analysis listent environ 512k)",
+        "Prix catalogue $1,36 / $4,18 par M tokens, affiché $0,68 / $2,09 pendant la préversion, sans date de fin. API et Mistral Studio uniquement",
+        "Poids ouverts promis « d'ici la fin du mois » (26 ou 27 octobre selon les sources), licence non publiée",
+        "Scores préliminaires de Mistral (entraînement en cours) : DeepSWE 61,7 % (GLM-5.3 : 61 %, DeepSeek-V4-Pro : 57 %)",
+        "Selon Artificial Analysis : indice 38, contre 45 pour GLM-5.3 et 44 pour Kimi K3 ; 32e sur 44 chez Vals AI",
+        "Aucun test commun publié avec Mistral Large 3. Page mistral.ai non lue (accès bloqué) : détails repris de la presse"
+      ],
+      "sources": [
+        {
+          "label": "thenextweb.com",
+          "url": "https://thenextweb.com/news/mistral-releases-large-4-a-1-trillion-parameter-open-weight-ai-model",
+          "primary": false
+        },
+        {
+          "label": "blogdumoderateur.com",
+          "url": "https://www.blogdumoderateur.com/mistral-large-4-mistral-ai-veut-reduire-ecart-modeles-open-weight-chinois/",
+          "primary": false
+        },
+        {
+          "label": "betanews.com",
+          "url": "https://betanews.com/article/mistral-large-4-preview-open-weights/",
+          "primary": false
+        },
+        {
+          "label": "justgeek.fr",
+          "url": "https://www.justgeek.fr/mistral-large-4-159280/",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-10-11-chatgpt-gpt-6-pour-tous",
+      "actor": "OpenAI",
+      "tag": "useful",
+      "theme": "outils",
+      "date": "2026-10-07",
+      "title": "ChatGPT passe à GPT-6 pour tous, avec des réponses à manipuler",
+      "resume": "ChatGPT utilise GPT-6 pour tous ses comptes : GPT-6 Sol pour les payants depuis le 7 octobre, GPT-6 Luna pour les gratuits depuis le 8. Ses réponses peuvent maintenant contenir des graphiques, boutons, formulaires ou cartes à manipuler. Selon OpenAI, la réponse avec recherche web commence 44 % plus tôt qu'avec GPT-5.6.",
+      "pour_nous": {
+        "verdict": "rien",
+        "texte": "ChatGPT reste réservé aux données publiques chez nous. Rien à changer."
+      },
+      "chiffres": [
+        "Plus, Pro, Business, Enterprise : GPT-6 Sol depuis le 7 octobre ; Free et Go : GPT-6 Luna à partir du 8 octobre",
+        "« Intelligent UI » : activée par l'administrateur dans Enterprise ; seul l'onglet Chat change, pas Work ni Codex",
+        "Délai avant le début de la réponse avec recherche web : −44 % pour GPT-6 Instant contre GPT-5.6 Instant, selon OpenAI (une version traduite de l'annonce dit −32 %, écart non expliqué)",
+        "Aucun nouveau modèle dans l'API"
+      ],
+      "sources": [
+        {
+          "label": "openai.com/index/gpt-6-for-everyone",
+          "url": "https://openai.com/index/gpt-6-for-everyone/",
+          "primary": true
+        },
+        {
+          "label": "androidheadlines.com",
+          "url": "https://www.androidheadlines.com/2026/10/openai-bringing-gpt-6-ai-models-chatgpt-everyone.html",
+          "primary": false
+        },
+        {
+          "label": "propakistani.pk",
+          "url": "https://propakistani.pk/2026/10/08/openai-is-turning-chatgpt-into-a-more-interactive-interface/",
+          "primary": false
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-11-sonnet-5-5-cache-moins-cher",
+      "actor": "Anthropic",
+      "tag": "info",
+      "theme": "modeles",
+      "date": "2026-10-07",
+      "title": "Sonnet 5.5 : relecture du cache à moitié prix.",
+      "resume": "Relire un texte déjà en cache coûte 0,10 $ par million de tokens au lieu de 0,20 $. Les autres prix de Sonnet 5.5 ne changent pas.",
+      "sources": [
+        {
+          "label": "platform.claude.com — release notes 7 oct.",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#october-7-2026",
+          "primary": true
+        },
+        {
+          "label": "code.claude.com/changelog#2-1-296",
+          "url": "https://code.claude.com/docs/en/changelog#2-1-296",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-11-anthropic-cybersecurite-defense",
+      "actor": "Anthropic",
+      "tag": "info",
+      "theme": "entreprise",
+      "date": "2026-10-06",
+      "title": "Anthropic et la cybersécurité.",
+      "resume": "Accès par niveaux à Claude pour les métiers de la cybersécurité, et aide aux défenseurs des réseaux d'eau, d'énergie et de transport. Un scanner gratuit vérifie aussi les projets open source.",
+      "sources": [
+        {
+          "label": "anthropic.com/news/anthropic-cyber-mission",
+          "url": "https://www.anthropic.com/news/anthropic-cyber-mission",
+          "primary": true
+        },
+        {
+          "label": "anthropic.com/news/cyber-verification-program",
+          "url": "https://www.anthropic.com/news/cyber-verification-program",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-11-anthropic-genesis-mission",
+      "actor": "Anthropic",
+      "tag": "info",
+      "theme": "entreprise",
+      "date": "2026-10-08",
+      "title": "Genesis Mission.",
+      "resume": "Anthropic engage 150 millions de dollars sur trois ans dans ce programme américain de recherche par l'IA : Claude pour des centaines de projets dans plus de 15 agences, dont la NASA.",
+      "sources": [
+        {
+          "label": "anthropic.com/news/genesis-mission-commitment",
+          "url": "https://www.anthropic.com/news/genesis-mission-commitment",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-11-managed-agents-workflows",
+      "actor": "Anthropic",
+      "tag": "info",
+      "theme": "outils",
+      "date": "2026-10-09",
+      "title": "Claude Managed Agents.",
+      "resume": "Un agent peut lancer de nombreux autres agents par étapes, par exemple pour relire des centaines de documents. Sa lecture de pages web est aussi mieux bornée.",
+      "sources": [
+        {
+          "label": "platform.claude.com — release notes 9 oct.",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#october-9-2026",
+          "primary": true
+        },
+        {
+          "label": "platform.claude.com — release notes 7 oct.",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#october-7-2026",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-11-anthropic-sdk-python-1-12-1-13",
+      "actor": "Anthropic",
+      "tag": "info",
+      "theme": "outils",
+      "date": "2026-10-07",
+      "title": "Kit Python d'Anthropic, versions 1.12 et 1.13.",
+      "resume": "Ajoute Haiku 5.5, les outils navigateur et ordinateur, et les nouveautés de Claude Managed Agents.",
+      "sources": [
+        {
+          "label": "github.com/anthropics/anthropic-sdk-python — v1.12.0",
+          "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.12.0",
+          "primary": true
+        },
+        {
+          "label": "github.com/anthropics/anthropic-sdk-python — v1.13.0",
+          "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.13.0",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-11-compliance-api-claude-unifie",
+      "actor": "Anthropic",
+      "tag": "info",
+      "theme": "entreprise",
+      "date": "2026-10-08",
+      "title": "Compliance API.",
+      "resume": "Pour Claude Enterprise seulement : l'export couvre les conversations de la nouvelle appli Claude unifiée et les documents au format Word.",
+      "sources": [
+        {
+          "label": "platform.claude.com — release notes 8 oct.",
+          "url": "https://platform.claude.com/docs/en/release-notes/overview#october-8-2026",
+          "primary": true
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-11-codex-composer-predictions",
+      "actor": "OpenAI",
+      "tag": "info",
+      "theme": "outils",
+      "date": "2026-10-09",
+      "title": "Codex devine la prochaine consigne.",
+      "resume": "En bêta pour les abonnés Pro, Codex propose la consigne suivante d'après la conversation. On peut aussi réorienter une tâche en cours, selon le responsable de Codex.",
+      "sources": [
+        {
+          "label": "help.openai.com — Composer predictions in Codex",
+          "url": "https://help.openai.com/en/articles/20001601-composer-predictions-in-codex",
+          "primary": true
+        },
+        {
+          "label": "cryptobriefing.com",
+          "url": "https://cryptobriefing.com/openai-codex-composer-predictions-pro-beta/",
+          "primary": false
+        },
+        {
+          "label": "runtimewire.com",
+          "url": "https://runtimewire.com/article/openai-codex-instant-steering-gpt-61-sol-ultrafast",
+          "primary": false
+        }
+      ],
+      "has_primary": true
+    },
+    {
+      "slug": "2026-10-11-gemini-auto-comptes-gratuits",
+      "actor": "Google DeepMind",
+      "tag": "info",
+      "theme": "outils",
+      "date": "2026-10-09",
+      "title": "Application Gemini, sans annonce officielle.",
+      "resume": "Selon 9to5Google, les comptes gratuits ne choisissent plus leur modèle depuis le 9 octobre : Google décide pour eux. Les abonnés AI Pro gagnent Deep Think.",
+      "sources": [
+        {
+          "label": "9to5google.com — 9 oct.",
+          "url": "https://9to5google.com/2026/10/09/gemini-auto-free-users/",
+          "primary": false
+        },
+        {
+          "label": "af.net",
+          "url": "https://af.net/cn/realtime/google-limits-gemini-ai-access-for-free-and-ai-plus-users-starting-october-9-2026/",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    },
+    {
+      "slug": "2026-10-11-meta-sierra-personal-agent-protocol",
+      "actor": "Meta",
+      "tag": "info",
+      "theme": "autre",
+      "date": "2026-10-06",
+      "title": "Meta et Sierra, sans annonce officielle de Meta.",
+      "resume": "Les deux sociétés proposent une règle commune pour qu'un assistant IA personnel s'identifie auprès d'une entreprise et y agisse. Première version attendue fin octobre.",
+      "sources": [
+        {
+          "label": "sierra.ai — billet du co-annonceur",
+          "url": "https://sierra.ai/blog/introducing-personal-agent-protocol",
+          "primary": false
+        },
+        {
+          "label": "constellationr.com",
+          "url": "https://constellationr.com/insights/news/meta-sierra-pitch-personal-agent-protocol-govern-how-personal-ai-agents-deal-business",
+          "primary": false
+        },
+        {
+          "label": "cmswire.com",
+          "url": "https://www.cmswire.com/contact-center/genesys-joins-sierra-meta-on-open-standard-for-personal-ai-agents-01/",
+          "primary": false
+        }
+      ],
+      "has_primary": false
+    }
+  ],
+  "rien_de_notable": [
+    "Perplexity",
+    "xAI",
+    "Cursor",
+    "DeepSeek"
+  ],
+  "sources_footer": [
+    {
+      "label": "anthropic.com/claude-haiku-5-5",
+      "url": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    {
+      "label": "code.claude.com/changelog",
+      "url": "https://code.claude.com/docs/en/changelog#2-1-294"
+    },
+    {
+      "label": "platform.claude.com — release notes",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#october-7-2026"
+    },
+    {
+      "label": "anthropic.com/news/2026-usage-policy-update",
+      "url": "https://www.anthropic.com/news/2026-usage-policy-update"
+    },
+    {
+      "label": "openai.com/index/gpt-6-for-everyone",
+      "url": "https://openai.com/index/gpt-6-for-everyone/"
+    },
+    {
+      "label": "thenextweb.com — Mistral Large 4",
+      "url": "https://thenextweb.com/news/mistral-releases-large-4-a-1-trillion-parameter-open-weight-ai-model"
+    }
+  ],
+  "prev": {
+    "href": "2026-10-06.html",
+    "title": "Claude Code pouvait parfois lire des fichiers interdits : passer en 2.1.291"
+  }
+}
