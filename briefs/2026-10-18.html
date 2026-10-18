@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code corrige son bac à sable ; Meta et Mistral publient des modèles ouverts — Veille IA Lynxter</title>
+<meta name="description" content="Veille IA du 11 au 18 octobre 2026 : corrections de sécurité dans Claude Code, Muse Wonder et Muse Spark Open chez Meta, Timestral chez Mistral, Gemini 4 Argon ouvert à tous. Ce que ça change pour Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/v2.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/" class="active">Briefs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../lexique/">Lexique</a>
+      <a href="../methodo/">Méthodo</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="b2">
+  <div class="breadcrumb" style="margin-top:32px">
+    <a href="../">Accueil</a><span class="breadcrumb-sep">/</span><a href="./">Briefs</a><span class="breadcrumb-sep">/</span><span class="current">2026-10-18</span>
+  </div>
+
+  <header class="b2-head">
+    <p class="b2-kicker">Veille IA · 11 → 18 octobre 2026</p>
+    <h1 class="b2-title">Claude Code corrige son bac à sable ; Meta et Mistral publient des modèles ouverts</h1>
+    <p class="b2-lead">Pas de nouveau modèle Claude cette semaine. L'action pour nous est une mise à jour de <strong><span class="term" tabindex="0" data-def="Assistant d'Anthropic qui travaille dans un terminal ou un éditeur : code, fichiers, automatisations.">Claude Code</span></strong>, qui bouche plusieurs trous de son <span class="term" tabindex="0" data-def="Environnement isolé où l'IA exécute du code sans pouvoir toucher au reste du système.">bac à sable</span>. Côté <span class="term" tabindex="0" data-def="Modèle téléchargeable : on peut le faire tourner sur ses propres serveurs, sans envoyer de données à l'éditeur.">modèles ouverts</span>, Meta publie un très gros modèle et Mistral de petits modèles de prévision.</p>
+    <ul class="b2-meta"><li>13 annonces retenues</li><li>9 éditeurs suivis</li><li>Lecture : ~4 min</li><li><a href="../modeles/">Comparateur de modèles</a></li></ul>
+  </header>
+
+  <section class="b2-section" id="en-30-secondes">
+    <h2 class="b2-h2">En 30 secondes</h2>
+    <div class="b2-30s"><ol>
+      <li><strong>Claude Code</strong> sort cinq versions. La 2.1.299 empêche plusieurs contournements du bac à sable : chaque poste doit être au moins en 2.1.299.</li>
+      <li><strong>Meta</strong> sort Muse Wonder, au niveau des meilleurs selon ses tests, et Muse Spark Open, un modèle ouvert qui demande environ 700 Go de mémoire graphique.</li>
+      <li><strong>Mistral</strong> publie Timestral, de petits modèles ouverts qui prévoient l'évolution de mesures. <strong>Gemini 4 Argon</strong> est ouvert à tous les clients de l'<span class="term" tabindex="0" data-def="Accès direct au modèle depuis un logiciel ou un script, facturé à l'usage (au token).">API</span> Google.</li>
+    </ol></div>
+  </section>
+
+  <section class="b2-section" id="pour-lynxter">
+    <h2 class="b2-h2">Pour Lynxter cette semaine</h2>
+    <p class="b2-sub">Ce que ces annonces changent pour nous. Propositions à valider : rien n'est engagé sans feu vert.</p>
+    <ul class="b2-lx">
+<li class="b2-lx-row">
+    <span class="verdict v-faire">À faire</span>
+    <div>
+      <h3>Passer Claude Code en version 2.1.299 ou plus</h3>
+      <p>La 2.1.299 corrige des cas où une commande dans le bac à sable pouvait lire un dossier interdit, et des règles de blocage qui laissaient passer l'action sous Windows. Pour vérifier, taper <code>claude --version</code> dans un terminal. La 2.1.302 évite aussi qu'une <span class="term" tabindex="0" data-def="Tâche Claude planifiée qui tourne seule dans le cloud, sans PC allumé (ce brief en est une).">routine</span> plantée soit relancée en entier.</p>
+      <div class="b2-lx-foot"><span><b>Qui :</b> Chaque utilisateur de Claude Code</span><span><a href="#2026-10-18-claude-code-2-1-299-303">Voir l'annonce ↓</a></span></div>
+    </div>
+  </li>
+<li class="b2-lx-row">
+    <span class="verdict v-surveiller">À surveiller</span>
+    <div>
+      <h3>Modèles ouverts pour l'infra locale : Muse Spark Open, trop gros pour nous</h3>
+      <p>Le modèle ouvert de Meta demande au moins 700 Go de mémoire graphique, bien au-delà d'un serveur de PME. Sa licence impose aussi une mention de Meta dans l'interface. À comparer plus tard avec Mistral Large 4, dont les poids sont promis fin octobre.</p>
+      <div class="b2-lx-foot"><span><b>Qui :</b> Léo, direction</span><span><span class="charte ch-local" title="Modèle ouvert : candidat pour la future infrastructure locale Lynxter (seule voie prévue pour les données sensibles)">Infra locale ?</span></span><span><a href="#2026-10-18-meta-muse-spark-open">Voir l'annonce ↓</a></span></div>
+    </div>
+  </li>
+<li class="b2-lx-row">
+    <span class="verdict v-surveiller">À surveiller</span>
+    <div>
+      <h3>Timestral : la prévision de mesures, un sujet pour nos clients industriels</h3>
+      <p>Ces petits modèles de Mistral prévoient l'évolution d'une courbe de mesures et tournent sans carte graphique. C'est la base de la maintenance prédictive. Aucune action maintenant : à connaître si un client en parle.</p>
+      <div class="b2-lx-foot"><span><b>Qui :</b> Support technique, commerce</span><span><span class="charte ch-ok" title="Autorisé par la charte : données publiques et données internes anonymisées">Autorisé</span></span><span><a href="#2026-10-18-mistral-timestral">Voir l'annonce ↓</a></span></div>
+    </div>
+  </li>
+<li class="b2-lx-row">
+    <span class="verdict v-rien">Rien à faire</span>
+    <div>
+      <h3>Muse Wonder et Gemini 4 Argon : rien à changer</h3>
+      <p>Deux grands modèles concurrents de Claude, tous deux hors <span class="term" tabindex="0" data-def="Nos règles internes d'usage de l'IA : quelles données, dans quels outils.">charte</span>. Ils sont à connaître, sans action pour nous.</p>
+      <div class="b2-lx-foot"><span><b>Qui :</b> —</span><span><span class="charte ch-non" title="Hors du cadre officiel de la charte : données publiques uniquement">Hors cadre</span></span><span><a href="#2026-10-18-meta-muse-wonder">Voir l'annonce ↓</a></span></div>
+    </div>
+  </li>
+    </ul>
+  </section>
+
+  <section class="b2-section" id="modeles">
+    <h2 class="b2-h2">Les modèles de la semaine</h2>
+    <p class="b2-sub">Chaque nouveau modèle face à celui qu'il remplace, sur les tests publiés par son éditeur. Prix en dollars pour un million de <span class="term" tabindex="0" data-def="Morceau de mot (environ ¾ d'un mot). C'est l'unité que les IA lisent, écrivent et facturent.">tokens</span>. <a href="../modeles/">Tous les modèles →</a></p>
+    <div class="b2-models">
+<article class="b2-model" id="2026-10-18-meta-muse-wonder">
+  <div class="b2-model-head">
+    <h3><span class="b2-actor a-other"><i></i></span>Muse Wonder</h3>
+    <span class="replaces">remplace Muse Spark 1.3 · sorti le 12 oct. 2026</span>
+  </div>
+  <p class="plain">Le premier modèle de Meta au niveau des meilleurs, pensé pour les <span class="term" tabindex="0" data-def="IA qui enchaîne seule plusieurs actions (chercher, lire, écrire, exécuter) pour atteindre un objectif.">agents</span>. Selon Meta, il passe devant Muse Spark 1.3 au test de code <span class="term" tabindex="0" data-def="Test de programmation sur des tâches de développement longues, cité par Google pour Gemini.">DeepSWE</span>. Son prix API est celui de Claude Opus 5.5.</p>
+  <ul class="b2-facts"><li><span class="k">Prix (lecture / écriture)</span><span class="v">$4 / $20</span></li><li><span class="k"><span class="term" tabindex="0" data-def="Quantité de texte que le modèle garde en tête d'un coup. 1 million de tokens ≈ 1 500 pages.">Mémoire de travail</span></span><span class="v">1 M tokens</span></li><li><span class="k">Disponibilité</span><span class="v">Disponible</span></li><li><span class="k">Chez Lynxter</span><span class="v"><span class="charte ch-non" title="Hors du cadre officiel de la charte : données publiques uniquement">Hors cadre</span></span></li></ul>
+  <div class="viz" id="m0"><div class="db" role="img" aria-label="Muse Spark 1.3 comparé à Muse Wonder sur 1 test(s)">
+  <div class="db-row">
+    <div class="db-label">DeepSWE v1.1</div>
+    <div class="db-track">
+      <span class="db-link" style="left:75.4%;width:3.3999999999999915%"></span>
+      <span class="db-dot db-old" style="left:75.4%" tabindex="0" data-tip="&lt;b&gt;75,4 %&lt;/b&gt; · Muse Spark 1.3&lt;br&gt;DeepSWE v1.1" aria-label="Muse Spark 1.3 75,4 %"></span>
+      <span class="db-dot db-new s-other" style="left:78.8%" tabindex="0" data-tip="&lt;b&gt;78,8 %&lt;/b&gt; · Muse Wonder&lt;br&gt;DeepSWE v1.1 (+3,4 pt)" aria-label="Muse Wonder 78,8 %"></span>
+      <span class="db-val" style="left:78.8%">78,8</span>
+    </div>
+  </div>
+  <div class="db-row db-axis"><div class="db-label"></div><div class="db-track"><span style="left:0%">0&nbsp;%</span><span style="left:25%">25&nbsp;%</span><span style="left:50%">50&nbsp;%</span><span style="left:75%">75&nbsp;%</span><span style="left:100%">100&nbsp;%</span></div></div>
+</div>
+<ul class="viz-legend"><li><i class="dot" style="background:var(--s-old)"></i>Muse Spark 1.3 (avant)</li><li><i class="dot" style="background:var(--b2-ink-2)"></i>Muse Wonder</li></ul><details class="viz-data"><summary>Voir les données</summary>
+<div class="cmp-table-wrap"><table class="cmp-table" style="min-width:0"><caption class="viz-note" style="caption-side:bottom;text-align:left;padding:8px 12px">Scores publiés par l'éditeur.</caption>
+<thead><tr><th>Test</th><th class="n">Muse Spark 1.3</th><th class="n">Muse Wonder</th><th class="n">Écart</th></tr></thead>
+<tbody><tr><td>DeepSWE v1.1</td><td class="n">75,4</td><td class="n">78,8</td><td class="n">+3,4</td></tr></tbody></table></div></details></div>
+  <div class="b2-forus"><span class="verdict v-rien">Rien à faire</span><p>Hors charte : rien à faire.</p></div>
+  <details><summary>Les chiffres</summary><ul><li>Selon Meta : DeepSWE 1.1 78,8 % (Muse Wonder Full : 79,0 %) ; SWE-Marathon 53,1 (Full : 57,5)</li><li>Prix API $4 / $20 par M tokens selon la presse ; mémoire de travail d'environ 1 million de tokens</li><li>Muse Wonder Full n'est pas vendu à l'usage : réservé aux abonnements Muse Code (50 $ ou 200 $ par mois selon la presse)</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://about.fb.com/news/2026/10/introducing-muse-wonder-models/" target="_blank" rel="noopener">about.fb.com — Muse Wonder</a> · <a href="https://www.marktechpost.com/2026/10/13/meta-muse-wonder-muse-wonder-full-release/" target="_blank" rel="noopener">marktechpost.com — 13 oct.</a> <span class="est">(presse)</span> · <a href="https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/" target="_blank" rel="noopener">techcrunch.com — 12 oct.</a> <span class="est">(presse)</span></p>
+</article>
+<article class="b2-model" id="2026-10-18-meta-muse-spark-open">
+  <div class="b2-model-head">
+    <h3><span class="b2-actor a-other"><i></i></span>Muse Spark Open</h3>
+    <span class="replaces">nouvelle gamme · sorti le 15 oct. 2026</span>
+  </div>
+  <p class="plain">Le modèle ouvert de Meta, téléchargeable. Il est nettement en dessous de Muse Spark 1.3 sur les tests de Meta, et demande un matériel très lourd.</p>
+  <ul class="b2-facts"><li><span class="k">Prix (lecture / écriture)</span><span class="v">non publié</span></li><li><span class="k">Mémoire de travail</span><span class="v">1 M tokens</span></li><li><span class="k">Disponibilité</span><span class="v">Disponible</span></li><li><span class="k">Chez Lynxter</span><span class="v"><span class="charte ch-local" title="Modèle ouvert : candidat pour la future infrastructure locale Lynxter (seule voie prévue pour les données sensibles)">Infra locale ?</span></span></li></ul>
+  <div class="viz" id="m1"><ul class="cmp-vs" style="margin-top:10px"><li><span><span class="term" tabindex="0" data-def="Test où l'IA accomplit seule des tâches techniques complètes en ligne de commande : installer, configurer, déboguer.">Terminal-Bench</span> 2.1</span><span><b>76,4</b> %</span></li><li><span>DeepSWE v1.1</span><span><b>60</b> %</span></li></ul><details class="viz-data"><summary>Voir les données</summary>
+<div class="cmp-table-wrap"><table class="cmp-table" style="min-width:0"><caption class="viz-note" style="caption-side:bottom;text-align:left;padding:8px 12px">Scores publiés par l'éditeur.</caption>
+<thead><tr><th>Test</th><th class="n">—</th><th class="n">Muse Spark Open</th><th class="n">Écart</th></tr></thead>
+<tbody><tr><td>Terminal-Bench 2.1</td><td class="n">—</td><td class="n">76,4</td><td class="n">—</td></tr><tr><td>DeepSWE v1.1</td><td class="n">—</td><td class="n">60</td><td class="n">—</td></tr></tbody></table></div></details></div>
+  <div class="b2-forus"><span class="verdict v-surveiller">À surveiller</span><p>Trop gros pour une <span class="term" tabindex="0" data-def="Serveurs Lynxter (prévus) où faire tourner des modèles ouverts : la seule voie prévue pour les données sensibles.">infrastructure locale</span> de PME.</p></div>
+  <details><summary>Les chiffres</summary><ul><li>Architecture <span class="term" tabindex="0" data-def="Architecture où seule une partie du modèle travaille à chaque mot : plus rapide et moins cher à faire tourner.">MoE</span> : 816 <span class="term" tabindex="0" data-def="Taille d'un modèle, en milliards (« 30B »). Plus il y en a, plus il faut de matériel pour le faire tourner.">milliards de paramètres</span> au total, 42 milliards actifs ; mémoire de travail 1 million de tokens</li><li>Selon la fiche de Meta (relayée par Modal) : Terminal-Bench 2.1 76,4 % (Muse Spark 1.3 : 88,8 %) ; DeepSWE 1.1 60 % (Muse Spark 1.3 : 75,4 %)</li><li>Matériel selon Meta : au moins 700 Go de mémoire graphique en NVFP4, 2 To en BF16 ; fichier NVFP4 d'environ 530 Go. Versions compressées d'Unsloth à partir d'environ 300 Go</li><li>Licence Muse Model License (pas <span class="term" tabindex="0" data-def="Logiciel dont le code est public, que chacun peut lire, réutiliser et modifier.">open source</span> au sens strict) : modification et redistribution permises, mention obligatoire dans l'interface</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://research.meta.ai/blog/muse-spark-open" target="_blank" rel="noopener">research.meta.ai — Muse Spark Open</a> · <a href="https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/" target="_blank" rel="noopener">techcrunch.com — 15 oct.</a> <span class="est">(presse)</span> · <a href="https://www.marktechpost.com/2026/10/15/meta-muse-spark-open-816b-open-weight-model/" target="_blank" rel="noopener">marktechpost.com</a> <span class="est">(presse)</span> · <a href="https://www.bloomberg.com/news/articles/2026-10-15/meta-releases-open-ai-model-while-keeping-its-best-tech-closed" target="_blank" rel="noopener">bloomberg.com</a> <span class="est">(presse)</span></p>
+</article>
+    </div>
+  </section>
+
+  <section class="b2-section" id="annonces">
+    <h2 class="b2-h2">Les annonces</h2>
+<div class="b2-theme"><h3>Modèles</h3>
+<article class="b2-item" id="2026-10-18-gemini-4-argon-ga">
+  <div class="b2-item-top"><span class="b2-actor a-google"><i></i>Google</span><span>13 oct. 2026</span></div>
+  <h4>Gemini 4 Argon ouvert à tous dans l'API Google, prix de lancement jusqu'au 30 novembre</h4>
+  <p>Le grand modèle de Google, annoncé fin septembre pour quelques testeurs, est disponible pour tous les clients payants de l'API depuis le 13 octobre. Il coûte 2 $ / 10 $ <span class="term" tabindex="0" data-def="Prix pour un million de tokens (≈ 750 000 mots) : le 1er chiffre pour ce que le modèle lit, le 2e pour ce qu'il écrit.">par million de tokens</span> jusqu'au 30 novembre, puis 4 $ / 20 $. C'est alors le prix de Claude Opus 5.5.</p>
+  <div class="b2-forus"><span class="verdict v-rien">Rien à faire</span><p>Gemini est hors charte.</p></div><details><summary>Les chiffres</summary><ul><li>Mémoire de travail 1 048 576 tokens ; jusqu'à 65 536 tokens de sortie par défaut, environ 1 million en mode long</li><li>Prix de lancement $2 / $10 par M tokens, 95 % de remise sur l'entrée <span class="term" tabindex="0" data-def="Remise quand on renvoie un texte déjà lu par le modèle (instructions, documents) : ce texte est facturé bien moins cher.">en cache</span> ; $4 / $20 après le 30 nov. 2026</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://ai.google.dev/gemini-api/docs/changelog" target="_blank" rel="noopener">ai.google.dev — changelog de l'API Gemini</a> · <a href="https://venturebeat.com/technology/google-makes-gemini-4-argon-broadly-available-with-limited-time-low-api-pricing-of-2-10-per-1m-token" target="_blank" rel="noopener">venturebeat.com</a> <span class="est">(presse)</span></p>
+</article>
+</div>
+<div class="b2-theme"><h3>Outils et assistants</h3>
+<article class="b2-item" id="2026-10-18-claude-code-2-1-299-303">
+  <div class="b2-item-top"><span class="b2-actor a-anthropic"><i></i>Anthropic</span><span>14 oct. 2026</span><span class="b2-imp i-lynxter">Important pour nous</span></div>
+  <h4>Claude Code 2.1.299 à 2.1.303 : plusieurs trous du bac à sable bouchés</h4>
+  <p>Cinq versions de Claude Code sortent du 14 au 18 octobre. La 2.1.299 corrige plusieurs façons de contourner le bac à sable, par exemple lire un dossier interdit en passant par un raccourci de fichier sur Mac. La 2.1.302 évite qu'une routine qui plante à mi-chemin soit relancée depuis le début.</p>
+  <div class="b2-forus"><span class="verdict v-faire">À faire</span><p>Vérifier que chaque poste est en 2.1.299 ou plus (<code>claude --version</code> dans un terminal).</p></div><details><summary>Les chiffres</summary><ul><li>2.1.299 (14 oct.) : sur macOS, une commande dans le bac à sable pouvait lire ou écrire un chemin interdit via un lien symbolique ; elle pouvait aussi écrire dans un dossier <code>--plugin-dir</code>, rechargé hors bac à sable : corrigé</li><li>2.1.299 : sous Windows sans Git for Windows, les <span class="term" tabindex="0" data-def="Point d'accroche où un plugin réagit à un événement de Claude Code, par exemple juste avant l'utilisation d'un outil.">hooks</span> PreToolUse et PermissionRequest qui échouaient laissaient passer l'action ; ils la bloquent désormais. Les règles <code>deny</code> d'un serveur <span class="term" tabindex="0" data-def="Standard ouvert pour brancher une IA sur un outil ou une base de données (un « connecteur »).">MCP</span> dont le nom contient un double tiret bas s'appliquent enfin</li><li>2.1.299 : <span class="term" tabindex="0" data-def="Résumé automatique d'une longue conversation, pour libérer de la place dans la mémoire de travail de l'IA.">compaction</span> automatique d'une conversation de plus de 200 000 tokens laissée inactive environ 54 minutes, avant l'expiration du cache d'une heure (<code>"idleCompaction": false</code> pour la couper)</li><li>2.1.300 (14 oct.) : les <code>updatedInput</code> des hooks sont validés comme l'entrée de Claude ; gros envois vers l'API compressés en gzip ; nombreuses corrections <span class="term" tabindex="0" data-def="Application de bureau d'Anthropic où Claude travaille sur des dossiers et des outils connectés.">Cowork</span>, VS Code et Claude dans Slack</li><li>2.1.301 (15 oct.) : en passant à un modèle à plus petite mémoire de travail, la conversation est d'abord résumée par le modèle précédent</li><li>2.1.302 (16 oct.) : une routine planifiée qui échouait en cours de route était relancée depuis le début une heure plus tard ou plus, au risque de publier deux fois le même rapport : corrigé. 2.1.303 (18 oct.) : corrections diverses</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://code.claude.com/docs/en/changelog#2-1-299" target="_blank" rel="noopener">code.claude.com/changelog#2-1-299</a> · <a href="https://code.claude.com/docs/en/changelog#2-1-300" target="_blank" rel="noopener">code.claude.com/changelog#2-1-300</a> · <a href="https://code.claude.com/docs/en/changelog#2-1-301" target="_blank" rel="noopener">code.claude.com/changelog#2-1-301</a> · <a href="https://code.claude.com/docs/en/changelog#2-1-302" target="_blank" rel="noopener">code.claude.com/changelog#2-1-302</a></p>
+</article>
+</div>
+
+<div class="b2-theme"><h3>Modèles ouverts et IA locale</h3>
+<article class="b2-item" id="2026-10-18-mistral-timestral">
+  <div class="b2-item-top"><span class="b2-actor a-other"><i></i>Mistral</span><span>15 oct. 2026</span></div>
+  <h4>Timestral : Mistral sort de petits modèles ouverts pour prévoir des courbes de mesures</h4>
+  <p>Mistral lance Timestral, quatre modèles de 5 à 209 millions de paramètres, faits pour prolonger une série de mesures dans le temps. Ils tournent sur un processeur ordinaire, sans carte graphique. Selon Mistral, le plus gros arrive premier sur les trois tests publics de référence du domaine.</p>
+  <div class="b2-forus"><span class="verdict v-surveiller">À surveiller</span><p>Mistral est autorisé par la charte. Ce type d'outil sert à la maintenance prédictive : un sujet que nos clients industriels pourraient évoquer.</p></div><details><summary>Les chiffres</summary><ul><li>Tailles : 5M, 28M, 123M et 209M paramètres ; prévisions probabilistes, plusieurs courbes à la fois, avec variables externes passées et futures</li><li>Selon Mistral : premier sur GIFT-Eval, TIME et fev-bench ; le modèle 28M bat Chronos-2, environ quatre fois plus gros, sur GIFT-Eval et TIME</li><li>Selon la presse : jusqu'à 32 768 points d'historique lus et 1 024 points prévus d'un coup ; 10 ms (5M) à 140 ms (209M) par prévision sur un processeur de serveur</li><li>Licence des poids non vérifiée sur la page de Mistral (egress bloqué)</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://mistral.ai/news/timestral/" target="_blank" rel="noopener">mistral.ai/news/timestral</a> · <a href="https://opendatascience.com/mistral-launches-timestral-a-new-family-of-time-series-forecasting-models/" target="_blank" rel="noopener">opendatascience.com</a> <span class="est">(presse)</span></p>
+</article>
+</div>
+
+  </section>
+<section class="b2-section" id="en-bref">
+  <h2 class="b2-h2">En bref</h2>
+  <ul class="b2-brief-list"><li id="2026-10-18-claude-opus-5-5-mode-rapide"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong>Le mode rapide de Claude Opus 5.5 est ouvert à tous les clients de l'API</strong> Plus besoin de demander l'accès au mode rapide d'Opus 5.5 sur l'API. La veille, Anthropic a ouvert l'export des traces d'appels vers les outils de suivi des développeurs. <span class="b2-src" style="display:inline"><a href="https://platform.claude.com/docs/en/release-notes/overview#october-15-2026" target="_blank" rel="noopener">platform.claude.com — release notes 15 oct.</a></span></li><li id="2026-10-18-anthropic-evaluateurs-independants"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong>Anthropic ouvre ses modèles à des évaluateurs indépendants</strong> L'association METR reçoit un accès proche de celui d'un salarié pour évaluer les risques des modèles Claude. Elle publiera ses conclusions. <span class="b2-src" style="display:inline"><a href="https://www.anthropic.com/news/an-update-on-independent-evaluators" target="_blank" rel="noopener">anthropic.com/news/an-update-on-independent-evaluators</a></span></li><li id="2026-10-18-anthropic-fonds-interet-public"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong>Anthropic consacre 5 % de ses actions à un fonds d'intérêt public</strong> La part peut augmenter avec la valeur de l'entreprise, sous réserve de l'accord des actionnaires. Un des buts cités : aider les salariés touchés par l'IA. <span class="b2-src" style="display:inline"><a href="https://www.anthropic.com/news/public-benefit-fund" target="_blank" rel="noopener">anthropic.com/news/public-benefit-fund</a></span></li><li id="2026-10-18-anthropic-singapour"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong>Anthropic ouvre un bureau à Singapour</strong> C'est son cinquième bureau en Asie-Pacifique. Un accord avec le gouvernement porte sur la sécurité et l'évaluation des modèles. <span class="b2-src" style="display:inline"><a href="https://www.anthropic.com/news/singapore-office-opening" target="_blank" rel="noopener">anthropic.com/news/singapore-office-opening</a></span></li><li id="2026-10-18-anthropic-auto-replication-objets"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong>Des IA qui se copient seules sur des objets connectés, sans annonce officielle lue.</strong> Selon la presse, l'équipe sécurité d'Anthropic estime que de petits modèles pourraient le faire d'ici fin 2026. Aucun cas réel n'est signalé. <span class="b2-src" style="display:inline"><a href="https://www.aljazeera.com/economy/2026/10/13/ai-could-self-replicate-on-home-devices-within-months-anthropic-says" target="_blank" rel="noopener">aljazeera.com — 13 oct.</a> · <em>sans annonce officielle</em></span></li><li id="2026-10-18-deepseek-v4-1-flash-1017"><span class="b2-actor a-other"><i></i>DeepSeek</span> — <strong>DeepSeek met à jour V4.1-Flash, poids toujours téléchargeables</strong> Selon DeepSeek, la version 1017 fait mieux, plus vite et avec des réponses plus courtes. Prix et scores varient selon les sources : non repris ici. <span class="b2-src" style="display:inline"><a href="https://api-docs.deepseek.com/news/news261017/" target="_blank" rel="noopener">api-docs.deepseek.com — 17 oct.</a></span></li><li id="2026-10-18-chatgpt-gpt-live-1-1"><span class="b2-actor a-openai"><i></i>OpenAI</span> — <strong>Nouvelles voix dans ChatGPT, sans annonce officielle lue.</strong> Selon la presse, le modèle vocal GPT-Live-1.1 arrive pour tous, avec 13 voix dont deux en français. L'accès par API n'a pas de date. <span class="b2-src" style="display:inline"><a href="https://aiweekly.co/alerts/openai-rolls-out-gpt-live-11-to-all-users-with-13-new-voices-across-six-non" target="_blank" rel="noopener">aiweekly.co</a> · <em>sans annonce officielle</em></span></li><li id="2026-10-18-anthropic-sdk-python-1-14-1-15"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong>Kit Python de l'API Claude : versions 1.14 et 1.15</strong> Suivi des appels intégré et réglage de vitesse des réponses. Rien à faire pour nous : nous n'intégrons pas l'API dans nos logiciels. <span class="b2-src" style="display:inline"><a href="https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.14.0" target="_blank" rel="noopener">github.com — anthropic-sdk-python 1.14.0</a></span></li></ul>
+</section>
+  <p class="b2-quiet" style="margin-top:28px">Rien de notable cette semaine chez : OpenAI (aucune annonce officielle lue), Perplexity, xAI, <span class="term" tabindex="0" data-def="Éditeur de code avec IA intégrée, concurrent de Claude Code.">Cursor</span>.</p>
+
+  <section class="b2-section" id="mots" data-noterm>
+    <h2 class="b2-h2">Les mots du brief</h2>
+    <p class="b2-sub">Survolez ou touchez un mot souligné en pointillés pour sa définition. <a href="../lexique/">Lexique complet →</a></p>
+    <dl class="b2-lexique"><div><dt>Claude Code</dt><dd>Assistant d'Anthropic qui travaille dans un terminal ou un éditeur : code, fichiers, automatisations.</dd></div><div><dt>Bac à sable (sandbox)</dt><dd>Environnement isolé où l'IA exécute du code sans pouvoir toucher au reste du système.</dd></div><div><dt>Modèle ouvert (open weights)</dt><dd>Modèle téléchargeable : on peut le faire tourner sur ses propres serveurs, sans envoyer de données à l'éditeur.</dd></div><div><dt>API</dt><dd>Accès direct au modèle depuis un logiciel ou un script, facturé à l'usage (au token).</dd></div><div><dt>Routine</dt><dd>Tâche Claude planifiée qui tourne seule dans le cloud, sans PC allumé (ce brief en est une).</dd></div><div><dt>Charte IA Lynxter</dt><dd>Nos règles internes d'usage de l'IA : quelles données, dans quels outils.</dd></div><div><dt>Token</dt><dd>Morceau de mot (environ ¾ d'un mot). C'est l'unité que les IA lisent, écrivent et facturent.</dd></div><div><dt>Agent</dt><dd>IA qui enchaîne seule plusieurs actions (chercher, lire, écrire, exécuter) pour atteindre un objectif.</dd></div><div><dt>DeepSWE</dt><dd>Test de programmation sur des tâches de développement longues, cité par Google pour Gemini.</dd></div><div><dt>Fenêtre de contexte</dt><dd>Quantité de texte que le modèle garde en tête d'un coup. 1 million de tokens ≈ 1 500 pages.</dd></div><div><dt>Terminal-Bench</dt><dd>Test où l'IA accomplit seule des tâches techniques complètes en ligne de commande : installer, configurer, déboguer.</dd></div><div><dt>Infrastructure locale</dt><dd>Serveurs Lynxter (prévus) où faire tourner des modèles ouverts : la seule voie prévue pour les données sensibles.</dd></div><div><dt>Mixture of Experts (MoE)</dt><dd>Architecture où seule une partie du modèle travaille à chaque mot : plus rapide et moins cher à faire tourner.</dd></div><div><dt>Paramètres (taille d'un modèle)</dt><dd>Taille d'un modèle, en milliards (« 30B »). Plus il y en a, plus il faut de matériel pour le faire tourner.</dd></div><div><dt>Open source</dt><dd>Logiciel dont le code est public, que chacun peut lire, réutiliser et modifier.</dd></div><div><dt>Prix « $2/$10 »</dt><dd>Prix pour un million de tokens (≈ 750 000 mots) : le 1er chiffre pour ce que le modèle lit, le 2e pour ce qu'il écrit.</dd></div><div><dt>Cache</dt><dd>Remise quand on renvoie un texte déjà lu par le modèle (instructions, documents) : ce texte est facturé bien moins cher.</dd></div><div><dt>Hook</dt><dd>Point d'accroche où un plugin réagit à un événement de Claude Code, par exemple juste avant l'utilisation d'un outil.</dd></div><div><dt>MCP</dt><dd>Standard ouvert pour brancher une IA sur un outil ou une base de données (un « connecteur »).</dd></div><div><dt>Compaction</dt><dd>Résumé automatique d'une longue conversation, pour libérer de la place dans la mémoire de travail de l'IA.</dd></div><div><dt>Cowork</dt><dd>Application de bureau d'Anthropic où Claude travaille sur des dossiers et des outils connectés.</dd></div><div><dt>Cursor</dt><dd>Éditeur de code avec IA intégrée, concurrent de Claude Code.</dd></div></dl>
+  </section>
+
+  <section class="sources-footer" style="margin-top:48px">
+    <strong>Sources consultées</strong>
+    <a href="https://code.claude.com/docs/en/changelog#2-1-299">code.claude.com/changelog</a> · <a href="https://platform.claude.com/docs/en/release-notes/overview#october-15-2026">platform.claude.com — release notes</a> · <a href="https://research.meta.ai/blog/muse-spark-open">research.meta.ai — Muse Spark Open</a> · <a href="https://about.fb.com/news/2026/10/introducing-muse-wonder-models/">about.fb.com — Muse Wonder</a> · <a href="https://mistral.ai/news/timestral/">mistral.ai/news/timestral</a> · <a href="https://ai.google.dev/gemini-api/docs/changelog">ai.google.dev — changelog Gemini</a>
+  </section>
+
+  <nav class="brief-nav">
+    <a class="prev" href="2026-10-11.html"><span class="label">← Brief précédent</span><span class="title">Claude Haiku 5.5 : le petit modèle d'Anthropic, environ quatre fois moins cher</span></a>
+    <a class="next" href="./"><span class="label">Voir l'archive →</span><span class="title">Tous les briefs</span></a>
+  </nav>
+</div>
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Brief du 2026-10-18 · format 2</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Comparateur de modèles</a></li>
+        <li><a href="../lexique/">Lexique</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../acteurs/">Acteurs suivis</a></li>
+        <li><a href="../futur/">Prospective (mai 2026)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+<script src="../assets/v2.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,465 @@
+{
+ "schema": 2,
+ "date": "2026-10-18",
+ "period": "11 → 18 octobre 2026",
+ "title": "Claude Code corrige son bac à sable ; Meta et Mistral publient des modèles ouverts",
+ "description": "Veille IA du 11 au 18 octobre 2026 : corrections de sécurité dans Claude Code, Muse Wonder et Muse Spark Open chez Meta, Timestral chez Mistral, Gemini 4 Argon ouvert à tous. Ce que ça change pour Lynxter.",
+ "lead": "Pas de nouveau modèle Claude cette semaine. L'action pour nous est une mise à jour de <strong>Claude Code</strong>, qui bouche plusieurs trous de son bac à sable. Côté modèles ouverts, Meta publie un très gros modèle et Mistral de petits modèles de prévision.",
+ "actors_scanned": 9,
+ "en_30s": [
+  "<strong>Claude Code</strong> sort cinq versions. La 2.1.299 empêche plusieurs contournements du bac à sable : chaque poste doit être au moins en 2.1.299.",
+  "<strong>Meta</strong> sort Muse Wonder, au niveau des meilleurs selon ses tests, et Muse Spark Open, un modèle ouvert qui demande environ 700 Go de mémoire graphique.",
+  "<strong>Mistral</strong> publie Timestral, de petits modèles ouverts qui prévoient l'évolution de mesures. <strong>Gemini 4 Argon</strong> est ouvert à tous les clients de l'API Google."
+ ],
+ "highlights": [
+  "Claude Code 2.1.299 bouche plusieurs trous du bac à sable : mise à jour à faire",
+  "Meta sort Muse Wonder et un grand modèle ouvert, Muse Spark Open",
+  "Mistral publie Timestral, petits modèles ouverts de prévision de mesures"
+ ],
+ "pour_lynxter": [
+  {
+   "verdict": "a-faire",
+   "titre": "Passer Claude Code en version 2.1.299 ou plus",
+   "pourquoi": "La 2.1.299 corrige des cas où une commande dans le bac à sable pouvait lire un dossier interdit, et des règles de blocage qui laissaient passer l'action sous Windows. Pour vérifier, taper <code>claude --version</code> dans un terminal. La 2.1.302 évite aussi qu'une routine plantée soit relancée en entier.",
+   "qui": "Chaque utilisateur de Claude Code",
+   "charte": null,
+   "items": [
+    "2026-10-18-claude-code-2-1-299-303"
+   ]
+  },
+  {
+   "verdict": "a-surveiller",
+   "titre": "Modèles ouverts pour l'infra locale : Muse Spark Open, trop gros pour nous",
+   "pourquoi": "Le modèle ouvert de Meta demande au moins 700 Go de mémoire graphique, bien au-delà d'un serveur de PME. Sa licence impose aussi une mention de Meta dans l'interface. À comparer plus tard avec Mistral Large 4, dont les poids sont promis fin octobre.",
+   "qui": "Léo, direction",
+   "charte": "local",
+   "items": [
+    "2026-10-18-meta-muse-spark-open"
+   ]
+  },
+  {
+   "verdict": "a-surveiller",
+   "titre": "Timestral : la prévision de mesures, un sujet pour nos clients industriels",
+   "pourquoi": "Ces petits modèles de Mistral prévoient l'évolution d'une courbe de mesures et tournent sans carte graphique. C'est la base de la maintenance prédictive. Aucune action maintenant : à connaître si un client en parle.",
+   "qui": "Support technique, commerce",
+   "charte": "ok",
+   "items": [
+    "2026-10-18-mistral-timestral"
+   ]
+  },
+  {
+   "verdict": "rien",
+   "titre": "Muse Wonder et Gemini 4 Argon : rien à changer",
+   "pourquoi": "Deux grands modèles concurrents de Claude, tous deux hors charte. Ils sont à connaître, sans action pour nous.",
+   "qui": "—",
+   "charte": "hors-cadre",
+   "items": [
+    "2026-10-18-meta-muse-wonder",
+    "2026-10-18-gemini-4-argon-ga"
+   ]
+  }
+ ],
+ "modeles": [
+  {
+   "id": "muse-wonder",
+   "item": "2026-10-18-meta-muse-wonder",
+   "en_clair": "Le premier modèle de Meta au niveau des meilleurs, pensé pour les agents. Selon Meta, il passe devant Muse Spark 1.3 au test de code DeepSWE. Son prix API est celui de Claude Opus 5.5.",
+   "verdict": "rien",
+   "pour_nous": "Hors charte : rien à faire."
+  },
+  {
+   "id": "muse-spark-open",
+   "item": "2026-10-18-meta-muse-spark-open",
+   "en_clair": "Le modèle ouvert de Meta, téléchargeable. Il est nettement en dessous de Muse Spark 1.3 sur les tests de Meta, et demande un matériel très lourd.",
+   "verdict": "a-surveiller",
+   "pour_nous": "Trop gros pour une infrastructure locale de PME."
+  }
+ ],
+ "items": [
+  {
+   "slug": "2026-10-18-claude-code-2-1-299-303",
+   "actor": "Anthropic",
+   "tag": "lynxter",
+   "theme": "outils",
+   "date": "2026-10-14",
+   "title": "Claude Code 2.1.299 à 2.1.303 : plusieurs trous du bac à sable bouchés",
+   "resume": "Cinq versions de Claude Code sortent du 14 au 18 octobre. La 2.1.299 corrige plusieurs façons de contourner le bac à sable, par exemple lire un dossier interdit en passant par un raccourci de fichier sur Mac. La 2.1.302 évite qu'une routine qui plante à mi-chemin soit relancée depuis le début.",
+   "pour_nous": {
+    "verdict": "a-faire",
+    "texte": "Vérifier que chaque poste est en 2.1.299 ou plus (<code>claude --version</code> dans un terminal)."
+   },
+   "chiffres": [
+    "2.1.299 (14 oct.) : sur macOS, une commande dans le bac à sable pouvait lire ou écrire un chemin interdit via un lien symbolique ; elle pouvait aussi écrire dans un dossier <code>--plugin-dir</code>, rechargé hors bac à sable : corrigé",
+    "2.1.299 : sous Windows sans Git for Windows, les hooks PreToolUse et PermissionRequest qui échouaient laissaient passer l'action ; ils la bloquent désormais. Les règles <code>deny</code> d'un serveur MCP dont le nom contient un double tiret bas s'appliquent enfin",
+    "2.1.299 : compaction automatique d'une conversation de plus de 200 000 tokens laissée inactive environ 54 minutes, avant l'expiration du cache d'une heure (<code>\"idleCompaction\": false</code> pour la couper)",
+    "2.1.300 (14 oct.) : les <code>updatedInput</code> des hooks sont validés comme l'entrée de Claude ; gros envois vers l'API compressés en gzip ; nombreuses corrections Cowork, VS Code et Claude dans Slack",
+    "2.1.301 (15 oct.) : en passant à un modèle à plus petite mémoire de travail, la conversation est d'abord résumée par le modèle précédent",
+    "2.1.302 (16 oct.) : une routine planifiée qui échouait en cours de route était relancée depuis le début une heure plus tard ou plus, au risque de publier deux fois le même rapport : corrigé. 2.1.303 (18 oct.) : corrections diverses"
+   ],
+   "sources": [
+    {
+     "label": "code.claude.com/changelog#2-1-299",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-299",
+     "primary": true
+    },
+    {
+     "label": "code.claude.com/changelog#2-1-300",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-300",
+     "primary": true
+    },
+    {
+     "label": "code.claude.com/changelog#2-1-301",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-301",
+     "primary": true
+    },
+    {
+     "label": "code.claude.com/changelog#2-1-302",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-302",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-10-18-meta-muse-spark-open",
+   "actor": "Meta",
+   "tag": "useful",
+   "theme": "ouvert",
+   "date": "2026-10-15",
+   "title": "Muse Spark Open : Meta publie un grand modèle ouvert, trop lourd pour un petit serveur",
+   "resume": "Meta rend téléchargeable Muse Spark Open, un modèle de 816 milliards de paramètres pensé pour le code et les agents. Selon la fiche de Meta, il faut au moins 700 Go de mémoire graphique, ou deux Mac Studio M5 Ultra de 512 Go reliés entre eux. La licence est maison : utilisation libre, mais mention « Built with Muse Spark Open » obligatoire.",
+   "pour_nous": {
+    "verdict": "a-surveiller",
+    "texte": "Candidat théorique pour l'infrastructure locale, mais le matériel demandé dépasse un serveur de PME. Garder en tête pour la comparaison avec Mistral Large 4."
+   },
+   "chiffres": [
+    "Architecture MoE : 816 milliards de paramètres au total, 42 milliards actifs ; mémoire de travail 1 million de tokens",
+    "Selon la fiche de Meta (relayée par Modal) : Terminal-Bench 2.1 76,4 % (Muse Spark 1.3 : 88,8 %) ; DeepSWE 1.1 60 % (Muse Spark 1.3 : 75,4 %)",
+    "Matériel selon Meta : au moins 700 Go de mémoire graphique en NVFP4, 2 To en BF16 ; fichier NVFP4 d'environ 530 Go. Versions compressées d'Unsloth à partir d'environ 300 Go",
+    "Licence Muse Model License (pas open source au sens strict) : modification et redistribution permises, mention obligatoire dans l'interface"
+   ],
+   "sources": [
+    {
+     "label": "research.meta.ai — Muse Spark Open",
+     "url": "https://research.meta.ai/blog/muse-spark-open",
+     "primary": true
+    },
+    {
+     "label": "techcrunch.com — 15 oct.",
+     "url": "https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/",
+     "primary": false
+    },
+    {
+     "label": "marktechpost.com",
+     "url": "https://www.marktechpost.com/2026/10/15/meta-muse-spark-open-816b-open-weight-model/",
+     "primary": false
+    },
+    {
+     "label": "bloomberg.com",
+     "url": "https://www.bloomberg.com/news/articles/2026-10-15/meta-releases-open-ai-model-while-keeping-its-best-tech-closed",
+     "primary": false
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-10-18-mistral-timestral",
+   "actor": "Mistral",
+   "tag": "useful",
+   "theme": "ouvert",
+   "date": "2026-10-15",
+   "title": "Timestral : Mistral sort de petits modèles ouverts pour prévoir des courbes de mesures",
+   "resume": "Mistral lance Timestral, quatre modèles de 5 à 209 millions de paramètres, faits pour prolonger une série de mesures dans le temps. Ils tournent sur un processeur ordinaire, sans carte graphique. Selon Mistral, le plus gros arrive premier sur les trois tests publics de référence du domaine.",
+   "pour_nous": {
+    "verdict": "a-surveiller",
+    "texte": "Mistral est autorisé par la charte. Ce type d'outil sert à la maintenance prédictive : un sujet que nos clients industriels pourraient évoquer."
+   },
+   "chiffres": [
+    "Tailles : 5M, 28M, 123M et 209M paramètres ; prévisions probabilistes, plusieurs courbes à la fois, avec variables externes passées et futures",
+    "Selon Mistral : premier sur GIFT-Eval, TIME et fev-bench ; le modèle 28M bat Chronos-2, environ quatre fois plus gros, sur GIFT-Eval et TIME",
+    "Selon la presse : jusqu'à 32 768 points d'historique lus et 1 024 points prévus d'un coup ; 10 ms (5M) à 140 ms (209M) par prévision sur un processeur de serveur",
+    "Licence des poids non vérifiée sur la page de Mistral (egress bloqué)"
+   ],
+   "sources": [
+    {
+     "label": "mistral.ai/news/timestral",
+     "url": "https://mistral.ai/news/timestral/",
+     "primary": true
+    },
+    {
+     "label": "opendatascience.com",
+     "url": "https://opendatascience.com/mistral-launches-timestral-a-new-family-of-time-series-forecasting-models/",
+     "primary": false
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-10-18-meta-muse-wonder",
+   "actor": "Meta",
+   "tag": "useful",
+   "theme": "modeles",
+   "date": "2026-10-12",
+   "title": "Muse Wonder : Meta rejoint le haut du classement, au prix d'Opus 5.5",
+   "resume": "Meta sort Muse Wonder, son premier modèle au niveau des meilleurs, pensé pour les agents. Selon Meta, il obtient 78,8 % au test de code DeepSWE, contre 75,4 % pour Muse Spark 1.3. Son API coûte 4 $ / 20 $ par million de tokens, comme Claude Opus 5.5.",
+   "pour_nous": {
+    "verdict": "rien",
+    "texte": "Outil hors charte. À connaître comme concurrent de Claude, rien à changer."
+   },
+   "chiffres": [
+    "Selon Meta : DeepSWE 1.1 78,8 % (Muse Wonder Full : 79,0 %) ; SWE-Marathon 53,1 (Full : 57,5)",
+    "Prix API $4 / $20 par M tokens selon la presse ; mémoire de travail d'environ 1 million de tokens",
+    "Muse Wonder Full n'est pas vendu à l'usage : réservé aux abonnements Muse Code (50 $ ou 200 $ par mois selon la presse)"
+   ],
+   "sources": [
+    {
+     "label": "about.fb.com — Muse Wonder",
+     "url": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
+     "primary": true
+    },
+    {
+     "label": "marktechpost.com — 13 oct.",
+     "url": "https://www.marktechpost.com/2026/10/13/meta-muse-wonder-muse-wonder-full-release/",
+     "primary": false
+    },
+    {
+     "label": "techcrunch.com — 12 oct.",
+     "url": "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/",
+     "primary": false
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-10-18-gemini-4-argon-ga",
+   "actor": "Google DeepMind",
+   "tag": "useful",
+   "theme": "modeles",
+   "date": "2026-10-13",
+   "title": "Gemini 4 Argon ouvert à tous dans l'API Google, prix de lancement jusqu'au 30 novembre",
+   "resume": "Le grand modèle de Google, annoncé fin septembre pour quelques testeurs, est disponible pour tous les clients payants de l'API depuis le 13 octobre. Il coûte 2 $ / 10 $ par million de tokens jusqu'au 30 novembre, puis 4 $ / 20 $. C'est alors le prix de Claude Opus 5.5.",
+   "pour_nous": {
+    "verdict": "rien",
+    "texte": "Gemini est hors charte."
+   },
+   "chiffres": [
+    "Mémoire de travail 1 048 576 tokens ; jusqu'à 65 536 tokens de sortie par défaut, environ 1 million en mode long",
+    "Prix de lancement $2 / $10 par M tokens, 95 % de remise sur l'entrée en cache ; $4 / $20 après le 30 nov. 2026"
+   ],
+   "sources": [
+    {
+     "label": "ai.google.dev — changelog de l'API Gemini",
+     "url": "https://ai.google.dev/gemini-api/docs/changelog",
+     "primary": true
+    },
+    {
+     "label": "venturebeat.com",
+     "url": "https://venturebeat.com/technology/google-makes-gemini-4-argon-broadly-available-with-limited-time-low-api-pricing-of-2-10-per-1m-token",
+     "primary": false
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-10-18-claude-opus-5-5-mode-rapide",
+   "actor": "Anthropic",
+   "tag": "info",
+   "theme": "outils",
+   "date": "2026-10-15",
+   "title": "Le mode rapide de Claude Opus 5.5 est ouvert à tous les clients de l'API",
+   "resume": "Plus besoin de demander l'accès au mode rapide d'Opus 5.5 sur l'API. La veille, Anthropic a ouvert l'export des traces d'appels vers les outils de suivi des développeurs.",
+   "chiffres": [
+    "15 oct. : fin de la préversion du mode rapide pour Opus 5.5, l'en-tête <code>fast-mode-2026-02-01</code> n'est plus requis ; aussi sur Microsoft Foundry",
+    "14 oct. : export OpenTelemetry en bêta pour l'API et Managed Agents"
+   ],
+   "sources": [
+    {
+     "label": "platform.claude.com — release notes 15 oct.",
+     "url": "https://platform.claude.com/docs/en/release-notes/overview#october-15-2026",
+     "primary": true
+    },
+    {
+     "label": "platform.claude.com — release notes 14 oct.",
+     "url": "https://platform.claude.com/docs/en/release-notes/overview#october-14-2026",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-10-18-anthropic-evaluateurs-independants",
+   "actor": "Anthropic",
+   "tag": "info",
+   "theme": "entreprise",
+   "date": "2026-10-15",
+   "title": "Anthropic ouvre ses modèles à des évaluateurs indépendants",
+   "resume": "L'association METR reçoit un accès proche de celui d'un salarié pour évaluer les risques des modèles Claude. Elle publiera ses conclusions.",
+   "sources": [
+    {
+     "label": "anthropic.com/news/an-update-on-independent-evaluators",
+     "url": "https://www.anthropic.com/news/an-update-on-independent-evaluators",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-10-18-anthropic-fonds-interet-public",
+   "actor": "Anthropic",
+   "tag": "info",
+   "theme": "entreprise",
+   "date": "2026-10-18",
+   "title": "Anthropic consacre 5 % de ses actions à un fonds d'intérêt public",
+   "resume": "La part peut augmenter avec la valeur de l'entreprise, sous réserve de l'accord des actionnaires. Un des buts cités : aider les salariés touchés par l'IA.",
+   "sources": [
+    {
+     "label": "anthropic.com/news/public-benefit-fund",
+     "url": "https://www.anthropic.com/news/public-benefit-fund",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-10-18-anthropic-singapour",
+   "actor": "Anthropic",
+   "tag": "info",
+   "theme": "entreprise",
+   "date": "2026-10-14",
+   "title": "Anthropic ouvre un bureau à Singapour",
+   "resume": "C'est son cinquième bureau en Asie-Pacifique. Un accord avec le gouvernement porte sur la sécurité et l'évaluation des modèles.",
+   "sources": [
+    {
+     "label": "anthropic.com/news/singapore-office-opening",
+     "url": "https://www.anthropic.com/news/singapore-office-opening",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-10-18-anthropic-auto-replication-objets",
+   "actor": "Anthropic",
+   "tag": "info",
+   "theme": "autre",
+   "date": "2026-10-12",
+   "title": "Des IA qui se copient seules sur des objets connectés, sans annonce officielle lue.",
+   "resume": "Selon la presse, l'équipe sécurité d'Anthropic estime que de petits modèles pourraient le faire d'ici fin 2026. Aucun cas réel n'est signalé.",
+   "sources": [
+    {
+     "label": "aljazeera.com — 13 oct.",
+     "url": "https://www.aljazeera.com/economy/2026/10/13/ai-could-self-replicate-on-home-devices-within-months-anthropic-says",
+     "primary": false
+    },
+    {
+     "label": "thestar.com.my (Reuters) — 13 oct.",
+     "url": "https://www.thestar.com.my/tech/tech-news/2026/10/13/ai-models-may-soon-self-replicate-without-access-to-data-centers-anthropic-warns",
+     "primary": false
+    }
+   ],
+   "has_primary": false
+  },
+  {
+   "slug": "2026-10-18-deepseek-v4-1-flash-1017",
+   "actor": "DeepSeek",
+   "tag": "info",
+   "theme": "ouvert",
+   "date": "2026-10-17",
+   "title": "DeepSeek met à jour V4.1-Flash, poids toujours téléchargeables",
+   "resume": "Selon DeepSeek, la version 1017 fait mieux, plus vite et avec des réponses plus courtes. Prix et scores varient selon les sources : non repris ici.",
+   "sources": [
+    {
+     "label": "api-docs.deepseek.com — 17 oct.",
+     "url": "https://api-docs.deepseek.com/news/news261017/",
+     "primary": true
+    },
+    {
+     "label": "bloomberg.com",
+     "url": "https://www.bloomberg.com/news/articles/2026-10-17/deepseek-pushes-out-updated-ai-model-it-says-is-faster-leaner",
+     "primary": false
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-10-18-chatgpt-gpt-live-1-1",
+   "actor": "OpenAI",
+   "tag": "info",
+   "theme": "outils",
+   "date": "2026-10-15",
+   "title": "Nouvelles voix dans ChatGPT, sans annonce officielle lue.",
+   "resume": "Selon la presse, le modèle vocal GPT-Live-1.1 arrive pour tous, avec 13 voix dont deux en français. L'accès par API n'a pas de date.",
+   "sources": [
+    {
+     "label": "aiweekly.co",
+     "url": "https://aiweekly.co/alerts/openai-rolls-out-gpt-live-11-to-all-users-with-13-new-voices-across-six-non",
+     "primary": false
+    },
+    {
+     "label": "pasqualepillitteri.it",
+     "url": "https://pasqualepillitteri.it/fr/news/24384/gpt-live-1-1-chatgpt-13-nouvelles-voix",
+     "primary": false
+    }
+   ],
+   "has_primary": false
+  },
+  {
+   "slug": "2026-10-18-anthropic-sdk-python-1-14-1-15",
+   "actor": "Anthropic",
+   "tag": "info",
+   "theme": "outils",
+   "date": "2026-10-14",
+   "title": "Kit Python de l'API Claude : versions 1.14 et 1.15",
+   "resume": "Suivi des appels intégré et réglage de vitesse des réponses. Rien à faire pour nous : nous n'intégrons pas l'API dans nos logiciels.",
+   "sources": [
+    {
+     "label": "github.com — anthropic-sdk-python 1.14.0",
+     "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.14.0",
+     "primary": true
+    },
+    {
+     "label": "github.com — anthropic-sdk-python 1.15.0",
+     "url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.15.0",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  }
+ ],
+ "rien_de_notable": [
+  "OpenAI (aucune annonce officielle lue)",
+  "Perplexity",
+  "xAI",
+  "Cursor"
+ ],
+ "sources_footer": [
+  {
+   "label": "code.claude.com/changelog",
+   "url": "https://code.claude.com/docs/en/changelog#2-1-299"
+  },
+  {
+   "label": "platform.claude.com — release notes",
+   "url": "https://platform.claude.com/docs/en/release-notes/overview#october-15-2026"
+  },
+  {
+   "label": "research.meta.ai — Muse Spark Open",
+   "url": "https://research.meta.ai/blog/muse-spark-open"
+  },
+  {
+   "label": "about.fb.com — Muse Wonder",
+   "url": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
+  },
+  {
+   "label": "mistral.ai/news/timestral",
+   "url": "https://mistral.ai/news/timestral/"
+  },
+  {
+   "label": "ai.google.dev — changelog Gemini",
+   "url": "https://ai.google.dev/gemini-api/docs/changelog"
+  }
+ ],
+ "prev": {
+  "href": "2026-10-11.html",
+  "title": "Claude Haiku 5.5 : le petit modèle d'Anthropic, environ quatre fois moins cher"
+ }
+}

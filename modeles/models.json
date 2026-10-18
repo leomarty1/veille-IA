@@ -1,6 +1,6 @@
 {
  "meta": {
-  "updated": "2026-10-11",
+  "updated": "2026-10-18",
   "note": "Chaque chiffre porte sa source. official:true = publié par l'éditeur du modèle (ou par un autre éditeur reprenant un chiffre officiel) ; official:false = estimation tierce. Prix : tarif API standard en $ par million de tokens."
  },
  "families": {
@@ -222,6 +222,16 @@
   "reflection-beam": {
    "name": "Beam",
    "actor": "Reflection AI",
+   "tier": "ouvert"
+  },
+  "muse-wonder": {
+   "name": "Muse Wonder",
+   "actor": "Meta",
+   "tier": "premium"
+  },
+  "muse-spark-open": {
+   "name": "Muse Spark Open",
+   "actor": "Meta",
    "tier": "ouvert"
   }
  },
@@ -4999,7 +5009,7 @@
    "family": "gemini-argon",
    "replaces": "gemini-3-1-pro",
    "date": "2026-09-30",
-   "status": "restricted",
+   "status": "ga",
    "price_in": 2,
    "price_out": 10,
    "context_k": 1000,
@@ -5037,10 +5047,12 @@
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
     "https://www.eesel.ai/blog/gemini-4-argon-pricing",
     "https://www.testingcatalog.com/google-unveils-gemini-4-argon-with-sota-score-on-deepswe.md",
-    "https://www.cnbc.com/2026/09/30/google-gemini-4-argon-ai.html"
+    "https://www.cnbc.com/2026/09/30/google-gemini-4-argon-ai.html",
+    "https://ai.google.dev/gemini-api/docs/changelog",
+    "https://venturebeat.com/technology/google-makes-gemini-4-argon-broadly-available-with-limited-time-low-api-pricing-of-2-10-per-1m-token"
    ],
    "confidence": "verified",
-   "notes": "Réservé aux cyberdéfenseurs du programme Fairwind ; ouverture à l'API payante et à Google AI Ultra sans date. Opus 5.5 reste devant sur Terminal-Bench 4.0 (chiffre non donné dans les sources). Pas de SWE-bench Verified. Indice Artificial Analysis 53 (tiers), à égalité avec GPT-6 Astra. « replaces » pointe vers Gemini 3.1 Pro, haut de gamme précédent de Google : il n'existe pas d'Argon antérieur."
+   "notes": "Réservé aux cyberdéfenseurs du programme Fairwind ; ouverture à l'API payante et à Google AI Ultra sans date. Opus 5.5 reste devant sur Terminal-Bench 4.0 (chiffre non donné dans les sources). Pas de SWE-bench Verified. Indice Artificial Analysis 53 (tiers), à égalité avec GPT-6 Astra. « replaces » pointe vers Gemini 3.1 Pro, haut de gamme précédent de Google : il n'existe pas d'Argon antérieur. Disponible pour tous dans l'API Gemini (offre payante) depuis le 13 oct. 2026, après une diffusion restreinte. Prix de lancement $2/$10 jusqu'au 30 nov. 2026, puis $4/$20."
   },
   {
    "id": "reflection-beam",
@@ -5197,6 +5209,134 @@
    ],
    "confidence": "uncertain",
    "notes": "Page mistral.ai non lue (egress bloqué), données de presse concordantes. Surnom « Le Chonk ». MoE ~1 050B paramètres, 49B actifs selon l'annonce (52B selon la fiche technique). Texte et images en entrée. Contexte annoncé 1M tokens ; Vals AI et Artificial Analysis listent ~512K. API et Mistral Studio uniquement. Poids ouverts promis fin octobre (26-27 oct. selon les sources), licence non publiée : passer open_weights à true et compléter à la publication. Scores préliminaires non repris dans scores{} (version de DeepSWE non précisée, CyberGym-E2E différent de CyberGym). Aucun test commun publié avec Mistral Large 3."
+  },
+  {
+   "id": "muse-wonder",
+   "name": "Muse Wonder",
+   "actor": "Meta",
+   "family": "muse-wonder",
+   "replaces": "muse-spark-1-3",
+   "date": "2026-10-12",
+   "status": "ga",
+   "price_in": 4,
+   "price_out": 20,
+   "context_k": 1000,
+   "open_weights": false,
+   "scores": {
+    "deepswe-1-1": {
+     "value": 78.8,
+     "official": true,
+     "source": "https://www.marktechpost.com/2026/10/13/meta-muse-wonder-muse-wonder-full-release/",
+     "note": "chiffre Meta relayé par la presse"
+    }
+   },
+   "claims": [
+    {
+     "text": "SWE-Marathon : 53,1 (Muse Wonder Full : 57,5), chiffres Meta",
+     "source": "https://www.marktechpost.com/2026/10/13/meta-muse-wonder-muse-wonder-full-release/"
+    },
+    {
+     "text": "scores comparables à Claude Fable 5.1 et GPT-6 Astra selon la fiche de Meta",
+     "source": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/"
+    }
+   ],
+   "en_clair": "Le premier modèle « de pointe » de Meta, pour les agents. Il passe devant Muse Spark 1.3 sur le test de code DeepSWE, selon Meta.",
+   "sources": [
+    "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
+    "https://www.marktechpost.com/2026/10/13/meta-muse-wonder-muse-wonder-full-release/",
+    "https://venturebeat.com/technology/metas-new-muse-wonder-and-muse-wonder-full-models-achieve-frontier-performance-but-only-the-weaker-one-is-available-via-api"
+   ],
+   "confidence": "verified",
+   "notes": "Propriétaire. API Meta Model API et Muse Code. Prix $4/$20 selon la presse (plusieurs sources concordantes), non lu sur la page de Meta (egress bloqué)."
+  },
+  {
+   "id": "muse-wonder-full",
+   "name": "Muse Wonder Full",
+   "actor": "Meta",
+   "family": "muse-wonder",
+   "replaces": null,
+   "date": "2026-10-12",
+   "status": "restricted",
+   "price_in": null,
+   "price_out": null,
+   "context_k": 1000,
+   "open_weights": false,
+   "scores": {
+    "deepswe-1-1": {
+     "value": 79.0,
+     "official": true,
+     "source": "https://www.marktechpost.com/2026/10/13/meta-muse-wonder-muse-wonder-full-release/",
+     "note": "chiffre Meta relayé par la presse"
+    }
+   },
+   "sources": [
+    "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
+    "https://www.marktechpost.com/2026/10/13/meta-muse-wonder-muse-wonder-full-release/",
+    "https://venturebeat.com/technology/metas-new-muse-wonder-and-muse-wonder-full-models-achieve-frontier-performance-but-only-the-weaker-one-is-available-via-api"
+   ],
+   "confidence": "verified",
+   "notes": "Réservé aux abonnés Muse Code (50 $ ou 200 $ par mois selon la presse), pas d'accès API au jeton."
+  },
+  {
+   "id": "muse-spark-open",
+   "name": "Muse Spark Open",
+   "actor": "Meta",
+   "family": "muse-spark-open",
+   "replaces": null,
+   "date": "2026-10-15",
+   "status": "ga",
+   "price_in": null,
+   "price_out": null,
+   "context_k": 1000,
+   "open_weights": true,
+   "scores": {
+    "terminal-bench-2-1": {
+     "value": 76.4,
+     "official": true,
+     "source": "https://modal.com/blog/meta-muse-spark-open-now-available-on-modal",
+     "note": "fiche Meta relayée par Modal ; agent Terminus 2, effort xhigh"
+    },
+    "deepswe-1-1": {
+     "value": 60.0,
+     "official": true,
+     "source": "https://modal.com/blog/meta-muse-spark-open-now-available-on-modal",
+     "note": "fiche Meta relayée par Modal ; harnais Meta, effort xhigh"
+    }
+   },
+   "en_clair": "Le modèle ouvert de Meta : poids téléchargeables, mais très gros. Il faut environ 700 Go de mémoire graphique, ou deux Mac Studio haut de gamme reliés.",
+   "sources": [
+    "https://research.meta.ai/blog/muse-spark-open",
+    "https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/",
+    "https://www.marktechpost.com/2026/10/15/meta-muse-spark-open-816b-open-weight-model/",
+    "https://www.digitalapplied.com/blog/meta-muse-spark-open-open-weights-licence-hardware"
+   ],
+   "confidence": "verified",
+   "notes": "MoE 816B total / 42B actifs, contexte 1M. Licence Muse Model License (pas open source au sens OSI) : mention « Built with Muse Spark Open » obligatoire. Fiche Meta : ≥ 700 Go de VRAM en NVFP4, 2 To en BF16 ; ou 2 Mac Studio M5 Ultra 512 Go reliés en Thunderbolt 5."
+  },
+  {
+   "id": "deepseek-v4-1-flash-1017",
+   "name": "DeepSeek V4.1-Flash (1017)",
+   "actor": "DeepSeek",
+   "family": "deepseek-flash",
+   "replaces": "deepseek-v4-1-flash",
+   "date": "2026-10-17",
+   "status": "ga",
+   "price_in": null,
+   "price_out": null,
+   "open_weights": true,
+   "scores": {},
+   "claims": [
+    {
+     "text": "meilleurs scores, tâches finies plus vite et réponses plus courtes que la version précédente, selon DeepSeek",
+     "source": "https://api-docs.deepseek.com/news/news261017/"
+    }
+   ],
+   "sources": [
+    "https://api-docs.deepseek.com/news/news261017/",
+    "https://www.bloomberg.com/news/articles/2026-10-17/deepseek-pushes-out-updated-ai-model-it-says-is-faster-leaner"
+   ],
+   "confidence": "uncertain",
+   "notes": "Mise à jour de V4.1-Flash, poids sur Hugging Face et ModelScope. Prix et scores contradictoires selon les sources : non repris."
   }
  ]
 }

@@ -1,6 +1,124 @@
 {
   "briefs": [
     {
+      "date": "2026-10-18",
+      "filename": "2026-10-18.html",
+      "items_count": 13,
+      "by_tag": {
+        "lynxter": 1,
+        "useful": 4,
+        "info": 8
+      },
+      "by_actor": {
+        "Anthropic": 7,
+        "Meta": 2,
+        "Mistral": 1,
+        "Google": 1,
+        "DeepSeek": 1,
+        "OpenAI": 1
+      },
+      "mode": "hebdomadaire",
+      "title": "Claude Code corrige son bac à sable ; Meta et Mistral publient des modèles ouverts",
+      "highlights": [
+        "Claude Code 2.1.299 bouche plusieurs trous du bac à sable : mise à jour à faire",
+        "Meta sort Muse Wonder et un grand modèle ouvert, Muse Spark Open",
+        "Mistral publie Timestral, petits modèles ouverts de prévision de mesures"
+      ],
+      "items": [
+        {
+          "slug": "2026-10-18-claude-code-2-1-299-303",
+          "title": "Claude Code 2.1.299 à 2.1.303 : plusieurs trous du bac à sable bouchés",
+          "primary_url": "https://code.claude.com/docs/en/changelog#2-1-299",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-18-meta-muse-spark-open",
+          "title": "Muse Spark Open : Meta publie un grand modèle ouvert, trop lourd pour un petit serveur",
+          "primary_url": "https://research.meta.ai/blog/muse-spark-open",
+          "tag": "useful",
+          "actor": "Meta"
+        },
+        {
+          "slug": "2026-10-18-mistral-timestral",
+          "title": "Timestral : Mistral sort de petits modèles ouverts pour prévoir des courbes de mesures",
+          "primary_url": "https://mistral.ai/news/timestral/",
+          "tag": "useful",
+          "actor": "Mistral"
+        },
+        {
+          "slug": "2026-10-18-meta-muse-wonder",
+          "title": "Muse Wonder : Meta rejoint le haut du classement, au prix d'Opus 5.5",
+          "primary_url": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/",
+          "tag": "useful",
+          "actor": "Meta"
+        },
+        {
+          "slug": "2026-10-18-gemini-4-argon-ga",
+          "title": "Gemini 4 Argon ouvert à tous dans l'API Google, prix de lancement jusqu'au 30 novembre",
+          "primary_url": "https://ai.google.dev/gemini-api/docs/changelog",
+          "tag": "useful",
+          "actor": "Google DeepMind"
+        },
+        {
+          "slug": "2026-10-18-claude-opus-5-5-mode-rapide",
+          "title": "Le mode rapide de Claude Opus 5.5 est ouvert à tous les clients de l'API",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview#october-15-2026",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-18-anthropic-evaluateurs-independants",
+          "title": "Anthropic ouvre ses modèles à des évaluateurs indépendants",
+          "primary_url": "https://www.anthropic.com/news/an-update-on-independent-evaluators",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-18-anthropic-fonds-interet-public",
+          "title": "Anthropic consacre 5 % de ses actions à un fonds d'intérêt public",
+          "primary_url": "https://www.anthropic.com/news/public-benefit-fund",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-18-anthropic-singapour",
+          "title": "Anthropic ouvre un bureau à Singapour",
+          "primary_url": "https://www.anthropic.com/news/singapore-office-opening",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-18-anthropic-auto-replication-objets",
+          "title": "Des IA qui se copient seules sur des objets connectés, sans annonce officielle lue.",
+          "primary_url": "https://www.aljazeera.com/economy/2026/10/13/ai-could-self-replicate-on-home-devices-within-months-anthropic-says",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-10-18-deepseek-v4-1-flash-1017",
+          "title": "DeepSeek met à jour V4.1-Flash, poids toujours téléchargeables",
+          "primary_url": "https://api-docs.deepseek.com/news/news261017/",
+          "tag": "info",
+          "actor": "DeepSeek"
+        },
+        {
+          "slug": "2026-10-18-chatgpt-gpt-live-1-1",
+          "title": "Nouvelles voix dans ChatGPT, sans annonce officielle lue.",
+          "primary_url": "https://aiweekly.co/alerts/openai-rolls-out-gpt-live-11-to-all-users-with-13-new-voices-across-six-non",
+          "tag": "info",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-10-18-anthropic-sdk-python-1-14-1-15",
+          "title": "Kit Python de l'API Claude : versions 1.14 et 1.15",
+          "primary_url": "https://github.com/anthropics/anthropic-sdk-python/releases/tag/v1.14.0",
+          "tag": "info",
+          "actor": "Anthropic"
+        }
+      ]
+    },
+    {
       "date": "2026-10-11",
       "filename": "2026-10-11.html",
       "items_count": 15,
