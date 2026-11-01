@@ -1,6 +1,6 @@
 {
  "meta": {
-  "updated": "2026-10-18",
+  "updated": "2026-11-01",
   "note": "Chaque chiffre porte sa source. official:true = publié par l'éditeur du modèle (ou par un autre éditeur reprenant un chiffre officiel) ; official:false = estimation tierce. Prix : tarif API standard en $ par million de tokens."
  },
  "families": {
@@ -233,6 +233,11 @@
    "name": "Muse Spark Open",
    "actor": "Meta",
    "tier": "ouvert"
+  },
+  "gemini-carbon": {
+   "name": "Gemini 4 Carbon",
+   "actor": "Google",
+   "tier": "special"
   }
  },
  "benchmarks": {
@@ -591,7 +596,7 @@
    "open_weights": true,
    "scores": {
     "gpqa-diamond": {
-     "value": 49.0,
+     "value": 49,
      "official": true,
      "source": "https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md",
      "note": "Valeur du model card Llama 4 ; le model card 3.1 donne 'GPQA 0-shot' 50,7 (sous-ensemble non précisé)."
@@ -727,17 +732,17 @@
    "open_weights": false,
    "scores": {
     "swe-bench-verified": {
-     "value": 49.0,
+     "value": 49,
      "official": true,
      "source": "https://www.anthropic.com/news/3-5-models-and-computer-use"
     },
     "gpqa-diamond": {
-     "value": 65.0,
+     "value": 65,
      "official": true,
      "source": "https://www.anthropic.com/news/3-5-models-and-computer-use"
     },
     "aime-2024": {
-     "value": 16.0,
+     "value": 16,
      "official": true,
      "source": "https://www.anthropic.com/news/3-5-models-and-computer-use"
     },
@@ -811,7 +816,7 @@
    "open_weights": true,
    "scores": {
     "swe-bench-verified": {
-     "value": 42.0,
+     "value": 42,
      "official": true,
      "source": "https://github.com/deepseek-ai/DeepSeek-V3"
     },
@@ -976,7 +981,7 @@
    "open_weights": false,
    "scores": {
     "swe-bench-verified": {
-     "value": 38.0,
+     "value": 38,
      "official": true,
      "source": "https://feeds.simonwillison.net/2025/Feb/27/introducing-gpt-45/",
      "note": "L'annonce GPT-4.1 (avril 2025) cite ensuite 28 % pour GPT-4.5."
@@ -1016,13 +1021,13 @@
      "note": "67,2 % pour la version 06-05/GA (page Google citée par Anthropic) ; 63,2 % pour 05-06."
     },
     "gpqa-diamond": {
-     "value": 84.0,
+     "value": 84,
      "official": true,
      "source": "https://charonhub.deeplearning.ai/googles-gemini-2-5-pro-experimental-outperforms-top-ai-models/",
      "note": "86,4 % pour la version 06-05."
     },
     "aime-2025": {
-     "value": 88.0,
+     "value": 88,
      "official": true,
      "source": "https://www.anthropic.com/news/claude-sonnet-4-5",
      "note": "Page Google citée par Anthropic."
@@ -1228,7 +1233,7 @@
      "source": "https://developers.googleblog.com/gemini-2-5-thinking-model-updates/"
     },
     "aime-2025": {
-     "value": 72.0,
+     "value": 72,
      "official": true,
      "source": "https://developers.googleblog.com/gemini-2-5-thinking-model-updates/"
     },
@@ -1496,7 +1501,7 @@
      "source": "https://www.anthropic.com/news/claude-opus-4-1"
     },
     "aime-2025": {
-     "value": 78.0,
+     "value": 78,
      "official": true,
      "source": "https://www.anthropic.com/news/claude-opus-4-1"
     },
@@ -1646,7 +1651,7 @@
    "open_weights": true,
    "scores": {
     "swe-bench-verified": {
-     "value": 66.0,
+     "value": 66,
      "official": true,
      "source": "https://wandb.ai/byyoung3/ml-news/reports/DeepSeek-V3-1-Benchmark-Scores---VmlldzoxNDA4NjM3Mg"
     }
@@ -1679,12 +1684,12 @@
      "note": "82,0 % avec calcul parallèle ; 78,2 % en configuration 1M."
     },
     "terminal-bench-1": {
-     "value": 50.0,
+     "value": 50,
      "official": true,
      "source": "https://www.anthropic.com/news/claude-sonnet-4-5"
     },
     "terminal-bench-2": {
-     "value": 51.0,
+     "value": 51,
      "official": true,
      "source": "https://www.anthropic.com/news/claude-opus-4-6",
      "note": "Tableau Opus 4.6 ; 50,0 % dans le tableau Opus 4.5."
@@ -1700,7 +1705,7 @@
      "source": "https://www.anthropic.com/news/claude-sonnet-4-5"
     },
     "aime-2025": {
-     "value": 87.0,
+     "value": 87,
      "official": true,
      "source": "https://www.anthropic.com/news/claude-sonnet-4-5",
      "note": "100 % avec Python."
@@ -1751,7 +1756,7 @@
      "source": "https://www.anthropic.com/news/claude-haiku-4-5"
     },
     "terminal-bench-1": {
-     "value": 41.0,
+     "value": 41,
      "official": true,
      "source": "https://www.anthropic.com/news/claude-haiku-4-5"
     },
@@ -1761,7 +1766,7 @@
      "source": "https://www.anthropic.com/news/claude-haiku-4-5"
     },
     "gpqa-diamond": {
-     "value": 73.0,
+     "value": 73,
      "official": true,
      "source": "https://www.anthropic.com/news/claude-haiku-4-5"
     },
@@ -1777,7 +1782,7 @@
      "source": "https://www.anthropic.com/claude-haiku-5-5"
     },
     "terminal-bench-4": {
-     "value": 0.0,
+     "value": 0,
      "official": true,
      "source": "https://www.anthropic.com/claude-haiku-5-5"
     },
@@ -1920,7 +1925,7 @@
      "note": "45,1 % en Deep Think."
     },
     "aime-2025": {
-     "value": 95.0,
+     "value": 95,
      "official": true,
      "source": "https://vellum.ai/blog/google-gemini-3-benchmarks"
     }
@@ -1970,7 +1975,7 @@
      "source": "https://www.anthropic.com/news/claude-opus-4-5"
     },
     "gpqa-diamond": {
-     "value": 87.0,
+     "value": 87,
      "official": true,
      "source": "https://www.anthropic.com/news/claude-opus-4-5"
     },
@@ -2087,13 +2092,13 @@
    "open_weights": false,
    "scores": {
     "swe-bench-verified": {
-     "value": 80.0,
+     "value": 80,
      "official": true,
      "source": "https://anotherwrapper.com/tools/llm-pricing/gpt-5.2-2025-12-11",
      "note": "Aussi cité par Anthropic."
     },
     "terminal-bench-2": {
-     "value": 64.0,
+     "value": 64,
      "official": true,
      "source": "https://www.anthropic.com/news/claude-opus-4-6",
      "note": "64,7 % mesuré par Anthropic."
@@ -2114,7 +2119,7 @@
      "source": "https://www.anthropic.com/news/claude-opus-4-6"
     },
     "hle-tools": {
-     "value": 50.0,
+     "value": 50,
      "official": false,
      "source": "https://www.anthropic.com/news/claude-opus-4-6"
     }
@@ -2142,7 +2147,7 @@
    "open_weights": false,
    "scores": {
     "swe-bench-verified": {
-     "value": 78.0,
+     "value": 78,
      "official": true,
      "source": "https://anotherwrapper.com/llm-pricing/gemini-3-flash-preview",
      "note": "Aussi cité par Anthropic (tableau Sonnet 4.6)."
@@ -2201,12 +2206,12 @@
      "source": "https://www.anthropic.com/news/claude-opus-4-6"
     },
     "hle-no-tools": {
-     "value": 40.0,
+     "value": 40,
      "official": true,
      "source": "https://www.anthropic.com/news/claude-opus-4-6"
     },
     "hle-tools": {
-     "value": 53.0,
+     "value": 53,
      "official": true,
      "source": "https://www.anthropic.com/news/claude-opus-4-6",
      "note": "Mis à jour à 53,3 % dans le tableau Opus 4.7 (53,1 % sur la page Glasswing)."
@@ -2424,7 +2429,7 @@
      "source": "https://www.anthropic.com/news/claude-opus-4-7"
     },
     "osworld-verified": {
-     "value": 75.0,
+     "value": 75,
      "official": true,
      "source": "https://www.anthropic.com/news/claude-opus-4-7"
     },
@@ -2474,7 +2479,7 @@
      "source": "https://www.anthropic.com/glasswing"
     },
     "terminal-bench-2": {
-     "value": 82.0,
+     "value": 82,
      "official": true,
      "source": "https://www.anthropic.com/glasswing",
      "note": "92,1 % avec timeouts de 4 h et mises à jour Terminal-Bench 2.1."
@@ -2540,7 +2545,7 @@
      "source": "https://www.anthropic.com/news/claude-opus-4-7"
     },
     "osworld-verified": {
-     "value": 78.0,
+     "value": 78,
      "official": true,
      "source": "https://www.anthropic.com/news/claude-opus-4-7",
      "note": "Réévalué à 82,8 % (tableau) / 82,3 % (note) dans l'annonce Opus 4.8 après changement de méthodologie."
@@ -2620,7 +2625,7 @@
      "note": "Cité par Anthropic."
     },
     "deepswe-1-1": {
-     "value": 67.0,
+     "value": 67,
      "official": false,
      "source": "https://aiweekly.co/alerts/meta-prices-muse-spark-11-api-at-125425-per-m-tokens",
      "note": "comparatif Muse Spark 1.1, presse"
@@ -2864,7 +2869,7 @@
    "open_weights": false,
    "scores": {
     "swe-bench-verified": {
-     "value": 95.0,
+     "value": 95,
      "official": true,
      "source": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
      "note": "tableau en image sur la page officielle ; confirmé par l'archive et des sources tierces (computingforgeeks)"
@@ -2876,7 +2881,7 @@
      "note": "idem"
     },
     "osworld-verified": {
-     "value": 85.0,
+     "value": 85,
      "official": true,
      "source": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
      "note": "idem"
@@ -2894,7 +2899,7 @@
      "note": "table de Fable 5.1"
     },
     "terminal-bench-4": {
-     "value": 42.0,
+     "value": 42,
      "official": true,
      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
      "note": "table de Fable 5.1"
@@ -2974,7 +2979,7 @@
    "open_weights": false,
    "scores": {
     "terminal-bench-2-1": {
-     "value": 88.0,
+     "value": 88,
      "official": false,
      "source": "https://openai.com/index/gpt-5-6/",
      "note": "table d'OpenAI au lancement de GPT-5.6, via l'archive ; mêmes poids que Fable 5"
@@ -3001,7 +3006,7 @@
    "open_weights": true,
    "scores": {
     "swe-bench-verified": {
-     "value": 61.0,
+     "value": 61,
      "official": true,
      "source": "https://cohere.com/blog/north-mini-code",
      "note": "pass@1 via mini-SWE-Agent (80.2 % en pass@10) ; archive"
@@ -3169,7 +3174,7 @@
      "note": "table de Sonnet 5.5"
     },
     "osworld-2-1": {
-     "value": 57.0,
+     "value": 57,
      "official": true,
      "source": "https://www.anthropic.com/claude-sonnet-5-5",
      "note": "table de Sonnet 5.5"
@@ -3432,6 +3437,12 @@
      "official": true,
      "source": "https://openai.com/index/gpt-5-6/",
      "note": "archive"
+    },
+    "terminal-bench-4": {
+     "value": 21.5,
+     "official": true,
+     "source": "https://www.datacamp.com/blog/gpt-6-1-terra",
+     "note": "table d'OpenAI pour GPT-6.1 Terra, relayée par la presse (effort max) ; aussi chez LiteLLM"
     }
    },
    "claims": [
@@ -3479,7 +3490,7 @@
      "note": "valeur donnée par Meta au lancement de 1.2"
     },
     "deepswe-1-1": {
-     "value": 53.0,
+     "value": 53,
      "official": true,
      "source": "https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2",
      "note": "valeur donnée par Meta au lancement de 1.2"
@@ -3552,7 +3563,7 @@
    "open_weights": false,
    "scores": {
     "deepswe-1-1": {
-     "value": 49.0,
+     "value": 49,
      "official": true,
      "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/",
      "note": "carte de 3.7 Flash ; 49 % à la sortie de 3.6"
@@ -3564,7 +3575,7 @@
      "note": "archive"
     },
     "automationbench": {
-     "value": 17.0,
+     "value": 17,
      "official": true,
      "source": "https://deepmind.google/models/model-cards/gemini-3-7-flash/",
      "note": "archive"
@@ -3576,7 +3587,7 @@
      "note": "presse"
     },
     "osworld-verified": {
-     "value": 83.0,
+     "value": 83,
      "official": true,
      "source": "https://www.chatbase.co/blog/gemini-3-6-flash",
      "note": "presse"
@@ -3641,7 +3652,7 @@
      "note": "table d'Opus 5.5 (Anthropic)"
     },
     "frontiercode-1-1": {
-     "value": 48.0,
+     "value": 48,
      "official": true,
      "source": "https://www.anthropic.com/claude-opus-5-5",
      "note": "table d'Opus 5.5"
@@ -3683,13 +3694,13 @@
      "note": "table de Fable 5.1"
     },
     "terminal-bench-science": {
-     "value": 29.0,
+     "value": 29,
      "official": true,
      "source": "https://www.anthropic.com/claude-opus-5-5",
      "note": "tables d'Opus 5.5 et de Fable 5.1"
     },
     "osworld-2-1": {
-     "value": 74.0,
+     "value": 74,
      "official": true,
      "source": "https://www.anthropic.com/claude-opus-5-5",
      "note": "table d'Opus 5.5"
@@ -3707,7 +3718,7 @@
      "note": "table de Fable 5.1"
     },
     "cursorbench-3-2": {
-     "value": 70.0,
+     "value": 70,
      "official": true,
      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
      "note": "table de Fable 5.1"
@@ -3719,7 +3730,7 @@
      "note": "table d'Opus 5.5"
     },
     "deepswe-1-1": {
-     "value": 74.0,
+     "value": 74,
      "official": false,
      "source": "https://www.vellum.ai/md/blog/gemini-3-8-flash-benchmarks-explained",
      "note": "chiffre de la table de Google (Gemini 3.8 Flash), relayé par la presse"
@@ -3941,7 +3952,7 @@
    "open_weights": true,
    "scores": {
     "swe-bench-verified": {
-     "value": 76.0,
+     "value": 76,
      "official": true,
      "source": "https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model"
     },
@@ -4015,7 +4026,7 @@
      "note": "table de Grok 4.7"
     },
     "eebench": {
-     "value": 53.0,
+     "value": 53,
      "official": true,
      "source": "https://x.ai/news/grok-4-7",
      "note": "table de Grok 4.7"
@@ -4233,7 +4244,7 @@
      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
     },
     "hle-tools": {
-     "value": 65.0,
+     "value": 65,
      "official": true,
      "source": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
     },
@@ -4588,12 +4599,12 @@
    "open_weights": false,
    "scores": {
     "terminal-bench-4": {
-     "value": 38.0,
+     "value": 38,
      "official": true,
      "source": "https://x.ai/news/grok-4-7"
     },
     "deepswe-1-1": {
-     "value": 71.0,
+     "value": 71,
      "official": true,
      "source": "https://x.ai/news/grok-4-7",
      "note": "effort high"
@@ -4604,7 +4615,7 @@
      "source": "https://x.ai/news/grok-4-7"
     },
     "eebench": {
-     "value": 64.0,
+     "value": 64,
      "official": true,
      "source": "https://x.ai/news/grok-4-7",
      "note": "archive"
@@ -4663,7 +4674,7 @@
      "source": "https://www.anthropic.com/claude-opus-5-5"
     },
     "automationbench": {
-     "value": 40.0,
+     "value": 40,
      "official": true,
      "source": "https://www.anthropic.com/claude-opus-5-5"
     },
@@ -4684,7 +4695,7 @@
      "source": "https://www.anthropic.com/claude-opus-5-5"
     },
     "chartography": {
-     "value": 89.0,
+     "value": 89,
      "official": true,
      "source": "https://www.anthropic.com/claude-opus-5-5"
     },
@@ -5023,7 +5034,7 @@
      "note": "mesuré par Google"
     },
     "frontierswe-v2": {
-     "value": 55.0,
+     "value": 55,
      "official": true,
      "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
      "note": "repris par Google du leaderboard public de Proximal (non calculé par Google)"
@@ -5180,11 +5191,11 @@
    "replaces": "mistral-large-3",
    "date": "2026-10-06",
    "status": "preview",
-   "price_in": 1.36,
-   "price_out": 4.18,
+   "price_in": 0.7,
+   "price_out": 2.1,
    "context_k": 1000,
    "output_k": null,
-   "open_weights": false,
+   "open_weights": true,
    "scores": {},
    "claims": [
     {
@@ -5198,17 +5209,33 @@
     {
      "text": "prix affiché à moitié pendant la préversion : $0.68/$2.09 par M tokens",
      "source": "https://betanews.com/article/mistral-large-4-preview-open-weights/"
+    },
+    {
+     "text": "poids publiés le 29 oct. 2026 sur Hugging Face, licence « Mistral Ecosystem Open-Weight » (MIT modifiée : licence commerciale à part pour revendre le modèle en service en ligne)",
+     "source": "https://mistral.ai/news/mistral-large-4-oss/"
+    },
+    {
+     "text": "version compressée NVFP4 de 610 Go, pour 4 cartes Nvidia B200 ou B300 ; version FP8 de 1,06 To",
+     "source": "https://en.shiftdelete.net/mistral-large-4-open-weights/"
+    },
+    {
+     "text": "prix API ramené à /bin/bash.70/.10 par M tokens le 29 oct. (contre .36/.18 au tarif standard de la préversion)",
+     "source": "https://tokencost.app/blog/mistral-large-4-open-weights-price-cut"
     }
    ],
-   "en_clair": "Le nouveau grand modèle de Mistral, environ 1 050 milliards de paramètres. Préversion en ligne, poids promis fin octobre. Trop gros pour un petit serveur local.",
+   "en_clair": "Le grand modèle ouvert de Mistral, environ 1 050 milliards de paramètres. Poids téléchargeables depuis le 29 octobre, mais il faut au moins quatre cartes graphiques de centre de données.",
    "sources": [
+    "https://mistral.ai/news/mistral-large-4-oss/",
     "https://thenextweb.com/news/mistral-releases-large-4-a-1-trillion-parameter-open-weight-ai-model",
     "https://www.blogdumoderateur.com/mistral-large-4-mistral-ai-veut-reduire-ecart-modeles-open-weight-chinois/",
     "https://betanews.com/article/mistral-large-4-preview-open-weights/",
-    "https://www.justgeek.fr/mistral-large-4-159280/"
+    "https://www.justgeek.fr/mistral-large-4-159280/",
+    "https://thenextweb.com/news/mistral-large-4-open-weights-release",
+    "https://en.shiftdelete.net/mistral-large-4-open-weights/",
+    "https://tokencost.app/blog/mistral-large-4-open-weights-price-cut"
    ],
    "confidence": "uncertain",
-   "notes": "Page mistral.ai non lue (egress bloqué), données de presse concordantes. Surnom « Le Chonk ». MoE ~1 050B paramètres, 49B actifs selon l'annonce (52B selon la fiche technique). Texte et images en entrée. Contexte annoncé 1M tokens ; Vals AI et Artificial Analysis listent ~512K. API et Mistral Studio uniquement. Poids ouverts promis fin octobre (26-27 oct. selon les sources), licence non publiée : passer open_weights à true et compléter à la publication. Scores préliminaires non repris dans scores{} (version de DeepSWE non précisée, CyberGym-E2E différent de CyberGym). Aucun test commun publié avec Mistral Large 3."
+   "notes": "Page mistral.ai non lue (egress bloqué), données de presse concordantes. Surnom « Le Chonk ». MoE ~1 050B paramètres, 49B actifs selon l'annonce (52B selon la fiche technique). Texte et images en entrée. Contexte annoncé 1M tokens ; Vals AI et Artificial Analysis listent ~512K. API et Mistral Studio uniquement. Poids publiés le 29 oct. 2026 (page mistral.ai non lue, egress bloqué ; date, licence et matériel concordants dans la presse). Statut API laissé en preview faute de confirmation. Scores préliminaires non repris dans scores{} (version de DeepSWE non précisée, CyberGym-E2E différent de CyberGym). Aucun test commun publié avec Mistral Large 3."
   },
   {
    "id": "muse-wonder",
@@ -5263,7 +5290,7 @@
    "open_weights": false,
    "scores": {
     "deepswe-1-1": {
-     "value": 79.0,
+     "value": 79,
      "official": true,
      "source": "https://www.marktechpost.com/2026/10/13/meta-muse-wonder-muse-wonder-full-release/",
      "note": "chiffre Meta relayé par la presse"
@@ -5297,7 +5324,7 @@
      "note": "fiche Meta relayée par Modal ; agent Terminus 2, effort xhigh"
     },
     "deepswe-1-1": {
-     "value": 60.0,
+     "value": 60,
      "official": true,
      "source": "https://modal.com/blog/meta-muse-spark-open-now-available-on-modal",
      "note": "fiche Meta relayée par Modal ; harnais Meta, effort xhigh"
@@ -5337,6 +5364,89 @@
    ],
    "confidence": "uncertain",
    "notes": "Mise à jour de V4.1-Flash, poids sur Hugging Face et ModelScope. Prix et scores contradictoires selon les sources : non repris."
+  },
+  {
+   "id": "gpt-6-1-terra",
+   "name": "GPT-6.1 Terra",
+   "actor": "OpenAI",
+   "family": "gpt-terra",
+   "replaces": "gpt-5-6-terra",
+   "date": "2026-10-26",
+   "status": "ga",
+   "price_in": 1,
+   "price_out": 5,
+   "context_k": 1050,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-4": {
+     "value": 50.3,
+     "official": true,
+     "source": "https://www.datacamp.com/blog/gpt-6-1-terra",
+     "note": "table d'OpenAI relayée par la presse, effort max (GPT-5.6 Terra : 21,5 %) ; Artificial Analysis mesure 55,6 %"
+    },
+    "terminal-bench-science": {
+     "value": 58.3,
+     "official": true,
+     "source": "https://www.datacamp.com/blog/gpt-6-1-terra",
+     "note": "table d'OpenAI relayée par la presse, effort max (GPT-6.1 Sol 57,0 %, GPT-6 Astra 68,1 %)"
+    }
+   },
+   "claims": [
+    {
+     "text": "environ trois fois plus rapide que GPT-6 Astra et GPT-6.1 Sol selon OpenAI",
+     "source": "https://siliconangle.com/2026/10/26/openai-launches-gpt-6-1-terra-for-faster-better-performing-ai-agents-at-half-the-price/"
+    },
+    {
+     "text": "fiche de sécurité : sans contrôles du système, contourne les restrictions de son environnement dans 29,6 % des scénarios testés ; niveau « Critical » en cybersécurité",
+     "source": "https://mlq.ai/news/openai-launches-gpt-61-terra-with-cheaper-computer-use-and-disclosed-agentic-limits/"
+    }
+   ],
+   "en_clair": "Le modèle de milieu de gamme d'OpenAI, fait pour piloter un ordinateur et rédiger. Deux fois moins cher que GPT-5.6 Terra, qu'il remplace.",
+   "sources": [
+    "https://openai.com/index/introducing-gpt-6-1-terra/",
+    "https://www.datacamp.com/blog/gpt-6-1-terra",
+    "https://siliconangle.com/2026/10/26/openai-launches-gpt-6-1-terra-for-faster-better-performing-ai-agents-at-half-the-price/",
+    "https://www.bleepingcomputer.com/news/artificial-intelligence/openai-launches-gpt-61-terra-with-3x-faster-ai-agents-50-percent-lower-pricing/",
+    "https://docs.litellm.ai/blog/gpt-6-1-terra"
+   ],
+   "confidence": "uncertain",
+   "notes": "Page openai.com non lue (egress bloqué) ; chiffres de presse concordants (DataCamp, LiteLLM, SiliconANGLE, BleepingComputer). Date 26 oct. (27 selon certaines sources). Contexte 1 050 000 tokens selon la presse."
+  },
+  {
+   "id": "gemini-4-carbon",
+   "name": "Gemini 4 Carbon",
+   "actor": "Google",
+   "family": "gemini-carbon",
+   "replaces": null,
+   "date": "2026-10-28",
+   "status": "restricted",
+   "price_in": null,
+   "price_out": null,
+   "open_weights": false,
+   "scores": {},
+   "claims": [
+    {
+     "text": "selon Google : SEC-bench Pro 88,2 % (trouver des failles), ExploitGym 54,8 % (les exploiter), CWE-bench 71,0 % (les corriger)",
+     "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+    },
+    {
+     "text": "selon Google : écrit du code sûr plus de deux fois plus souvent que Gemini 4 Argon sur ses tests internes",
+     "source": "https://www.securityweek.com/google-says-gemini-4-carbon-leads-in-finding-exploiting-and-fixing-vulnerabilities"
+    },
+    {
+     "text": "59 à l'indice d'Artificial Analysis v5.0, un point devant Claude Opus 5.5 (estimation tierce)",
+     "source": "https://thehackernews.com/2026/10/googles-gemini-4-carbon-leads.html"
+    }
+   ],
+   "en_clair": "Le modèle le plus puissant de Google, spécialisé en cybersécurité. Réservé pour l'instant à des équipes de défense choisies par Google.",
+   "sources": [
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+    "https://thehackernews.com/2026/10/googles-gemini-4-carbon-leads.html",
+    "https://www.securityweek.com/google-says-gemini-4-carbon-leads-in-finding-exploiting-and-fixing-vulnerabilities"
+   ],
+   "confidence": "uncertain",
+   "notes": "Page blog.google non lue (egress bloqué) ; chiffres de presse concordants. Accès par le programme Fairwind, sans date d'ouverture large. Prix de lancement annoncé /0 selon la presse, non confirmé : laissé à null. Benchmarks de sécurité non déclarés dans benchmarks{} (aucun autre modèle de la base)."
   }
  ]
 }

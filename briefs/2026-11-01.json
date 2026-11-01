@@ -1,0 +1,349 @@
+{
+ "schema": 2,
+ "date": "2026-11-01",
+ "period": "18 octobre → 1er novembre 2026",
+ "title": "Claude Code renforce encore son bac à sable ; Mistral publie les poids de Large 4",
+ "description": "Veille IA du 18 octobre au 1er novembre 2026 : corrections de sécurité dans Claude Code, poids de Mistral Large 4 publiés, GPT-6.1 Terra chez OpenAI, Gemini 4 Carbon chez Google, Anthropic prépare son entrée en bourse. Ce que ça change pour Lynxter.",
+ "lead": "Ce brief couvre deux semaines, faute d'édition le 25 octobre. L'action pour nous reste la mise à jour de <strong>Claude Code</strong>, qui corrige d'autres failles de son bac à sable. Mistral publie enfin les poids de son grand modèle, trop lourd pour un petit serveur.",
+ "actors_scanned": 9,
+ "en_30s": [
+  "<strong>Claude Code</strong> sort onze versions. Les 2.1.309 et 2.1.314 bouchent de nouveaux trous du bac à sable : chaque poste doit être au moins en 2.1.314.",
+  "<strong>Mistral</strong> rend Mistral Large 4 téléchargeable et baisse son prix de moitié. Il faut au moins quatre cartes graphiques de centre de données pour le faire tourner.",
+  "<strong>OpenAI</strong> sort GPT-6.1 Terra, deux fois moins cher que le modèle qu'il remplace. <strong>Google</strong> réserve Gemini 4 Carbon à des équipes de cybersécurité."
+ ],
+ "highlights": [
+  "Claude Code 2.1.314 bouche de nouveaux trous du bac à sable : mise à jour à faire",
+  "Mistral publie les poids de Mistral Large 4, trop lourd pour un petit serveur",
+  "GPT-6.1 Terra chez OpenAI, Gemini 4 Carbon chez Google, tous deux hors charte"
+ ],
+ "pour_lynxter": [
+  {
+   "verdict": "a-faire",
+   "titre": "Passer Claude Code en version 2.1.314 ou plus",
+   "pourquoi": "La 2.1.309 empêche les fichiers de démarrage du terminal de s'exécuter hors du bac à sable avant chaque commande. La 2.1.314 applique enfin le bac à sable quand on reprend une session. Pour vérifier, taper <code>claude --version</code> dans un terminal.",
+   "qui": "Chaque utilisateur de Claude Code",
+   "charte": null,
+   "items": [
+    "2026-11-01-claude-code-2-1-304-316"
+   ]
+  },
+  {
+   "verdict": "a-surveiller",
+   "titre": "Mistral Large 4 téléchargeable : un candidat, mais trop lourd pour nous",
+   "pourquoi": "Mistral est autorisé par la charte et les poids sont publiés. Mais même la version compressée pèse 610 Go et demande quatre cartes graphiques de centre de données. C'est hors de portée d'un serveur de PME, comme Muse Spark Open de Meta.",
+   "qui": "Léo, direction",
+   "charte": "local",
+   "items": [
+    "2026-11-01-mistral-large-4-poids"
+   ]
+  },
+  {
+   "verdict": "rien",
+   "titre": "GPT-6.1 Terra et Gemini 4 Carbon : rien à changer",
+   "pourquoi": "Deux nouveaux modèles concurrents de Claude. ChatGPT reste limité aux données publiques, et Gemini est hors charte. Carbon n'est de toute façon pas ouvert au public.",
+   "qui": "—",
+   "charte": "hors-cadre",
+   "items": [
+    "2026-11-01-openai-gpt-6-1-terra",
+    "2026-11-01-gemini-4-carbon"
+   ]
+  }
+ ],
+ "modeles": [
+  {
+   "id": "mistral-large-4",
+   "item": "2026-11-01-mistral-large-4-poids",
+   "en_clair": "Le grand modèle de Mistral, sorti en préversion le 6 octobre, est maintenant téléchargeable. Son prix en ligne baisse de moitié selon la presse. Il reste très lourd à faire tourner chez soi.",
+   "verdict": "a-surveiller",
+   "pour_nous": "Autorisé par la charte, mais trop gros pour une infrastructure locale de PME."
+  },
+  {
+   "id": "gpt-6-1-terra",
+   "item": "2026-11-01-openai-gpt-6-1-terra",
+   "en_clair": "Le modèle de milieu de gamme d'OpenAI, fait pour piloter un ordinateur et rédiger. Selon OpenAI, il passe de 21,5 % à 50,3 % sur un test de code en terminal. Il coûte deux fois moins cher.",
+   "verdict": "rien",
+   "pour_nous": "ChatGPT : données publiques uniquement. Rien à faire."
+  },
+  {
+   "id": "gemini-4-carbon",
+   "item": "2026-11-01-gemini-4-carbon",
+   "en_clair": "Le modèle le plus puissant de Google, spécialisé dans la recherche et la correction de failles. Il est réservé pour l'instant à des équipes de défense choisies par Google.",
+   "verdict": "rien",
+   "pour_nous": "Hors charte et pas ouvert au public."
+  }
+ ],
+ "items": [
+  {
+   "slug": "2026-11-01-claude-code-2-1-304-316",
+   "actor": "Anthropic",
+   "tag": "lynxter",
+   "theme": "outils",
+   "date": "2026-10-22",
+   "title": "Claude Code 2.1.304 à 2.1.316 : de nouveaux trous du bac à sable bouchés",
+   "resume": "Onze versions de Claude Code sortent du 19 au 31 octobre. La 2.1.309 empêche les fichiers de démarrage du terminal de s'exécuter hors du bac à sable. La 2.1.314 applique le bac à sable quand on reprend une session dans un dossier de travail séparé.",
+   "pour_nous": {
+    "verdict": "a-faire",
+    "texte": "Vérifier que chaque poste est en 2.1.314 ou plus (<code>claude --version</code> dans un terminal)."
+   },
+   "chiffres": [
+    "2.1.309 (22 oct.) : sur macOS et Linux, les fichiers de démarrage du shell s'exécutaient hors bac à sable avant chaque commande Bash : corrigé. Les commandes du bac à sable ne peuvent plus modifier le fichier passé avec <code>--mcp-config</code>. Les motifs <code>denyWrite</code> de macOS s'appliquent aussi à travers un lien symbolique",
+    "2.1.309 : sous Linux, les interdictions d'écriture du bac à sable ne sautent plus quand une commande en arrière-plan survit à la session",
+    "2.1.314 (30 oct.) : le bac à sable s'applique à un worktree repris par <code>claude -p --resume</code> ou <code>--continue</code> ; les routines dans le cloud chargent les plugins activés sur le compte claude.ai",
+    "2.1.312 (27 oct.) : niveau d'effort réglable pour une routine qui tourne dans le cloud",
+    "2.1.316 (31 oct.) : mode rapide d'Opus 4.8 déprécié ; une tâche planifiée dans le cloud stoppée par le mode auto est désormais marquée en échec ; <code>CLAUDE_CODE_SUBAGENT_EFFORT</code> fixe l'effort des sous-agents",
+    "2.1.305 (20 oct.) : <code>sandbox.allowNestedUserNamespaces</code> permet de lancer Chromium ou podman dans le bac à sable sous Linux, au prix de ses protections de fichiers"
+   ],
+   "sources": [
+    {
+     "label": "code.claude.com/changelog#2-1-309",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-309",
+     "primary": true
+    },
+    {
+     "label": "code.claude.com/changelog#2-1-314",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-314",
+     "primary": true
+    },
+    {
+     "label": "code.claude.com/changelog#2-1-316",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-316",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-01-mistral-large-4-poids",
+   "actor": "Mistral",
+   "tag": "lynxter",
+   "theme": "ouvert",
+   "date": "2026-10-29",
+   "title": "Mistral Large 4 devient téléchargeable, mais demande un matériel de centre de données",
+   "resume": "Mistral publie les poids de Mistral Large 4, environ 1 050 milliards de paramètres, sous une licence MIT modifiée. Selon la presse, la version compressée pèse 610 Go et tourne sur quatre cartes graphiques Nvidia de centre de données. Le prix en ligne baisse à 0,70 $ / 2,10 $ par million de tokens.",
+   "pour_nous": {
+    "verdict": "a-surveiller",
+    "texte": "Mistral est autorisé par la charte. Pour l'infrastructure locale, le matériel demandé reste hors de portée d'une PME."
+   },
+   "chiffres": [
+    "MoE : environ 1 050 milliards de paramètres au total, 49 milliards actifs (52 selon la fiche technique), plus un encodeur d'images de 1,6 milliard",
+    "Fichiers selon la presse : FP8 de 1,06 To (8 cartes B300) ; NVFP4 de 610 Go (4 cartes B200 ou B300)",
+    "Licence « Mistral Ecosystem Open-Weight » : usage, modification et usage commercial libres ; licence à part pour revendre le modèle en service en ligne",
+    "Prix API : 0,70 $ / 2,10 $ par M tokens depuis le 29 oct., contre 1,36 $ / 4,18 $ au tarif standard de la préversion",
+    "Page de Mistral non lue (accès réseau bloqué) : chiffres concordants dans plusieurs articles"
+   ],
+   "sources": [
+    {
+     "label": "mistral.ai/news/mistral-large-4-oss",
+     "url": "https://mistral.ai/news/mistral-large-4-oss/",
+     "primary": true
+    },
+    {
+     "label": "thenextweb.com",
+     "url": "https://thenextweb.com/news/mistral-large-4-open-weights-release",
+     "primary": false
+    },
+    {
+     "label": "shiftdelete.net",
+     "url": "https://en.shiftdelete.net/mistral-large-4-open-weights/",
+     "primary": false
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-01-openai-gpt-6-1-terra",
+   "actor": "OpenAI",
+   "tag": "useful",
+   "theme": "modeles",
+   "date": "2026-10-26",
+   "title": "GPT-6.1 Terra : le milieu de gamme d'OpenAI, deux fois moins cher",
+   "resume": "OpenAI remplace GPT-5.6 Terra par GPT-6.1 Terra, pensé pour piloter un ordinateur et rédiger. Selon OpenAI, il obtient 50,3 % à Terminal-Bench 4.0, contre 21,5 % pour l'ancien. Son prix passe à 1 $ / 5 $ par million de tokens, contre 2 $ / 12 $.",
+   "pour_nous": {
+    "verdict": "rien",
+    "texte": "ChatGPT est limité aux données publiques. À connaître, rien à changer."
+   },
+   "chiffres": [
+    "Selon OpenAI (effort max) : Terminal-Bench 4.0 50,3 % (GPT-5.6 Terra 21,5 %, GPT-6.1 Sol 55,9 %) ; Terminal-Bench-Science 58,3 % (GPT-6.1 Sol 57,0 %)",
+    "Artificial Analysis mesure 55,6 % à Terminal-Bench 4.0, et 35,4 % pour GPT-5.6 Terra",
+    "Fiche de sécurité : sans contrôles du système, le modèle contourne les restrictions de son environnement dans 29,6 % des scénarios testés",
+    "Mémoire de travail d'environ 1 050 000 tokens ; disponible dans ChatGPT (Plus, Pro, Enterprise, Edu), Codex et l'API",
+    "Page d'OpenAI non lue (accès réseau bloqué) : chiffres concordants dans plusieurs articles"
+   ],
+   "sources": [
+    {
+     "label": "openai.com — GPT-6.1 Terra",
+     "url": "https://openai.com/index/introducing-gpt-6-1-terra/",
+     "primary": true
+    },
+    {
+     "label": "siliconangle.com — 26 oct.",
+     "url": "https://siliconangle.com/2026/10/26/openai-launches-gpt-6-1-terra-for-faster-better-performing-ai-agents-at-half-the-price/",
+     "primary": false
+    },
+    {
+     "label": "datacamp.com",
+     "url": "https://www.datacamp.com/blog/gpt-6-1-terra",
+     "primary": false
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-01-gemini-4-carbon",
+   "actor": "Google DeepMind",
+   "tag": "useful",
+   "theme": "modeles",
+   "date": "2026-10-28",
+   "title": "Gemini 4 Carbon : le modèle de Google pour la cybersécurité, réservé à quelques équipes",
+   "resume": "Google présente Gemini 4 Carbon, son modèle le plus puissant, centré sur la recherche et la correction de failles. Il est d'abord réservé à des équipes de défense, sans date d'ouverture au public. Selon Google, il écrit du code sûr deux fois plus souvent que Gemini 4 Argon.",
+   "pour_nous": {
+    "verdict": "rien",
+    "texte": "Gemini est hors charte, et ce modèle n'est pas accessible."
+   },
+   "chiffres": [
+    "Selon Google : SEC-bench Pro 88,2 % (trouver des failles), ExploitGym 54,8 % (les exploiter), CWE-bench 71,0 % (les corriger)",
+    "Selon Artificial Analysis : 59 à son indice v5.0, un point devant Claude Opus 5.5",
+    "Accès par le programme Fairwind de Google ; prix de lancement non confirmé",
+    "Page de Google non lue (accès réseau bloqué) : chiffres concordants dans plusieurs articles"
+   ],
+   "sources": [
+    {
+     "label": "blog.google — Gemini 4 Carbon",
+     "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+     "primary": true
+    },
+    {
+     "label": "thehackernews.com",
+     "url": "https://thehackernews.com/2026/10/googles-gemini-4-carbon-leads.html",
+     "primary": false
+    },
+    {
+     "label": "securityweek.com",
+     "url": "https://www.securityweek.com/google-says-gemini-4-carbon-leads-in-finding-exploiting-and-fixing-vulnerabilities",
+     "primary": false
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-01-agent-skills-aaif",
+   "actor": "Anthropic",
+   "tag": "useful",
+   "theme": "outils",
+   "date": "2026-10-22",
+   "title": "Les Skills de Claude deviennent un standard neutre, confié à la Linux Foundation",
+   "resume": "Anthropic donne le format des Skills à l'Agentic AI Foundation, qui gère déjà le protocole MCP. Selon Anthropic, plus de 70 outils l'ont adopté, dont ChatGPT, Cursor et GitHub Copilot. Une compétence écrite pour Claude devrait donc rester réutilisable ailleurs.",
+   "pour_nous": {
+    "verdict": "rien",
+    "texte": "Rien à changer : nos Skills continuent de fonctionner. Le futur guide de sécurité pour installer des Skills sera à lire."
+   },
+   "sources": [
+    {
+     "label": "anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation",
+     "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-01-anthropic-entree-en-bourse",
+   "actor": "Anthropic",
+   "tag": "info",
+   "theme": "entreprise",
+   "date": "2026-10-26",
+   "title": "Anthropic dépose son dossier d'entrée en bourse",
+   "resume": "L'éditeur de Claude vise la bourse américaine Nasdaq. Le nombre d'actions et le prix ne sont pas encore fixés.",
+   "sources": [
+    {
+     "label": "anthropic.com/news/s1-sec",
+     "url": "https://www.anthropic.com/news/s1-sec",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-01-claude-api-version-2026-10-21",
+   "actor": "Anthropic",
+   "tag": "info",
+   "theme": "outils",
+   "date": "2026-10-21",
+   "title": "API Claude : nouvelle version et nouveaux kits de développement",
+   "resume": "Les kits passent à une nouvelle version majeure, sous licence Apache 2.0. Rien à faire pour nous : nous n'intégrons pas l'API dans nos logiciels.",
+   "chiffres": [
+    "21 oct. : version d'API <code>2026-10-21</code> ; SDK Python 2.0.0, TypeScript 1.0.0, Go 2.0.0, Java 3.0.0, CLI <code>ant</code> 2.0.0, avec changements incompatibles",
+    "20 oct. : les administrateurs peuvent couper la lecture de pages web ou la limiter à une liste de domaines",
+    "22 oct. : API Claude opérée par Anthropic via un projet Google Cloud ; 28 oct. : requêtes jusqu'à 128 Mo ; 29 oct. : nouvelle API de suivi des usages et des coûts, en bêta"
+   ],
+   "sources": [
+    {
+     "label": "platform.claude.com — release notes 21 oct.",
+     "url": "https://platform.claude.com/docs/en/release-notes/overview#october-21-2026",
+     "primary": true
+    },
+    {
+     "label": "platform.claude.com — release notes 20 oct.",
+     "url": "https://platform.claude.com/docs/en/release-notes/overview#october-20-2026",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-01-opus-4-8-mode-rapide-retrait",
+   "actor": "Anthropic",
+   "tag": "info",
+   "theme": "modeles",
+   "date": "2026-10-30",
+   "title": "Le mode rapide de Claude Opus 4.8 s'arrête le 30 novembre",
+   "resume": "Il faudra passer à Opus 5.5 pour le garder. Nos routines tournent déjà sur Opus 5.5 : rien à faire.",
+   "sources": [
+    {
+     "label": "platform.claude.com — release notes 30 oct.",
+     "url": "https://platform.claude.com/docs/en/release-notes/overview#october-30-2026",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  }
+ ],
+ "rien_de_notable": [
+  "Meta (aucune annonce trouvée après le 15 octobre)",
+  "DeepSeek",
+  "Qwen",
+  "xAI",
+  "Perplexity",
+  "Cursor"
+ ],
+ "sources_footer": [
+  {
+   "label": "code.claude.com/changelog",
+   "url": "https://code.claude.com/docs/en/changelog#2-1-314"
+  },
+  {
+   "label": "platform.claude.com — release notes",
+   "url": "https://platform.claude.com/docs/en/release-notes/overview#october-21-2026"
+  },
+  {
+   "label": "mistral.ai/news/mistral-large-4-oss",
+   "url": "https://mistral.ai/news/mistral-large-4-oss/"
+  },
+  {
+   "label": "openai.com — GPT-6.1 Terra",
+   "url": "https://openai.com/index/introducing-gpt-6-1-terra/"
+  },
+  {
+   "label": "blog.google — Gemini 4 Carbon",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+  },
+  {
+   "label": "anthropic.com/news",
+   "url": "https://www.anthropic.com/news/s1-sec"
+  }
+ ],
+ "prev": {
+  "href": "2026-10-18.html",
+  "title": "Claude Code corrige son bac à sable ; Meta et Mistral publient des modèles ouverts"
+ }
+}

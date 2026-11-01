@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code renforce encore son bac à sable ; Mistral publie les poids de Large 4 — Veille IA Lynxter</title>
+<meta name="description" content="Veille IA du 18 octobre au 1er novembre 2026 : corrections de sécurité dans Claude Code, poids de Mistral Large 4 publiés, GPT-6.1 Terra chez OpenAI, Gemini 4 Carbon chez Google, Anthropic prépare son entrée en bourse. Ce que ça change pour Lynxter.">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/v2.css">
+<script>(function(){var t=null;try{t=localStorage.getItem('veille-ia-theme');}catch(e){}if(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark');})();</script>
+</head>
+<body>
+
+<div class="read-progress"></div>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <a class="brand" href="../"><span class="brand-dot"></span>LYNXTER<span class="brand-divider"></span>VEILLE IA</a>
+    <nav class="nav-primary">
+      <a href="../">Accueil</a>
+      <a href="../briefs/" class="active">Briefs</a>
+      <a href="../modeles/">Modèles</a>
+      <a href="../lexique/">Lexique</a>
+      <a href="../methodo/">Méthodo</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" data-theme-toggle aria-label="Basculer thème sombre/clair">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener" aria-label="Code source GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="b2">
+  <div class="breadcrumb" style="margin-top:32px">
+    <a href="../">Accueil</a><span class="breadcrumb-sep">/</span><a href="./">Briefs</a><span class="breadcrumb-sep">/</span><span class="current">2026-11-01</span>
+  </div>
+
+  <header class="b2-head">
+    <p class="b2-kicker">Veille IA · 18 octobre → 1er novembre 2026</p>
+    <h1 class="b2-title">Claude Code renforce encore son bac à sable ; Mistral publie les poids de Large 4</h1>
+    <p class="b2-lead">Ce brief couvre deux semaines, faute d'édition le 25 octobre. L'action pour nous reste la mise à jour de <strong><span class="term" tabindex="0" data-def="Assistant d'Anthropic qui travaille dans un terminal ou un éditeur : code, fichiers, automatisations.">Claude Code</span></strong>, qui corrige d'autres failles de son <span class="term" tabindex="0" data-def="Environnement isolé où l'IA exécute du code sans pouvoir toucher au reste du système.">bac à sable</span>. Mistral publie enfin les poids de son grand modèle, trop lourd pour un petit serveur.</p>
+    <ul class="b2-meta"><li>8 annonces retenues</li><li>9 éditeurs suivis</li><li>Lecture : ~3 min</li><li><a href="../modeles/">Comparateur de modèles</a></li></ul>
+  </header>
+
+  <section class="b2-section" id="en-30-secondes">
+    <h2 class="b2-h2">En 30 secondes</h2>
+    <div class="b2-30s"><ol>
+      <li><strong>Claude Code</strong> sort onze versions. Les 2.1.309 et 2.1.314 bouchent de nouveaux trous du bac à sable : chaque poste doit être au moins en 2.1.314.</li>
+      <li><strong>Mistral</strong> rend Mistral Large 4 téléchargeable et baisse son prix de moitié. Il faut au moins quatre cartes graphiques de centre de données pour le faire tourner.</li>
+      <li><strong>OpenAI</strong> sort GPT-6.1 Terra, deux fois moins cher que le modèle qu'il remplace. <strong>Google</strong> réserve Gemini 4 Carbon à des équipes de cybersécurité.</li>
+    </ol></div>
+  </section>
+
+  <section class="b2-section" id="pour-lynxter">
+    <h2 class="b2-h2">Pour Lynxter cette semaine</h2>
+    <p class="b2-sub">Ce que ces annonces changent pour nous. Propositions à valider : rien n'est engagé sans feu vert.</p>
+    <ul class="b2-lx">
+<li class="b2-lx-row">
+    <span class="verdict v-faire">À faire</span>
+    <div>
+      <h3>Passer Claude Code en version 2.1.314 ou plus</h3>
+      <p>La 2.1.309 empêche les fichiers de démarrage du terminal de s'exécuter hors du bac à sable avant chaque commande. La 2.1.314 applique enfin le bac à sable quand on reprend une session. Pour vérifier, taper <code>claude --version</code> dans un terminal.</p>
+      <div class="b2-lx-foot"><span><b>Qui :</b> Chaque utilisateur de Claude Code</span><span><a href="#2026-11-01-claude-code-2-1-304-316">Voir l'annonce ↓</a></span></div>
+    </div>
+  </li>
+<li class="b2-lx-row">
+    <span class="verdict v-surveiller">À surveiller</span>
+    <div>
+      <h3>Mistral Large 4 téléchargeable : un candidat, mais trop lourd pour nous</h3>
+      <p>Mistral est autorisé par la <span class="term" tabindex="0" data-def="Nos règles internes d'usage de l'IA : quelles données, dans quels outils.">charte</span> et les poids sont publiés. Mais même la version compressée pèse 610 Go et demande quatre cartes graphiques de centre de données. C'est hors de portée d'un serveur de PME, comme Muse Spark Open de Meta.</p>
+      <div class="b2-lx-foot"><span><b>Qui :</b> Léo, direction</span><span><span class="charte ch-local" title="Modèle ouvert : candidat pour la future infrastructure locale Lynxter (seule voie prévue pour les données sensibles)">Infra locale ?</span></span><span><a href="#2026-11-01-mistral-large-4-poids">Voir l'annonce ↓</a></span></div>
+    </div>
+  </li>
+<li class="b2-lx-row">
+    <span class="verdict v-rien">Rien à faire</span>
+    <div>
+      <h3>GPT-6.1 Terra et Gemini 4 Carbon : rien à changer</h3>
+      <p>Deux nouveaux modèles concurrents de Claude. ChatGPT reste limité aux données publiques, et Gemini est hors charte. Carbon n'est de toute façon pas ouvert au public.</p>
+      <div class="b2-lx-foot"><span><b>Qui :</b> —</span><span><span class="charte ch-non" title="Hors du cadre officiel de la charte : données publiques uniquement">Hors cadre</span></span><span><a href="#2026-11-01-openai-gpt-6-1-terra">Voir l'annonce ↓</a></span></div>
+    </div>
+  </li>
+    </ul>
+  </section>
+
+  <section class="b2-section" id="modeles">
+    <h2 class="b2-h2">Les modèles de la semaine</h2>
+    <p class="b2-sub">Chaque nouveau modèle face à celui qu'il remplace, sur les tests publiés par son éditeur. Prix en dollars pour un million de <span class="term" tabindex="0" data-def="Morceau de mot (environ ¾ d'un mot). C'est l'unité que les IA lisent, écrivent et facturent.">tokens</span>. <a href="../modeles/">Tous les modèles →</a></p>
+    <div class="b2-models">
+<article class="b2-model" id="2026-11-01-mistral-large-4-poids">
+  <div class="b2-model-head">
+    <h3><span class="b2-actor a-other"><i></i></span>Mistral Large 4</h3>
+    <span class="replaces">remplace Mistral Large 3 · sorti le 6 oct. 2026</span>
+  </div>
+  <p class="plain">Le grand modèle de Mistral, sorti en <span class="term" tabindex="0" data-def="Fonction encore en test : elle peut changer ou disparaître. À éviter pour un usage critique.">préversion</span> le 6 octobre, est maintenant téléchargeable. Son prix en ligne baisse de moitié selon la presse. Il reste très lourd à faire tourner chez soi.</p>
+  <ul class="b2-facts"><li><span class="k">Prix (lecture / écriture)</span><span class="v">$0,7 / $2,1 <span class="d delta-bad">+40 %</span></span></li><li><span class="k"><span class="term" tabindex="0" data-def="Quantité de texte que le modèle garde en tête d'un coup. 1 million de tokens ≈ 1 500 pages.">Mémoire de travail</span></span><span class="v">1 M tokens <span class="d delta-good">+291 %</span></span></li><li><span class="k">Disponibilité</span><span class="v">Préversion</span></li><li><span class="k">Chez Lynxter</span><span class="v"><span class="charte ch-ok" title="Autorisé par la charte : données publiques et données internes anonymisées">Autorisé</span></span></li></ul>
+  <p class="b2-quiet">Aucun score officiel publié pour ce modèle.</p>
+  <div class="b2-forus"><span class="verdict v-surveiller">À surveiller</span><p>Autorisé par la charte, mais trop gros pour une <span class="term" tabindex="0" data-def="Serveurs Lynxter (prévus) où faire tourner des modèles ouverts : la seule voie prévue pour les données sensibles.">infrastructure locale</span> de PME.</p></div>
+  <details><summary>Les chiffres</summary><ul><li><span class="term" tabindex="0" data-def="Architecture où seule une partie du modèle travaille à chaque mot : plus rapide et moins cher à faire tourner.">MoE</span> : environ 1 050 <span class="term" tabindex="0" data-def="Taille d'un modèle, en milliards (« 30B »). Plus il y en a, plus il faut de matériel pour le faire tourner.">milliards de paramètres</span> au total, 49 milliards actifs (52 selon la fiche technique), plus un encodeur d'images de 1,6 milliard</li><li>Fichiers selon la presse : FP8 de 1,06 To (8 cartes B300) ; NVFP4 de 610 Go (4 cartes B200 ou B300)</li><li>Licence « Mistral Ecosystem Open-Weight » : usage, modification et usage commercial libres ; licence à part pour revendre le modèle en service en ligne</li><li>Prix <span class="term" tabindex="0" data-def="Accès direct au modèle depuis un logiciel ou un script, facturé à l'usage (au token).">API</span> : 0,70 $ / 2,10 $ <span class="term" tabindex="0" data-def="Prix pour un million de tokens (≈ 750 000 mots) : le 1er chiffre pour ce que le modèle lit, le 2e pour ce qu'il écrit.">par M tokens</span> depuis le 29 oct., contre 1,36 $ / 4,18 $ au tarif standard de la préversion</li><li>Page de Mistral non lue (accès réseau bloqué) : chiffres concordants dans plusieurs articles</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://mistral.ai/news/mistral-large-4-oss/" target="_blank" rel="noopener">mistral.ai/news/mistral-large-4-oss</a> · <a href="https://thenextweb.com/news/mistral-large-4-open-weights-release" target="_blank" rel="noopener">thenextweb.com</a> <span class="est">(presse)</span> · <a href="https://en.shiftdelete.net/mistral-large-4-open-weights/" target="_blank" rel="noopener">shiftdelete.net</a> <span class="est">(presse)</span></p>
+</article>
+<article class="b2-model" id="2026-11-01-openai-gpt-6-1-terra">
+  <div class="b2-model-head">
+    <h3><span class="b2-actor a-openai"><i></i></span>GPT-6.1 Terra</h3>
+    <span class="replaces">remplace GPT-5.6 Terra · sorti le 26 oct. 2026</span>
+  </div>
+  <p class="plain">Le modèle de milieu de gamme d'OpenAI, fait pour piloter un ordinateur et rédiger. Selon OpenAI, il passe de 21,5 % à 50,3 % sur un test de code en terminal. Il coûte deux fois moins cher.</p>
+  <ul class="b2-facts"><li><span class="k">Prix (lecture / écriture)</span><span class="v">$1 / $5 <span class="d delta-good">−58 %</span></span></li><li><span class="k">Mémoire de travail</span><span class="v">1,1 M tokens</span></li><li><span class="k">Disponibilité</span><span class="v">Disponible</span></li><li><span class="k">Chez Lynxter</span><span class="v"><span class="charte ch-vert" title="ChatGPT : données publiques uniquement">Données publiques seulement</span></span></li></ul>
+  <div class="viz" id="m1"><div class="db" role="img" aria-label="GPT-5.6 Terra comparé à GPT-6.1 Terra sur 1 test(s)">
+  <div class="db-row">
+    <div class="db-label"><span class="term" tabindex="0" data-def="Test où l'IA accomplit seule des tâches techniques complètes en ligne de commande : installer, configurer, déboguer.">Terminal-Bench</span> 4.0</div>
+    <div class="db-track">
+      <span class="db-link" style="left:21.5%;width:28.799999999999997%"></span>
+      <span class="db-dot db-old" style="left:21.5%" tabindex="0" data-tip="&lt;b&gt;21,5 %&lt;/b&gt; · GPT-5.6 Terra&lt;br&gt;Terminal-Bench 4.0" aria-label="GPT-5.6 Terra 21,5 %"></span>
+      <span class="db-dot db-new s-openai" style="left:50.3%" tabindex="0" data-tip="&lt;b&gt;50,3 %&lt;/b&gt; · GPT-6.1 Terra&lt;br&gt;Terminal-Bench 4.0 (+28,8 pt)" aria-label="GPT-6.1 Terra 50,3 %"></span>
+      <span class="db-val" style="left:50.3%">50,3</span>
+    </div>
+  </div>
+  <div class="db-row db-axis"><div class="db-label"></div><div class="db-track"><span style="left:0%">0&nbsp;%</span><span style="left:25%">25&nbsp;%</span><span style="left:50%">50&nbsp;%</span><span style="left:75%">75&nbsp;%</span><span style="left:100%">100&nbsp;%</span></div></div>
+</div>
+<ul class="viz-legend"><li><i class="dot" style="background:var(--s-old)"></i>GPT-5.6 Terra (avant)</li><li><i class="dot" style="background:var(--s-openai)"></i>GPT-6.1 Terra</li></ul><ul class="cmp-vs" style="margin-top:10px"><li><span>Terminal-Bench Science</span><span><b>58,3</b> %</span></li></ul><details class="viz-data"><summary>Voir les données</summary>
+<div class="cmp-table-wrap"><table class="cmp-table" style="min-width:0"><caption class="viz-note" style="caption-side:bottom;text-align:left;padding:8px 12px">Scores publiés par l'éditeur.</caption>
+<thead><tr><th>Test</th><th class="n">GPT-5.6 Terra</th><th class="n">GPT-6.1 Terra</th><th class="n">Écart</th></tr></thead>
+<tbody><tr><td>Terminal-Bench 4.0</td><td class="n">21,5</td><td class="n">50,3</td><td class="n">+28,8</td></tr><tr><td>Terminal-Bench Science</td><td class="n">—</td><td class="n">58,3</td><td class="n">—</td></tr></tbody></table></div></details></div>
+  <div class="b2-forus"><span class="verdict v-rien">Rien à faire</span><p>ChatGPT : données publiques uniquement. Rien à faire.</p></div>
+  <details><summary>Les chiffres</summary><ul><li>Selon OpenAI (<span class="term" tabindex="0" data-def="Réglage qui dit au modèle combien réfléchir : bas = rapide et économique, haut = plus soigné.">effort max</span>) : Terminal-Bench 4.0 50,3 % (GPT-5.6 Terra 21,5 %, GPT-6.1 Sol 55,9 %) ; Terminal-Bench-Science 58,3 % (GPT-6.1 Sol 57,0 %)</li><li>Artificial Analysis mesure 55,6 % à Terminal-Bench 4.0, et 35,4 % pour GPT-5.6 Terra</li><li>Fiche de sécurité : sans contrôles du système, le modèle contourne les restrictions de son environnement dans 29,6 % des scénarios testés</li><li>Mémoire de travail d'environ 1 050 000 tokens ; disponible dans ChatGPT (Plus, Pro, Enterprise, Edu), <span class="term" tabindex="0" data-def="L'assistant de programmation d'OpenAI, concurrent de Claude Code.">Codex</span> et l'API</li><li>Page d'OpenAI non lue (accès réseau bloqué) : chiffres concordants dans plusieurs articles</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://openai.com/index/introducing-gpt-6-1-terra/" target="_blank" rel="noopener">openai.com — GPT-6.1 Terra</a> · <a href="https://siliconangle.com/2026/10/26/openai-launches-gpt-6-1-terra-for-faster-better-performing-ai-agents-at-half-the-price/" target="_blank" rel="noopener">siliconangle.com — 26 oct.</a> <span class="est">(presse)</span> · <a href="https://www.datacamp.com/blog/gpt-6-1-terra" target="_blank" rel="noopener">datacamp.com</a> <span class="est">(presse)</span></p>
+</article>
+<article class="b2-model" id="2026-11-01-gemini-4-carbon">
+  <div class="b2-model-head">
+    <h3><span class="b2-actor a-google"><i></i></span>Gemini 4 Carbon</h3>
+    <span class="replaces">nouvelle gamme · sorti le 28 oct. 2026</span>
+  </div>
+  <p class="plain">Le modèle le plus puissant de Google, spécialisé dans la recherche et la correction de failles. Il est réservé pour l'instant à des équipes de défense choisies par Google.</p>
+  <ul class="b2-facts"><li><span class="k">Prix (lecture / écriture)</span><span class="v">non publié</span></li><li><span class="k">Mémoire de travail</span><span class="v">non communiqué</span></li><li><span class="k">Disponibilité</span><span class="v">Accès restreint</span></li><li><span class="k">Chez Lynxter</span><span class="v"><span class="charte ch-non" title="Hors du cadre officiel de la charte : données publiques uniquement">Hors cadre</span></span></li></ul>
+  <p class="b2-quiet">Aucun score officiel publié pour ce modèle.</p>
+  <div class="b2-forus"><span class="verdict v-rien">Rien à faire</span><p>Hors charte et pas ouvert au public.</p></div>
+  <details><summary>Les chiffres</summary><ul><li>Selon Google : SEC-bench Pro 88,2 % (trouver des failles), ExploitGym 54,8 % (les exploiter), CWE-bench 71,0 % (les corriger)</li><li>Selon Artificial Analysis : 59 à son indice v5.0, un point devant Claude Opus 5.5</li><li>Accès par le programme Fairwind de Google ; prix de lancement non confirmé</li><li>Page de Google non lue (accès réseau bloqué) : chiffres concordants dans plusieurs articles</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/" target="_blank" rel="noopener">blog.google — Gemini 4 Carbon</a> · <a href="https://thehackernews.com/2026/10/googles-gemini-4-carbon-leads.html" target="_blank" rel="noopener">thehackernews.com</a> <span class="est">(presse)</span> · <a href="https://www.securityweek.com/google-says-gemini-4-carbon-leads-in-finding-exploiting-and-fixing-vulnerabilities" target="_blank" rel="noopener">securityweek.com</a> <span class="est">(presse)</span></p>
+</article>
+    </div>
+  </section>
+
+  <section class="b2-section" id="annonces">
+    <h2 class="b2-h2">Les annonces</h2>
+
+<div class="b2-theme"><h3>Outils et assistants</h3>
+<article class="b2-item" id="2026-11-01-claude-code-2-1-304-316">
+  <div class="b2-item-top"><span class="b2-actor a-anthropic"><i></i>Anthropic</span><span>22 oct. 2026</span><span class="b2-imp i-lynxter">Important pour nous</span></div>
+  <h4>Claude Code 2.1.304 à 2.1.316 : de nouveaux trous du bac à sable bouchés</h4>
+  <p>Onze versions de Claude Code sortent du 19 au 31 octobre. La 2.1.309 empêche les fichiers de démarrage du terminal de s'exécuter hors du bac à sable. La 2.1.314 applique le bac à sable quand on reprend une session dans un dossier de travail séparé.</p>
+  <div class="b2-forus"><span class="verdict v-faire">À faire</span><p>Vérifier que chaque poste est en 2.1.314 ou plus (<code>claude --version</code> dans un terminal).</p></div><details><summary>Les chiffres</summary><ul><li>2.1.309 (22 oct.) : sur macOS et Linux, les fichiers de démarrage du shell s'exécutaient hors bac à sable avant chaque commande Bash : corrigé. Les commandes du bac à sable ne peuvent plus modifier le fichier passé avec <code>--mcp-config</code>. Les motifs <code>denyWrite</code> de macOS s'appliquent aussi à travers un lien symbolique</li><li>2.1.309 : sous Linux, les interdictions d'écriture du bac à sable ne sautent plus quand une commande en arrière-plan survit à la session</li><li>2.1.314 (30 oct.) : le bac à sable s'applique à un worktree repris par <code>claude -p --resume</code> ou <code>--continue</code> ; les <span class="term" tabindex="0" data-def="Tâche Claude planifiée qui tourne seule dans le cloud, sans PC allumé (ce brief en est une).">routines</span> dans le cloud chargent les <span class="term" tabindex="0" data-def="Extension qui ajoute des compétences ou change le comportement d'un outil.">plugins</span> activés sur le compte claude.ai</li><li>2.1.312 (27 oct.) : niveau d'effort réglable pour une routine qui tourne dans le cloud</li><li>2.1.316 (31 oct.) : mode rapide d'Opus 4.8 <span class="term" tabindex="0" data-def="Un modèle déprécié marche encore mais sa date de fin est annoncée. Après le retrait, les appels échouent.">déprécié</span> ; une tâche planifiée dans le cloud stoppée par le <span class="term" tabindex="0" data-def="Mode de Claude Code où un filtre automatique accepte seul les actions jugées sans risque, au lieu de vous demander à chaque fois.">mode auto</span> est désormais marquée en échec ; <code>CLAUDE_CODE_SUBAGENT_EFFORT</code> fixe l'effort des sous-<span class="term" tabindex="0" data-def="IA qui enchaîne seule plusieurs actions (chercher, lire, écrire, exécuter) pour atteindre un objectif.">agents</span></li><li>2.1.305 (20 oct.) : <code>sandbox.allowNestedUserNamespaces</code> permet de lancer Chromium ou podman dans le bac à sable sous Linux, au prix de ses protections de fichiers</li></ul></details>
+  <p class="b2-src">Sources : <a href="https://code.claude.com/docs/en/changelog#2-1-309" target="_blank" rel="noopener">code.claude.com/changelog#2-1-309</a> · <a href="https://code.claude.com/docs/en/changelog#2-1-314" target="_blank" rel="noopener">code.claude.com/changelog#2-1-314</a> · <a href="https://code.claude.com/docs/en/changelog#2-1-316" target="_blank" rel="noopener">code.claude.com/changelog#2-1-316</a></p>
+</article>
+<article class="b2-item" id="2026-11-01-agent-skills-aaif">
+  <div class="b2-item-top"><span class="b2-actor a-anthropic"><i></i>Anthropic</span><span>22 oct. 2026</span></div>
+  <h4>Les <span class="term" tabindex="0" data-def="Fiches d'instructions qu'un agent charge à la demande pour une tâche précise.">Skills</span> de Claude deviennent un standard neutre, confié à la Linux Foundation</h4>
+  <p>Anthropic donne le format des Skills à l'Agentic AI Foundation, qui gère déjà le protocole <span class="term" tabindex="0" data-def="Standard ouvert pour brancher une IA sur un outil ou une base de données (un « connecteur »).">MCP</span>. Selon Anthropic, plus de 70 outils l'ont adopté, dont ChatGPT, <span class="term" tabindex="0" data-def="Éditeur de code avec IA intégrée, concurrent de Claude Code.">Cursor</span> et GitHub Copilot. Une compétence écrite pour Claude devrait donc rester réutilisable ailleurs.</p>
+  <div class="b2-forus"><span class="verdict v-rien">Rien à faire</span><p>Rien à changer : nos Skills continuent de fonctionner. Le futur guide de sécurité pour installer des Skills sera à lire.</p></div>
+  <p class="b2-src">Sources : <a href="https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation" target="_blank" rel="noopener">anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation</a></p>
+</article>
+</div>
+
+
+
+  </section>
+<section class="b2-section" id="en-bref">
+  <h2 class="b2-h2">En bref</h2>
+  <ul class="b2-brief-list"><li id="2026-11-01-anthropic-entree-en-bourse"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong>Anthropic dépose son dossier d'entrée en bourse</strong> L'éditeur de Claude vise la bourse américaine Nasdaq. Le nombre d'actions et le prix ne sont pas encore fixés. <span class="b2-src" style="display:inline"><a href="https://www.anthropic.com/news/s1-sec" target="_blank" rel="noopener">anthropic.com/news/s1-sec</a></span></li><li id="2026-11-01-claude-api-version-2026-10-21"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong>API Claude : nouvelle version et nouveaux kits de développement</strong> Les kits passent à une nouvelle version majeure, sous <span class="term" tabindex="0" data-def="Licence libre permissive : elle autorise l'usage, la modification et l'usage commercial, à condition de conserver les mentions de l'auteur et de la licence.">licence Apache 2.0</span>. Rien à faire pour nous : nous n'intégrons pas l'API dans nos logiciels. <span class="b2-src" style="display:inline"><a href="https://platform.claude.com/docs/en/release-notes/overview#october-21-2026" target="_blank" rel="noopener">platform.claude.com — release notes 21 oct.</a></span></li><li id="2026-11-01-opus-4-8-mode-rapide-retrait"><span class="b2-actor a-anthropic"><i></i>Anthropic</span> — <strong>Le mode rapide de Claude Opus 4.8 s'arrête le 30 novembre</strong> Il faudra passer à Opus 5.5 pour le garder. Nos routines tournent déjà sur Opus 5.5 : rien à faire. <span class="b2-src" style="display:inline"><a href="https://platform.claude.com/docs/en/release-notes/overview#october-30-2026" target="_blank" rel="noopener">platform.claude.com — release notes 30 oct.</a></span></li></ul>
+</section>
+  <p class="b2-quiet" style="margin-top:28px">Rien de notable cette semaine chez : Meta (aucune annonce trouvée après le 15 octobre), DeepSeek, Qwen, xAI, Perplexity, Cursor.</p>
+
+  <section class="b2-section" id="mots" data-noterm>
+    <h2 class="b2-h2">Les mots du brief</h2>
+    <p class="b2-sub">Survolez ou touchez un mot souligné en pointillés pour sa définition. <a href="../lexique/">Lexique complet →</a></p>
+    <dl class="b2-lexique"><div><dt>Claude Code</dt><dd>Assistant d'Anthropic qui travaille dans un terminal ou un éditeur : code, fichiers, automatisations.</dd></div><div><dt>Bac à sable (sandbox)</dt><dd>Environnement isolé où l'IA exécute du code sans pouvoir toucher au reste du système.</dd></div><div><dt>Charte IA Lynxter</dt><dd>Nos règles internes d'usage de l'IA : quelles données, dans quels outils.</dd></div><div><dt>Token</dt><dd>Morceau de mot (environ ¾ d'un mot). C'est l'unité que les IA lisent, écrivent et facturent.</dd></div><div><dt>Préversion (preview, bêta)</dt><dd>Fonction encore en test : elle peut changer ou disparaître. À éviter pour un usage critique.</dd></div><div><dt>Fenêtre de contexte</dt><dd>Quantité de texte que le modèle garde en tête d'un coup. 1 million de tokens ≈ 1 500 pages.</dd></div><div><dt>Infrastructure locale</dt><dd>Serveurs Lynxter (prévus) où faire tourner des modèles ouverts : la seule voie prévue pour les données sensibles.</dd></div><div><dt>Mixture of Experts (MoE)</dt><dd>Architecture où seule une partie du modèle travaille à chaque mot : plus rapide et moins cher à faire tourner.</dd></div><div><dt>Paramètres (taille d'un modèle)</dt><dd>Taille d'un modèle, en milliards (« 30B »). Plus il y en a, plus il faut de matériel pour le faire tourner.</dd></div><div><dt>API</dt><dd>Accès direct au modèle depuis un logiciel ou un script, facturé à l'usage (au token).</dd></div><div><dt>Prix « $2/$10 »</dt><dd>Prix pour un million de tokens (≈ 750 000 mots) : le 1er chiffre pour ce que le modèle lit, le 2e pour ce qu'il écrit.</dd></div><div><dt>Terminal-Bench</dt><dd>Test où l'IA accomplit seule des tâches techniques complètes en ligne de commande : installer, configurer, déboguer.</dd></div><div><dt>Niveau d'effort</dt><dd>Réglage qui dit au modèle combien réfléchir : bas = rapide et économique, haut = plus soigné.</dd></div><div><dt>Codex</dt><dd>L'assistant de programmation d'OpenAI, concurrent de Claude Code.</dd></div><div><dt>Routine</dt><dd>Tâche Claude planifiée qui tourne seule dans le cloud, sans PC allumé (ce brief en est une).</dd></div><div><dt>Plugin / mod</dt><dd>Extension qui ajoute des compétences ou change le comportement d'un outil.</dd></div><div><dt>Dépréciation / retrait</dt><dd>Un modèle déprécié marche encore mais sa date de fin est annoncée. Après le retrait, les appels échouent.</dd></div><div><dt>Mode auto</dt><dd>Mode de Claude Code où un filtre automatique accepte seul les actions jugées sans risque, au lieu de vous demander à chaque fois.</dd></div><div><dt>Agent</dt><dd>IA qui enchaîne seule plusieurs actions (chercher, lire, écrire, exécuter) pour atteindre un objectif.</dd></div><div><dt>Skills</dt><dd>Fiches d'instructions qu'un agent charge à la demande pour une tâche précise.</dd></div><div><dt>MCP</dt><dd>Standard ouvert pour brancher une IA sur un outil ou une base de données (un « connecteur »).</dd></div><div><dt>Cursor</dt><dd>Éditeur de code avec IA intégrée, concurrent de Claude Code.</dd></div><div><dt>Licence Apache 2.0</dt><dd>Licence libre permissive : elle autorise l'usage, la modification et l'usage commercial, à condition de conserver les mentions de l'auteur et de la licence.</dd></div></dl>
+  </section>
+
+  <section class="sources-footer" style="margin-top:48px">
+    <strong>Sources consultées</strong>
+    <a href="https://code.claude.com/docs/en/changelog#2-1-314">code.claude.com/changelog</a> · <a href="https://platform.claude.com/docs/en/release-notes/overview#october-21-2026">platform.claude.com — release notes</a> · <a href="https://mistral.ai/news/mistral-large-4-oss/">mistral.ai/news/mistral-large-4-oss</a> · <a href="https://openai.com/index/introducing-gpt-6-1-terra/">openai.com — GPT-6.1 Terra</a> · <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/">blog.google — Gemini 4 Carbon</a> · <a href="https://www.anthropic.com/news/s1-sec">anthropic.com/news</a>
+  </section>
+
+  <nav class="brief-nav">
+    <a class="prev" href="2026-10-18.html"><span class="label">← Brief précédent</span><span class="title">Claude Code corrige son bac à sable ; Meta et Mistral publient des modèles ouverts</span></a>
+    <a class="next" href="./"><span class="label">Voir l'archive →</span><span class="title">Tous les briefs</span></a>
+  </nav>
+</div>
+</main>
+
+<aside class="baseline-band">
+  <div class="container">
+    <p class="smarter">Make it <em>smarter</em>.</p>
+    <p class="signature">Brief du 2026-11-01 · format 2</p>
+  </div>
+</aside>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>Veille IA</h4>
+      <ul>
+        <li><a href="../">Accueil</a></li>
+        <li><a href="../briefs/">Tous les briefs</a></li>
+        <li><a href="../acteurs/">Acteurs</a></li>
+        <li><a href="../modeles/">Comparateur de modèles</a></li>
+        <li><a href="../lexique/">Lexique</a></li>
+        <li><a href="../methodo/">Méthodologie</a></li>
+        <li><a href="../acteurs/">Acteurs suivis</a></li>
+        <li><a href="../futur/">Prospective (mai 2026)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sources primaires</h4>
+      <ul>
+        <li><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">anthropic.com</a></li>
+        <li><a href="https://openai.com/news/" target="_blank" rel="noopener">openai.com</a></li>
+        <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><a href="https://ai.meta.com/blog/" target="_blank" rel="noopener">ai.meta.com</a></li>
+        <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">mistral.ai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Code</h4>
+      <ul>
+        <li><a href="https://github.com/leomarty1/veille-IA" target="_blank" rel="noopener">Source GitHub</a></li>
+        <li><a href="https://github.com/leomarty1/veille-IA/commits/main" target="_blank" rel="noopener">Historique commits</a></li>
+        <li><a href="https://claude.ai/code/routines" target="_blank" rel="noopener">Routine Claude Code</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>Léo Marty · Lynxter · 2026</span>
+      <span>Généré par routine Claude Code</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/app.js" defer></script>
+<script src="../assets/v2.js" defer></script>
+</body>
+</html>
