@@ -1,6 +1,82 @@
 {
   "briefs": [
     {
+      "date": "2026-11-08",
+      "filename": "2026-11-08.html",
+      "items_count": 7,
+      "by_tag": {
+        "lynxter": 1,
+        "useful": 1,
+        "info": 5
+      },
+      "by_actor": {
+        "Anthropic": 4,
+        "OpenAI": 1,
+        "Mistral": 1,
+        "Baidu": 1,
+        "Google": 0,
+        "Meta": 0
+      },
+      "mode": "hebdomadaire",
+      "title": "Claude Code 2.1.319 bouche un trou du bac à sable ; OpenAI sort GPT-6 Cyber",
+      "highlights": [
+        "Claude Code 2.1.319 corrige une sortie du bac à sable : mise à jour à faire",
+        "GPT-6 Cyber chez OpenAI, réservé à des équipes de défense",
+        "Mistral rachète SkipLabs ; aucun nouveau modèle chez Meta ni Mistral"
+      ],
+      "items": [
+        {
+          "slug": "2026-11-08-claude-code-2-1-317-319",
+          "title": "Claude Code 2.1.319 : une sortie du bac à sable et deux failles de permissions corrigées",
+          "primary_url": "https://code.claude.com/docs/en/changelog#2-1-319",
+          "tag": "lynxter",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-11-08-openai-gpt-6-cyber",
+          "title": "GPT-6 Cyber : le modèle d'OpenAI pour chercher des failles, réservé à quelques équipes",
+          "primary_url": "https://openai.com/index/introducing-gpt-6-cyber/",
+          "tag": "useful",
+          "actor": "OpenAI"
+        },
+        {
+          "slug": "2026-11-08-claude-enterprise-securite",
+          "title": "Claude Enterprise : un centre de sécurité et plus de contrôles pour les administrateurs",
+          "primary_url": "https://support.claude.com/en/articles/12138966-release-notes",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-11-08-api-claude-novembre",
+          "title": "API Claude : limiter une clé à certaines adresses réseau",
+          "primary_url": "https://platform.claude.com/docs/en/release-notes/overview#november-5-2026",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-11-08-claude-finances-personnelles",
+          "title": "Claude peut lire ses comptes bancaires, aux États-Unis seulement",
+          "primary_url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude",
+          "tag": "info",
+          "actor": "Anthropic"
+        },
+        {
+          "slug": "2026-11-08-mistral-skiplabs",
+          "title": "Mistral rachète SkipLabs, spécialiste de la génération de code",
+          "primary_url": "https://dealroom.co/news/170004-mistral-ai-buys-skiplabs-in-its-fifth-acquisition-of-2026/",
+          "tag": "info",
+          "actor": "Mistral"
+        },
+        {
+          "slug": "2026-11-08-baidu-ernie-5-5-flash-base",
+          "title": "Baidu publie les poids d'un modèle de base de 280 milliards de paramètres",
+          "primary_url": "https://fourweekmba.com/ai-baidu-opens-ernie-5-5-flash-weights-free-up-to-50m-revenue/",
+          "tag": "info",
+          "actor": "Baidu"
+        }
+      ]
+    },
+    {
       "date": "2026-11-01",
       "filename": "2026-11-01.html",
       "items_count": 8,

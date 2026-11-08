@@ -1,0 +1,267 @@
+{
+ "schema": 2,
+ "date": "2026-11-08",
+ "period": "1er → 8 novembre 2026",
+ "title": "Claude Code 2.1.319 bouche un trou du bac à sable ; OpenAI sort GPT-6 Cyber",
+ "description": "Veille IA du 1er au 8 novembre 2026 : corrections de sécurité dans Claude Code 2.1.319, GPT-6 Cyber chez OpenAI, nouveaux réglages de sécurité pour Claude Enterprise, rachat de SkipLabs par Mistral. Ce que ça change pour Lynxter.",
+ "lead": "Semaine assez calme. La seule action pour nous reste la mise à jour de <strong>Claude Code</strong>, qui corrige une sortie du bac à sable et deux contournements des permissions. OpenAI sort un modèle de cybersécurité réservé à quelques équipes.",
+ "actors_scanned": 9,
+ "en_30s": [
+  "<strong>Claude Code</strong> 2.1.319 corrige une sortie du bac à sable et deux façons de contourner les permissions. Chaque poste doit passer en 2.1.319 ou plus.",
+  "<strong>OpenAI</strong> sort GPT-6 Cyber, son modèle de recherche de failles. Il est réservé à des équipes de défense approuvées : rien à faire pour nous.",
+  "<strong>Mistral</strong> rachète la jeune pousse française SkipLabs, qui travaille sur la génération de code. Aucun nouveau modèle chez Mistral cette semaine."
+ ],
+ "highlights": [
+  "Claude Code 2.1.319 corrige une sortie du bac à sable : mise à jour à faire",
+  "GPT-6 Cyber chez OpenAI, réservé à des équipes de défense",
+  "Mistral rachète SkipLabs ; aucun nouveau modèle chez Meta ni Mistral"
+ ],
+ "pour_lynxter": [
+  {
+   "verdict": "a-faire",
+   "titre": "Passer Claude Code en version 2.1.319 ou plus",
+   "pourquoi": "La 2.1.319 corrige une sortie du bac à sable et deux cas où une commande échappait au contrôle des permissions. Pour vérifier, taper <code>claude --version</code> dans un terminal. La mise à jour se fait d'habitude toute seule au démarrage.",
+   "qui": "Chaque utilisateur de Claude Code",
+   "charte": null,
+   "items": [
+    "2026-11-08-claude-code-2-1-317-319"
+   ]
+  },
+  {
+   "verdict": "rien",
+   "titre": "GPT-6 Cyber et les autres annonces : rien à changer",
+   "pourquoi": "GPT-6 Cyber n'est ouvert qu'à des équipes de défense choisies par OpenAI. Les nouveautés de Claude Enterprise et de l'API Claude ne touchent pas nos usages actuels.",
+   "qui": "—",
+   "charte": "hors-cadre",
+   "items": [
+    "2026-11-08-openai-gpt-6-cyber",
+    "2026-11-08-claude-enterprise-securite"
+   ]
+  }
+ ],
+ "modeles": [
+  {
+   "id": "gpt-6-cyber",
+   "item": "2026-11-08-openai-gpt-6-cyber",
+   "en_clair": "Le modèle d'OpenAI spécialisé dans la recherche et l'exploitation de failles. Selon OpenAI, il passe de 32,1 % à 48,5 % sur un test d'attaque de failles. Il est réservé à des équipes de défense.",
+   "verdict": "rien",
+   "pour_nous": "Pas accessible, et ChatGPT reste limité aux données publiques."
+  }
+ ],
+ "items": [
+  {
+   "slug": "2026-11-08-claude-code-2-1-317-319",
+   "actor": "Anthropic",
+   "tag": "lynxter",
+   "theme": "outils",
+   "date": "2026-11-06",
+   "title": "Claude Code 2.1.319 : une sortie du bac à sable et deux failles de permissions corrigées",
+   "resume": "Trois versions de Claude Code sortent du 3 au 6 novembre. La 2.1.319 corrige une sortie du bac à sable et deux cas où une commande passait sans contrôle des permissions. Elle ajoute aussi un réglage qui refuse une action au lieu d'attendre une validation.",
+   "pour_nous": {
+    "verdict": "a-faire",
+    "texte": "Vérifier que chaque poste est en 2.1.319 ou plus (<code>claude --version</code> dans un terminal)."
+   },
+   "chiffres": [
+    "2.1.319 (6 nov.) : sortie du bac à sable à la création d'un worktree corrigée ; un préfixe de variables d'environnement construit exprès ne peut plus cacher une partie d'une commande Bash aux contrôles ; une commande <code>sed</code> ne peut plus éviter le contrôle en mode auto ou accept-edits",
+    "2.1.319 : les règles <code>deny</code> et <code>ask</code> reconnaissent les commandes écrites avec des mots entre guillemets ; <code>/rewind</code> ne peut plus restaurer ou supprimer un fichier à travers un lien symbolique de dossier",
+    "2.1.319 : nouveau réglage <code>permissions.denyInsteadOfPrompting</code> ; une routine dans le cloud garde désormais un connecteur nommé « memory »",
+    "2.1.318 (4 nov.) : <code>claude auth status</code> affiche la date de fin de la connexion claude.ai ; les touches tapées juste après un message ne répondent plus à une demande de permission",
+    "2.1.317 (3 nov.) : <code>/schedule</code> prévient quand une nouvelle tâche planifiée reçoit des connecteurs non demandés"
+   ],
+   "sources": [
+    {
+     "label": "code.claude.com/changelog#2-1-319",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-319",
+     "primary": true
+    },
+    {
+     "label": "code.claude.com/changelog#2-1-318",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-318",
+     "primary": true
+    },
+    {
+     "label": "code.claude.com/changelog#2-1-317",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-317",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-08-openai-gpt-6-cyber",
+   "actor": "OpenAI",
+   "tag": "useful",
+   "theme": "modeles",
+   "date": "2026-11-05",
+   "title": "GPT-6 Cyber : le modèle d'OpenAI pour chercher des failles, réservé à quelques équipes",
+   "resume": "OpenAI remplace GPT-5.6-Cyber par GPT-6 Cyber, ouvert seulement à des équipes de défense approuvées. Selon OpenAI, il obtient 48,5 % sur un test d'attaque de failles, contre 32,1 % pour l'ancien. OpenAI le classe pour la première fois au niveau de risque le plus haut en cybersécurité.",
+   "pour_nous": {
+    "verdict": "rien",
+    "texte": "Pas accessible au public. À connaître, rien à changer."
+   },
+   "chiffres": [
+    "Selon OpenAI : ExploitGym 48,5 % (GPT-5.6-Cyber 32,1 %) ; niveau « Critical » de son Preparedness Framework, contre « High » pour le modèle précédent",
+    "Selon OpenAI : 948 failles du noyau Linux transformées en attaques fonctionnelles, 81 failles inédites signalées à Mozilla pour Firefox ; chiffres non reproduits par un tiers",
+    "Accès par le programme Daybreak Red, sans prix public ni date d'ouverture large",
+    "Page d'OpenAI non lue (accès réseau bloqué) : chiffres concordants dans plusieurs articles"
+   ],
+   "sources": [
+    {
+     "label": "openai.com — GPT-6 Cyber",
+     "url": "https://openai.com/index/introducing-gpt-6-cyber/",
+     "primary": true
+    },
+    {
+     "label": "thenewstack.io",
+     "url": "https://thenewstack.io/openai-gpt6-cyber-exploits/",
+     "primary": false
+    },
+    {
+     "label": "fourweekmba.com",
+     "url": "https://fourweekmba.com/ai-openais-gpt-6-cyber-hits-48-5-on-exploitgym-up-from-32-1/",
+     "primary": false
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-08-claude-enterprise-securite",
+   "actor": "Anthropic",
+   "tag": "info",
+   "theme": "entreprise",
+   "date": "2026-11-05",
+   "title": "Claude Enterprise : un centre de sécurité et plus de contrôles pour les administrateurs",
+   "resume": "Les comptes Enterprise reçoivent un centre de sécurité et de nouveaux contrôles d'accès, plusieurs en bêta. Le 6 novembre, ils peuvent aussi suivre les dépenses par code de projet.",
+   "sources": [
+    {
+     "label": "support.claude.com — notes de version",
+     "url": "https://support.claude.com/en/articles/12138966-release-notes",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-08-api-claude-novembre",
+   "actor": "Anthropic",
+   "tag": "info",
+   "theme": "outils",
+   "date": "2026-11-05",
+   "title": "API Claude : limiter une clé à certaines adresses réseau",
+   "resume": "Une organisation peut refuser les requêtes venant d'adresses non listées, ce qui limite l'usage d'une clé volée. Rien à faire pour nous : nous n'intégrons pas l'API dans nos logiciels.",
+   "chiffres": [
+    "5 nov. : liste d'adresses autorisées dans la Console, en bêta, jusqu'à 1 000 entrées ; déconnexion forcée d'un membre Enterprise par l'Admin API",
+    "2 nov. : fils de messages gardés côté serveur, en bêta, pour envoyer des requêtes plus petites",
+    "3 nov. : le texte produit par Claude Mythos 5, Opus 4.7 et Sonnet 4.6 porte le filigrane d'Anthropic",
+    "SDK Python 2.4.0 à 2.6.0 (2 au 5 nov.) : nouvelles classes d'erreur et corrections"
+   ],
+   "sources": [
+    {
+     "label": "platform.claude.com — release notes 5 nov.",
+     "url": "https://platform.claude.com/docs/en/release-notes/overview#november-5-2026",
+     "primary": true
+    },
+    {
+     "label": "platform.claude.com — release notes 3 nov.",
+     "url": "https://platform.claude.com/docs/en/release-notes/overview#november-3-2026",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-08-claude-finances-personnelles",
+   "actor": "Anthropic",
+   "tag": "info",
+   "theme": "autre",
+   "date": "2026-11-05",
+   "title": "Claude peut lire ses comptes bancaires, aux États-Unis seulement",
+   "resume": "Une bêta relie les comptes bancaires à Claude en lecture seule, pour poser des questions sur ses dépenses. Elle est réservée aux abonnés payants américains.",
+   "sources": [
+    {
+     "label": "claude.com — Personal Finance",
+     "url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-08-mistral-skiplabs",
+   "actor": "Mistral",
+   "tag": "info",
+   "theme": "entreprise",
+   "date": "2026-11-05",
+   "title": "Mistral rachète SkipLabs, spécialiste de la génération de code",
+   "resume": "Montant non communiqué, sans annonce officielle lue. Selon Dealroom, c'est le cinquième rachat de Mistral en 2026.",
+   "sources": [
+    {
+     "label": "dealroom.co",
+     "url": "https://dealroom.co/news/170004-mistral-ai-buys-skiplabs-in-its-fifth-acquisition-of-2026/",
+     "primary": false
+    },
+    {
+     "label": "ventureatlas.org",
+     "url": "https://www.ventureatlas.org/news/2026-11-05-mistral-skiplabs",
+     "primary": false
+    }
+   ],
+   "has_primary": false
+  },
+  {
+   "slug": "2026-11-08-baidu-ernie-5-5-flash-base",
+   "actor": "Baidu",
+   "tag": "info",
+   "theme": "ouvert",
+   "date": "2026-11-05",
+   "title": "Baidu publie les poids d'un modèle de base de 280 milliards de paramètres",
+   "resume": "C'est un point de départ à réentraîner, pas un assistant prêt à l'emploi, sans annonce officielle lue. Sa licence propre limite l'usage commercial et reste trop lourde pour un petit serveur.",
+   "chiffres": [
+    "ERNIE 5.5 Flash Base : MoE de 280 milliards de paramètres, poids FP8 et BF16 sur Hugging Face",
+    "Licence Baidu (pas Apache ni MIT) : usage commercial libre jusqu'à 50 M$ de chiffre d'affaires lié, selon la presse"
+   ],
+   "sources": [
+    {
+     "label": "fourweekmba.com",
+     "url": "https://fourweekmba.com/ai-baidu-opens-ernie-5-5-flash-weights-free-up-to-50m-revenue/",
+     "primary": false
+    },
+    {
+     "label": "startupfortune.com",
+     "url": "https://startupfortune.com/baidu-open-sources-ernie-55-flash-base-in-a-race-to-cheap-inference/",
+     "primary": false
+    }
+   ],
+   "has_primary": false
+  }
+ ],
+ "rien_de_notable": [
+  "Meta (aucune annonce trouvée)",
+  "Google DeepMind (Gemini Omni 1.2 Flash signalé le 5 novembre, non confirmé)",
+  "DeepSeek",
+  "xAI",
+  "Cursor"
+ ],
+ "sources_footer": [
+  {
+   "label": "code.claude.com/changelog",
+   "url": "https://code.claude.com/docs/en/changelog#2-1-319"
+  },
+  {
+   "label": "platform.claude.com — release notes",
+   "url": "https://platform.claude.com/docs/en/release-notes/overview#november-5-2026"
+  },
+  {
+   "label": "support.claude.com — notes de version",
+   "url": "https://support.claude.com/en/articles/12138966-release-notes"
+  },
+  {
+   "label": "openai.com — GPT-6 Cyber",
+   "url": "https://openai.com/index/introducing-gpt-6-cyber/"
+  }
+ ],
+ "prev": {
+  "href": "2026-11-01.html",
+  "title": "Claude Code renforce encore son bac à sable ; Mistral publie les poids de Large 4"
+ }
+}

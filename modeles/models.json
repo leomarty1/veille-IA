@@ -1,6 +1,6 @@
 {
  "meta": {
-  "updated": "2026-11-01",
+  "updated": "2026-11-08",
   "note": "Chaque chiffre porte sa source. official:true = publié par l'éditeur du modèle (ou par un autre éditeur reprenant un chiffre officiel) ; official:false = estimation tierce. Prix : tarif API standard en $ par million de tokens."
  },
  "families": {
@@ -3940,6 +3940,43 @@
    ],
    "confidence": "archive-only",
    "notes": "Basé sur GPT-5.6 Sol. Accès Daybreak Red (défenseurs approuvés), aussi sur Amazon Bedrock. Pas de prix public. (remplace gpt-5-5-cyber, hors base)"
+  },
+  {
+   "id": "gpt-6-cyber",
+   "name": "GPT-6 Cyber",
+   "actor": "OpenAI",
+   "family": "gpt-cyber",
+   "replaces": "gpt-5-6-cyber",
+   "date": "2026-11-05",
+   "status": "restricted",
+   "price_in": null,
+   "price_out": null,
+   "context_k": null,
+   "output_k": null,
+   "open_weights": false,
+   "scores": {},
+   "claims": [
+    {
+     "text": "selon OpenAI : ExploitGym 48,5 %, contre 32,1 % pour GPT-5.6-Cyber",
+     "source": "https://fourweekmba.com/ai-openais-gpt-6-cyber-hits-48-5-on-exploitgym-up-from-32-1/"
+    },
+    {
+     "text": "selon OpenAI : premier modèle classé « critique » en cybersécurité dans son cadre de préparation (GPT-5.6-Cyber : « élevé »)",
+     "source": "https://thenewstack.io/openai-gpt6-cyber-exploits/"
+    },
+    {
+     "text": "selon OpenAI : 948 failles du noyau Linux transformées en attaques fonctionnelles, 81 failles inédites signalées à Mozilla",
+     "source": "https://thenewstack.io/openai-gpt6-cyber-exploits/"
+    }
+   ],
+   "en_clair": "Le modèle d'OpenAI spécialisé dans la recherche de failles, réservé à des équipes de défense approuvées. Pas de prix public.",
+   "sources": [
+    "https://openai.com/index/introducing-gpt-6-cyber/",
+    "https://thenewstack.io/openai-gpt6-cyber-exploits/",
+    "https://fourweekmba.com/ai-openais-gpt-6-cyber-hits-48-5-on-exploitgym-up-from-32-1/"
+   ],
+   "confidence": "uncertain",
+   "notes": "Page openai.com non lue (egress bloqué) ; chiffres de presse concordants, non reproduits par un tiers. Accès Daybreak Red uniquement, sans date d'ouverture. ExploitGym non déclaré dans benchmarks{} : chiffres en claims."
   },
   {
    "id": "muse-glimmer-30b",
