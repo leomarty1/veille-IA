@@ -1,0 +1,261 @@
+{
+ "schema": 2,
+ "date": "2026-11-15",
+ "period": "8 → 15 novembre 2026",
+ "title": "Claude Fable 5.2 sort, 20 % moins cher ; Claude Code corrige de nouvelles failles",
+ "description": "Veille IA du 8 au 15 novembre 2026 : Claude Fable 5.2 et Mythos 5.2, corrections de sécurité dans Claude Code 2.1.321 à 2.1.325, Muse Ember chez Meta, Gemini Intelligence sur les Pixel 10. Ce que ça change pour Lynxter.",
+ "lead": "Anthropic sort <strong>Claude Fable 5.2</strong>, plus fort et moins cher que Fable 5.1. Pour nous, il ne remplace pas Opus 5.5. L'action de la semaine reste la mise à jour de <strong>Claude Code</strong>, qui corrige plusieurs failles.",
+ "actors_scanned": 9,
+ "en_30s": [
+  "<strong>Claude Fable 5.2</strong> sort à 8 $ / 40 $ par million de tokens, 20 % de moins que Fable 5.1. Il reste deux fois plus cher qu'Opus 5.5.",
+  "<strong>Claude Code</strong> 2.1.325 corrige plusieurs contournements des permissions. Les commandes du bac à sable redemandent aussi la permission par défaut.",
+  "<strong>Meta</strong> sort Muse Ember, un petit modèle au prix de Claude Haiku 5.5. Rien de nouveau chez Mistral cette semaine."
+ ],
+ "highlights": [
+  "Claude Fable 5.2 : plus fort et 20 % moins cher que Fable 5.1",
+  "Claude Code 2.1.325 corrige plusieurs failles : mise à jour à faire",
+  "Muse Ember chez Meta ; aucune annonce chez Mistral"
+ ],
+ "pour_lynxter": [
+  {
+   "verdict": "a-faire",
+   "titre": "Passer Claude Code en version 2.1.325 ou plus",
+   "pourquoi": "Ces versions corrigent plusieurs cas où une commande échappait au contrôle des permissions. Elles corrigent aussi une fuite possible de jetons de connexion vers un autre serveur. Pour vérifier, taper <code>claude --version</code> dans un terminal.",
+   "qui": "Chaque utilisateur de Claude Code",
+   "charte": null,
+   "items": [
+    "2026-11-15-claude-code-2-1-321-325"
+   ]
+  },
+  {
+   "verdict": "a-surveiller",
+   "titre": "Regarder si nos routines s'arrêtent pour demander une permission",
+   "pourquoi": "Depuis la 2.1.325, une tâche planifiée demande une validation avant de lancer certaines compétences. Les commandes du bac à sable demandent aussi la permission par défaut. Si une de nos routines s'appuie sur l'un de ces cas, elle peut se bloquer : à confirmer à sa prochaine exécution.",
+   "qui": "Léo, pour les routines",
+   "charte": "ok",
+   "items": [
+    "2026-11-15-claude-code-2-1-321-325"
+   ]
+  },
+  {
+   "verdict": "a-surveiller",
+   "titre": "Garder Opus 5.5 pour nos routines malgré Fable 5.2",
+   "pourquoi": "Fable 5.2 dépasse Opus 5.5 sur la plupart des tests d'Anthropic, mais coûte deux fois plus. Anthropic conseille lui-même Opus 5.5 pour les tâches courantes. Dans Claude Code, un choix « Fable 5.1 » enregistré passe tout seul à Fable 5.2.",
+   "qui": "Léo, la direction",
+   "charte": "ok",
+   "items": [
+    "2026-11-15-claude-fable-5-2"
+   ]
+  },
+  {
+   "verdict": "rien",
+   "titre": "Muse Ember, Gemini Intelligence et les autres annonces : rien à changer",
+   "pourquoi": "Muse Ember et Gemini sont hors charte. L'hébergement de Managed Agents chez soi vise les entreprises qui bâtissent leurs propres agents, ce que nous ne faisons pas.",
+   "qui": "—",
+   "charte": "hors-cadre",
+   "items": [
+    "2026-11-15-meta-muse-ember",
+    "2026-11-15-gemini-intelligence-pixel",
+    "2026-11-15-managed-agents-auto-heberge"
+   ]
+  }
+ ],
+ "modeles": [
+  {
+   "id": "claude-fable-5-2",
+   "item": "2026-11-15-claude-fable-5-2",
+   "en_clair": "Le modèle public le plus puissant d'Anthropic, pour les tâches longues et difficiles. Il coûte 20 % de moins que Fable 5.1, mais deux fois plus qu'Opus 5.5.",
+   "verdict": "a-surveiller",
+   "pour_nous": "Opus 5.5 reste le bon choix pour nos routines, au prix actuel."
+  },
+  {
+   "id": "muse-ember",
+   "item": "2026-11-15-meta-muse-ember",
+   "en_clair": "Le plus petit et le moins cher des modèles de Meta, pensé pour les tâches répétitives des agents. Il coûte le même prix que Claude Haiku 5.5.",
+   "verdict": "rien",
+   "pour_nous": "Hors charte, et ses poids ne sont pas publiés : pas candidat pour un serveur local."
+  }
+ ],
+ "items": [
+  {
+   "slug": "2026-11-15-claude-fable-5-2",
+   "actor": "Anthropic",
+   "tag": "lynxter",
+   "theme": "modeles",
+   "date": "2026-11-09",
+   "title": "Claude Fable 5.2 : plus fort et 20 % moins cher que Fable 5.1, mais deux fois le prix d'Opus 5.5",
+   "resume": "Anthropic sort Fable 5.2, son modèle public le plus puissant, à 8 $ / 40 $ par million de tokens. Sur un test de code long, il obtient 49,1 %, contre 45,5 % pour Opus 5.5. Anthropic conseille pourtant de garder Opus 5.5 pour la plupart des tâches courantes.",
+   "pour_nous": {
+    "verdict": "a-surveiller",
+    "texte": "Nos routines restent sur Opus 5.5. Attention : dans Claude Code, un choix « Fable 5.1 » enregistré passe seul à Fable 5.2."
+   },
+   "chiffres": [
+    "Selon Anthropic : FrontierCode 2.0 49,1 % (Opus 5.5 45,5 %, Fable 5.1 32,4 %, GPT-6 Astra 42,8 %) ; FrontierSWE v2 69,9 % (Opus 5.5 62,3 %, GPT-6 Astra 65,5 %)",
+    "Selon Anthropic : OSWorld 2.1 hors ligne 89,3 % (Opus 5.5 87,2 %) ; Terminal-Bench-Science 74,6 % (Opus 5.5 58,7 %) ; AutomationBench 51,4 % (Opus 5.5 42,5 %, Gemini 4 Carbon 53,9 %)",
+    "Selon Anthropic : Humanity's Last Exam avec outils 74,2 % (Opus 5.5 67,7 %) ; AA-Briefcase 1 785 Elo, contre 1 800 pour Opus 5.5",
+    "Prix : 8 $ / 40 $ par million de tokens (Fable 5.1 : 10 $ / 50 $ ; Opus 5.5 : 4 $ / 20 $) ; mode rapide à 16 $ / 80 $",
+    "<code>claude-fable-5-2</code> : 1 million de tokens de contexte, 128 000 en sortie ; effort « medium » par défaut dans les applis et Claude Code",
+    "Conservation des données 30 jours obligatoire, pas de zéro rétention sauf accord d'Anthropic",
+    "Claude Mythos 5.2 : mêmes capacités, réservé aux organisations vérifiées (cybersécurité, sciences du vivant)",
+    "Claude Code 2.1.321 : Fable 5.2 devient le modèle Fable par défaut ; <code>/model claude-fable-5-1</code> pour revenir en arrière"
+   ],
+   "sources": [
+    {
+     "label": "anthropic.com — Claude Fable 5.2 et Mythos 5.2",
+     "url": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2",
+     "primary": true
+    },
+    {
+     "label": "platform.claude.com — release notes 9 nov.",
+     "url": "https://platform.claude.com/docs/en/release-notes/overview#november-9-2026",
+     "primary": true
+    },
+    {
+     "label": "sdtimes.com",
+     "url": "https://sdtimes.com/ai/anthropic-introduces-claude-fable-5-2-mythos-5-2/",
+     "primary": false
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-15-claude-code-2-1-321-325",
+   "actor": "Anthropic",
+   "tag": "lynxter",
+   "theme": "outils",
+   "date": "2026-11-13",
+   "title": "Claude Code 2.1.325 : nouvelles failles de permissions corrigées, le bac à sable redemande la permission",
+   "resume": "Quatre versions de Claude Code sortent du 9 au 13 novembre. Elles corrigent plusieurs contournements des permissions et une fuite possible de jetons de connexion. Depuis la 2.1.325, les commandes du bac à sable et certaines tâches planifiées demandent la permission par défaut.",
+   "pour_nous": {
+    "verdict": "a-faire",
+    "texte": "Vérifier que chaque poste est en 2.1.325 ou plus (<code>claude --version</code> dans un terminal)."
+   },
+   "chiffres": [
+    "2.1.325 (13 nov.) : faille corrigée dans le décodage des réponses compressées zstd ; certaines commandes Bash composées et certaines règles <code>allow</code> passaient sans contrôle",
+    "2.1.325 : les commandes Bash du bac à sable suivent le flux normal des permissions (<code>sandbox.autoAllowBashIfSandboxed: true</code> pour garder l'ancien comportement)",
+    "2.1.325 : les tâches planifiées et <code>/loop</code> demandent une validation avant une compétence qui déclare <code>allowed-tools</code> ou des hooks ; ajouter <code>Skill(nom)</code> à <code>permissions.allow</code>",
+    "2.1.323 (12 nov.) : Write et Edit ne peuvent plus écrire sur un chemin protégé par une règle <code>Read</code> en <code>deny</code> ; <code>claude -p</code> s'arrête si un réglage du bac à sable est invalide",
+    "2.1.323 : contexte supposé de 1 million de tokens pour un modèle inconnu (au lieu de 200 000)",
+    "2.1.322 (10 nov.) : mode rapide sur Vertex",
+    "2.1.321 (9 nov.) : les jetons OAuth d'un serveur MCP ne suivent plus une redirection vers un autre hôte ; une commande Bash en lecture seule ne sort plus du bac à sable sans demander"
+   ],
+   "sources": [
+    {
+     "label": "code.claude.com/changelog#2-1-325",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-325",
+     "primary": true
+    },
+    {
+     "label": "code.claude.com/changelog#2-1-323",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-323",
+     "primary": true
+    },
+    {
+     "label": "code.claude.com/changelog#2-1-321",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-321",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-15-meta-muse-ember",
+   "actor": "Meta",
+   "tag": "useful",
+   "theme": "modeles",
+   "date": "2026-11-09",
+   "title": "Muse Ember : Meta sort un petit modèle au prix de Claude Haiku 5.5",
+   "resume": "Meta lance Muse Ember, son modèle le plus petit et le moins cher, pour les tâches répétitives des agents. Il coûte 0,10 $ / 0,50 $ par million de tokens, comme Claude Haiku 5.5. Selon Meta, il en donne plus pour le même prix ; aucun test indépendant ne le confirme encore.",
+   "pour_nous": {
+    "verdict": "rien",
+    "texte": "Hors charte, et ses poids ne sont pas publiés."
+   },
+   "chiffres": [
+    "Sans annonce officielle lue (accès réseau bloqué) : prix et contexte concordants dans plusieurs articles",
+    "Contexte de 1 million de tokens ; texte, images, son et vidéo ; accès par le Meta Model API (<code>muse-ember-1.0</code>) et Muse Code",
+    "Selon Artificial Analysis : indice 36, contre 37 pour Muse Spark 1.3"
+   ],
+   "sources": [
+    {
+     "label": "letsdatascience.com",
+     "url": "https://letsdatascience.com/news/meta-releases-muse-ember-a-low-cost-model-for-agent-executio-7b564cff",
+     "primary": false
+    },
+    {
+     "label": "digitaltrends.com",
+     "url": "https://digitaltrends.com/computing/meta-launches-muse-ember-a-cheaper-ai-model-built-for-repetitive-tasks",
+     "primary": false
+    }
+   ],
+   "has_primary": false
+  },
+  {
+   "slug": "2026-11-15-managed-agents-auto-heberge",
+   "actor": "Anthropic",
+   "tag": "info",
+   "theme": "outils",
+   "date": "2026-11-12",
+   "title": "Claude Managed Agents peut tourner entièrement chez le client",
+   "resume": "Une entreprise peut héberger tout le service sur ses serveurs, historique des sessions compris. L'accès se demande à Anthropic ; nous ne l'utilisons pas.",
+   "sources": [
+    {
+     "label": "platform.claude.com — release notes 12 nov.",
+     "url": "https://platform.claude.com/docs/en/release-notes/overview#november-12-2026",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-15-gemini-intelligence-pixel",
+   "actor": "Google DeepMind",
+   "tag": "info",
+   "theme": "autre",
+   "date": "2026-11-10",
+   "title": "Gemini Intelligence arrive sur les Pixel 10",
+   "resume": "L'assistant de Google intégré au téléphone gagne des fonctions et arrive sur les Pixel 10. Selon Thurrott, il s'ouvre au Royaume-Uni, en Inde et au Japon.",
+   "sources": [
+    {
+     "label": "blog.google — Gemini Intelligence",
+     "url": "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/",
+     "primary": true
+    },
+    {
+     "label": "thurrott.com",
+     "url": "https://www.thurrott.com/?p=343730",
+     "primary": false
+    }
+   ],
+   "has_primary": true
+  }
+ ],
+ "rien_de_notable": [
+  "Mistral (aucune annonce dans la fenêtre)",
+  "OpenAI (petites nouveautés de ChatGPT réservées aux États-Unis, rien pour nous)",
+  "DeepSeek",
+  "xAI",
+  "Cursor"
+ ],
+ "sources_footer": [
+  {
+   "label": "anthropic.com — Claude Fable 5.2",
+   "url": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2"
+  },
+  {
+   "label": "code.claude.com/changelog",
+   "url": "https://code.claude.com/docs/en/changelog#2-1-325"
+  },
+  {
+   "label": "platform.claude.com — release notes",
+   "url": "https://platform.claude.com/docs/en/release-notes/overview#november-12-2026"
+  },
+  {
+   "label": "blog.google — Gemini Intelligence",
+   "url": "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/"
+  }
+ ],
+ "prev": {
+  "href": "2026-11-08.html",
+  "title": "Claude Code 2.1.319 bouche un trou du bac à sable ; OpenAI sort GPT-6 Cyber"
+ }
+}

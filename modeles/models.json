@@ -1,6 +1,6 @@
 {
  "meta": {
-  "updated": "2026-11-08",
+  "updated": "2026-11-15",
   "note": "Chaque chiffre porte sa source. official:true = publié par l'éditeur du modèle (ou par un autre éditeur reprenant un chiffre officiel) ; official:false = estimation tierce. Prix : tarif API standard en $ par million de tokens."
  },
  "families": {
@@ -238,6 +238,11 @@
    "name": "Gemini 4 Carbon",
    "actor": "Google",
    "tier": "special"
+  },
+  "muse-ember": {
+   "name": "Muse Ember",
+   "actor": "Meta",
+   "tier": "eco"
   }
  },
  "benchmarks": {
@@ -477,6 +482,12 @@
    "unit": "%",
    "what": "Version 2.1 du test d'utilisation d'ordinateur, limitée aux tâches faisables sans accès internet. Utilisée par Anthropic pour Haiku 5.5.",
    "short": "OSWorld 2.1 hors ligne"
+  },
+  "frontiercode-2-0": {
+   "name": "FrontierCode 2.0",
+   "unit": "%",
+   "what": "Nouvelle version du test de code de Cognition : des tâches de programmation longues et difficiles, menées seul par le modèle.",
+   "short": "FrontierCode 2.0"
   }
  },
  "models": [
@@ -4324,6 +4335,30 @@
      "official": true,
      "source": "https://www.anthropic.com/claude-opus-5-5",
      "note": "table d'Opus 5.5"
+    },
+    "frontiercode-2-0": {
+     "value": 32.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2",
+     "note": "effort xhigh ; table de Fable 5.2"
+    },
+    "frontierswe-v2": {
+     "value": 56.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2",
+     "note": "table de Fable 5.2"
+    },
+    "osworld-2-1-offline": {
+     "value": 83.5,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2",
+     "note": "table de Fable 5.2"
+    },
+    "chartography-no-tools": {
+     "value": 44.8,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2",
+     "note": "table de Fable 5.2"
     }
    },
    "claims": [
@@ -4756,9 +4791,21 @@
     },
     "frontierswe-v2": {
      "value": 62.3,
-     "official": false,
-     "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
-     "note": "idem, repris par Google ; archive uniquement"
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2",
+     "note": "table de Fable 5.2 ; même valeur que celle reprise par Google"
+    },
+    "frontiercode-2-0": {
+     "value": 45.5,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2",
+     "note": "table de Fable 5.2"
+    },
+    "osworld-2-1-offline": {
+     "value": 87.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2",
+     "note": "table de Fable 5.2"
     }
    },
    "claims": [
@@ -5484,6 +5531,130 @@
    ],
    "confidence": "uncertain",
    "notes": "Page blog.google non lue (egress bloqué) ; chiffres de presse concordants. Accès par le programme Fairwind, sans date d'ouverture large. Prix de lancement annoncé /0 selon la presse, non confirmé : laissé à null. Benchmarks de sécurité non déclarés dans benchmarks{} (aucun autre modèle de la base)."
+  },
+  {
+   "id": "claude-fable-5-2",
+   "name": "Claude Fable 5.2",
+   "actor": "Anthropic",
+   "family": "claude-fable",
+   "replaces": "claude-fable-5-1",
+   "date": "2026-11-09",
+   "status": "ga",
+   "price_in": 8,
+   "price_out": 40,
+   "context_k": 1000,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "frontiercode-2-0": {
+     "value": 49.1,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2",
+     "note": "effort xhigh"
+    },
+    "frontierswe-v2": {
+     "value": 69.9,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2"
+    },
+    "automationbench": {
+     "value": 51.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2"
+    },
+    "terminal-bench-science": {
+     "value": 74.6,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2"
+    },
+    "osworld-2-1-offline": {
+     "value": 89.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2"
+    },
+    "hle-tools": {
+     "value": 74.2,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2"
+    },
+    "chartography-no-tools": {
+     "value": 73.4,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2"
+    }
+   },
+   "claims": [
+    {
+     "text": "Anthropic recommande toujours Opus 5.5 comme modèle de tous les jours pour la plupart des tâches de code et de bureau.",
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2"
+    },
+    {
+     "text": "Effort « medium » par défaut dans les applications Claude et Claude Code.",
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2"
+    }
+   ],
+   "en_clair": "Le modèle public le plus puissant d'Anthropic, 20 % moins cher que Fable 5.1. Il reste deux fois plus cher qu'Opus 5.5.",
+   "sources": [
+    "https://www.anthropic.com/news/claude-fable-and-mythos-5-2",
+    "https://platform.claude.com/docs/en/release-notes/overview#november-9-2026",
+    "https://code.claude.com/docs/en/changelog#2-1-321"
+   ],
+   "confidence": "verified",
+   "notes": "Mode rapide (jusqu'à 2,5 fois plus de texte par seconde) à 16 $ / 80 $. Conservation des données 30 jours obligatoire, pas de ZDR sauf accord. Dans Claude Code, le choix « Fable 5.1 » passe automatiquement à Fable 5.2 (Pro et Max tout de suite, Team et Enterprise si l'organisation l'autorise). Table d'Anthropic : AutomationBench 42,5 % pour Opus 5.5, contre 40 % dans la table d'Opus 5.5 (non modifié ici)."
+  },
+  {
+   "id": "claude-mythos-5-2",
+   "name": "Claude Mythos 5.2",
+   "actor": "Anthropic",
+   "family": "claude-mythos",
+   "replaces": "claude-mythos-5-1",
+   "date": "2026-11-09",
+   "status": "restricted",
+   "price_in": 8,
+   "price_out": 40,
+   "context_k": 1000,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-science": {
+     "value": 75.3,
+     "official": true,
+     "source": "https://www.anthropic.com/news/claude-fable-and-mythos-5-2"
+    }
+   },
+   "sources": [
+    "https://www.anthropic.com/news/claude-fable-and-mythos-5-2",
+    "https://platform.claude.com/docs/en/release-notes/overview#november-9-2026"
+   ],
+   "confidence": "verified",
+   "notes": "Mêmes capacités que Fable 5.2 avec garde-fous cyber et biologie desserrés, réservé aux organisations vérifiées (programmes Cyber Verification et Life Sciences Verification). Claude Security (Enterprise) tourne dessus."
+  },
+  {
+   "id": "muse-ember",
+   "name": "Muse Ember",
+   "actor": "Meta",
+   "family": "muse-ember",
+   "replaces": null,
+   "date": "2026-11-09",
+   "status": "ga",
+   "price_in": 0.1,
+   "price_out": 0.5,
+   "context_k": 1000,
+   "output_k": null,
+   "open_weights": false,
+   "scores": {},
+   "claims": [
+    {
+     "text": "Selon Meta, plus de capacité par dollar que Claude Haiku 5.5 et GPT-6 Luna dans tous les réglages de raisonnement (annonce non lue, rapportée par la presse).",
+     "source": "https://letsdatascience.com/news/meta-releases-muse-ember-a-low-cost-model-for-agent-executio-7b564cff"
+    }
+   ],
+   "sources": [
+    "https://letsdatascience.com/news/meta-releases-muse-ember-a-low-cost-model-for-agent-executio-7b564cff",
+    "https://digitaltrends.com/computing/meta-launches-muse-ember-a-cheaper-ai-model-built-for-repetitive-tasks"
+   ],
+   "confidence": "uncertain",
+   "notes": "Sans annonce officielle lue (egress bloqué) : prix et contexte concordants dans plusieurs articles. Poids non publiés. Accès par le Meta Model API (muse-ember-1.0) et Muse Code. Selon Artificial Analysis, indice 36, contre 37 pour Muse Spark 1.3 (non repris en score)."
   }
  ]
 }

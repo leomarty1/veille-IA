@@ -646,6 +646,14 @@
         "crédits d'API"
       ],
       "def": "Somme prépayée qui paie l'usage de l'API Claude, facturée sinon à la quantité de texte traitée."
+    },
+    {
+      "id": "mode-rapide",
+      "label": "Mode rapide",
+      "match": [
+        "mode rapide"
+      ],
+      "def": "Option payante où le modèle écrit sa réponse plus vite, contre un prix par token plus élevé."
     }
   ]
 }
