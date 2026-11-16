@@ -1,6 +1,6 @@
 {
  "meta": {
-  "updated": "2026-11-01",
+  "updated": "2026-11-04",
   "note": "Chaque chiffre porte sa source. official:true = publié par l'éditeur du modèle (ou par un autre éditeur reprenant un chiffre officiel) ; official:false = estimation tierce. Prix : tarif API standard en $ par million de tokens."
  },
  "families": {

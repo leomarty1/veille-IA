@@ -49,6 +49,17 @@ function parseMintlifyUpdates(md, pageUrl) {
     if (!date) continue;
     out.push({ date, version: m[1], title: `Claude Code ${m[1]}`, url: `${pageUrl}#${anchor(m[1])}`, bullets: bulletLines(m[3]) });
   }
+  if (out.length) return out;
+  // Format observé depuis fin octobre 2026 : "**2.1.316**" seul sur sa ligne,
+  // puis "October 31, 2026", puis sous-titres **Added** / **Fixed** et puces.
+  const heads = [...md.matchAll(/^\*\*(\d+\.\d+\.\d+)\*\*\s*$/gm)];
+  heads.forEach((h, i) => {
+    const body = md.slice(h.index + h[0].length, heads[i + 1] ? heads[i + 1].index : undefined);
+    const dl = body.split('\n').map((l) => l.trim()).find((l) => l);
+    const date = dl && enDate(dl);
+    if (!date) return;
+    out.push({ date, version: h[1], title: `Claude Code ${h[1]}`, url: `${pageUrl}#${anchor(h[1])}`, bullets: bulletLines(body) });
+  });
   return out;
 }
 // "### September 3, 2026" + puces jusqu'au titre suivant
