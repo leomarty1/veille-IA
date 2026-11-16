@@ -49,6 +49,17 @@ function parseMintlifyUpdates(md, pageUrl) {
     if (!date) continue;
     out.push({ date, version: m[1], title: `Claude Code ${m[1]}`, url: `${pageUrl}#${anchor(m[1])}`, bullets: bulletLines(m[3]) });
   }
+  if (out.length) return out;
+  // Format depuis nov. 2026 : "**2.1.325**", ligne vide, "November 13, 2026", puis les puces.
+  const parts = md.split(/^\*\*(\d+\.\d+\.\d+)\*\*\s*$/m);
+  for (let i = 1; i + 1 < parts.length; i += 2) {
+    const version = parts[i];
+    const body = parts[i + 1];
+    const first = body.split('\n').map((l) => l.trim()).find((l) => l);
+    const date = enDate(first || '');
+    if (!date) continue;
+    out.push({ date, version, title: `Claude Code ${version}`, url: `${pageUrl}#${anchor(version)}`, bullets: bulletLines(body) });
+  }
   return out;
 }
 // "### September 3, 2026" + puces jusqu'au titre suivant

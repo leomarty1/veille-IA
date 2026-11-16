@@ -147,7 +147,7 @@ Un ✗ se corrige **dans le JSON** (brief ou models.json), jamais dans le HTML g
 bash build/publish.sh <date>
 ```
 
-QA → commit → push de la branche → fast-forward et push de `main` → vérification HTTP. **Commiter n'est pas publier** : tant que `git log origin/main -1` ne montre pas le commit du brief, le rapport dit `NON PUBLIÉ`. Si la session interdit `main`, demander l'accord explicite de Léo avant de lancer le script.
+QA → commit → push de la branche → fast-forward et push de `main` → vérification HTTP. **Commiter n'est pas publier** : tant que `git log origin/main -1` ne montre pas le commit du brief, le rapport dit `NON PUBLIÉ`. **Autorisation permanente (Léo, 2026-11-16)** : la routine publie sur `main` via `build/publish.sh` **sans demander**, même si la session indique une branche de travail `claude/...` : c'est l'accord explicite et durable exigé pour pousser ailleurs. Ne jamais s'arrêter avant `main` pour demander une confirmation ; ne notifier qu'en cas d'échec.
 
 ### 7. Vérifier
 
@@ -184,7 +184,7 @@ QA → commit → push de la branche → fast-forward et push de `main` → vér
 |---|---|---|
 | **Jetons** | La publication passe par l'App GitHub Claude : aucun jeton n'est nécessaire. | Ne jamais mettre de jeton dans le prompt de la routine ni dans le dépôt ; un jeton déjà exposé se révoque. |
 | **Prompt de la routine** | Version de référence : `.claude/routine-prompt.md`. | Le recoller dans https://claude.ai/code/routines s'il diverge. |
-| **Voie d'écriture** | `WRITE_PATH = git-cli` : `build/publish.sh` pousse via le remote configuré par l'environnement (App GitHub Claude). | — |
+| **Voie d'écriture** | `WRITE_PATH = git-cli` : `build/publish.sh` pousse via le remote configuré par l'environnement (App GitHub Claude). Push sur `main` autorisé en permanence par Léo (2026-11-16). | Le 2026-11-15, le brief est resté sur la branche de travail faute de cette autorisation : ne plus demander. |
 | **Workflow `veille` (sous-agents)** | Échoue vite si moins de 3 scans principaux aboutissent ; repli : dérouler les étapes 1 à 5 dans la session principale. | Re-tester au prochain run. |
 | **Egress** | Souvent restreint (seuls `code.claude.com` et `github.com` répondent en WebFetch). | Repli documenté étape 0 et 2. |
 | **Quota de recherches web** | Environ 200 WebSearch par tour, **partagés entre tous les sous-agents**. Au-delà, les recherches échouent sans bruit. Observé le 2026-10-06 : un run avec double vérification par annonce a épuisé le quota et trois annonces vraies (dont une de Mistral) ont été écartées comme « non confirmées ». | Viser ~50 recherches au total. Une annonce qu'on n'a pas pu vérifier faute de quota est **indéterminée, pas fausse** : la signaler dans le rapport et la reprendre au brief suivant, jamais la classer comme réfutée. |
