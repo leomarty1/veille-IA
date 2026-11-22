@@ -1,6 +1,6 @@
 {
  "meta": {
-  "updated": "2026-11-15",
+  "updated": "2026-11-22",
   "note": "Chaque chiffre porte sa source. official:true = publié par l'éditeur du modèle (ou par un autre éditeur reprenant un chiffre officiel) ; official:false = estimation tierce. Prix : tarif API standard en $ par million de tokens."
  },
  "families": {
@@ -5655,6 +5655,145 @@
    ],
    "confidence": "uncertain",
    "notes": "Sans annonce officielle lue (egress bloqué) : prix et contexte concordants dans plusieurs articles. Poids non publiés. Accès par le Meta Model API (muse-ember-1.0) et Muse Code. Selon Artificial Analysis, indice 36, contre 37 pour Muse Spark 1.3 (non repris en score)."
+  },
+  {
+   "id": "gpt-6-2-astra",
+   "name": "GPT-6.2 Astra",
+   "actor": "OpenAI",
+   "family": "gpt-astra",
+   "replaces": "gpt-6-astra",
+   "date": "2026-11-17",
+   "status": "ga",
+   "price_in": 8,
+   "price_out": 40,
+   "context_k": 1050,
+   "output_k": 128,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-science": {
+     "value": 77.1,
+     "official": true,
+     "source": "https://www.iclarified.com/103626/openai-launches-gpt62-astra-and-sol-with-better-performance-lower-costs-video",
+     "note": "presse, d’après la table d’OpenAI (effort max) ; GPT-6 Astra 68,1 % dans la même table"
+    },
+    "frontiercode-2-0": {
+     "value": 44.2,
+     "official": true,
+     "source": "https://www.iclarified.com/103626/openai-launches-gpt62-astra-and-sol-with-better-performance-lower-costs-video",
+     "note": "presse, d’après la table d’OpenAI (effort max)"
+    }
+   },
+   "claims": [
+    {
+     "text": "selon OpenAI, +6,2 points sur GDPval v2 (test interne) par rapport à GPT-6 Astra, avec 22 % de tokens de sortie en moins",
+     "source": "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+    },
+    {
+     "text": "premier modèle d’OpenAI classé « High » pour l’auto-amélioration de l’IA et « Critical » en cybersécurité dans son cadre de sécurité ; garde-fous renforcés sur les demandes cyber",
+     "source": "https://gcn.com/?p=23366"
+    },
+    {
+     "text": "Terminal-Bench 4.0 selon Vals : 63,1 %, contre 65,2 % pour Claude Fable 5.2 et Opus 5.5",
+     "source": "https://the-decoder.com/openai-launches-gpt-6-2-astra-and-sol-with-lower-api-prices-and-some-benchmark-gains/"
+    },
+    {
+     "text": "indice Artificial Analysis : 62, derrière Claude Fable 5.2 (65)",
+     "source": "https://the-decoder.com/openai-launches-gpt-6-2-astra-and-sol-with-lower-api-prices-and-some-benchmark-gains/"
+    }
+   ],
+   "sources": [
+    "https://openai.com/index/introducing-gpt-6-2-astra-sol/",
+    "https://www.marktechpost.com/2026/11/17/openai-gpt-6-2-astra-sol-release/",
+    "https://the-decoder.com/openai-launches-gpt-6-2-astra-and-sol-with-lower-api-prices-and-some-benchmark-gains/",
+    "https://www.iclarified.com/103626/openai-launches-gpt62-astra-and-sol-with-better-performance-lower-costs-video",
+    "https://aiweekly.co/alerts/openai-ships-gpt-62-astra-at-840-20-below-gpt-6-astra"
+   ],
+   "confidence": "uncertain",
+   "en_clair": "Le très haut de gamme d’OpenAI, 20 % moins cher que GPT-6 Astra. Au même prix que Claude Fable 5.2.",
+   "notes": "Sorti le 17 nov. 2026 dans ChatGPT Work, Codex et l’API (gpt-6.2-astra), avec un palier Ultrafast. Page officielle non lisible depuis la session (egress) : prix et scores recoupés dans au moins deux articles de presse. Entrée en cache $0.40/M ; tarif majoré au-delà de 272k tokens d’entrée. Contexte et sortie repris de GPT-6 Astra (1,05M / 128k), à confirmer."
+  },
+  {
+   "id": "gpt-6-2-sol",
+   "name": "GPT-6.2 Sol",
+   "actor": "OpenAI",
+   "family": "gpt-flagship",
+   "replaces": "gpt-6-1-sol",
+   "date": "2026-11-17",
+   "status": "ga",
+   "price_in": 2,
+   "price_out": 10,
+   "open_weights": false,
+   "scores": {
+    "frontiercode-2-0": {
+     "value": 43.8,
+     "official": true,
+     "source": "https://www.iclarified.com/103626/openai-launches-gpt62-astra-and-sol-with-better-performance-lower-costs-video",
+     "note": "presse, d’après la table d’OpenAI (effort max)"
+    }
+   },
+   "claims": [
+    {
+     "text": "selon OpenAI, à 0,5 point de GPT-6.2 Astra sur FrontierCode 2.0 pour environ un cinquième du coût",
+     "source": "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+    },
+    {
+     "text": "même prix que GPT-6.1 Sol",
+     "source": "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+    }
+   ],
+   "sources": [
+    "https://openai.com/index/introducing-gpt-6-2-astra-sol/",
+    "https://www.marktechpost.com/2026/11/17/openai-gpt-6-2-astra-sol-release/",
+    "https://the-decoder.com/openai-launches-gpt-6-2-astra-and-sol-with-lower-api-prices-and-some-benchmark-gains/"
+   ],
+   "confidence": "uncertain",
+   "en_clair": "Le modèle principal d’OpenAI, au prix de Claude Sonnet 5.5. Presque le niveau d’Astra selon OpenAI.",
+   "notes": "Sorti le 17 nov. 2026 (gpt-6.2-sol). Aucun score officiel de GPT-6.1 Sol sur le même test : pas de comparaison chiffrée avec l’ancien modèle. Contexte non confirmé."
+  },
+  {
+   "id": "gemini-4-neon",
+   "name": "Gemini 4 Neon",
+   "actor": "Google",
+   "family": "gemini-argon",
+   "replaces": "gemini-4-argon",
+   "date": "2026-11-18",
+   "status": "ga",
+   "price_in": 3,
+   "price_out": 15,
+   "context_k": 1000,
+   "open_weights": false,
+   "scores": {
+    "terminal-bench-science": {
+     "value": 70.5,
+     "official": true,
+     "source": "https://neuraltrust.ai/blog/gemini-4-neon",
+     "note": "presse, d’après la table de Google ; Gemini 4 Carbon 64,8 % dans la même table"
+    }
+   },
+   "claims": [
+    {
+     "text": "selon Google, un niveau proche des meilleurs modèles en code, travail de bureau et sciences, plus rapide et moins cher que Gemini 4 Carbon",
+     "source": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/"
+    },
+    {
+     "text": "remplace Argon dans le menu de l’appli Gemini pour les abonnés AI Pro ; Carbon reste réservé à AI Ultra",
+     "source": "https://notebookcheck.net/Gemini-4-Neon-replaces-Argon-for-Google-AI-Pro-subscribers.1454281.0.html"
+    },
+    {
+     "text": "indice Artificial Analysis : 61",
+     "source": "https://artificialanalysis.ai/models/gemini-4-neon"
+    }
+   ],
+   "sources": [
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
+    "https://9to5google.com/2026/11/18/gemini-4-neon-announcement/",
+    "https://notebookcheck.net/Gemini-4-Neon-replaces-Argon-for-Google-AI-Pro-subscribers.1454281.0.html",
+    "https://artificialanalysis.ai/models/gemini-4-neon",
+    "https://felloai.com/gemini-4-neon/"
+   ],
+   "confidence": "uncertain",
+   "en_clair": "Le modèle intermédiaire de Gemini 4, entre Carbon et Hydrogen. Il remplace Argon dans l’appli Gemini.",
+   "notes": "Sorti le 18 nov. 2026 : API Gemini payante, AI Studio, Antigravity, appli Gemini (AI Pro et Ultra). Page officielle non lisible depuis la session (egress) : prix et disponibilité recoupés dans plusieurs articles. Aucun test commun publié avec Argon. « replaces » = Argon, qu’il remplace dans l’appli Gemini."
   }
  ]
 }

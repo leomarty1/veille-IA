@@ -1,0 +1,267 @@
+{
+ "schema": 2,
+ "date": "2026-11-22",
+ "period": "15 → 22 novembre 2026",
+ "title": "OpenAI sort GPT-6.2, Google sort Gemini 4 Neon ; Claude Code durcit sa sécurité",
+ "description": "Veille IA du 15 au 22 novembre 2026 : GPT-6.2 Astra et Sol chez OpenAI, Gemini 4 Neon chez Google, Claude Code 2.1.326 à 2.1.330, entrée en bourse d'Anthropic. Ce que ça change pour Lynxter.",
+ "lead": "OpenAI et Google sortent chacun un nouveau modèle, moins cher que le précédent. Pour nous, rien ne change : Opus 5.5 reste notre modèle. L'action de la semaine est la mise à jour de <strong>Claude Code</strong>, qui protège mieux nos identifiants.",
+ "actors_scanned": 9,
+ "en_30s": [
+  "<strong>Claude Code</strong> 2.1.326 à 2.1.330 protège mieux les fichiers de connexion et demande plus souvent la permission. Les tâches planifiées créées dans le terminal peuvent être à reprogrammer.",
+  "<strong>OpenAI</strong> sort GPT-6.2 Astra, 20 % moins cher que GPT-6 Astra, et GPT-6.2 Sol. <strong>Google</strong> sort Gemini 4 Neon, son modèle intermédiaire.",
+  "<strong>Anthropic</strong> entre en bourse à 83 $ par action. Rien de nouveau chez Mistral ni chez Meta cette semaine."
+ ],
+ "highlights": [
+  "Claude Code 2.1.330 protège mieux les identifiants : mise à jour à faire",
+  "GPT-6.2 Astra et Sol chez OpenAI, Gemini 4 Neon chez Google",
+  "Anthropic entre en bourse ; rien chez Mistral ni chez Meta"
+ ],
+ "pour_lynxter": [
+  {
+   "verdict": "a-faire",
+   "titre": "Passer Claude Code en version 2.1.330 ou plus",
+   "pourquoi": "Ces versions empêchent Claude d'écrire dans les fichiers qui gardent nos connexions. Le bac à sable n'écrit plus dans certains dossiers sensibles. Claude dans Chrome refuse aussi d'envoyer des fichiers d'identifiants. Pour vérifier la version, taper <code>claude --version</code> dans un terminal.",
+   "qui": "Chaque utilisateur de Claude Code",
+   "charte": "ok",
+   "items": [
+    "2026-11-22-claude-code-2-1-326-330"
+   ]
+  },
+  {
+   "verdict": "a-surveiller",
+   "titre": "Vérifier que nos tâches planifiées tournent encore après la mise à jour",
+   "pourquoi": "Depuis la 2.1.329, la plupart des tâches planifiées enregistrées par une ancienne version doivent être reprogrammées. Cela vise les tâches créées dans le terminal, pas a priori les routines de claude.ai : à confirmer à leur prochaine exécution. Les tâches récurrentes peuvent désormais tourner 30 jours au lieu de 7.",
+   "qui": "Léo, pour les routines",
+   "charte": "ok",
+   "items": [
+    "2026-11-22-claude-code-2-1-326-330"
+   ]
+  },
+  {
+   "verdict": "rien",
+   "titre": "GPT-6.2, Gemini 4 Neon et l'entrée en bourse d'Anthropic : rien à changer",
+   "pourquoi": "Aucun de ces modèles n'est publié avec un test commun montrant qu'il ferait mieux qu'Opus 5.5 pour le même prix. ChatGPT reste limité aux données publiques, Gemini est hors charte. L'entrée en bourse ne change pas nos conditions d'utilisation de Claude.",
+   "qui": "—",
+   "charte": null,
+   "items": [
+    "2026-11-22-openai-gpt-6-2-astra-sol",
+    "2026-11-22-gemini-4-neon",
+    "2026-11-22-anthropic-entree-en-bourse-prix"
+   ]
+  }
+ ],
+ "modeles": [
+  {
+   "id": "gpt-6-2-astra",
+   "item": "2026-11-22-openai-gpt-6-2-astra-sol",
+   "en_clair": "Le très haut de gamme d'OpenAI, pour les tâches longues et difficiles. Il coûte 20 % de moins que GPT-6 Astra, soit le prix de Claude Fable 5.2.",
+   "verdict": "rien",
+   "pour_nous": "ChatGPT : données publiques seulement. Pas de raison de changer nos usages."
+  },
+  {
+   "id": "gpt-6-2-sol",
+   "item": "2026-11-22-openai-gpt-6-2-astra-sol",
+   "en_clair": "Le modèle principal d'OpenAI, au même prix que GPT-6.1 Sol et que Claude Sonnet 5.5. Presque le niveau d'Astra selon OpenAI.",
+   "verdict": "rien",
+   "pour_nous": "Aucun test commun publié avec Claude Sonnet 5.5."
+  },
+  {
+   "id": "gemini-4-neon",
+   "item": "2026-11-22-gemini-4-neon",
+   "en_clair": "Le modèle intermédiaire de Gemini 4, entre Carbon et Hydrogen. Il remplace Argon dans l'appli Gemini des abonnés payants.",
+   "verdict": "rien",
+   "pour_nous": "Hors charte : données publiques seulement."
+  }
+ ],
+ "items": [
+  {
+   "slug": "2026-11-22-claude-code-2-1-326-330",
+   "actor": "Anthropic",
+   "tag": "lynxter",
+   "theme": "outils",
+   "date": "2026-11-20",
+   "title": "Claude Code 2.1.330 protège mieux nos identifiants ; certaines tâches planifiées sont à reprogrammer",
+   "resume": "Cinq versions de Claude Code sortent du 16 au 20 novembre. Elles bloquent l'écriture dans les fichiers de connexion et demandent la permission plus souvent. Les tâches planifiées créées avec une ancienne version peuvent devoir être reprogrammées.",
+   "pour_nous": {
+    "verdict": "a-faire",
+    "texte": "Mettre à jour Claude Code, puis vérifier que nos tâches planifiées tournent encore."
+   },
+   "chiffres": [
+    "2.1.326 (16 nov.) : les outils de fichiers refusent d'écrire dans <code>.credentials.json</code> ; le bac à sable n'écrit plus dans certains dossiers sensibles du répertoire personnel (<code>sandbox.filesystem.allowWrite</code> pour en autoriser)",
+    "2.1.326 : certaines commandes <code>cp</code> et <code>mv</code> demandent la permission ; le mode « bypass permissions » demande ou refuse certains appels",
+    "2.1.327 (17 nov.) : Claude dans Chrome refuse de téléverser certains fichiers d'identifiants ; les commits évitent les fichiers qui contiennent probablement des secrets",
+    "2.1.329 (19 nov.) : la plupart des tâches planifiées enregistrées par une version antérieure doivent être reprogrammées dans les nouvelles sessions connectées",
+    "2.1.330 (20 nov.) : tâches récurrentes et <code>/loop</code> jusqu'à 30 jours au lieu de 7, tant que la session tourne ; les tâches créées avant restent limitées à 7 jours",
+    "2.1.328 : <code>/code-review</code> ne signale plus que les bugs et les écarts au CLAUDE.md ; <code>/simplify</code> pour le reste"
+   ],
+   "sources": [
+    {
+     "label": "code.claude.com — changelog 2.1.326",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-326",
+     "primary": true
+    },
+    {
+     "label": "code.claude.com — changelog 2.1.329",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-329",
+     "primary": true
+    },
+    {
+     "label": "code.claude.com — changelog 2.1.330",
+     "url": "https://code.claude.com/docs/en/changelog#2-1-330",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-22-openai-gpt-6-2-astra-sol",
+   "actor": "OpenAI",
+   "tag": "useful",
+   "theme": "modeles",
+   "date": "2026-11-17",
+   "title": "GPT-6.2 Astra : 20 % moins cher que GPT-6 Astra, au prix de Claude Fable 5.2",
+   "resume": "OpenAI sort GPT-6.2 Astra, son très haut de gamme, et GPT-6.2 Sol, son modèle principal. Selon OpenAI, Astra obtient 77,1 % sur un test de recherche scientifique, contre 68,1 % pour GPT-6 Astra. Selon Artificial Analysis, il reste derrière Claude Fable 5.2.",
+   "pour_nous": {
+    "verdict": "rien",
+    "texte": "ChatGPT reste limité aux données publiques. Rien ne justifie de changer d'outil."
+   },
+   "chiffres": [
+    "Prix : Astra 8 $ / 40 $ par million de tokens (GPT-6 Astra : 10 $ / 50 $) ; Sol 2 $ / 10 $, comme GPT-6.1 Sol",
+    "Selon OpenAI : Terminal-Bench-Science 77,1 % (GPT-6 Astra 68,1 % ; Claude Fable 5.2 74,6 % selon Anthropic)",
+    "Selon OpenAI : FrontierCode 2.0 Astra 44,2 %, Sol 43,8 % (Claude Fable 5.2 49,1 % selon Anthropic)",
+    "Selon Vals : Terminal-Bench 4.0 Astra 63,1 %, contre 65,2 % pour Claude Fable 5.2 et Opus 5.5",
+    "Selon OpenAI : premier modèle classé « High » pour l'auto-amélioration de l'IA dans son cadre de sécurité ; garde-fous renforcés sur les demandes de cybersécurité",
+    "Disponible dans ChatGPT Work, Codex et l'API (<code>gpt-6.2-astra</code>, <code>gpt-6.2-sol</code>), avec un palier Ultrafast"
+   ],
+   "sources": [
+    {
+     "label": "openai.com — Introducing GPT-6.2 Astra and Sol",
+     "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol/",
+     "primary": true
+    },
+    {
+     "label": "the-decoder.com",
+     "url": "https://the-decoder.com/openai-launches-gpt-6-2-astra-and-sol-with-lower-api-prices-and-some-benchmark-gains/",
+     "primary": false
+    },
+    {
+     "label": "marktechpost.com",
+     "url": "https://www.marktechpost.com/2026/11/17/openai-gpt-6-2-astra-sol-release/",
+     "primary": false
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-22-gemini-4-neon",
+   "actor": "Google DeepMind",
+   "tag": "useful",
+   "theme": "modeles",
+   "date": "2026-11-18",
+   "title": "Gemini 4 Neon : le modèle intermédiaire de Google remplace Argon dans l'appli Gemini",
+   "resume": "Google sort Gemini 4 Neon, placé entre Carbon, le plus puissant, et Hydrogen, le plus rapide. Il coûte 3 $ / 15 $ par million de tokens. Google ne publie aucun test commun avec Argon, qu'il remplace dans l'appli.",
+   "pour_nous": {
+    "verdict": "rien",
+    "texte": "Gemini est hors charte : données publiques seulement."
+   },
+   "chiffres": [
+    "Prix API : 3 $ / 15 $ par million de tokens ; Gemini 4 Carbon passe de 2 $ / 10 $ à 4 $ / 20 $ à la fin de son prix de lancement, autour du 1er décembre",
+    "Selon Google : Terminal-Bench-Science 70,5 %, contre 64,8 % pour Gemini 4 Carbon",
+    "Selon Artificial Analysis : indice 61 (Claude Fable 5.2 : 65 ; GPT-6.2 Astra : 62)",
+    "Contexte : environ 1 million de tokens",
+    "Disponible dans l'API Gemini payante, AI Studio, Antigravity et l'appli Gemini (abonnés AI Pro et Ultra)"
+   ],
+   "sources": [
+    {
+     "label": "blog.google — Introducing Gemini 4 Neon",
+     "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
+     "primary": true
+    },
+    {
+     "label": "9to5google.com",
+     "url": "https://9to5google.com/2026/11/18/gemini-4-neon-announcement/",
+     "primary": false
+    },
+    {
+     "label": "artificialanalysis.ai",
+     "url": "https://artificialanalysis.ai/models/gemini-4-neon",
+     "primary": false
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-22-anthropic-entree-en-bourse-prix",
+   "actor": "Anthropic",
+   "tag": "info",
+   "theme": "entreprise",
+   "date": "2026-11-18",
+   "title": "Anthropic entre en bourse à 83 $ par action",
+   "resume": "Anthropic vend 980 millions d'actions à 83 $ sur le Nasdaq, la bourse américaine des valeurs technologiques. La cotation a commencé le 19 novembre, l'opération s'est close le 20.",
+   "sources": [
+    {
+     "label": "anthropic.com — Anthropic prices initial public offering",
+     "url": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering",
+     "primary": true
+    },
+    {
+     "label": "anthropic.com — closing of initial public offering",
+     "url": "https://www.anthropic.com/news/ipo-close",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  },
+  {
+   "slug": "2026-11-22-claude-filigrane-anciens-modeles",
+   "actor": "Anthropic",
+   "tag": "info",
+   "theme": "outils",
+   "date": "2026-11-16",
+   "title": "Un filigrane sur le texte de quatre anciens modèles Claude",
+   "resume": "Le texte écrit par Opus 4.6, Opus 4.5, Sonnet 4.5 et Haiku 4.5 porte désormais le filigrane d'Anthropic. Opus 5.5, que nous utilisons, n'est pas dans cette liste.",
+   "sources": [
+    {
+     "label": "platform.claude.com — release notes 16 nov.",
+     "url": "https://platform.claude.com/docs/en/release-notes/overview#november-16-2026",
+     "primary": true
+    }
+   ],
+   "has_primary": true
+  }
+ ],
+ "rien_de_notable": [
+  "Mistral (aucune annonce dans la fenêtre)",
+  "Meta (aucune annonce dans la fenêtre)",
+  "DeepSeek",
+  "Qwen",
+  "xAI",
+  "Cursor"
+ ],
+ "sources_footer": [
+  {
+   "label": "code.claude.com/changelog",
+   "url": "https://code.claude.com/docs/en/changelog#2-1-330"
+  },
+  {
+   "label": "openai.com — GPT-6.2 Astra et Sol",
+   "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+  },
+  {
+   "label": "blog.google — Gemini 4 Neon",
+   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/"
+  },
+  {
+   "label": "anthropic.com — entrée en bourse",
+   "url": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering"
+  },
+  {
+   "label": "platform.claude.com — release notes",
+   "url": "https://platform.claude.com/docs/en/release-notes/overview#november-16-2026"
+  }
+ ],
+ "prev": {
+  "href": "2026-11-15.html",
+  "title": "Claude Fable 5.2 sort, 20 % moins cher ; Claude Code corrige de nouvelles failles"
+ }
+}
